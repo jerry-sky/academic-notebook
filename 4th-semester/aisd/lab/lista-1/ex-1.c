@@ -1,61 +1,95 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct fifo_node
+/**
+ * A container that holds an arbitrary value and pointers to nodes adjacent to this node.
+ */
+typedef struct __fifo_node__
 {
   int value;
-  struct fifo_node *next;
-  struct fifo_node *prev;
-};
+  // struct __fifo_node__ *next;
+  struct __fifo_node__ *prev;
+} fifoNode;
 
-int pop(struct fifo_node *node)
+/**
+ * Return value of the first inserted node and remove it from the FIFO chain.
+ */
+int pop(fifoNode **node)
 {
-  struct fifo_node *current = node;
-  while (current->next != NULL)
-  {
-    current = current->next;
-  }
-  int value = current->value;
-  current->prev->next = NULL;
+  // get the value
+  int value = (*node)->value;
+
+  // reconnect the pointer to point to a new last node
+  fifoNode *new_head = (*node)->prev;
+  // remove said node
+  free((*node));
+  (*node) = new_head;
 
   return value;
 }
 
-void push(struct fifo_node *node, int value)
+/**
+ * Add a new node with the provided arbitrary value.
+ */
+void push(fifoNode **node, int value)
 {
-  printf("init push %d\n", value);
-  struct fifo_node *current = node;
-  printf("before while push %d\n", value);
+  // handle null node
+  if ((*node) == NULL)
+  {
+    // begin a new FIFO chain
+    (*node) = malloc(sizeof(fifoNode));
+    (*node)->value = value;
+    return;
+  }
+  // loop through and find the last inserted node
+  fifoNode *current = (*node);
+
+  // return;
   while (current->prev != NULL)
   {
-    printf("in: while %d\n", value);
     current = current->prev;
   }
-  printf("after while %d\n", value);
-  struct fifo_node new_node = {
-      .value = value,
-      .prev = NULL,
-      .next = current};
 
-  printf("before saving %d\n", value);
+  // create a new node with provided arbitrary value
+  fifoNode *new_node = NULL;
+  new_node = (fifoNode *)malloc(sizeof(fifoNode));
+  new_node->value = value;
+  new_node->prev = NULL;
+  // new_node->next = current;
 
-  current->prev = &new_node;
-  
-  printf("saved %d\n", value);
+  // insert said new node into the chain
+  current->prev = new_node;
 }
 
+/**
+ * A program that exemplifies a use-case for the FIFO chain.
+ */
 int main(int argc, char const *argv[])
 {
 
-  struct fifo_node fifo = {.value = 1, .next = NULL, .prev = NULL};
-
+  fifoNode *fifo = NULL;
+  // fifo = (fifoNode *)malloc(sizeof(fifoNode));
+  // fifo->value = 1;
   push(&fifo, 2);
+  printf("%d\n", fifo->value);
+  // return 0;
   push(&fifo, 3);
   push(&fifo, 4);
   push(&fifo, 5);
 
-  // printf("%d, %d\n", fifo.value, fifo.prev->value);
-  // printf("%d", pop(&fifo));
+  printf("%d, %d\n", fifo->value, fifo->prev->value);
+  printf("pop: %d\n", pop(&fifo));
+  printf("pop: %d\n", pop(&fifo));
+  // printf("pop: %d\n", pop(&fifo));
+  // printf("pop: %d\n", pop(&fifo));
+
+  fifoNode *current = NULL;
+  current = fifo;
+  while (current->prev != NULL)
+  {
+    printf("value: %d\n", current->value);
+    current = current->prev;
+  }
 
   return 0;
 }
