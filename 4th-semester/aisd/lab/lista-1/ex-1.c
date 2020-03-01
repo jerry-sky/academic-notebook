@@ -16,6 +16,10 @@ typedef struct __fifo_node__
  */
 int pop(fifoNode **node)
 {
+  if ((*node) == NULL)
+  {
+    return 0;
+  }
   // get the value
   int value = (*node)->value;
 
