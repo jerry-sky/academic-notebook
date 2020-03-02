@@ -6,8 +6,17 @@
  */
 typedef struct __fifo_node__
 {
+  /**
+   * The actual value that is being held by the fifo node.
+   */
   int value;
+  /**
+   * Points to next node in the FIFO stack.
+   */
   // struct __fifo_node__ *next;
+  /**
+   * Points to previous node in the FIFO stack.
+   */
   struct __fifo_node__ *prev;
 } fifoNode;
 
