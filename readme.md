@@ -9,6 +9,14 @@ Please note:
 
 ## Index
 
-### 3rd. Semester
+### Electives
 
-  - [AKiSO](akiso/readme.md)
+  - [Wstęp do Teorii Grafów](electives/wtg/readme.md)
+
+### 3rd Semester
+
+  - [AKiSO](3rd-semester/akiso/readme.md)
+
+### 4th Semester
+
+  - [AiSD](4th-semester/aisd/readme.md)
