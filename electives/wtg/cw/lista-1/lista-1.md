@@ -12,3 +12,10 @@
       2. W dopełnieniu $\overline{G}$ tracimy połączenie $v$ a $w$, ale uzyskujemy połączenia pomiędzy $v$ a $z$ oraz $w$ a $z$.
       3. Wówczas nadal mamy połączenie pomiędzy $v$ a $w$ poprzez $z$ oraz uzyskujemy połączenie pomiędzy składowymi, które wcześniej były oddzielone.
 
+    $G$:
+
+      <img width="256px" src="lista-1-zadanie-1-graph.png"/>
+
+    $\overline{G}$:
+
+      <img width="256px" src="lista-1-zadanie-1-graph-complement.png"/>

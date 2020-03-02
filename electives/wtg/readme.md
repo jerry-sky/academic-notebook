@@ -6,5 +6,5 @@
   ### Wykład
 
   ### Ćwiczenia
-  - [Lista 1](cw/lista-1.md)
+  - [Lista 1](cw/lista-1/lista-1.md)
 
