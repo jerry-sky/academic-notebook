@@ -64,22 +64,14 @@ ListNode *merge(ListNode *one, ListNode *two)
     return one;
   }
 
-  one->next = two;
-  two->prev = one;
-
-  ListNode *lastOfTwo = two->next;
-  while (lastOfTwo->next != two)
-  {
-    lastOfTwo = lastOfTwo->next;
-  }
-  ListNode *lastOfOne = one->prev;
-  while (lastOfOne->prev != one)
-  {
-    lastOfOne = lastOfOne->prev;
-  }
+  ListNode *lastOfOne = one->next;
+  ListNode *lastOfTwo = two->prev;
 
   lastOfOne->prev = lastOfTwo;
   lastOfTwo->next = lastOfOne;
+
+  one->next = two;
+  two->prev = one;
 }
 
 /**
