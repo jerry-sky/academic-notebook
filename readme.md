@@ -20,3 +20,4 @@ Please note:
 ### 4th Semester
 
   - [AiSD](4th-semester/aisd/readme.md)
+  - [KS](4th-semester/ks/readme.md)
