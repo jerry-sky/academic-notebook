@@ -14,11 +14,11 @@
 
     $G$:
 
-      <img width="256px" src="lista-1-zadanie-1-graph.png"/>
+      <img width="256px" src="graphs/l1z1.png"/>
 
     $\overline{G}$:
 
-      <img width="256px" src="lista-1-zadanie-1-graph-complement.png"/>
+      <img width="256px" src="graphs/l1z1c.png"/>
 1'.
    1. Załóżmy, że $G$ nie jest spójny, czyli $(\exists{A,B\in{V}}): \neg{A \sim_G B}$
    2. Weźmy dowolne $c \in V$, wówczas $\neg{(A \sim_G C \land C \sim_G B)}$, czyli istnieje $( \neg(A \sim_G C) \lor \neg(C \sim_G B) )$
@@ -39,8 +39,8 @@ $|E| > \binom{|V|-1}{2}$
 3. $H = ( V - \{v_0\}, X)$
 4. $|X| = ?$
 5. $|X| = (n-1)(n-2) \frac{1}{2} = \binom{n-1}{2} = \binom{|V| - 1}{2}$
-6. ![graph](lista-1-zadanie-2-graph.png)
-7. ![graph-2](lista-1-zadanie-2-graph-2.png)
+6. ![graph](graphs/l1z2.png)
+7. ![graph-2](graphs/l1z2.2.png)
 8. $|X| \le \binom{|V-V_0|}{2}$
 9. $|Y| = E\upharpoonleft_{[V_0]^2}$
 10. $H = (V_0, Y)$
@@ -61,7 +61,7 @@ Więcej wierzchołków niż rzędów bo *Dirichlet*.
 
 ## Zadanie 4
 
-![graph](lista-1-zadanie-4-graph.png)
+![graph](graphs/l1z4.png)
 
 $V = \{ v_0, v_1, ..., v_{n-1} \}$\
 $V_1 \dot{\cup} V_2 = V$\
@@ -76,11 +76,11 @@ $$
 
 $v_{n-1} \notin V_1$
 
-$\neg( \exists{k<n}: \psi(e_k) = (v, w) \land ( v \in V_1 \and w \in V_1) \lor ( v \in V_2 \land w \in V_2 ) ) )$
+$\neg( \exists{k<n}: \psi(e_k) = (v, w) \land ( v \in V_1 \land w \in V_1) \lor ( v \in V_2 \land w \in V_2 ) ) )$
 
 $\neg\exists{k}: n-1 = 2k \equiv 2 \not{\lvert} n-1$
 
-$\neg(\exists{k<n>}: \phi(e_k) = (v, w) \land ( v \in V_1 \land w \in V_1 ) \lor ( v \in V_2 \and w \in V_2 ) ) )$
+$\neg(\exists{k<n>}: \phi(e_k) = (v, w) \land ( v \in V_1 \land w \in V_1 ) \lor ( v \in V_2 \land w \in V_2 ) ) )$
 
 $v_0 \in V_1 \implies v_1 \in V_2 \implies v_2k \in V_1 \land v_{1+2k} \in V_2$\
 $0 \le k \le floor(\frac{n-2}{2})$
@@ -109,7 +109,7 @@ $Q$ - graf dwudzielny\
 $f(v)$ - liczba jedynek w zapisie binarnym wierzchołka $v$
 
 Dla każdego sąsiada $w$ wierzchołka $v$\
-$f(w) = f(v) + 1 \lor f(w) = f(v) - 1 \implies f(w) \not\equivf(v)~mod~2$
+$f(w) = f(v) + 1 \lor f(w) = f(v) - 1 \implies f(w) \not\equiv f(v)~mod~2$
 
 $V = X \cup Y$\
 $X = \{ v \in V: f(v) \equiv 0~mod~2 \}$\
