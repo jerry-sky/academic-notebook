@@ -4,12 +4,12 @@
 ## Index
 
   ### Wykład
-  - [**26-02-2020** Sortowanie](wyk/26-02-2020/sortowanie.md)
+  - [**26-02-2020** Sortowanie](wyk/2020-02-26/sortowanie.md)
   - **3-02-2020**
-    - [Insertion sort](wyk/3-02-2020/insertion-sort.md)
-    - [Merge sort](wyk/3-02-2020/merge-sort.md)
-    - [Notacja asymptotyczna](wyk/3-02-2020/notacja-asymptotyczna.md)
-    - [Rekurencja](wyk/3-02-2020/rekurencja.md)
+    - [Insertion sort](wyk/2020-03-3/insertion-sort.md)
+    - [Merge sort](wyk/2020-03-3/merge-sort.md)
+    - [Notacja asymptotyczna](wyk/2020-03-3/notacja-asymptotyczna.md)
+    - [Rekurencja](wyk/2020-03-3/rekurencja.md)
 
   ### Laboratorium
   #### Verbindung
