@@ -26,7 +26,7 @@
   ```bash
   ping -t <TTL> amazon.jp
   ```
-  gdzie `TTL` jest większe bądź równe 28 dostajemy odpowiedź - taki sam wynik jak przy programie [`ping`](#ping-amazonjp).
+  gdzie `TTL` jest większe bądź równe 28 dostajemy odpowiedź - taki sam wynik jak przy programie [`ping`](#ping-amazonjp). Pakiet odpowiedzi ma `TTL` równe 232, czyli hopów od serwera do komputera we Wrocławiu było `255-226 = 29`
 
   - Po dodaniu flagi `-M do` nie możemy wyjść dalej niż jeden hop.
   - Po dodaniu flagi `-M want` nie fragmentujemy lokalnie i jesteśmy w stanie wysłać maksymalną liczbę bajtów, na którą pozwala `ping` jaką jest 65507 bajtów.
@@ -45,7 +45,8 @@
   ```bash
   ping -t <TTL> amazon.cn
   ```
-  dla wartości większych bądź równych 20 dostajemy odpowiedź - czyli **dzieli nas 20 hopów**. Co ciekawe, zazwyczaj *pierwsze dwa pakiety są tracone*, dopiero trzeci i następne dostają odpowiedź.
+  dla wartości większych bądź równych 20 dostajemy odpowiedź - czyli **dzieli nas 20 hopów**. Pakiet odpowiedzi miał `TTL` równy 229 czyli hopów z powrotem było `255 - 229 = 26`.\
+  Co ciekawe, zazwyczaj *pierwsze dwa pakiety są tracone*, dopiero trzeci i następne dostają odpowiedź.
 
 ## Droga do serwerowni PPT
 
