@@ -1,5 +1,5 @@
 # Insertion Sort
-###### 2-03-2020
+2-03-2020
 
 ## Index
 
@@ -11,7 +11,7 @@
 
 $A = \{ a_1, a_2, ... a_n \}$
 
-```pseudo
+```
 for j = 2 to n {
   key = A[j]
   i = j-1

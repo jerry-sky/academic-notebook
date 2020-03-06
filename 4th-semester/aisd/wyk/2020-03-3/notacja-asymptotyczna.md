@@ -1,14 +1,14 @@
 # Notacja asymptotyczna
-###### 2-03-2020
+2-03-2020
 
 ## Duże $O$
 
-$f,g: \natural\to \real$
+$f,g: \natnums \to \reals$
 
 $$
 f(n) = O( g(n) ) \equiv
 (
-  \exists{c} \exists{n_0} \forall{n>n_0}:
+  \exists{c}~\exists{n_0}~\forall{n>n_0}:
   |f(n)| \le c |g(n)|
 )
 $$
@@ -33,16 +33,16 @@ $$
 ## Duże $\Omega$
 
 $$
-f(n) = \Omega(g(n)) \equiv (\exists{c}\exists{n_0}\forall{n\ge{n_0}}: c|g(n)| \le |f(n)|)
+f(n) = \Omega(g(n)) \equiv (\exists{c}~\exists{n_0}~\forall{n\ge{n_0}}: c\cdot|g(n)| \le |f(n)|)
 $$
 
 ### Example
 
 $$
-\sqrt{n} = \Omega(log(n))
+\sqrt{n} = \Omega(\log_2(n))
 $$
 $$
-\sqrt{n} \not ={O(ln(n))}
+\sqrt{n} \neq {O(\ln(n))}
 $$
 
 ## Duże $\Theta$

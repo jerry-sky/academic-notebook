@@ -9,7 +9,7 @@ $g(n) = 1 + c + c^2 + ... + c^n, ~ c>0$
 1. $\Theta(1)$ jeśli $c<1$
     - $0<c<1$\
     $g(n) = 1 \frac{1-c^{n+1}}{1 - c} = \frac{1 - c^{n+1}}{1-c}$\
-    $lim_{n\to \infin}\frac{\frac{1-c^{n+1}}{1-c}}{1} = \lim_{n\to \infin}\frac{1 - c^{n+1}}{1-c} = \frac{1}{1-c}\lim_{n\to \infin}(1 - c^{n+1}) = \frac{1}{1-c} * 1 = \frac{1}{1-c}$
+    $\lim_{n\to \infin}\frac{\frac{1-c^{n+1}}{1-c}}{1} = \lim_{n\to \infin}\frac{1 - c^{n+1}}{1-c} = \frac{1}{1-c}\lim_{n\to \infin}(1 - c^{n+1}) = \frac{1}{1-c} \cdot 1 = \frac{1}{1-c}$
 2. $\Theta(n)$ jeśli $c = 1$
    - $g(n) = 1+n$\
      $\lim_{n\to \infin}\frac{1+n}{n} = 1$

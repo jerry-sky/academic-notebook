@@ -1,5 +1,5 @@
 # Algorytmy i Struktury Danych
-###### AiSD
+*(AiSD)*
 
 ## Index
 
