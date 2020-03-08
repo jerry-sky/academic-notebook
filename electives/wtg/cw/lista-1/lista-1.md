@@ -95,7 +95,7 @@ $0 \le k \le floor(\frac{n-2}{2})$
 
 Rząd elementów $\frac{2^{n-1}n2}{2^n}$
 
-\<insert hiper-kostka\>
+![hiperkostka](graphs/hiperkostka.png)
 
 $V \ni (0,0,0,0,...,0)$ *(n zer)*\
 $V \ni (1,1,1,1,...,1)$ *(n jedynek)*
