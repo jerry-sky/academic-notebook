@@ -13,7 +13,6 @@
 
   ### Laboratorium
   #### Verbindung
-
   Execute `connect.sh` to connect to the remote Ubuntu machine for testing programs.
   Attached config files:
 

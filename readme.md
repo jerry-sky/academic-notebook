@@ -12,12 +12,16 @@ Please note:
 ### Electives
 
   - [Wstęp do Teorii Grafów](electives/wtg/readme.md)
+  - [Algorytmy Metaheurystyczne](electives/am/readme.md)
+  - [Kodowanie i kompresja danych]()
+  - [Kurs wybranego języka programowania (Python)]()
 
 ### 3rd Semester
 
-  - [AKiSO](3rd-semester/akiso/readme.md)
+  - [Architektura komputerów i systemów operacyjnych](3rd-semester/akiso/readme.md)
 
 ### 4th Semester
 
-  - [AiSD](4th-semester/aisd/readme.md)
-  - [KS](4th-semester/ks/readme.md)
+  - [Algorytmy i struktury danych](4th-semester/aisd/readme.md)
+  - [Komunikacja Społeczna](4th-semester/ks/readme.md)
+  - [Technologie Sieciowe](4th-semester/ts/readme.md)

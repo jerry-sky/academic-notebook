@@ -1,5 +1,7 @@
 # Lista-1
 
+[kod](lista-1.ts)
+
 $P(y|x) = \frac{P(y~\cap~x)}{P(x)} = \frac{|y~\cap~x|}{|x|}$
 
 $I(y|x) = -\log_2(~P(y|x)~)$
