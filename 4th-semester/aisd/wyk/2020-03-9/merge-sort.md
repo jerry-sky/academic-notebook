@@ -1,0 +1,19 @@
+# Merge sort
+*(2020-03-9)*
+
+## Example 1
+
+$T(n) = 2T(\frac{n}{2}) + O(n)$, przy czym $a = 2$, $b = \frac{n}{2}$, $d = 1$, $\log_22 = 1$\
+$T(n) = O(n\log n)$
+
+## Example 2
+
+$T(n) = 9T(\frac{n}{3}) + 11\cdot n^{\frac{3}{2}}$, przy czym $a = 9$, $b = 3$, $d = \frac{3}{2}$, $\log_39 = 2 > \frac{3}{2} \rightarrow T(n) = O(n^2)$\
+
+## Example 3
+
+$T(n) = 4T(\frac{n}{2}) + \frac{n^2}{\log n}$\
+mamy $a = 4$, $b = 2$, $\frac{n^2}{\log n} = O(n^2)$
+$\overline{T}(n) = 4\overline{T}(\frac{n}{2}) + n^2$\
+$\overline{T}(n) = O(n^2 \log n)$\
+$T(n) = O(\overline{T}(n)) = O(n^2 \log n)$ $\leftarrow$ może być za duże
