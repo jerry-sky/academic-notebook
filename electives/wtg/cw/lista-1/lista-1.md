@@ -122,3 +122,74 @@ $Q_2$
 1. $\phi: V_1 \rightarrow V_2$ na, 1-1
 2. $( \forall{x,y \in V_1} )(\{ x,y \} \in E_1 \leftrightarrow \{ \phi(x), \phi(y) \} \in E_2 )$
 
+## Zadanie 8
+
+$\phi(e) = \{x,y\}$, $w(e) = \deg(x) + \deg(y)$\
+Jeśli $x=y$, to wtedy $w(e) = 2\deg(x)$
+
+$$
+\sum_{e \in E}w(e) = \sum_{\{x,y\} \in E}\deg(x) + \deg(y) = \sum_{x \in V}\deg^2(x)
+$$
+
+```
+  _2_
+ |  /
+1| /
+ |/
+```
+
+## Zadanie 9
+
+```
+
+.____.
+
+```
+$nr$ - liczba nierozspójniająca
+
+$nr(G_1) \ge 2$\
+$G_1 = (V_1, E_1)$\
+$G_2 = (V_2, E_2)$\
+$V_2 = V_1 \cup \{v\}$\
+$E_1 \subseteq E_2$, $E_2 \upharpoonleft_{[V_1]^2}  = E_1$
+
+$V_A,~V_B$
+
+1. $\ge$ dwie krawędzie $\implies nr(G_2) > nr(G_1)$
+2. 1 krawędź do rozspójniającego $nr(G_2) = nr(G_1) +1$
+3. 1 krawędź do nierozspójniającego $nr(G_2) = nr(G_1)$\
+  $nr(G_2) \ge nr(G_1) \ge 2$
+
+## Zadanie 10
+
+jeśli liniowy $nr(G) = 2$
+
+```
+.___.___.___.___.
+```
+
+$nr(~(V,E \cup \{e_0\}) \ge nr((V,E))~)$
+
+1. $nr(G) = nr(G)$\
+   $nr((V, E_0)) \le nr(V \cup \{v_0\}, E_1)$ : $E_0 \subseteq E_1$
+   dodając wierzchołek dostanę albo graf liniowy albo graf o większym $nr$
+
+Jeśli dodamy krawędź $\{v_1, v_2\}$, to wszystkie punkty leżące na ścieżce między $v_1$ i $v_2$ stają się nierozspójniające, czyli $nr(.)$ rośnie
+
+## Zadanie 11
+
+$G = G(X,Y)$ $\leftarrow$ dwudzielny
+
+1. $\sum_{x \in X}\deg(x) = |E| = \sum_{y \in Y}\deg(y)$
+2. zał. że $G$ - regularny\
+   $\forall v \in V~\deg(v) = d$\
+   $\sum_{i=1}^{|X|}d = |X|\cdot d = \sum_{i=1}^{|Y|}$, $d = |Y|\cdot d \implies |X| = |Y|$
+
+$\blacksquare$
+
+## Zadanie 12
+
+\<insert graph>
+
+## Zadanie 13
+
