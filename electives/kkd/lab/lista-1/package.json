@@ -1,0 +1,14 @@
+{
+  "name": "lista-1",
+  "version": "1.0.0",
+  "description": "[kod](lista-1.ts)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.9.0"
+  }
+}

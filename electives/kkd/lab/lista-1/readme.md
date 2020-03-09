@@ -33,4 +33,15 @@ $$
 H(Y|X) = \sum_{x \in X}(~\sum_{y \in Y} \frac{|y \cap x|}{|\Omega|}\cdot (-\log_2(~\frac{|y \cap x|}{|x|})~)
 $$
 
+zwykła entropia:
 
+$$
+H(X) = \sum_{x \in X}P(x)\cdot I(x)
+$$
+przy czym $I(x) = -\log_2 P(x)$
+$$
+H(X) = \sum_{x \in X}\frac{|x|}{|\Omega|}\cdot (-\log_2 \frac{|x|}{|\Omega|})
+$$
+$$
+H(X) = \frac{1}{|\Omega|}\cdot\sum_{x \in X}|x|\cdot (-\log_2 \frac{|x|}{|\Omega|})
+$$

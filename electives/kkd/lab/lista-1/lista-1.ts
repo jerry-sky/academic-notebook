@@ -112,9 +112,9 @@ export class FileAnalysis {
   public Entropy(): number {
     let output = 0;
     Object.keys(this.countOne).forEach(x => {
-      output += this.Probability(x) * this.Information(x)
+      output += this.countOne[x] * this.Information(x)
     });
-    return output;
+    return output / this.Omega;
   }
 
 }
