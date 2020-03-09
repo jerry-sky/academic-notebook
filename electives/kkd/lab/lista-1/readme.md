@@ -45,3 +45,12 @@ $$
 $$
 H(X) = \frac{1}{|\Omega|}\cdot\sum_{x \in X}|x|\cdot (-\log_2 \frac{|x|}{|\Omega|})
 $$
+$$
+H(X) = \frac{1}{|\Omega|}\cdot\sum_{x \in X}|x|\cdot (-\log_2 |x| + log_2 |\Omega|)
+$$
+$$
+H(X) = \frac{1}{|\Omega|}\cdot\sum_{x \in X}|x|\cdot (-\log_2 |x|) + \frac{1}{|\Omega|} \cdot log_2 |\Omega| \cdot \sum_{x \in X} |x|)
+$$
+$$
+H(X) = \frac{1}{|\Omega|}\cdot\sum_{x \in X}|x|\cdot (-\log_2 |x|) + log_2 |\Omega|
+$$

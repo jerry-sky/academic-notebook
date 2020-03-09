@@ -15,8 +15,6 @@ export class PairOfCharactersCount {
  */
 export class FileAnalysis {
 
-  private file: string;
-
   /**
    * Count of all characters.
    */
@@ -28,23 +26,39 @@ export class FileAnalysis {
 
   private Omega: number = 0;
 
-  constructor(filePath: string) {
-    // read the file
-    this.file = fs.readFileSync(filePath, { encoding: 'ascii' });
+  constructor() {
+  }
 
-    for (let i = 0; i < this.file.length; i++) {
+  public async init(filePath: string) {
+    // read the file
+    const fd: number = await (new Promise(resolve => {
+      fs.open(filePath, 'r', (err, fd) => resolve(fd));
+    }) as Promise<number>);
+
+    let buffer = Buffer.from('0');
+    let num = 1;
+
+    let current = 0;
+    let previous = 0;
+
+    while (num !== 0) {
+      num = fs.readSync(fd, buffer, 0, 1, null);
       // handle single character
-      const current = this.file[i];
+      previous = current;
+      current = buffer[0];
+      // console.log(current);
       if (!this.countOne[current]) { this.countOne[current] = 1; }
       else { this.countOne[current]++; }
 
       // handle a character after another
-      const previous = i == 0 ? String.fromCharCode(0) : this.file[i - 1];
+      // const previous = i == 0 ? String.fromCharCode(0) : this.file[i - 1];
 
       if (!this.countTwo[previous]) { this.countTwo[previous] = {} }
 
       if (!this.countTwo[previous][current]) { this.countTwo[previous][current] = 1; }
       else { this.countTwo[previous][current]++; }
+
+      // console.log(current, this.countOne[current]);
 
       this.Omega++;
     }
@@ -106,15 +120,17 @@ export class FileAnalysis {
       )
     )
 
-    return output;
+    return parseFloat(output.toFixed(10));
   }
 
   public Entropy(): number {
     let output = 0;
     Object.keys(this.countOne).forEach(x => {
-      output += this.countOne[x] * this.Information(x)
+      output += this.countOne[x] * (-1) * Math.log2(this.countOne[x])
     });
-    return output / this.Omega;
+    output = output / this.Omega;
+
+    return parseFloat((output + Math.log(this.Omega)/Math.log(2)).toFixed(10));
   }
 
 }
@@ -123,15 +139,19 @@ export class FileAnalysis {
 const printResults = (fa: FileAnalysis) => {
   const e = fa.Entropy();
   const ce = fa.ConditionalEntropy();
-  console.log('entropy:            ', e);
-  console.log('conditional entropy:', ce);
-  console.log('difference:         ', e - ce);
+  console.log('  entropy:            ', e);
+  console.log('  conditional entropy:', ce);
+  console.log('  difference:         ', e - ce);
+  console.log('---');
 }
 
 
 const files = ['pan-tadeusz.txt', 'test1.bin', 'test2.bin', 'test3.bin'];
-files.forEach(file => {
-  const fa = new FileAnalysis(file);
+// const files = ['test3.bin'];
+// const files = ['pan-tadeusz.txt'];
+files.forEach(async file => {
+  const fa = new FileAnalysis();
+  await fa.init(file);
   console.log(file + ':');
   printResults(fa);
 });
