@@ -120,28 +120,39 @@ export class FileAnalysis {
       )
     )
 
-    return parseFloat(output.toFixed(10));
+    return output;
   }
 
   public Entropy(): number {
+    let count = 0;
     let output = 0;
     Object.keys(this.countOne).forEach(x => {
       output += this.countOne[x] * (-1) * Math.log2(this.countOne[x])
+      count++;
     });
     output = output / this.Omega;
 
-    return parseFloat((output + Math.log(this.Omega)/Math.log(2)).toFixed(10));
+    return output + Math.log(this.Omega) / Math.log(2);
   }
 
 }
 
 
-const printResults = (fa: FileAnalysis) => {
+const printResults = (fa: FileAnalysis, precision = 8) => {
   const e = fa.Entropy();
   const ce = fa.ConditionalEntropy();
-  console.log('  entropy:            ', e);
-  console.log('  conditional entropy:', ce);
-  console.log('  difference:         ', e - ce);
+  console.log(
+    '  entropy:            ',
+    e.toFixed(precision)
+  );
+  console.log(
+    '  conditional entropy:',
+    ce.toFixed(precision)
+  );
+  console.log(
+    '  difference:         ',
+    (e - ce).toFixed(precision)
+  );
   console.log('---');
 }
 

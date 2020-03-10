@@ -67,8 +67,6 @@ export class FileAnalysis {
 
       this.Omega = this.Omega.add(1);
     }
-
-    console.log(this.Omega.toString());
   }
 
   public get getCountOne(): CharacterCount {
@@ -164,12 +162,21 @@ export class FileAnalysis {
 }
 
 
-const printResults = (fa: FileAnalysis) => {
+const printResults = (fa: FileAnalysis, precision = 8) => {
   const e = fa.Entropy();
   const ce = fa.ConditionalEntropy();
-  console.log('  entropy:            ', e.toString());
-  console.log('  conditional entropy:', ce.toString());
-  console.log('  difference:         ', math.subtract(e, ce).toString());
+  console.log(
+    '  entropy:            ',
+    (e as math.BigNumber).toFixed(precision)
+  );
+  console.log(
+    '  conditional entropy:',
+    (ce as math.BigNumber).toFixed(precision)
+  );
+  console.log(
+    '  difference:         ',
+    (math.subtract(e, ce) as math.BigNumber).toFixed(precision)
+  );
   console.log('---');
 }
 
@@ -181,6 +188,6 @@ files.forEach(async file => {
   const fa = new FileAnalysis();
   await fa.init(file);
   console.log(file + ':');
-  printResults(fa);
+  printResults(fa, 15);
 });
 

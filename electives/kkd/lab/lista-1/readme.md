@@ -2,6 +2,8 @@
 
 [kod](lista-1.ts)
 
+## Entropia warunkowa
+
 $P(y|x) = \frac{P(y~\cap~x)}{P(x)} = \frac{|y~\cap~x|}{|x|}$
 
 $I(y|x) = -\log_2(~P(y|x)~)$
@@ -32,8 +34,14 @@ $$
 $$
 H(Y|X) = \sum_{x \in X}(~\sum_{y \in Y} \frac{|y \cap x|}{|\Omega|}\cdot (-\log_2(~\frac{|y \cap x|}{|x|})~)
 $$
+$$
+H(Y|X) = \sum_{x \in X}(~\sum_{y \in Y} \frac{|y \cap x|}{|\Omega|}\cdot (-\log_2(~|y \cap x|)~ + log_2|x|)
+$$
+$$
+H(Y|X) = \sum_{x \in X}(~\sum_{y \in Y} \frac{|y \cap x|}{|\Omega|}\cdot (-\log_2(~|y \cap x|)~ + log_2|x|)
+$$
 
-zwykła entropia:
+## Zwykła entropia
 
 $$
 H(X) = \sum_{x \in X}P(x)\cdot I(x)
