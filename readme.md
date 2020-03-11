@@ -13,8 +13,8 @@ Please note:
 
   - [Wstęp do Teorii Grafów](electives/wtg/readme.md)
   - [Algorytmy Metaheurystyczne](electives/am/readme.md)
-  - [Kodowanie i kompresja danych]()
-  - [Kurs wybranego języka programowania (Python)]()
+  - [Kodowanie i kompresja danych](electives/kkd/readme.md)
+  - [Kurs wybranego języka programowania (Python)](electives/py/readme.md)
 
 ### 3rd Semester
 
@@ -25,3 +25,4 @@ Please note:
   - [Algorytmy i struktury danych](4th-semester/aisd/readme.md)
   - [Komunikacja Społeczna](4th-semester/ks/readme.md)
   - [Technologie Sieciowe](4th-semester/ts/readme.md)
+  - [Przedsiębiorczość](4th-semester/pb/readme.md)
