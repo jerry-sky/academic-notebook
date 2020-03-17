@@ -18,6 +18,10 @@
     - [Merge sort examples](wyk/2020-03-9/merge-sort.md)
     - [Divide and conquer](wyk/2020-03-9/divide-and-conquer.md)
     - [*Lemat*](wyk/2020-03-9/lemat.md)
+  - **2020-03-11\***
+    - [Mnożenie $n$-bitowych liczb naturalnych $x \cdot y$](wyk/2020-03-11/mnożenie-n-bitowych-liczb.md)
+    - [Mnożenie macierzy $n\times n$](wyk/2020-03-11/mnożenie-macierzy-nxn.md)
+    - [QuickSort](wyk/2020-03-11/quick-sort.md)
 
   ### Ćwiczenia
   - [Lista 1](cw/lista-1.md)
