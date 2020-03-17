@@ -19,6 +19,10 @@
     - [Divide and conquer](wyk/2020-03-9/divide-and-conquer.md)
     - [*Lemat*](wyk/2020-03-9/lemat.md)
 
+  ### Ćwiczenia
+  - [Lista 1](cw/lista-1.md)
+  - [Lista 2](cw/lista-2.md)
+
   ### Laboratorium
   #### Verbindung
   Execute `connect.sh` to connect to the remote Ubuntu machine for testing programs.

@@ -8,12 +8,16 @@ $T(n) = O(n\log n)$
 
 ## Example 2
 
-$T(n) = 9T(\frac{n}{3}) + 11\cdot n^{\frac{3}{2}}$, przy czym $a = 9$, $b = 3$, $d = \frac{3}{2}$, $\log_39 = 2 > \frac{3}{2} \rightarrow T(n) = O(n^2)$\
+$T(n) = 9T(\frac{n}{3}) + 11\cdot n^{\frac{3}{2}}$\
+przy czym $a = 9$, $b = 3$, $d = \frac{3}{2}$\
+$\log_3 9 = 2 > \frac{3}{2} \rightarrow T(n) = O(n^2)$
 
 ## Example 3
 
 $T(n) = 4T(\frac{n}{2}) + \frac{n^2}{\log n}$\
-mamy $a = 4$, $b = 2$, $\frac{n^2}{\log n} = O(n^2)$
-$\overline{T}(n) = 4\overline{T}(\frac{n}{2}) + n^2$\
-$\overline{T}(n) = O(n^2 \log n)$\
-$T(n) = O(\overline{T}(n)) = O(n^2 \log n)$ $\leftarrow$ może być za duże
+mamy $a = 4$, $b = 2$,\
+$\frac{n^2}{\log n} = O(n^2)$
+
+$\overline{T}(n) = 4\overline{T}\big(\frac{n}{2}\big) + n^2$\
+$\overline{T}(n) = O\big(n^2 \log n\big)$\
+$T(n) = O\big(~\overline{T}(n)~\big) = O\big(n^2 \log n\big)$ $\leftarrow$ może być za duże

@@ -1,4 +1,5 @@
 # Sortowanie
+*(2020-02-26)*
 
 ## Input
 $\sigma = (a_1, a_2, ... a_n) = A$

@@ -1,5 +1,5 @@
 # Insertion Sort
-2-03-2020
+*(2020-03-2)*
 
 ## Index
 
@@ -47,8 +47,21 @@ $max($ Liczba porównań pomiędzy elementami input'u $A)$
 [5, 7, 9, 3, 1]
 ```
 
-$T(n) = \sum_{n-1}^{j=1} O(j) = O(n^2)$
-$\sum_{n-1, j=1} = \binom{n}{2} = \frac{n(n-1)}{2}$
+$$
+T(n) =
+\sum^{n-1}_{j=1} O(j) =
+O\Bigg(
+  \sum^{n-1}_{j=1}j
+\Bigg) = (*)
+$$
+przy czym
+$$
+\sum^{n-1}_{j=1}j = \binom{n}{2} = \frac{n(n-1)}{2}
+$$
+dlatego
+$$
+(*) = O(n^2)
+$$
 
 ## Average Case Analysis
 

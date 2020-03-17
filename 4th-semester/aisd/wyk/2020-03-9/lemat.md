@@ -1,4 +1,5 @@
-# Lemat
+# Lemat?
+*(2020-03-9)*
 
 $$
 \begin{bmatrix}
@@ -11,6 +12,5 @@ $$
   F_{n} & F_{n-1}
 \end{bmatrix}
 $$
-
 
 $\rightarrow O(\log n)$

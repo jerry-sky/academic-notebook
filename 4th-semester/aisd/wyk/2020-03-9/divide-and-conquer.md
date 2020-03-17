@@ -6,9 +6,9 @@ $A$ - posortowana tablica
 
 1. Dziel: porównujemy $x$ ze środkowym elementem z $A$
 2. $\lor$ $\downdownarrows$
-   1. Jeśli $x == A(\frac{n}{2})$ $\rightarrow$ kończymy
-   2. Jeśli $x < A(\frac{n}{2})$ $\rightarrow$ Binary Search$(x, A[1..., \frac{n}{2} -1])$
-   3. Oth $x > A(\frac{n}{2})$ $\rightarrow$ Binary Search$(x, A[\frac{n}{2}, ..., n])$
+   1. Jeśli $x == A\big(\frac{n}{2}\big)$ $\rightarrow$ kończymy
+   2. Jeśli $x < A\big(\frac{n}{2}\big)$ $\rightarrow$ Binary Search$\Big(~x, A\big[1..., \frac{n}{2} -1\big]~\Big)$
+   3. Oth $x > A\big(\frac{n}{2}\big)$ $\rightarrow$ Binary Search$\Big(~x, A\big[\frac{n}{2}, ..., n\big]~\Big)$
 
 ### Worst case analysis
 
@@ -45,11 +45,11 @@ F_n =
 $$
 
 ### Brute force
-$\Theta(\phi^n)$, przy czym $\phi = \frac{1 + \sqrt{5}}{2}$
+$\Theta(\phi^n)$, gdzie $\phi = \frac{1 + \sqrt{5}}{2}$
 
 ### Podejście *bottom-up*
 $F_2, F_3, F_4,...F_n$ $\rightarrow$ $\Theta(n)$
 
-$F_n = \frac{1}{\sqrt{5}} \phi^n \plusmn \frac{1}{\sqrt{5}}(\frac{1- \sqrt{5}}{2})^n$ $\rightarrow~O(log n)$ mnożeń $\rightarrow$ przybliżenie z $\sqrt{5}$
+$F_n = \frac{1}{\sqrt{5}} \phi^n \plusmn \frac{1}{\sqrt{5}}\Big(\frac{1- \sqrt{5}}{2}\Big)^n$ $\rightarrow~O\big(\log n\big)$ mnożeń $\rightarrow$ przybliżenie z $\sqrt{5}$
 
 

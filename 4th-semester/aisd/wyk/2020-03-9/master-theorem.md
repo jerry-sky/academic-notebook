@@ -1,7 +1,7 @@
 # Master Theorem
 *(2020-03-9)*
 
-Jeśli $T(n) = a\cdot T(ceil(\frac{n}{b})) + O(n^{\alpha})$ ale pewnych stałych $a > 0$, $b > 1$, $d \ge 0$ wówczas:
+Jeśli $T(n) = a\cdot T\big(\lceil\frac{n}{b}\rceil\big) + O(n^a)$ ale pewnych stałych $a > 0$, $b > 1$, $d \ge 0$ wówczas:
 
 $$
 T(n) =
@@ -32,11 +32,11 @@ $a^{\log_2n}$ = $n^{\log_ba}$
 
 koszt $k$-tego wiersza rekursji:
 $$
-O(\frac{n}{b^k})^d) \cdot a^k = O(n^d) \cdot (\frac{a}{b^d})^ks
+O\bigg(\Big(\frac{n}{b^k}\Big)^d\bigg) \cdot a^k = O\big(n^d\big) \cdot \bigg(\frac{a}{b^d}\bigg)^k s
 $$
 koszt całego drzewa:
 $$
-\sum_{k=0}^{\log_bn}O(n^d)\cdot(\frac{a}{b^d})^k = O(n^d) \cdot \sum_{k=0}^{\log_bn}(\frac{a}{b^d})^k
+\sum_{k=0}^{\log_bn}O(n^d)\cdot\Big(\frac{a}{b^d}\Big)^k = O\big(n^d\big) \cdot \sum_{k=0}^{\log_bn}\Big(\frac{a}{b^d}\Big)^k
 $$
 mamy $\sum_{k=0}^{x}q^k = \frac{1-q^{x+1}}{1- q}$ dla $q \neq 1$
 za to dla $q = 1$ mamy $\sum_{k=0}^{x}1 = x + 1$
@@ -45,7 +45,7 @@ za to dla $q = 1$ mamy $\sum_{k=0}^{x}1 = x + 1$
   tylko kiedy $\frac{a}{b^d} < 1$?\
   na $a < b^d$ robimy $\log_b$\
   $\log_ba < d$
-- jeśli $q = \frac{a}{b^d} = 1 \rightarrow T(n) = O(n^d \log n)$\
+- jeśli $q = \frac{a}{b^d} = 1 \rightarrow T(n) = O\big(n^d \log n\big)$\
   $\frac{a}{b^d} = \log_b a = d$
-- jeśli $q = \frac{a}{b^d} > 1 \rightarrow T(n) = O(n^d \cdot \frac{a}{b^d}^{\log_bn}) =$\
-  $O(n^d \cdot \frac{a^{\log_bn}}{(b^{\log_bn})^d}) = O(n^{\log_ba})$
+- jeśli $q = \frac{a}{b^d} > 1 \rightarrow T(n) = O\Big(n^d \cdot \frac{a}{b^d}^{\log_bn}\Big) =$\
+  $O\Bigg(n^d \cdot \frac{a^{\log_bn}}{\big(b^{\log_bn}\big)^d}\Bigg) = O\big(n^{\log_ba}\big)$

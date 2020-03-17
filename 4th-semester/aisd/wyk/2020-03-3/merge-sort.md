@@ -1,5 +1,5 @@
 # Merge Sort
-2-03-2020
+*(2020-03-2)*
 
 ## Funkcja $MergeSort(A, n)$
 
@@ -66,11 +66,11 @@ $output = \{ 1, 2, 7, 9, 11, 12, 13, 20 \}$
 $$
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
-T(n) = T( \floor{\frac{n}{2}} ) + T( \ceil{\frac{n}{2}} ) + O(n)
+T(n) = T \left( \floor{\frac{n}{2}} \right) + T \left( \ceil{\frac{n}{2}} \right) + O(n)
 $$
 
 $$
-\widetilde{T}(n) = 2 T(\frac{n}{2}) + O(n)
+\widetilde{T}(n) = 2 T \left(\frac{n}{2}\right) + O(n)
 $$
 $$
 \widetilde{T}(1) = O(1)

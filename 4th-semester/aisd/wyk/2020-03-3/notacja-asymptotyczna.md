@@ -1,19 +1,19 @@
 # Notacja asymptotyczna
-2-03-2020
+*(2020-03-2)*
 
 ## Duże $O$
 
 $f,g: \natnums \to \reals$
 
 $$
-f(n) = O( g(n) ) \equiv
-(
+f(n) = O\big( g(n) \big) \equiv
+\big(~
   \exists{c}~\exists{n_0}~\forall{n>n_0}:
-  |f(n)| \le c |g(n)|
-)
+  \big|f(n)\big| \le c \big|g(n)\big|
+~\big)
 $$
 
-### Example
+### Example $O$ #1
 
 Dla
 $$
@@ -25,42 +25,53 @@ $$
 f(n) = n^3 + h(n)
 $$
 
-$$
-f(n) = 10^{10}n + O(ln(n)) = O(n)
+### Example $O$ #2
 
 $$
+f(n) = 10^{10}n + O\big(ln(n)\big) = O(n)
+$$
 
+---
 ## Duże $\Omega$
 
 $$
-f(n) = \Omega(g(n)) \equiv (\exists{c}~\exists{n_0}~\forall{n\ge{n_0}}: c\cdot|g(n)| \le |f(n)|)
+f(n) = \Omega\big(g(n)\big) \equiv
+\big(~
+  \exists{c}~\exists{n_0}~\forall{n\ge{n_0}}: c|g(n)| \le |f(n)|
+~\big)
 $$
 
-### Example
+### Example $\Omega$
 
 $$
-\sqrt{n} = \Omega(\log_2(n))
+\sqrt{n} = \Omega\big(\log_2(n)\big)
 $$
 $$
-\sqrt{n} \neq {O(\ln(n))}
+\sqrt{n} \neq O\big(\ln(n)\big)
 $$
 
+---
 ## Duże $\Theta$
 
 $$
-f(n) = \Theta(g(n)) \equiv f(n) = O(g(n)) \land f(n) = \Omega(g(n))
+f(n) = \Theta\big(g(n)\big) \equiv f(n) = O\big(g(n)\big) \land f(n) = \Omega\big(g(n)\big)
 $$
 $$
-\equiv \exists{c_1, c_2}\forall{n\ge{n_0}}: c_1|g(n)| \le f(n) \le c_2 |g(n)|
+\equiv \exists{c_1, c_2} \forall{n\ge{n_0}}: c_1\big|g(n)\big| \le f(n) \le c_2 \big|g(n)\big|
 $$
 
+---
 ## Małe $o$
 
 $$
-f(n) = o(g(n)) \equiv \forall{c}\exists{n_0}\forall{n\ge{n_0}}: |f(n)| \le c|g(n)|
+f(n) =
+o\big(g(n)\big) \equiv
+\big(~
+  \forall{c}~\exists{n_0}~\forall{n\ge{n_0}}: \big|f(n)\big| \le c\big|g(n)\big|
+~\big)
 $$
 
-### Example
+### Example $o$
 
 $$
 13n^2 = O(n^2)
@@ -73,13 +84,15 @@ $$
 13n^2 \not ={o(n^2)}
 $$
 
+---
 ## Mała $\omega$
 
 $$
-f(n) = \omega(g(n)) \equiv (
-  \forall{c}\exists{n_0}\forall{n\ge{n_0}}:
-  c|g(n)| \le |f(n)|
-)
+f(n) = \omega\big(g(n)\big) \equiv
+\big(~
+  \forall{c}~\exists{n_0}~\forall{n\ge{n_0}}:
+  c\big|g(n)\big| \le \big|f(n)\big|
+~\big)
 $$
 
 
