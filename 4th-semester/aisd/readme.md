@@ -22,6 +22,10 @@
     - [Mnożenie $n$-bitowych liczb naturalnych $x \cdot y$](wyk/2020-03-11/mnożenie-n-bitowych-liczb.md)
     - [Mnożenie macierzy $n\times n$](wyk/2020-03-11/mnożenie-macierzy-nxn.md)
     - [QuickSort](wyk/2020-03-11/quick-sort.md)
+  - **2020-03-16\***
+    - [Dual Pivot QuickSort](wyk/2020-03-16/dual-pivot-quick-sort.md)
+    - [Comparison model](wyk/2020-03-16/comparison-model.md)
+    - [Sortowanie w liniowej złożoności obliczeniowej](wyk/2020-03-16/liniowa-złożoność.md)
 
   ### Ćwiczenia
   - [Lista 1](cw/lista-1.md)
