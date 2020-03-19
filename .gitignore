@@ -1,6 +1,6 @@
 
 .vscode
 
-a.out
+*.out
 
 node_modules
