@@ -12,10 +12,10 @@
 $A = \{ a_1, a_2, ... a_n \}$
 
 ```
-for j = 2 to n {
+for j = 1 to n {
   key = A[j]
   i = j-1
-  while( i > 0 && A[i] > key) {
+  while( i >= 0 && A[i] > key) {
     A[i+1] = A[i]
     i--
   }
