@@ -1,6 +1,9 @@
-#include "swap-and-compare.h"
+#pragma once
+
+#include "../swap-and-compare.h"
+
 /**
- * A base class that defines basic administratory functionalities of provided sorting algorithms.
+ * A base class that defines basic administratory functionalities of a given sorting algorithm.
  */
 class Sort
 {
@@ -20,6 +23,12 @@ protected:
 
 public:
   Sort(int *input, int size, SwapNCompare *snc);
+  /**
+   * Sort the provided `input` array.
+   */
   virtual int *sort() = 0;
+  /**
+   * Check if the array was appropriately sorted.
+   */
   bool checkIfSorted();
 };

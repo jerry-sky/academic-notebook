@@ -1,10 +1,6 @@
 #include <iostream>
 #include "swap-and-compare.h"
 
-/**
- * Collects data about how many swaps and comparisons were made during the sorting process.
- * Also sets the sorting order.
- */
 SortDirection SwapNCompare::parseSortDirection(std::string raw)
 {
   if (raw == ">=")
@@ -31,8 +27,8 @@ int SwapNCompare::getComparisonsCounter()
   return this->ComparisonsCounter;
 }
 /**
-   * Swap two elements and increase the swaps counter.
-   */
+ * Swap two elements and register this action.
+ */
 void SwapNCompare::swap(int *a, int *b)
 {
   int tmp = *a;
@@ -40,13 +36,16 @@ void SwapNCompare::swap(int *a, int *b)
   (*b) = tmp;
   registerSwap((*a), (*b));
 }
+/**
+ * Increase the SwapsCounter and print to `stderr`.
+ */
 void SwapNCompare::registerSwap(int a, int b)
 {
   this->SwapsCounter++;
   std::cerr << "  swapped " << a << " with " << b << std::endl;
 }
 /**
-   * Compare two elements and increase the comparison counter.
+   * Compare two elements and register this action if `propagate` is set to true.
    */
 bool SwapNCompare::compare(int a, int b, bool propagate)
 {
@@ -60,6 +59,9 @@ bool SwapNCompare::compare(int a, int b, bool propagate)
     return a >= b;
   }
 }
+/**
+ * Increase the ComparisonsCounter and print to `stderr`.
+ */
 void SwapNCompare::registerComparison(int a, int b)
 {
   std::cerr << "  compared " << a << " with " << b << std::endl;

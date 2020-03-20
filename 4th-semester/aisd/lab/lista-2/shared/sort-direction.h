@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Direction in which the output array is supposed to be sorted.
  */

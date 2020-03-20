@@ -1,5 +1,5 @@
-#include "sort-direction.h"
 #include <string>
+#include "sort-direction.h"
 /**
  * Collects data about how many swaps and comparisons were made during the sorting process.
  * Also sets the sorting order.
@@ -18,7 +18,7 @@ private:
   /**
    * In what direction should the array be sorted.
    */
-  SortDirection direction = Ascending;
+  SortDirection direction;
   /**
    * Parse from string to SortDirection.
    */
