@@ -4,6 +4,13 @@ import re
 
 
 def summarize_file(file_path):
+    """Summarizes the provided file by some basic measurements.
+
+    Returns:
+        A tuple containing how many (bytes, words, lines it contains,
+        and what is the maximum character count in one line).
+
+    """
     if file_path is None:
         return
 
@@ -24,17 +31,24 @@ def summarize_file(file_path):
 
 
 def main(file_path: str):
+    """Invokes `summarize_file` to get the basic file information.
+
+    Prints the output of `summarize_file` - a summary of a file from
+    the provided filepath. Tells how many bytes, words, and lines and
+    what is the max line width of the file.
+
+    """
 
     bytes_, words, lines, max_line_width = summarize_file(file_path)
 
-    print("bytes", bytes_)
-    print("words", words)
-    print("lines", lines)
-    print("max line width", max_line_width)
+    print("bytes          :", bytes_)
+    print("words          :", words)
+    print("lines          :", lines)
+    print("max line width :", max_line_width)
 
 
 if __name__ == "__main__":
     if len(argv) > 1:
         main(argv[1])
     else:
-        print("usage: ./ex-1.py file_path")
+        print("usage: ./ex-1.py <file_path>")
