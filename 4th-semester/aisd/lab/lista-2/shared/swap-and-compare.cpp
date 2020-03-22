@@ -18,6 +18,11 @@ SwapNCompare::SwapNCompare(std::string direction)
   // has same functionality as regular constructor, but it just parses the sort direction from string
   this->direction = parseSortDirection(direction);
 }
+void SwapNCompare::reset()
+{
+  this->SwapsCounter = 0;
+  this->ComparisonsCounter = 0;
+}
 int SwapNCompare::getSwapsCounter()
 {
   return this->SwapsCounter;

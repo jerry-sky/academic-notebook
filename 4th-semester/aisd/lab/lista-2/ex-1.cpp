@@ -1,101 +1,59 @@
-#include <iostream>
-#include "shared/algorithms/quick-sort.h"
-#include "shared/algorithms/insertion-sort.h"
-#include "shared/algorithms/merge-sort.h"
+#include "ex-1.h"
 
-using namespace std;
-
-/**
- * A program that sorts given array using selected sorting algorithm. See the `readme` file for more information.
- */
-int main(int argc, char const *argv[])
+void Exercise1(Algorithm algorithm, SwapNCompare *snc)
 {
 
-  /**
-   * The swaps and comparisons counter. Sets the sort order.
-   * See SwapNCompare for more details.
-   */
-  SwapNCompare *snc;
-  /**
-   * Selected algorithm parsed from `--type` parameter.
-   */
-  string algorithm;
-  /**
-   * Actual sorting algorithm class.
-   */
   Sort *sort;
-
-  // parse parameters
-  for (int i = 0; i < argc; i++)
-  {
-    string a = argv[i];
-    string av = argv[i];
-    // take a value of the switch if possible
-    if (i != argc - 1)
-    {
-      av = argv[i + 1];
-    }
-
-    if (a == "--comp")
-    {
-      snc = new SwapNCompare(av);
-    }
-    else if (a == "--type")
-    {
-      algorithm = av;
-    }
-  }
 
   /**
    * Elements count - how many integers will the program accept via `stdin`.
    */
   int n = 0;
 
-  cin >> n;
+  std::cin >> n;
   // allocate a (pointer)array for the input integers.
   int *input = (int *)malloc(sizeof(int) * n);
   // collect provided integers
   for (int i = 0; i < n; i++)
   {
-    cin >> input[i];
+    std::cin >> input[i];
   }
 
   // choose the sorting algorithm based on what's been inputted
-  if (algorithm == "insert")
+  switch (algorithm)
   {
+  case Insertion:
     sort = (Sort *)new InsertionSort(input, n, snc);
-  }
-  else if (algorithm == "merge")
-  {
+    break;
+  case Merge:
     sort = (Sort *)new MergeSort(input, n, snc);
-  }
-  else
-  {
+    break;
+  default:
+  case Quick:
     sort = (Sort *)new QuickSort(input, n, snc);
+    break;
   }
 
   /**
    * Sort the array.
    */
   int *output = sort->sort();
-  cerr << "---" << endl;
+  std::cerr << "---" << std::endl;
   // check if sorted
-  cerr << "is sorted? "
-       << (sort->checkIfSorted() ? "yes" : "no")
-       << endl;
-  cout << "---" << endl;
+  std::cerr << "is sorted? "
+            << (sort->checkIfSorted() ? "yes" : "no")
+            << std::endl;
+  std::cout << "---" << std::endl;
   // print sorted array
-  cout << "sorted array:" << endl;
+  std::cout << "sorted array:" << std::endl;
   for (int i = 0; i < n; i++)
   {
-    cout << output[i] << " ";
+    std::cout << output[i] << " ";
   }
-  cerr << endl
-       << "---" << endl;
+  std::cerr << std::endl
+            << "---" << std::endl;
   // print the statistics for how many swaps and comparisons there were
-  cerr << "statistics:" << endl;
-  cerr << "  comparisons: " << snc->getComparisonsCounter() << endl;
-  cerr << "  swaps: " << snc->getSwapsCounter() << endl;
-
-  return 0;
+  std::cerr << "statistics:" << std::endl;
+  std::cerr << "  comparisons: " << snc->getComparisonsCounter() << std::endl;
+  std::cerr << "  swaps: " << snc->getSwapsCounter() << std::endl;
 }

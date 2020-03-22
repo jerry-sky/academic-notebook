@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include "sort-direction.h"
 /**
@@ -27,6 +29,7 @@ private:
 public:
   SwapNCompare(SortDirection direction);
   SwapNCompare(std::string direction);
+  void reset();
   int getSwapsCounter();
   int getComparisonsCounter();
   /**
