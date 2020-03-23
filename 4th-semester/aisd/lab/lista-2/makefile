@@ -3,7 +3,7 @@ Flags = -B .
 all:
 	echo 'do make ex-i.out where i is in [1-4]'
 
-main.out: ex-1.out ex-2.out algorithms.out sort.out swap-and-compare.out sort-direction.out quick-sort.out insertion-sort.out merge-sort.out
+main.out: ex-1.out ex-2.out algorithms.out sort.out swap-and-compare.out sort-direction.out quick-sort.out insertion-sort.out merge-sort.out dual-pivot-quick-sort.out
 	g++ $(Flags) main.cpp -o main.out $^
 
 ex-1.out:
@@ -29,6 +29,9 @@ insertion-sort.out:
 
 merge-sort.out:
 	g++ $(Flags) -c shared/algorithms/merge-sort.cpp -o merge-sort.out
+
+dual-pivot-quick-sort.out:
+	g++ $(Flags) -c shared/algorithms/dual-pivot-quick-sort.cpp -o dual-pivot-quick-sort.out
 
 algorithms.out:
 	g++ $(Flags) -c shared/algorithms.cpp -o algorithms.out

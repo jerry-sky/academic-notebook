@@ -7,6 +7,7 @@ void Exercise2(Algorithm algorithm, SwapNCompare *snc, std::string stat_file, in
   {
     for (int n = 100; n <= 10000; n += 100)
     {
+      snc->reset();
       int *input = (int *)malloc(sizeof(int) * n);
       for (int j = 0; j < n; j++)
       {
@@ -21,6 +22,9 @@ void Exercise2(Algorithm algorithm, SwapNCompare *snc, std::string stat_file, in
         break;
       case Merge:
         sort = (Sort *)new MergeSort(input, n, snc);
+        break;
+      case DualPivotQuick:
+        sort = (Sort *)new DualPivotQuickSort(input, n, snc);
         break;
       default:
       case Quick:
@@ -43,7 +47,6 @@ void Exercise2(Algorithm algorithm, SwapNCompare *snc, std::string stat_file, in
       outfile.close();
 
       snc->reset();
-
     }
   }
 }

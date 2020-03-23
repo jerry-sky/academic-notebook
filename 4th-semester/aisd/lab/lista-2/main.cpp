@@ -75,6 +75,10 @@ int main(int argc, char const *argv[])
   {
     sort = Merge;
   }
+  else if (algorithm == "dual-pivot-quick")
+  {
+    sort = DualPivotQuick;
+  }
   else
   {
     sort = Quick;

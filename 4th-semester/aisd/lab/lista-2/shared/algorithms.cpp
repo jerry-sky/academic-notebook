@@ -3,6 +3,7 @@ enum Algorithm
 {
   Quick,
   Merge,
-  Insertion
+  Insertion,
+  DualPivotQuick
 };
 

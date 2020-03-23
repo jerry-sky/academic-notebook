@@ -28,6 +28,9 @@ void Exercise1(Algorithm algorithm, SwapNCompare *snc)
   case Merge:
     sort = (Sort *)new MergeSort(input, n, snc);
     break;
+  case DualPivotQuick:
+    sort = (Sort*)new DualPivotQuickSort(input, n, snc);
+    break;
   default:
   case Quick:
     sort = (Sort *)new QuickSort(input, n, snc);
