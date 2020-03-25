@@ -1,6 +1,6 @@
 # Lista 2
 
-## Ogólnie
+## Opis
 
 Cały kod źródłowy jest zawarty głównie w funkcji [`main.cpp`](main.cpp), [`ex-1.cpp`](ex-1.cpp), [`ex-2.cpp`](ex-2.cpp) oraz plikach w katalogu `shared`.
 
@@ -11,6 +11,7 @@ W celu kompilacji programu należy użyć `make main.out`. *(Możliwe jest uprze
   - `quick` dla `QuickSort` *(domyślny)*
   - `insert` dla `InsertSort`
   - `merge` dla `MergeSort`
+  - `dual-pivot-quick` dla `DualPivotQuickSort`
 - `--comp` - kolejność elementów:
   - `'>='` malejąca
   - `'<='` rosnąca *(domyślna)*
