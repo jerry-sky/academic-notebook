@@ -1,5 +1,5 @@
 
-all: happy-cat.out norm.out sum-squared.out sum.out
+all: happy-cat.out norm.out sum-squared.out sum.out generate-neighbourhood.out
 	g++ main.cpp -o main $^
 
 happy-cat.out:
@@ -14,5 +14,8 @@ sum-squared.out:
 sum.out:
 	g++ -c sum.cpp -o sum.out
 
+generate-neighbourhood.out:
+	g++ -c generate-neighbourhood.cpp -o generate-neighbourhood.out
+
 clean:
-	rm -r *.out
+	rm -rf *.out main
