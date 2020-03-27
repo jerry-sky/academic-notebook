@@ -18,8 +18,10 @@ void NeighbourhoodOffsetVectorsGenerator::recursive(std::vector<double> x, int i
   }
 }
 
-NeighbourhoodOffsetVectorsGenerator::NeighbourhoodOffsetVectorsGenerator()
+NeighbourhoodOffsetVectorsGenerator::NeighbourhoodOffsetVectorsGenerator(double radius)
 {
+  this->radius = radius;
+  this->dict = {0, radius, -radius};
   std::vector<std::vector<double>> output(pow(3, 4));
   for (int i = 0; i < pow(3, 4); i++)
     output[i].resize(4);

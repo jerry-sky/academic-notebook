@@ -30,7 +30,7 @@ private:
   void recursive(std::vector<double>, int);
 
 public:
-  NeighbourhoodOffsetVectorsGenerator();
+  NeighbourhoodOffsetVectorsGenerator(double radius);
   /**
    * Returns the generated neighbourhood around the point (0,0,0,0).
    */
