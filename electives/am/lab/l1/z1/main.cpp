@@ -30,15 +30,11 @@ vector<double> getRandomPoint(int radius = 10)
 
 int main(int argc, char const *argv[])
 {
-  double t = 1;
-  int b = 0;
-  for (int i = 1; i < argc; i++)
-  {
-    if (i == 1)
-      t = atof(argv[i]);
-    else if (i == 2)
-      b = stoi(argv[i]);
-  }
+  double t;
+  int b;
+
+  cin >> t;
+  cin >> b;
 
   srand(time(NULL));
 
