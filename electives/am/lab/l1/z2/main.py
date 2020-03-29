@@ -5,7 +5,7 @@ from typing import List, Tuple
 
 
 def generateNeighbourhood(cities):
-    """Generates all 2-opt permutations of `cities`.
+    """Generates all 2-opt permutations of `cities` with respect to TabuSearch.
 
     This function doesn't touch the first and the last city to preserve
     the natural TSP cycle.
@@ -64,7 +64,6 @@ def main():
 
     print(currentSolutionCost)
     list(map(lambda x: print(x+1, end=" "), currentSolution))
-    print()
 
 
 if __name__ == "__main__":

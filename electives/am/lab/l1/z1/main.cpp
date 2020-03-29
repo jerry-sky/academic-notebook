@@ -38,7 +38,8 @@ int main(int argc, char const *argv[])
 
   srand(time(NULL));
 
-  NeighbourhoodOffsetVectorsGenerator *generator = new NeighbourhoodOffsetVectorsGenerator(b == 0 ? 0.5 : 0.1);
+  NeighbourhoodOffsetVectorsGenerator *generator =
+      new NeighbourhoodOffsetVectorsGenerator(b == 0 ? 0.5 : 0.1);
 
   vector<vector<double>> neighbourhood = generator->generate();
 
@@ -86,10 +87,6 @@ int main(int argc, char const *argv[])
         jumpSize = 0;
         failedAttempts = 0;
       }
-      else if (currentValue < 0.03)
-      {
-        // cout << candidate[0] << " " << candidate[1] << " " << candidate[2] << " " << candidate[3] << endl;
-      }
     }
     if (!foundBetter)
     {
@@ -98,7 +95,9 @@ int main(int argc, char const *argv[])
     now = clock();
   }
 
-  cout << current[0] << " " << current[1] << " " << current[2] << " " << current[3] << " " << currentValue << endl;
+  for (auto c : current)
+    cout << c << " ";
+  cout << currentValue;
 
   return 0;
 }

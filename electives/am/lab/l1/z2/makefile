@@ -1,10 +1,10 @@
 
 all:
-	printf '#!/bin/bash\nif [ ! $$(command -v pypy3) ]; then\n >&2 printf "\\033[0;31mpypy3 not installed! \\033[7m Performance is greatly decreased! \\033[0;31m Consider installing pypy3.\\033[0m\\n"\n fi\n pypy3 ./main.py 2> /dev/null || python3 ./main.py\n' > ./main
+	printf '#!/bin/bash\n\nif [ ! $$(command -v pypy3) ]; then\n  >&2 printf "\\033[0;31mpypy3 not installed! \\033[7m Performance is greatly decreased! \\033[0;31m Consider installing pypy3.\\033[0m\\n"\n  python3 ./main.py\nelse\n  pypy3 ./main.py\nfi\n' > ./main
 	chmod +x ./main
 
 python3:
-	printf 'python3 ./main.py' > ./main
+	printf '#!/bin/bash\n\npython3 ./main.py\n' > ./main
 	chmod +x ./main
 
 clean:
