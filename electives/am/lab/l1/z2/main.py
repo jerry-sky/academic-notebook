@@ -33,38 +33,54 @@ def main():
         tmp = list(map(lambda x: int(x), input().split()))
         distances.append(tmp)
 
-    currentSolution = [0]
-    currentSolutionCost = 0
+    current_solution = [0]
+    current_solution_cost = 0
 
-    startTime = time.time()
-    nowTime = time.time()
+    start_time = time.time()
+    now_time = time.time()
     i = 0
-    # choose a random path
-    while len(currentSolution) < n:
-        city = random.randint(0, n - 1)
-        while city in currentSolution:
-            city = random.randint(0, n - 1)
-        currentSolution.append(city)
-        currentSolutionCost += distances[currentSolution[i]][currentSolution[i + 1]]
+
+    # choose a local-minimum path
+    while len(current_solution) < n:
+        # distances from the current city to all the other
+        current_distances = distances[current_solution[i]]
+        # pick the smallest distance
+        lowest_cost = max(current_distances)
+        lowest_cost_city = current_distances.index(lowest_cost)
+        j = 0
+        for dist in current_distances:
+            if (
+                j not in current_solution
+                and j != current_solution[i]
+                and lowest_cost > dist
+            ):
+                lowest_cost = dist
+                lowest_cost_city = j
+            j += 1
+        # add the city to the current solution
+        current_solution.append(lowest_cost_city)
+        current_solution_cost += current_distances[current_solution[i + 1]]
         i += 1
     # add the last step which is to get back to the starting city
-    currentSolution.append(0)
-    currentSolutionCost += distances[currentSolution[-2]][currentSolution[-1]]
+    current_solution.append(0)
+    current_solution_cost += distances[current_solution[-2]][current_solution[-1]]
 
-    while nowTime - startTime <= t:
-        neighbourhood = generateNeighbourhood(currentSolution)
+    # use TabuSearch to further improve chosen solution
+    while now_time - start_time <= t:
+        neighbourhood = generateNeighbourhood(current_solution)
         for neighbour in neighbourhood:
-            neighbourCost = 0
-            for city in range(0, n):
-                neighbourCost += distances[neighbour[city]][neighbour[city + 1]]
-            if neighbourCost < currentSolutionCost:
-                currentSolution = neighbour
-                currentSolutionCost = neighbourCost
-        nowTime = time.time()
+            neighbour_cost = 0
+            for j in range(0, n):
+                neighbour_cost += distances[neighbour[j]][neighbour[j + 1]]
+            if neighbour_cost < current_solution_cost:
+                current_solution = neighbour
+                current_solution_cost = neighbour_cost
+        now_time = time.time()
 
-    print(currentSolutionCost)
-    list(map(lambda x: print(x+1, end=" "), currentSolution))
+    return (current_solution, current_solution_cost)
 
 
 if __name__ == "__main__":
-    main()
+    solution, cost = main()
+    print(cost)
+    list(map(lambda x: print(x, end=" "), solution))
