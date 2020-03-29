@@ -136,7 +136,7 @@ def main():
     start_time = time.time()
     now_time = time.time()
 
-    currentSolution = []
+    current_solution = []
 
     # current position
     agent_position = list(starting_position)
@@ -150,23 +150,23 @@ def main():
 
         # go a step until you hit a wall or an exit
         while not getRoomMapValue(room_map, agent_position, direction) in (8, 1):
-            currentSolution.append(direction)
+            current_solution.append(direction)
             movePos(agent_position, direction)
 
     if 8 in agent_surroundings:
         # pure luck - we are already at the exit
         direction = POSSIBLE_DIRECTION[agent_surroundings.index(8)]
-        currentSolution.append(direction)
-        return (currentSolution, len(currentSolution))
+        current_solution.append(direction)
+        return (current_solution, len(current_solution))
 
     # now we need to complete our base solution by finding the exit
-    previousDirection = ""
+    previous_direction = ""
     while now_time - start_time <= t:
         # check if we're already near the exit
         agent_surroundings = getSurroundings(agent_position, room_map)
         if 8 in agent_surroundings:
             direction = POSSIBLE_DIRECTION[agent_surroundings.index(8)]
-            currentSolution.append(direction)
+            current_solution.append(direction)
             break
         # otherwise pick a direction and go for it
         for i in range(0, 4):
@@ -176,7 +176,7 @@ def main():
                 direction = POSSIBLE_DIRECTION[i]
                 # if the picked direction is the inverse of the previous one,
                 # pick another one to avoid infinite loops
-                if isInverse(direction, previousDirection):
+                if isInverse(direction, previous_direction):
                     continue
                 # go until you hit another wall
                 while getRoomMapValue(room_map, agent_position, direction) != 1:
@@ -184,8 +184,8 @@ def main():
                     if 8 in agent_surroundings:
                         break
                     movePos(agent_position, direction)
-                    currentSolution.append(direction)
-                previousDirection = direction
+                    current_solution.append(direction)
+                previous_direction = direction
                 break
         now_time = time.time()
 
@@ -193,21 +193,21 @@ def main():
 
     while now_time - start_time <= t:
         # generate neighbourhood
-        neighbourhood = getSolutionNeighbourhood(currentSolution)
+        neighbourhood = getSolutionNeighbourhood(current_solution)
         for neighbour in neighbourhood:
             # validate the neighbour solution
-            validatedNeighbour = validateSolution(
+            validated_neighbour = validateSolution(
                 neighbour, starting_position, room_map
             )
             # f(x) = \infty
-            if validatedNeighbour is None:
+            if validated_neighbour is None:
                 continue
             # found a better solution
-            elif len(validatedNeighbour) < len(currentSolution):
-                currentSolution = validatedNeighbour
+            elif len(validated_neighbour) < len(current_solution):
+                current_solution = validated_neighbour
         now_time = time.time()
 
-    return (currentSolution, len(currentSolution))
+    return (current_solution, len(current_solution))
 
 
 if __name__ == "__main__":
