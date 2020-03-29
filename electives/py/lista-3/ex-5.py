@@ -1,13 +1,21 @@
 #!/usr/bin/python3
 from typing import List
+from functools import reduce
 
 
-def generate_subsets(master_set: List):
-    if master_set == []:
-        return [[]]
-    else:
-        pass
+def powerset(master_set: List):
+    """Returns a Powerset of the provided set.
+    """
+    return map(
+        lambda x: set(x),
+        reduce(
+            lambda so_far, curr: [subset + [curr] for subset in so_far] + so_far,
+            master_set,
+            [[]],
+        ),
+    )
 
 
 if __name__ == "__main__":
-    print((generate_subsets([1, 2, 3])))
+    input_set = input("provide a set: ").split()
+    print("Powerset:", list(powerset(input_set)))
