@@ -31,6 +31,7 @@
     - [`RandomSelect`](wyk/2020-03-23/random-select.md)
     - [`Select`](wyk/2020-03-23/select-algorithm.md)
   - [**2020-03-25\***](wyk/2020-03-25/binary-search-tree.md)
+  - [**2020-03-30\***](wyk/2020-03-30/red-black-tree.md)
 
   \*odwołane z powodu koronawirusa
 
