@@ -30,6 +30,9 @@
     - [Problem znalezienia $k$tej statystyki pozycyjnej w nieposortowanej tablicy](wyk/2020-03-23/problem-znalezienia-ktej-statystyki-pozycyjnej.md)
     - [`RandomSelect`](wyk/2020-03-23/random-select.md)
     - [`Select`](wyk/2020-03-23/select-algorithm.md)
+  - [**2020-03-25\***](wyk/2020-03-25/binary-search-tree.md)
+
+  \*odwołane z powodu koronawirusa
 
   ### Ćwiczenia
   - [Lista 1](cw/lista-1.md)
