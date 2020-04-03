@@ -26,6 +26,10 @@
     - [Dual Pivot QuickSort](wyk/2020-03-16/dual-pivot-quick-sort.md)
     - [Comparison model](wyk/2020-03-16/comparison-model.md)
     - [Sortowanie w liniowej złożoności obliczeniowej](wyk/2020-03-16/liniowa-złożoność.md)
+  - **2020-03-23\***
+    - [Problem znalezienia $k$tej statystyki pozycyjnej w nieposortowanej tablicy](wyk/2020-03-23/problem-znalezienia-ktej-statystyki-pozycyjnej.md)
+    - [`RandomSelect`](wyk/2020-03-23/random-select.md)
+    - [`Select`](wyk/2020-03-23/select-algorithm.md)
 
   ### Ćwiczenia
   - [Lista 1](cw/lista-1.md)
