@@ -306,3 +306,30 @@ $$
 \le \sum_{y\in Y}\max_{y\in Y}\{\deg(y)\} = |Y|\max\{\deg(y)\} \le\\
 \le |Y| \min\{\deg(x)\}
 $$
+
+## Zadanie 19
+
+> **Produktem kartezjańskim** grafów $G_1 = (V_1, E_1)$ oraz $G_2 = (V_2, E_2)$ nazywamy graf $G_1 \times G_2$ o zbiorze wierzchołków $V_1 \times V_2$ oraz zbiorze krawędzi
+> $$
+> E = \Big\{~
+  \{(x_1,y_1), (x_2,y_2)\}:\\
+  (x_1 = x_2 \land \{y_1,y_2\}\in E_2\})
+  \lor (\{x_1, x_2\} \in E_1 \land y_1=y_2)
+  \Big\}
+> $$
+> 1. Wyznacz grafy $L_3 \times L_4$, $C_2 \times C_5$
+> 2. Wyznacz $\deg\big((x,y)\big)$ w $G_1 \times G_2$
+> 3. Wyznacz liczbę krawędzi w grafie $G_1 \times G_2$
+
+### 19.1
+
+$L_3 \times L_4$
+
+$L_3$:
+```
+.---.---.
+```
+$L_4$
+```
+.---.---.---.
+```
