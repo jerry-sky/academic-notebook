@@ -35,34 +35,25 @@ def tree_walk_dfs(tree):
 def tree_walk_bfs(tree):
     """Generates a binary tree walk BFS-style.
     """
-    height = tree_height(tree)
-    for i in range(0, height):
-        yield from get_tree_values_level(tree, i)
-
-
-def get_tree_values_level(tree, level):
-    """Gets all values from a particular level of a tree.
-    """
     if tree is None:
-        return
-    if level == 0:
-        yield tree[0]
-    else:
-        yield from get_tree_values_level(tree[1], level-1)
-        yield from get_tree_values_level(tree[2], level-1)
+        return []
 
+    discovered = [tree, None]
 
-def tree_height(tree):
-    """Returns tree height.
-    """
-    if tree is None:
-        return 0
-    left = tree_height(tree[1])
-    right = tree_height(tree[2])
-    if left > right:
-        return left + 1
-    else:
-        return right + 1
+    while len(discovered) > 1:
+        # take first element
+        current = discovered.pop(0)
+
+        if current is None:
+            discovered.append(None)
+            continue
+
+        # add its descendants to the discovered pile
+        for i in [1, 2]:
+            if current[i] is not None:
+                discovered.append(current[i])
+
+        yield current[0]
 
 
 if __name__ == "__main__":
@@ -70,7 +61,7 @@ if __name__ == "__main__":
     # generate an arbitrary tree
     tree = generate_tree((0, 100), 4)
 
-    print(tree)
+    print("tree:", tree)
 
-    print(list(tree_walk_dfs(tree)))
-    print(list(tree_walk_bfs(tree)))
+    print("dfs:", list(tree_walk_dfs(tree)))
+    print("bfs:", list(tree_walk_bfs(tree)))

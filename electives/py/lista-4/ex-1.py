@@ -30,6 +30,6 @@ def running_time(func):
 if __name__ == "__main__":
     @running_time
     def test_func():
-        return func_example.example_function(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        return example_function(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
     test_func()
