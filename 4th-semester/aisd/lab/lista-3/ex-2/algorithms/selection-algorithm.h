@@ -9,5 +9,5 @@ protected:
   SwapNCompare* snc;
 public:
   SelectionAlgorithm(std::vector<int>);
-  std::vector<int> virtual Run(int) = 0;
+  int virtual Run(int) = 0;
 };

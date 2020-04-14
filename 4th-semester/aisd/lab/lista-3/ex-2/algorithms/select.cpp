@@ -21,32 +21,55 @@ std::vector<int> Select::insertionSort(std::vector<int> group)
   return group;
 }
 
-int Select::internalSelect(std::vector<int> scope, int k)
+int Select::internalSelect(std::vector<int> *scope, int k)
 {
-  if (scope.size() == 1)
-    return scope[0];
+  if ((*scope).size() == 1)
+    return (*scope)[0];
 
   // ceil(n/5)
-  int groupsCount = scope.size() / 5;
-  if (scope.size() % 5 != 0)
+  int groupsCount = (*scope).size() / 5;
+  if ((*scope).size() % 5 != 0)
     groupsCount++;
 
   std::vector<int> medians(groupsCount);
 
-  for (int i = 0; i < scope.size(); i += 5)
+  for (int i = 0; i < (*scope).size(); i += 5)
   {
-    int right = i + 5 > scope.size() - 1 ? scope.size() - 1 : i + 5;
-    std::vector<int> group(scope.begin() + i, scope.begin() + right);
+    int right = i + 5 > (*scope).size() - 1 ? (*scope).size() - 1 : i + 5;
+    std::vector<int> group((*scope).begin() + i, (*scope).begin() + right);
     // take the median of this sorted group
     medians[i / 5] = this->insertionSort(group)[2];
   }
   // find median among the medians
   // we use integer division to make sure we're picking the lower median
   // in case there are even count of groups
-  int median = this->internalSelect(medians, groupsCount / 2);
+  int median = this->internalSelect(&medians, groupsCount / 2);
+
+  // median's index after partitioning
+  int medianNewIndex;
+  // partition the array
+  std::vector<int> partitioned = this->partition((*scope), median, &medianNewIndex);
+
+  if (medianNewIndex == k)
+  {
+    return median;
+  }
+  else if (k < medianNewIndex)
+  {
+    // create an array containing the lower side
+    std::vector<int> lowerSide((*scope).begin(), (*scope).begin() + medianNewIndex);
+
+    return this->internalSelect(&lowerSide, k);
+  }
+  else // k > medianNewIndex
+  {
+    // create an array containing the higher side
+    std::vector<int> higherSide((*scope).begin() + medianNewIndex + 1, (*scope).end());
+    return this->internalSelect(&higherSide, k - medianNewIndex);
+  }
 }
 
-int Select::partition(std::vector<int> toPartition, int pivotElement)
+std::vector<int> Select::partition(std::vector<int> toPartition, int pivotElement, int *pivotNewIndex)
 {
   int i = -1;
   for (int j = 0; j < toPartition.size() - 1; j++)
@@ -58,5 +81,11 @@ int Select::partition(std::vector<int> toPartition, int pivotElement)
     }
   }
   snc->swap(&(toPartition[i + 1]), &(toPartition[toPartition.size() - 1]));
-  return i + 1;
+  (*pivotNewIndex) = i + 1;
+  return toPartition;
+}
+
+int Select::Run(int k)
+{
+  return this->internalSelect(&(this->input), k);
 }

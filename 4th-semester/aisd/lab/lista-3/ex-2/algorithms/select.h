@@ -5,10 +5,10 @@ class Select : SelectionAlgorithm
 {
 private:
   std::vector<int> insertionSort(std::vector<int>);
-  int internalSelect(std::vector<int>, int k);
-  int partition(std::vector<int>, int pivotElement);
+  int internalSelect(std::vector<int>*, int k);
+  std::vector<int> partition(std::vector<int>, int pivotElement, int* newPivotIndex);
 
 public:
   using SelectionAlgorithm::SelectionAlgorithm;
-  std::vector<int> Run(int k);
+  int Run(int);
 };

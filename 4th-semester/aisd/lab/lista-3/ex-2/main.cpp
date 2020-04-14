@@ -1,20 +1,18 @@
 #include <iostream>
 #include <vector>
 #include "random-generator.h"
+#include "algorithms/select.h"
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
 
-  vector<int> base = {2, 3, 4, 5, 7, 8, 9, 10};
+  vector<int> base = {5, 4, 3, 7, 1, 2, 6};
 
-  vector<int> part(base.begin() + 2, base.begin() + 5);
+  Select *sel = new Select(base);
 
-  for (auto x : part)
-  {
-    cout << x << endl;
-  }
+  cout << sel->Run(3) << endl;
 
   return 0;
 
