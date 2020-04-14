@@ -1,7 +1,7 @@
 # Master Theorem
 *(2020-03-9)*
 
-Jeśli $T(n) = a\cdot T\big(\lceil\frac{n}{b}\rceil\big) + O(n^a)$ ale pewnych stałych $a > 0$, $b > 1$, $d \ge 0$ wówczas:
+Jeśli $T(n) = a\cdot T\big(\lceil\frac{n}{b}\rceil\big) + O(n^d)$ ale pewnych stałych $a > 0$, $b > 1$, $d \ge 0$ wówczas:
 
 $$
 T(n) =
