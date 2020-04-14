@@ -11,5 +11,6 @@ private:
 
 public:
   using SelectionAlgorithm::SelectionAlgorithm;
+  using SelectionAlgorithm::getList;
   int Run(int);
 };

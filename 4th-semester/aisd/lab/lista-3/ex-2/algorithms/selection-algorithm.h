@@ -8,6 +8,7 @@ protected:
   std::vector<int> input;
   SwapNCompare* snc;
 public:
-  SelectionAlgorithm(std::vector<int>);
+  SelectionAlgorithm(std::vector<int>, SwapNCompare*);
   int virtual Run(int) = 0;
+  std::vector<int> getList();
 };
