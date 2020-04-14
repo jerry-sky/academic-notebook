@@ -12,7 +12,9 @@ int main(int argc, char const *argv[])
 
   // parse the arguments
   bool unique = false;
+  string algorithm = "--select";
 
+  // type of data
   if (argc > 1)
   {
     string arg = argv[1];
@@ -20,6 +22,11 @@ int main(int argc, char const *argv[])
     {
       unique = true;
     }
+  }
+  // which algorithm to run
+  if (argc > 2)
+  {
+    algorithm = argv[2];
   }
 
   // collect necessary data
@@ -35,9 +42,26 @@ int main(int argc, char const *argv[])
 
   SwapNCompare *snc = new SwapNCompare(SortDirection::Ascending);
 
-  Select *sel = new Select(array, snc);
+  SelectionAlgorithm *sel;
+
+  if (algorithm == "--randomized-select")
+  {
+    sel = (SelectionAlgorithm *)new RandomizedSelect(array, snc);
+  }
+  else
+  {
+    sel = (SelectionAlgorithm *)new Select(array, snc);
+  }
 
   int result = sel->Run(k);
+
+  cerr << "---" << endl
+       << "summary:" << endl
+       << "  comparisons total : " << snc->getComparisonsCounter()
+       << endl
+       << "  swaps total       : " << snc->getSwapsCounter()
+       << endl
+       << endl;
 
   bool alreadyFlagged = false;
   for (auto t : sel->getList())
