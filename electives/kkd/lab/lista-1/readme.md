@@ -1,6 +1,12 @@
 # Lista-1
 
-[kod](lista-1.ts)
+W celu uruchomienia programu należy najpierw go skompilować przy pomocy `make` a następnie `./main.out <plik do otwarcia>` (przykładowe uruchomienie `./main.out pan-tadeusz.txt`).
+
+Cały [kod](main.cpp) jest zawarty w pliku `main.cpp`.
+
+---
+
+Poniżej znajdują się dodatkowe uproszczenia wzorów w celu dokładniejszego działania programu.
 
 ## Entropia warunkowa
 

@@ -48,11 +48,6 @@ private:
 
       this->totalCount++;
     }
-
-    // for (int i = 0; i < 256; i++)
-    // {
-    //   cout << countOne[i] << endl;
-    // }
   }
 
 public:
@@ -92,11 +87,9 @@ public:
       {
         output += -1.0 * log2(this->countOne[x]) * this->countOne[x];
         count++;
-        // cout << x << " " << this->countOne[x] << endl;
       }
     }
 
-    // cout << count << endl;
     output /= this->totalCount;
     return output + log2(this->totalCount);
   }
@@ -118,7 +111,6 @@ public:
 
   void printResults()
   {
-
     double e = this->Entropy();
     double ce = this->ConditionalEntropy();
 
@@ -132,18 +124,17 @@ public:
 int main(int argc, char const *argv[])
 {
 
-  string files[] = {
-      "pan-tadeusz.txt",
-      "test1.bin",
-      "test2.bin",
-      "test3.bin"};
-
-  for (int i = 0; i < 4; i++)
+  if (argc < 2)
   {
-    FileAnalysis *fa = new FileAnalysis(files[i]);
-
-    fa->printResults();
+    cout << "usage: ./main.out <input_file_path>" << endl;
+    return 0;
   }
+
+  string inputFilePath = argv[1];
+
+  FileAnalysis *fa = new FileAnalysis(inputFilePath);
+
+  fa->printResults();
 
   return 0;
 }
