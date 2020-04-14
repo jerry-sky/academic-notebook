@@ -80,5 +80,10 @@ Do skompilowania poniższych statystyk uruchamiałem program na danych $n = 128$
 |                Średnia | 751.8  |        380        |
 | Odchylenie standardowe | 70.153 |      147.742      |
 
+---
 
+## Zadanie 3
 
+W celu uruchomieniu programu należy użyć `./main.py`.
+
+Program zwraca wynik testu opisany [w zadaniu](https://cs.pwr.edu.pl/golebiewski/teaching/1920/aisd/lab3.pdf).
