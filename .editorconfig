@@ -10,6 +10,6 @@ insert_final_newline = true
 [makefile]
 indent_style = tab
 
-[py]
+[*.py]
 indent_style = space
 indent_size = 4
