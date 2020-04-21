@@ -1,6 +1,8 @@
 Lista-3
 -------
 
+Program używający algorytmu LZW z kodowaniem uniwersalnym (Fibonacciego oraz Eliasa). (na ocenę 5)
+
 
 Uruchomienie programu
 ---------------------

@@ -75,7 +75,7 @@ if __name__ == "__main__":
         print("encoded file size          :",
               encoded_size)
         print("compression rate           :",
-              str(round(encoded_size/original_size * 100)) + r"% size of the original file")
+              original_size/encoded_size)
 
     elif mode == "d":
         decoded = list(

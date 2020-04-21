@@ -1,5 +1,7 @@
 # Lista-3
 
+Program używający algorytmu LZW z kodowaniem uniwersalnym (Fibonacciego oraz Eliasa). *(na ocenę 5)*
+
 ## Uruchomienie programu
 
 W celu uruchomienia programu należy wykonać `./main.py <opts> <input file> <output file>` gdzie `<opts>`:
