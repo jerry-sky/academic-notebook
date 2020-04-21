@@ -59,6 +59,7 @@ class HuffmanCoding(object):
         # prepare it so it can hold references to 256 ASCII characters
         # each node is mapped to the id of ASCII character it's holding
         self._all_chars: List[Node] = [None] * 256
+        self._all_nodes_sorted: List[Node] = []
 
     def _is_already_added(self, char: str):
         """Check if the character has already been added.
@@ -73,8 +74,9 @@ class HuffmanCoding(object):
     def _register_char(self, char: str):
         """Inserts a new character or increases weight of an already added one.
         """
+        curr = self._all_chars[ord(char)]
 
-        if not self._is_already_added(char):
+        if curr is None:
             # first time for this character
             nyt = self._NYT
             old_nyt_parent = nyt.parent
@@ -88,40 +90,68 @@ class HuffmanCoding(object):
                 new_parent = self._root
             else:
                 # create a new intermediatary node
-                new_parent = Node(old_nyt_parent, left=nyt, right=None)
+                new_parent = Node(old_nyt_parent, weight=1,
+                                  left=nyt, right=None)
                 # rewire the nodes
                 old_nyt_parent.left = new_parent
                 nyt.parent = new_parent
 
             # wire up the new node to the new parent
-            new_node = Node(new_parent, weight=0, char=char)
+            new_node = Node(new_parent, weight=1, char=char)
             new_parent.right = new_node
 
-            # save this new node into the master list
+            # save these newly generated nodes into the master nodes list
+            self._all_nodes_sorted.append(new_node)
+            self._all_nodes_sorted.append(new_parent)
+
+            # save this new node into the master char list
             self._all_chars[ord(char)] = new_node
 
+            curr = new_parent.parent
+
         # now when we've made sure the node exists we need to increase weight
-        node = self._all_chars[ord(char)]
-        while node is not None:
-            node.weight += 1
-            node = node.parent
+        while curr is not None:
 
-        node = self._all_chars[ord(char)]
-        while node is not None:
-            self._assert_node_weight_order(node)
-            node = node.parent
+            # find the first node that has the same weight as this
+            # because this `curr` node will have its weight increased
+            # so it will be +1 more than the node we're searching for now:
+            to_swap = None
+            for n in self._all_nodes_sorted:
+                if n.weight == curr.weight:
+                    # found one
+                    to_swap = n
+                    break
 
-    def _assert_node_weight_order(self, parent: Node):
-        """Ensures that the right node has bigger weight than the left node.
+            if curr is not to_swap and curr is not to_swap.parent and to_swap is not curr.parent:
+                self._swap_nodes(curr, to_swap)
+
+            curr.weight += 1
+            curr = curr.parent
+
+    def _swap_nodes(self, one: Node, two: Node):
+        """Swap two provided nodes with each other.
         """
-        if parent.is_leaf():
-            return
+        one_index = self._all_nodes_sorted.index(one)
+        two_index = self._all_nodes_sorted.index(two)
 
-        old_left = parent.left
-        old_right = parent.right
-        if old_left.weight > old_right.weight:
-            parent.left = old_right
-            parent.right = old_left
+        # swap the nodes in the master nodes list
+        self._all_nodes_sorted[one_index], self._all_nodes_sorted[
+            two_index] = self._all_nodes_sorted[two_index], self._all_nodes_sorted[one_index]
+
+        parent = one.parent
+        one.parent = two.parent
+        two.parent = parent
+
+        # make sure everything is wired up correctly
+        if one.parent.left is two:
+            one.parent.left = one
+        else:
+            one.parent.right = one
+
+        if two.parent.left is one:
+            two.parent.left = two
+        else:
+            two.parent.right = two
 
     def _get_node_code(self, _node: Node):
         """Generates binary path from the root node to the provided node.
@@ -294,12 +324,14 @@ if __name__ == "__main__":
                         tmp += "0" * padding_used
                     tmp = int(tmp, 2)
                     output_bytes.append(tmp)
+                # first byte indicates how much padding was used
                 output_bytes = [padding_used] + output_bytes
 
+                # write output bytes
                 for b in output_bytes:
                     fo.write(b.to_bytes(1, byteorder='big'))
 
+                # print stats
                 print("avg codeword length:", huffman.get_avg_code_length())
-                print("compression rate:", round(len(output_bytes) /
-                                                 count * 100, 2), r"% of original size")
+                print("compression rate:", count/len(output_bytes))
                 print("entropy:", huffman.get_entropy())
