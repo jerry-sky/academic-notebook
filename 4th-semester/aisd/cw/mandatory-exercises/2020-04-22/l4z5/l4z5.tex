@@ -1,0 +1,53 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+
+\linespread{1.3}
+
+\title{Lista 4}
+\author{Zadanie 5}
+\date{---------------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Potrzebujemy algorytmu liczącego ilość nieporządków w ciągu $a_1, \dots, a_n$ gdzie nieporządek rozumiemy jako zależność między elementami $a_i, a_j$ taką, że $i < j \land a_i > a_j$.
+
+\section{Concept}
+
+Dla każdego $a_i$ musimy sprawdzić wszystkie $\forall_{j > i} ~a_j$ czy nie zachodzi $a_i > a_j$.
+
+Moglibyśmy tutaj wykorzystać algorytm \texttt{InsertionSort} i zliczać ilość przesunięć każdego z elementów podczas szukania ich właściwej pozycji na sortowanej tablicy. Jednakże, możemy podejść do problemu bezpośrednio i użyć dwóch pętli gdzie jedna z nich jest zagnieżdżona w drugiej.
+W obu przypadkach mamy taką samą złożoność obliczeniową z perspektywy $O$. (Akurat tutaj poniższy algorytm ma korzystniejszą stałą $c$ stojącą obok funkcji $n^2$.)
+
+\section{Rozwiązanie}
+
+Algorytm:\\
+\indent \texttt{nieporządki $\leftarrow$ 0}
+
+\indent \texttt{dla i = 1,\dots,n:}
+
+\indent\indent \texttt{dla j = (i+1),\dots,n:}
+
+\indent\indent\indent \texttt{jeśli} $a_i > a_j$ \texttt{wówczas:}
+
+\indent\indent\indent\indent \texttt{nieporządki $\leftarrow$ nieporządki + 1}
+
+\indent \texttt{zwróć nieporządki}
+
+\end{document}
