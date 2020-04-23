@@ -20,7 +20,7 @@ $g(n) = 1 + c + c^2 + ... + c^n, ~ c>0$
    $\lim_{n\to \infin}(\frac{1 - c^{n+1}}{(1-c)c^n})=$\
    $\frac{1}{1-c}\lim_{n\to \infin}(\frac{1-c^{n+1}}{c^n}) =$\
    $\frac{1}{1-c}\lim_{n\to\infin}(\frac{1}{c^n}-c)=$\
-   $\frac{1}{1-c}*(-c) = \bold{\frac{c}{c-1}}$
+   $\frac{1}{1-c}\cdot(-c) = \bold{\frac{c}{c-1}}$
 
     3'. *(końcówka)*\
     $c > 1$\
