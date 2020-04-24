@@ -4,6 +4,8 @@ from functools import reduce
 from math import sqrt, cos, exp, pi as PI
 from time import time
 from random import random
+from sys import exit
+from neighbourhood import NeighbourhoodGenerator
 
 
 def SalomonFunc(x: Tuple[float]) -> float:
@@ -20,8 +22,8 @@ def SalomonFunc(x: Tuple[float]) -> float:
 def RandomMove(original_pos: Tuple[float], jump_size: float, dimensions=4) -> Tuple[float]:
     """Moves a provided position vector in a random fashion.
 
-    Generates a random value from a range of [-1; 1] and adds it to the
-    originally provided vector.
+    Generates a random value from a range of [-1; 1] * jump_size and
+    adds it to the originally provided vector.
     """
 
     direction = []
@@ -35,10 +37,11 @@ def RandomMove(original_pos: Tuple[float], jump_size: float, dimensions=4) -> Tu
 
 def Probability(difference: float, temperature: float) -> float:
     return exp(-0.001*difference/temperature)
-    # return 1.0 / (1.0 + exp(0.000001*difference/temperature)) # very poor results actually
+    # very poor results actually (even while tweaking the c constant):
+    # return 1.0 / (1.0 + exp(0.000001*difference/temperature))
 
 
-def SimulatedAnnealing(solution_initial: Tuple[float], temperature_initial: float, running_time_max: int, jump_size: float, jump_size_min: float = 0.1):
+def SimulatedAnnealing(solution_initial: Tuple[float], temperature_initial: float, running_time_max: int, jump_size_initial: float, jump_size_min: float = 0.1):
     """Finds minimum of a Salomon function using simulated annealing algorithm.
 
     Args:
@@ -55,49 +58,59 @@ def SimulatedAnnealing(solution_initial: Tuple[float], temperature_initial: floa
     solution_current = solution_initial
     solution_current_value = SalomonFunc(solution_current)
     temperature_current = temperature_initial
+    jump_size = jump_size_initial
 
-    solution_best = solution_current
-    solution_best_value = solution_current_value
+    generator = NeighbourhoodGenerator()
+    offsets = generator.generate()
 
     begin = time()
     end = time()
     while end - begin <= running_time_max and temperature_current > 0:
-        # move the current solution in a random direction
-        solution_candidate = RandomMove(solution_current, jump_size)
-        solution_candidate_value = SalomonFunc(solution_candidate)
 
-        if solution_best_value > solution_candidate_value:
-            solution_best = solution_candidate
-            solution_best_value = solution_candidate_value
+        for offset in offsets:
+            # scan the neighbouring points
+            # below is the old way — take only one vector at a time which gives
+            # very low probability of finding the best solution
+            ## solution_candidate = RandomMove(solution_current, jump_size)
 
-        if solution_current_value > solution_candidate_value:
-            # the candidate was just plainly better
-            solution_current = solution_candidate
-            solution_current_value = solution_candidate_value
-        else:
-            difference = abs(solution_candidate_value - solution_current_value)
+            # multiply the offset vector by the jump_size coefficient
+            solution_candidate = list(map(lambda x: x * jump_size, offset))
+            solution_candidate_value = SalomonFunc(solution_candidate)
 
-            if Probability(difference, temperature_current) > random():
+            if solution_current_value > solution_candidate_value:
+                # the candidate was just plainly better
                 solution_current = solution_candidate
                 solution_current_value = solution_candidate_value
 
+                temperature_current *= 0.99
+            else:
+                difference = abs(solution_candidate_value -
+                                 solution_current_value)
+
+                if Probability(difference, temperature_current) > random():
+                    # candidate solution wasn't better but it got lucky
+                    solution_current = solution_candidate
+                    solution_current_value = solution_candidate_value
+                    # jump_size = jump_size_initial
+
         # temperature_current = temperature_current/(10 * temperature_current + 1)
-        temperature_current *= 0.99
-        # jump_size *= 0.9999999
-        # if jump_size < jump_size_min:
-        #     jump_size = jump_size_min
 
         end = time()
 
-    if solution_best_value < solution_current_value:
-        return solution_best, solution_best_value
-    else:
-        return solution_current, solution_current_value
+    return solution_current, solution_current_value
 
 
 if __name__ == "__main__":
-    # print(SimulatedAnnealing((10, 3, -5, 15), 50,
-    #                          10, jump_size=0.7, jump_size_min=0.1))
-    print(SimulatedAnnealing((1, 2, 3, 4), 50,
-                             10, jump_size=0.7, jump_size_min=0.1))
-    # print(SimulatedAnnealing((0,0,0,0), 100, 5, jump_size=0.7))
+
+    # read the input numbers
+    t, x1, x2, x3, x4 = map(lambda x: int(x), input().split())
+    # compose the start point
+    x = (x1, x2, x3, x4)
+    # run the algorithm
+    solution, solution_value = SimulatedAnnealing(
+        x, 50, t, jump_size_initial=0.7, jump_size_min=0.1)
+    # print out the results
+    for i in solution:
+        print(i, end=" ")
+    print(solution_value, end="")
+
