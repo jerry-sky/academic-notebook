@@ -4,4 +4,4 @@ python3:
 	chmod +x ./main
 
 clean:
-	rm -rf ./main
+	rm -rf ./main __pycache__
