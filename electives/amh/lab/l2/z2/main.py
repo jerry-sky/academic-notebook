@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 from typing import List
 from copy import deepcopy
-from math import exp
-from sys import exit, stderr
+from math import exp, floor
+from sys import stderr
 from time import time
 from random import random, randint
+from neighbourhood import AlterBlockIntensity, PickTheNearestValueFromList
 
 
 def MatrixDistance(one: List[List[int]], two: List[List[int]]) -> float:
@@ -20,12 +21,6 @@ def MatrixDistance(one: List[List[int]], two: List[List[int]]) -> float:
             output += (one[i][j] - two[i][j])**2
 
     return output / n / m
-
-
-def PickTheNearestValueFromList(search_list: List[int], search_value) -> int:
-    """Picks the nearest value to the provided one.
-    """
-    return min(search_list, key=lambda x: abs(x - search_value))
 
 
 def Probability(difference: float, temperature: float) -> float:
@@ -46,8 +41,20 @@ def SimulatedAnnealing(
     # based on the first element of each block
     solution_current = [[allowed_values[0]] * m for _ in range(0, n)]
     solution_current_value = MatrixDistance(solution_current, matrix_initial)
-    # defines blocks sizes
+
+    # define blocks' sizes
     solution_current_block_definition = []
+    i = 0
+    while i <= n-k:
+        solution_current_block_definition.append([])
+        j = 0
+        while j <= m-k:
+            # enlarge the last blocks
+            vert = k if i + 2*k <= n else n - i
+            horiz = k if j + 2*k <= m else m - j
+            solution_current_block_definition[-1].append([vert, horiz])
+            j += k
+        i += k
 
     temperature_current = temperature_initial
 
@@ -56,25 +63,9 @@ def SimulatedAnnealing(
     while end-begin <= running_time_max and temperature_current > 0:
 
         solution_candidate = deepcopy(solution_current)
-        i = 0
-        while i < n:
-            j = 0
-            while j < m:
-                # take more than k×k size if necessary
-                vertical_max = i+k if i+2*k <= n else n
-                horizontal_max = j+k if j+2*k <= m else m
 
-                # pick the random value of the block as the flattening value
-                # if it's not an allowed one pick the nearest one
-                flattening_value = PickTheNearestValueFromList(
-                    allowed_values,
-                    matrix_initial[randint(i, vertical_max-1)][randint(j, horizontal_max-1)])
-
-                for g in range(i, vertical_max):
-                    for h in range(j, horizontal_max):
-                        solution_candidate[g][h] = flattening_value
-                j += k
-            i += k
+        AlterBlockIntensity(solution_candidate, matrix_initial,
+                            solution_current_block_definition, allowed_values)
 
         solution_candidate_value = MatrixDistance(
             matrix_initial, solution_candidate)
@@ -99,6 +90,8 @@ def SimulatedAnnealing(
 
 
 def PrintMatrix(matrix: List[List[int]], file=stderr) -> None:
+    """Pretty-prints the provided matrix.
+    """
 
     for row in matrix:
         for el in row:
@@ -122,8 +115,6 @@ if __name__ == "__main__":
 
     matrix_output = SimulatedAnnealing(
         matrix_initial, allowed_values, n, m, k, 50, t)
-
-    PrintMatrix(matrix_initial)
 
     print(MatrixDistance(matrix_initial, matrix_output))
 
