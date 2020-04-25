@@ -3,7 +3,7 @@ from typing import Tuple
 from functools import reduce
 from math import sqrt, cos, exp, pi as PI
 from time import time
-from random import random
+from random import random, randint
 from sys import exit
 from neighbourhood import NeighbourhoodGenerator
 
@@ -67,34 +67,35 @@ def SimulatedAnnealing(solution_initial: Tuple[float], temperature_initial: floa
     end = time()
     while end - begin <= running_time_max and temperature_current > 0:
 
-        for offset in offsets:
-            # scan the neighbouring points
-            # below is the old way — take only one vector at a time which gives
-            # very low probability of finding the best solution
-            ## solution_candidate = RandomMove(solution_current, jump_size)
+        offset = offsets[randint(0, len(offsets)-1)]
+        # scan the neighbouring points
+        # below is the old way — take only one vector at a time which gives
+        # very low probability of finding the best solution
+        ## solution_candidate = RandomMove(solution_current, jump_size)
 
-            # multiply the offset vector by the jump_size coefficient
-            solution_candidate = list(map(lambda x: random() * x * jump_size, offset))
-            for i in range(0,4):
-                solution_candidate[i] += solution_current[i]
-            solution_candidate_value = SalomonFunc(solution_candidate)
-            # print(solution_candidate)
+        # multiply the offset vector by the jump_size coefficient
+        solution_candidate = list(
+            map(lambda x: random() * x * jump_size, offset))
+        for i in range(0, 4):
+            solution_candidate[i] += solution_current[i]
+        solution_candidate_value = SalomonFunc(solution_candidate)
+        # print(solution_candidate)
 
-            if solution_current_value > solution_candidate_value:
-                # the candidate was just plainly better
+        if solution_current_value > solution_candidate_value:
+            # the candidate was just plainly better
+            solution_current = solution_candidate
+            solution_current_value = solution_candidate_value
+
+            temperature_current *= 0.99
+        else:
+            difference = abs(solution_candidate_value -
+                             solution_current_value)
+
+            if Probability(difference, temperature_current) > random():
+                # candidate solution wasn't better but it got lucky
                 solution_current = solution_candidate
                 solution_current_value = solution_candidate_value
-
-                temperature_current *= 0.99
-            else:
-                difference = abs(solution_candidate_value -
-                                 solution_current_value)
-
-                if Probability(difference, temperature_current) > random():
-                    # candidate solution wasn't better but it got lucky
-                    solution_current = solution_candidate
-                    solution_current_value = solution_candidate_value
-                    # jump_size = jump_size_initial
+                # jump_size = jump_size_initial
 
         # temperature_current = temperature_current/(10 * temperature_current + 1)
 
@@ -116,4 +117,3 @@ if __name__ == "__main__":
     for i in solution:
         print(i, end=" ")
     print(solution_value, end="")
-
