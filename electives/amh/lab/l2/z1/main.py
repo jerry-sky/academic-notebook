@@ -74,8 +74,11 @@ def SimulatedAnnealing(solution_initial: Tuple[float], temperature_initial: floa
             ## solution_candidate = RandomMove(solution_current, jump_size)
 
             # multiply the offset vector by the jump_size coefficient
-            solution_candidate = list(map(lambda x: x * jump_size, offset))
+            solution_candidate = list(map(lambda x: random() * x * jump_size, offset))
+            for i in range(0,4):
+                solution_candidate[i] += solution_current[i]
             solution_candidate_value = SalomonFunc(solution_candidate)
+            # print(solution_candidate)
 
             if solution_current_value > solution_candidate_value:
                 # the candidate was just plainly better
@@ -108,7 +111,7 @@ if __name__ == "__main__":
     x = (x1, x2, x3, x4)
     # run the algorithm
     solution, solution_value = SimulatedAnnealing(
-        x, 50, t, jump_size_initial=0.7, jump_size_min=0.1)
+        x, 50, t, jump_size_initial=2, jump_size_min=0.1)
     # print out the results
     for i in solution:
         print(i, end=" ")
