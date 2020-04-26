@@ -4,7 +4,7 @@ from random import randint, shuffle, random
 from time import time
 from sys import exit, stderr
 from math import exp
-from numpy import random as num
+# from numpy import random as num
 
 # all possible directions the agent can go
 DIRECTIONS = {0: 'U', 1: 'D', 2: 'L', 3: 'R'}
@@ -180,8 +180,8 @@ def SimulatedAnnealing(
 
         solution_candidate = list(solution_current)
         # apply random permutation
-        solution_candidate = list(num.permutation(solution_candidate))
-        # shuffle(solution_candidate)
+        # solution_candidate = list(num.permutation(solution_candidate))
+        shuffle(solution_candidate)
 
         # for some reason we need to check the time now, otherwise the program
         # will just disregard the time constraint and run much longer that it
@@ -201,14 +201,17 @@ def SimulatedAnnealing(
             continue
 
         if len(solution_candidate) == len(solution_current):
+            # solution resulting in the same
             temperature_current *= 0.8
         if len(solution_candidate) < len(solution_current):
+            # solution was plainly better
             solution_current = solution_candidate
             temperature_current *= 0.7
         else:
             difference = abs(len(solution_candidate) - len(solution_current))
 
             if Probability(difference, temperature_current) > random():
+                # solution wasn't better but it got lucky
                 solution_current = solution_candidate
 
         end = time()
@@ -218,6 +221,7 @@ def SimulatedAnnealing(
 
 if __name__ == "__main__":
 
+    # read input data
     t, n, m = map(lambda x: int(x), input().split())
 
     simulation_map = []
@@ -228,8 +232,10 @@ if __name__ == "__main__":
 
     solution = SimulatedAnnealing(simulation_map, 60, t)
 
+    # last little touches
     RemoveMiniLoops(solution)
 
+    # print the solution
     print(len(solution))
 
     for step in solution:
