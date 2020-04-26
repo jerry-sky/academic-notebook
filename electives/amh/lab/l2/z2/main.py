@@ -5,7 +5,7 @@ from math import exp, floor
 from sys import stderr
 from time import time
 from random import random, randint
-from neighbourhood import AlterBlockIntensity, PickTheNearestValueFromList
+from neighbourhood import AlterBlockIntensity, AlterBlockSizes
 
 
 def MatrixDistance(one: List[List[int]], two: List[List[int]]) -> float:
@@ -63,9 +63,16 @@ def SimulatedAnnealing(
     while end-begin <= running_time_max and temperature_current > 0:
 
         solution_candidate = deepcopy(solution_current)
+        solution_candidate_block_definition = deepcopy(solution_current_block_definition)
 
-        AlterBlockIntensity(solution_candidate, matrix_initial,
-                            solution_current_block_definition, allowed_values)
+        if random() > 0.8:
+            # alter the block structure
+            AlterBlockSizes(solution_candidate_block_definition, k)
+            # rebuild the matrix
+            AlterBlockIntensity(solution_candidate, matrix_initial, solution_candidate_block_definition, allowed_values, True)
+        else:
+            # alter just one block
+            AlterBlockIntensity(solution_candidate, matrix_initial, solution_candidate_block_definition, allowed_values)
 
         solution_candidate_value = MatrixDistance(
             matrix_initial, solution_candidate)
@@ -74,16 +81,17 @@ def SimulatedAnnealing(
             # the solution was plainly better
             solution_current = solution_candidate
             solution_current_value = solution_candidate_value
+            solution_current_block_definition = solution_candidate_block_definition
+
             temperature_current *= 0.7
         else:
             difference = abs(solution_candidate_value - solution_current_value)
-
-            # print("probability", Probability(difference, temperature_current))
 
             if Probability(difference, temperature_current) > random():
                 # candidate solution wasn't better but it got lucky
                 solution_current = solution_candidate
                 solution_current_value = solution_candidate_value
+                solution_current_block_definition = solution_candidate_block_definition
         end = time()
 
     return solution_current
