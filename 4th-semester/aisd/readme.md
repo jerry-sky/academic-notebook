@@ -38,7 +38,7 @@
   - **2020-04-8\* & 2020-04-20\***
     - [Programowanie dynamiczne](wyk/2020-04-8/programowanie-dynamiczne.md)
     - [Najkrótsza ścieżka w DAG-u](wyk/2020-04-8/najkrótsza-ścieżka-dag.md)
-    - [Najdłuższy podciąg ciągu](wyk/2020-04-8/najdłuższy-podciąg-rosnący.md)
+    - [Najdłuższy podciąg rosnący ciągu](wyk/2020-04-8/najdłuższy-podciąg-rosnący.md)
     - [Longest Common Subsequence (LCS)](wyk/2020-04-20/longest-common-subsequence.md)
 
   \*odwołane z powodu koronawirusa
