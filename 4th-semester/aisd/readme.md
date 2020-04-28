@@ -32,6 +32,9 @@
     - [`Select`](wyk/2020-03-23/select-algorithm.md)
   - [**2020-03-25\***](wyk/2020-03-25/binary-search-tree.md)
   - [**2020-03-30\***](wyk/2020-03-30/red-black-tree.md)
+  - **2020-04-6\***
+    - [Wzbogacanie struktur danych](wyk/2020-04-6/wzbogacanie-struktur-danych.md)
+    - [Rozszerzenie RB-Tree](wyk/2020-04-6/rb-trees-ze-statystykami-pozycyjnymi.md)
 
   \*odwołane z powodu koronawirusa
 
