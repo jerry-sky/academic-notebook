@@ -23,5 +23,5 @@ Dynamiczne statystyki pozycyjne - mając dynamiczny zbiór danych chcemy szybko 
 
 Więcej na temat wzbogacania struktur danych:
 
-- [Chapter 15](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
+- [Chapter 14](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
 - [aisd04.pdf](https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA)
