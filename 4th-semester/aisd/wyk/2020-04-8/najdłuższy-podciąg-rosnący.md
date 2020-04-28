@@ -17,10 +17,10 @@ Wówczas najdłuższy pociąg $A$ to np. $(2,3,7,9)$, ale istnieją również in
 
 ## Steps
 
-1. Budujemy [DAG](najkrótsza-ścieżka-dag.md) $G = (V,E,c)$ odpowiadającego naszemu problemowi.\
+1. Budujemy [DAG](najkrótsza-ścieżka-dag.md) $G = (V,E,c)$ odpowiadającego naszemu problemowi.
 2. Niech zbiór wierzchołków stanowią elementy ciągu wejściowego $A$: $V = \{a_1,\dots,a_n\}$.
 3. Wstawiamy krawędzie tylko pomiędzy wierzchołkami, które mogą być kolejnymi elementami rosnącego podciągu, czyli $(a_i, a_j) \in E$ jeśli $i<j \land a_i < a_j$.
-4. Niech waga (długość) każdej krawędzi będzie równa $1$, czyli $\forall(u,v) \in E: c(u,v) = 1$.\
+4. Niech waga (długość) każdej krawędzi będzie równa $1$, czyli $\forall(u,v) \in E: c(u,v) = 1$.
 
 Zauważmy, że tak powstały graf $G$ jest DAG-iem oraz, że ścieżki w tak zdefiniowanym grafie odpowiadają podciągom rosnącym ciągu $A$. Zatem naszym zadaniem teraz jest znalezienie najdłuższej ścieżki w tak zdefiniowanym grafie.
 
