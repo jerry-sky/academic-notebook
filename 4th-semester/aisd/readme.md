@@ -35,10 +35,11 @@
   - **2020-04-6\***
     - [Wzbogacanie struktur danych](wyk/2020-04-6/wzbogacanie-struktur-danych.md)
     - [Rozszerzenie RB-Tree](wyk/2020-04-6/rb-trees-ze-statystykami-pozycyjnymi.md)
-  - **2020-04-8\* & 2020-04-22\***
+  - **2020-04-8\* & 2020-04-20\***
     - [Programowanie dynamiczne](wyk/2020-04-8/programowanie-dynamiczne.md)
     - [Najkrótsza ścieżka w DAG-u](wyk/2020-04-8/najkrótsza-ścieżka-dag.md)
     - [Najdłuższy podciąg ciągu](wyk/2020-04-8/najdłuższy-podciąg-rosnący.md)
+    - [Longest Common Subsequence (LCS)](wyk/2020-04-20/longest-common-subsequence.md)
 
   \*odwołane z powodu koronawirusa
 

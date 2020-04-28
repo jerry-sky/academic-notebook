@@ -18,6 +18,16 @@ Problem: [Znalezienie najkrótszej ścieżki w skierowanym grafie acyklicznym](n
 
 Problem: [Najdłuższy podciąg rosnący](najdłuższy-podciąg-rosnący.md).
 
+## Przykład #3
+
+Problem: [Longest Common Subsequence (LCS)](../2020-04-20/longest-common-subsequence.md).
+
+## Przykład #4
+
+Problem: `Edit-distance` — znalezienie odpowiednio zdefiniowanej odległości pomiędzy dwoma ciągami. Jest to problem, który również można rozwiązać przy pomocy programowania dynamicznego w stosunkowo podobny sposób jak problem [LCS](#przyk%c5%82ad-3).
+
+[More here (Chapter 6.3)](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf)
+
 ## Summary
 
 Kluczowa własność metodologii programowania dynamicznego: rozwiązując zadany problem jesteśmy w stanie zdefiniować:
