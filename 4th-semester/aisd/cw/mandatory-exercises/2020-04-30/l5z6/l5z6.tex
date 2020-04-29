@@ -1,0 +1,30 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+
+\linespread{1.3}
+
+\title{Lista 5}
+\author{Zadanie 6}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+Głębokość danego węzła w RB-Tree nie można efektywnie utrzymywać jako dodatkowe pole węzła.
+Należy zauważyć, że pole \texttt{depth} węzła $x$ opiera się na wartości tego samego pola węzła $x.\mathrm{parent}$. Dlatego, przy aktualizacji jednego węzła musimy dokonać aktualizacji wszystkich węzłów poniżej tego węzła przez co dochodzimy do złożoności obliczeniowej $O(n\cdot \log n)$.
+
+\end{document}
