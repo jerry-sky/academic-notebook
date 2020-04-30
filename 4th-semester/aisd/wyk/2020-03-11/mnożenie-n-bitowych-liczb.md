@@ -13,7 +13,7 @@ $$
 Przykładowo: $x = (1011~0110)_2$, wówczas $x_L = (1011)_2$, $x_R = (0110)_2$
 
 Następnie zauważmy, że $x \cdot y = 2^n x_L y_L + 2^{\frac{n}{2}} \left( x_L y_R + x_R y_L \right) + x_R y_R$.\
-Niestety algorytm typu [Divide & Conquer](../2020-03-9/divide-and-conquer.md) wykorzystujący powyższy podział i połączenie pod-problemów nie ma lepszej złożoności obliczeniowej od standardowego mnożenia, czyli $O(n^2)$. Natomiast jeśli zauważymy, że $x_L y_R = (x_L + x_R)(y_L + y_R) - x_L y_L - x_R y_R$ wtedy dostajemy trzy $\frac{n}{2}$-bitowe *(a nie cztery jak wcześniej)* pod-problemy:\
+Niestety algorytm typu [Divide & Conquer](../2020-03-09/divide-and-conquer.md) wykorzystujący powyższy podział i połączenie pod-problemów nie ma lepszej złożoności obliczeniowej od standardowego mnożenia, czyli $O(n^2)$. Natomiast jeśli zauważymy, że $x_L y_R = (x_L + x_R)(y_L + y_R) - x_L y_L - x_R y_R$ wtedy dostajemy trzy $\frac{n}{2}$-bitowe *(a nie cztery jak wcześniej)* pod-problemy:\
 $x_L y_L$, $x_R y_R$, $(x_L + x_R)(y_L + y_R)$ co skutkuje złożonością $O\big(n^{\log_2 3}\big)$, gdzie $\log_2 3 \approx 1.59$.
 
 ## Złożoność obliczeniowa

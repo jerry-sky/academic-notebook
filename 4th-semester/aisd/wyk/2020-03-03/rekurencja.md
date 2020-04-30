@@ -1,5 +1,5 @@
 # Rekurencja
-*(2020-03-2)*
+*(2020-03-02)*
 
 ## $1\degree$ Metoda indukcyjna
 

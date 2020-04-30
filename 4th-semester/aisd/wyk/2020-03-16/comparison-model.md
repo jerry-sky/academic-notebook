@@ -3,7 +3,7 @@
 
 ## Binarne drzewo decyzyjne
 
-Wszystkie dotychczas omówione algorytmy sortowania ([`InsertionSort`](../2020-03-3/insertion-sort.md), [`MergeSort`](../2020-03-3/merge-sort.md), [`QuickSort`](../2020-03-11/quick-sort.md)) zakładały, że aby ustalić kolejność elementów możemy je tylko porównywać między sobą - jest to tzw. *Comparison Model*. Przy użyciu binarnego drzewa decyzyjnego możemy udowodnić, że liczba porównań między sortowanymi elementami musi wynosić co najmniej $\log(n!) = O\big(n\log n\big)$.
+Wszystkie dotychczas omówione algorytmy sortowania ([`InsertionSort`](../2020-03-03/insertion-sort.md), [`MergeSort`](../2020-03-03/merge-sort.md), [`QuickSort`](../2020-03-11/quick-sort.md)) zakładały, że aby ustalić kolejność elementów możemy je tylko porównywać między sobą - jest to tzw. *Comparison Model*. Przy użyciu binarnego drzewa decyzyjnego możemy udowodnić, że liczba porównań między sortowanymi elementami musi wynosić co najmniej $\log(n!) = O\big(n\log n\big)$.
 
 Weźmy drzewo sortujące biorące za argument tablicę $n$-elementową. Każdy z liści takiego drzewa jest permutacją $\{1,2,\dots,n\}$. Mamy więc przynajmniej $n!$ liści. Warto zauważyć, że w drzewie binarnym o głębokości $d$ jest co najwyżej $2^d$ liści.
 

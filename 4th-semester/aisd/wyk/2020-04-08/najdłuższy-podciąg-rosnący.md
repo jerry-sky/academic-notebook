@@ -1,5 +1,5 @@
 # Najdłuższy podciąg rosnący
-*(2020-04-8)*
+*(2020-04-08)*
 
 ## Input
 Ciąg $A = (a_1,\dots,a_n)$

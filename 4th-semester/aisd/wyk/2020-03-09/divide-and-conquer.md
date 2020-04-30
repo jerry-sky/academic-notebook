@@ -1,5 +1,5 @@
 # Divide and conquer
-*(2020-03-9)*
+*(2020-03-09)*
 
 ## Binary search$(x, A)$
 $A$ - posortowana tablica

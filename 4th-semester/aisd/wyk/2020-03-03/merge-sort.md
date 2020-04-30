@@ -1,5 +1,5 @@
 # Merge Sort
-*(2020-03-2)*
+*(2020-03-02)*
 
 ## Funkcja $MergeSort(A, n)$
 

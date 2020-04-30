@@ -3,7 +3,7 @@
 
 ## Description
 
-`Select` jest pięknym przykładem nietrywialnego wykorzystania [metodologii dziel i zwyciężaj](../2020-03-9/divide-and-conquer.md).
+`Select` jest pięknym przykładem nietrywialnego wykorzystania [metodologii dziel i zwyciężaj](../2020-03-09/divide-and-conquer.md).
 
 Składa się on z 5 kroków *(w tym dwa rekurencyjne)*.
 

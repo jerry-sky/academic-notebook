@@ -5,19 +5,19 @@
 
   ### Wykład
   - [**2020-02-26** Sortowanie](wyk/2020-02-26/sortowanie.md)
-  - **2020-02-3**
-    - [Insertion sort](wyk/2020-03-3/insertion-sort.md)
-    - [Merge sort](wyk/2020-03-3/merge-sort.md)
-    - [Notacja asymptotyczna](wyk/2020-03-3/notacja-asymptotyczna.md)
-    - [Rekurencja](wyk/2020-03-3/rekurencja.md)
-  - **2020-03-9**
-    - [Drzewo rekursji](wyk/2020-03-9/drzewo-rekursji.md)
-    - [Zamiana zmiennych](wyk/2020-03-9/zamiana-zmiennych.md)
-    - [Metoda iteracyjna](wyk/2020-03-9/metoda-iteracyjna.md)
-    - [Master Theorem](wyk/2020-03-9/master-theorem.md)
-    - [Merge sort examples](wyk/2020-03-9/merge-sort.md)
-    - [Divide and conquer](wyk/2020-03-9/divide-and-conquer.md)
-    - [*Lemat*](wyk/2020-03-9/lemat.md)
+  - **2020-02-03**
+    - [Insertion sort](wyk/2020-03-03/insertion-sort.md)
+    - [Merge sort](wyk/2020-03-03/merge-sort.md)
+    - [Notacja asymptotyczna](wyk/2020-03-03/notacja-asymptotyczna.md)
+    - [Rekurencja](wyk/2020-03-03/rekurencja.md)
+  - **2020-03-09**
+    - [Drzewo rekursji](wyk/2020-03-09/drzewo-rekursji.md)
+    - [Zamiana zmiennych](wyk/2020-03-09/zamiana-zmiennych.md)
+    - [Metoda iteracyjna](wyk/2020-03-09/metoda-iteracyjna.md)
+    - [Master Theorem](wyk/2020-03-09/master-theorem.md)
+    - [Merge sort examples](wyk/2020-03-09/merge-sort.md)
+    - [Divide and conquer](wyk/2020-03-09/divide-and-conquer.md)
+    - [*Lemat*](wyk/2020-03-09/lemat.md)
   - **2020-03-11\***
     - [Mnożenie $n$-bitowych liczb naturalnych $x \cdot y$](wyk/2020-03-11/mnożenie-n-bitowych-liczb.md)
     - [Mnożenie macierzy $n\times n$](wyk/2020-03-11/mnożenie-macierzy-nxn.md)
@@ -32,13 +32,13 @@
     - [`Select`](wyk/2020-03-23/select-algorithm.md)
   - [**2020-03-25\***](wyk/2020-03-25/binary-search-tree.md)
   - [**2020-03-30\***](wyk/2020-03-30/red-black-tree.md)
-  - **2020-04-6\***
-    - [Wzbogacanie struktur danych](wyk/2020-04-6/wzbogacanie-struktur-danych.md)
-    - [Rozszerzenie RB-Tree](wyk/2020-04-6/rb-trees-ze-statystykami-pozycyjnymi.md)
-  - **2020-04-8\* & 2020-04-20\***
-    - [Programowanie dynamiczne](wyk/2020-04-8/programowanie-dynamiczne.md)
-    - [Najkrótsza ścieżka w DAG-u](wyk/2020-04-8/najkrótsza-ścieżka-dag.md)
-    - [Najdłuższy podciąg rosnący ciągu](wyk/2020-04-8/najdłuższy-podciąg-rosnący.md)
+  - **2020-04-06\***
+    - [Wzbogacanie struktur danych](wyk/2020-04-06/wzbogacanie-struktur-danych.md)
+    - [Rozszerzenie RB-Tree](wyk/2020-04-06/rb-trees-ze-statystykami-pozycyjnymi.md)
+  - **2020-04-08\* & 2020-04-20\***
+    - [Programowanie dynamiczne](wyk/2020-04-08/programowanie-dynamiczne.md)
+    - [Najkrótsza ścieżka w DAG-u](wyk/2020-04-08/najkrótsza-ścieżka-dag.md)
+    - [Najdłuższy podciąg rosnący ciągu](wyk/2020-04-08/najdłuższy-podciąg-rosnący.md)
     - [Longest Common Subsequence (LCS)](wyk/2020-04-20/longest-common-subsequence.md)
 
   \*odwołane z powodu koronawirusa

@@ -1,5 +1,5 @@
 # Rozszerzone RB-Trees
-*(2020-04-6)*
+*(2020-04-06)*
 
 ## Goal
 

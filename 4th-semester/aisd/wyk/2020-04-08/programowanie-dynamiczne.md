@@ -1,9 +1,9 @@
 # Programowanie dynamiczne
-*(2020-04-8)*
+*(2020-04-08)*
 
 ## Zarys
 
-Programowanie dynamiczne jest kolejną metodologią budowy algorytmów pozwalająca na rozwiązywanie szerokiej gamy problemów (często tam gdzie [D&C](../2020-03-9/divide-and-conquer.md) nie może być użyta) choć głównie jest stosowana do tzw. **problemów optymalizacyjnych**.\
+Programowanie dynamiczne jest kolejną metodologią budowy algorytmów pozwalająca na rozwiązywanie szerokiej gamy problemów (często tam gdzie [D&C](../2020-03-09/divide-and-conquer.md) nie może być użyta) choć głównie jest stosowana do tzw. **problemów optymalizacyjnych**.\
 Niestety przez jej ogólność rozwiązania nie muszą mieć optymalnej złożoności obliczeniowej.
 
 ## How does it work

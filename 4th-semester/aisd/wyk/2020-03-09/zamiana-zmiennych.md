@@ -1,5 +1,5 @@
 # Zamiana zmiennych
-*(2020-03-9)*
+*(2020-03-09)*
 
 $T(n) = 2T(\sqrt{n}) + \log_2 n$\
 $m = \log_2 n$, $n = 2^m$, $S(m) = T(2^n) = T(n)$\

@@ -1,5 +1,5 @@
 # Najkrótsza ścieżka w DAG
-*(2020-04-8)*
+*(2020-04-08)*
 
 ## Problem
 

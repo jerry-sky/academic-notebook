@@ -76,7 +76,7 @@ $$
   \min\{|X|: X \subseteq V \land G\setminus X ~\text{nie jest spójny}\} & : \text{nie jest zupełny}
 \end{cases}
 $$
-*Uwaga: z powyższego faktu wynika, że dla dowolnego spójnego grafu prostego $(V,E)$ mamy $\kappa(G) \le |V| - 1$; co więcej: $\kappa(G) = |V| - 1$ $\iff$ graf jest [grafem zupełnym](../2020-03-4/2020-03-4.md#graficzne-zoo)*
+*Uwaga: z powyższego faktu wynika, że dla dowolnego spójnego grafu prostego $(V,E)$ mamy $\kappa(G) \le |V| - 1$; co więcej: $\kappa(G) = |V| - 1$ $\iff$ graf jest [grafem zupełnym](../2020-03-04/2020-03-04.md#graficzne-zoo)*
 
 ## $\text {Definicja}$ spójność krawędziowa grafu spójnego
 Mamy graf spójny $G = (V,E)$. Spójność krawędziowa $G$:

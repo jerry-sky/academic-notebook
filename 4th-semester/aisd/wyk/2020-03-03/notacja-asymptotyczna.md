@@ -1,5 +1,5 @@
 # Notacja asymptotyczna
-*(2020-03-2)*
+*(2020-03-02)*
 
 ## Duże $O$
 
