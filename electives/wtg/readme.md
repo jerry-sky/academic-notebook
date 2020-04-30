@@ -12,6 +12,7 @@
   - [**2020-04-01\***](wyk/2020-04-01/2020-04-01.md)
   - [**2020-04-08\***](wyk/2020-04-08/2020-04-08.md)
   - [**2020-04-15\***](wyk/2020-04-15/grafy-planarne-3-spójność.md)
+  - [**2020-04-22\***](wyk/2020-04-22/twierdzenie-mengera.md)
 
   \*called off due to coronavirus
 
