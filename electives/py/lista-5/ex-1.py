@@ -31,7 +31,7 @@ def estimate_using_linalg(matrix_X, matrix_Y):
             sum(reviews * regression_factors)
         )
 
-    return predicted_reviews
+    return np.array(predicted_reviews)
 
 
 def estimate_using_linalg_test(matrix_X, matrix_Y, to_test):
@@ -46,13 +46,15 @@ def estimate_using_linalg_test(matrix_X, matrix_Y, to_test):
             sum(reviews * regression_factors)
         )
 
-    return predicted_reviews
+    return np.array(predicted_reviews)
 
 
 if __name__ == '__main__':
 
+    # get the data
     data = pd.read_csv('data/ratings.csv')
 
+    # parse the timestamps
     data.timestamp = data.timestamp.map(lambda x: datetime.fromtimestamp(x))
 
     # get ids of the people that have reviewed Toy Story
@@ -72,8 +74,7 @@ if __name__ == '__main__':
         lambda x: people_ids.index(x))
 
     # take the part we need
-    matrix_X = filtered[['newUserId', 'movieId', 'rating']
-                        ].sort_values(by='rating')
+    matrix_X = filtered[['newUserId', 'movieId', 'rating']]
 
     # make it an actual matrix
     matrix_X = pd.pivot_table(
@@ -81,78 +82,103 @@ if __name__ == '__main__':
 
     # fill out the rest of the matrix with zeroes
     matrix_X = np.nan_to_num(matrix_X, nan=0)
-
-    # sort the matrix by the first column for easier data evaluation
-    # and more clear data visualisation
-    sorted_indicies = np.argsort(matrix_X[:, 0])
-    matrix_X = matrix_X[sorted_indicies]
-
-    # take the first column (that's the movie rating that we're analysing)
+    # take the first column containing the Toy Story reviews
     matrix_Y = matrix_X[:, [0]]
+    # remove the first column containing the Toy Story reviews
+    matrix_X = matrix_X[:, 1:]
+    # make sure we can go up to 10000 column-wise;
+    # fill up the matrix with zeroes to be precisely at 215×10000 of size
+    matrix_X = np.hstack([matrix_X, np.zeros([215, 1332])])
 
+    # measure by different data sizes
     data_set_sizes = [10, 1000, 10000]
     predicted_reviews_across_data_set_sizes = []
 
     for data_set_size in data_set_sizes:
         # take the part we're analysing
-        matrix_X_local = matrix_X[:, 1:data_set_size+1]
+        matrix_X_local = matrix_X[:, :data_set_size]
 
         predicted_reviews_across_data_set_sizes.append(
             estimate_using_linalg(matrix_X_local, matrix_Y)
         )
 
     # plot the results
-    x = list(range(215))
+    x = list(range(0, 215))
 
     fig, ax = plt.subplots(2)
 
-    ax[0].plot(x, predicted_reviews_across_data_set_sizes[0], label='m='+str(
-        data_set_sizes[0]), linewidth=0.4, linestyle='dashed')
+    # sort the matrix by the first column for easier data evaluation
+    # and more clear data visualisation
+    sorted_indicies = np.argsort(matrix_Y[:, 0])
 
-    for i in range(1, len(data_set_sizes)):
+    ax[0].plot(x, matrix_Y[:, 0][sorted_indicies], 'o',
+               label='original reviews', markersize=5)
+
+    # plot styles for each data set size
+    plt_settings = [
+        {'linewidth': 0.4, 'linestyle': 'dashed'},
+        {'linewidth': 4},
+        {'linewidth': 2}
+    ]
+
+    for i in range(0, len(data_set_sizes)):
         ax[0].plot(
-            x, predicted_reviews_across_data_set_sizes[i], label='m='+str(data_set_sizes[i]), linewidth=2)
-
-    ax[0].plot(x, matrix_Y[:, 0], label='original reviews', linestyle='dotted', markersize=0.2)
+            x, predicted_reviews_across_data_set_sizes[i][sorted_indicies], label='m='+str(data_set_sizes[i]), **plt_settings[i])
 
     ax[0].legend()
-    ax[0].set_title('Podpunkt 1)')
+    ax[0].set_title('All predicted + original reviews')
 
     # now, we want to take first 200 people and estimate ratings for
     # the rest of 15 people based on that data
     matrix_X_200 = matrix_X[:200, :]
     matrix_Y_200 = matrix_X_200[:, [0]]
 
+    # the last 15 people's data
     to_test_X = matrix_X[200:, :]
-    to_test_Y = to_test_X[:, [0]]
+    to_test_Y = matrix_Y[200:, [0]]
 
-    data_set_sizes = [10, 100, 500, 1000, 10000]
+    # test against different quantity of movies' ratings
+    data_set_sizes = [10, 100, 200, 500, 1000, 10000]
 
     predicted_reviews_across_data_set_sizes_test = []
 
     for data_set_size in data_set_sizes:
-        matrix_X_local = matrix_X_200[:, 1:data_set_size+1]
-        to_test_X_local = to_test_X[:, 1:data_set_size+1]
+        matrix_X_local = matrix_X_200[:, :data_set_size]
+        to_test_X_local = to_test_X[:, :data_set_size]
 
         predicted_reviews_across_data_set_sizes_test.append(
             estimate_using_linalg_test(
                 matrix_X_local, matrix_Y_200, to_test_X_local)
         )
 
+    # plot the second part of this exercise
+
     x = list(range(200, 215))
 
-    ax[1].plot(x, predicted_reviews_across_data_set_sizes_test[0], label='m='+str(
-        data_set_sizes[0]), linewidth=0.4, linestyle='dashed')
+    # sort the matrix by the first column for easier data evaluation
+    # and more clear data visualisation
+    sorted_indicies = np.argsort(to_test_Y[:, 0])
 
-    for i in range(1, len(data_set_sizes)):
+    ax[1].plot(x, to_test_Y[:, 0][sorted_indicies], 'o', label='original reviews',
+               markersize=10)
+
+    # plot styles for each data set size
+    plt_settings = [
+        {'linewidth': 8},
+        {'linewidth': 5},
+        {'linewidth': 2},
+        {'linewidth': 2},
+        {'linewidth': 2},
+        {'linewidth': 2},
+    ]
+
+    for i in range(0, len(data_set_sizes)):
         ax[1].plot(
-            x, predicted_reviews_across_data_set_sizes_test[i], label='m='+str(data_set_sizes[i]), linewidth=2)
-
-    ax[1].plot(x, to_test_Y[:, 0], label='original reviews',
-             markersize=0.2, linestyle='dotted')
+            x, predicted_reviews_across_data_set_sizes_test[i][sorted_indicies], label='m='+str(data_set_sizes[i]), **plt_settings[i])
 
     ax[1].legend()
-    ax[1].set_title('Podpunkt 2)')
+    ax[1].set_title(
+        'Predicted last 15 people\'s reviews based on first 200 people\'s reviews')
 
     plt.tight_layout()
     plt.show()
