@@ -74,21 +74,23 @@ if __name__ == '__main__':
         lambda x: people_ids.index(x))
 
     # take the part we need
-    matrix_X = filtered[['newUserId', 'movieId', 'rating']]
+    filtered = filtered[['newUserId', 'movieId', 'rating']]
 
-    # make it an actual matrix
-    matrix_X = pd.pivot_table(
-        matrix_X, values='rating', index='newUserId', columns=['movieId']).to_numpy()
+    # prepare matrix that can take up to 10000 movies
+    # offsetting by 2, because `movieId=0` doesn't exist
+    # and `movieId=1` is the one movie we're analysing
+    matrix_X = np.zeros((filtered['newUserId'].max() + 1, 10000 + 2))
+    # go through the records and write the actual data
+    # to the prepared matrix
+    for movie in filtered.to_dict('records'):
+        # avoid `index out of bounds` exceptions
+        if movie['movieId'] < len(matrix_X[0]):
+            matrix_X[movie['newUserId'], movie['movieId']] = movie['rating']
 
-    # fill out the rest of the matrix with zeroes
-    matrix_X = np.nan_to_num(matrix_X, nan=0)
     # take the first column containing the Toy Story reviews
-    matrix_Y = matrix_X[:, [0]]
+    matrix_Y = matrix_X[:, [1]]
     # remove the first column containing the Toy Story reviews
-    matrix_X = matrix_X[:, 1:]
-    # make sure we can go up to 10000 column-wise;
-    # fill up the matrix with zeroes to be precisely at 215×10000 of size
-    matrix_X = np.hstack([matrix_X, np.zeros([215, 1332])])
+    matrix_X = matrix_X[:, 2:]
 
     # measure by different data sizes
     data_set_sizes = [10, 1000, 10000]
