@@ -40,6 +40,8 @@
     - [Najkrótsza ścieżka w DAG-u](wyk/2020-04-08/najkrótsza-ścieżka-dag.md)
     - [Najdłuższy podciąg rosnący ciągu](wyk/2020-04-08/najdłuższy-podciąg-rosnący.md)
     - [Longest Common Subsequence (LCS)](wyk/2020-04-20/longest-common-subsequence.md)
+  - [**2020-04-22\***\
+      Koszt zamortyzowany](wyk/2020-04-22/koszt-zamortyzowany.md)
 
   \*odwołane z powodu koronawirusa
 
