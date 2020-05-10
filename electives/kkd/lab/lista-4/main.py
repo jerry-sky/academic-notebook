@@ -157,8 +157,27 @@ if __name__ == '__main__':
 
     results = img_analysis(img_path)
 
+    modes = ['pixels', 'red', 'green', 'blue']
+
+    lowest_entropy = dict()
+    lowest_entropy_method = dict()
+
+    # initialize
+    for mode in modes:
+        lowest_entropy[mode] = float('inf')
+        lowest_entropy_method[mode] = 'normal'
+
     for method in JPEG_LS_METHODS:
         print(method + ':')
-        for mode in ['pixels', 'red', 'green', 'blue']:
-            print(mode.rjust(8), results.calc_entropy(method, mode))
+        for mode in modes:
+            r = results.calc_entropy(method, mode)
+            if r < lowest_entropy[mode]:
+                lowest_entropy[mode] = r
+                lowest_entropy_method[mode] = method
+            print(mode.rjust(8) + ':', r)
         print()
+    print('best predicate:')
+    for mode in modes:
+        print(mode.rjust(8) + ':', lowest_entropy_method[mode])
+
+    print()

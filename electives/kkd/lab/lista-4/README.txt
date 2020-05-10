@@ -9,6 +9,10 @@ W celu uruchomienia programu należy wykonać `./main.py <input file`.
 
 Program wymaga zainstalowanego `python3` do uruchomienia.
 
+Nazewnictwo:
+- `pixels` odnosi się do entropii całego obrazu
+- `red`, `green`, `blue` odnoszą się do entropii poszczególnych składowych kolorów obrazu
+
 
 Pliki programu
 --------------
