@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
         # perform requested action
         if action == 'insert' and data is not None:
-            parsed = parse_input_strings(word)
+            parsed = parse_input_strings(data)
             if len(parsed) > 0:
                 data_structure.insert(parsed)
 
@@ -121,8 +121,9 @@ if __name__ == "__main__":
 
         total_running_time += end - begin
 
-        actions_performed_total_time[action] += end - begin
-        actions_performed_count[action] += 1
+        if action in actions_available:
+            actions_performed_total_time[action] += end - begin
+            actions_performed_count[action] += 1
 
         if max_items_stored < data_structure.nodes_count:
             max_items_stored = data_structure.nodes_count
