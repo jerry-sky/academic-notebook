@@ -52,10 +52,15 @@ class BST(object):
     def __init__(self):
         self._root = None
         self._nodes_count = 0
+        self._find_comparisons = 0
 
     @property
     def nodes_count(self):
         return self._nodes_count
+
+    @property
+    def find_comparisons(self):
+        return self._find_comparisons
 
     def _node_insert(self, new_node: BST_node) -> BST_node:
         """Inserts the node into the tree.
@@ -96,6 +101,7 @@ class BST(object):
         node = self._root
 
         while node is not None:
+            self._find_comparisons += 1
             if node.value == value_to_find:
                 return node
             if value_to_find < node.value:

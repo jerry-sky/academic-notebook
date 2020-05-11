@@ -28,6 +28,11 @@ class LList(object):
 
     def __init__(self):
         self._root = None
+        self._find_comparisons = 0
+
+    @property
+    def find_comparisons(self):
+        return self._find_comparisons
 
     def insert(self, new_value):
         if self._root is None:
@@ -65,6 +70,7 @@ class LList(object):
 
         node = self._root
         while node is not None:
+            self._find_comparisons += 1
             if node.value == search_value:
                 return node
             node = node.next

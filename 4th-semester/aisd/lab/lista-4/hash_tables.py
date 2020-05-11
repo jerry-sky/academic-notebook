@@ -2,7 +2,7 @@ from llist import LList
 from rbt import RBT
 
 # $n_t$ - more about this variable in ./readme.md
-HASH_TABLE_RBT_SWITCH_THRESHOLD = 40
+HASH_TABLE_RBT_SWITCH_THRESHOLD = 41
 
 def default_hashing_func(x: str) -> int:
     output = 11
@@ -27,6 +27,13 @@ class HashTable(object):
     @property
     def nodes_count(self):
         return self._nodes_count
+
+    @property
+    def find_comparisons(self):
+        output = 0
+        for t in self._data:
+            output += t.find_comparisons
+        return output
 
     def _get_index(self, value) -> int:
         return self._hashing_func(value) % self._size

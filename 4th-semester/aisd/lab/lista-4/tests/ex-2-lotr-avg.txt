@@ -1,0 +1,15 @@
+load lotr.txt
+find a
+find full
+find though
+find heard
+find to
+find after
+find beyond
+find and
+find I
+find fat
+find excitement
+find floored
+find ridge
+find shadowed

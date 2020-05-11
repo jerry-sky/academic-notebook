@@ -128,10 +128,12 @@ if __name__ == "__main__":
         if max_items_stored < data_structure.nodes_count:
             max_items_stored = data_structure.nodes_count
 
-    print('total running time  :', total_running_time, file=stderr)
+    print('total running time    :', total_running_time, file=stderr)
     print(file=stderr)
     for a in actions_available:
-        print('times ' + a + ' ran:', actions_performed_count[a], 'for a total of', actions_performed_total_time[a], 'seconds', file=stderr)
+        print(('times ' + a + ' ran:').rjust(23), actions_performed_count[a], 'for a total of', actions_performed_total_time[a], 'seconds', file=stderr)
     print(file=stderr)
-    print('max items stored    :', max_items_stored)
-    print('final items quantity:', data_structure.nodes_count)
+    print('max items stored      :', max_items_stored, file=stderr)
+    print('final items quantity  :', data_structure.nodes_count, file=stderr)
+    print(file=stderr)
+    print('total find comparisons:', data_structure.find_comparisons, file=stderr)

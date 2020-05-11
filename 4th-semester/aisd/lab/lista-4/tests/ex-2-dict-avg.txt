@@ -1,0 +1,15 @@
+load dict-partial.txt
+find v
+find venom
+find zloty
+find yes
+find no
+find word
+find wines
+find weens
+find yard
+find yuck
+find zorch
+find zoo
+find vacation
+find xylophone
