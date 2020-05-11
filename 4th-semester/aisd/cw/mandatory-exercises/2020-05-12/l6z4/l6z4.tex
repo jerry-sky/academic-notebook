@@ -1,0 +1,71 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 6}
+\author{Zadanie 4}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Jedziemy samochodem palącym $1$ litr paliwa na $1$ km. Samochód ma górne ograniczenie paliwa, które może przewieźć wynoszące $W$. Na drodze są porozstawiane stacje paliwowe, gdzie $w_i$ to cena za $1$ litr paliwa na stacji $i$.
+Należy znaleźć jak najtańszą drogę do stacji końcowej $n$.
+
+\section{Concept}
+
+Reprezentujemy drogę z porozstawianymi stacjami jako DAG (directed acyclic graph) gdzie każda z krawędzi ma jakąś wagę. Odległość pomiędzy stacjami (wierzchołkami na grafie) możemy prosto obliczyć: $d_{i\to j} = i-j, i\le j$, gdzie $i$ oraz $j$ to indeksy stacji.
+Wówczas wagi krawędzi można obliczać poprzez pomnożenie odległości między stacjami przez cenę paliwa w stacji początkowej dla tej krawędzi: $f\big((i,j)\in E\big) = d_{i\to j} \cdot w_i$. Jednakże, algorytm musi brać pod uwagę parametr $W$, będący ograniczeniem mówiącym, ile litrów może zostać wziętych przez samochód. Wystarczy wprowadzić „zakaz” tworzenia krawędzi pomiędzy stacjami, gdzie odległość jest większa niż $W$.
+
+\section{Rozwiązanie}
+
+Przygotowujemy odpowiedni graf. Sortowanie topologiczne nie jest potrzebne, bo trzymamy się oryginalnej kolejności stacji na drodze. Dalej, dla każdego wierzchołka generujemy krawędzie do wszystkich wierzchołków oddalonych o maksymalnie $W$.
+
+Stosujemy algorytm wyszukiwania najkrótszej drogi w DAG-u z zadania 1. Określamy wierzchołek startowy jako stację o indeksie $0$ — czyli w poniższym algorytmie $s = 0$.
+
+\begin{algorithm}[H]
+  \begin{algorithmic}[1]
+    \State $d \gets [\infty,\dots,\infty]$
+    \State $d[s] \gets 0$
+    \State $r \gets \big[~[~],~\dots,~[~]~\big]$
+    \For{\textbf{each} $i$ in $\{1,\dots,n\}$}:
+      \For{\textbf{each} $j$ in $\mathcal{N}(i)$}:
+        \If{$d[i] > d[j] + f(j,i)$}:
+          \State $d[i] \gets d[j] + f(j,i)$
+          \State $r[i] \gets \texttt{concat}(r[j], [i])$
+        \EndIf
+      \EndFor
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+Gdzie $\mathcal{N}$ to funkcja definiowana przez:
+$\mathcal{N}(k) = \{j: \forall(v_k,v_j) \in E\}.$
+
+Rozwiązaniem naszego problemu jest tablica $r[n]$ reprezentująca indeksy kolejnych stacji, które tworzą najtańszą ścieżkę oraz liczba $d[n]$ reprezentująca koszt tej podróży.
+
+\end{document}
