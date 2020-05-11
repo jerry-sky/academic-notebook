@@ -2,9 +2,12 @@
 
 ## Zadanie 1
 
-### Szacowanie czasu każdej z operacji
+Plik wykonywalny `./main.py` jest rozwiązaniem tego zadania. W plikach `bst.py`, `rbt.py` oraz `hash_tables.py` zawarte są implementacje poszczególnych struktur danych.
+
+### Szacowanie czasu działania każdej z operacji
 
 Plik `dict-partial.txt` zawiera część słownika `dict.txt`. Niniejszy plik wykorzystałem do zmierzenia średniego czasu wykonywania poszczególnych operacji.
+
 1. `insert`\
     Zmierzenie polegało na wykonaniu operacji `load dict-partial.txt` i podzieleniu wartości czasu działania programu oraz wartości liczby elementów w strukturze.
 
@@ -104,7 +107,7 @@ Plik testowy `tests/ex-2-lotr-avg.txt` użyłem do oszacowania średniej liczby 
 
 2. RB-Tree:
 
-    Największa liczba porównań jaką udało mi się znaleźć to 23.
+    Największa liczba porównań jaką udało mi się znaleźć to `23`.
 
     Dla wyszukiwania kilkunastu wybranych słów średnia liczba porównań wynosi około `11,36`.
 
