@@ -98,9 +98,9 @@ $$
 $$
 
 Nasze poszukiwania zaczynamy od inicjalizacji tablicy odległości pomiędzy wszystkimi wierzchołkami $V$ a wierzchołkiem $v_s$.
-Tablicę odległości $d[0,\dots,|V|]$ wypełniamy wartościami $\infty$ przy czym $d[s] = 0$. Wówczas $\forall_{i\in\{0,\dots,|V|\}}~ d[i]$ określa odległość pomiędzy wierzchołkiem źródłowym $v_s$ a wierzchołkiem $v_i$.
+Tablicę odległości $d[0,\dots,|V|]$ wypełniamy wartościami $\infty$, przy czym $d[s] = 0$. Wówczas $\forall_{i\in\{0,\dots,|V|\}}~ d[i]$ określa odległość pomiędzy wierzchołkiem źródłowym $v_s$ a wierzchołkiem $v_i$.
 
-Oprócz tablicy $d$ musimy przechowywać numery indeksów wierzchołków, które tworzą znalezioną ścieżkę z $v_s$ do $v_i$. Stworzymy listę list, którą nazwiemy $r$ gdzie $r[i]$ to lista indeksów wierzchołków, które tworzą najkrótszą ścieżką pomiędzy $v_s$ a $v_i$.
+Oprócz tablicy $d$ musimy przechowywać numery indeksów wierzchołków, które tworzą znalezioną ścieżkę z $v_s$ do $v_i$. Stworzymy listę list, którą nazwiemy $r$, gdzie $r[i]$ to lista indeksów wierzchołków, które tworzą najkrótszą ścieżką pomiędzy $v_s$ a $v_i$.
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
