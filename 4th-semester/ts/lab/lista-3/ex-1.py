@@ -52,15 +52,12 @@ def encode(data: str) -> str:
     # perform bit stuffing
     data = re.sub(r'11111', '111110', data)
 
-    print('in ', data)
-
     return FRAME_BORDER + data + FRAME_BORDER
 
 def decode(data: str) -> str:
 
     # remove frame borders
     data = re.sub(FRAME_BORDER, '', data)
-    print('out', data)
 
     # perform reverse bit stuffing
     data = re.sub(r'111110', '11111', data)

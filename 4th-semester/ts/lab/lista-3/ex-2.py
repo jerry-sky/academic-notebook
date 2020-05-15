@@ -193,6 +193,12 @@ if __name__ == '__main__':
     for _ in range(1, simulation_duration+1):
 
         for device in devices:
+
+            if device.exp_backoff_iterator > 15:
+                # abort
+                device.currently_transmitted_value = 0
+                device.reset_exp_backoff()
+
             if device.is_ready and random() > 1-probability:
                 device.currently_transmitted_value = data
                 data += 1
@@ -227,6 +233,6 @@ if __name__ == '__main__':
 
         propagate(ethernet_cable)
         sleep(0.1)
-        for el in map(lambda x: str(x.hp).ljust(2) + ' ' + str(x.value).ljust(5) if x is not None else '        ', ethernet_cable):
+        for el in map(lambda x: str(x.hp).ljust(2) + ' ' + str(x.value if x.value != JAMMING_SIGNAL else 'JAM').ljust(4) if x is not None else '       ', ethernet_cable):
             print(el, end=' ')
         print()
