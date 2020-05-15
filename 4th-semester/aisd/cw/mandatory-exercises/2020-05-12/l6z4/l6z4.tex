@@ -39,33 +39,51 @@ Należy znaleźć jak najtańszą drogę do stacji końcowej $n$.
 
 \section{Concept}
 
-Reprezentujemy drogę z porozstawianymi stacjami jako DAG (directed acyclic graph) gdzie każda z krawędzi ma jakąś wagę. Odległość pomiędzy stacjami (wierzchołkami na grafie) możemy prosto obliczyć: $d_{i\to j} = i-j, i\le j$, gdzie $i$ oraz $j$ to indeksy stacji.
-Wówczas wagi krawędzi można obliczać poprzez pomnożenie odległości między stacjami przez cenę paliwa w stacji początkowej dla tej krawędzi: $f\big((i,j)\in E\big) = d_{i\to j} \cdot w_i$. Jednakże, algorytm musi brać pod uwagę parametr $W$, będący ograniczeniem mówiącym, ile litrów może zostać wziętych przez samochód. Wystarczy wprowadzić „zakaz” tworzenia krawędzi pomiędzy stacjami, gdzie odległość jest większa niż $W$.
+Rozważamy drogę, po której jedzie samochód jako DAG (directed acyclic graph). Wierzchołkami w tym grafie są stacje. Krawędzie pomiędzy wierzchołkami tworzymy tylko wtedy kiedy pozwala na to zasięg samochodu. Jednakże, w takim modelu nie rozważamy sytuacji kiedy tankujemy więcej paliwa niż potrzebujemy do dojechania do następnej stacji, a może być sytuacja, że zatankowanie wcześniej większej ilości paliwa dałoby tańszą podróż. Musimy zatem rozszerzyć wierzchołki reprezentujące stacje o dodatkową informację — ilość pozostałego paliwa w baku samochodu.
+
+Zatem rozbijamy wierzchołki reprezentujące poszczególne stacje na grupy wierzchołków oznaczanych przez parę $(k,i)$ gdzie $k$ to indeks stacji, a $i$ to liczba litrów paliwa pozostałego w baku po dojechaniu do tej stacji.
 
 \section{Rozwiązanie}
 
-Przygotowujemy odpowiedni graf. Sortowanie topologiczne nie jest potrzebne, bo trzymamy się oryginalnej kolejności stacji na drodze. Dalej, dla każdego wierzchołka generujemy krawędzie do wszystkich wierzchołków oddalonych o maksymalnie $W$.
+Budujemy odpowiedni DAG $G=(V,E,f)$ gdzie $V$ to wierzchołki grafu, $E$ to krawędzie grafu a $f:V\times V \to \mathbb{R}$ to funkcja wag krawędzi.
+Mamy wierzchołki $(k,i)$, gdzie $k$ to indeks stacji, a $i$ to liczba litrów paliwa „nadmiarowego” (ile litrów paliwa zostało po dojechaniu do $k$tej stacji) gdzie $i\in \{0,\dots,W\}$
 
-Stosujemy algorytm wyszukiwania najkrótszej drogi w DAG-u z zadania 1. Określamy wierzchołek startowy jako stację o indeksie $0$ — czyli w poniższym algorytmie $s = 0$.
+Ustalmy ciąg $s_k$ określający kilometr stacji $k$ (odległość stacji $k$ od stacji startowej).
+Wówczas odległość między stacjami $a$, $b$ wynosi $d_{a\to b} = s_b - s_a$.
+
+Układ krawędzi i wierzchołków musi uwzględniać parametr $W$ (zasięg samochodu).
+Zaczynamy od wierzchołka źródłowego $(1,0)$ który reprezentuje stację, na której samochód rozpoczyna podróż. Dla pozostałych stacji budujemy wierzchołki $(k,i)$ dla $i\in\{0,\dots,W\}$, $k\in\{2,\dots,n\}$.
+Łączymy wierzchołki krawędziami uwzględniając zasięg oraz ile litrów paliwa „nadmiarowego” przewozi samochód. Czyli dla każdego wierzchołka $(k,i)$ rozważamy stacje o wierzchołkach $(l,j)$ takich, że $d_{k\to l} \le W - j$. Oczywiście nie łączymy wierzchołków dla tej samej stacji (czyli $\forall k~ \forall i,j~i\neq j:~ \big((k,i),(k,j)\big) \notin E$).
+
+Funkcję wag krawędzi określamy jako $f\big((k,i),(l,j)\big)=w_k\cdot\big(d_{k\to l} - i + j \big)$. Wówczas za część przebytej drogi do następnej stacji możemy „zapłacić” paliwem kupionym na którejś z poprzednich stacji.
+
+Stosujemy zmodyfikowany algorytm wyszukiwania najkrótszej drogi w DAG-u z zadania 1. Określamy wierzchołek startowy jako stację o indeksie $1$ — czyli w poniższym algorytmie $s = 0$.
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
-    \State $d \gets [\infty,\dots,\infty]$
-    \State $d[s] \gets 0$
-    \State $r \gets \big[~[~],~\dots,~[~]~\big]$
-    \For{\textbf{each} $i$ in $\{1,\dots,n\}$}:
-      \For{\textbf{each} $j$ in $\mathcal{N}(i)$}:
-        \If{$d[i] > d[j] + f(j,i)$}:
-          \State $d[i] \gets d[j] + f(j,i)$
-          \State $r[i] \gets \texttt{concat}(r[j], [i])$
-        \EndIf
+    \State $d \gets$ matrix $n \times W$ filled with $\infty$
+    \State $d[1][0] \gets 0$
+    \State $r \gets$ matrix $n \times W$ filled with $[~]$
+    \For{\textbf{each} $k$ in $\{2,\dots,n\}$}:
+      \For{\textbf{each} $i$ in $\{0,\dots,W\}$}:
+        \For{\textbf{each} $l$ in $\mathcal{N}(k)$}:
+          \For{\textbf{each} $j$ in $\{0,\dots,W\}$}:
+            \If{$d[k][i] > d[l][j] + f\big((k,i),(l,j)\big)$}:
+              \State $d[k][i] \gets d[l][j] + f\big((k,i),(l,j)\big)$
+              \State $r[k][i] \gets \texttt{concat}\Big(r[l][j], \big[ (k,i) \big]\Big)$
+            \EndIf
+          \EndFor
+        \EndFor
       \EndFor
     \EndFor
   \end{algorithmic}
 \end{algorithm}
 Gdzie $\mathcal{N}$ to funkcja definiowana przez:
-$\mathcal{N}(k) = \{j: \forall(v_k,v_j) \in E\}.$
+$\mathcal{N}(k) = \{l: \forall i,j\in\{0,\dots,W\}~ \forall \big((k,i),(l,j)\big) \in E\}.$
 
-Rozwiązaniem naszego problemu jest tablica $r[n]$ reprezentująca indeksy kolejnych stacji, które tworzą najtańszą ścieżkę oraz liczba $d[n]$ reprezentująca koszt tej podróży.
+Tablica $r[n][0]$ reprezentuje ciąg wierzchołków określających kolejne stacje i liczbę litrów pozostałego paliwa na tych stacjach podczas najtańszej podróży do końca drogi. Liczba $d[n][0]$ reprezentuje koszt tej podróży.
+
+W celu określenia na jakiej stacji ile bierzemy litrów paliwa musimy odpowiednio przetworzyć ciąg wynikowy $r[n][0]$: niech $R_p$ określa liczbę litrów paliwa pozostałą po dotarciu do stacji $p$tej (bierzemy stacje tylko z tego ciągu wynikowego z zachowaniem oryginalnych indeksów stacji).
+Ciągiem określającym nasz ostateczny wynik będzie $S_n$, gdzie $S_p$ to liczba litrów paliwa, którą samochód musi zatankować na stacji $p$tej. Element tego ciągu obliczamy w następujący sposób: $S_p = d_{p\to p+1} + R_{p+1} - R_p$ przy czym $S_n = 0$.
 
 \end{document}
