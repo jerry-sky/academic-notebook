@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from typing import List, Tuple, Iterable
-from sys import argv, exit
+from sys import argv, exit, stderr
 from errors import Errors, COLOURS
 from math import log10
+import os
 
 
 def one_byte(f) -> int:
@@ -84,27 +85,77 @@ def quantize(input_image: str, output_image: str, r_bits: int, g_bits: int, b_bi
     return err
 
 
+def generate_all_RGB_combinations(pixel_bits_count: int):
+    """Generates all possible combinations of bit spread across all colour channels.
+    """
+    for r in range(0, pixel_bits_count+1):
+        for g in range(0, pixel_bits_count+1):
+            for b in range(0, pixel_bits_count+1):
+                if r + g + b == pixel_bits_count:
+                    yield (r, g, b)
+
+
 if __name__ == '__main__':
 
-    if len(argv) < 6:
-        exit('usage: ./main.py <input file> <output file> <red bits count> <blue bits count> <green bits count>')
+    if len(argv) < 5:
+        exit('usage: ./main.py <input file> <output file> <bit depth (bits per pixel)> <bit spread measure: MSE|SNR>')
 
     input_image = argv[1]
     output_image = argv[2]
-    red_bits_count = int(argv[3])
-    blue_bits_count = int(argv[4])
-    green_bits_count = int(argv[5])
+    pixel_depth = int(argv[3])
+    bit_spread_measure = argv[4]
 
-    results = quantize(input_image, output_image,
-                       red_bits_count, blue_bits_count, green_bits_count)
+    tmp_output_image = '__tmp__' + output_image
+
+    if bit_spread_measure not in ['MSE', 'SNR']:
+        exit('invalid option for bit spread measure; only „MSE” or „SNR” are allowed')
+
+    # go through all possible RGB spread combinations
+    rgb_combinations = generate_all_RGB_combinations(pixel_depth)
+
+    # run the first time so we have something to compare with
+    best_bit_spread = next(rgb_combinations)
+    best_results = quantize(input_image, output_image, *best_bit_spread)
+
+
+    # go through the rest of the generated bit spreads
+    for bit_spread in rgb_combinations:
+        # store it in a separate file not to overwrite the best output image found so far
+        results = quantize(input_image, tmp_output_image, *bit_spread)
+        # if it is in fact better, replace the image with the newly generated one
+        better = False
+        if bit_spread_measure == 'MSE':
+            # compare the highest MSE
+            if max(results.calc_mse(c) for c in COLOURS) < max(best_results.calc_mse(c) for c in COLOURS):
+                better = True
+        else: # bit_spread_measure == 'SNR'
+            # compare the lowest SNR
+            if min(results.calc_snr(c) for c in COLOURS) > min(best_results.calc_snr(c) for c in COLOURS):
+                better = True
+
+        if better:
+            best_results = results
+            best_bit_spread = bit_spread
+            # overwrite the existing best result file
+            os.remove(output_image)
+            os.rename(tmp_output_image, output_image)
+            # report
+            print('found a better bit spread!', str(best_bit_spread), file=stderr)
+
+    # clean up
+    if os.path.exists(tmp_output_image):
+        os.remove(tmp_output_image)
+
+    # print best bit spread
+    print('RGB bit spread:', str(best_bit_spread))
 
     # print the error measurements
-    print('MSE   =', results.calc_mse(''))
+    print('MSE   =', best_results.calc_mse(''))
     for colour in COLOURS[::-1]:
-        print('MSE(' + colour[0] + ')=', results.calc_mse(colour))
+        print('MSE(' + colour[0] + ')=', best_results.calc_mse(colour))
 
-    print('SNR   =', results.calc_snr(''),
-          '(' + str(10 * log10(results.calc_snr(''))) + 'dB)')
+    print('SNR   =', best_results.calc_snr(''),
+          '(' + str(10 * log10(best_results.calc_snr(''))) + ' dB)')
     for colour in COLOURS[::-1]:
-        print('SNR(' + colour[0] + ')=', results.calc_snr(colour),
-              '(' + str(10 * log10(results.calc_snr(colour))) + 'dB)')
+        print('SNR(' + colour[0] + ')=', best_results.calc_snr(colour),
+              '(' + str(10 * log10(best_results.calc_snr(colour))) + ' dB)')

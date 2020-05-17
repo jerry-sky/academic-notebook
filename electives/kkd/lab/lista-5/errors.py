@@ -27,6 +27,7 @@ class Errors(object):
         if colour in COLOURS:
             return self._mse[colour] / self._count[colour]
         else:
+            # calc as a whole pixel
             top = 0
             bottom = 0
             for c in COLOURS:
@@ -36,13 +37,18 @@ class Errors(object):
 
     def calc_snr(self, colour: str):
 
+        top = 0
+        bottom = 0
         if colour in COLOURS:
             # (1/N) / (1/N) = 1
-            return self._snr[colour] / self._mse[colour]
+            top = self._snr[colour]
+            bottom = self._mse[colour]
         else:
-            top = 0
-            bottom = 0
+            # calc as a whole pixel
             for c in COLOURS:
                 top += self._snr[c]
                 bottom += self._mse[c]
+        if bottom > 0:
             return top / bottom
+        else:
+            return float('inf')
