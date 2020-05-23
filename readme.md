@@ -12,7 +12,7 @@ Please note:
 ### Electives
 
   - [Wstęp do Teorii Grafów](electives/wtg/readme.md)
-  - [Algorytmy Metaheurystyczne](electives/am/readme.md)
+  - [Algorytmy Metaheurystyczne](electives/amh/readme.md)
   - [Kodowanie i kompresja danych](electives/kkd/readme.md)
   - [Kurs wybranego języka programowania (Python)](electives/py/readme.md)
 

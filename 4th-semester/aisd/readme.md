@@ -51,8 +51,8 @@
   \*odwołane z powodu koronawirusa
 
   ### Ćwiczenia
-  - [Lista 1](cw/lista-1.md)
-  - [Lista 2](cw/lista-2.md)
+  - [Lista-1](cw/lista-1.md)
+  - [Lista-2](cw/lista-2.md)
 
   ### Laboratorium
   #### Verbindung
@@ -63,5 +63,7 @@
   - [.bashrc](lab/.bashrc) *custom bash prompt*
 
   #### Listy
-  - [Lista 1](lab/lista-1/readme.md)
-  - [Lista 2](lab/lista-2/readme.md)
+  - [Lista-1](lab/lista-1/readme.md)
+  - [Lista-2](lab/lista-2/readme.md)
+  - [Lista-3](lab/lista-3/readme.md)
+  - [Lista-4](lab/lista-4/readme.md)

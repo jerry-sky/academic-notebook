@@ -9,3 +9,5 @@
 
   ### Laboratorium
   - [Lista-1](lab/lista-1.md)
+  - [Lista-2](lab/lista-2/readme.md)
+  - [Lista-3](lab/lista-3/readme.md)
