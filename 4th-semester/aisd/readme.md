@@ -47,6 +47,8 @@
       **Koszt zamortyzowany**](wyk/2020-04-22/koszt-zamortyzowany.md)
   - [2020-04-27\*\
       **Kopiec binarny**](wyk/2020-04-27/binary-heap.md)
+  - [2020-05-04\*\
+      **Kolejka priorytetowa**](wyk/2020-05-04/kolejka-priorytetowa.md)
 
   \*odwołane z powodu koronawirusa
 
