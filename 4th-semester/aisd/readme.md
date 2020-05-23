@@ -56,7 +56,7 @@
 
   ### Laboratorium
   #### Verbindung
-  Execute `connect.sh` to connect to the remote Ubuntu machine for testing programs.
+  Execute `connect.sh` to connect to the remote Ubuntu machine for testing programs. *You need to have access to the private part of this repository.*\
   Attached config files:
 
   - [.vimrc](lab/.vimrc) *VIM standard config*
