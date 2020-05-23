@@ -45,6 +45,8 @@
     - [**Longest Common Subsequence (LCS)**](wyk/2020-04-20/longest-common-subsequence.md)
   - [2020-04-22\*\
       **Koszt zamortyzowany**](wyk/2020-04-22/koszt-zamortyzowany.md)
+  - [2020-04-27\*\
+      **Kopiec binarny**](wyk/2020-04-27/binary-heap.md)
 
   \*odwołane z powodu koronawirusa
 
