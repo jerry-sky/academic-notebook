@@ -1,0 +1,3 @@
+[submodule "private"]
+	path = private
+	url = https://github.com/jerry-sky/academic-notebook-private
