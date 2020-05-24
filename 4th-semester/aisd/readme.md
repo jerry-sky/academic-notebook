@@ -49,6 +49,11 @@
       **Kopiec binarny**](wyk/2020-04-27/binary-heap.md)
   - [2020-05-04\*\
       **Kolejka priorytetowa**](wyk/2020-05-04/kolejka-priorytetowa.md)
+  - 2020-05-06\* & 2020-05-11\*
+    - [**Grafy (przypomnienie)**](wyk/2020-05-06/def-grafy.md)
+    - [**DFS (Depth First Search)**](wyk/2020-05-06/depth-first-search.md)
+    - [**DFS na grafach skierowanych**](wyk/2020-05-11/dfs-directed-graphs.md)
+    - [**Skierowane grafy acykliczne (DAG)**](wyk/2020-05-11/directed-acyclic-graphs.md)
 
   \*odwołane z powodu koronawirusa
 
