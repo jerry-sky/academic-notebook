@@ -81,6 +81,10 @@ Teraz możemy określić algorytm znajdujący silnie połączone składowe grafu
 Złożoność obliczeniowa:\
 Algorytm wyznaczania składowych silnie spójnych polega na dwukrotnym wykonaniu procedury DFS, która działa w czasie liniowym. Zatem złożoność obliczeniowa algorytmu wyznaczania składowych silnie spójnych to $O(|V| + |E|)$.
 
+## Przykład
+
+![example](strongly-connected-components-example.png)
+
 ## More
 
 - [Chapter 3](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf)
