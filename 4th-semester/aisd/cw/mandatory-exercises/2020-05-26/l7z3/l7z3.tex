@@ -1,0 +1,103 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 7}
+\author{Zadanie 3}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Należy zaimplementować kolejkę priorytetową na bazie Binary Search Tree.
+
+\section{Concept}
+
+Musimy odpowiednio zaimplementować wszystkie operacje, które można wykonać na kolejce priorytetowej:
+\begin{enumerate}
+  \item \texttt{Insert}
+  \item \texttt{Minimum}
+  \item \texttt{ExtractMin}
+  \item \texttt{DecreaseKey}
+  \item \texttt{Union}
+  \item \texttt{Delete}
+\end{enumerate}
+
+W celu osiągnięcia jak najlepszej złożoności obliczeniowej użyjemy tutaj drzew czerwono-czarnych, które są rozszerzeniem drzew BST.
+
+\section{Rozwiązanie}
+
+W przypadku operacji \texttt{Insert}, \texttt{Minimum}, \texttt{Delete} wykorzystujemy standardowe operacje o takiej samej nazwie, które już są w RB-Tree. Złożoność obliczeniowa tych procedur to $O(\lg n)$.
+
+Operacja \texttt{ExtractMin} działa w taki sam sposób jak \texttt{Minimum}, przy czym dodatkowo wywoływana jest funkcja \texttt{Delete} na tym samym elemencie. Złożoność obliczeniowa wynosi $O(\lg n)$, ponieważ obie te operacje mają taką złożoność.
+
+Operacja \texttt{DecreaseKey} najpierw usuwa zadany element i wstawia go ponownie ze zmniejszonym priorytetem. Złożoność obliczeniowa operacji \texttt{Insert} i \texttt{Delete} wynosi $O(\lg n)$ więc złożoność niniejszej operacji również wynosi $O(\lg n)$.
+
+Operacja \texttt{Union}$(A,B)$ najpierw wykonuje operację \texttt{inorder} na obu drzewach, następnie wykonuje operację \texttt{merge} która scala te dwie posortowane tablice w jedną, a następnie tworzy nowe drzewo przy pomocy poniższego algorytmu:
+
+\begin{algorithm}[H]
+  \caption{\texttt{sorted\_array\_to\_RBT}}
+  \begin{algorithmic}[1]
+    \State $n = \texttt{length}(\texttt{merged})$
+
+    \If{$n=0$}:
+      \State \texttt{return}
+    \EndIf
+
+    \State $\texttt{middle} \gets \left\lfloor\frac{n}{2}\right\rfloor$
+    \State $\texttt{root} \gets \texttt{merged}[\texttt{middle}]$
+    \State $\texttt{root}.\mathrm{left} \gets \texttt{sorted\_array\_to\_RBT}(\texttt{merged}[0\dots\texttt{middle}-1])$
+    \State $\texttt{root}.\mathrm{right} \gets \texttt{sorted\_array\_to\_RBT}(\texttt{merged}[\texttt{middle}+1\dots n])$
+    \State \texttt{return root}
+  \end{algorithmic}
+\end{algorithm}
+
+Złożoność powyższego algorytmu wynosi $O(n)$, ponieważ wykonujemy $n$ razy operacje o złożoności $O(1)$. Złożoność obliczeniowa obu pozostałych operacji \texttt{inorder} i \texttt{merge} wynosi $O(n)$.
+Zatem złożoność operacji \texttt{Union} również wynosi $O(n)$.
+
+Porównanie złożoności obliczeniowych dla dwóch implementacji kolejki priorytetowej:
+
+\begin{center}
+  \begin{tabular}{|c|c c|}
+  \hline
+   & Drzewo binarne (RB-Tree) & Kopiec binarny \\ [0.5ex]
+  \hline\hline
+  \texttt{Insert} & $O(\lg n)$ & $O(\lg n)$  \\
+  \hline
+  \texttt{Minimum} & $O(\lg n)$ & $O(1)$ \\
+  \hline
+  \texttt{ExtractMin} & $O(\lg n)$ & $O(\lg n)$ \\
+  \hline
+  \texttt{DecreaseKey} & $O(\lg n)$ & $O(\lg n)$ \\
+  \hline
+  \texttt{Union} & $O(n)$ & $O(n)$ \\
+  \hline
+  \texttt{Delete} & $O(\lg n)$ & $O(\lg n)$ \\
+  \hline
+  \end{tabular}
+\end{center}
+
+\end{document}
