@@ -115,3 +115,39 @@ $$
 |C| = |X\setminus B| = |X| - |B| \ge |X| - k.
 $$
 Zatem istnieją rozbicie $\mathcal{L}$ na łańcuchy oraz antyłańcuch $C$ takie, że $|C|\ge|\mathcal{L}|$, co kończy dowód.
+
+### Przykład zastosowania Dilwortha
+
+Typowe użycie twierdzenie Dilwortha: rozważamy częściowy porządek na zbiorze $X = \{1,\dots,n\} \times \{1,\dots,n\}$ określony wzorem:
+$$
+(x,y) \preceq (x', y') \leftrightarrow (x\le x') \land (y\le y')
+$$
+
+Jaka jest moc największego antyłańcucha?
+
+![example](dilworth-częściowy-porządek-example.png)
+
+Na pierwszym rysunku mamy antyłańcuch mocy $n$ (czerwone kropki)\
+Na drugim rysunku mamy rozbicie na $n$ łańcuchów (różne kolory). Wiemy, że $\max\{\text{antyłańcuch}\} = \min\{\text{rozbicie}\}$, więc w naszym przykładzie mamy
+$$
+n \le \max\{\text{antyłańcuch}\} = \min\{\text{rozbicie}\} \le n
+$$
+więc największa moc antyłańcucha jest równa $n$.
+
+Czyli: **metoda ta polega na znalezieniu antyłańcucha i rozbicia na łańcuchy tej samej mocy.**
+
+Zadanie: *Rozwiąż to zadanie bez korzystania z twierdzenie Dilwortha.*
+
+Spójrzmy na ostatni przykład bardziej abstrakcyjnie. Załóżmy, że mamy dwa zbiory $A$ i $B$ oraz na funkcje $f: A\to \mathbb{R}$ i $g: B\to \mathbb{R}$. Załóżmy, że wiemy, że:
+$$
+\Big(~ \max\{f(a): a\in A\} \le \min\{g(b): b\in B\} ~\Big) \equiv (*)
+$$
+(czyli $(\forall a\in A)(\forall b \in B)(~f(a)\le g(b)~)$).
+
+Załóżmy ponadto, że udało nam się wskazać na dwa obiekty $a_0 \in A$ oraz $b_0 \in B$ takie, że $f(a_0) = g(b_0)$.\
+Wówczas:
+$$
+f(a_0) = \max\{f(a): a\in A\} = \min\{g(b): b\in B\}
+$$
+A z warunkami typu $(*)$ mieliśmy już kilka razy do czynienia. Na przykład, twierdzenie Mengera można zapisać skrótowo jako $\max\{|P|: P\text{ jest }(A,B)\text{-ścieżką}\} = \min\{|C|: C\text{ jest }(A,B)\text{-separatorem}\}$ (przy czym nierówność $\le$ jest oczywista), zaś twierdzenie Königa jako $\max\{|L|: L\text{ jest skojarzeniem}\} = \min\{|A|: A\text{ jest pokryciem}\}$ (gdzie nierówność $\le$ jest ponownie oczywista).
+
