@@ -5,8 +5,7 @@
 
 ## Zadanie 1
 
-> Niech $G$ będzie grafem prostym. Pokaż, że $G$ jest spójny lub $\overline{G}$ (dopełnienie grafu $G$) jest
-spójny. Podaj przykład takiego grafu $G$,że zarówno $G$ jak i $\overline{G}$ są grafami spójnymi.
+> Niech $G$ będzie grafem prostym. Pokaż, że $G$ jest spójny lub $\overline{G}$ (dopełnienie grafu $G$) jest spójny. Podaj przykład takiego grafu $G$,że zarówno $G$ jak i $\overline{G}$ są grafami spójnymi.
 
 1.
    1. Jeśli $G$ jest spójny to *done*.
