@@ -1,7 +1,24 @@
 # Lista-1 *Wstęp do teorii grafów*
 
 ## Index
+
   - [Zadanie 1](#zadanie-1)
+  - [Zadanie 2](#zadanie-2)
+  - [Zadanie 3](#zadanie-3)
+  - [Zadanie 4](#zadanie-4)
+  - [Zadanie 5](#zadanie-5)
+  - [Zadanie 6](#zadanie-6)
+  - [Zadanie 7](#zadanie-7)
+  - [Zadanie 8](#zadanie-8)
+  - [Zadanie 9](#zadanie-9)
+  - [Zadanie 10](#zadanie-10)
+  - [Zadanie 11](#zadanie-11)
+  - [Zadanie 12](#zadanie-12)
+  - [Zadanie 13](#zadanie-13)
+  - [Zadanie 14](#zadanie-14)
+  - [Zadanie 15](#zadanie-15)
+  - [Zadanie 16](#zadanie-16)
+  - [Zadanie 19](#zadanie-19)
 
 ## Zadanie 1
 
@@ -27,37 +44,45 @@
    3. Analogicznie dla dowolnego $D \in V$
    4. Albo jest tak, że $( \neg(A \sim_G C) \lor \neg(A \sim_G D) )$ albo $( \neg(B \sim_G C) \land \neg(B \sim_G D) )$ albo jedno z pary $A,B$ nie jest połączone z $C$, a drugie z $D$
    5. Wtedy w każdym przypadku $C \sim_{\overline{G}} D$
+---
+2. Przykładowym grafem $G$ takim, że $G$ lub $\overline{G}$ jest spójny, jest graf z jednym wierzchołkiem lub graf $C_4$ bez jednej krawędzi.
 
 ## Zadanie 2
 
 > Niech $G = (V, E)$ będzie grafem prostym takim, że $|E| > \binom{|V|−1}{2}$. **Pokaż, że G jest grafem spójnym.**
 
-1. $|V| = n$
-2. $X = E\upharpoonright_{(V-{v_0})^2}$
-3. $H = ( V - \{v_0\}, X)$
-4. $|X| = ~?$
-5. $|X| = (n-1)(n-2) \frac{1}{2} = \binom{n-1}{2} = \binom{|V| - 1}{2}$
-6. ![graph](graphs/l1z2.png)
-7. ![graph-2](graphs/l1z2.2.png)
-8. $|X| \le \binom{|V-V_0|}{2}$
-9. $|Y| = E\upharpoonright_{[V_0]^2}$
-10. $H = (V_0, Y)$
-11. $|Y| \le \binom{|V_0|}{2}$
-12. $|X| + |Y| \le \binom{n-k}{2} + \binom{k}{2} = \binom{n}{2} - k(n-k) \le \binom{n-1}{2} = (*)$ - nierówność zachodzi dla $k=1$ i $k=n-1$
-13. $(*) < |E|$
+Udowodnimy, że graf $\overline{G}$ jest niespójny.
 
-Zatem $E \supsetneq X \cup Y$, czyli graf jest spójny.
+Niech $|V| = n$.\
+W grafie $G$ mamy $|E| > \binom{n-1}{2}$.
+
+Wówczas w grafie $\overline{G} = (V,E')$ mamy
+$$
+E' = \binom{n}{2} - |E| < \binom{n}{2} - \binom{n-1}{2} =
+\\
+= \frac{n\cdot (n-1)}{2} - \frac{(n-1)(n-2)}{2} =
+\\
+= \frac{1}{2}((n-1) \cdot (n - (n-2))) =
+\\
+= \frac{1}{2}((n-1) \cdot 2) =
+\\
+= n-1
+$$
+co daje nam za małą (o jeden) liczbę krawędzi, żeby zbudować spójny graf. Zatem skoro $\overline{G}$ jest niespójny, wówczas $G$ jest spójny na mocy wyniku [zadania pierwszego](#zadanie-1).
 
 ## Zadanie 3
 
 > Pokaż, że w każdym grafie prostym o co najmniej dwóch wierzchołkach są dwa wierzchołki o takim samym rzędzie.
 
 $n = |V|$\
-$( \forall{v\in{V}}: 0 \le deg(v) \le n-1 )$
-
+Case #1:\
+$( \forall{v\in{V}}: 0 \le deg(v) \le n-1 )$\
 $\exists{v_0}: deg(v_0) = 0 \implies \neg\exists{v_1}: deg(v_1) = n-1$
 
-Więcej wierzchołków niż rzędów bo *Dirichlet*.
+Case #2:\
+$\neg\exists v\in V: \deg(v) = 0 \implies \forall v \in V: \deg: V \to \{1,\dots,n-1\}$
+
+Więcej wierzchołków niż rzędów bo *Dirichlet* (pigeon principle).
 
 ## Zadanie 4
 
@@ -154,25 +179,43 @@ $K_{2,2}$
 > \sum_{e\in E}w(e) = \sum_{v\in V}\deg^2(x)
 > $$
 
-$\varphi(e) = \{x,y\}$, $w(e) = \deg(x) + \deg(y)$\
-Jeśli $x=y$, to wtedy $w(e) = 2\deg(x)$
+Musimy dokonać podziału na pętle oraz krawędzie pomiędzy dwoma różnymi wierzchołkami:\
+$L = \{ e \in E: |\varphi(e)| = 1 \}$\
+$D = \{ e \in E: |\varphi(e)| = 2 \}$
+
+Liczymy $\sum_{e}w(e)$ dla obu powyższych zbiorów osobno.
 
 $$
-\sum_{e \in E}w(e) = \sum_{\{x,y\} \in E}\deg(x) + \deg(y) = \sum_{x \in V}\deg^2(x)
+\sum_{e \in L}w(e) = \sum_{e \in L}\sum_{x}\llbracket\varphi(e) = \{x\}\rrbracket(2\cdot \deg(x))=
+\\
+= \sum_{x} 2 \cdot \deg(x) \cdot \sum_{e \in L}\llbracket \varphi(e) = \{x\} \rrbracket
 $$
 
-```
-  _2_
- |  /
-1| /
- |/
-```
+$$
+\sum_{e \in D}w(e) =
+\sum_{\{x,y\} \in D}( \deg(x) + \deg(y) )
+\\
+= \frac{1}{2}\sum_{\{x,y\} \in V} \llbracket\{x,y\} \in D\rrbracket\Big( \deg(x) + \deg(y) \Big)=
+\\
+= \frac{1}{2}\bigg( \sum_{x \in V} \sum_{y \in V}\Big( \llbracket \{x,y\} \in D\rrbracket \deg(x) ) + \sum_{x \in V} \sum_{y \in V} \Big( \llbracket \{x,y\} \in D \rrbracket \deg(y) \Big) \bigg) =
+\\
+= \frac{1}{2}\bigg( \sum_x\deg(x)\Big( \sum_y \llbracket\{x,y\} \in D\rrbracket \Big) + \sum_y\deg(y) \Big( \sum_x\llbracket\{x,y\} \in D\rrbracket \Big) \bigg) =
+\\
+= \sum_x\deg(x)\sum_{e\in D}\llbracket \varphi(e) = \{x,y\} \rrbracket
+$$
+
+Łączymy:
+$$
+\sum_{x}\deg(x)\left( 2 \cdot \sum_{e \in L}\llbracket \varphi(e) = \{x\} \rrbracket + \sum_{e\in D}\llbracket \varphi(e) = \{x,y\} \rrbracket \right)=
+\\
+=\sum_{x\in L \cup D}\deg(x)\deg(x) = \sum_{x\in E}\deg(x)
+$$
 
 ## Zadanie 9
 
 > Pokaż, że w każdym spójnym grafie prostym o dwóch lub więcej wierzchołkach istnieją co najmniej dwa nierozcinające wierzchołki.
 >
-> *Uwaga*: Odłóżmy to zadanie do czasu aż zapoznacie się pojęciem drzewa.
+> *Uwaga*: Odłóżmy to zadanie do czasu aż zapoznacie się z pojęciem drzewa.
 >
 > *Uwaga*: Wierzchołek x nazywamy nierozcinającym jeśli jego usunięcie nie zwiększa liczby składowych spójnych grafu.
 >
@@ -236,7 +279,7 @@ $G = G[X,Y]$ $\leftarrow$ dwudzielny
 1. $\sum_{x \in X}\deg(x) = |E| = \sum_{y \in Y}\deg(y)$
 2. zał. że $G$ - regularny\
    $\forall v \in V~\deg(v) = d$\
-   $\sum_{i=1}^{|X|}d = |X|\cdot d = \sum_{i=1}^{|Y|}$, $d = |Y|\cdot d \implies |X| = |Y|$
+   $\sum_{i=1}^{|X|}d = |X| \cdot d = \sum_{i=1}^{|Y|}d = |Y| \cdot d \implies |X| = |Y|$
 
 $\blacksquare$
 
@@ -246,7 +289,7 @@ $\blacksquare$
 
 ![l1z12](graphs/l1z12.png)
 
-$\neg(G_1 \cong_{IZO} G_2)$, bo w $G_2$ wierzchołki o stopniu $3$ sąsiadują ze sobą a w $G$ nie.
+$\neg(G_1 \cong_{IZO} G_2)$, bo w $G_2$ wierzchołki o stopniu $3$, *nie licząc bezpośredniej krawędzi*, dzielą ich dwa wierzchołki, a w $G_1$ tylko jeden.
 
 ## Zadanie 13
 
@@ -267,12 +310,24 @@ $\neg(G_1 \cong_{IZO} G_2)$, bo w $G_2$ wierzchołki o stopniu $3$ sąsiadują z
 >
 > *Wskazówka*: $\vDash \Big(\big(p \leftrightarrow q\big) \leftrightarrow \big((\neg p) \leftrightarrow (\neg q)\big)\Big)$
 
-1. „$\implies$”:
-   1. $G_1 = (V_1, E_1)$
-   2. $G_2 = (V_2, E_2)$
-   3. $\varphi: V_1 \xrightarrow[„na”]{1-1} V_2$
-   4. $\{x,y\} \in E_1 \iff \{\varphi(x), \varphi(y)\} \in E_2$
-   5. $\{a,b\} \in \overline{E}_1 \iff \{a,b\} \notin E_1 \iff \{\varphi(a), \varphi(b)\} \notin E_2 \iff \{\varphi(a), \varphi(b)\} \in \overline{E}_2$
+Mamy izomorfizm $\varphi: V_1 \xrightarrow[„na”]{1-1} V_2$\
+gdzie $V_1 = V(G_1), V_2 = V(G_2)$.
+
+Niech $E_1' = V(\overline{G_1}), E_2' = V(\overline{G_2})$.
+
+Skoro
+$$
+\{u,v\} \in E_1 \iff \{\varphi(u), \varphi(v)\} \in E_2
+$$
+oraz
+$$
+\{u,v\} \notin E_1 \iff \{\varphi(u), \varphi(v)\} \notin E_2
+$$
+wówczas
+$$
+\{u,v\} \in E_1' \iff \{\varphi(u), \varphi(v)\} \in E_2'
+$$
+$\forall~ u,v \in V_1$.
 
 ## Zadanie 15
 
@@ -287,7 +342,7 @@ $\neg(G_1 \cong_{IZO} G_2)$, bo w $G_2$ wierzchołki o stopniu $3$ sąsiadują z
 >
 > *Wskazówka*: Dowód jest dość pomysłowy: zauważ, że:
 >    $$
->    |X| = \sum_{x\in X}1 = \sum_{x\in x}\sum_{y\in Y}\big\lVert\{x,y\} \in E\big\rVert \frac{1}{\deg(x)}
+>    |X| = \sum_{x\in X}1 = \sum_{x\in x}\sum_{y\in Y}\llbracket\{x,y\} \in E\rrbracket \frac{1}{\deg(x)}
 >    $$
 
 $$
