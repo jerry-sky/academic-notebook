@@ -119,11 +119,10 @@ $0 \le k \le \lfloor\frac{n-2}{2}\rfloor$
 
 *Hiper-kostki*
 
-- regularny $\forall{w, v \in V}: deg(w) = deg(v)$
+- $n$-regularny $\forall{w, v \in V}: deg(w) = deg(v)$
+- $\forall_{v \in V}: \deg(v) = n$
 - $|V| = 2^n$
-- $|E| = 2^{n-1}n$
-
-Rząd elementów $\frac{2^{n-1}n}{2^n}$
+- $|E| = \frac{2^{n}\cdot n}{2} = 2^{n-1}\cdot n$
 
 ![hiperkostka](graphs/hiperkostka.png)
 
@@ -132,12 +131,14 @@ $V \ni (1,1,1,1,...,1)$ *(n jedynek)*
 
 $diam(Q_n) = n$
 
+*Trzeba odwrócić wszędzie tam gdzie są jedynki na zera lub odwrotnie, a miejsc mamy właśnie $n$.*
+
 ## Zadanie 6
 
 > Pokaż, że dla każdego $n\ge1$ hiper-kostka $Q_n$ jest grafem dwudzielnym.
 
 $n \ge 1$\
-$Q$ - graf dwudzielny\
+$Q_n$ - graf dwudzielny\
 $f(v)$ - liczba jedynek w zapisie binarnym wierzchołka $v$
 
 Dla każdego sąsiada $w$ wierzchołka $v$\
@@ -342,23 +343,13 @@ $\forall~ u,v \in V_1$.
 >
 > *Wskazówka*: Dowód jest dość pomysłowy: zauważ, że:
 >    $$
->    |X| = \sum_{x\in X}1 = \sum_{x\in x}\sum_{y\in Y}\llbracket\{x,y\} \in E\rrbracket \frac{1}{\deg(x)}
+>    |X| = \sum_{x\in X}1 = \sum_{x\in X}\sum_{y\in Y}\llbracket\{x,y\} \in E\rrbracket \frac{1}{\deg(x)}
 >    $$
 
 $$
-|X| = \sum_{x\in X}1 = \sum_{x\in x}\sum_{y\in Y}\big\lVert\{x,y\} \in E\big\rVert \frac{1}{\deg(x)} \le\\
+|X| = \sum_{x\in X}1 = \sum_{x\in X}\sum_{y\in Y}\big\lVert\{x,y\} \in E\big\rVert \frac{1}{\deg(x)} \le\\
 
 \le \sum_{x\in X}\sum_{y\in Y}\left(\left\lVert\{x,y\}\in E\right\rVert\cdot\frac{1}{\deg(y)}\right) = \sum_{y\in Y}=|Y|
-$$
-
-$$
-(\forall x,y)(\deg(x) \ge \deg(y)) \implies \min\{\deg(x)\} \ge \max\{\deg(y)\}
-$$
-
-$$
-\sum_{x\in X}\min_{x\in X}\{\deg(x)\} \le \sum_{x\in X}\deg(x) = \sum_{y\in Y}\deg Y \le\\
-\le \sum_{y\in Y}\max_{y\in Y}\{\deg(y)\} = |Y|\max\{\deg(y)\} \le\\
-\le |Y| \min\{\deg(x)\}
 $$
 
 ## Zadanie 19
