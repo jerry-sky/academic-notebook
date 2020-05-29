@@ -39,11 +39,11 @@
 
       <img width="256px" src="graphs/l1z1c.png"/>
 1'.
-   1. Załóżmy, że $G$ nie jest spójny, czyli $(\exists{A,B\in{V}}): \neg{A \sim_G B}$
-   2. Weźmy dowolne $c \in V$, wówczas $\neg{(A \sim_G C \land C \sim_G B)}$, czyli istnieje $( \neg(A \sim_G C) \lor \neg(C \sim_G B) )$
-   3. Analogicznie dla dowolnego $D \in V$
-   4. Albo jest tak, że $( \neg(A \sim_G C) \lor \neg(A \sim_G D) )$ albo $( \neg(B \sim_G C) \land \neg(B \sim_G D) )$ albo jedno z pary $A,B$ nie jest połączone z $C$, a drugie z $D$
-   5. Wtedy w każdym przypadku $C \sim_{\overline{G}} D$
+   1. Załóżmy, że $G$ nie jest spójny, czyli $(\exists{a,b\in{V}}): \neg{a \sim_G b}$
+   2. Weźmy dowolne $c \in V$, wówczas $\neg{(a \sim_G c \land c \sim_G b)}$, czyli istnieje $( \neg(a \sim_G c) \lor \neg(c \sim_G b) )$
+   3. Analogicznie dla dowolnego $d \in V$
+   4. Albo jest tak, że $( \neg(a \sim_G c) \lor \neg(a \sim_G d) )$ albo $( \neg(b \sim_G c) \lor \neg(b \sim_G d) )$ albo jedno z pary $a,b$ nie jest połączone z $c$, a drugie z $d$
+   5. Wtedy w każdym przypadku $c \sim_{\overline{G}} d$
 ---
 2. Przykładowym grafem $G$ takim, że $G$ lub $\overline{G}$ jest spójny, jest graf z jednym wierzchołkiem lub graf $C_4$ bez jednej krawędzi.
 
@@ -124,7 +124,7 @@ $0 \le k \le \lfloor\frac{n-2}{2}\rfloor$
 - $|V| = 2^n$
 - $|E| = \frac{2^{n}\cdot n}{2} = 2^{n-1}\cdot n$
 
-![hiperkostka](graphs/hiperkostka.png)
+![hiperkostka](graphs/l1z5.png)
 
 $V \ni (0,0,0,0,...,0)$ *(n zer)*\
 $V \ni (1,1,1,1,...,1)$ *(n jedynek)*
@@ -152,11 +152,7 @@ $Y = V \setminus X$
 
 > Pokaż, że grafy $Q_2$ i $K_{2,2}$ są izomorficzne.
 
-$Q_2$
-![l1z7-q2](graphs/l1z7-q2.png)
-
-$K_{2,2}$
-![l1z7-k2,2](graphs/l1z7-k2,2.png)
+![graphs](graphs/l1z7.png)
 
 | $a$   | $\varphi(a)$ |
 | ----- | ------------ |
