@@ -3,6 +3,8 @@
 
 - [Lista-4](#lista-4)
   - [Zadanie 42](#zadanie-42)
+  - [Zadanie 43 *świąteczne*](#zadanie-43-świąteczne)
+  - [Zadanie 44](#zadanie-44)
   - [Zadanie 45](#zadanie-45)
   - [Zadanie 48](#zadanie-48)
 
@@ -12,6 +14,30 @@
 > Przedstaw grafy $K_{3,3}$ i $K_5$ jako grafy na płaszczyźnie z minimalną liczbą przecięć.
 
 ![solution](l4z42.png)
+
+## Zadanie 43 *świąteczne*
+
+> Zaopatrz się w brystol, wytnij na podstawie następującego rysunku [rysunek] szablony brył platońskich i sklej je.
+
+![solution](l4z43.png)
+![alternative solution](l4z43-2.png)
+
+## Zadanie 44
+
+> Pokaż, że graf Petersena nie jest planarny.
+> *Wskazówka: Usuń dwie ”poziome” krawędzie i skorzystaj z twierdzenia Kuratowskiego.*
+
+Usuwamy dwie „poziome” krawędzie według wskazówki:
+![1](l4z44-1.png)
+
+Następnie kondensujemy zaznaczone krawędzie:
+![2](l4z44-2.png)
+
+Wówczas otrzymujemy graf $K_{3,3}$ który nie jest planarny:
+![3](l4z44-3.png)
+
+Możemy dodatkowo przesunąć górny wierzchołek na dół, żeby ujrzeć bardziej *klasyczną* wersję tego grafu.
+![4](l4z44-4.png)
 
 ## Zadanie 45
 

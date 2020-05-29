@@ -4,6 +4,7 @@
 - [Lista-3](#lista-3)
   - [Zadanie 25](#zadanie-25)
   - [Zadanie 26](#zadanie-26)
+  - [Zadanie 33](#zadanie-33)
   - [Zadania 38, 39](#zadania-38-39)
 
 ## Zadanie 25
@@ -28,6 +29,24 @@ $$
 $$
 
 Co oznacza, że albo każdy wierzchołek ma parzysty $\deg$ (poza zakresem zadania) albo liczba wierzchołków o nieparzystym $\deg$ jest parzysta. Jako, że wiemy o istnieniu takiego wierzchołka $v$, że $2 \nmid \deg(v)$ to ta liczba musi wynosić przynajmniej $2$ – czyli istnieje drugi wierzchołek $u$ o takim samym $\deg$.
+
+## Zadanie 33
+
+> Wyznacz liczbę grafów rozpinających w grafach $K_{2,n}$.
+
+Nazwijmy dwie części grafu $A$ oraz $B$ gdzie $A$ to dwa wierzchołki z pierwszej składowej $K_{\bold{2},n}$, a $B$ to pozostałe $n$ wierzchołków z drugiej składowej.
+
+Wyznaczmy pierwsze drzewo startując na jednym z wierzchołków ze zbioru $A$:
+![1](z33-1.png)
+
+Wybieramy jeden wierzchołek z $B$ który łączymy z wszystkimi wierzchołkami ze zbioru $A$.
+
+Teraz musimy doliczyć wszystkie pozostałe drzewa rozpinające.
+Zauważmy, że musi być zawsze jeden wierzchołek z $B$ łączący oba wierzchołki z $A$ (swego rodzaju *mediator* pomiędzy wierzchołkami z $A$). Mamy $n$ możliwości do wyboru takiego wierzchołka.
+
+Następnie musimy rozdystrybuować resztę $n-1$ wierzchołków z $B$ pomiędzy dwa wierzchołki z $A$. Robimy to na $2^{n-1}$ sposobów jako, że iterując po wszystkich pozostałych $n-1$ wierzchołkach z $B$ za każdym razem mamy dwie opcje do wyboru.
+
+Zatem ostatecznym wynikiem będzie $n\cdot 2^{n-1}$.
 
 ## Zadania 38, 39
 
