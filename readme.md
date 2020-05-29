@@ -23,8 +23,8 @@ Please note:
 
 ### Humanities
 
-  - [Komunikacja Społeczna](4th-semester/ks/readme.md)
-  - [Przedsiębiorczość](4th-semester/pb/readme.md)
+  - [Komunikacja Społeczna](humanities/ks/readme.md)
+  - [Przedsiębiorczość](humanities/pb/readme.md)
 
 ### 3rd Semester
 
