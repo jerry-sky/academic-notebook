@@ -86,7 +86,7 @@ def AlterBlockSizes(block_definition: List[List[List[int]]], k: int) -> None:
     # zones going on without considering some special cases;
     # to avoid this issue, let's resize a line of blocks instead of just one
 
-    # decide whether to reize horizontally or vertically
+    # decide whether to resize horizontally or vertically
     if random() > 0.5:
         # collect all oversized blocks' indexes
         fat_blocks_indexes = []
