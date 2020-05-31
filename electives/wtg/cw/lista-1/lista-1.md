@@ -205,7 +205,7 @@ $$
 $$
 \sum_{x}\deg(x)\left( 2 \cdot \sum_{e \in L}\llbracket \varphi(e) = \{x\} \rrbracket + \sum_{e\in D}\llbracket \varphi(e) = \{x,y\} \rrbracket \right)=
 \\
-=\sum_{x\in L \cup D}\deg(x)\deg(x) = \sum_{x\in E}\deg(x)
+=\sum_{x\in L \cup D}\deg(x)\deg(x) = \sum_{x\in E}\deg^2(x)
 $$
 
 ## Zadanie 9
