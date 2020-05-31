@@ -344,9 +344,9 @@ $\forall~ u,v \in V_1$.
 >    $$
 
 $$
-|X| = \sum_{x\in X}1 = \sum_{x\in X}\sum_{y\in Y}\big\lVert\{x,y\} \in E\big\rVert \frac{1}{\deg(x)} \le\\
+|X| = \sum_{x\in X}1 = \sum_{x\in X}\sum_{y\in Y}\left(\llbracket\{x,y\} \in E\rrbracket \frac{1}{\deg(x)} \right) \le\\
 
-\le \sum_{x\in X}\sum_{y\in Y}\left(\left\lVert\{x,y\}\in E\right\rVert\cdot\frac{1}{\deg(y)}\right) = \sum_{y\in Y}=|Y|
+\le \sum_{x\in X}\sum_{y\in Y}\left(\llbracket\{x,y\}\in E\rrbracket\cdot\frac{1}{\deg(y)}\right) = \sum_{y\in Y}1=|Y|
 $$
 
 ## Zadanie 19
