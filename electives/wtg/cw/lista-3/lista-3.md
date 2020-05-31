@@ -46,6 +46,7 @@ Zauważmy, że musi być zawsze jeden wierzchołek z $B$ łączący oba wierzcho
 
 Następnie musimy rozdystrybuować resztę $n-1$ wierzchołków z $B$ pomiędzy dwa wierzchołki z $A$. Robimy to na $2^{n-1}$ sposobów jako, że iterując po wszystkich pozostałych $n-1$ wierzchołkach z $B$ za każdym razem mamy dwie opcje do wyboru.
 
+Dzielimy otrzymany wynik przez $2$, żeby nie liczyć dwa razy grafów które są izomorficzne ze sobą.\
 Zatem ostatecznym wynikiem będzie $n\cdot 2^{n-2}$ dla $n\ge 2$ kiedy dla $n=1$ mamy tylko jedno takie drzewo.
 
 ## Zadania 38, 39
