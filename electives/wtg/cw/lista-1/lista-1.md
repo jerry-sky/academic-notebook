@@ -310,7 +310,7 @@ $\neg(G_1 \cong_{IZO} G_2)$, bo w $G_2$ wierzchołki o stopniu $3$, *nie licząc
 Mamy izomorfizm $\varphi: V_1 \xrightarrow[„na”]{1-1} V_2$\
 gdzie $V_1 = V(G_1), V_2 = V(G_2)$.
 
-Niech $E_1' = V(\overline{G_1}), E_2' = V(\overline{G_2})$\
+Niech $E_1' = E(\overline{G_1}), E_2' = E(\overline{G_2})$\
 oraz $E_1 = E(G_1), E_2 = E(G_2)$.
 
 Skoro
