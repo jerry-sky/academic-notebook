@@ -273,7 +273,7 @@ $G = G[X,Y]$ $\leftarrow$ dwudzielny
 
 ![l1z11](graphs/l1z11.png)
 
-1. $\sum_{x \in X}\deg(x) = |E| = \sum_{y \in Y}\deg(y)$
+1. $\sum_{x \in X}\deg(x) = \sum_{x\in X}\sum_{y\in Y}\big\lVert\{x,y\} \in E\big\rVert = \sum_{y\in Y}\sum_{x\in X}\big\lVert\{x,y\} \in E\big\rVert = \sum_{y \in Y}\deg(y)$
 2. zał. że $G$ - regularny\
    $\forall v \in V~\deg(v) = d$\
    $\sum_{i=1}^{|X|}d = |X| \cdot d = \sum_{i=1}^{|Y|}d = |Y| \cdot d \implies |X| = |Y|$
