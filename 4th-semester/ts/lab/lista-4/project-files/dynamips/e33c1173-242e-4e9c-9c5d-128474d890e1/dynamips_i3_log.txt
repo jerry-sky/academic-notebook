@@ -1,0 +1,31 @@
+Jun 02 14:56:13.988 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jun 02 14:56:13.988 HYPERVISOR: Started on IP = localhost, TCP port = 40967.
+Jun 02 14:56:14.001 HYPERVISOR: exec_cmd: hypervisor version 
+Jun 02 14:56:14.002 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips 
+Jun 02 14:56:14.002 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips
+Jun 02 14:56:14.003 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/1fb57b04-c118-40f6-91d3-5e74f19f2b9d 
+Jun 02 14:56:14.003 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/1fb57b04-c118-40f6-91d3-5e74f19f2b9d
+Jun 02 14:56:14.003 HYPERVISOR: exec_cmd: vm create PC-1 1 c3725 
+Jun 02 14:56:14.004 VM: VM PC-1 created.
+Jun 02 14:56:14.005 HYPERVISOR: exec_cmd: vm set_con_tcp_port PC-1 5007 
+Jun 02 14:56:14.005 HYPERVISOR: exec_cmd: c3725 get_mac_addr PC-1 
+Jun 02 14:56:14.007 HYPERVISOR: exec_cmd: vm set_disk0 PC-1 0 
+Jun 02 14:56:14.008 HYPERVISOR: exec_cmd: vm get_status PC-1 
+Jun 02 14:56:14.009 HYPERVISOR: exec_cmd: vm set_idle_pc PC-1 0x60c09aa0 
+Jun 02 14:56:14.012 HYPERVISOR: exec_cmd: vm set_ios PC-1 /home/jerry-sky/GNS3/images/IOS/c3725-adventerprisek9-mz.124-15.T14.image 
+Jun 02 14:56:14.013 HYPERVISOR: exec_cmd: c3725 set_mac_addr PC-1 c201.5d6a.0000 
+Jun 02 14:56:14.014 HYPERVISOR: exec_cmd: vm set_nvram PC-1 256 
+Jun 02 14:56:14.015 HYPERVISOR: exec_cmd: vm set_ram PC-1 300 
+Jun 02 14:56:14.016 HYPERVISOR: exec_cmd: vm slot_add_binding PC-1 0 16 WIC-1T 
+Jun 02 14:56:15.755 HYPERVISOR: exec_cmd: nio create_udp udp-59c7be97-2398-40d7-b1fc-f0ef6ea2f46e 10030 127.0.0.1 10031 
+Jun 02 14:56:15.975 HYPERVISOR: exec_cmd: vm slot_add_nio_binding PC-1 0 0 udp-59c7be97-2398-40d7-b1fc-f0ef6ea2f46e 
+Jun 02 14:56:15.976 HYPERVISOR: exec_cmd: vm get_status PC-1 
+Jun 02 14:56:28.778 HYPERVISOR: exec_cmd: vm get_status PC-1 
+Jun 02 14:56:28.779 HYPERVISOR: exec_cmd: vm extract_config PC-1 
+Jun 02 14:56:28.883 HYPERVISOR: exec_cmd: vm get_status PC-1 
+Jun 02 14:56:28.883 HYPERVISOR: exec_cmd: vm extract_config PC-1 
+Jun 02 14:56:28.883 HYPERVISOR: exec_cmd: vm delete PC-1 
+Jun 02 14:56:28.884 VM: VM PC-1 destroyed.
+Jun 02 14:56:28.884 HYPERVISOR: exec_cmd: hypervisor stop 
+Jun 02 14:56:29.014 HYPERVISOR: Stopped.
+Jun 02 14:56:29.014 GENERAL: reset done.

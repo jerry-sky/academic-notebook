@@ -1,0 +1,46 @@
+Jun 01 21:58:25.143 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jun 01 21:58:25.143 HYPERVISOR: Started on IP = localhost, TCP port = 55299.
+Jun 01 21:58:25.152 HYPERVISOR: exec_cmd: hypervisor version 
+Jun 01 21:58:25.153 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips 
+Jun 01 21:58:25.153 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips
+Jun 01 21:58:25.154 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/05a0ccc8-7a3a-484c-aab9-9504a96f13ba 
+Jun 01 21:58:25.154 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/05a0ccc8-7a3a-484c-aab9-9504a96f13ba
+Jun 01 21:58:25.154 HYPERVISOR: exec_cmd: vm create R2 2 c3725 
+Jun 01 21:58:25.154 VM: VM R2 created.
+Jun 01 21:58:25.155 HYPERVISOR: exec_cmd: vm set_con_tcp_port R2 5001 
+Jun 01 21:58:25.155 HYPERVISOR: exec_cmd: c3725 get_mac_addr R2 
+Jun 01 21:58:25.155 HYPERVISOR: exec_cmd: vm set_disk0 R2 0 
+Jun 01 21:58:25.156 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 01 21:58:25.156 HYPERVISOR: exec_cmd: vm set_idle_pc R2 0x60c09aa0 
+Jun 01 21:58:25.156 HYPERVISOR: exec_cmd: vm set_ios R2 /home/jerry-sky/GNS3/images/IOS/c3725-adventerprisek9-mz.124-15.T14.image 
+Jun 01 21:58:25.157 HYPERVISOR: exec_cmd: c3725 set_mac_addr R2 c202.5a87.0000 
+Jun 01 21:58:25.157 HYPERVISOR: exec_cmd: vm set_nvram R2 256 
+Jun 01 21:58:25.157 HYPERVISOR: exec_cmd: vm set_ram R2 300 
+Jun 01 21:58:25.157 HYPERVISOR: exec_cmd: vm slot_add_binding R2 0 16 WIC-1T 
+Jun 01 21:58:26.147 HYPERVISOR: exec_cmd: nio create_udp udp-0f813496-6593-40a8-8bbf-541645885061 10018 127.0.0.1 10019 
+Jun 01 21:58:26.359 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 0 0 udp-0f813496-6593-40a8-8bbf-541645885061 
+Jun 01 21:58:26.359 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 01 21:58:26.397 HYPERVISOR: exec_cmd: nio create_udp udp-d0d92c38-124e-4fe2-84bc-1cbf0349c44c 10022 127.0.0.1 10023 
+Jun 01 21:58:26.399 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 0 1 udp-d0d92c38-124e-4fe2-84bc-1cbf0349c44c 
+Jun 01 21:58:26.399 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 01 21:59:04.478 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Jun 01 21:59:04.480 HYPERVISOR: exec_cmd: vm set_ghost_file R2 /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/c3725-adventerprisek9-mz.124-15.T14.image-300.ghost 
+Jun 01 21:59:04.481 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 01 21:59:04.482 HYPERVISOR: exec_cmd: vm set_config R2 configs/i2_startup-config.cfg 
+Jun 01 21:59:04.483 HYPERVISOR: exec_cmd: vm start R2 
+Jun 01 21:59:34.738 HYPERVISOR: exec_cmd: vm extract_config R2 
+Jun 01 21:59:34.746 HYPERVISOR: exec_cmd: vm extract_config R2 
+Jun 02 00:20:14.870 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Jun 02 00:20:14.874 HYPERVISOR: exec_cmd: vm set_ghost_file R2 /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/c3725-adventerprisek9-mz.124-15.T14.image-300.ghost 
+Jun 02 00:20:14.875 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 02 00:42:02.825 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 02 00:42:02.829 HYPERVISOR: exec_cmd: vm stop R2 
+Jun 02 00:42:02.935 VM: VM R2 shutdown.
+Jun 02 00:42:02.936 HYPERVISOR: exec_cmd: vm extract_config R2 
+Jun 02 00:42:03.371 HYPERVISOR: exec_cmd: vm get_status R2 
+Jun 02 00:42:03.372 HYPERVISOR: exec_cmd: vm extract_config R2 
+Jun 02 00:42:03.374 HYPERVISOR: exec_cmd: vm delete R2 
+Jun 02 00:42:03.374 VM: VM R2 destroyed.
+Jun 02 00:42:03.376 HYPERVISOR: exec_cmd: hypervisor stop 
+Jun 02 00:42:03.710 HYPERVISOR: Stopped.
+Jun 02 00:42:03.710 GENERAL: reset done.

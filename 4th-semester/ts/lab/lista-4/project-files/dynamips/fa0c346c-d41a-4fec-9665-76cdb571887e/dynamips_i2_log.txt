@@ -1,0 +1,16 @@
+Jun 02 14:56:13.957 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jun 02 14:56:13.957 HYPERVISOR: Started on IP = localhost, TCP port = 55543.
+Jun 02 14:56:13.967 HYPERVISOR: exec_cmd: hypervisor version 
+Jun 02 14:56:13.968 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips 
+Jun 02 14:56:13.968 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips
+Jun 02 14:56:13.968 HYPERVISOR: exec_cmd: ethsw create Switch2 
+Jun 02 14:56:15.306 HYPERVISOR: exec_cmd: nio create_udp udp-1f70423e-5a9a-4abb-9125-c842c5550e31 10017 127.0.0.1 10016 
+Jun 02 14:56:15.306 HYPERVISOR: exec_cmd: ethsw add_nio Switch2 udp-1f70423e-5a9a-4abb-9125-c842c5550e31 
+Jun 02 14:56:15.322 HYPERVISOR: exec_cmd: ethsw set_access_port Switch2 udp-1f70423e-5a9a-4abb-9125-c842c5550e31 1 
+Jun 02 14:56:16.008 HYPERVISOR: exec_cmd: nio create_udp udp-c87a8ee7-5a8d-4f89-be82-68ddd73a3d4a 10029 127.0.0.1 10028 
+Jun 02 14:56:16.008 HYPERVISOR: exec_cmd: ethsw add_nio Switch2 udp-c87a8ee7-5a8d-4f89-be82-68ddd73a3d4a 
+Jun 02 14:56:16.026 HYPERVISOR: exec_cmd: ethsw set_access_port Switch2 udp-c87a8ee7-5a8d-4f89-be82-68ddd73a3d4a 1 
+Jun 02 14:56:28.806 HYPERVISOR: exec_cmd: ethsw delete Switch2 
+Jun 02 14:56:28.844 HYPERVISOR: exec_cmd: hypervisor stop 
+Jun 02 14:56:28.983 HYPERVISOR: Stopped.
+Jun 02 14:56:28.983 GENERAL: reset done.
