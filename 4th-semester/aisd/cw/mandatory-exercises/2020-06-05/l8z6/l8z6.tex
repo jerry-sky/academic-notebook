@@ -1,0 +1,75 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 8}
+\author{Zadanie 6}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Rozważamy graf skierowany z wagami na krawędziach (możliwe ujemne wagi). Chcemy uzyskać algorytm do wyznaczania najkrótszej ścieżki pomiędzy dowolnymi dwoma wierzchołkami przy czym taka ścieżka nie może być dłuższa niż $k$.
+
+\section{Concept}
+
+Użyjemy tutaj zmodyfikowanej wersji algorytmu Bellmana-Forda. Otóż, w oryginalnej wersji tego algorytmu rozważamy drogi o długości ograniczonej jedynie przez liczbę wierzchołków w danym grafie. Takie ograniczenie dawało nam złożoność obliczeniową $O(|E|\cdot|V|)$ jako, że wszystkie krawędzie skanowane są w najgorszym przypadku $|V| - 1$ razy. Tutaj interesują nas ścieżki o długości maksymalnie $k$.
+
+\section{Rozwiązanie}
+
+W poniższym algorytmie używamy zmodyfikowanej wersji algorytmu Bellmana-Forda. Wprowadzamy dodatkowe ograniczenie w postaci maksymalnej liczby iteracji głównej pętli. (Wierzchołkiem startowym jest $s$.)
+
+\begin{algorithm}[H]
+  \caption{Zmodyfikowany algorytm Bellmana-Forda}
+  \begin{algorithmic}[1]
+    \For{\textbf{all} $v\in V$}:
+      \State $v.\mathrm{dist} \gets \infty$
+      \State $v.\mathrm{prev} \gets \mathrm{NULL}$
+    \EndFor
+    \State $s.\mathrm{dist} \gets 0$
+    \State $s.\mathrm{prev} \gets s$
+    \State $\mathrm{changed} \gets \mathrm{TRUE}$
+    \State $i \gets 0$
+    \Repeat:
+      \State $i \gets i + 1$
+      \State $\mathrm{changed} \gets \mathrm{FALSE}$
+      \For{\textbf{all} $(u,v) \in E$}:
+        \If{$v.\mathrm{dist} > u.\mathrm{dist} + c(u,v)$}:
+          \State $v.\mathrm{dist} \gets u.\mathrm{dist} + c(u,v)$
+          \State $v.\mathrm{prev} \gets u$
+          \State $\mathrm{changed} \gets \mathrm{TRUE}$
+        \EndIf
+      \EndFor
+    \Until{$\mathrm{changed} \equiv \mathrm{FALSE} \lor i = k$}\label{modified-alg-line}
+  \end{algorithmic}
+\end{algorithm}
+
+W linijce \ref{modified-alg-line} został dodany dodatkowy warunek końcowy pętli. Ogranicza to maksymalną długość ścieżki w grafie oraz zmienia złożoność obliczeniową algorytmu, która teraz wynosi $O(k\cdot |E|)$.
+
+Długość żądanej najkrótszej ścieżki oczywiście mieści się w parametrze „$\mathrm{dist}$” wierzchołka docelowego.
+Żeby uzyskać drogę „wierzchołek po wierzchołku” należy iteracyjnie przejść po wierzchołkach znalezionej drogi używając parametru „$\mathrm{prev}$” aż nie dojdziemy do wierzchołka startowego.
+
+\end{document}
