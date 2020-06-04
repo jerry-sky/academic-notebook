@@ -1,0 +1,53 @@
+\documentclass[14pt]{article}
+% \usepackage{polski}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+%Import the natbib package and sets a bibliography  and citation styles
+\usepackage[numbers]{natbib}
+\bibliographystyle{plainnat}
+
+\linespread{1.3}
+
+\title{TabuSearch: Job-shop scheduling problem}
+\author{Jerzy Wroczyński}
+\date{2020-06-04}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The job-shop scheduling problem is one of many other theoretic scheduling problems. It can be classified as $J || C_{\max}$ using the notation introduced by \citet{graham}. Letter $J$ represents „job-shop scheduling problem”, two vertical lines with nothing in between means no further job characteristics are given and $C_{\max}$ defines the optimization problem as minimizing the maximum completion time out of all given jobs. Of course, there are many different types of such problems e.g. there can be a set number of machines, jobs have certain characteristics e.g. each job has to be completed before some due date etc but in this paper problem classified at the beginning of this paragraph will be examined.
+
+\hspace{2pt}
+
+We are given the following resources:
+\begin{enumerate}
+  \item a set $J$ of $n$ jobs to schedule,
+  \item a set $O = \{1,\dots,N\}$ of $N$ atomic operations,
+  \item a set $M$ of $m$ machines.
+\end{enumerate}
+
+
+
+
+\bibliography{bib}
+
+\end{document}
