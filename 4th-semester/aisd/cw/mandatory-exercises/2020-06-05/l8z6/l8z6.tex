@@ -69,7 +69,9 @@ W poniższym algorytmie używamy zmodyfikowanej wersji algorytmu Bellmana-Forda.
 
 W linijce \ref{modified-alg-line} został dodany dodatkowy warunek końcowy pętli. Ogranicza to maksymalną długość ścieżki w grafie oraz zmienia złożoność obliczeniową algorytmu, która teraz wynosi $O(k\cdot |E|)$.
 
-Długość żądanej najkrótszej ścieżki oczywiście mieści się w parametrze „$\mathrm{dist}$” wierzchołka docelowego.
+Długość żądanej najkrótszej ścieżki oczywiście mieści się w parametrze „$\mathrm{dist}$” wierzchołka docelowego. Oczywiście może się stać, że ścieżka o liczbie krawędzi $\le k$ nie istnieje. Jeśli obliczona odległość wynosi $\infty$ ścieżka nie została znaleziona.
+
 Żeby uzyskać drogę „wierzchołek po wierzchołku” należy iteracyjnie przejść po wierzchołkach znalezionej drogi używając parametru „$\mathrm{prev}$” aż nie dojdziemy do wierzchołka startowego.
+
 
 \end{document}
