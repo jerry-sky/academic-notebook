@@ -6,3 +6,11 @@
 node_modules
 
 __pycache__
+
+# LaTeX
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
