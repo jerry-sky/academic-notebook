@@ -167,7 +167,7 @@ if __name__ == "__main__":
             exit('given data needs to be a tuple of integers')
 
         if operation == 'insert' and len(data) >= 2:
-            # insert given key with a given priority
+            # insert given key with given priority
             key = data[0]
             priority = data[1]
 

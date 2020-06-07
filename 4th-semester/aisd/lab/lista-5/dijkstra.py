@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 from collections import namedtuple
-from graph import Graph
+from graph import Graph, INFINITY
 from priority_queue import PriorityQueue, PQNode
 from sys import exit, stdin, stderr
 from time import time
-from decimal import Decimal
-
-INFINITY = float('inf')
+from graph_input_utility import read_graph_definition
 
 DijkstraAlgorithmResult = namedtuple(
     'DijkstraAlgorithmResult', ['dist', 'prev'])
@@ -46,33 +44,7 @@ def Dijkstra_algorithm(graph: Graph, starting_node: int) -> DijkstraAlgorithmRes
 
 if __name__ == "__main__":
 
-    nodes_count = input()
-    try:
-        nodes_count = int(nodes_count)
-    except ValueError:
-        exit('nodes count needs to be an integer')
-
-    edges_count = input()
-    try:
-        edges_count = int(edges_count)
-    except ValueError:
-        exit('edges count needs to be an integer')
-
-    # create a new graph
-    graph = Graph(nodes_count)
-
-    # read edges
-    for _ in range(edges_count):
-        raw_edge = input().split()
-
-        fst, snd, weight = 0, 0, 0
-        try:
-            fst, snd, weight = int(raw_edge[0]), int(
-                raw_edge[1]), Decimal(raw_edge[2])
-        except (ValueError, IndexError):
-            exit('edge definition format: int int float')
-
-        graph.add_edge(fst=fst, snd=snd, weight=weight)
+    graph = read_graph_definition()
 
     # read starting node
     starting_node = input()
@@ -81,11 +53,16 @@ if __name__ == "__main__":
     except ValueError:
         exit('starting node needs to be an integer')
 
-    # use the Dijkstra algorithm
+    # measure time
+    begin = time()
+
+    # use the Dijkstra's algorithm
     results = Dijkstra_algorithm(graph, starting_node)
 
+    end = time()
+
     # print out the results
-    for node in range(0, nodes_count):
+    for node in range(0, graph.nodes_count):
 
         print(node, results.dist[node])
 
@@ -111,3 +88,5 @@ if __name__ == "__main__":
         for r in route[1:]:
             print('-' + str(r[1]) + '→', r[0], '', file=stderr, end='')
         print(file=stderr)
+
+    print((end-begin) * 1000, 'ms', file=stderr)
