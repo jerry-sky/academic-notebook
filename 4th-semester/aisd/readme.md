@@ -58,11 +58,12 @@
     - [**BFS (Breadth First Search)**](wyk/2020-05-18/breadth-first-search.md)
     - [**Dijkstra Algorithm**](wyk/2020-05-20/dijkstras-algorithm.md)
 
-  \*odwołane z powodu koronawirusa
+  \*odwołane z powodu COVID-19
 
   ### Ćwiczenia
   - [Lista-1](cw/lista-1.md)
   - [Lista-2](cw/lista-2.md)
+  - [Mandatory Exercises](cw/mandatory-exercises/readme.md)
 
   ### Laboratorium
   #### Verbindung
@@ -77,3 +78,4 @@
   - [Lista-2](lab/lista-2/readme.md)
   - [Lista-3](lab/lista-3/readme.md)
   - [Lista-4](lab/lista-4/readme.md)
+  - [Lista-5](lab/lista-5/readme.md)
