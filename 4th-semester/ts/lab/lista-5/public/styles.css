@@ -1,0 +1,14 @@
+body {
+  font-family: 'Fira Sans', sans-serif;
+  padding: 30px;
+  padding-top: 5px;
+}
+
+a {
+  font-weight: bold;
+  color: aqua;
+}
+
+img {
+  width: 100%;
+}
