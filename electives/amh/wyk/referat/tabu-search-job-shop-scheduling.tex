@@ -40,24 +40,29 @@ Of course, there are many different types of such problems e.g. there can be a p
 
 \hspace{2pt}
 
-We are given the following resources:
+We are given following resources:
 \begin{enumerate}
   \item a set $J$ of $n$ jobs to schedule,
   \item a set $O = \{1,\dots,N\}$ of $N$ atomic operations
   \item a set $M$ of $m$ machines.
 \end{enumerate}
 
-For each job $J_j$ there is a sequence of operations $O_{i,j} \in O$ and each of these operations has to be processed without interruption separately on machine $\mu_{i,j} \in M$ for $d_{i,j}$ units of time using already mentioned notation \cite{graham}.
+For each job $J_j$ there is a sequence of operations $O_{i,j} \in O$ and each of these operations has to be processed without interruption separately on a machine $\mu_{i,j} \in M$ for $d_{i,j}$ units of time.
 
 For better understanding of a such schedule problem a visual aid of a Gantt chart can be used:
-\begin{figure}
+\begin{figure}[H]
   \centering
-
+  \def\svgwidth{\columnwidth}
+  \input{img/example-gantt-chart.pdf_tex}
   \caption{Example Gantt chart}
   \label{example-gantt}
 \end{figure}
 
+which represents one feasible solution for scheduling three jobs (each consisting of three operations) on three machines. We can see now, there are some difficulties to solve when dealing with such a problem. For example, in this solution machine $\mu_1$ runs idle for a very long time which can be an indicator on how good this solution is. The main goal is to minimize the running time of the machine that completes its tasks last.
 
-\bibliography{bib}
+//TODO: disjunctive graphs
+
+
+\bibliography{bib.bib}
 
 \end{document}
