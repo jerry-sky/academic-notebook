@@ -34,18 +34,28 @@
 
 \section{Introduction}
 
-The job-shop scheduling problem is one of many other theoretic scheduling problems. It can be classified as $J || C_{\max}$ using the notation introduced by \citet{graham}. Letter $J$ represents „job-shop scheduling problem”, two vertical lines with nothing in between means no further job characteristics are given and $C_{\max}$ defines the optimization problem as minimizing the maximum completion time out of all given jobs. Of course, there are many different types of such problems e.g. there can be a set number of machines, jobs have certain characteristics e.g. each job has to be completed before some due date etc but in this paper problem classified at the beginning of this paragraph will be examined.
+The job shop scheduling problem is one of many theoretic scheduling problems. In a paper by \citet{amico-trubian} it was classified as $J || C_{\max}$ using the notation introduced by \citet{graham}. Letter $J$ represents „job shop scheduling problem”, two vertical lines with nothing in between mean no further job characteristics are given and $C_{\max}$ defines the optimization problem as minimizing the maximum completion time of all given jobs.
+
+Of course, there are many different types of such problems e.g. there can be a predetermined quantity of machines e.g. only one machine, jobs can have certain characteristics e.g. each job has a \textit{fuzzy due date} etc. but in this paper the problem classified in the previous paragraph will be examined.
 
 \hspace{2pt}
 
 We are given the following resources:
 \begin{enumerate}
   \item a set $J$ of $n$ jobs to schedule,
-  \item a set $O = \{1,\dots,N\}$ of $N$ atomic operations,
+  \item a set $O = \{1,\dots,N\}$ of $N$ atomic operations
   \item a set $M$ of $m$ machines.
 \end{enumerate}
 
+For each job $J_j$ there is a sequence of operations $O_{i,j} \in O$ and each of these operations has to be processed without interruption separately on machine $\mu_{i,j} \in M$ for $d_{i,j}$ units of time using already mentioned notation \cite{graham}.
 
+For better understanding of a such schedule problem a visual aid of a Gantt chart can be used:
+\begin{figure}
+  \centering
+
+  \caption{Example Gantt chart}
+  \label{example-gantt}
+\end{figure}
 
 
 \bibliography{bib}
