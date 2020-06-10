@@ -57,10 +57,40 @@ For better understanding of a such schedule problem a visual aid of a Gantt char
   \caption{Example Gantt chart}
   \label{example-gantt}
 \end{figure}
+which represents one feasible solution for scheduling three jobs (each consisting of three operations) on three machines. We can see now, there are some difficulties to overcome when dealing with such a problem. For example, in this solution machine $\mu_1$ runs idle for a very long time which can be an indicator on how good this solution is. Our main goal is to minimize the running time of the machine that completes its tasks last.
 
-which represents one feasible solution for scheduling three jobs (each consisting of three operations) on three machines. We can see now, there are some difficulties to solve when dealing with such a problem. For example, in this solution machine $\mu_1$ runs idle for a very long time which can be an indicator on how good this solution is. The main goal is to minimize the running time of the machine that completes its tasks last.
+\section{Problem representation}
 
-//TODO: disjunctive graphs
+The Gantt chart very clearly shows the amount of time each task takes and for how long each machine runs idle. However, it is not a convenient way of representing this problem when it comes to applying TabuSearch.
+
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \input{img/example-disjunctive-graph.pdf_tex}
+  \caption{Example disjunctive graph}
+  \label{example-disjunctive}
+\end{figure}
+
+Figure \ref{example-disjunctive} shows an example of a disjunctive graph that is commonly used when dealing with the job shop problem. Here, each atomic operation is represented as a node. The order of operations in each job is maintained using directed edges (black edges) drawn between appropriate operations (so they form a sequence of operations). These edges are called „conjunctive”. The rest of the edges (coloured edges) are called „disjunctive” and they represent all possible combinations of a job schedule. In this abstract form we can think of them as normal, undirected edges. When a schedule is being sought these edges need to become directed as to define order of execution on each of the given machines.
+
+When searching for a solution the original order of operations in a job has to be maintained – direction of black edges cannot be altered. Defining the direction of the undirected edges will give us a certain schedule thus a solution to our problem. One way of directing these edges is to apply an „acyclic orientation” to each group of operations executed on the same machine. Then, having created such a DAG (Directed Acyclic Graph) the longest path (with respect to the cost function) defines the quality of this solution. In other words – the goal here is to minimize the cost of this longest path in our DAG.
+
+\section{TabuSearch}
+
+The heuristic we will be applying to this problem is TabuSearch. This heuristic algorithm is an extension to LocalSearch which searches through all neighbouring solutions of the currently chosen best solution. It chooses the next solution based on the cost function. TabuSearch introduces so called „Tabu” array that holds all forbidden „moves” that cannot be performed when generating a neighbourhood of the currently chosen solution. This reduces the amount of solutions to consider and thus gives more time for greater expansion in the global solution space.
+
+To prevent from skipping some solutions due to the Tabu array we can add an aspiration criteria. For example if a given move has been put into Tabu array a long time ago, we can again use this move when generating a new neighbourhood.
+
+\section{The algorithm}
+
+Before running the TabuSearch heuristic we need to define a way of finding the first feasible solution to start from.
+Using the \textit{Shortest Processing Time} rule from \citet[section 2.1]{brandimarte} we can generate the first feasible solution.
+
+\begin{algorithm}[H]
+  \begin{algorithmic}[1]
+    \State //TODO: pick a concrete algorithm
+  \end{algorithmic}
+\end{algorithm}
 
 
 \bibliography{bib.bib}
