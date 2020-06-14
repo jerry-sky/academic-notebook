@@ -36,7 +36,7 @@
 
 The job shop scheduling problem is one of many theoretic scheduling problems. In a paper by \citet{amico-trubian} it was classified as $J || C_{\max}$ using the notation introduced by \citet{graham}. Letter $J$ represents „job shop scheduling problem”, two vertical lines with nothing in between mean no further job characteristics are given and $C_{\max}$ defines the optimization problem as minimizing the maximum completion time of all given jobs.
 
-Of course, there are many different types of such problems e.g. there can be a predetermined quantity of machines e.g. only one machine, jobs can have certain characteristics e.g. each job has a \textit{fuzzy due date} etc. but in this paper the problem classified in the previous paragraph will be examined.
+Of course, there are many different types of such problems e.g. there can be a predetermined quantity of machines e.g. only one machine, jobs can have certain characteristics e.g. each job has a \textit{fuzzy due date} etc. In this paper we will propose an algorithm for solving the problem classified as $J || C_{\max}$ and examine results of other algorithms used in other papers.
 
 \hspace{2pt}
 
@@ -52,7 +52,7 @@ For each job $J_j$ there is a sequence of operations $O_{i,j} \in O$ and each of
 For better understanding of a such schedule problem a visual aid of a Gantt chart can be used:
 \begin{figure}[H]
   \centering
-  \def\svgwidth{\columnwidth}
+  \def\svgwidth{0.5\columnwidth}
   \input{img/example-gantt-chart.pdf_tex}
   \caption{Example Gantt chart}
   \label{example-gantt}
@@ -65,7 +65,7 @@ The Gantt chart very clearly shows the amount of time each task takes and for ho
 
 \begin{figure}[H]
   \centering
-  \def\svgwidth{\columnwidth}
+  \def\svgwidth{0.5\columnwidth}
   \input{img/example-disjunctive-graph.pdf_tex}
   \caption{Example disjunctive graph}
   \label{example-disjunctive}
@@ -77,20 +77,89 @@ When searching for a solution the original order of operations in a job has to b
 
 \section{TabuSearch}
 
-The heuristic we will be applying to this problem is TabuSearch. This heuristic algorithm is an extension to LocalSearch which searches through all neighbouring solutions of the currently chosen best solution. It chooses the next solution based on the cost function. TabuSearch introduces so called „Tabu” array that holds all forbidden „moves” that cannot be performed when generating a neighbourhood of the currently chosen solution. This reduces the amount of solutions to consider and thus gives more time for greater expansion in the global solution space.
+The heuristic we will be applying to this problem is TabuSearch. This heuristic algorithm is an extension to LocalSearch which searches through all neighbouring solutions of the currently chosen best solution. It chooses the next solution based on the cost function. TabuSearch introduces so called „Tabu” list that holds all forbidden „moves” that cannot be performed when generating a neighbourhood of the currently chosen solution. This reduces the amount of solutions to consider and thus gives more time for greater expansion in the global solution space.
 
-To prevent from skipping some solutions due to the Tabu array we can add an aspiration criteria. For example if a given move has been put into Tabu array a long time ago, we can again use this move when generating a new neighbourhood.
+To prevent from discarding some solutions due to the Tabu list we can add an aspiration criteria. For example if a given move has been put into Tabu list a long time ago, we can again use this move when generating a new neighbourhood.
 
-\section{The algorithm}
+\section{The proposed algorithm}
 
 Before running the TabuSearch heuristic we need to define a way of finding the first feasible solution to start from.
-Using the \textit{Shortest Processing Time} rule from \citet[section 2.1]{brandimarte} we can generate the first feasible solution.
+Using the \textit{Shortest Processing Time} rule from \citet[section 2.1]{brandimarte} we can generate the first feasible solution. Each time there is more than one operation waiting to be processed by a given machine the operation with the lowest processing time is scheduled for running.
+
+For the main algorithm we are going to use the one specified by \citet[section 2.]{amico-trubian}:
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
-    \State //TODO: pick a concrete algorithm
+    \State $x^* \gets \text{find a feasible first solution}$
+    \State $T \gets \emptyset$ $\triangleright$ the Tabu list
+    \While{termination criteria not met}:
+      \If{$T$ is full and there cannot be generated any more neighbouring solutions}: \label{ts-emptying-tabu}
+        \State $T \gets \emptyset$
+      \EndIf
+      \State choose the best solution $\hat{x}$ from $\mathcal{N}(x^*, T)$ \label{ts-neighbourhood}
+      \State put a move which leads from $\hat{x}$ to $x^*$ into $T$
+      \If{$\hat{x}$ is better than $x^*$}:
+        \State $x^* \gets \hat{x}$
+      \EndIf
+    \EndWhile
   \end{algorithmic}
+  \caption{TabuSearch}
+  \label{tabu-search}
 \end{algorithm}
+
+The function $\mathcal{N}$ used in line \ref{ts-neighbourhood} of our algorithm generates a neighbourhood of solutions with respect to the Tabu list. If no aspiration criteria is given or the aspiration criteria does not remove certain moves from the Tabu list, then the algorithm still works as it empties the Tabu list if no neighbourhood can be generated (condition in line \ref{ts-emptying-tabu}).
+
+\subsection{Neighbourhood}
+
+Many different approaches to the neighbourhood structure have been proposed over the years, but for our algorithm we will use the $N1$ neighbourhood introduced by \citet[section 3.3]{laarhoven}.
+To generate a move we choose a tuple of vertices $v$ and $w$, such that:
+\begin{enumerate}
+  \item $v$ and $w$ are successive operation on some machine $k$
+  \item $(v,w)$ is a critical edge meaning it is on the critical path (the longest path)
+\end{enumerate}
+and alter the order in which the $k$-th machine processes operations $v$ and $w$ through swapping both of these operations.
+
+\subsection{Example}
+
+Let us see an example of a small job shop problem and apply TabuSearch to it.
+
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{img/example-ts-solution-1.pdf_tex}
+  \caption{Exemple of a job shop scheduling problem}
+  \label{ts-sol-1}
+\end{figure}
+
+Let us generate an initial solution:
+
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{img/example-ts-solution-2.pdf_tex}
+  \caption{Example job shop scheduling problem with initial solution applied}
+  \label{ts-sol-2}
+\end{figure}
+
+The blue line in figure \ref{ts-sol-2} represents the longest path in this DAG.
+
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \input{img/example-ts-solution-3.pdf_tex}
+  \caption{Example job shop scheduling problem after reversing one of (originally disjunctive) edges on the critical path}
+  \label{ts-sol-3}
+\end{figure}
+
+After reversing one edge as presented above in Figure \ref{ts-sol-3} the cost of the longest path is higher than the initial solution generated at the beginning.
+Having performed a few iterations we find out that the first (initial) solution really was the best.
+
+\section{Other algorithms used in literature}
+
+We will compare the results of algorithms presented in papers by \citet{amico-trubian} and by \citet{pezzella}.
+
+Of course, both of these approaches are entirely different. \citet{amico-trubian} have used their own List Scheduling method called \texttt{bidir} which creates two half-schedules that are generated starting from the beginning and from the end using the chosen priority rule.
+\citet{pezzella} have also used a known method (proposed by \citet{adams}) for creating initial solutions called \textit{Shifting bottleneck} which
 
 
 \bibliography{bib.bib}
