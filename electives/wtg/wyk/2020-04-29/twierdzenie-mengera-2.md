@@ -1,7 +1,7 @@
 # Twierdzenie Mengera II
 *(2020-04-29)*
 
-**Twierdzenia Mengera są prawdziwe dla dowolnego grafu!**
+**[Twierdzenia Mengera](../2020-04-22/twierdzenie-mengera.md) są prawdziwe dla dowolnego grafu!**
 
 ## $\text {Def}$ Pełne skojarzenie
 

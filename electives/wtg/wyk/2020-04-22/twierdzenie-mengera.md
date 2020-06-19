@@ -7,7 +7,7 @@
 
 ## $\text {Fakt}$ #1
 
-Niech $\mathcal{P}$ będzie [$(A,B)$–konektorem](../2020-04-15/grafy-planarne-3-spójność.md#text-definicja-ab%e2%80%93konektor) oraz $X$ będzie [$(A,B)$separatorem](../2020-04-15/grafy-planarne-3-spójność.md#text-definicja-ab%e2%80%93separator).\
+Niech $\mathcal{P}$ będzie [$(A,B)$–konektorem](../2020-04-15/grafy-planarne-3-spójność.md#text-definicja-ab%e2%80%93konektor) oraz $X$ będzie [$(A,B)$–separatorem](../2020-04-15/grafy-planarne-3-spójność.md#text-definicja-ab%e2%80%93separator).\
 Wówczas $|\mathcal{P}| \le |X|$.
 
 ## Oznaczenia

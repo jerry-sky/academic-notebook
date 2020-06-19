@@ -24,6 +24,10 @@
       **Twierdzenie Mengera I**](wyk/2020-04-22/twierdzenie-mengera.md)
   - [2020-04-29\*\
       **Twierdzenie Mengera II**](wyk/2020-04-29/twierdzenie-mengera-2.md)
+  - [2020-05-06\*\
+      **Grafy skierowane**](wyk/2020-05-06/grafy-skierowane.md)
+  - [2020-05-13\*\
+      **Przepływy w sieciach**](wyk/2020-05-13/przepływy-w-sieciach.md)
 
   \*called off due to coronavirus
 

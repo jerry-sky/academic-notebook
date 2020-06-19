@@ -4,13 +4,13 @@
 ## $\text {Def}$ Graf skierowany
 
 Graf skierowany (digraf $\impliedby$ *directed graph*):\
-$G = (V,E,\varphi): E\to V\times V$.\
+$G = (V,E,\varphi)$, gdzie $\varphi: E\to V\times V$.\
 Zbiór $V$ nazywamy zbiorem wierzchołków, zbiór $E$ nazywamy zbiorem krawędzi skierowanych.
 
 1. Oznaczenia: jeśli $e \in E$ oraz $\varphi(e) = (x,y)$, to $\mathrm{fst}(e) = x$ (ogon $e$) oraz $\mathrm{snd}(e) = y$ (głowa $e$)
 2. (stopień wyjściowy, *outdegree*) $\deg^+(v) = |\{e\in E: \mathrm{fst}(e) = x\}|$
 3. (stopień wejściowy, *indegree*) $\deg^-(v) = |\{e\in E: \mathrm{snd}(e) = x\}|$
-4. Ścieżką w grafie skierowanym nazywamy ciąg $x_0,e_1,x_1,e_2,\dots,e_n,x_n$ takie, że $x_0,\dots,x_n$ są wierzchołkami, $e_1,\dots,e_n$ są krawędziami oraz dla każdego $i \in \{1,\dots,n\}$ mamy $\mathrm{fst}(e_i) = x_{i-1}$ i $\mathrm{snd}(e_i) = x_i$
+4. Ścieżką w grafie skierowanym nazywamy ciąg $x_0,e_1,x_1,e_2,\dots,e_n,x_n$ taki, że $x_0,\dots,x_n$ są wierzchołkami, $e_1,\dots,e_n$ są krawędziami oraz dla każdego $i \in \{1,\dots,n\}$ mamy $\mathrm{fst}(e_i) = x_{i-1}$ i $\mathrm{snd}(e_i) = x_i$
 
 ## $\text {Twierdzenie}$ #1
 $$
@@ -36,7 +36,7 @@ $$
 $$
 
 ## $\text {Fakt}$ #2
-Graf skierowany nazywamy jeśli jego [szkielet](#text-def-szkielet) jest spójny.
+Graf skierowany nazywamy spójnym jeśli jego [szkielet](#text-def-szkielet) jest spójny.
 
 ## $\text {Def}$ Skierowany graf eulerowski
 

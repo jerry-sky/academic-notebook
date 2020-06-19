@@ -48,7 +48,7 @@ Graf nie jest planarny $\iff$ $(K_{3,3} \preceq G \lor K_5 \preceq G)$
 ### Topologiczna transformacja powierzchni
 ![mug and torus morph](Mug_and_Torus_morph.gif)
 
-### Powierzchnie orientowalne o miałych „genusach”
+### Powierzchnie orientowalne o małych „genusach”
 ![genuses](genuses.png)
 
 ## $\text {Definicja}$ Genus grafu
@@ -76,7 +76,8 @@ $$
   \min\{|X|: X \subseteq V \land G\setminus X ~\text{nie jest spójny}\} & : \text{nie jest zupełny}
 \end{cases}
 $$
-*Uwaga: z powyższego faktu wynika, że dla dowolnego spójnego grafu prostego $(V,E)$ mamy $\kappa(G) \le |V| - 1$; co więcej: $\kappa(G) = |V| - 1$ $\iff$ graf jest [grafem zupełnym](../2020-03-04/2020-03-04.md#graficzne-zoo)*
+*Uwaga: z powyższego faktu wynika, że dla dowolnego spójnego grafu prostego $(V,E)$ mamy $\kappa(G) \le |V| - 1$;*\
+*co więcej: $\kappa(G) = |V| - 1$ $\iff$ graf jest [grafem zupełnym](../2020-03-04/2020-03-04.md#graficzne-zoo)*
 
 ## $\text {Definicja}$ spójność krawędziowa grafu spójnego
 Mamy graf spójny $G = (V,E)$. Spójność krawędziowa $G$:

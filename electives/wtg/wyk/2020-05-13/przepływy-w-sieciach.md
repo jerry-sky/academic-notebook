@@ -59,11 +59,11 @@ Zakładamy najpierw, że nie ma żadnych krawędzi od $s$ do $t$ ani od $t$ do $
 Zauważmy, że:
 $$
 0 = \sum_{x\in X}(\mathrm{out}_f(x) - \mathrm{in}_f(x))
-\\= \sum_{x\in X}\left(\sum_{e}f(e)(\lVert\mathrm{fst}(e) = x\rVert - \lVert\mathrm{snd}(e)=x\rVert)\right)
-\\= \sum_{e}f(e)\sum_{x\in X}(\lVert\mathrm{fst}(e)=x\rVert - \lVert\mathrm{snd}(e)=x\rVert)
+\\= \sum_{x\in X}\left(\sum_{e}f(e)(\llbracket\mathrm{fst}(e) = x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)\right)
+\\= \sum_{e}f(e)\sum_{x\in X}(\llbracket\mathrm{fst}(e)=x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)
 $$
 
-Niech $\alpha(e) = \sum_{x\in X}(\lVert\mathrm{fst}(e)=x\rVert - \lVert\mathrm{snd}(e)=x\rVert)$. Rozważmy dowolną krawędź $e$.\
+Niech $\alpha(e) = \sum_{x\in X}(\llbracket\mathrm{fst}(e)=x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)$. Rozważmy dowolną krawędź $e$.\
 Jeśli $\mathrm{fst}(e) \notin X$ i $\mathrm{snd}(e)\notin X$ to $\alpha(e) = 0$.\
 Jeśli $\mathrm{fst}(e) \in X$ i $\mathrm{snd}(e)\in X$ to $\alpha(e) = 0$.\
 Jeśli $\mathrm{fst}(e)\in X$ i $\mathrm{snd}(e)\notin X$ to $\alpha(e)=1$\
