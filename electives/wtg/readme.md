@@ -28,6 +28,8 @@
     **Przepływy w sieciach I**](wyk/2020-05-13/przepływy-w-sieciach.md)
 - [2020-05-20\*\
     **Przepływy w sieciach II**](wyk/2020-05-20/przepływy-w-sieciach-2.md)
+- [2020-05-27\*\
+    **Kolorowanie I**](wyk/2020-05-27/kolorowanie.md)
 
 \*called off due to coronavirus
 
