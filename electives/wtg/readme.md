@@ -25,7 +25,9 @@
 - [2020-05-06\*\
     **Grafy skierowane**](wyk/2020-05-06/grafy-skierowane.md)
 - [2020-05-13\*\
-    **Przepływy w sieciach**](wyk/2020-05-13/przepływy-w-sieciach.md)
+    **Przepływy w sieciach I**](wyk/2020-05-13/przepływy-w-sieciach.md)
+- [2020-05-20\*\
+    **Przepływy w sieciach II**](wyk/2020-05-20/przepływy-w-sieciach-2.md)
 
 \*called off due to coronavirus
 
