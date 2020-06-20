@@ -2,6 +2,56 @@
 
 ## Zadanie 1
 
+> Napisz program, który symuluje działanie wybranych struktur danych przechowujących ciągi znaków (przyjmujemy porządek leksykograficzny). Program powinien przyjmować jako parametr wejściowy typ struktury:
+> - `--type bst` drzewo BST
+> - `--type rbt` drzewo czerwono-czarne
+> - `--type hmap` tablice hashujące z metodą łańcuchową dla przechowywanych w jednej komórce danych długości mniejszej niż $n_t$ oraz z wykorzystaniem samoorganizujących się drzew binarnych (np. drzew czerwono-czarnych) dla przechowywanych w jednej komórce danych o długości większej niż $n_t$. Przeprowadź testy mające na celu oszacowanie $n_t$, dla którego zysk w czasie dostępu do elementu uzasadnia nadkład wykonywanych operacji balansujących. Dobierz liczbę komórek $m$ odpowiednio do wybranej funkcji hashującej.
+>
+> Każda ze struktur powinna udostępniać przynajmniej poniższe funkcjonalności podawane na standardowym wejściu
+> - insert $s$ – wstaw do struktury ciąg $s$ (jeśli na początku lub końcu ciągu znajduje się znak spoza klasy [a-zA-Z] to znak ten jest usuwany)
+> - load $f$ – dla każdego oddzielonym białym znakiem, wyrazu z pliku $f$ wykonaj operację insert, lub zwróć informację o nieistniejącym pliku
+> - delete $s$ – jeśli struktura nie jest pusta i dana wartość $s$ istnieje, to usuń element $s$
+> - find $s$ – sprawdź czy w strukturze przechowywana jest wartość $s$ (jeśli tak to wypisz $1$, w p. p. wypisz $0$)
+> - min – wypisz najmniejszy element znajdujący się w strukturze lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię
+> - max – wypisz największy element znajdujący się w strukturze lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię
+> - successor $k$ – wypisz następnik elementu $k$ lub, jeśli on nie istnieje (np. struktura nie zawiera $k$, $k$ nie ma następników, struktura nie zachowuje porządku), pustą linię
+> - inorder – wypisz elementy drzewa w posortowanej kolejności (od elementu najmniejszego do największego) lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię
+>
+> Wynik powinien być wypisywany na standardowe wyjście, a na standardowym wyjściu błędów powinny być wypisywane w kolejności: czas działania całego programu, liczba operacji każdego typu, maksymalna liczba elementów (maksymalne zapełnienie struktury w czasie działania programu), końcowa liczba elementów w strukturze. Przeprowadź eksperymenty pozwalające oszacować średni czas działania każdej z operacji.
+>
+> **Wejście**\
+> Wejście składa się z $n+1$ linii. W pierwszej, znajduje się liczba $n$ określająca liczbę wykonywanych operacji, w liniach 2-$(n+1)$ znajdują się kolejne operacji zgodnie z ich specyfikacją. Program może wykorzystywać więcej niż jeden wątek, jednak operacje muszę być wykonane w zadanej kolejności.\
+> Długość pojedynczego ciągu znaków nie przekracza 100, natomiast $n+1$ nie przekracza zakresu Integera.
+>
+> **Wyjście**\
+> Wyjście składa się z $k \le n$ linii, będących wynikami kolejnych operacji podanych na wejściu.
+>
+> **Przykład** Przykładowe wywołanie
+> ```
+> ./main --type rbt <./input >out.res
+> ```
+> input | out.res
+> --- | ---
+> 17 |
+> max | a aaa ab b
+> insert aaa | ab
+> insert a | 1
+> insert b | 1
+> insert ab | 1
+> inorder | 0
+> delete a | aaa
+> delete b |
+> max |
+> load sample.txt |
+> find three |
+> delete three |
+> find three |
+> find Three |
+> delete Three |
+> find Three |
+> min
+>
+
 Plik wykonywalny `./main.py` jest rozwiązaniem tego zadania. W plikach `bst.py`, `rbt.py` oraz `hash_tables.py` zawarte są implementacje poszczególnych struktur danych.
 
 ### Szacowanie czasu działania każdej z operacji
@@ -62,6 +112,8 @@ Dla uproszczenia w programie wybrałem $n_t = 41$. Chociaż można zdecydować s
 ---
 
 ## Zadanie 2
+
+> Wykonaj i zaprezentuj eksperymenty, które pozwolą postawić tezę na temat dolnego ograniczenia, średniej oraz górnego ograniczenia na liczbę porównań między elementami, wykonywaną przez procedurę find w każdej ze struktur. Testy wykonaj na liście unikatowych ciągów (np. słownik) oraz takiej, gdzie możliwe są powtórzenia.
 
 ### Testy na słowniku
 
