@@ -1,0 +1,1 @@
+Alter Table inne AUTO_INCREMENT = 7000;

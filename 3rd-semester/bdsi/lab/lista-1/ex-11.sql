@@ -1,0 +1,1 @@
+Select * From pet Where birth Between Cast('1992-01-01' as Date) And Cast('1994-06-30' as Date);

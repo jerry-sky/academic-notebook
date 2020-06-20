@@ -1,0 +1,1 @@
+Select owner From pet Group by owner Having Count(*) > 1

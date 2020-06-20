@@ -27,3 +27,4 @@ Please note:
 ## 3rd Semester
 
 - [Architektura komputerów i systemów operacyjnych (Computer Architecture and Operation Systems)](3rd-semester/akiso/readme.md)
+- [Bazy Danych i Systemy Informacyjne (Data Bases and *Information Systems*)](3rd-semester/bdsi/readme.md)
