@@ -1,7 +1,19 @@
-# AKiSO
-#### *Architektura Komputerów i Systemy Operacyjne*
+# Architektura Komputerów i Systemy Operacyjne
+*AKiSO*
 
-## Index
+## Wykład
+
+*Prowadzony przez: [dr inż. Marcin Zawada](https://ki.pwr.edu.pl/osoba.php?NICK=MZA)*
+
+## Ćwiczenia
+
+*Prowadzone przez: [dr inż. Przemysław Błaśkiewicz](https://ki.pwr.edu.pl/osoba.php?NICK=PBLASK)*
+
+## Laboratorium
+
+*Prowadzone przez: [dr Przemysław Kobylański](https://ki.pwr.edu.pl/osoba.php?NICK=PKO)*
+
+## Notatki własne
 
   - [Procesy i wątki](procesy-wątki.md)
   - [Architektura procesora](architektura-procesora.md)

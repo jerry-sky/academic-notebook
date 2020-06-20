@@ -2,6 +2,9 @@
 *WTG*
 
 ## Wykład
+
+*Prowadzony przez: [prof. dr hab. Jacek Cichoń](https://ki.pwr.edu.pl/osoba.php?NICK=JCI)*
+
 - [2020-02-26\
     **Pojęcie grafu**](wyk/2020-02-26/2020-02-26.md)
 - [2020-03-04\
@@ -37,6 +40,9 @@
 
 ---
 ## Ćwiczenia
+
+*Prowadzone przez: [mgr inż. Dominik Bojko](https://ki.pwr.edu.pl/osoba.php?NICK=DBOJ)*
+
 - [Lista-1](cw/lista-1/lista-1.md)
 - [Lista-2](cw/lista-2/lista-2.md)
 - [Lista-3](cw/lista-3/lista-3.md)

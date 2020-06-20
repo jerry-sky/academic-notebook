@@ -1,13 +1,17 @@
 # Technologie Sieciowe
 
-## Index
+## Wykład
 
-  ### Wykład
-  - [**2020-03-04**](wyk/2020-03-04.md)
-  - [2020-05-13\
-      **Retransmission and positive acknowledgement**](wyk/2020-05-13/retransmission.md)
+*Prowadzony przez: [dr hab. inż. Łukasz Krzywiecki](https://ki.pwr.edu.pl/osoba.php?NICK=LKRZYW)*
 
-  ### Laboratorium
+- [**2020-03-04**](wyk/2020-03-04.md)
+- [2020-05-13\
+    **Retransmission and positive acknowledgement**](wyk/2020-05-13/retransmission.md)
+
+## Laboratorium
+
+*Prowadzony przez: [dr Przemysław Kubiak](https://ki.pwr.edu.pl/osoba.php?NICK=PKUB)*
+
   - [Lista-1](lab/lista-1.md)
   - [Lista-2](lab/lista-2/readme.md)
   - [Lista-3](lab/lista-3/readme.md)
