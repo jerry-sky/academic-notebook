@@ -78,6 +78,19 @@ Jeśli graf $G$ jest $k$–zdegenerowany i $(v_1,\dots,v_n)$ jest takim uporząd
 Dla dowolnego grafu $G$ mamy $\mathcal{X}(G) \le \Delta(G) + 1$.\
 *Uwaga: możemy to pokazać w prosty sposób metodą indukcji matematycznej względem liczby wierzchołków; wprowadziliśmy go przy pomocy zdegenerowania grafu gdyż pojęcie to przyda się nam w dalszych rozważaniach.*
 
+#### D-d (Wniosek #1)
+
+Indukcja po liczbie $k = |V|$. Dla $k=1$ mamy $\mathcal{X}(G) = 1$ oraz $\Delta(G) + 1 = 0 + 1 = 1$.\
+Zakładamy teraz, że $k>1$ oraz, że twierdzenie jest prawdziwe dla $G$ taki, że $|V(G)| < k$. Bierzemy graf $G$ taki, że $|V(G)| = k$. Bierzemy dowolny wierzchołek $v \in V$. Graf $G' = G[V \setminus \{v\}]$ ma $k-1$ wierzchołków. Co więcej $\Delta(G') \le \Delta(G)$. Mamy więc (założenie indukcyjne) właściwe kolorowanie $c': V(G') \to \{1,\dots,\Delta(G)+1\}$. Zbiór $\mathcal{N}(v)$ ma moc nie większą niż $\Delta(G)$. Zatem
+$$
+\{1,\dots,\Delta(G)+1\} \setminus \{ c(x): x\in \mathcal{N}(v) \neq \emptyset \}.
+$$
+Bierzemy dowolny element $a$ z tego zbioru i rozszerzamy kolorowanie $c'$:
+$$
+c = c' \cup \{(v,a)\}.
+$$
+To jest właściwe kolorowanie grafu $G$ za pomocą $\Delta(G) + 1$ kolorów.
+
 ### Przykład #2
 Każde drzewo jest $2$–kolorowalne (czyli jeśli $T$ jest drzewem, to $\mathcal{X}(T) = 2$)
 

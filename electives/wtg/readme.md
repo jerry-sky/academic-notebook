@@ -30,6 +30,8 @@
     **Przepływy w sieciach II**](wyk/2020-05-20/przepływy-w-sieciach-2.md)
 - [2020-05-27\*\
     **Kolorowanie I**](wyk/2020-05-27/kolorowanie.md)
+- [2020-06-03\*\
+    **Kolorowanie i Twierdzenie o Czterech Barwach**](wyk/2020-06-03/kolorowanie-twierdzenie-o-czterech-barwach.md)
 
 \*called off due to coronavirus
 
