@@ -2,11 +2,11 @@
 
 ## Wykład
 
-*Prowadzony przez: [dr inż. Marcin Zawada](https://ki.pwr.edu.pl/osoba.php?NICK=MZA)*
+*Prowadzony przez: [dr inż. Marcin Zawada](https://cs.pwr.edu.pl/zawada)*
 
 ## Laboratorium
 
-*Prowadzone przez: [dr inż. Karol Gotfryd](https://ki.pwr.edu.pl/osoba.php?NICK=KGOTFR)*
+*Prowadzone przez: [dr inż. Karol Gotfryd](https://cs.pwr.edu.pl/gotfryd)*
 
 - [Lista-1](lista1.ipynb)
 - [Lista-2](lista-2/readme.md)

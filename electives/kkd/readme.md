@@ -2,11 +2,11 @@
 
 ## Wykład
 
-*Prowadzony przez: [dr Maciej Gębala](https://ki.pwr.edu.pl/osoba.php?NICK=MGE)*
+*Prowadzony przez: [dr Maciej Gębala](http://cs.pwr.edu.pl/gebala)*
 
 ## Laboratorium
 
-*Prowadzone przez: [dr inż. Anna Lauks-Dutka](https://ki.pwr.edu.pl/osoba.php?NICK=ALDUD)*
+*Prowadzone przez: [dr inż. Anna Lauks-Dutka](http://cs.pwr.edu.pl/lauks)*
 
 - [Lista-1](lab/lista-1/readme.md)
 - [Lista-2](lab/lista-2/readme.md)

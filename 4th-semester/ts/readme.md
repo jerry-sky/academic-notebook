@@ -2,7 +2,7 @@
 
 ## Wykład
 
-*Prowadzony przez: [dr hab. inż. Łukasz Krzywiecki](https://ki.pwr.edu.pl/osoba.php?NICK=LKRZYW)*
+*Prowadzony przez: [dr hab. inż. Łukasz Krzywiecki](https://cs.pwr.edu.pl/krzywiecki)*
 
 - [**2020-03-04**](wyk/2020-03-04.md)
 - [2020-05-13\
@@ -10,7 +10,7 @@
 
 ## Laboratorium
 
-*Prowadzony przez: [dr Przemysław Kubiak](https://ki.pwr.edu.pl/osoba.php?NICK=PKUB)*
+*Prowadzony przez: [dr Przemysław Kubiak](https://cs.pwr.edu.pl/kubiak)*
 
   - [Lista-1](lab/lista-1.md)
   - [Lista-2](lab/lista-2/readme.md)

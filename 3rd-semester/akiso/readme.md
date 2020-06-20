@@ -3,15 +3,15 @@
 
 ## Wykład
 
-*Prowadzony przez: [dr inż. Marcin Zawada](https://ki.pwr.edu.pl/osoba.php?NICK=MZA)*
+*Prowadzony przez: [dr inż. Marcin Zawada](https://cs.pwr.edu.pl/zawada)*
 
 ## Ćwiczenia
 
-*Prowadzone przez: [dr inż. Przemysław Błaśkiewicz](https://ki.pwr.edu.pl/osoba.php?NICK=PBLASK)*
+*Prowadzone przez: [dr inż. Przemysław Błaśkiewicz](https://cs.pwr.edu.pl/blaskiewicz)*
 
 ## Laboratorium
 
-*Prowadzone przez: [dr Przemysław Kobylański](https://ki.pwr.edu.pl/osoba.php?NICK=PKO)*
+*Prowadzone przez: [dr Przemysław Kobylański](https://cs.pwr.edu.pl/kobylanski)*
 
 ## Notatki własne
 

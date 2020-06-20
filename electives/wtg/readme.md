@@ -3,7 +3,7 @@
 
 ## Wykład
 
-*Prowadzony przez: [prof. dr hab. Jacek Cichoń](https://ki.pwr.edu.pl/osoba.php?NICK=JCI)*
+*Prowadzony przez: [prof. dr hab. Jacek Cichoń](https://cs.pwr.edu.pl/cichon)*
 
 - [2020-02-26\
     **Pojęcie grafu**](wyk/2020-02-26/2020-02-26.md)
@@ -41,7 +41,7 @@
 ---
 ## Ćwiczenia
 
-*Prowadzone przez: [mgr inż. Dominik Bojko](https://ki.pwr.edu.pl/osoba.php?NICK=DBOJ)*
+*Prowadzone przez: [mgr inż. Dominik Bojko](https://cs.pwr.edu.pl/bojko)*
 
 - [Lista-1](cw/lista-1/lista-1.md)
 - [Lista-2](cw/lista-2/lista-2.md)

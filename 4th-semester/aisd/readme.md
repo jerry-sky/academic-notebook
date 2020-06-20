@@ -3,7 +3,7 @@
 
 ## Wykład
 
-*Prowadzony przez: [dr inż. Zbigniew Gołębiewski](https://ki.pwr.edu.pl/osoba.php?NICK=ZGOLEB)*
+*Prowadzony przez: [dr inż. Zbigniew Gołębiewski](https://cs.pwr.edu.pl/golebiewski)*
 
 - [2020-02-26\
     **Sortowanie**](wyk/2020-02-26/sortowanie.md)
@@ -63,7 +63,7 @@
 
 ## Ćwiczenia
 
-*Prowadzone przez: [dr inż. Zbigniew Gołębiewski](https://ki.pwr.edu.pl/osoba.php?NICK=ZGOLEB)*
+*Prowadzone przez: [dr inż. Zbigniew Gołębiewski](https://cs.pwr.edu.pl/golebiewski)*
 
 - [Lista-1](cw/lista-1.md)
 - [Lista-2](cw/lista-2.md)
@@ -71,7 +71,7 @@
 
 ## Laboratorium
 
-*Prowadzone przez: [dr Marcin Kik](https://ki.pwr.edu.pl/osoba.php?NICK=MKIK)*
+*Prowadzone przez: [dr Marcin Kik](https://cs.pwr.edu.pl/kik)*
 
 ### Verbindung
 Execute `connect.sh` to connect to the remote Ubuntu machine for testing programs. *You need to have access to the private part of this repository.*\
