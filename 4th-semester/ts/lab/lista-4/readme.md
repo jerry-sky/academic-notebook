@@ -18,27 +18,27 @@
 
 ## The original task *(in polish)*
 [»English«](#translated-task)
-1. W symulatorze GNS3 skonfiguruj wirtualną sieć o podanej topologii, tak aby:
-   ![simulation](original-task-image.svg)
-   1. Wirtualna sieć była połączona z zewnętrzną („fizyczną”) siecią `Cloud`.
-   2. Ruter `R5` uzyskiwał dynamiczny adres IP z sieci `Cloud`.
-   3. Pozostałe urządzenia posiadały statyczne adresy w swoich sieciach.
-   4. Możliwe było wysyłanie komunikatów `ping` pomiędzy dowolna parą urządzeń sieci wirtualnej.
-   5. Możliwe było wysyłanie komunikatów `ping` z dowolnego urządzenia w sieci wirtualnej na zewnętrzny adres, np. `google.com`.
-2. Ustaw przechwytywanie komunikatów w sieciach: `192.168.0.0`, `192.168.2.0`, `192.168.3.0`.
-3. Przeanalizuj przechwycone komunikaty dla zapytania wysłanego z komputera PC2: `ping google.com`.
+> 1. W symulatorze GNS3 skonfiguruj wirtualną sieć o podanej topologii, tak aby:
+>    ![simulation](original-task-image.svg)
+>    1. Wirtualna sieć była połączona z zewnętrzną („fizyczną”) siecią `Cloud`.
+>    2. Ruter `R5` uzyskiwał dynamiczny adres IP z sieci `Cloud`.
+>    3. Pozostałe urządzenia posiadały statyczne adresy w swoich sieciach.
+>    4. Możliwe było wysyłanie komunikatów `ping` pomiędzy dowolna parą urządzeń sieci wirtualnej.
+>    5. Możliwe było wysyłanie komunikatów `ping` z dowolnego urządzenia w sieci wirtualnej na zewnętrzny adres, np. `google.com`.
+> 2. Ustaw przechwytywanie komunikatów w sieciach: `192.168.0.0`, `192.168.2.0`, `192.168.3.0`.
+> 3. Przeanalizuj przechwycone komunikaty dla zapytania wysłanego z komputera PC2: `ping google.com`.
 
 ### Translated task
 
-1. In GNS3 simulation program create a virtual network with a given topology such that:
-   ![simulation](original-task-image.svg)
-   1. the virtual network is connected with the outside „physical” network represented by device named `Cloud`.
-   2. `R5` has a dynamic IP address given by `Cloud`
-   3. other devices have their static IP address inside their local networks
-   4. all devices are able to communicate with each other via `ping`
-   5. all devices are able to communicate with the outside world e.g. `google.com`
-2. Setup packet capture on networks `192.168.0.0.`, `192.168.2.0`, `192.168.3.0`.
-3. Analyse captured packets sent and received due to executing `ping google.com` in the terminal of PC2.
+> 1. In GNS3 simulation program create a virtual network with a given topology such that:
+>    ![simulation](original-task-image.svg)
+>    1. the virtual network is connected with the outside „physical” network represented by device named `Cloud`.
+>    2. `R5` has a dynamic IP address given by `Cloud`
+>    3. other devices have their static IP address inside their local networks
+>    4. all devices are able to communicate with each other via `ping`
+>    5. all devices are able to communicate with the outside world e.g. `google.com`
+> 2. Setup packet capture on networks `192.168.0.0.`, `192.168.2.0`, `192.168.3.0`.
+> 3. Analyse captured packets sent and received due to executing `ping google.com` in the terminal of PC2.
 
 ## Useful commands
 
