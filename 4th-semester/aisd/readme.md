@@ -55,9 +55,10 @@
     - [**DFS (Depth First Search)**](wyk/2020-05-06/depth-first-search.md)
     - [**DFS na grafach skierowanych**](wyk/2020-05-11/dfs-directed-graphs.md)
     - [**Skierowane grafy acykliczne (DAG)**](wyk/2020-05-11/directed-acyclic-graphs.md)
-- 2020-05-18\*, 2020-05-20\*
+- 2020-05-18\*, 2020-05-20\*, 2020-05-25\*
     - [**BFS (Breadth First Search)**](wyk/2020-05-18/breadth-first-search.md)
     - [**Dijkstra Algorithm**](wyk/2020-05-20/dijkstras-algorithm.md)
+    - [**Bellman-Ford**](wyk/2020-05-25/bellman-ford.md)
 
   \*odwołane z powodu COVID-19
 
