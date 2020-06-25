@@ -7,3 +7,4 @@ W skrócie algorytm zachłanny dokonuje najbardziej opłacalnego wyboru w danym 
 ## Index
 
 - [Minimalne drzewa rozpinające](minimal-spanning-trees.md)
+- [Kodowanie Huffmana](../2020-06-08/huffman-coding.md)

@@ -59,9 +59,10 @@
     - [**BFS (Breadth First Search)**](wyk/2020-05-18/breadth-first-search.md)
     - [**Dijkstra Algorithm**](wyk/2020-05-20/dijkstras-algorithm.md)
     - [**Bellman-Ford**](wyk/2020-05-25/bellman-ford.md)
-- 2020-06-01\*, 2020-06-03\*\
+- 2020-06-01\*, 2020-06-03\*, 2020-06-08\*\
     [**Algorytmy zachłanne:**](wyk/2020-06-01/greedy-algorithms.md)
     - [**Minimalne drzewa rozpinające**](wyk/2020-06-01/minimal-spanning-trees.md)
+    - [**Kodowanie Huffmana**](wyk/2020-06-08/huffman-coding.md)
 
   \*odwołane z powodu COVID-19
 
