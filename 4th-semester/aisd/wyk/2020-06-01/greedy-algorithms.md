@@ -8,3 +8,5 @@ W skrócie algorytm zachłanny dokonuje najbardziej opłacalnego wyboru w danym 
 
 - [Minimalne drzewa rozpinające](minimal-spanning-trees.md)
 - [Kodowanie Huffmana](../2020-06-08/huffman-coding.md)
+- [Klauzule Horna](../2020-06-15/klauzule-horna.md)
+- [Pokrycie zbioru](../2020-06-15/set-cover.md)
