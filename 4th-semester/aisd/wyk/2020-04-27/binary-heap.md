@@ -40,7 +40,7 @@ Chcemy się poruszać po takim drzewie binarnym.
 
 ## Poruszanie się po binary heap
 
-Będąc w jakimś węźle potrzebne są nam wskaźniki umożliwiające nam przejście do parent-a tego węzła oraz lewego i prawego potomka. Warto zauważyć, że mamy do czynienia z pełnym drzewem binarnym, przez co mamy pewność, że na kolejnym poziomie mamy zawsze *dwa razy więcej elementów* niż na poprzednim (poza ostatnim poziomem).\
+Będąc w jakimś węźle, potrzebne są wskaźniki umożliwiające nam przejście do parent-a tego węzła oraz lewego i prawego potomka. Warto zauważyć, że mamy do czynienia z pełnym drzewem binarnym, przez co mamy pewność, że na kolejnym poziomie mamy zawsze *dwa razy więcej elementów* niż na poprzednim (poza ostatnim poziomem).\
 Wówczas, możemy używać następujących prostych makr:
 
 $$
@@ -53,7 +53,7 @@ $$
 
 Powyższe makra są bardzo szybkie, bo możemy użyć prostych operacji na bitach.
 
-Nie potrzebujemy już budować struktur węzłów tak jak miało to w przypadku BST i pochodnych — wystarczą nam tablica wraz z powyższymi makrami.
+Nie potrzebujemy już budować struktur węzłów, tak jak miało to w przypadku BST i pochodnych — wystarczą nam tablica wraz z powyższymi makrami.
 
 ## $\text {Def}$ wysokość węzła
 Wysokością węzła nazywamy liczbę krawędzi na najdłuższej prostej ścieżce prowadzącej od tego węzła do liścia.
@@ -132,7 +132,7 @@ Kopiec binarny w łatwy sposób uogólnia się na kopiec $d$-arny, czyli taki, w
 
 ## `HeapSort`$(A)$
 
-Jednym z zastosowań kopców jest sortowanie przez kopcowanie `HeapSort`$(A)$. Wykorzystuje się do tego kopiec maksymalny (w kopcu maksymalnym własność kopca to: $A[\mathrm{parent}(i)] \ge A[i]$). Najpierw budujemy kopiec, a potem ściągamy z niego korzeń po czym przywracamy własność kopca dla pozostałych elementów.
+Jednym z zastosowań kopców jest sortowanie przez kopcowanie `HeapSort`$(A)$. Wykorzystuje się do tego kopiec maksymalny (w kopcu maksymalnym własność kopca to: $A[\mathrm{parent}(i)] \ge A[i]$). Najpierw budujemy kopiec, a potem ściągamy z niego korzeń, po czym przywracamy własność kopca dla pozostałych elementów.
 
 `HeapSort`$(A)$:
 1. `BuildHeap`$(A)$

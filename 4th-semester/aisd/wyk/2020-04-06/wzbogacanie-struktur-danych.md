@@ -9,14 +9,14 @@ Podczas projektowania algorytmów często przeprowadza się wzbogacanie znanej s
 
 1. Wybieramy *znaną* strukturą danych.
 2. Ustalamy jaką dodatkową informację chcemy przechowywać w naszej strukturze.
-3. Sprawdzamy czy możemy aktualizować efektywnie tą dodatkową informację podczas wykonywania operacji modyfikujących naszą podstawową strukturę danych.
+3. Sprawdzamy, czy możemy aktualizować efektywnie tę dodatkową informację podczas wykonywania operacji modyfikujących naszą podstawową strukturę danych.
 
     *Słowo „efektywnie” w powyższym zdaniu należy rozumieć jako „nie zwiększając asymptotycznej złożoności obliczeniowej operacji”, ale może się zdarzyć, że jest to niemożliwe. Wówczas dopuszczamy zwiększenie złożoności obliczeniowej operacji na strukturze dopóki użycie danej struktury „ma sens, jest uzasadnione innymi aspektami”.*
-4. Zaprojektowanie nowych operacji, które używając dodatkowych informacji przechowywanych w strukturze danych pozwolą nam na osiągnięcie zakładanego celu.
+4. Zaprojektowanie nowych operacji, które, używając dodatkowych informacji przechowywanych w strukturze danych, pozwolą nam na osiągnięcie zakładanego celu.
 
 ## Przykład
 
-Dynamiczne statystyki pozycyjne - mając dynamiczny zbiór danych chcemy szybko wyznaczać $i$tą statystyką pozycyjną oraz zwracać statystykę pozycyjną zadanego elementu.\
+Dynamiczne statystyki pozycyjne – mając dynamiczny zbiór danych, chcemy szybko wyznaczać $i$-tą statystyką pozycyjną oraz zwracać statystykę pozycyjną zadanego elementu.\
 [**Rozszerzymy tutaj strukturę RB-Tree.**](rb-trees-ze-statystykami-pozycyjnymi.md)
 
 ## Więcej

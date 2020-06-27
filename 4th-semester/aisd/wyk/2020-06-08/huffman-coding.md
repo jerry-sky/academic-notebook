@@ -12,7 +12,7 @@
 Schemat kompresji MP3 w sporym uproszczeniu składa się z trzech kroków:
 1. Dźwięk jest próbkowany z zadaną częstotliwością (np. 44100 próbek na sekundę) i każda próbka jest opisana przez liczbę rzeczywistą. Otrzymujemy w tens sposób ciąg liczb rzeczywistych: $s_1,\dots,s_T$. Dla przykładu 50 minut muzyki będzie opisane przy pomocy $T = 50 \cdot 60 \cdot 44100 = 132300000$ liczb rzeczywistych (dla uproszczenia zakładamy jeden kanał – *dźwięk mono*)
 1. Każda liczba rzeczywista $s_t$ jest przybliżana przez najbliższą liczbę z ustalonego zbioru $\Gamma$. Zbiór ten jest dobrany w taki sposób, aby jak najlepiej opowiadać ograniczeniom ludzkiego słuchu, a ciąg liczb wykorzystujący wartości ze zbioru $\Gamma$ powinien być nierozróżnialny dla człowieka.
-2. Otrzymany ciąg liczb ze zbioru $\Gamma$ o długośći $T$ jest zapisywany jako ciągi bitowe
+2. Otrzymany ciąg liczb ze zbioru $\Gamma$ o długości $T$ jest zapisywany jako ciągi bitowe.
 
 ### Przykładowe kodowanie MP3
 

@@ -56,7 +56,7 @@ Increment(A):
     A[i] = 1
 ```
 Operacja ta dokonuje zmiany odpowiednich bitów (zaczynając od najmniej znaczących): $1\to0$ i po natrafieniu na najmniej znaczący bit zerowy zamienia go na $1$.\
-Koszt (złożoność obliczeniowa) każdej operacji `Increment` jest równy liczbie zmienionych bitów. Analizując złożoność obliczeniową pojedynczej operacji `Increment` w *worst cast scenario* widzimy, że asymptotycznie wynosi ona $\Theta(k)$, bo w najgorszym przypadku w tablicy wszystkie bity będą ustawione na $1$ i będziemy musieli je wyzerować lub wszystkie bity poza najbardziej znaczącym zostaną one wyzerowane, a bit $A[k-1]$ zostanie ustawiony na $1$.
+Koszt (złożoność obliczeniowa) każdej operacji `Increment` jest równy liczbie zmienionych bitów. Analizując złożoność obliczeniową pojedynczej operacji `Increment` w *worst case scenario*, widzimy, że asymptotycznie wynosi ona $\Theta(k)$, bo w najgorszym przypadku w tablicy wszystkie bity będą ustawione na $1$ i będziemy musieli je wyzerować lub wszystkie bity poza najbardziej znaczącym zostaną one wyzerowane, a bit $A[k-1]$ zostanie ustawiony na $1$.
 
 Zauważmy natomiast, że w innych przypadkach liczba modyfikowanych bitów będzie mniejsza, więc istnieje szansa, że da się ograniczyć pesymistyczną złożoność ciągu $n$ operacji `Increment` przez coś mniejszego niż $O(n\cdot k)$.
 
@@ -76,7 +76,7 @@ Wykorzystajmy metodę potencjału do obliczenia kosztu zamortyzowanego operacji 
     $$
     Jeśli zaczynamy zliczać za pomocą licznika od zera, to $\Phi(D_0) = 0$.
 
-    Ponieważ $\Phi(D_i) \ge 0$ dla każdego $i$, to koszt zamortyzowany ciągu $n$ operacji `Increment` jest górnym ograniczeniem kosztu faktycznego co daje pesymistyczny koszt ciągu $n$ operacji równy $O(n)$.
+    Ponieważ $\Phi(D_i) \ge 0$ dla każdego $i$, to koszt zamortyzowany ciągu $n$ operacji `Increment` jest górnym ograniczeniem kosztu faktycznego, co daje pesymistyczny koszt ciągu $n$ operacji równy $O(n)$.
 5. Za pomocą metody potencjału łatwo jest również dokonać analizy w przypadku gdy licznik nie startuje od $0$.
 
     Załóżmy, że początkowo było $b_0$ zer oraz po wykonaniu $n$ razy operacji `Increment` mamy $b_n$ jedynek., gdzie $0 \le b_0 \land b_n \le k$, wówczas:

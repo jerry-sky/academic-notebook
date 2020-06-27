@@ -40,7 +40,7 @@ Procedura ta może zostać zaimplementowana przy użyciu procedury [`BuildHeap`$
 
 ### `Insert`$(Q,\mathrm{key})$ (Binary heap)
 
-Procedura ta będzie dodawać nowy element w pierwszym możliwym miejscu (nowy liść), a następnie idąc w górę kopca (działając podobnie do [`Heapify`](../2020-04-27/binary-heap.md#heapifyai) ale od dołu do góry) będzie szukane gdzie umiejscowiony zostanie nowy element.
+Procedura ta będzie dodawać nowy element w pierwszym możliwym miejscu (nowy liść), a następnie idąc w górę kopca (działając podobnie do [`Heapify`](../2020-04-27/binary-heap.md#heapifyai), ale od dołu do góry) będzie szukane, gdzie umiejscowiony zostanie nowy element.
 
 1. $Q.\mathrm{size}$`++`
 2. $i = Q.\mathrm{size}$
@@ -49,14 +49,14 @@ Procedura ta będzie dodawać nowy element w pierwszym możliwym miejscu (nowy l
    2. $i = \mathrm{parent}(i)$
 4. $Q[i] = \mathrm{key}$
 
-Złożoność obliczeniowa: nowy klucz będzie przesuwany w górę kopca wykonując $O(1)$ operacji na każdym jego poziomie.\
+Złożoność obliczeniowa: nowy klucz będzie przesuwany w górę kopca, wykonując $O(1)$ operacji na każdym jego poziomie.\
 Zatem wiedząc, że wysokość kopca o $n$ elementach to $O(\lg n)$ wiemy, że złożoność obliczeniowa tej procedury wynosi $O(\lg n)$
 
 ### `Minimum`$(Q)$ (Binary heap)
 
 `return` $Q[1]$
 
-Kopiec jest zapisywany w tablicy $Q$, zakładając, że jest to kopiec minimalny jego pierwszy element będzie miał najmniejszy klucz. Złożoność obliczeniowa to $\Theta(1)$.
+Kopiec jest zapisywany w tablicy $Q$, zakładając, że jest to kopiec minimalny, jego pierwszy element będzie miał najmniejszy klucz. Złożoność obliczeniowa to $\Theta(1)$.
 
 ### `ExtractMin`$(Q)$ (Binary heap)
 
@@ -69,7 +69,7 @@ Kopiec jest zapisywany w tablicy $Q$, zakładając, że jest to kopiec minimalny
    4. `Heapify`$(Q,1)$
    5. `return` $\min$
 
-Jeśli kopiec nie jest pusty to zapisujemy wartość w jego korzeniu, zastępujemy ją ostatnią wartością z kolejki $Q$, zmniejszamy rozmiar kolejki i przywracamy własność kopca.
+Jeśli kopiec nie jest pusty, zapisujemy wartość w jego korzeniu, zastępujemy ją ostatnią wartością z kolejki $Q$, zmniejszamy rozmiar kolejki i przywracamy własność kopca.
 
 Złożoność obliczeniowa: wszystkie operacje poza `Heapify`$(Q,1)$ mają złożoność $\Theta(1)$, natomiast `Heapify`$(Q,1)$ dla kolejki długości $n$ ma złożoność $O(\lg n)$.\
 Zatem w sumie złożoność to $O(\lg n)$
@@ -80,7 +80,7 @@ Zatem w sumie złożoność to $O(\lg n)$
    1. $Q[i] = Q[\mathrm{parent}(i)]$
    2. $i = \mathrm{parent}(i)$
 
-Niniejsza procedura jest bardzo podobna do procedury [`Insert`$(Q,\mathrm{key}$](#insertqmathrmkey-binary-heap). Jest realizowana poprzez sprawdzenie czy własność kopca binarnego jest zachowana, jeśli nie to to naprawia kopiec przesuwając odpowiedni element w górę kopca.
+Niniejsza procedura jest bardzo podobna do procedury [`Insert`$(Q,\mathrm{key}$](#insertqmathrmkey-binary-heap). Jest realizowana poprzez sprawdzenie, czy własność kopca binarnego jest zachowana, jeśli nie to naprawia kopiec, przesuwając odpowiedni element w górę kopca.
 
 Podobne wnioskowanie jak w przypadku `Insert` daje nam złożoność obliczeniową $O(\lg n)$.
 
