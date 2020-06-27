@@ -8,6 +8,10 @@
 - [**2020-03-9**](wyk/2020-03-09.md)
 - [**2020-03-10**](wyk/2020-03-10.md)
 
+---
+
+[Referat](wyk/referat/readme.md)
+
 ## Notatki własne
 
 - [**Optymalizacja**](notes/optymalizacja.md)
