@@ -14,6 +14,10 @@ Please note:
 - [Kodowanie i kompresja danych (Coding and Data Compression)](electives/kkd/readme.md)
 - [Kurs wybranego języka programowania – Python (Programming course – Python)](electives/py/readme.md)
 
+## 5th Semester
+
+- [Języki Formalne i Techniki Translacji](5th-semester/jftt/readme.md)
+
 ## 4th Semester
 
 - [Algorytmy i struktury danych (Algorithms and Data Structures)](4th-semester/aisd/readme.md)
