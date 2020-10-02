@@ -1,9 +1,21 @@
 # Języki Formalne i Techniki Translacji
 *(JFTT)*
 
+- [Materiały](#materiały)
 - [Wykład](#wykład)
 - [Ćwiczenia](#ćwiczenia)
 - [Laboratorium](#laboratorium)
+
+---
+
+## Materiały
+
+- [Karol Gotfryd\
+    (Sekcje «Literatura i materiały do laboratorium» oraz «Pozostałe materiały do kursu»)](https://ki.pwr.edu.pl/gotfryd/dyd/jftt2020_21/jftt2020_21_l.html)
+- [Ważniak — Języki, automaty i obliczenia](http://wazniak.mimuw.edu.pl/index.php?title=Języki%2C_automaty_i_obliczenia)
+- [Ważniak — Podstawy kompilatorów](http://wazniak.mimuw.edu.pl/index.php?title=Podstawy_kompilatorów)
+- [mimuw.edu.pl](https://www.mimuw.edu.pl/~szymtor/jao/)
+- [Szymon Toruńczyk (YT)](https://www.youtube.com/channel/UCGT-jGKZ3B66qCN_1f8_ZdQ/videos)
 
 ---
 
