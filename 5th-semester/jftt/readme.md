@@ -2,6 +2,7 @@
 *(JFTT)*
 
 - [Materiały](#materiały)
+- [Notatki własne](#notatki-własne)
 - [Wykład](#wykład)
 - [Ćwiczenia](#ćwiczenia)
 - [Laboratorium](#laboratorium)
@@ -16,6 +17,12 @@
 - [Ważniak — Podstawy kompilatorów](http://wazniak.mimuw.edu.pl/index.php?title=Podstawy_kompilatorów)
 - [mimuw.edu.pl](https://www.mimuw.edu.pl/~szymtor/jao/)
 - [Szymon Toruńczyk (YT)](https://www.youtube.com/channel/UCGT-jGKZ3B66qCN_1f8_ZdQ/videos)
+
+## Notatki własne
+
+*Notatki sporządzane na podstawie materiałów zewnętrznych.*
+
+- [The Basics](notes/the-basics.md)
 
 ---
 
