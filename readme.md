@@ -9,6 +9,10 @@ Please note:
 
 ## Electives
 
+- [Teoria Informacji (Information Theory)](electives/ti/readme.md)
+
+---
+
 - [Wstęp do Teorii Grafów (Introduction to Graph Theory)](electives/wtg/readme.md)
 - [Algorytmy Metaheurystyczne (Metaheuristic Algorithms )](electives/amh/readme.md)
 - [Kodowanie i kompresja danych (Coding and Data Compression)](electives/kkd/readme.md)
