@@ -15,4 +15,6 @@
 
 *Prowadzone przez: [dr Marcin Michalski](https://cs.pwr.edu.pl/michalski/)*
 
+- [Lista 0](cw/lista-0/lista-0.md)
+
 
