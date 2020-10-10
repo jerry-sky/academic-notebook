@@ -10,6 +10,7 @@ Please note:
 ## Electives
 
 - [Teoria Informacji (Information Theory)](electives/ti/readme.md)
+- [Wprowadzenie do Kombinatoryki Analitycznej (Introduction to *Analytic Combinatorics*)](electives/wdka/readme.md)
 
 ---
 
