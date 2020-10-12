@@ -25,7 +25,7 @@ $X = \{x_1, x_2, \dots, x_{N\cdot M}\} ~~~ |X| = N\cdot M$
 
 $\widetilde{X} = \{X_1, X_2, \dots, X_M\}$\
 $X_1 = \{x_1, \dots, x_N\}$\
-$X_j = \{x_{(j-1)\cdot N +1}, \dots, x_{(j-1)\cdot N + N}$\
+$X_j = \{x_{(j-1)\cdot N +1}, \dots, x_{(j-1)\cdot N + N}\}$\
 $\dotsc$\
 $X_M$
 

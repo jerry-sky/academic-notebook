@@ -20,7 +20,7 @@ Entropia Shannon’a $H(X)$
 $H(X) = \sum_{i=1}^{N} p_i \log_2 \frac{1}{p_i}$
 
 ### 1.1. Uwaga
-$H(X) = EI$ gdzie $I: X\to \mathbb{R}$, $I(x_i) = -\log_2 p_i$
+$H(X) = \mathrm{E}I$ gdzie $I: X\to \mathbb{R}$, $I(x_i) = -\log_2 p_i$
 
 ### 1.2. Przykład
 
@@ -58,9 +58,9 @@ $x_8$
 $\widetilde{L}: X \to \mathbb{N}$\
 $\widetilde{L}(x_i) =$ długość kodu $\widetilde{c}(x_i)$
 
-$E\widetilde{L} = ?$
+$\mathrm{E}\widetilde{L} = ?$
 
-$E\widetilde{L} = \frac{1}{2}\cdot 1 + \frac{1}{8} \cdot 2 + 6 \frac{1}{16}\cdot 5 = \frac{3}{4} + \frac{15}{8} = \frac{21}{8} < 3$
+$\mathrm{E}\widetilde{L} = \frac{1}{2}\cdot 1 + \frac{1}{8} \cdot 2 + 6 \frac{1}{16}\cdot 5 = \frac{3}{4} + \frac{15}{8} = \frac{21}{8} < 3$
 
 ---
 
