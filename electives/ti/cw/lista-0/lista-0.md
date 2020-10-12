@@ -134,6 +134,24 @@ $g'(n) = g'(n-1) + f(n-1) ~~~~~ g'(0) = 0$
 
 ---
 
+$f(0) = 1 ~~~~~ g(0) = 1$
+
+$$
+f(n+1) =
+\begin{cases}
+    f(n) + 1 & \text{dla } n \in 2\mathbb{N}\\
+    f(n) + \bold{n}\cdot  g(n) & \text{oth.}
+\end{cases}
+\\
+g(n+1) =
+\begin{cases}
+    g(n) + 1 & \text{dla } n \in 2\mathbb{N} + 1\\
+    g(n) + \bold{n} \cdot f(n) & \text{oth.}
+\end{cases}
+$$
+
+---
+
 ## Zadanie 5
 
 > Pokaż, że jeśli $f \lhd g$ to istnieje funkcja $h$ taka, że $f \lhd h \lhd g$. ($f \lhd g$ oznacza, że $f \unlhd g$ oraz $\neg g \unlhd f$.)
@@ -217,11 +235,17 @@ $$
 
 ---
 
+$P(\sum_{i=1}^{n+1} x_i \in 2\mathbb{N}) = P\left(\left(\sum_{i=1}^{n} x_i \in 2\mathbb{N} \land x_{n+1} \in 2\mathbb{N}\right) \lor \left(\sum_{i=1}^{n} \in 2\mathbb{N} + 1 \land x_{n+1} \in 2\mathbb{N} + 1\right)\right)$
+
+Założenie indukcyjne: $P\left(\sum_{i=1}^{n}x_i \in 2\mathbb{N}\right) = \frac{1}{2}$
+
+---
+
 ### 8.d)
 
 $\mathrm{E}X = \mathrm{E}X_1 + \mathrm{E}X_2 + \dotsb + \mathrm{E}X_n = n(1 + \frac{1}{6} + 2 \cdot \frac{1}{6} + \dotsb + 6 \cdot \frac{1}{6}) = n \cdot 3\frac{1}{2}$
 
-$\mathrm{E}Y = \mathrm{E}Y_1 + \mathrm{E}Y_2 + \dotsb + \mathrm{E}Y_n = n\cdot (0 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 0 \cfot \frac{1}{6} + \dotsb + 6\cdot \frac{1}{6} = 2\cdot n$
+$\mathrm{E}Y = \mathrm{E}Y_1 + \mathrm{E}Y_2 + \dotsb + \mathrm{E}Y_n = n\cdot (0 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 0 \cdot \frac{1}{6} + \dotsb + 6\cdot \frac{1}{6} = 2\cdot n$
 
 ---
 
