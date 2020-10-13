@@ -58,13 +58,14 @@ $|\Omega| = 18$
 $$
 P(\omega) =
 \begin{cases}
-    1 & \frac{1}{36}\\
-    2, 3 & \frac{2}{36}\\
-    & \frac{3}{36}\\
+    1, 9, 16, 25, 36 & \frac{1}{36}\\
+    2, 3, 5, 8, 10, 15, 18, 20, 24, 30 & \frac{2}{36}\\
+    4 & \frac{3}{36}\\
+    6, 12 & \frac{4}{36}\\
 \end{cases}
 $$
 
-$\mathrm{E}I = \sum_{\omega \in \Omega}(P(\omega) \cdot \log_2(\frac{1}{P(\omega)}) = 3\cdot \frac{2}{21} \cdot \log_2(\frac{21}{2}) + 15\cdot \frac{1}{21} \cdot \log_2(21) =\dots$
+$\mathrm{E}I = 5 \cdot \frac{1}{36} \cdot \log 36 + 10 \cdot \frac{2}{36} \cdot \log \frac{36}{2} + 1 \cdot \frac{3}{36} \cdot \frac{36}{3} + 2 \cdot \frac{4}{36} \cdot \log \frac{36}{4} \simeq 4,39$
 
 ---
 
