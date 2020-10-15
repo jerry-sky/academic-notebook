@@ -22,6 +22,7 @@ Please note:
 ## 5th Semester
 
 - [Języki Formalne i Techniki Translacji](5th-semester/jftt/readme.md)
+- [Obliczenia Naukowe (Scientific Calculations — Numeric Analysis and Computing)](5th-semester/on/readme.md)
 
 ## 4th Semester
 
