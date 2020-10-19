@@ -1,20 +1,22 @@
 # Lista 1
 
-- [Zadanie 1](#zadanie-1)
+- [Zadanie 1.](#zadanie-1)
     - [1.a)](#1a)
     - [1.b)](#1b)
-- [Zadanie 2](#zadanie-2)
+- [Zadanie 2.](#zadanie-2)
     - [2.a)](#2a)
     - [2.b)](#2b)
-- [Zadanie 3](#zadanie-3)
-- [Zadanie 4](#zadanie-4)
-- [Zadanie 5](#zadanie-5)
-- [Zadanie 6](#zadanie-6)
-- [Zadanie 8](#zadanie-8)
+- [Zadanie 3.](#zadanie-3)
+- [Zadanie 4.](#zadanie-4)
+- [Zadanie 5.](#zadanie-5)
+- [Zadanie 6.](#zadanie-6)
+- [Zadanie 7.](#zadanie-7)
+- [Zadanie 8.](#zadanie-8)
+- [Zadanie 9.](#zadanie-9)
 
 ---
 
-## Zadanie 1
+## Zadanie 1.
 
 > Oblicz entropię wyniku w następujących eksperymentach
 
@@ -69,7 +71,7 @@ $\mathrm{E}I = 5 \cdot \frac{1}{36} \cdot \log 36 + 10 \cdot \frac{2}{36} \cdot 
 
 ---
 
-## Zadanie 2
+## Zadanie 2.
 
 >  Oblicz entropię wyniku w następujących eksperymentach
 
@@ -120,7 +122,7 @@ $H(X) = \frac{1}{2}\log_2(2) + \frac{1}{4}\log_2(4) + \dots = \sum_{i=1}^{\infty
 
 ---
 
-## Zadanie 3
+## Zadanie 3.
 
 >  Niech X będzie dyskretną zmienną losową. Jaka będzie zależność między entropią X a entropią Y jeśli:
 >
@@ -149,7 +151,7 @@ c), d) $H(X) > H(Y)$
 
 ---
 
-## Zadanie 4
+## Zadanie 4.
 
 > Jaka jest maksymalna entropia dyskretnej zmiennej losowej o $N$ wartościach. Podaj wszystkie możliwe rozkłady spełniające to maksimum.
 
@@ -167,7 +169,7 @@ $\frac{\delta}{\delta} \frac{f(P(x_i), \lambda)}{\lambda} = 1 - \sum \beta_i^2 =
 
 ---
 
-## Zadanie 5
+## Zadanie 5.
 
 > Jaka jest minimalna entropia dyskretnej zmiennej losowej o $N$ wartościach. Podaj wszystkie możliwe rozkłady spełniające to minimum.
 
@@ -203,7 +205,7 @@ Logarytm dla $p_j \in (0;1)$ jest zawsze ujemny zatem suma będzie zawsze dodatn
 
 ---
 
-## Zadanie 6
+## Zadanie 6.
 
 > Załóżmy, że mamy dwa źródła $X$ i $Y$ o entropiach $H(X)$ i $H(Y)$, takie że zbiory ich symboli są rozłączne. Przeprowadzamy losowanie i z prawdopodobieństwem p podajemy symbol ze źródła $X$, a z prawdopodobieństwem $1 − p$ ze źródła $Y$. Jaka jest entropia wyniku takiej procedury?
 
@@ -211,7 +213,50 @@ $H(Z) = -\sum_{s \in X} p\cdot q_{x_s} \cdot \log(pq_{x_s} - \sum_{x\in Y}(1-p)q
 
 ---
 
-## Zadanie 8
+## Zadanie 7.
+
+> Podaj naturalna miarę ilości informacji informacji w przypadku, gdy dysponujemy alfabetem o $a$ znakach. Wypisz jej naturalne własności. Udowodnij, że taka miara jest jedyna.
+
+$f: \mathbb{R}^+ \to \mathbb{R}$ o własnościach:
+1. $f(x \cdot y) = f(x) + f(y)$
+2. $\sout{f(1) = 0}$ (niepotrzebny)
+3. $f(2) = 1 \qquad$ (może być $f(a) = 1$)
+
+Jeśli $f$ jest ciągła, wówczas $f(x) = \log_2(x) \qquad (\log_a (x))$.
+
+**D-d**
+
+Najpierw patrzymy na pewne oczywiste wartości dyskretne
+
+- $f(1) = f(1 \cdot 1) = f(1) + f(1)$
+- $f(1) = 0$
+- $f(2^n) = f(2 \cdot 2^{n-1}) = f(2) + f(2^{n-1}) = 1 + f(2^{n=1}) = \dots = n$
+- $f(1) = f\left(\frac{1}{2} \cdot 2\right) = f\left(\frac{1}{2}\right) + f(2) = f\left(\frac{1}{2}\right) + 1$
+- $f\left(\frac{1}{2}\right) = 0-1 = -1$
+- Indukcyjnie $f(2^{-n}) = -n$
+
+Czyli narazie mamy:\
+![](7.1.png)
+
+*Tylko co z gęstymi kawałkami dziedziny?*
+
+$\frac{p}{2^n},~ p\in \mathbb{N}$
+
+$f\left(\frac{p}{q}\right) = f(p) + f\left(\frac{1}{q}\right)$
+
+---
+
+$f\left(\frac{1}{q}\right) = -f(q) \qquad f(1) = f\left(q \cdot \frac{1}{q}\right) = \dots$
+
+---
+
+$f\left(2^{\frac{p}{q}}\right) = f\left( \left( 2^{\frac{1}{q}} \right) \right) = p\cdot f\left( 2^{\frac{1}{a}} \right) = p\cdot f$
+
+*do dokończenia — co z liczbami pomiędzy tymi dyskretnymi, które znaleźliśmy?*
+
+---
+
+## Zadanie 8.
 
 > Dla rozkładu $P({x_1}) = \frac{1}{2}, P({x_2}) = \frac{1}{8}, P({x_3}) = P({x_4}) = \dots = P({x_8}) = \frac{1}{16}$ znajdź kody (prefiksowe), tak by średnia długość słowa kodowego była równa entropii.
 
@@ -225,3 +270,64 @@ $\mathrm{E}L$ musi wynosić $\frac{19}{8}$
 ![](8.tabelka.png)
 
 $\mathrm{E}L = \frac{1}{2} \cdot 1 + \frac{1}{8} \cdot 3 + 6 \cdot 4 \cdot \frac{1}{16} = \frac{8}{16} + \frac{6}{16} + \frac{24}{16} = \frac{38 }{16} = \frac{19}{8}$
+
+---
+
+## Zadanie 9.
+
+> Niech $X = \{x_1, x_2, \dots, x_N\}$. Dla jakich $N$ istnieje rozkład mający kody (prefiksowe) o średniej długości równej entropii?
+
+Dodajmy dodatkowe założenie, że $(\forall i)(P(x = x_i) \in (0;1))$ gdyż inaczej jesteśmy w stanie znaleźć trywialny rozkład z zerami.
+
+Zauważmy, że warunkiem aby entropia była równa średniej długości kodu jest to, że prawdopodobieństwa są potęgami dwójki. Inaczej entropia będzie mniejsza.
+
+Ten warunek możemy sformułować jako dwa pod-warunki:
+- $a_n \cdot \frac{1}{2^N} + \dotsb a_1 \cdot \frac{1}{2} = 1$ , suma prawdopodobieństw
+- $\sum_{i=1}^{N} a_i = N$, mamy $N$ wartości zmiennej losowej
+
+Pytanie czy $\forall N$ znajdziemy takie, $a_n, \dots, a_1$ aby ten warunek zachodził?
+
+Spójrzmy na przykłady z użyciem drzewa binarnego:
+
+![](9.drzewka.png)
+
+Patrząc na te przykłady można wysnuć hipotezę, któ©ą spróbujemy udowodnić:
+- $h = \lceil \log_2 N \rceil$, taka wysokość drzewa wystarcza
+- $a_n = 2N - 2^h \land a_{n-1} = 2^h - N \land (\forall i \neq h,h-1) (a_i = 0)$
+
+Dodając $1$ do $N$ schodzimy jednym wierzchołkiem z poziomu $h-1$ na dwa wierzchołki na poziomie $h$.
+
+**D-d**
+
+- $a_N \cdot \frac{1}{2^N} + \dotsb + a_1 \cdot \frac{1}{2} = 1$\
+    $\frac{a_h}{2^h} + \frac{a_{h-1}}{2^{h-1}} = \frac{2N \cdot 2^h}{2^h} + \frac{2^h - N}{2^{h-1}} + \frac{N - 2^{h-1} + 2^h - N}{2^{h-1}} = \frac{2-1}{1} = 1$
+- $\sum_{i=1}^{N} a_i = N$\
+    $\sum_{i=1}^{N} a_i = a_h + a_{h-1} = 2N - 2^h + 2^h - N = N$
+
+---
+
+Dla podanego rozkładu oba warunki zachodzą, sprawdźmy zatem czy jego średnia długość kodu równa się entropii.
+
+- $\mathrm{E}\alpha = \overbrace{h}^{\text{długość kodu}} \cdot \overbrace{a_h}^{\text{ilość znaków o tej długości}} \cdot \overbrace{\frac{1}{2^h}}^{\text{prawdopodobieństwo}} + (h-1) a_{h-1} \cdot \frac{1}{2^{h-1}} = \frac{h \cdot a_h}{2^h} + \frac{(h-1)\cdot a_{h-1}}{2^{h-1}}$
+- $H = -\sum_{i=1}^{N} p_i \log_2 p_i = a_h \cdot \left( \frac{1}{2^h} \log_2 2^h \right) + a_{h-1} \left( \frac{1}{2^{h-1}} \log_2 2^{h-1} \right) = \frac{h \cdot a_h}{2^h} + \frac{(h-1) \cdot a_{h-1}}{2^{h-1}} = \mathrm{E}\alpha$
+
+Zatem $\forall N$ podany rozkłąd ma średnią długość kodu prefiksowego równą entropii.
+
+---
+
+Przykład użycia $N = 6$ ($h = \lceil \log_2 N \rceil = 3$)
+
+- $a_2 = 2^3 - 6 =2$
+- $a_3 = 2\cdot 6 - 2^3 = 12 - 8 = 4$
+
+![](9.przykład-N-6-drzewko.png)
+
+Kody:
+- $p_1, p_2 = \frac{1}{4}: \enspace 00,~ 11$
+- $p_3,\dots,p_8 = \frac{1}{8}: \enspace 100,~ 101,~ 110,~ 111$
+
+Obliczenia:
+- $\mathrm{E}\alpha = \frac{4}{4} + \frac{12}{8} = 2.5$
+- $H - 2\cdot \frac{1}{4} \cdot \log_2 (4) + 4 \cdot \frac{1}{8} \log_2 (8) = \frac{4}{4} + \frac{12}{8} = 2.5$
+
+---
