@@ -30,6 +30,10 @@
 
 *Prowadzony przez: [dr Maciej Gębala](https://cs.pwr.edu.pl/gebala/)*
 
+- 2020-10-08
+    - [Kompilatory — wprowadzenie](wyk/2020-10-08/kompilatory-wprowadzenie.md)
+    - [Języki formalne — wprowadzenie](wyk/2020-10-08/języki-formalne-wprowadzenie.md)
+
 ## Ćwiczenia
 
 *Prowadzone przez: [dr inż. Anna Lauks-Dutka](https://cs.pwr.edu.pl/lauks/)*
