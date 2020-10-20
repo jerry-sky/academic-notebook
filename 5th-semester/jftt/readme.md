@@ -33,6 +33,9 @@
 - 2020-10-08
     - [Kompilatory — wprowadzenie](wyk/2020-10-08/kompilatory-wprowadzenie.md)
     - [Języki formalne — wprowadzenie](wyk/2020-10-08/języki-formalne-wprowadzenie.md)
+- 2020-10-15
+    - [Równoważność DFA, NFA oraz RE](wyk/2020-10-15/równoważność-dfa-nfa-re.md)
+    - [Minimalny DFA](wyk/2020-10-15/minimalny-dfa.md)
 
 ## Ćwiczenia
 
