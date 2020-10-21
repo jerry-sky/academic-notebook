@@ -75,7 +75,7 @@ $$
 
 Skracając $\bold{y^k}$ po obu stronach otrzymujemy:
 $$
-\sum_{a\ge 0} \binom{k+a}{k}y^2 = \frac{1}{(1-y)^{k+1}}
+\sum_{a\ge 0} \binom{k+a}{k}y^a = \frac{1}{(1-y)^{k+1}}
 $$
 
 ---
