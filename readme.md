@@ -20,7 +20,7 @@ Please note:
 
 ## 5th Semester
 
-- [Języki Formalne i Techniki Translacji (Automata Theory and Compilers [lit. *Formal Languages and Translation Techniques*])](5th-semester/jftt/readme.md)
+- [Języki Formalne i Techniki Translacji (Automata Theory and Compilers \[lit. *Formal Languages and Translation Techniques*\])](5th-semester/jftt/readme.md)
 - [Obliczenia Naukowe (Scientific Calculations — Numeric Analysis and Computing)](5th-semester/on/readme.md)
 
 ### Electives
