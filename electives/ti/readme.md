@@ -18,6 +18,9 @@
     - [Twierdzenie Shannon’a](wyk/2020-10-15/twierdzenie-shannona.md)
     - [Nierówność Kraft’a](wyk/2020-10-15/nierówność-krafta.md)
     - [Kod Shannon’a](wyk/2020-10-15/kod-shannona.md)
+- 2020-10-22
+    - [Przypomnienie — funkcja wypukła](wyk/2020-10-22/przypomnienie-funkcja-wypukła.md)
+    - [Nierówność Jensen’a](wyk/2020-10-22/nierówność-jensena.md)
 
 ## Ćwiczenia
 
