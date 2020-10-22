@@ -24,7 +24,12 @@
     - [5.1. OGF](#51-ogf)
     - [5.2. Przykład](#52-przykład)
     - [5.3. Przykład](#53-przykład)
-- [6. - …](#6---)
+    - [5.4. Przykład](#54-przykład)
+- [6. $\mathrm{CYC}$](#6-mathrmcyc)
+    - [6.1. OGF](#61-ogf)
+        - [6.1.1. Funkcja Eulera](#611-funkcja-eulera)
+    - [6.2. Przykład](#62-przykład)
+    - [6.3. Przykład](#63-przykład)
 
 ---
 
@@ -223,18 +228,85 @@ Przykładowo, zamiast $\{ 1,1,1,2,2 \}$ można zapisać $(3,2)$, jako że wystę
 
 ### 5.3. Przykład
 
-*Na ile sposobów można wydać $101$zł monetami w nominałach $1$, $2$, $5$?*
+*Na ile sposobów można wydać $110$zł monetami w nominałach $1$, $2$, $5$?*
 
 ---
 Najpierw mniejszy przykład — 6zł:
 - $(6, 0, 0)$
 - $(4,1,0)$
 - $(2,2,0)$
-6. - …
+- …
+
 ---
 
 - $A(z) = z + z^2 + z^5$
 - $\mathrm{MSET}(\mathcal{A})(z) = \frac{1}{1-z} \cdot \frac{1}{1 - z^2} \cdot \frac{1}{1 - z^5}$
 - $[z^{110}] \mathrm{MSET}(\mathcal{A})(z)$
+
+### 5.4. Przykład
+
+$\mathcal{A} = (\{ 1, 2 \}, |\cdot|), \quad |1| = 1, |2| = 2$
+
+$\{ 1, 2, 2, 1, 1 \} = \{ 1, 1, 1, 2, 2 \} \neq \{ 1, 2 \}$\
+$\{ 1, 2, 2, 1, 1 \} \sim (3,2)$ *(trzy jedynki, dwie dwójki)*
+
+---
+
+## 6. $\mathrm{CYC}$
+
+$\mathrm{CYC}(\mathcal{A}) = (\mathrm{SEQ}(\mathcal{A}) \setminus \{ \epsilon \})_{/S}$\
+gdzie $S$ jest relacją taką, że:
+$$
+(\alpha_1, \alpha_2, \dots, \alpha_r) S (\alpha_1', \alpha_2', \dots, \alpha_r')\\
+\iff\\
+\exists d \enspace \alpha_j' = \alpha_{((j + d)~ \mathrm{mod}~ r) + 1}
+$$
+
+---
+
+### 6.1. OGF
+
+$\mathrm{CYC}(\mathcal{A})(z) = \sum_{k=1}^{\infty} \frac{\varphi(k)}{k} \ln\frac{1}{1 - A\left( z^k \right)} =$
+
+#### 6.1.1. Funkcja Eulera
+$\varphi: \mathbb{N} \to \mathbb{N}$\
+$\varphi(k) = \left|\{ n: n < k \land \mathrm{GCD}(n,k)=1 \}\right|$
+
+---
+
+### 6.2. Przykład
+
+Ile jest cykli $3$-elementowych zbudowanych z elementów ze zbioru $\{ a, b \}$?
+
+Grupujemy możliwe sekwencje czyniąc zadość relacji [$S$](#6-mathrmcyc).
+- $aaa$
+- $abb$, $bab$, $bba$
+- $aab$, $aba$, $baa$
+- $bbb$
+
+Mamy 4 takie cykle.
+
+---
+
+### 6.3. Przykład
+
+Il jest naszyjników $2$-kolorowych rozmiaru $n$?
+
+$\mathcal{A} = (\{ a, b \}, |\cdot|), \quad |a| = |b|$
+
+- $n=1 \quad$ mamy $2: \qquad a \qquad b$
+- $n=2 \quad$ mamy $3: \qquad aa \qquad ab \qquad bb$
+- $n=3 \quad$ mamy $4: \qquad aaa \qquad baa \qquad bba \qquad bbb$
+- itd. (ale nie jest to $5,6,7\dots$)
+
+$A(z) = 2z$
+
+$\mathcal{B} = \mathrm{CYC}(\mathcal{A})$\
+$B(z) = \sum_{k\ge1} \frac{\varphi(k)}{k} \cdot \ln \frac{1}{1 - 2z^k}=$\
+korzystamy ze [wzorku](../2020-10-19/kilka-przydatnych-wzorów.md#rozwinięcie-potęgowe-dla-ln)\
+$= \sum_{k\ge1} \frac{\varphi(k)}{k} \sum_{n\ge1}\frac{(2z^k)^n}{n} = \sum_{k\ge1}\left( \frac{\varphi(k)}{k} \sum_{n\ge1} \frac{2^n z^{k\cdot n}}{n} \right) = \sum_{k\ge1,~ n\ge1} \frac{\varphi(k)}{k} \frac{2^n}{n} \cdot z^{n\cdot k}$
+
+To sprawdźmy (powinno być $4$):\
+$[z^3]B(z) = [z^3]\sum_{k\ge1,~n\ge1} \frac{\varphi(k)}{k} \frac{2^n}{n} \cdot z^{n\cdot k} ~\overset{(n=1 \land k=3) \lor (n=3 \land k=1)}{=}~ \\\left( \frac{\varphi(3)}{3} \cdot \frac{2^1}{1} + \frac{\varphi(1)}{1} \cdot \frac{2^3}{3} \right) = \left( \frac{\varphi(3)}{3} \cdot \frac{2}{1} + \frac{\varphi(1)}{1} \cdot \frac{8}{3} \right) = \frac{12}{3} = 4$ — *gut*
 
 ---
