@@ -30,3 +30,5 @@
 ## Laboratorium
 
 *Prowadzone przez: [dr hab. Paweł Zieliński](https://cs.pwr.edu.pl/zielinski/)*
+
+- [Lista-1](lab/lista-1/readme.md)
