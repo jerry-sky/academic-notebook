@@ -18,6 +18,11 @@
 - 2020-10-13
     - [Uwarunkowanie zadania](wyk/2020-10-13/uwarunkowanie-zadania.md)
     - [Numeryczna niestabilność](wyk/2020-10-13/numeryczna-niestabilność.md)
+- 2020-10-20
+    - [Rozwiązywanie równań nieliniowych](wyk/2020-10-20/rozwiązywanie-równań-nieliniowych.md)
+        - [Metoda bisekcji](metoda-bisekcji.md)
+        - [Metoda Newtona](metoda-newtona.md)
+        - [Metoda siecznych](metoda-siecznych.md)
 
 ---
 
