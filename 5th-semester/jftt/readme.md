@@ -46,3 +46,5 @@
 ## Laboratorium
 
 *Prowadzone przez: [mgr inż. Karol Gotfryd](https://cs.pwr.edu.pl/gotfryd/)*
+
+- [Lista 1](lab/lista-1/readme.md)
