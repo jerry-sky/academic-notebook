@@ -10,7 +10,6 @@
 - [4. *MIN* oraz *MAX*](#4-min-oraz-max)
     - [4.1. Przykład](#41-przykład)
 - [5. Przykład reprezentacji liczby](#5-przykład-reprezentacji-liczby)
-- [- $t = 6$](#ullit--6liul)
 
 ---
 
@@ -93,7 +92,7 @@ $$
 
 Oszacujmy więc, błąd względny dla zaokrąglenia:
 $$
-|\delta| = \frac{|rd(x) - x|}{|x|} \le \frac{1}{2} \frac{|x^+ - x^-|}{|x|} = \frac{1}{2}\frac{\beta^{c-t}}{|m_x \beta^c} \le \frac{1}{2} \frac{\beta^{-t}}{\beta^{-1}} = \frac{1}{2}\beta^{1-t}
+|\delta| = \frac{|rd(x) - x|}{|x|} \le \frac{1}{2} \frac{|x^+ - x^-|}{|x|} = \frac{1}{2}\frac{\beta^{c-t}}{|m_x \beta^c|} \le \frac{1}{2} \frac{\beta^{-t}}{\beta^{-1}} = \frac{1}{2}\beta^{1-t}
 $$
 
 gdzie $x^-$, $x$ oraz $x^+$ są sąsiadującymi liczbami.\
@@ -144,6 +143,7 @@ $$
 - liczba $x = 9.13$ w arytmetyce *fl*
 - $\beta = 2$
 - $t = 6$
+
 ---
 $\epsilon = 1.56 \cdot 10^{-2}$
 

@@ -2,6 +2,17 @@
 
 *(2020-10-06)*
 
+- [1. Reprezentacja liczby rzeczywistej w IEEE-754](#1-reprezentacja-liczby-rzeczywistej-w-ieee-754)
+    - [1.1. Cecha](#11-cecha)
+    - [1.2. Wartości brzegowe](#12-wartości-brzegowe)
+    - [1.3. Przykład](#13-przykład)
+- [2. Symbole specjalne](#2-symbole-specjalne)
+    - [2.1. Zera](#21-zera)
+    - [2.2. Nieskończoności](#22-nieskończoności)
+    - [2.3. `NaN`](#23-nan)
+    - [2.4. Liczby denormalizowane](#24-liczby-denormalizowane)
+- [3. Zaokrąglenie (Przykład)](#3-zaokrąglenie-przykład)
+
 ---
 
 ## 1. Reprezentacja liczby rzeczywistej w IEEE-754
