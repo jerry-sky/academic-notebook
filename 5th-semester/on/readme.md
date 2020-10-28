@@ -30,6 +30,8 @@
 
 *Prowadzone przez: [dr hab. Paweł Zieliński](https://cs.pwr.edu.pl/zielinski/)*
 
+- [Lista-1](cw/lista-1/lista-1.md)
+
 ---
 
 ## Laboratorium
