@@ -2,12 +2,13 @@
 
 *(2020-10-19)*
 
-- [Drzewa uporządkowane](#drzewa-uporządkowane)
-- [Klasa kombinatoryczna](#klasa-kombinatoryczna)
+- [1. Drzewa uporządkowane](#1-drzewa-uporządkowane)
+- [2. Klasa kombinatoryczna](#2-klasa-kombinatoryczna)
+    - [2.1. OGF](#21-ogf)
 
 ---
 
-## Drzewa uporządkowane
+## 1. Drzewa uporządkowane
 
 Drzewa takie, w których zachowujemy orientację całego drzewa\
 ![](plane-trees-orientacja.png)\
@@ -21,25 +22,17 @@ Lista możliwych drzew dla liczby węzłów $[0;4]$:\
 
 ---
 
-## Klasa kombinatoryczna
+## 2. Klasa kombinatoryczna
 
 Spójrzmy na drzewa uporządkowane nieco „z góry”:\
 ![](plane-trees-z-góry.png)
 
 Można zauważyć, że każde drzewo jest zbudowane z korzenia oraz z pewnej liczby poddrzew.
 
+Czyli mamy:
 $$
 \mathcal{T} \cong \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})
 $$
-
-czyli mamy OGF: $T(z) = z \cdot \frac{1}{1 - T(z)}$
-- $T(z)(1-T(z)) = z$
-- $(T(z))^2 - T(z) + z = 0$
-    - $\bold{T(z) = \frac{1}{z}\left( 1 - \sqrt{1 - 4z} \right)}$
-    - $\sout{T(z) = \frac{1}{2}\left( 1 + \sqrt{1 - 4z} \right)}$
-
-Możemy też rozwinąć tę OGF:\
-$T(z) = \sum_{n\ge1} \frac{1}{n} \binom{2n-2}{n-1}2^n$
 
 ---
 
@@ -55,5 +48,27 @@ wizualnie:\
 - $\mathcal{T}^{(i)} \subseteq \mathcal{T}^{(i+1)}$
 - $\bigcup_{i=1}^{\infty} \mathcal{T}^{(i)} \cong \lim_{i\to\infty} \mathcal{T}^{(i)}$
 - $\lim_{i\to \infty} T^{(i)}(z) = T(z)$
+
+---
+
+### 2.1. OGF
+
+Jednakże do liczenia OGF użyjemy tej pierwszej metody:
+$$
+\mathcal{T} \cong \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})
+$$
+
+czyli mamy OGF: $T(z) = z \cdot \frac{1}{1 - T(z)}$
+- $T(z)(1-T(z)) = z$
+- $(T(z))^2 - T(z) + z = 0$
+    - $\bold{T(z) = \frac{1}{z}\left( 1 - \sqrt{1 - 4z} \right)}$
+    - $\sout{T(z) = \frac{1}{2}\left( 1 + \sqrt{1 - 4z} \right)}$
+
+
+Mamy też coś takiego: $\sqrt{1 - 4z} = \sum_{i=0}^\infty (4z)^i \cdot \binom{\frac{1}{2}}{i} = \sum_{i=0}^\infty \frac{1}{n} \binom{2n - 2}{n-1} \cdot z^n$
+
+Sprawdźmy dla $n=4$:\
+$\frac{1}{4} \cdot \binom{6}{3} = 5$\
+i to się zgadza z [tym, co otrzymaliśmy wcześniej](#drzewa-uporządkowane)
 
 ---
