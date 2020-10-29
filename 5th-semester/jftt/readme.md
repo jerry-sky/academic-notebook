@@ -36,6 +36,9 @@
 - 2020-10-15
     - [Równoważność DFA, NFA oraz RE](wyk/2020-10-15/równoważność-dfa-nfa-re.md)
     - [Minimalny DFA](wyk/2020-10-15/minimalny-dfa.md)
+- 2020-10-22
+    - [Własności języków regularnych](wyk/2020-10-22/własności-języków-regularnych.md)
+    - [Analiza leksykalna](wyk/2020-10-22/analiza-leksykalna.md)
 
 ## Ćwiczenia
 

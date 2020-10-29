@@ -123,7 +123,7 @@ Wyrażenia regularne:
 Mamy wyrażenia regularne $r$ oraz $s$ reprezentujące odpowiednio języki $R$ oraz $S$, wówczas:
 - $(r+s)$ reprezentuje język $R \cup S$
 - $(rs)$ reprezentuje język $RS$
-- $r&*$ reprezentuje język $R^*$
+- $r^*$ reprezentuje język $R^*$
 
 ---
 
