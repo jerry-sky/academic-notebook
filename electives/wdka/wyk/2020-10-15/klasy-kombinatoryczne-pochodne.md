@@ -58,7 +58,7 @@ $\mathcal{A} \times \mathcal{B} = (A \times B, |\cdot|) \quad |(a,b)| = |a|_A + 
 ### 2.1. OGF
 - $(A \times B) (z) = \sum_{n} |(A \times B)_n|z^n$
 - $(A\times B)_n = \{ (a,b) \in A\times B: |a|_A + |b|_B = n \} = \bigcup_{k=0}^{n} \{ (a,b) \in A \times B: |a|_A = k \land |b|_B = n-k \} = \bigcup_{k=0}^{n} A_k \times B_{n-k} = (*)$; $|(*)| = \sum_{k=0}^{n} |A_k| \cdot |B_{n-k}| = |(A\times B)_n|$
-- czyli wracając $(A \times B) (z) = \sum_{n} \left( \sum_{k=0}^{\infty} a_k \cdot b_{n-k} \right) z^n = A(z) \cdot B(z)$
+- czyli wracając $(A \times B) (z) = \sum_{n\ge0} \left( \sum_{k=0}^{n} a_k \cdot b_{n-k} \right) z^n = A(z) \cdot B(z)$
 
 ---
 
@@ -91,7 +91,7 @@ $\mathrm{SEQ}(\mathcal{A}) = \underset{= \epsilon}{\mathcal{A}_0} + \mathcal{A} 
 ### 3.1. OGF
 
 - $\alpha = (\alpha_1, \alpha_2, \dots, \alpha_k)$
-- $|\alpha| = |\alpha_1| + |\alpha_2| + \dotsb + \dotsb + |\alpha_k|$
+- $|\alpha| = |\alpha_1| + |\alpha_2| + \dotsb + |\alpha_k|$
 - $\mathrm{SEQ}(\mathcal{A}) \leftrightarrow \frac{1}{1 - A(z)}$
 
 ---
@@ -141,7 +141,7 @@ $\mathcal{A} = (A, |\cdot|) \qquad |A| < \infty$
 $\mathrm{PSET}(\mathcal{A}) = \prod_{\alpha \in A} (\{ \epsilon \} + \{ \alpha \})$
 
 ### 4.1. OGF
-$\mathrm{PSET}(\mathcal{A})(z) = \prod_{n} (1 + z^n)^{B_n}$
+$\mathrm{PSET}(\mathcal{A})(z) = \prod_{n} (1 + z^n)^{a_n}$
 
 Możemy OGF zapisać nieco inaczej.
 
@@ -152,7 +152,7 @@ $$
 
 Wówczas:
 $$
-A(z) = \prod_{n} (1 + z^n)^{a_n} = \exp\left( \ln(\prod_n (1+z^n)^{a_n}) \right) =\\
+\operatorname{PSET}(\mathcal{A})(z) = \prod_{n} (1 + z^n)^{a_n} = \exp\left( \ln(\prod_n (1+z^n)^{a_n}) \right) =\\
 = \exp\left( \sum_{n \ge 1}^{\infty} a_n \sum_{k = 1}^{n} (-1)^{k-1} \cdot \frac{z^{n\cdot k}}{k} \right) =\\
 exp\left( \frac{A(z)}{1} - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} - \dotsb \right)
 $$
@@ -266,7 +266,7 @@ $$
 
 ### 6.1. OGF
 
-$\mathrm{CYC}(\mathcal{A})(z) = \sum_{k=1}^{\infty} \frac{\varphi(k)}{k} \ln\frac{1}{1 - A\left( z^k \right)} =$
+$\mathrm{CYC}(\mathcal{A})(z) = \sum_{k=1}^{\infty} \frac{\varphi(k)}{k} \ln\frac{1}{1 - A\left( z^k \right)}$
 
 #### 6.1.1. Funkcja Eulera
 $\varphi: \mathbb{N} \to \mathbb{N}$\
