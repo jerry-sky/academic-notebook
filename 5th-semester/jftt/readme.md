@@ -45,6 +45,7 @@
 *Prowadzone przez: [dr inż. Anna Lauks-Dutka](https://cs.pwr.edu.pl/lauks/)*
 
 - [Lista 0](cw/lista-0/lista-0.md)
+- [Lista 1](cw/lista-1/lista-1.md)
 
 ## Laboratorium
 
