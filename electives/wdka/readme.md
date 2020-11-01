@@ -34,3 +34,5 @@
 ## Laboratorium
 
 *Prowadzone przez: [prof. dr hab. inż. Marek Klonowski](https://cs.pwr.edu.pl/klonowski/)*
+
+- [Lista-1](lab/lista-1/lista-1.md)
