@@ -23,6 +23,8 @@
         - [Metoda bisekcji](metoda-bisekcji.md)
         - [Metoda Newtona](metoda-newtona.md)
         - [Metoda siecznych](metoda-siecznych.md)
+- 2020-10-27
+    - [Metody iteracyjne](wyk/2020-10-27/metody-iteracyjne.md)
 
 ---
 
