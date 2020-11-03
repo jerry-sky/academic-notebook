@@ -25,6 +25,8 @@
         - [Metoda siecznych](metoda-siecznych.md)
 - 2020-10-27
     - [Metody iteracyjne](wyk/2020-10-27/metody-iteracyjne.md)
+- 2020-11-03
+    - [Pierwiastki wielomianów](wyk/2020-11-03/pierwiastki-wielomianów.md)
 
 ---
 
