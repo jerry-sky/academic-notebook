@@ -61,7 +61,7 @@ $$
 n^2 < |uv^2w| = |uvw| + |v| \le n^2 + n < (n+1)^2
 $$
 
-Nasze nowe słowo jest w przedziale **otwartym** $(n^2; n+1)$ co oznacza, że na pewno nie spełnia żądanego warunku długości słowa (miało być kwadratem liczby naturalnej).\
+Nasze nowe słowo jest w przedziale **otwartym** $(n^2; (n+1)^2)$ co oznacza, że na pewno nie spełnia żądanego warunku długości słowa (miało być kwadratem liczby naturalnej).\
 Zatem $L$ nie jest regularny.
 
 ### 2.2. Przykład
@@ -82,7 +82,7 @@ Mamy $L = \left\{ x \in \left\{ a,b \right\}^*: |x|_a \neq |x|_b  \right\}$ czyl
 - $z = a^n b^{n+1}$
 - patrzymy na możliwe podziały
 - $\forall i \enspace (a^2)^i a^{n-2} b^{n+1} \in L$ — nie udało się udowodnić
-- bierzemy inne słowo $z = a^n b_{n! + n} \in L$ — znowu nie
+- bierzemy inne słowo $z = a^n b^{n! + n} \in L$ — znowu nie
 - bierzemy $k \in \left\{ 1, \dots, n \right\}$
 - bierzemy słowo $(a^k)^i a^{n-k} b^{n! + n}$
 - tutaj wystarczy wziąć $i = \frac{n!}{k} + 1$, żeby słowo wyleciało z języka, ponieważ po podstawieniu wychodzi, że mamy tyle samo liter $a$ co $b$ ($k \cdot \left( \frac{n!}{k} + 1 \right) + (n-k) = n! + n$)

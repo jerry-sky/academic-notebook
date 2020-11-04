@@ -39,6 +39,8 @@
 - 2020-10-22
     - [Własności języków regularnych](wyk/2020-10-22/własności-języków-regularnych.md)
     - [Analiza leksykalna](wyk/2020-10-22/analiza-leksykalna.md)
+- 2020-10-29
+    - [**Gramatyki bezkontekstowe**](wyk/2020-10-29/gramatyki-bezkontekstowe.md)
 
 ## Ćwiczenia
 

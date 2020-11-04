@@ -82,14 +82,14 @@ double sqr(double x)
 
 | Automat | Pamięć                  | Czas                                       |
 | ------- | ----------------------- | ------------------------------------------ |
-| DFA     | $O(2^{\lvert r \rvert}$ | $O(\lvert x \rvert)$                       |
+| DFA     | $O(2^{\lvert r \rvert})$ | $O(\lvert x \rvert)$                       |
 | NFA     | $O(\lvert r \rvert)$    | $O(\lvert x \rvert \cdot \lvert r \rvert)$ |
 
 gdzie:
 - $|r|$ — długość wyrażenia regularnego
 - $|x|$ — długość łańcucha wejściowego
 
-Jednak implementacji DFA jest duża łatwiejsza, a wielkość zmniejsza się w trakcie minimalizacji.
+Jednak implementacja DFA jest duża łatwiejsza, a wielkość zmniejsza się w trakcie minimalizacji.
 
 ---
 
