@@ -21,6 +21,9 @@
 - 2020-10-22
     - [Przypomnienie — funkcja wypukła](wyk/2020-10-22/przypomnienie-funkcja-wypukła.md)
     - [Nierówność Jensen’a](wyk/2020-10-22/nierówność-jensena.md)
+- 2020-10-29
+    - [Kod Shannon’a raz jeszcze](wyk/2020-10-29/kod-shannona-raz-jeszcze.md)
+    - [Kody Huffmana](wyk/2020-10-29/kody-huffmana.md)
 
 ## Ćwiczenia
 
