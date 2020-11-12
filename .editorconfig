@@ -13,3 +13,11 @@ indent_style = tab
 [*.py]
 indent_style = space
 indent_size = 4
+
+# Lex/Flex
+[*.l]
+indent_style = tab
+
+[*.test]
+trim_trailing_whitespace = false
+insert_final_newline = false
