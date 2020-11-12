@@ -30,6 +30,7 @@
 *Prowadzone przez: [prof. dr hab. inż. Marek Klonowski](https://cs.pwr.edu.pl/klonowski/)*
 
 - [Lista-1](cw/lista-1/lista-1.md)
+- [Lista-2](cw/lista-2/lista-2.md)
 
 ## Laboratorium
 
