@@ -18,7 +18,7 @@
 ## Rozwinięcie potęgowe dla $\ln$
 
 $$
-\ln\frac{1}{1-x} = \sum_{i=1}^{\infty} \frac{x}{i}
+\ln\frac{1}{1-x} = \sum_{i=1}^{\infty} \frac{x^i}{i}
 $$
 
 ---

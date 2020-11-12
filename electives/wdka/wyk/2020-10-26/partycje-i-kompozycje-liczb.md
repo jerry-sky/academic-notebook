@@ -33,7 +33,7 @@ $$
 
 ### 2.1. OGF
 
-$P(z) = \prod_{n=1}^\infty \frac{1}{1 - z^m}$
+$P(z) = \prod_{n=1}^\infty \frac{1}{1 - z^n}$
 
 ---
 
