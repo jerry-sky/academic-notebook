@@ -41,6 +41,8 @@
     - [Analiza leksykalna](wyk/2020-10-22/analiza-leksykalna.md)
 - 2020-10-29
     - [**Gramatyki bezkontekstowe**](wyk/2020-10-29/gramatyki-bezkontekstowe.md)
+- 2020-11-05
+    - [**Automat ze stosem**](wyk/2020-11-05/automat-ze-stosem.md)
 
 ## Ćwiczenia
 
