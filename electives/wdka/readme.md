@@ -20,10 +20,11 @@
     - [Kilka przydatnych wzorów](wyk/2020-10-19/kilka-przydatnych-wzorów.md)
     - [Klasy pomocnicze](wyk/2020-10-19/klasy-pomocnicze.md)
     - [Przykładowe zastosowanie — Plane Trees](wyk/2020-10-19/plane-trees.md)
-- 2020-10-26
+- 2020-10-26, 2020-11-09
     - [Triangulacje](wyk/2020-10-26/triangulacje.md)
     - [Partycje i kompozycje liczb](wyk/2020-10-26/partycje-i-kompozycje-liczb.md)
     - [Języki](wyk/2020-10-26/języki.md)
+    - [**Twierdzenie Lagrange’a o inwersji**](wyk/2020-11-09/tw-lagrangea-o-inwersji.md)
 
 ## Ćwiczenia
 

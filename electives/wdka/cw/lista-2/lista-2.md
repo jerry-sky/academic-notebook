@@ -52,7 +52,7 @@ $$
 T(z) = z \left( 1 + T^2(z) \right)
 $$
 
-Żeby uzyskać wersję OGF bez rekursji, musimy tutaj skorzystać z Twierdzenia Lagrange’a o inwersji.\
+Żeby uzyskać wersję OGF bez rekursji, musimy tutaj skorzystać z [Twierdzenia Lagrange’a o inwersji](../../wyk/2020-11-09/tw-lagrangea-o-inwersji.md).\
 Niech $\varphi(x) = (1 + x^2)$\
 *(wiemy, że jest to funkcja analityczna, bo każdy wielomian jest funkcją analityczną, bo wielomian jest swoim rozwinięciem Taylora)*.
 

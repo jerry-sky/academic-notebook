@@ -2,13 +2,21 @@
 
 *(2020-10-26)*
 
-- [1. Słowa](#1-słowa)
-- [2. Przykład języka](#2-przykład-języka)
-- [3. Przykład języka](#3-przykład-języka)
+- [1. Słowa, języki](#1-słowa-języki)
+    - [1.1. Przykład](#11-przykład)
+    - [1.2. Przykład](#12-przykład)
+    - [1.3. Przykład](#13-przykład)
+    - [1.4. Przykład](#14-przykład)
+- [2. Wzorce ukryte](#2-wzorce-ukryte)
+    - [2.1. Przykład](#21-przykład)
+        - [2.1.1. **Złe** rozwiązanie](#211-złe-rozwiązanie)
+        - [2.1.2. **Dobre** rozwiązanie](#212-dobre-rozwiązanie)
+- [3. Automaty skończone](#3-automaty-skończone)
+    - [3.1. Przykład](#31-przykład)
 
 ---
 
-## 1. Słowa
+## 1. Słowa, języki
 
 Mamy $\mathcal{A} = (\left\{ a_1, a_2, \dots, a_m \right\}, |\cdot|)$, gdzie $\forall i \enspace |a_i| = 1$.
 
@@ -17,7 +25,7 @@ oraz $W(z) = \frac{1}{1 - mz}$, bo $A(z) = m\cdot z$.
 
 ---
 
-## 2. Przykład języka
+### 1.1. Przykład
 
 *Ile jest słów długości $n$ takich, że *nie ma* $k$ liter $a$ z rzędu?*\
 $n=4,~ k=2 \qquad bbbb \quad abbb \quad abab \quad baba \quad \dots$
@@ -30,12 +38,145 @@ $n=4,~ k=2 \qquad bbbb \quad abbb \quad abab \quad baba \quad \dots$
 
 ---
 
-## 3. Przykład języka
+### 1.2. Przykład
 
 *Co, gdy chcemy policzyć, ile jest słów takich, że jest co najwyżej $k$ liter $a$ oraz $b$ z rzędu.*
 
 - $\mathcal{W}^{(k,k)} \cong \operatorname{SEQ}_{\le k}(b) \cdot \operatorname{SEQ}(a \cdot \operatorname{SEQ}_{<k}(a) \cdot b \cdot \operatorname{SEQ}_{<k}(b)) \cdot \operatorname{SEQ}_{\le k}(a)$
 - $W^{(k,k)}(z) = \left( \frac{1 - z^{k+1}}{1-z} \right)^2 \cdot \left( \frac{1}{1 - \frac{z^2}{\left( 1 - \left( \frac{1 - z^k}{1-z} \right) \right)^2}} \right)$
 - jeżeli chcemy policzyć, ile jest ciągów, w których mamy dokładnie $k$-literowych podciągów naszych liter robimy: $W^{(k,k)}_n - W^{(k - 1, k - 1)}_n$
+
+---
+
+### 1.3. Przykład
+
+*Ile jest słów nad $\{a,b\}$ długości $n$ takich, że jest dokładnie $k$ wystąpień litery (symbolu) «$b$»?*
+
+Standardowo, oczywiście $\binom{n}{k}$ jako, że wybieramy z $n$ miejsc $k$ miejsc, na których stawiamy litery (symbole) «$b$».
+
+Ale popatrzmy na to zadanie w nieco inny sposób.
+
+Mamy
+$$
+\underbrace{a\dots a}_{0–\infty}\, \overset{1}{b}\, \underbrace{a\dots a}_{0–\infty}\, \overset{2}{b}\, \underbrace{a\dots a}_{0–\infty}\, \overset{3}{b}\, \dots \overset{k}{b}\, \underbrace{a\dots a}_{0–\infty}
+$$
+
+Czyli mamy
+$$
+\operatorname{SEQ}(\{a\}) \enspace \{b\} \enspace \operatorname{SEQ}(\{a\}) \enspace \{b\} \enspace \operatorname{SEQ}(\{a\}) \{b\} \dots \{b\} \operatorname{SEQ}(\{a\})
+$$
+
+Ostatecznie mamy język określony przez klasę kombinatoryczną:
+$$
+\mathcal{L} \cong (\operatorname{SEQ}(\{a\}))^{k+1} (\{b\})^k,\\
+L(z) = \left( \frac{1}{1-z} \right)^{k+1} \cdot z^k.
+$$
+
+---
+
+### 1.4. Przykład
+
+*Ile jest ciągów nad alfabetem $\{a,b\}$ takich, że jest $k$ liter «$b$» oraz odległość każdego «$b$» od swojego poprzednika to co najwyżej $d$?*
+
+Popatrzmy na przykład słowa należącego do takiego języka. Weźmy $k=3, d=3$:
+$$
+aaaaaaaaaaaaa\, b\, a\, b\, aaa\, b\, aaaaaaaa
+$$
+
+Jesteśmy w stanie określić klasę kombinatoryczną:
+$$
+\mathcal{L} \cong \operatorname{SEQ}(\{a\})\, \{b\}\, \operatorname{SEQ}_{\le d}(\{a\})\, \{b\}\, \operatorname{SEQ}_{\le d}(\{a\})\, \dots\, \{b\}\, \operatorname{SEQ}(\{a\})
+$$
+
+Wówczas OGF:
+$$
+L(z) = \left( \frac{1}{1-z} \right)^2 \cdot z^k \cdot \left( 1 + z + z^2 + \dots + z^d \right)^{k-1} =\\
+= \left( \frac{1}{1-z} \right)^2 \cdot z^k \cdot \left( \frac{1 - z^{d-1}}{1-z} \right)^{k-1} =\\
+= \frac{z^k\left( 1 - z^{d-1} \right)^{k-1}}{(1-z)^{k-1}}
+$$
+
+Podzielmy na części OGF:
+$$
+A_1(z) = \frac{z^k}{(1-z)^{k+1}} = \sum_{n\ge0} a^{(1)}_n z^n\\
+A_2(z) = \left( 1-z^{d+1} \right)^{k-1} = \sum_{n\ge0} a^{(2)}_n z^n
+$$
+
+Czyli $L(z) = A_1(z) A_2(z)$, wówczas:
+$$
+l_n = \sum_{k=0}^n a^{(1)}_k \cdot a^{(2)}_{n-k}
+$$
+
+---
+
+## 2. Wzorce ukryte
+
+Mamy pewny ciąg liter, który ma w sobie ukryte dane słowo.
+
+Np. mamy tekst:
+
+_**Kom**u **bi**je dzwo**n**_\
+_**A** **t**ego **r**aczej nie wiem._\
+_B**y**ć może **ka**żdemu._
+
+I ukryte słowo «_kombinatoryka_».
+
+### 2.1. Przykład
+
+*Ile jest słów nad alfabetem $\mathcal{A}$ (mamy $m$ symboli), które zawierają ukryty wzorzec ze słowem «kombinatoryka»?*
+
+#### 2.1.1. **Złe** rozwiązanie
+$$
+B \cong \operatorname{SEQ}(\mathcal{A})\, \{k\}\, \operatorname{SEQ}(\mathcal{A})\, \{o\}\, \dots\, \operatorname{SEQ}(\mathcal{A})
+$$
+
+Wówczas OGF:
+$$
+B(z) = \frac{z^{13}}{(1 - mz)^{14}}.
+$$
+
+#### 2.1.2. **Dobre** rozwiązanie
+
+Naszą klasę trzeba nieco zmodyfikować:
+$$
+\operatorname{SEQ}(\mathcal{A} \setminus \{k\})\, \{k\}\, \operatorname{SEQ}(\mathcal{A} \setminus \{o\})\, \{o\}\, \dots\, \operatorname{SEQ}(\mathcal{A} \setminus \{a\})\, \{a\}\, \operatorname{SEQ}(\mathcal{A})
+$$
+
+Czyli OGF wynosi:
+$$
+B(z) = \frac{z^{13}}{\left( 1 - (m-1)z \right)^{13}} \cdot \frac{1}{1-mz}
+$$
+
+---
+
+## 3. Automaty skończone
+
+### 3.1. Przykład
+*Czy słowo zawiera ciąg $abb$?* ($\mathcal{A} = \{a,b\}$)
+
+![](automaty-skończone-przykład-1.png)
+
+$\mathcal{L}_i$ — klasa słów akceptowanych przez powyższy automat jeśli zaczynamy ze stanu $i$.
+
+- $\mathcal{L}_3 = \mathcal{E} + a \mathcal{L}_3 + b \mathcal{L}_3$
+- $\mathcal{L}_2 = b\mathcal{L}_3 + a\mathcal{L}_1$
+- $\mathcal{L}_1 = a\mathcal{L}_1 + b\mathcal{L}_2$
+- $\mathcal{L}_0 = a\mathcal{L}_1 + b\mathcal{L}_0$
+
+Czyli:
+- $L_0(z) = zL_1(z) = zL_0(z)$
+- $L_1(z) = zL_1(z) + zL_2(z)$
+- $L_2(z) = zL_1(z) + zL_3(z)$
+- $L_3(z) = zL_3(z) + zL_3(z) + 1$
+
+a po rozwiązaniu układu równań:
+$$
+L_0(z) = \frac{z^3}{(1-z)(1-2z)(1-z-z^2)} \overset{\operatorname{Apart}}{=}\\
+= \frac{1}{1-2z} - \frac{2+z}{1-z-z^2} + \frac{1}{1-z}
+$$
+
+Liczymy współczynnik:
+$$
+[z^n]L_0(z) = 2^n - F_{n+3} + 1
+$$
 
 ---
