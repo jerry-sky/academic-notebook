@@ -4,7 +4,8 @@
 
 - [1. Problem](#1-problem)
 - [2. Podejście](#2-podejście)
-- [3. Metody](#3-metody)
+- [3. DEF#1](#3-def1)
+- [4. Metody](#4-metody)
 
 ---
 
@@ -31,7 +32,20 @@ Mówimy o metodzie, że jest *zbieżna globalnie*, jeśli konstruowany ciąg prz
 
 ---
 
-## 3. Metody
+## 3. DEF#1
+Niech $\{ x_n \}$ będzie ciągiem zbieżnym do $r$. Jeśli istnieją stałe $C$, $\alpha$ oraz $N \in \mathbb{N}$ takie, że
+$$
+|x_{n+1} - r| \le C|x_n - r|^{\alpha} \quad (n \ge N)
+$$
+to mówimy, że wykładnik zbieżności jest rzędu $\alpha$.
+
+- $\alpha = 1$ — zbieżność liniowa, $C < 1$
+- $\alpha = 2$ — zbieżność kwadratowa
+- $\alpha = 3$ — zbieżność sześcienna
+
+---
+
+## 4. Metody
 
 1. [Metoda bisekcji](metoda-bisekcji.md)
 2. [Metoda Newtona](metoda-newtona.md)

@@ -4,13 +4,12 @@
 
 - [1. Metoda Newtona (metoda stycznych)](#1-metoda-newtona-metoda-stycznych)
 - [2. Algorytm](#2-algorytm)
-- [3. DEF#1](#3-def1)
-- [4. Twierdzenie o lokalnej zbieżności metody Newtona](#4-twierdzenie-o-lokalnej-zbieżności-metody-newtona)
-    - [4.1. D-d](#41-d-d)
-        - [4.1.1. Wykładnik zbieżności](#411-wykładnik-zbieżności)
-        - [4.1.2. Zbieżność](#412-zbieżność)
-    - [4.2. Przykład](#42-przykład)
-- [5. Twierdzenie#3](#5-twierdzenie3)
+- [3. Twierdzenie o lokalnej zbieżności metody Newtona](#3-twierdzenie-o-lokalnej-zbieżności-metody-newtona)
+    - [3.1. D-d](#31-d-d)
+        - [3.1.1. Wykładnik zbieżności](#311-wykładnik-zbieżności)
+        - [3.1.2. Zbieżność](#312-zbieżność)
+    - [3.2. Przykład](#32-przykład)
+- [4. Twierdzenie#3](#4-twierdzenie3)
 
 ---
 
@@ -47,20 +46,7 @@ Powyższy algorytm korzysta z funkcji liczących $f(x)$ oraz $f'(x)$.
 
 ---
 
-## 3. DEF#1
-Niech $\{ x_n \}$ będzie ciągiem zbieżnym do $r$. Jeśli istnieją stałe $C$, $\alpha$ oraz $N \in \mathbb{N}$ takie, że
-$$
-|x_{n+1} - r| \le C|x_n - r|^{\alpha} \quad (n \ge N)
-$$
-to mówimy, że wykładnik zbieżności jest rzędu $\alpha$.
-
-- $\alpha = 1$ — zbieżność liniowa, $C < 1$
-- $\alpha = 2$ — zbieżność kwadratowa
-- $\alpha = 3$ — zbieżność sześcienna
-
----
-
-## 4. Twierdzenie o lokalnej zbieżności metody Newtona
+## 3. Twierdzenie o lokalnej zbieżności metody Newtona
 
 Niech $f \in C^2[a,b]$ oraz $r$ będzie jednokrotnym pierwiastkiem $f$.\
 Wówczas istnieje otoczenie $r$ i stała $C$ i jeśli przybliżenie początkowe $x_0$ należy do otoczenia $r$, to ciąg konstruowanych przez metodę Newtona przybliżeń $\{ x_n \}$ spełnia
@@ -70,9 +56,9 @@ $$
 
 Ponadto $\lim_{n \to \infty} x_n = r$.
 
-### 4.1. D-d
+### 3.1. D-d
 
-#### 4.1.1. Wykładnik zbieżności
+#### 3.1.1. Wykładnik zbieżności
 
 Przez błąd rozumiemy wielkość $e_n = x_n - r$.
 $$
@@ -101,7 +87,7 @@ e_{n+1} = \frac{e_n \cdot f'(x_n) - f(x_n)}{f'(x_n)} = \frac{1}{2} \frac{f''(\ze
 $$
 (zakładamy, że $x_n \to r$)
 
-#### 4.1.2. Zbieżność
+#### 3.1.2. Zbieżność
 Zdefiniujmy $c(\delta)$:
 $$
 c(\delta) = \frac{1}{2} \frac{\max_{|x-r| \le \delta} |f''(x)|}{\min_{|x-r| \le \delta} |f'(x)|} \quad (\delta > 0)
@@ -131,7 +117,7 @@ $\blacksquare$
 
 ---
 
-### 4.2. Przykład
+### 3.2. Przykład
 
 $f(x) = \left( \frac{x}{2} \right)^2 + \sin x$
 
@@ -149,7 +135,7 @@ Metoda bisekcji wykonała $17$ iteracji dla $a = 1.5$ oraz $b = 2$.
 
 ---
 
-## 5. Twierdzenie#3
+## 4. Twierdzenie#3
 Niech $[a;b]$ będzie przedziałem takim, że:
 - $f(a)$ oraz $f(b)$ mają przeciwne znaki
 - $f''(x)$ jest ciągła i zmienia znaku na $[a;b]$

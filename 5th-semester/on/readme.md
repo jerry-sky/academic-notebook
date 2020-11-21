@@ -20,9 +20,9 @@
     - [Numeryczna niestabilność](wyk/2020-10-13/numeryczna-niestabilność.md)
 - 2020-10-20
     - [Rozwiązywanie równań nieliniowych](wyk/2020-10-20/rozwiązywanie-równań-nieliniowych.md)
-        - [Metoda bisekcji](metoda-bisekcji.md)
-        - [Metoda Newtona](metoda-newtona.md)
-        - [Metoda siecznych](metoda-siecznych.md)
+        - [Metoda bisekcji](wyk/2020-10-20/metoda-bisekcji.md)
+        - [Metoda Newtona](wyk/2020-10-20/metoda-newtona.md)
+        - [Metoda siecznych](wyk/2020-10-20/metoda-siecznych.md)
 - 2020-10-27
     - [Metody iteracyjne](wyk/2020-10-27/metody-iteracyjne.md)
 - 2020-11-03
