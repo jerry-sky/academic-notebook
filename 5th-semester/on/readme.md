@@ -27,9 +27,11 @@
     - [Metody iteracyjne](wyk/2020-10-27/metody-iteracyjne.md)
 - 2020-11-03
     - [Pierwiastki wielomianów](wyk/2020-11-03/pierwiastki-wielomianów.md)
-- 2020-11-10
+- 2020-11-10, 2020-11-17
     - [Interpolacja za pomocą wielomianów](wyk/2020-11-10/interpolacja-za-pomocą-wielomianów.md)
     - [Ilorazy różnicowe](wyk/2020-11-10/ilorazy-różnicowe.md)
+    - [Postać Newtona wzoru interpolacyjnego](wyk/2020-11-17/postać-newtona.md)
+    - [Wielomiany Czebyszewa](wyk/2020-11-17/wielomiany-czebyszewa.md)
 
 ---
 
