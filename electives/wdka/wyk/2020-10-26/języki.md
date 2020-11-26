@@ -13,6 +13,9 @@
         - [2.1.2. **Dobre** rozwiązanie](#212-dobre-rozwiązanie)
 - [3. Automaty skończone](#3-automaty-skończone)
     - [3.1. Przykład](#31-przykład)
+- [4. Wzorce blokowe](#4-wzorce-blokowe)
+    - [4.1. Zgodność prefiksowo-sufiksowa](#41-zgodność-prefiksowo-sufiksowa)
+    - [4.2. Ciągi długości $n$ z wzorcem $\overline{p}$](#42-ciągi-długości-n-z-wzorcem-overlinep)
 
 ---
 
@@ -177,6 +180,69 @@ $$
 Liczymy współczynnik:
 $$
 [z^n]L_0(z) = 2^n - F_{n+3} + 1
+$$
+
+---
+
+## 4. Wzorce blokowe
+
+Tym razem, w odróżnieniu od [wzorców ukrytych](#2-wzorce-ukryte), musimy mieć w tekście dany blok liter koło siebie, w odpowiedniej kolejności.
+
+Np. *Dobry ptero**daktyl** jest!* ma w sobie wzorzec blokowy «daktyl».
+
+### 4.1. Zgodność prefiksowo-sufiksowa
+
+Określamy ciąg $c = (c_0, c_1, \dots, c_{k-1})$ oraz liczby $c_i = \llbracket p_1 p_2 \dots p_{k-i} = p_{i+1} \dots p_k \rrbracket$ gdzie $\llbracket \cdot \rrbracket$ jest notacją Iversona. Czyli porównujemy końcówki z początkami danego słowa. Ciąg $c$ nazywamy *ciągiem charakterystycznym dla słowa $\overline{p}$.
+
+Np. weźmy $aabbaa$ — jego ciągiem charakterystycznym jest $c = (c_0, c_1, \dots, c_{k-1}) = (1,0,0,0,1,1)$ bo tylko dwie literki $aa$ na początku i na końcu czynią zadość równości.
+
+Określamy również wielomian charakterystyczny:
+$$
+C(z) = \sum_{j=0}^{k-1} c_j z^j
+$$
+i znowu dla $aabbaa$ będzie to po prostu $C(z) = 1 + z^4 + z^5$.
+
+---
+
+### 4.2. Ciągi długości $n$ z wzorcem $\overline{p}$
+
+*Ile jest ciągów długości $n$ nad alfabetem $\mathcal{A}$, które zawierają wzorzec blokowy $\overline{p}$?*
+
+Mamy:
+- alfabet $\mathcal{A}$ o $m$ literach
+- wzorzec $\overline{p} = p_1 p_2 \dots p_k$
+
+Szukamy języka (klasy) słów zawierających blok $\overline{p}$.
+
+Weźmy
+- $\mathcal{S}$ — słowa bez bloku $\overline{p}$
+- $\mathcal{T}$ — słowa, które mają na końcu $\overline{p}$, ale nie mają innego wystąpienia $\overline{p}$
+
+Wówczas
+$$
+\mathcal{S} + \mathcal{T} \cong \{\epsilon\} + \mathcal{S} \times \mathcal{A}
+$$
+ponieważ możemy wziąć takie słowo, które nie ma na pewno na końcu $\overline{p}$ albo wziąć takie, któremu brakuje jednej literki i tutaj wystarczy dokleić jedną literkę z alfabetu $\mathcal{A}$.
+
+Dodatkowo
+$$
+\mathcal{S} * \overline{p} \cong \mathcal{T} * \sum_{\forall i\enspace c_i \neq 0} \left\{ p_{k-i+1}, \dots, p_k \right\}
+$$
+($*$ to konkatenacja)\
+a to dlatego, że w $\mathcal{T}$ będzie końcówka, która będzie się zgadzać z początkiem tego wzorca:\
+![](prefiksy-sufiksy-zgodność-przykład.png)
+
+Z powyższych własności mamy:
+$$
+S(z) + T(z) = 1 + S(z) \cdot mz
+$$
+oraz
+$$
+S(z) \cdot z^k = T(z) \cdot C(z)
+$$
+co daje nam
+$$
+S(z) = \frac{C(z)}{z^k + (1 - mz) \cdot C(z)}
 $$
 
 ---
