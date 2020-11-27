@@ -25,7 +25,7 @@
     - [Partycje i kompozycje liczb](wyk/2020-10-26/partycje-i-kompozycje-liczb.md)
     - [Języki](wyk/2020-10-26/języki.md)
     - [**Twierdzenie Lagrange’a o inwersji**](wyk/2020-11-09/tw-lagrangea-o-inwersji.md)
-- 2020-11-16
+- 2020-11-16, 2020-11-23
     - [Liczby Stirlinga II rodzaju](wyk/2020-11-16/liczby-stirlinga-2-rodzaju.md)
     - [Struktury etykietowane i EGF](wyk/2020-11-16/struktury-etykietowane-i-egf.md)
 

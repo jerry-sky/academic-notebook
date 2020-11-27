@@ -12,6 +12,9 @@
 - [5. Produkt etykietowany (star product)](#5-produkt-etykietowany-star-product)
     - [5.1. Przykład](#51-przykład)
     - [5.2. Definicja formalna](#52-definicja-formalna)
+- [6. EGF klas pochodnych](#6-egf-klas-pochodnych)
+    - [6.1. Przykład (permutacje)](#61-przykład-permutacje)
+    - [6.2. Przykład (nieporządki)](#62-przykład-nieporządki)
 
 ---
 
@@ -125,5 +128,60 @@ Ważne:
 $$
 \frac{a_k \cdot b_{n-k} \cdot z^{k + (n-k)}}{k! (n-k)!} = \frac{\binom{n}{k} a_k a_{n-k} z^n}{n!}
 $$
+
+---
+
+## 6. EGF klas pochodnych
+
+Niech
+- $\mathcal{A}, \mathcal{B}$ będą klasami kombinatorycznymi
+- $A(z), B(z)$ będą ich EGF
+
+Wówczas
+1. $\mathcal{A} + \mathcal{B} \iff A(z) + B(z)$
+2. $\mathcal{A} * \mathcal{B} \iff A(z) \cdot B(z)$
+3. $\operatorname{SEQ}(\mathcal{A}) \iff \frac{1}{1 - A(z)}$
+4. $\operatorname{CYC}(\mathcal{A}) \iff \ln \frac{1}{1 - A(z)} = \sum_{n\ge0} \frac{A^n(z)}{n}$
+5. $\operatorname{MSET}$ *nie działa*
+6. $\operatorname{SET} = 1 + A(z) + \frac{A^2(z)}{2!} + \frac{A^3(z)}{3!} + \dots = \exp(A(z))$
+
+---
+
+### 6.1. Przykład (permutacje)
+
+Mamy permutację:
+$$
+\begin{aligned}
+    1 && 2 && 3 && 4 && 5 && 6\\
+    3 && 1 && 2 && 6 && 5 && 4
+\end{aligned}
+$$
+Można na nią spojrzeć na następujące sposoby:
+1. $(3)–(1)–(2)–(6)–(5)–(4)$
+2. $(1)\to(3)\to(2)\to(1)$\
+    $(4)\to(5)\to(4)$\
+    $(5)\to(5)$
+
+Permutacje określa klasa
+$$
+\mathcal{P} = \operatorname{SEQ}(\mathcal{Z})\\
+P(z) = \frac{1}{1-z}
+$$
+
+A formę cykli określa klasa
+$$
+\mathcal{P}' = \operatorname{SET}(\operatorname{CYC}(\mathcal{Z}))
+$$
+czyli OGF $P'(z) = \exp\left(\ln\frac{1}{1-z}\right)$, ale przecież $\exp\left( \ln \frac{1}{1-z} \right) = \frac{1}{1-z}$ — czyli obie sposoby „patrzenia” na permutacje są równoważne.
+
+---
+
+### 6.2. Przykład (nieporządki)
+
+*Nieporządki to permutacje bez punktów stałych — innymi słowy składają się z cykli o długości większej niż jeden.*
+
+Opisuje tę sytuację klasa $\mathcal{D} = \operatorname{SET}(\operatorname{CYC}_{>1}(\mathcal{Z}))$ z OGF $D(z) = \exp(A(z))$ gdzie $A(z) = \ln\frac{1}{1-z} - z$, bo odejmujemy ten jeden cykl zwrotny.
+
+Czyli $D(z) = \exp\left( \ln\frac{1}{1-z} - z \right) = \frac{\exp(-z)}{1 - z}$.
 
 ---
