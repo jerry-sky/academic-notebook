@@ -228,7 +228,7 @@ Dowolny język bezkontekstowy niezawierający $\varepsilon$ jest generowany prze
 Niech $G$ będzie gramatyką bez symboli bezużytecznych, $\varepsilon$-produkcji i produkcji jednostkowych. Wówczas jeśli prawa strona produkcji jest długości $1$ to jest postaci $A \to a$.
 
 Dla pozostałych produkcji wykonujemy następujące operacje:
-1. Jeśli po prawej stronie występuje terminal $a$ to dodajemy do $N$ nowy nieterminal $C_a$ a do produkcji $C_a \to a$ i zastępujemy $a przez C_a$.
+1. Jeśli po prawej stronie występuje terminal $a$ to dodajemy do $N$ nowy nieterminal $C_a$ a do produkcji $C_a \to a$ i zastępujemy $a$ przez $C_a$.
 2. Teraz jeśli prawa strona produkcji jest dłuższa niż $1$ to zawiera tylko nieterminale. Jeśli jest postaci $A \to B_1\dots B_n$ dla $n > 2$, to tworzymy nowe nieterminale $D_1,\dots,D_{n-2}$ i zastępujemy tę produkcję przez $A \to B_1 D_1, D_1 \to B_2 D_2, \dots, D_{n-3} \to B_{n-2}D_{n-2}, D_{n-2} \to B_{n-1}B_n$.
 
 ![](postać-normalna-chomskyego-d-d.png)
@@ -303,14 +303,14 @@ Każdy język bezkontekstowy $L$ niezawierający $\varepsilon$ jest generowany p
 
 #### 13.3.1. D-d
 
-Niech $G + (N,T,P,S)$ będzie gramatyką w [postaci normalnej Chomsky’ego](#12-postać-normalna-chomskyego).\
+Niech $G = (N,T,P,S)$ będzie gramatyką w [postaci normalnej Chomsky’ego](#12-postać-normalna-chomskyego).\
 Załóżmy, że $N = \{A_1, \dots, A_n\}$.\
 Modyfikujemy produkcje tak, aby jeśli produkcja jest postaci $A_i \to A_j \alpha$ to $i < j$.
 
 1. `for` $k \gets 1$ `to` $n$:
     1. `for` $j \gets 1$ `to` $(k-1)$:
         1. Za każdą produkcję postaci $A_k \to A_j \alpha$ wstaw produkcje $A_k \to \beta \alpha$ dla wszystkich produkcji $A_j \to \beta$ ([Lemat#1](#131-lemat1)).
-        2. Dla produkcji postaci $A_k \to A_k \alpha$ wykonaj [Lemat 2](#132-lemat2) używając nowy nieterminal $B_k$.
+        2. Dla produkcji postaci $A_k \to A_k \alpha$ wykonaj [Lemat 2](#132-lemat2) używając nowych nieterminali $B_k$.
 
 Po wykonaniu tego algorytmu mamy gramatykę równoważną o produkcjach w postaci:
 1. $A_i \to A_j \gamma$, gdzie zawsze $i < j$
