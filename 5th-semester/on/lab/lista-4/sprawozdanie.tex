@@ -1,0 +1,389 @@
+\documentclass[10pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{adjustbox}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{mathdots}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Obliczenia Naukowe,\\Laboratorium, Lista 4}
+\author{Jerzy Wroczyński}
+\date{2020-12-06}
+
+\begin{document}
+
+\maketitle
+
+\section{Zadanie 1.}
+
+Napisać funkcję obliczającą ilorazy różnicowe dla podanych węzłów oraz wartości danej funkcji w tych węzłach.
+
+\subsection{Dane wejściowe}\label{1.in-data}
+
+\begin{itemize}
+    \item \texttt{x} — wektor długości $n+1$ zawierający węzły $x_0,\dots,x_n$
+    \item \texttt{f} — wektor długości $n+1$ zawierający wartości interpolowanej funkcji w węzłach $f(x_0), \dots, f(x_n)$
+\end{itemize}
+
+\subsection{Dane wyjściowe}
+
+\begin{itemize}
+    \item \texttt{fx} — wektor długości $n+1$ zawierający obliczone ilorazy różnicowe
+\end{itemize}
+
+\subsection{Rozwiązanie}
+
+Kod źródłowy znajduje się w pliku \texttt{code/interpolation.jl} jako funkcja \texttt{ilorazyRoznicowe}.
+
+\subsection{Opis użytego algorytmu}
+
+Do obliczania ilorazów różnicowych dla podanych węzłów użyłem zamiast tablicy dwuwymiarowej jednej tablicy długości $n+1$. Użycie tutaj tablicy dwuwymiarowej jest tutaj absolutnie zbędne, bo jest nieoptymalne pod względem zajmowanej pamięci — nie potrzebujemy pamiętać każdego ilorazu różnicowego.
+
+\noindent Musimy obliczyć $f[x_0], f[x_0,x_1], f[x_0, x_1, x_2], \dots f[x_0, \dots, x_n]$.
+
+Idea algorytmu jest taka: w danym momencie „pamiętamy” tylko jedną kolumnę macierzy trójkątnej reprezentującej wszystkie ilorazy różnicowe:
+$$
+\begin{bmatrix}
+    f[x_0] & f[x_0, x_1] & \dots & f[x_0, \dots, x_{m-1}] & f[x_0, \dots, x_m] & \dots & f[x_0, \dots, x_{n-1}] & f[x_0, \dots, x_n]\\
+    f[x_1] & f[x_1, x_2] & \dots & f[x_1, \dots, x_m] & f[x_1, \dots, x_{m+1}]& \dots & f[x_1,\dots, x_n]\\
+    \vdots & \vdots & & \vdots & \vdots & \reflectbox{$\ddots$}\\
+    f[x_k] & f[x_k, x_{k+1}] & \dots & f[x_k, \dots, x_{k+m-1}] & f[x_k, \dots, x_{k+m}]\\
+    f[x_{k+1}] & f[x_{k+1}, x_{k+2}] & \dots & f[x_{k+1}, \dots, x_{k+m}]\\
+    \vdots && \reflectbox{$\ddots$}\\
+    f[x_{n-1}] & f[x_{n-1}, x_n]\\
+    f[x_n]
+\end{bmatrix}
+$$
+
+Za każdym razem musimy wygenerować całą kolumnę, bo potem będziemy z tych wartości korzystać (ostatni iloraz $f[x_0,\dots,x_n]$ potrzebuje ich wszystkich), ale w danym momencie zapisujemy do wektora wyjściowego tylko wartości $f[x_0, \dots, x_m]$ dla $m \in [0, n] \cap \mathbb{N}$. Przy czym w programie \texttt{ilorazyRoznicowe} $m =$ \texttt{len - p} gdzie \texttt{p} to iterator, a \texttt{len} $= n+1$.
+
+\noindent Poniżej został przedstawiony algorytm — używamy tutaj oznaczeń takich samych jak w \href{1.in-data}{specyfikacji}.
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+      \State \texttt{len}$ \gets |$\texttt{x}$|$\label{1.alg.begin.len}
+      \State \texttt{tmp}$ \gets \texttt{f}$\label{1.alg.begin.f}
+      \State \texttt{output}$ \gets \big[ \texttt{tmp}[1] \big]$\label{1.alg.begin.output}
+
+      \For{$p \gets (\texttt{len} - 1) \dots 1$}\label{1.alg.for.begin}
+        \State $m = \texttt{len} - p$\label{1.alg.for.m}
+        \For{$k \gets 1 \dots p$}\label{1.alg.for.for.begin}
+            \State $\texttt{tmp}[k] \gets \frac{\texttt{tmp}[k+1] - \texttt{tmp}[k]}{x[k + m] - x[k]}$\label{1.alg.for.for.expr}
+        \EndFor
+
+        \State $\texttt{output}[m] \gets \texttt{tmp}[1]$\label{1.alg.for.expr}
+      \EndFor
+      \State \Return $\texttt{output}$
+    \end{algorithmic}
+\end{algorithm}
+
+W linijce \ref{1.alg.begin.len} ustalamy długość wektora, czyli dowiadujemy się ile wynosi $n+1$. W \ref{1.alg.begin.f} kopiujemy wektor wartości w podanych węzłach do tablicy roboczej (określającej stan w jednej kolumnie wcześniej wspomnianej macierzy). W \ref{1.alg.begin.output} definiujemy wektor wyjściowy, który ma na początku jeden element $f[x_0]$ — załatwia nam to pierwszą iterację.
+
+Zaczynamy iterować (\ref{1.alg.for.begin}) po liczbie elementów w kolumnie macierzy. Pierwszą iterację dla $\texttt{len} = n+1$ mamy już wykonaną, więc zaczynamy od $\texttt{len}-1 = n$. Generujemy poszczególne ilorazy różnicowe w danej kolumnie (\ref{1.alg.for.for.expr}) oraz zachowujemy tylko iloraz różnicowy postaci $f[x_0,\dots,x_m]$.
+
+Na końcu zwracamy wektor wyjściowy zawierający wszystkie ilorazy, które nas interesują (ilorazy postaci $f[x_0,\dots,x_m]$ dla $m \in [0;n]$).
+
+\subsection{Prosty test}
+
+Funkcja ta zostanie jeszcze przetestowana w dalszych zadaniach, jednakże dla potwierdzenia działania w pliku \texttt{code/ex-1.jl} znajduje się prosty test implementujący przykład z wykładu:
+\begin{center}
+    \begin{tabular}{c || c c c c}
+        x & 3 & 1 & 5 & 6\\
+        \hline
+        f(x) & 1 & -3 & 2 & 4\\
+    \end{tabular}
+\end{center}
+
+Po uruchomieniu otrzymujemy poprawne wyniki z jednym zastrzeżeniem — ostatni iloraz ma lekki błąd $2 \cdot 10^{-17}$. Jest to błąd, którego się nie uniknie, bo wynika z błędu pojawiającego się przy wykonywaniu jakichkolwiek działań.
+\begin{center}
+    \begin{tabular}{c c c c}
+        $f[x_0]$ & $f[x_0,x_1]$ & $f[x_0,x_1,x_2]$ & $f[x_0,x_1,x_2,x_3]$\\
+        \hline
+        $1$ & $2$ & $-0.375 = \frac{-3}{8}$ & $0.17500\dots002 \approx \frac{7}{40}$
+    \end{tabular}
+\end{center}
+
+Dla porównania rachunki ręczne na tych samych danych:
+\begin{center}
+    \begin{tabular}{c | c c c c}
+        $x_k$ & $f[x_k]$ & $f[x_k,x_{k+1}]$ & $f[x_k,x_{k+1},x_{k+2}]$ & $f[x_0,x_1,x_2,x_3]$\\
+        \hline
+        $3$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{\frac{-3}{8}}$ & $\boldsymbol{\frac{7}{40}}$\\
+        $1$ & $-3$ & $\frac{5}{4}$ & $\frac{3}{20}$\\
+        $5$ & $2$ & $2$\\
+        $6$ & $4$\\
+    \end{tabular}
+\end{center}
+
+
+\section{Zadanie 2.}
+
+Napisać funkcję obliczającą wartość wielomianu interpolacyjnego stopnia $n$ w postaci Newtona $N_n(x)$ w punkcie $x = t$ za pomocą algorytmu uogólnionego Hornera w czasie $O(n)$.
+
+\subsection{Dane wejściowe}
+
+\begin{itemize}
+    \item \texttt{x} — wektor długości $n+1$ zawierający węzły $x_0,\dots,x_n$
+    \item \texttt{fx} — wektor długości $n+1$ zawierający ilorazy różnicowe $f[x_0], \dots, f[x_0,\dots,x_n]$
+    \item \texttt{t} — punkt, w którym należy obliczyć wartość wielomianu
+\end{itemize}
+
+\subsection{Dane wyjściowe}
+
+\begin{itemize}
+    \item \texttt{nt} — wartość wielomianu w punkcie \texttt{t}
+\end{itemize}
+
+\subsection{Rozwiązanie}
+
+Kod źródłowy znajduje się w pliku \texttt{code/interpolation.jl} jako funkcja \texttt{warNewton}.
+
+\subsection{Opis algorytmu}\label{2.alg}
+
+Wzór interpolacyjny Newtona ma postać
+$$
+N_n(x) = \sum_{k=0}^n f[x_0,\dots,x_k] \cdot \prod_{j=0}^{k-1} (x - x_j),
+$$
+przy czym $\prod_{j=0}^{k-1} (x-x_j)$ dla $k=0$ wynosi $1$.
+
+Oczywiście, możemy zapisać ten wielomian w równoważnej postaci:
+$$
+N_n(x) = f[x_0] + f[x_0,x_1] \cdot (x - x_0) + \dots + f[x_0,x_1,\dots,x_n] \cdot (x-x_0)(x-x_1)\cdots(x-x_{n-1})
+$$
+wówczas
+$$
+N_n(x) = f[x_0] + (x-x_0)\big( f[x_0,x_1] + f[x_0,x_1,x_2](x-x_1) + \dots + f[x_0,x_1,\dots,x_n](x-x_1)\cdots(x-x_{n-1}) \big).
+$$
+
+\noindent Wyciągnęliśmy przed nawias $(x-x_0)$ — teraz możemy tak zrobić jeszcze $(n-2)$ razy:
+$$
+N_n(x) = f[x_0] + (x-x_0) \Big( f[x_0,x_1] +  (x-x_1) \big( \dots (x-x_{n-2})(f[x_0,x_1,\dots,x_n](x-x_{n-1}) + f[x_0,\dots,x_{n-1}]) \big) \dots \Big)
+$$
+
+\noindent Łatwo zauważyć, że mamy do czynienia z rekurencją postaci
+$$
+\begin{cases}
+    w_n(x) = f[x_0,x_1,\dots,x_n]\\
+    w_k(x) = f[x_0,x_1,\dots,x_k] + (x-x_k) \cdot w_{k+1}(x) \qquad (k \in [n-1;0] \cap \mathbb{N})\\
+\end{cases}
+$$
+i na przykład właśnie mamy w środku $f[x_0,\dots,x_n](x-x_{n-1}) + f[x_0,\dots,x_{n-1}]$ co jest równe $w_{n-1}(x)$. Za to po zastosowaniu tej rekurencji, po „zwinięciu” wzoru $N_n$ otrzymamy $f[x_0] + (x - x_0)w_1(x)$ co jest równe $w_0(x)$.
+
+Zatem $N_n(x) = w_0(x)$.
+
+\noindent W takim razie, żeby obliczyć wartość $N_n(\texttt{t})$, należy obliczyć wartość $w_0(\texttt{t})$ co wiąże się z policzeniem wartości wszystkich funkcji $w_k(\texttt{t})$ dla $k=0,\dots,n$.
+
+\subsection{Złożoność obliczeniowa}
+
+Mamy do obliczenia $n$ równań postaci $w_k(x) = f[x_0,x_1,\dots,x_k] + (x-x_k) \cdot w_{k+1}(x)$, bo $w_n$ jest już wiadome, więc zaczynamy od $w_{n-1}$ idąc w dół do $w_0$. Za każdym razem mamy do policzenia to samo równanie, które zajmuje $O(1)$ czasu, więc złożoność obliczeniowa całego algorytmu wynosi $O(n)$.
+
+
+\section{Zadanie 3.}
+
+Napisać funkcję obliczającą współczynniki postaci naturalnej wielomianu interpolacyjnego stopnia $n$ w postaci Newtona $N_n(x)$.
+
+\subsection{Dane wejściowe}
+
+\begin{itemize}
+    \item \texttt{x} — wektor długości $n+1$ zawierający węzły $x_0,\dots,x_n$
+    \item \texttt{fx} — wektor długości $n+1$ zawierający ilorazy różnicowe $f[x_0], \dots, f[x_0,\dots,x_n]$
+\end{itemize}
+
+\subsection{Dane wyjściowe}
+
+\begin{itemize}
+    \item \texttt{a} — wektor długości $n+1$ zawierający obliczone współczynniki postaci naturalnej ($a_n x^n + a_{n-1} x^{n-1} + \cdots a_1 x + a_0$)
+\end{itemize}
+
+\subsection{Rozwiązanie}
+
+Kod źródłowy znajduje się w pliku \texttt{code/interpolation.jl} jako funkcja \texttt{naturalna}.
+
+\subsection{Opis algorytmu}
+
+Z poprzedniego zadania (\ref{2.alg}) wiemy, że wielomian interpolacyjny Newtona $N_n(x)$ możemy zapisać przy pomocy rekurencji:
+$$
+\begin{cases}
+    w_n(x) = f[x_0,x_1,\dots,x_n]\\
+    w_k(x) = f[x_0,x_1,\dots,x_k] + (x-x_k) \cdot w_{k+1}(x) \qquad (k \in [n-1;0] \cap \mathbb{N})\\
+\end{cases}
+$$
+gdzie $N_n(x) = w_0(x)$. Przyjrzyjmy się wzorowi, który „tworzy” rekurencję:
+$$
+w_k(x) = f[x_0,x_1,\dots,x_k] + (x-x_k) \cdot w_{k+1}(x) \qquad (k \in [n-1;0] \cap \mathbb{N})
+$$
+
+Łatwo zauważyć, że wielomian $w_k$ będzie miał stopień o jeden wyższy niż $w_{k+1}$. Zapiszmy powyższy wzór tak, aby bardziej przypominał postać naturalną:
+$$
+w_k(x) = x \cdot w_{k+1}(x) - w_{k+1} \cdot x_k + f[x_0,\dots,x_k],
+$$
+a następnie wprowadźmy ciąg $b_m^{(k)}$ określający współczynnik przy $x^m$ dla wielomianu $w_k$. Wówczas mamy:
+$$
+w_k(x) = x \cdot \left( b_m^{(k+1)} x^m + b_{m-1}^{(k+1)} x^{m-1} + \dots + b_1^{(k+1)} x \right) + \left( b_m^{(k+1)} x^m + b_{m-1}^{(k+1)} x^{m-1} + \dots + b_1^{(k+1)} x \right) \cdot x_k + f[x_0,\dots,x_k]
+$$
+gdzie $m$ określa stopień wielomianu $w_{k+1}$. Jako, że $w_n$ ma stopień zero ($w_n(x) = f[x_0,\dots,x_n]$) a każdy następny wielomian $w_k$ ma stopień o jeden wyższy niż poprzedni $w_{k+1}$ można stwierdzić, że $m = (n-1)-k$.
+
+Teraz możemy przekształcić wyżej wyliczony wzór do postaci zbliżonej do żądanej:
+\begin{equation}\label{3.alg.equation}
+    \begin{aligned}
+        w_k(x) = b_m^{(k+1)} x^{m+1} + \left( b_{m-1}^{(k+1)} - b_m^{(k+1)} x_k \right) x^m + \left(b_{m-2}^{(k+1)} - b_{m-1}^{(k+1)} x_k \right) x^{m-1} +\\
+        + \dots + \left(b_0^{(k+1)} - b_1^{(k+1)} x_k \right) x - b_0^{(k+1)} x_k + f[x_0,\dots,x_k]
+    \end{aligned}
+\end{equation}
+gdzie $x_k$ to są węzły interpolacyjne.
+
+Stosując nowy wzór na rekurencję (\ref{3.alg.equation}) nasz wielomian $w_0(x)$ będzie wielomianem zapisanym w postaci naturalnej:
+$$
+w_0(x) = b_n^{(1)} x^{n} + \left( b_{n-1}^{(1)} - b_n^{(1)} x_0 \right) x^{n-1} + \dots + \left( b_0^{(1)} - b_1^{(1)} x_0\right) x - b_0^{(1)} x_0 + f[x_0],
+$$
+a jako, że $N_n(x) = w_0(x)$ otrzymamy tym samym postać naturalną wielomianu interpolacyjnego Newtona.
+
+Idea jest taka: zaczynając od góry (od $w_n$) liczymy kolejno współczynniki dla $w_{n-1}, w_{n-2}, \dots, w_1, w_0$ w sposób iteracyjny. Jako że $w_n$ jest znane stosujemy wzór (\ref{3.alg.equation}) $n$ razy, żeby uzyskać $w_0$.
+
+\subsection{Złożoność obliczeniowa}
+
+Mamy $n$ równań (nie wliczamy już wiadomego $w_n$) gdzie za każdym razem mamy $m+1$ obliczeń współczynników. Liczba $m$ rośnie w zależności od $k$, bo $m = (n-1)-k$.
+Wówczas można całkowitą liczbę obliczanych współczynników (ile współczynników musieliśmy obliczyć) utożsamić z sumą ciągu arytmetycznego $c_n = n$.
+
+\noindent Zatem złożoność obliczeniowa wynosi $O\left( \frac{n(n+1)}{2} \right) = O\left( \frac{n^2}{2} \right) = O(n^2)$.
+
+\subsection{Prosty test}
+
+Dla potwierdzenia działania tejże funkcji w pliku \texttt{code/ex-3.jl} znajduje się prosty test implementujący przykład z wykładu. Najpierw obliczamy ilorazy różnicowe na podstawie podanych węzłów i wartości interpolowanej funkcji w tych węzłach:
+\begin{center}
+    \begin{tabular}{c || c c c c}
+        x & 3 & 1 & 5 & 6\\
+        \hline
+        f(x) & 1 & -3 & 2 & 4\\
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{c c c c}
+        $f[x_0]$ & $f[x_0,x_1]$ & $f[x_0,x_1,x_2]$ & $f[x_0,x_1,x_2,x_3]$\\
+        \hline
+        $1$ & $2$ & $-0.375 = \frac{-3}{8}$ & $0.17500\dots002 \approx \frac{7}{40}$
+    \end{tabular}
+\end{center}
+
+Teraz możemy obliczyć współczynniki postaci naturalnej wielomianu interpolacyjnego Newtona, używając programu \texttt{naturalna}:
+\begin{center}
+    \begin{tabular}{c c c c}
+        $a_3$ & $a_2$ & $a_1$ & $a_0$\\
+        \hline
+        $0.175 = \frac{7}{40}$ & $-1.95 = \frac{-39}{20}$ & $7.525 = \frac{301}{40}$ & $-8.75 = \frac{-35}{4}$\\
+    \end{tabular}
+\end{center}
+
+Powyższe współczynniki zgadzają się z wynikiem podanym przez zaufane źródło (WolframAlpha), które podaje taki sam wynik: $\frac{7x^3}{40} - \frac{39x^2}{20} + \frac{301x}{40} - \frac{35}{4}$ (\hyperref{https://www.wolframalpha.com/input/?i=w_0%28x%29+%3D+1+%2B+2+*+%28x+-+3%29+-+%283%2F8%29+*%28x+-+3%29*%28x+-+1%29+%2B+%287%2F40%29+*+%28x+-+3%29*%28x-1%29*%28x-5%29}{}{}{Link do wyrażenia w WolframAlpha, sekcja \textit{«Expanded form»}}).
+
+
+\section{Zadanie 4.}
+
+Napisać funkcję, która zinterpoluje zadaną funkcję $f$ w przedziale $[a;b]$ za pomocą wielomianu interpolacyjnego stopnia $n$ postaci Newtona. Następnie narysuje wielomian interpolacyjny i interpolowaną funkcję. Należy użyć węzłów równoodległych czyli $x_k = a + kh$ dla $h = \frac{b-a}{n}, \enspace k = 0,1,\dots,n$.
+
+\subsection{Dane wejściowe}
+
+\begin{itemize}
+    \item \texttt{f} — funkcja $f$ zadana jako anonimowa funkcja
+    \item \texttt{a,b} — przedział interpolacji
+    \item \texttt{n} — stopień wielomianu interpolacyjnego
+\end{itemize}
+
+\subsection{Dane wyjściowe}
+
+\texttt{Nothing} — funkcja niczego nie zwraca, za to generuje odpowiednie wykresy.
+
+\subsection{Rozwiązanie}
+
+Kod źródłowy znajduje się w pliku \texttt{code/interpolation.jl} jako funkcja \texttt{rysujNnfx}.
+
+
+\section{Zadanie 5.}
+
+Przetestować metodę \texttt{rysujNnfx} na kilku zadanych poniżej funkcjach.
+
+(Kod źródłowy w pliku \texttt{code/ex-5.jl}.)
+
+\subsection{Wyniki}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{0.5}{\input{img/ex-5.1.5.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-5.1.10.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-5.1.15.pdf_tex}}
+    \caption{$f(x) = e^x$ w przedziale $[0;1]$ dla $n = 5,10,15$}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{0.5}{\input{img/ex-5.2.5.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-5.2.10.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-5.2.15.pdf_tex}}
+    \caption{$f(x) = x^2 \cdot sin x$ w przedziale $[-1;1]$ dla $n = 5,10,15$}
+\end{figure}
+
+\subsection{Obserwacje i wnioski}
+
+Wynikowe wykresy nie są zaskakujące — oryginalna funkcja i jej interpolacja nakładają się na siebie, czyli interpolacja praktycznie idealnie odwzorowuje funkcję wejściową. Dzieje się tak, ponieważ powyższe funkcje są funkcjami ciągłymi i gładkimi (wszystkie ich pochodne też są ciągłe) co oznacza, że takie „przybliżenie” funkcji przy pomocy wielomianu interpolacyjnego jest jak najbardziej efektywne.
+
+
+\section{Zadanie 6.}
+
+Przetestować metodę \texttt{rysujNnfx} na kilku zadanych poniżej funkcjach.
+
+(Kod źródłowy w pliku \texttt{code/ex-6.jl}.)
+
+\subsection{Wyniki}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{0.5}{\input{img/ex-6.1.5.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-6.1.10.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-6.1.15.pdf_tex}}
+    \caption{$f(x) = |x|$ w przedziale $[-1;1]$ dla $n = 5,10,15$}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \scalebox{0.5}{\input{img/ex-6.2.5.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-6.2.10.pdf_tex}}
+    \scalebox{0.5}{\input{img/ex-6.2.15.pdf_tex}}
+    \caption{$f(x) = \frac{1}{1+x^2}$ w przedziale $[-5;5]$ dla $n = 5,10,15$}
+\end{figure}
+
+\subsection{Obserwacje i wnioski}
+
+Tym razem mamy bardzo duże odchylenia wielomianu interpolacyjnego od funkcji wejściowej.
+Mamy tutaj do czynienia ze zjawiskiem Runge’ego.
+Zjawisko to jest zwłaszcza spotykane właśnie w przypadkach funkcji nieciągłych (np. $f(x)=|x|$) lub po prostu w przypadkach interpolacji funkcji dla dużego stopnia wielomianu interpolacyjnego i dla węzłów równoodległych (np. $f(x)=\frac{1}{1+x^2}$).
+
+Warto jednak zauważyć, że duże odchylenia mają miejsce głównie na brzegach zadanego przedziału. Wówczas w celu zwiększenia precyzji należałoby zwiększyć liczbę węzłów w tych miejscach, gdzie mamy takie problemy. Jednym z możliwych rozwiązań jest zastosowanie węzłów Czebyszewa (otrzymywanych z miejsc zerowych wielomianów Czebyszewa), które mają więcej węzłów przy końcach przedziału.
+
+
+\end{document}
