@@ -2,6 +2,22 @@
 
 *(2020-10-27)*
 
+- [1. DEF](#1-def)
+- [2. Przykład](#2-przykład)
+- [3. Punkty stały](#3-punkty-stały)
+- [4. Zbieżność, rozbieżność — przypadek ekstremalny](#4-zbieżność-rozbieżność--przypadek-ekstremalny)
+- [5. DEF: Odwzorowanie zwężające](#5-def-odwzorowanie-zwężające)
+    - [5.1. Twierdzenie o kontrakcji](#51-twierdzenie-o-kontrakcji)
+    - [5.2. Przykład](#52-przykład)
+- [6. Zbieżność](#6-zbieżność)
+    - [6.1. Twierdzenie#1](#61-twierdzenie1)
+        - [6.1.1. D-d](#611-d-d)
+    - [6.2. Przykład](#62-przykład)
+    - [6.3. Przykład](#63-przykład)
+    - [6.4. Przykład](#64-przykład)
+    - [6.5. Twierdzenie#2](#65-twierdzenie2)
+        - [6.5.1. D-d (szkic)](#651-d-d-szkic)
+
 ---
 
 ## 1. DEF
@@ -33,7 +49,7 @@ $$
 
 Jeśli $\Phi$ jest ciągła, to:
 $$
-\Phi(\alpha) = \Phi(\lim_{n\to\infty} x_n) = \lim_{n\to\infty} \Phi(x_n) = \lim_{n\to\infty} x_{n+1} = \alpha
+\Phi(\alpha) = \Phi\left(\lim_{n\to\infty} x_n\right) = \lim_{n\to\infty} \Phi(x_n) = \lim_{n\to\infty} x_{n+1} = \alpha
 $$
 
 Zatem
@@ -52,7 +68,7 @@ $$
 Niech $f(x) = \sqrt[3]{x}$. Zastosujemy [metodę Newtona](../2020-10-20/metoda-newtona.md) dla $f(x) = 0$, $f(0) = 0$.\
 Zatem
 $$
-\Phi(x) = x - \frac{\sqrt[3]{3}}{\frac{1}{3} x^{-\frac{2}{3}}} = -2x
+\Phi(x) = x - \frac{\sqrt[3]{x}}{\frac{1}{3} x^{-\frac{2}{3}}} = -2x
 $$
 
 Punktem stałym (jedynym) metody $\Phi$ jest $\alpha = 0$. Metoda $\Phi$ jest zbieżna do $\alpha$ dla $x_0 = 0$. Dla $x_0 \neq 0$ jest rozbieżna:\
@@ -81,7 +97,7 @@ Niech $D \subset \mathbb{R}$ będzie podzbiorem domkniętym. Jeśli $\Phi: D \to
 Rozważmy $x_{n+1} := 3 - \frac{1}{2}|x_n|$, $\Phi(x) = 3 - \frac{1}{2}|x|$.
 
 $$
-\Phi(x) - \Phi(y)| = \left\lvert 3 - \frac{1}{2}|x| - 3 + \frac{1}{2}|y| \right\rvert = \frac{1}{2}\left\lvert |x| - |y| \right\rvert \le \frac{1}{2} \left\lvert x-y \right\rvert
+\left|\Phi(x) - \Phi(y)\right| = \left\lvert 3 - \frac{1}{2}|x| - 3 + \frac{1}{2}|y| \right\rvert = \frac{1}{2}\left\lvert |x| - |y| \right\rvert \le \frac{1}{2} \left\lvert x-y \right\rvert
 $$
 
 Stąd $\lambda = \frac{1}{2}$, $D$ jest dowolnie szeroki oraz $\Phi$ jest odwzorowaniem zwężającym. $\Phi(\alpha) = \alpha \implies \alpha 2$ ([punkty stały](#3-punkty-stały)).
@@ -155,7 +171,7 @@ Rozważmy równanie $x + \ln x = 0$. Zastosujemy tutaj metodę $x_{n+1} := e^{-x
 
 Sprawdźmy, czy rzeczywiście można zastosować tę metodę, tj. czy jednym z punktów stałych jest $r$.
 $$
-\Phi(\alpha), e^{-\alpha} = \alpha, \quad -\alpha = \ln \alpha, enspace, \alpha + \ln \alpha = 0
+\Phi(\alpha), e^{-\alpha} = \alpha, \quad -\alpha = \ln \alpha, \enspace \alpha + \ln \alpha = 0
 $$
 
 Zatem punkty stale $\Phi$ pokrywają się z pierwiastkami równania. Sprawdźmy warunek dostateczny zbieżności:
@@ -183,11 +199,13 @@ Ponadto stała zbieżności $C = \frac{\Phi^{(p)}(\alpha)}{p!}$ (dla $p=1, \ensp
 
 Rozwińmy funkcję $\Phi(x_{n+1} := \Phi(x_n))$ w szereg Taylora wokół punktu $\alpha$:
 $$
-\Phi(x) = \Phi(\alpha) + \Phi^{(1)}(\alpha)(x - \alpha) + \dots + \frac{\Phi^{(p-1)}(\alpha)}{(p-1)!} (x - \alpha)^{p-1} + \frac{\Phi^{(p)}(\xi)}{p!}(x - \alpha)^p,
+\Phi(x) = \Phi(\alpha) + \Phi^{(1)}(\alpha)(x - \alpha) + \dots +\\
++ \frac{\Phi^{(p-1)}(\alpha)}{(p-1)!} (x - \alpha)^{p-1} + \frac{\Phi^{(p)}(\xi)}{p!}(x - \alpha)^p,
 $$
 gdzie $\xi$ leży między $x$ i $\alpha$. Połóżmy $x = x_n$. Zatem
 $$
-\Phi(x_n) = \Phi(\alpha) + \Phi^{(1)}(\alpha)(x_n - a) + \dotsb + \frac{\Phi^{(p-1)}(\alpha)}{(p-1)!} (x_n - \alpha)^{p-1} + \frac{\Phi^{(p)}(\xi)}{p!}(x_n - \alpha)^p.
+\Phi(x_n) = \Phi(\alpha) + \Phi^{(1)}(\alpha)(x_n - a) + \dotsb +\\
++ \frac{\Phi^{(p-1)}(\alpha)}{(p-1)!} (x_n - \alpha)^{p-1} + \frac{\Phi^{(p)}(\xi)}{p!}(x_n - \alpha)^p.
 $$
 
 1. „$\Leftarrow$”:

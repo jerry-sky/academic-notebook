@@ -2,6 +2,11 @@
 
 *(2020-11-24)*
 
+- [1. DEF](#1-def)
+- [2. Twierdzenie#4](#2-twierdzenie4)
+- [3. Wyznaczanie funkcji sklejanej 3-go stopnia](#3-wyznaczanie-funkcji-sklejanej-3-go-stopnia)
+    - [3.1. Przykład](#31-przykład)
+
 ---
 
 ## 1. DEF

@@ -69,7 +69,7 @@ Zatem $f_n = T_n$.
 
 Z [Twierdzenie#1](#2-twierdzenie1) wynikają następujące własności wielomianów Czebyszewa:
 - wielomian $T_n$, $n = 1,2,\dots$ ma zera $r_j$ jednokrotne rzeczywiste leżące w przedziale $(-1,1)$ i równe $r_j = \cos\frac{(2j + 1)\pi}{2n}, \quad j = 0,1,\dots,(n-1)$.
-- T_n ma również $n+1$ punktów ekstremalnych $y_j$ w przedziale $[-1;1]$: $y_j = \cos\frac{j\pi}{n},\quad j = 0,1,\dots,n$, $T_n(y_j) = (-1)^j$.
+- $T_n$ ma również $n+1$ punktów ekstremalnych $y_j$ w przedziale $[-1;1]$: $y_j = \cos\frac{j\pi}{n},\quad j = 0,1,\dots,n$, $T_n(y_j) = (-1)^j$.
 - łatwo sprawdzić (patrząc na [definicję rekurencyjną](#1-def)), że współczynnik $a_n$ przy najwyższej potędze w $T_n(x) = a_n x^n + \dotsb$ jest równy $2^{n-1}$. Zdefiniujmy wielomian
 $$
 \tilde{T}_n(x) = \frac{1}{2^{n-1}} T_n(x) = (x-x_0) (x - x_1) \dotsb (x - x_{n-1})
@@ -80,7 +80,7 @@ gdzie $x_i$ są zerami wielomianu Czebyszewa $T_n(x)$.
 
 ## 4. Twierdzenie#2
 
-Spośród wszystkich wielomianów stopnia $n$ o współczynniku przy najwyższej potędze równym $1$, $w_n(x_ = x^k + \dotsb$, wielomian $\tilde{T}_n$ ma najmniejsza normę
+Spośród wszystkich wielomianów stopnia $n$ o współczynniku przy najwyższej potędze równym $1$, $w_n(x) = x^k + \dotsb$, wielomian $\tilde{T}_n$ ma najmniejsza normę
 $$
 \frac{1}{2^{n-1}} = \max_{x\in [-1;1]} \left\lvert \tilde{T}_n(x) \right\rvert \le \max_{x \in [-1;1]} |w_n(x)|.
 $$
