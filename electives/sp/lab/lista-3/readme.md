@@ -1,6 +1,6 @@
 # Lista-3
 
-*(Termin oddania: 2020-11-29)*
+*(Termin oddania: 2020-12-09)*
 
 - [Zadanie 1.](#zadanie-1)
     - [Nagrania `asciinema`](#nagrania-asciinema)
@@ -102,16 +102,16 @@ Do zadań 2. i 3. używamy tutaj skryptu pomocniczego `svn-ls-all.sh`, który je
 
 ## Zadanie 2.
 
-Napisz skrypt, który jako argument otrzymuje:
-
-Nr rewizji w repozytorium SVN
-URL do katalogu w repozytorium SVN (korzenia poddrzewa katalogów, zawierającego pliki tekstowe),
-który dla wszystkich słów występujących w plikach w danym poddrzewie katalogów w danej rewizji, drukuje statystyki, ile razy dane słowo wystąpiło we wszystkich tych plikach. (Odpowiednik [zadania 2 z listy 1.](../lista-1/readme.md#zadanie-2))
-Niech skrypt będzie w pliku: `./l3z2.bash`. W prezentacji umieść wykonania poleceń:
-```bash
-./l3z2.bash 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
-./l3z2.bash 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
-```
+> Napisz skrypt, który jako argument otrzymuje:
+>
+> Nr rewizji w repozytorium SVN
+> URL do katalogu w repozytorium SVN (korzenia poddrzewa katalogów, zawierającego pliki tekstowe),
+> który dla wszystkich słów występujących w plikach w danym poddrzewie katalogów w danej rewizji, drukuje statystyki, ile razy dane słowo wystąpiło we wszystkich tych plikach. (Odpowiednik [zadania 2 z listy 1.](../lista-1/readme.md#zadanie-2))
+> Niech skrypt będzie w pliku: `./l3z2.bash`. W prezentacji umieść wykonania poleceń:
+> ```bash
+> ./l3z2.bash 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+> ./l3z2.bash 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+> ```
 
 Plik wykonywalny [`l3z2.bash`](l3z2.bash) jest rozwiązaniem tego zadania. Jego działanie można zobaczyć na nagraniu `ex-2.cast`.
 
@@ -119,13 +119,13 @@ Plik wykonywalny [`l3z2.bash`](l3z2.bash) jest rozwiązaniem tego zadania. Jego 
 
 ## Zadanie 3.
 
-Skrypt, wywoływany jak w zadaniu 2, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów w danej rewizji, drukuje liczbę plików, w których to słowo występuje.
-(Odpowiednik zadania 3 z listy 1.)
-Niech skrypt będzie w pliku: `./l3z3.bash`. W prezentacji umieść wykonania poleceń:
-```bash
-./l3z3.bash 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
-./l3z3.bash 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
-```
+> Skrypt, wywoływany jak w zadaniu 2, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów w danej rewizji, drukuje liczbę plików, w których to słowo występuje.
+> (Odpowiednik zadania 3 z listy 1.)
+> Niech skrypt będzie w pliku: `./l3z3.bash`. W prezentacji umieść wykonania poleceń:
+> ```bash
+> ./l3z3.bash 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+> ./l3z3.bash 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+> ```
 
 Plik wykonywalny [`l3z3.bash`](l3z3.bash) jest rozwiązaniem tego zadania. Jego działanie można zobaczyć na nagraniu `ex-3.cast`.
 
