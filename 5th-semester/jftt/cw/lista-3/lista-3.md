@@ -9,6 +9,9 @@
     - [Postać normalna Chomsky’ego](#postać-normalna-chomskyego)
     - [Postać normalna Greibach](#postać-normalna-greibach)
 - [Zadanie 5.](#zadanie-5)
+- [Zadanie 6.](#zadanie-6)
+    - [Zadanie 6.1.](#zadanie-61)
+    - [Zadanie 6.2.](#zadanie-62)
 
 ---
 
@@ -252,5 +255,61 @@ $$
 $$
 
 Teraz wystarczy tylko zamienić $A_1$ na $S$ oraz $A_2$ na $A$.
+
+---
+
+## Zadanie 6.
+
+### Zadanie 6.1.
+
+> Pokazać, że jeśli wszystkie produkcje gramatyki bezkontekstowej mają postać $A \to wB$ lub $A \to w$, gdzie $A$ i $B$ są symbolami nieterminalnymi a w słowem złożonym tylko z symboli terminalnych, to język generowany przez tą gramatykę jest regularny.
+
+Mamy
+- gramatykę $G = (N,T,P,S)$, gdzie
+    - $P = \left\{ A \to wB \lor A \to w:\enspace w \in T^+ \land A,B \in N \right\}$
+- NFA $M = \left(Q, T, \delta, S, \{q_F\}\right)$, gdzie
+    - $Q = N \cup \{q_F\}$
+
+**Cel: pokazać, że $L(M) = L(G)$**, bo jeżeli mamy NFA to mamy też wyrażenie regularne.
+
+Definiujemy funkcję przejścia:\
+Stanami są nieterminale, bo nieterminale oznaczają, że słowo się jeszcze nie skończyło — tak samo, jak w automacie, gdzie tylko jeden (ten dodatkowy) stan $q_F$ jest akceptujący, kiedy pozostałe są stanami „tymczasowymi”.
+- $\delta(A, w) = \{B: (A \to wB) \in P\}$
+- $\delta(A, w) = \{q_F\}$, jeśli $(A \to w) \in P$, bo jeśli nieterminal przechodzi na sam ciąg terminali oznacza to zamknięcie wyprowadzania słowa
+
+Istotne jest zauważyć, że skoro w gramatyce dla pewnego słowa $w = w_1 w_2\dots w_n$\
+mamy pewne wyprowadzenie $S \Rightarrow w_1 A_1 \Rightarrow w_1 w_2 A_2 \Rightarrow \dots \Rightarrow w_1 w_2 \dots w_{n-1} A_{n-1} \Rightarrow w_1 w_2 \dots w_n$,\
+to również przy pomocy funkcji przejścia $\delta$ jesteśmy w stanie wyprowadzić takie same słowo, czyli dojść do stanu akceptującego $q_F$:\
+$q_F \in \delta(A_{n-1}, w_n);\, A_{n-1} \in \delta(A_{n-2}, w_{n-1});\, \dots; A_2 \in \delta(A_1, w_2);\, A_1 \in \delta(S, w_1)$, a wynika to z definicji funkcji $\delta$, którą przed chwilą zdefiniowaliśmy.
+
+Czyli jesteśmy w stanie „wystrugać” sobie takie samo słowo używając obu języków $L(G), L(M)$. Skłania to do stwierdzenia, że $L(G) = L(M)$.
+
+---
+
+### Zadanie 6.2.
+> Pokazać, że jeśli język jest regularny, to istnieje gramatyka bezkontekstowa generująca ten język, w której wszystkie produkcje mają postać $A \to aB$ lub $A \to a$, gdzie $A$ i $B$ są symbolami nieterminalnymi a $a$ symbolem terminalnym.
+
+Mamy
+- DFA (odpowiadający wyrażeniu regularnemu) $M = (Q, \Sigma, \delta, S, F)$
+- gramatykę $G = (Q, \Sigma, P, S)$ gdzie
+    - $P = \left\{ A \to aB:\enspace a \in T \land A \in N \land (B \in N \lor B = \epsilon) \right\}$
+
+**Cel: pokazać, że $L(M) = L(G)$**.
+
+I znowu tłumaczymy zapis automatowy na gramatyczny, definiujemy produkcję $P$ tłumacząc $\delta(A, a) = B$ na produkcje:
+- $A \to aB$ jeśli $B \notin F$ (nie jest stanem akceptującym, nie można zakończyć wyprowadzenia słowa)
+- $A \to a$ jeśli $B \in F$ oth.
+
+oczywiście $A,B \in Q$ (stany, przetłumaczone na nieterminale), kiedy $a$ to dany terminal.
+
+Analogicznie do [zadania 6.1.](#zadanie-61) jesteśmy w stanie przetłumaczyć przejścia w automacie na przejścia w wyprowadzaniu słowa w gramatyce.
+
+Należy zauważyć, że skoro w automacie dla pewnego słowa $a = a_1 a_2 \dots a_n$ możemy znaleźć drogę z stanu początkowego $S$ do pewnego stanu $B \in F$:\
+$\delta(S, a_1) = A_1;\, \delta(A_1, a_2) = A_2;\, \dots; \delta(A_{n-2}, a_{n-1}) = A_{n-1};\, \delta(A_{n-1}, a_n) = B$,\
+to również w gramatyce $G$ jesteśmy w stanie wyprowadzić takie samo słowo:\
+$S \Rightarrow a_1 A_1 \Rightarrow a_1 a_2 A_2 \Rightarrow \dots \Rightarrow a_1 a_2 \dots a_{n-1} A_{n-1} \Rightarrow a_1 a_2 \dots a_n$\
+a wynika to z budowy zbioru produkcji, który przed chwilą zdefiniowaliśmy. *(tutaj, w celu zobrazowania analogii, można na końcu jeszcze dopisać nieterminal $B$, który przechodzi na $\epsilon$)*
+
+Czyli jesteśmy w stanie „wystrugać” sobie takie samo słowo używając obu języków $L(G), L(M)$. Skłania to do stwierdzenia, że $L(G) = L(M)$.
 
 ---
