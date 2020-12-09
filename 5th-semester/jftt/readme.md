@@ -54,6 +54,7 @@
 - [Lista 1](cw/lista-1/lista-1.md)
 - [Lista 2](cw/lista-2/lista-2.md)
 - [Lista 3](cw/lista-3/lista-3.md)
+- [Lista 4](cw/lista-4/lista-4.md)
 
 ## Laboratorium
 
