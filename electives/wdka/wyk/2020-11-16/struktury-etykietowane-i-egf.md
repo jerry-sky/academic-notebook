@@ -15,6 +15,10 @@
 - [6. EGF klas pochodnych](#6-egf-klas-pochodnych)
     - [6.1. Przykład (permutacje)](#61-przykład-permutacje)
     - [6.2. Przykład (nieporządki)](#62-przykład-nieporządki)
+    - [6.3. Przykład (suriekcje)](#63-przykład-suriekcje)
+- [7. Drzewo etykietowane (non-ordered labelled tree)](#7-drzewo-etykietowane-non-ordered-labelled-tree)
+- [8. *Mappings*](#8-mappings)
+- [9. Metoda $\rho$-Pollarda](#9-metoda-rho-pollarda)
 
 ---
 
@@ -143,7 +147,7 @@ Wówczas
 3. $\operatorname{SEQ}(\mathcal{A}) \iff \frac{1}{1 - A(z)}$
 4. $\operatorname{CYC}(\mathcal{A}) \iff \ln \frac{1}{1 - A(z)} = \sum_{n\ge0} \frac{A^n(z)}{n}$
 5. $\operatorname{MSET}$ *nie działa*
-6. $\operatorname{SET} = 1 + A(z) + \frac{A^2(z)}{2!} + \frac{A^3(z)}{3!} + \dots = \exp(A(z))$
+6. $\operatorname{SET}(\mathcal{A})(z) = 1 + A(z) + \frac{A^2(z)}{2!} + \frac{A^3(z)}{3!} + \dots = \exp(A(z))$
 
 ---
 
@@ -159,7 +163,7 @@ $$
 Można na nią spojrzeć na następujące sposoby:
 1. $(3)–(1)–(2)–(6)–(5)–(4)$
 2. $(1)\to(3)\to(2)\to(1)$\
-    $(4)\to(5)\to(4)$\
+    $(4)\to(6)\to(4)$\
     $(5)\to(5)$
 
 Permutacje określa klasa
@@ -183,5 +187,71 @@ czyli OGF $P'(z) = \exp\left(\ln\frac{1}{1-z}\right)$, ale przecież $\exp\left(
 Opisuje tę sytuację klasa $\mathcal{D} = \operatorname{SET}(\operatorname{CYC}_{>1}(\mathcal{Z}))$ z OGF $D(z) = \exp(A(z))$ gdzie $A(z) = \ln\frac{1}{1-z} - z$, bo odejmujemy ten jeden cykl zwrotny.
 
 Czyli $D(z) = \exp\left( \ln\frac{1}{1-z} - z \right) = \frac{\exp(-z)}{1 - z}$.
+
+---
+
+### 6.3. Przykład (suriekcje)
+
+*funkcje „na”*
+
+Mamy $\{1,\dots,n\} \to \{1,\dots,r\}$ gdzie $r \le n$. Każdy przeciwobraz każdego elementu ze zbioru $\{1,\dots,r\}$ jest niepusty.
+
+Możemy suriekcje utożsamić z urnami, gdzie dla każdego elementu z $\{1,\dots,r\}$ mamy urnę, gdzie jest przynajmniej jeden element z $\{1,\dots,n\}$.
+
+Klasa kombinatoryczna: $\mathcal{S} = \operatorname{SEQ}_{=r}\left( \operatorname{SEQ}_{\neq 0}(\mathcal{Z}) \right)$ z EGF $S(z) = (e^z - 1)^r$.
+
+Zapisujemy $s_n^r = n! [z^n] (e^z - 1)^r$ jako liczbę suriekcji ze zbioru $n$-elementowego do zbioru $r$-elementowego.
+
+---
+
+## 7. Drzewo etykietowane (non-ordered labelled tree)
+
+Mamy drzewa gdzie każdy węzeł etykietujemy pewną liczbą naturalną, przy czym nie rozróżniamy w jakiej kolejności mamy uporządkowane gałęzie tego drzewa.\
+Czyli następujące drzewa są równoważne:\
+![](drzewa-etykietowane-równoważność.png)
+
+Wówczas taka struktura może być reprezentowana przez klasę $\mathcal{T} = \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})$ z EGF $T(z) = z \cdot \exp(T(z))$.
+
+Wówczas (z [twierdzenia lagrange’a o inwersji](../2020-11-09/tw-lagrangea-o-inwersji.md)) mamy
+$$
+T_n = n! [z^n] T(z) = n! \left( \frac{1}{n} [x^{n-1}] \cdot \left( e^x \right)^n \right) =\\
+= \frac{n!}{n} \cdot \left( [x^{n-1}] \sum_{k\ge0} \frac{(x\cdot n)^k}{k!} \right) = \frac{n!}{n} \cdot \frac{n^{n-1}}{(n-1)!} = n^{n-1},
+$$
+czyli liczbę drzew o $n$ wierzchołkach.
+
+*Cayley’s formula*
+
+---
+
+## 8. *Mappings*
+
+Mamy $\{1,\dots,n\} \to \{1,\dots,r\}$ gdzie $r \le n$. Takich funkcji mamy $r^n$, bo dla każdego elementu z $\{1,\dots,n\}$ mamy zawsze do dyspozycji $r$ elementów.
+
+Klasa kombinatoryczna: $\mathcal{F} = \operatorname{SEQ}_{=r}\left( \operatorname{SET}(\mathcal{Z}) \right)$ z EGF $F(z) = \left( e^z \right)^r = e^{zr}$.
+
+Liczba *mappings* z $\{1,\dots,n\}$ w $\{1,\dots,r\}$ wynosi:
+$$
+F_n = n! [z^n] F(z) = n! [z^n] \sum_{k\ge0} \frac{(zr)^k}{k!} =\\
+= n! \cdot \frac{r^n}{n!} = r^n
+$$
+
+---
+
+## 9. Metoda $\rho$-Pollarda
+
+Szukamy konfliktów danej funkcji hashującej $f$, czyli dla $x_0 \neq x_1$ mamy $f(x_0) = f(x_1)$.
+
+Zamysł: bierzemy losowy $x_0$ i tworzymy ciąg $x_n = f(x_{n_1})$.\
+Szukamy kolejnych wyrazów ciągu aż nie znajdziemy powtórki — wówczas mamy takie *graficzne $\rho$*:\
+![](metoda-rho-pollarda-graficzna-reprezentacja-rho.png)
+
+Okazuje się, że klasę takich funkcji możemy określić przez $\mathcal{F} = \operatorname{SET}\left( \operatorname{CYC}(\mathcal{T}) \right)$, gdzie $\mathcal{T} = \mathcal{Z} \times \operatorname{SET}(\mathcal{T})$ ([drzewa etykietowane](#7-drzewo-etykietowane-non-ordered-labelled-tree)).
+
+Czyli mamy
+$$
+F(z) = \exp\left( \ln \frac{1}{1-T(z)} \right) = \frac{1}{1 - T(z)}=\\
+= \sum_{k\ge0} \frac{T^k(z)}{k!}
+$$
+i znowu stosując [twierdzenia Lagrange’a o inwersji (tym razem drugi punkt)](../2020-11-09/tw-lagrangea-o-inwersji.md) możemy wyjść z rekursji w funkcji $T(z)$.
 
 ---
