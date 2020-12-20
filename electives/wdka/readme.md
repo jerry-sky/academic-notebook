@@ -46,3 +46,4 @@
 - [Lista-1](lab/lista-1/lista-1.md)
 - [Lista-2](lab/lista-2/lista-2.md)
 - [Lista-3](lab/lista-3/lista-3.md)
+- [Lista-4](lab/lista-4/lista-4.md)
