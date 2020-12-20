@@ -2,6 +2,11 @@
 
 *(Termin oddania: 2020-11-30)*
 
+- [Zadanie 1.](#zadanie-1)
+- [Zadanie 2.](#zadanie-2)
+- [Zadanie 3.](#zadanie-3)
+- [Zadanie 4.](#zadanie-4)
+
 ---
 
 ## Zadanie 1.
