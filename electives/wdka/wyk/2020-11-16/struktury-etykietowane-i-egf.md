@@ -1,6 +1,6 @@
 # Struktury etykietowane i EGF
 
-*(2020-11-16)*
+*(2020-11-16, 2020-11-23, 2020-11-30)*
 
 - [1. Struktury etykietowane](#1-struktury-etykietowane)
 - [2. Klasa kombinatoryczna (etykietowana)](#2-klasa-kombinatoryczna-etykietowana)
@@ -145,7 +145,7 @@ Wówczas
 1. $\mathcal{A} + \mathcal{B} \iff A(z) + B(z)$
 2. $\mathcal{A} * \mathcal{B} \iff A(z) \cdot B(z)$
 3. $\operatorname{SEQ}(\mathcal{A}) \iff \frac{1}{1 - A(z)}$
-4. $\operatorname{CYC}(\mathcal{A}) \iff \ln \frac{1}{1 - A(z)} = \sum_{n\ge0} \frac{A^n(z)}{n}$
+4. $\operatorname{CYC}(\mathcal{A}) \iff \ln \frac{1}{1 - A(z)} = \sum_{n\ge1} \frac{A^n(z)}{n}$
 5. $\operatorname{MSET}$ *nie działa*
 6. $\operatorname{SET}(\mathcal{A})(z) = 1 + A(z) + \frac{A^2(z)}{2!} + \frac{A^3(z)}{3!} + \dots = \exp(A(z))$
 
@@ -198,7 +198,7 @@ Mamy $\{1,\dots,n\} \to \{1,\dots,r\}$ gdzie $r \le n$. Każdy przeciwobraz każ
 
 Możemy suriekcje utożsamić z urnami, gdzie dla każdego elementu z $\{1,\dots,r\}$ mamy urnę, gdzie jest przynajmniej jeden element z $\{1,\dots,n\}$.
 
-Klasa kombinatoryczna: $\mathcal{S} = \operatorname{SEQ}_{=r}\left( \operatorname{SEQ}_{\neq 0}(\mathcal{Z}) \right)$ z EGF $S(z) = (e^z - 1)^r$.
+Klasa kombinatoryczna: $\mathcal{S} = \operatorname{SEQ}_{=r}\left( \operatorname{SET}_{\neq 0}(\mathcal{Z}) \right)$ z EGF $S(z) = (e^z - 1)^r$.
 
 Zapisujemy $s_n^r = n! [z^n] (e^z - 1)^r$ jako liczbę suriekcji ze zbioru $n$-elementowego do zbioru $r$-elementowego.
 
