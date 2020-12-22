@@ -71,7 +71,7 @@ OGF: $\operatorname{SEQ}_{\ge1}(\mathcal{Z})(z) \leftrightarrow \frac{z}{1-z}$
 
 Czyli w zasadzie $\operatorname{SEQ}_{\ge1}(\mathcal{Z}) \cong \mathcal{N}_{\ge1}$
 
-Zauważmy, że klasą wszystkich kompozycji jest po prostu $\mathcal{C} \cong \operatorname{SEQ}(\operatorname{SEQ}_{\ge1}(\mathcal{Z})$.
+Zauważmy, że klasą wszystkich kompozycji jest po prostu $\mathcal{C} \cong \operatorname{SEQ}(\operatorname{SEQ}_{\ge1}(\mathcal{Z}))$.
 
 OGF: $C(z) = \frac{1}{1 - \frac{z}{1-z}} = \frac{1-z}{1 - 2z} = \frac{1}{1-2z} - \frac{z}{1-2z}$
 

@@ -78,7 +78,7 @@ OGF dla $\mathcal{N} \times \mathcal{N}$: $(N\times N)(z) = \frac{1}{(1-z)^2}$
 
 ile mamy takich par, że suma daje $3$? — $[z^3] \frac{1}{(1-z)^2} = (*)$\
 *korzystamy z faktu z [wcześniejszego wykładu](../2020-10-05/powtórka-z-dyskretnej-i-analizy.md#fakt2)*\
-$[z^3]\sum_{n\ge0} \binom{n+1}{1}z^n = [z^3] \sum_{n} (n+1) z^n = 4$ — zgadza się liczebność
+$(*) = [z^3]\sum_{n\ge0} \binom{n+1}{1}z^n = [z^3] \sum_{n} (n+1) z^n = 4$ — zgadza się liczebność
 
 ---
 
@@ -147,12 +147,12 @@ Możemy OGF zapisać nieco inaczej.
 
 Wykorzystamy:
 $$
-\ln(1+u) = \frac{u}{1} - \frac{u^2}{2} + \frac{u^3}{3} - \dotsb = \sum_{i} \frac{u^i}{i} \cdot (-1)^{i+1}
+\ln(1+u) = \frac{u}{1} - \frac{u^2}{2} + \frac{u^3}{3} - \dotsb = \sum_{n\ge0} \frac{u^n}{n} \cdot (-1)^{n+1}
 $$
 
 Wówczas:
 $$
-\operatorname{PSET}(\mathcal{A})(z) = \prod_{n} (1 + z^n)^{a_n} = \exp\left( \ln(\prod_n (1+z^n)^{a_n}) \right) =\\
+\operatorname{PSET}(\mathcal{A})(z) = \prod_{n} (1 + z^n)^{a_n} = \exp\left( \ln\left(\prod_n (1+z^n)^{a_n}\right) \right) =\\
 = \exp\left( \sum_{n \ge 1}^{\infty} a_n \sum_{k = 1}^{n} (-1)^{k-1} \cdot \frac{z^{n\cdot k}}{k} \right) =\\
 exp\left( \frac{A(z)}{1} - \frac{A(z^2)}{2} + \frac{A(z^3)}{3} - \dotsb \right)
 $$

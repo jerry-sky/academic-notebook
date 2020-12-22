@@ -19,7 +19,7 @@
 
 ## 1. DEF: Klasa kombinatoryczna
 
-$\mathcal{A}(A, |\cdot|$
+$\mathcal{A}(A, |\cdot|)$
 
 1. $A \neq \emptyset$
 2. $|\cdot|: A \to \mathbb{N}_+$
@@ -136,7 +136,7 @@ $|w| =$ długość ciągu
 
 $W(z) = \sum_{n\ge0} 2^n z^n = \sum_{n\ge0} (2z)^n = \frac{1}{1 - 2z}$
 
-$[z^{1000}]W(z) = 2^1000$
+$[z^{1000}]W(z) = 2^{1000}$
 
 ---
 

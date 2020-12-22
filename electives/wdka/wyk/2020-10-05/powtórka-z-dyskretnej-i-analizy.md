@@ -37,7 +37,7 @@ $$
 $$
 wówczas
 $$
-\binom{n+m}{k} = \sum{j=0}^k \binom{n}{j}\binom{m}{k-j}
+\binom{n+m}{k} = \sum_{j=0}^k \binom{n}{j}\binom{m}{k-j}
 $$
 
 ---
@@ -50,7 +50,7 @@ $$
 
 $$
 f(x,y) = \sum_{n\ge0}(y(1+x))^n = \sum_{n\ge0} y^n (1+x)^n = \sum_{n\ge0}y^n\left( \sum_{k=0}^n \binom{n}{k} x^k \right) =\\
-\sum_{n\ge0}\sum_{k\ge0}\binom{n}{k} x^k y^n
+= \sum_{n\ge0}\sum_{k\ge0}\binom{n}{k} x^k y^n
 $$
 
 ---

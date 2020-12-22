@@ -61,14 +61,14 @@ $$
 czyli mamy OGF: $T(z) = z \cdot \frac{1}{1 - T(z)}$
 - $T(z)(1-T(z)) = z$
 - $(T(z))^2 - T(z) + z = 0$
-    - $\bold{T(z) = \frac{1}{z}\left( 1 - \sqrt{1 - 4z} \right)}$
+    - $\bold{T(z) = \frac{1}{2}\left( 1 - \sqrt{1 - 4z} \right)}$
     - $\sout{T(z) = \frac{1}{2}\left( 1 + \sqrt{1 - 4z} \right)}$
 
 
-Mamy też coś takiego: $\sqrt{1 - 4z} = \sum_{i=0}^\infty (4z)^i \cdot \binom{\frac{1}{2}}{i} = \sum_{i=0}^\infty \frac{1}{n} \binom{2n - 2}{n-1} \cdot z^n$
+Mamy też coś takiego: $\sqrt{1 - 4z} = \sum_{n=0}^\infty (4z)^n \cdot \binom{\frac{1}{2}}{n} = \sum_{n=0}^\infty \frac{1}{n} \binom{2n - 2}{n-1} \cdot z^n$
 
 Sprawdźmy dla $n=4$:\
 $\frac{1}{4} \cdot \binom{6}{3} = 5$\
-i to się zgadza z [tym, co otrzymaliśmy wcześniej](#drzewa-uporządkowane)
+i to się zgadza z [tym, co otrzymaliśmy wcześniej](#1-drzewa-uporządkowane)
 
 ---

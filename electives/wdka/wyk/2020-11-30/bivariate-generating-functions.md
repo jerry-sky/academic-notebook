@@ -41,7 +41,7 @@ Mamy elementy:
 - waga 1kg, cena 2zł,
 - waga 2kg, cena 10zł.
 
-Wówczas BGF: $F(u,z) = z u^3 + zu^2 + z^2 u^{10}$.
+Wówczas BGF: $F(z,u) = z u^3 + zu^2 + z^2 u^{10}$.
 
 ---
 
@@ -150,7 +150,8 @@ $$
 
 Wszystkie momenty:
 $$
-\mathbb{E}\big(\chi (\chi -1) \dots \chi (\chi - 1) (\chi - r+1)\big) =\\
+\mathbb{E}\big(\chi (\chi -1) \dots \chi (\chi - 1) (\chi - r+1)\big) =
+\\[10pt]
 = \frac{[z^n] \partial^r_u A(z,u)|_{u=1}}{[z^n] A(z,1)}
 $$
 gdzie $\chi$ jest zmienną losową oznaczającą wartość funkcji $\chi(x)$ dla $x$ losowy o rozmiarze $|x| = n$.

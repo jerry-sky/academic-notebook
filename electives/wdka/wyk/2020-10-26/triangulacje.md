@@ -34,7 +34,7 @@ Rozumujemy to jako jeden trójkąt, który może mieć po dwóch stronach pewne 
 
 ### 2.1. Definicja *kinda* rekurencyjna
 
-Mamy podstawowy $2$-kąt: $\boldsymbol{|}$ który ma $0$ triangulacji oraz podstawowy trójkąt $\triangle$, który ma tylko $1$ triangulację.
+Mamy podstawowy $2$-kąt: $\boldsymbol{|}$ który ma $0$ triangulacji oraz podstawowy trójkąt $\triangle,$ który ma tylko $1$ triangulację.
 
 Przykładowo dla $4$-kąta:\
 ![](rekurencja-4-kąt.png)

@@ -92,20 +92,20 @@ $$
 ## 5. Produkt etykietowany (star product)
 
 Mając dane dwie klasy etykietowane $\mathcal{A}$ oraz $\mathcal{B}$,\
-$\mathcal{A} * \mathcal{B}$ to klasa uporządkowanych par $(a,b)$ takich, że $a \in A$ oraz $b \in B$, poetykietowanych tak, że został zachowany porządek względny.
+$\mathcal{A} \star \mathcal{B}$ to klasa uporządkowanych par $(a,b)$ takich, że $a \in A$ oraz $b \in B$, poetykietowanych tak, że został zachowany porządek względny.
 
 ### 5.1. Przykład
 
 Mamy
 - $\mathcal{A} = (A, |\cdot|, \gamma_1)$
 - $\mathcal{B} = (B, |\cdot|, \gamma_2)$
-- $\mathcal{A} * \mathcal{B} = (A \times B, |\cdot|, \gamma)$
+- $\mathcal{A} \star \mathcal{B} = (A \times B, |\cdot|, \gamma)$
 
 Jeśli $\alpha \in A$, $\beta \in B$:
 - $\alpha = (1)–(2)$
 - $\beta = (2)–(1)–(3)$
 
-wówczas $\alpha * \beta:$
+wówczas $\alpha \star \beta:$
 - $(1)–(2) \enspace (4)–(3)–(5)$
 - $(1)–(3) \enspace (4)–(2)–(5)$
 - $(2)–(5) \enspace (3)–(1)–(4)$
@@ -118,11 +118,11 @@ Funkcję etykietowaną $\gamma$ definiujemy w taki sposób, że
 - $\forall x,y \in A \quad \gamma_1(x) < \gamma_1(y) \implies \gamma(x) < \gamma(y)$
 - $\forall x,y \in B \quad \gamma_2(x) < \gamma_2(y) \implies \gamma(x) < \gamma(y)$
 
-Czyli jeśli $|a|_A = n$ oraz $|b|_B = m$ wówczas $|a * b| = \binom{n+m}{n}$.
+Czyli jeśli $|a|_A = n$ oraz $|b|_B = m$ wówczas $|a \star b| = \binom{n+m}{n}$.
 
 ### 5.2. Definicja formalna
 
-Mając $\mathcal{C} = \mathcal{A} * \mathcal{B}$ mamy $C_n = \bigcup\left\{ a * b: |a| + |b| = n \right\} = \bigcup_{k=0}^n \left\{ a*b: |a| = k \land |b| = n-k \right\}$.
+Mając $\mathcal{C} = \mathcal{A} \star \mathcal{B}$ mamy $C_n = \bigcup\left\{ a \star b: |a| + |b| = n \right\} = \bigcup_{k=0}^n \left\{ a\star b: |a| = k \land |b| = n-k \right\}$.
 
 Czyli $c_n = \sum_{k=0}^n a_k \cdot b_{n-k} \binom{n}{k}$.
 
@@ -210,7 +210,7 @@ Mamy drzewa gdzie każdy węzeł etykietujemy pewną liczbą naturalną, przy cz
 Czyli następujące drzewa są równoważne:\
 ![](drzewa-etykietowane-równoważność.png)
 
-Wówczas taka struktura może być reprezentowana przez klasę $\mathcal{T} = \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})$ z EGF $T(z) = z \cdot \exp(T(z))$.
+Wówczas taka struktura może być reprezentowana przez klasę $\mathcal{T} = \mathcal{Z} \times \operatorname{SET}(\mathcal{T})$ z EGF $T(z) = z \cdot \exp(T(z))$.
 
 Wówczas (z [twierdzenia lagrange’a o inwersji](../2020-11-09/tw-lagrangea-o-inwersji.md)) mamy
 $$
