@@ -180,7 +180,7 @@ $$
 T(z) = \sum_{n=0}^{\infty} \frac{1}{n+1} \binom{2n}{n} \cdot z^n.
 $$
 
-Ostateczny wynik: $[z^{20}] T(z) = 6564120420 = 6.564120420 \cdot 10^{9}$.
+Ostateczny wynik: $[z^{18}] T(z) = 477638700 = 4.77638700 \cdot 10^{8}$.
 
 [Kod programu](ex-6.wls) znajduje się w pliku `ex-6.wls`.
 
