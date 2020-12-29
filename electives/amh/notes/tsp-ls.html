@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Travelling salesman problem</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,13 +19,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="travelling-salesman-problemtsp"><a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling salesman problem</a></h1>
-<h2 id="rozwiązanie-x_0">Rozwiązanie <span class="math inline">\(x_0\)</span></h2>
+<header id="title-block-header">
+<h1 class="title">Travelling salesman problem</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#1-rozwiązanie-x_0">1. Rozwiązanie <span class="math inline">\(x_0\)</span></a></li>
+<li><a href="#2-sąsiedztwo">2. Sąsiedztwo</a></li>
+<li><a href="#3-pętla-główna">3. Pętla główna</a></li>
+<li><a href="#4-koniec">4. Koniec</a></li>
+<li><a href="#5-najlepszy-znany-localsearch-dla-tsp">5. Najlepszy znany LocalSearch dla TSP</a></li>
+</ul>
+<hr />
+<h2 id="rozwiązanie-x_0">1. Rozwiązanie <span class="math inline">\(x_0\)</span></h2>
 <ol style="list-style-type: decimal">
 <li>Podczas generowania wybierać najkrótszą drogę do następnego miasta.</li>
 <li>Losowa permutacja - <em>discouraged</em>.</li>
 </ol>
-<h2 id="sąsiedztwo">Sąsiedztwo</h2>
+<h2 id="sąsiedztwo">2. Sąsiedztwo</h2>
 <ol style="list-style-type: decimal">
 <li><p>Zamiana wierzchołków <a href="http://matejgazda.com/tsp-algorithms-2-opt-3-opt-in-python/">2–opt</a>, ewentualnie <a href="http://tsp-basics.blogspot.com/2017/03/3-opt-move.html">3-opt</a>. Dwa rozwiązania <span class="math inline">\(x_0,\hat{x}\)</span> są sąsiednie <span class="math inline">\(\iff\)</span> <span class="math inline">\(|\)</span><code>diff x,y</code><span class="math inline">\(| = 2\)</span> <em>(mamy tylko dwie różnice)</em></p>
 <p><span class="math display">\[
@@ -52,11 +68,11 @@ x_0 =&amp;~ \langle~1,2,3,4,5,6,1~\rangle\\
 \hat{x} = \lang~1,2,\bold6,\bold5,\bold4,\bold3,1~\rang
 \]</span></p></li>
 </ol>
-<h2 id="pętla-główna">Pętla główna</h2>
+<h2 id="pętla-główna">3. Pętla główna</h2>
 <p>Sprawdzamy tak długo aż nie znajdziemy lepszego sąsiada lub sprawdzimy wszystkich sąsiadów</p>
-<h2 id="koniec">Koniec</h2>
+<h2 id="koniec">4. Koniec</h2>
 <p>Brak lepszych sąsiadów lub koniec czasu.</p>
-<h2 id="najlepszy-znany-localsearch-dla-tsptsp">Najlepszy znany LocalSearch dla <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">TSP</a></h2>
+<h2 id="najlepszy-znany-localsearch-dla-tsptsp">5. Najlepszy znany LocalSearch dla <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">TSP</a></h2>
 <p>Połączenie pomiędzy 2–opt a 3–opt.</p>
 <p><a href="https://www.cs.princeton.edu/~bwk/btl.mirror/tsp.pdf"><em>Sh. Lin, B. Kernighan’73 – „An Effective Heuristic Algorithm for the Traveling-Salesman Problem”</em></a></p>
 </body>

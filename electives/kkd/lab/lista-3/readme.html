@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista-3</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,12 +19,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="lista-3">Lista-3</h1>
-<h2 id="zadanie-na-laboratorium">Zadanie na laboratorium</h2>
+<header id="title-block-header">
+<h1 class="title">Lista-3</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <blockquote>
-<p><strong>Ocena 3</strong> Napisz program który implementuje zmodyfikowany algorytm LZ77, który zamiast 3 liczb używa 2: - <span class="math inline">\((0, kod\_litery)\)</span> – jeśli pierwszej litery w buforze kodowania nie ma w buforze słownika, - <span class="math inline">\((i, j)\)</span> – dla najdłuższego możliwego prefiksu z bufora kodowania występującego w buforze słownika (przedłużonym o bufor kodowania) i to przesunięcie w słowniku a <span class="math inline">\(j + 1\)</span> ilość znaków do skopiowania (omijamy kod ostatniej litery z klasycznego LZ77).<br />
+<ul>
+<li><span class="math inline">\((0, kod\_litery)\)</span> – jeśli pierwszej litery w buforze kodowania nie ma w buforze słownika,</li>
+<li><span class="math inline">\((i, j)\)</span> – dla najdłuższego możliwego prefiksu z bufora kodowania występującego w buforze słownika (przedłużonym o bufor kodowania) i to przesunięcie w słowniku a <span class="math inline">\(j + 1\)</span> ilość znaków do skopiowania (omijamy kod ostatniej litery z klasycznego LZ77).<br />
 W programie bufor słownika ma mieć 255 znaków a bufor kodowania 256 (stąd używane liczby są 8-bitowe).<br />
-Program ma mieć możliwość kodowania i dekodowania, dodatkowo podczas kodowania ma podawać długość kodowanego pliku, długość uzyskanego kodu, stopień kompresji, entropię kodowanego tekstu i entropię uzyskanego kodu.</p>
+Program ma mieć możliwość kodowania i dekodowania, dodatkowo podczas kodowania ma podawać długość kodowanego pliku, długość uzyskanego kodu, stopień kompresji, entropię kodowanego tekstu i entropię uzyskanego kodu.</li>
+</ul>
 <p><strong>Ocena 4</strong> Napisz program kodujący i dekodujący dany plik za pomocą algorytmu LZW. Ciąg wartości indeksów słownika początkowo powinien być kodowany liczbami 9-bitowymi a następnie liczby powinny być automatycznie wydłużane o kolejne bity wraz ze wzrostem wielkości słownika.<br />
 Program dodatkowo podczas kodowania ma podawać długość kodowanego pliku, długość uzyskanego kodu, stopień kompresji, entropię kodowanego tekstu i entropię uzyskanego kodu.</p>
 <p><strong>Ocena 5</strong> Napisz program kodujący i dekodujący dany plik za pomocą algorytmu LZW. Ciąg wartości indeksów słownika ma być zakodowany kodowaniem uniwersalnym. Alfabetem wejściowym są 8-bitowe kody. Domyślnie program powinien używać kodowania Eliasa <span class="math inline">\(\omega\)</span> oraz mieć możliwość opcjonalnego użycia pozostałych kodowań Eliasa oraz kodowania Fibonacciego.<br />

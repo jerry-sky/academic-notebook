@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-23" />
+  <title>RandomSelect</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="randomselect"><code>RandomSelect</code></h1>
-<p><em>(2020-03-23)</em></p>
+<header id="title-block-header">
+<h1 class="title"><code>RandomSelect</code></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-23</p>
+</header>
+<hr />
 <h2 id="description">Description</h2>
 <p><code>RandomSelect</code> wykorzystuje podejście zaprezentowane w <a href="../2020-03-11/quick-sort">algorytmie <code>QuickSort</code></a>. Jest to algorytm, który w najgorszym przypadku będzie działał w złożoności <span class="math inline">\(O(n^2)\)</span>, ale jeśli założymy, ze wejściowa tablica <span class="math inline">\(A\)</span> jest losową permutacją wielkości <span class="math inline">\(n\)</span> to można pokazać, że <span class="math inline">\(E\)</span> (wartość oczekiwana) zmiennej losowej <span class="math inline">\(X\)</span> liczby porównań wynosi <span class="math inline">\(O(n)\)</span> <em>(robi się to w podobny sposób jak to było w przypadku <code>QuickSort</code>a)</em>.<br />
 Algorytm ten jest tylko drobną modyfikacją <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">algorytmu do wyznaczania mediany (2.4 Medians)</a>.</p>

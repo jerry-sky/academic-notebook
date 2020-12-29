@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="description" content="Strassen" />
+  <title>Mnożenie macierzy n\times n</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="mnożenie-macierzy-ntimes-n">Mnożenie macierzy <span class="math inline">\(n\times n\)</span></h1>
-<h2 id="algorytm-mnożenia-macierzy-ntimes-n-strassena">Algorytm mnożenia macierzy <span class="math inline">\(n\times n\)</span> <em>Strassen</em>'a</h2>
+<header id="title-block-header">
+<h1 class="title">Mnożenie macierzy <span class="math inline">\(n\times n\)</span></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<p id="document-description"><em>Strassen</em></p>
+<hr />
 <p>Należy zauważyć, że standardowe podejście do mnożenia macierzy daje algorytm o złożoności obliczeniowej <span class="math inline">\(O(n^3)\)</span>.</p>
 <p><span class="math inline">\(X,Y\)</span> - macierze <span class="math inline">\(n\times n\)</span><br />
 chcemy <span class="math inline">\(Z = XY\)</span> <span class="math display">\[

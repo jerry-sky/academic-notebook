@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-25" />
+  <title>Binary Search Tree (BST)</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="binary-search-tree-bst">Binary Search Tree <em>(BST)</em></h1>
-<p><em>(2020-03-25)</em></p>
+<header id="title-block-header">
+<h1 class="title">Binary Search Tree <em>(BST)</em></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-25</p>
+</header>
+<hr />
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#węzeł-drzewa">Węzeł drzewa</a></li>
+<li><a href="#porządek-w-bst">Porządek w BST</a></li>
+<li><a href="#wysokość-bst">Wysokość BST</a></li>
+<li><a href="#operacje-dla-bst">Operacje dla BST</a>
+<ul>
+<li><a href="#mathrminordertreewalk"><span class="math inline">\(\mathrm{InorderTreeWalk}\)</span></a></li>
+<li><a href="#mathrmsearchx"><span class="math inline">\(\mathrm{Search}(x)\)</span></a></li>
+<li><a href="#mathrminsertx"><span class="math inline">\(\mathrm{Insert}(x)\)</span></a></li>
+<li><a href="#mathrmdeletex"><span class="math inline">\(\mathrm{Delete}(x)\)</span></a></li>
+<li><a href="#mathrmminimum"><span class="math inline">\(\mathrm{Minimum}\)</span></a></li>
+<li><a href="#mathrmmaximum"><span class="math inline">\(\mathrm{Maximum}\)</span></a></li>
+<li><a href="#mathrmsuccessorx"><span class="math inline">\(\mathrm{Successor}(x)\)</span></a></li>
+<li><a href="#mathrmpredecessorx"><span class="math inline">\(\mathrm{Predecessor}(x)\)</span></a></li>
+<li><a href="#mathrmbstsort"><span class="math inline">\(\mathrm{BSTSort}\)</span></a></li>
+</ul></li>
+<li><a href="#własność-2">Własność #2</a></li>
+<li><a href="#twierdzenie-1">Twierdzenie #1</a>
+<ul>
+<li><a href="#d-d-twierdzenia-1">D-d Twierdzenia #1</a></li>
+</ul></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+<hr />
 <h2 id="description">Description</h2>
 <p>Drzewa poszukiwań binarnych (ukorzenione drzewa, każdy węzeł ma dwóch potomków, liście mają zero potomków) są strukturami danych, na których można wykonywać różne operacje na zbiorach dynamicznych takie jak <span class="math inline">\(\mathrm{Search},~\mathrm{Minimum},~\mathrm{Maximum},~\mathrm{Predecessor},~\mathrm{Successor},~\mathrm{Insert},~\mathrm{Delete}\)</span>.</p>
 <h2 id="węzeł-drzewa">Węzeł drzewa</h2>

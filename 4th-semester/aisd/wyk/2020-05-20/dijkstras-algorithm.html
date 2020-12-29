@@ -18,8 +18,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="dijkstras-algorithm">Dijkstra's algorithm</h1>
-<p>Algorytm <a href="../2020-05-18/breadth-first-search">BFS</a> pozwala na wyznaczanie najkrótszych ścieżek od jednego startowego wierzchołka <span class="math inline">\(s\)</span> do wszystkich innych wierzchołków (do którego możemy dotrzeć z <span class="math inline">\(s\)</span>) dla grafu, którego wszystkie krawędzie mają taką samą wagę. Uogólnienie tego algorytmu tak aby mógł wyszukiwać najkrótsze ścieżki w grafie <span class="math inline">\(G = (V,E,l)\)</span>, gdzie <span class="math inline">\(l: E\to \mathbb{R}_+\)</span> jest funkcją wagi/długości krawędzi. Na ten moment zakładamy, że waga krawędzi jest dodatnią liczbą rzeczywistą.</p>
+<hr />
+<ul>
+<li><a href="#concept">Concept</a></li>
+<li><a href="#implementacja">Implementacja</a></li>
+<li><a href="#przykład">Przykład</a></li>
+<li><a href="#alternatywna-interpretacja">Alternatywna interpretacja</a></li>
+<li><a href="#poprawność-działania-algorytmu">Poprawność działania algorytmu</a></li>
+<li><a href="#złożoność-obliczeniowa">Złożoność obliczeniowa</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <h2 id="concept">Concept</h2>
 <p>Algorytm Dijkstry pozwala na znajdowanie najkrótszych ścieżek w grafie <span class="math inline">\(G = (V,E,l)\)</span>, gidze <span class="math inline">\(l: E\to \mathbb{R}_+\)</span>. Jest on prostą modyfikacją procedury <a href="../2020-05-18/breadth-first-search">BFS</a> i w gruncie rzeczy polega na zastąpieniu kolejki FIFO w algorytmie BFS, kolejką priorytetową. Implementacje <a href="../2020-05-04/kolejka-priorytetowa">kolejki priorytetowej na bazie kopca minimalnego zostały przedstawione na poprzednich wykładach</a>.</p>
 <h2 id="implementacja">Implementacja</h2>

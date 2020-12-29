@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista-5</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -55,7 +56,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="lista-5">Lista-5</h1>
+<header id="title-block-header">
+<h1 class="title">Lista-5</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#zadanie-1">Zadanie 1</a></li>
+<li><a href="#zadanie-2">Zadanie 2</a></li>
+</ul>
+<hr />
 <h2 id="zadanie-1">Zadanie 1</h2>
 <blockquote>
 <p>Napisz wykorzystując regresję liniową program, który na podstawie oceny filmów przez użytkowników będzie starał się przewidzieć ocenę innych użytkowników. Jako dane wykorzystamy zbiór MovieLens Latest Datasets. Dokładnie wybierzemy mniejszy zbiór, pobierz plik <a href="data/ratings.csv">ml-latest-small.zip</a>. Zadanie polega na wybraniu z pliku <a href="data/ratings.csv">ratings.csv</a> tych użytkowników (<code>userId</code>), którzy ocenili film 'Toy Story (1995)', który w tym pliku ma identyfikator '1' (patrz movies.csv). W tym pliku osób takich jest 215. Wtedy zgodnie z zapisem z wykładu: <span class="math inline">\(x_{ij}\)</span> będzie oceną <span class="math inline">\(i\)</span>-tego użytkownika dla <span class="math inline">\(i = 0,\dots,214\)</span>, bo taki jest nasz zbiór osób, które oceniły 'Toy Story' oraz <span class="math inline">\(j\)</span> będzie oceną <span class="math inline">\(j\)</span>-tego filmu dla <span class="math inline">\(j = 0,\dots,m\)</span>. Jako <span class="math inline">\(j\)</span> można wybrać <code>movieId</code> filmu, czyli np. film o <code>movieId</code> <span class="math inline">\(= 42\)</span> oceniony przez użytkownika 5 (nie jest to <code>userId</code>, tylko piąta osoba ze zbioru 215 osób), który ocenił film jako np. <code>3.5</code> wpisujemy <span class="math inline">\(x[5,42] = 3.5\)</span>. Natomiast <span class="math inline">\(y_i\)</span> to ocena 'Toy Story' przez <span class="math inline">\(i\)</span>-tego użytkownika. Zatem tworzymy macierz <span class="math inline">\(X = [x_{ij}]\)</span> oraz wektor <span class="math inline">\(y_i\)</span> gdzie <span class="math inline">\(i = 0,\dots,215\)</span> oraz <span class="math inline">\(j = 0,\dots,m\)</span>. Dla tak przygotowanych danych wykonujemy: - regresje liniową na całym zbiorze użytkowników dla <span class="math inline">\(m = 10,1000,10000\)</span>, czyli np. dla <span class="math inline">\(m = 10\)</span> ignorujemy filmy o <code>movieId</code> <span class="math inline">\(&gt; 10\)</span> i robimy regresje dla tak okrojonego zbioru ocen. Jakie dostajemy błędy. Pokaż na wykresie. - podziel zbiór osób na tzw. zbiór treningowy oraz zbiór testowy np. weźmy <span class="math inline">\(i = 0,\dots,200\)</span> to będzie zbiór treningowy i na takim zbiorze osób wykonajmy regresje natomiast później sprawdzamy już dla całości (215). Zatem ostatnie 15 ocen będziemy chcieli przewidzieć (zbiór testowy). Zrób przewidywanie dla <span class="math inline">\(m = 10,100,200,500,1000,10000\)</span>. Wyświetl wynik predykcji i wynik prawidłowy dla tych 15 osób. Przykład danych do regresji jakie otrzymujemy dla <span class="math inline">\(m = 10\)</span> i <span class="math inline">\(n = 215\)</span>.</p>

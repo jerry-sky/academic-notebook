@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-04-15" />
+  <title>Grafy planarne III i spójność</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,9 +20,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="grafy-planarne-iii-i-spójność">Grafy planarne III i spójność*</h1>
-<p><em>*odwołany z powody koronawirusa</em><br />
-<em>(2020-04-15)</em></p>
+<header id="title-block-header">
+<h1 class="title">Grafy planarne III i spójność</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-04-15</p>
+</header>
+<hr />
+<ul>
+<li><a href="#kontrakcja-krawędzi-grafu">Kontrakcja krawędzi grafu</a>
+<ul>
+<li><a href="#kontrakcja-grafu-petersena">Kontrakcja grafu Petersena</a></li>
+</ul></li>
+<li><a href="#text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</a></li>
+<li><a href="#text-definicja-minor-grafu"><span class="math inline">\(\text {Definicja}\)</span> Minor grafu</a></li>
+<li><a href="#text-twierdzenie-wagnera"><span class="math inline">\(\text {Twierdzenie}\)</span> Wagnera</a></li>
+<li><a href="#k_33-na-torusie"><span class="math inline">\(K_{3,3}\)</span> na torusie</a>
+<ul>
+<li><a href="#eliminacja-jedno-przecięcia-grafu-k_33">Eliminacja jedno przecięcia grafu <span class="math inline">\(K_{3,3}\)</span></a></li>
+<li><a href="#topologiczna-transformacja-powierzchni">Topologiczna transformacja powierzchni</a></li>
+<li><a href="#powierzchnie-orientowalne-o-małych-genusach">Powierzchnie orientowalne o małych „genusach”</a></li>
+</ul></li>
+<li><a href="#text-definicja-genus-grafu"><span class="math inline">\(\text {Definicja}\)</span> Genus grafu</a>
+<ul>
+<li><a href="#text-fakt-każdy-graf-skończony-ma-określony-genus"><span class="math inline">\(\text {Fakt}\)</span> Każdy graf (skończony) ma określony genus</a></li>
+</ul></li>
+<li><a href="#text-twierdzenie-2"><span class="math inline">\(\text {Twierdzenie}\)</span> #2</a></li>
+<li><a href="#text-fakt-3"><span class="math inline">\(\text {Fakt}\)</span> #3</a>
+<ul>
+<li><a href="#d-d-text-faktu-3">D-d <span class="math inline">\(\text {Faktu}\)</span> #3</a></li>
+</ul></li>
+<li><a href="#text-definicja-spójność-wierzchołkowa-grafu-spójnego"><span class="math inline">\(\text {Definicja}\)</span> Spójność wierzchołkowa grafu spójnego</a></li>
+<li><a href="#text-definicja-spójność-krawędziowa-grafu-spójnego"><span class="math inline">\(\text {Definicja}\)</span> spójność krawędziowa grafu spójnego</a></li>
+<li><a href="#text-twierdzenie-3"><span class="math inline">\(\text {Twierdzenie}\)</span> #3</a>
+<ul>
+<li><a href="#d-d-text-twierdzenia-3">D-d <span class="math inline">\(\text {Twierdzenia}\)</span> #3</a></li>
+</ul></li>
+<li><a href="#text-definicja-abścieżka"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–ścieżka</a></li>
+<li><a href="#text-definicja-abkonektor"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–konektor</a></li>
+<li><a href="#text-definicja-abseparator"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–separator</a></li>
+</ul>
+<hr />
 <h2 id="kontrakcja-krawędzi-grafu">Kontrakcja krawędzi grafu</h2>
 <p>Niech <span class="math inline">\((V, E, \varphi)\)</span> będzie grafem i <span class="math inline">\(e \in E\)</span><br />
 Niech <span class="math inline">\(\varphi(e) = \{a,b\}\)</span></p>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-02" />
+  <title>Rekurencja</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="rekurencja">Rekurencja</h1>
-<p><em>(2020-03-02)</em></p>
+<header id="title-block-header">
+<h1 class="title">Rekurencja</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-02</p>
+</header>
+<hr />
+<ul>
+<li><a href="#1degree-metoda-indukcyjna"><span class="math inline">\(1\degree\)</span> Metoda indukcyjna</a></li>
+</ul>
+<hr />
 <h2 id="degree-metoda-indukcyjna"><span class="math inline">\(1\degree\)</span> Metoda indukcyjna</h2>
 <p><span class="math display">\[
 T(n) = 4\cdot T\Big(\frac{n}{2}\Big) + n
@@ -43,14 +56,7 @@ T(n) = 4\cdot T\Big(\frac{n}{2}\Big) + n \le 4c \cdot \frac{n^3}{2^3} + n =
 c = 2, n_0 = 1
 \]</span> <span class="math display">\[
 T(n) = O(n^3)
-\]</span> --- <span class="math display">\[
-T(n) = O(n^2)
-\]</span> <em>Założenie indukcyjne</em> <span class="math display">\[
-\forall{k &lt; n}:~ T(k) \le ck^2
-\]</span> Krok indukcyjny <span class="math display">\[
-T(n) \le 4\cdot\frac{cn^2}{2^2} + n = cn^2 + n \not\le cn^2
 \]</span></p>
-<hr />
 <p><em>Założenie indukcyjne</em> <span class="math display">\[
 \forall{k &lt; n }: T(k) \le c_1k^2 - c_2k
 \]</span> Krok indukcyjny <span class="math display">\[

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Skierowane grafy acykliczne</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="skierowane-grafy-acykliczne">Skierowane grafy acykliczne</h1>
+<header id="title-block-header">
+<h1 class="title">Skierowane grafy acykliczne</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</a>
+<ul>
+<li><a href="#szkic-d-d-text-faktu">Szkic d-d <span class="math inline">\(\text {Faktu}\)</span></a></li>
+</ul></li>
+<li><a href="#linearyzacja-daga-sortowanie-topologiczne">Linearyzacja DAGa (sortowanie topologiczne)</a></li>
+<li><a href="#text-fakt-2"><span class="math inline">\(\text {Fakt}\)</span> #2</a></li>
+<li><a href="#linearizedagg"><code>linearizeDAG</code><span class="math inline">\((G)\)</span></a>
+<ul>
+<li><a href="#example-of-linearizedag">Example of <code>linearizeDAG</code></a></li>
+</ul></li>
+<li><a href="#strongly-connected-components">Strongly connected components</a>
+<ul>
+<li><a href="#własności">Własności</a>
+<ul>
+<li><a href="#własność-1">Własność #1</a></li>
+<li><a href="#własność-2">Własność #2</a></li>
+<li><a href="#własność-3">Własność #3</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#findstronglyconnectedcomponentsg"><code>FindStronglyConnectedComponents</code><span class="math inline">\((G)\)</span></a></li>
+<li><a href="#przykład">Przykład</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <h2 id="text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</h2>
 <p>Graf skierowany posiada cykl iff gdy podczas wykonywania procedury DFS zostanie wykryta <a href="dfs-directed-graphs.md#rodzaje-kraw%c4%99dzi">back edge</a></p>
 <h3 id="szkic-d-d-text-faktu">Szkic d-d <span class="math inline">\(\text {Faktu}\)</span></h3>

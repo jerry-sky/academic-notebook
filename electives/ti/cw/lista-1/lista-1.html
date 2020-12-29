@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 1</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="lista-1">Lista 1</h1>
+<header id="title-block-header">
+<h1 class="title">Lista 1</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <ul>
 <li><a href="#zadanie-1">Zadanie 1.</a>
 <ul>
@@ -213,6 +221,16 @@ H(X) = -\sum_{x} P(x)\log_2P(x) = -\sum_{y}\sum_{x: y=g(x)} P(x) \log_2 P(x) \ge
 <hr />
 <p><span class="math inline">\(f\left(2^{\frac{p}{q}}\right) = f\left( \left( 2^{\frac{1}{q}} \right) \right) = p\cdot f\left( 2^{\frac{1}{a}} \right) = p\cdot f\)</span></p>
 <p><em>do dokończenia — co z liczbami pomiędzy tymi dyskretnymi, które znaleźliśmy?</em></p>
+<ul>
+<li><span class="math inline">\(f(2^{nx}) = f(2^x \cdot 2^x \cdot \dotsb \cdot 2^x) \overset{z 1.}{=} n\cdot f(2^x)\)</span></li>
+<li><span class="math inline">\(f\left(2^{x \cdot \frac{n}{n}} \right) = f\left( 2^{\frac{x}{n} \cdot n} = n \cdot f\left( 2^{\frac{x}{n}} \right) \right)\)</span>
+<ul>
+<li><span class="math inline">\(f\left( 2^{\frac{x}{n}} \right) = \frac{1}{n} \cdot f(2^x)\)</span></li>
+</ul></li>
+<li>stąd <span class="math inline">\(f\left( 2^{\frac{p}{q} \cdot x} \right) = \frac{p}{q} f(2^x), \quad p,q \in \mathbb{N}\)</span></li>
+</ul>
+<p>czyli mamy - <span class="math inline">\(f(1) = f(1\cdot 1) = f(1) + f(1)\)</span> - <span class="math inline">\(f(1) = 0\)</span> - <span class="math inline">\(f(2^0) = f\left( 2^{x-x} \right) = f(2^x) + f(2^{-x})\)</span> - <span class="math inline">\(f(2^{-x}) = -f(2^x)\)</span></p>
+<p>dalej - <span class="math inline">\(q_n \xrightarrow{n \to \infty}: f(2^x) = f\left( 2^{\lim{_n \to \infty} q_n}\right) = f(\lim_{n \to \infty} 2^{q_n} = \lim_{n\to \infty} f(2^{q_n}) = \lim_{n\to \infty} q_n f(2) = x \cdot f(2) = x\)</span></p>
 <hr />
 <h2 id="zadanie-8.">Zadanie 8.</h2>
 <blockquote>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="description" content="Przeszukiwanie w głąb" />
+  <title>Depth First Search (DFS)</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="depth-first-search-dfs">Depth First Search (DFS)</h1>
-<p><em>Przeszukiwanie w głąb</em></p>
+<header id="title-block-header">
+<h1 class="title">Depth First Search (DFS)</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<p id="document-description"><em>Przeszukiwanie w głąb</em></p>
+<hr />
+<ul>
+<li><a href="#exploregv"><code>explore</code><span class="math inline">\((G,v)\)</span></a></li>
+<li><a href="#dfsg"><code>DFS</code><span class="math inline">\((G)\)</span></a></li>
+<li><a href="#zastosowanie---spójność-grafu">Zastosowanie - spójność grafu</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <p>DFS grafu nieskierowanego – procedura pozwalająca na eksplorację wszystkich wierzchołków grafu. DFS pozwala odpowiedzieć na pytanie do których wierzchołków grafu można dojść startując z zadanego wierzchołka.</p>
 <h2 id="exploregv"><code>explore</code><span class="math inline">\((G,v)\)</span></h2>
 <p>Reprezentujemy graf przy pomocy <a href="def-grafy.md#lista-s%c4%85siedztwa">listy sąsiedztwa</a>. Reprezentacja ta pozwala tylko na znajdowanie sąsiadów wierzchołków grafów. Przyjrzyjmy się procedurze <code>explore</code><span class="math inline">\((G,v)\)</span>, która pozwala znaleźć wszystkie wierzchołki grafu <span class="math inline">\(G = (V,E)\)</span> dostępne z wierzchołka <span class="math inline">\(v \in V\)</span>.</p>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Przepływy w sieciach II</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="przepływy-w-sieciach-ii">Przepływy w sieciach II</h1>
+<header id="title-block-header">
+<h1 class="title">Przepływy w sieciach II</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#lemat-a">Lemat A</a>
+<ul>
+<li><a href="#d-d-lematu-a">D-d Lematu A</a></li>
+</ul></li>
+<li><a href="#oznaczenie-1">Oznaczenie #1</a></li>
+<li><a href="#wniosek-1-lemat-b">Wniosek #1 (Lemat B)</a>
+<ul>
+<li><a href="#d-d-lematu-b">D-d Lematu B</a></li>
+</ul></li>
+<li><a href="#twierdzenie-ford-fulkerson">Twierdzenie (Ford-Fulkerson)</a>
+<ul>
+<li><a href="#d-d-twierdzenia-ford-fulkerson">D-d Twierdzenia (Ford-Fulkerson)</a></li>
+</ul></li>
+<li><a href="#metoda-forda-fulkersona">Metoda Forda-Fulkersona</a>
+<ul>
+<li><a href="#przykład-metoda-forda-fulkersona">Przykład (Metoda Forda-Fulkersona)</a></li>
+</ul></li>
+<li><a href="#fakt-1">Fakt #1</a></li>
+<li><a href="#fakt-2">Fakt #2</a></li>
+<li><a href="#algorytm-edmontona-karpa">Algorytm Edmontona-Karpa</a></li>
+<li><a href="#twierdzenie-2">Twierdzenie #2</a>
+<ul>
+<li><a href="#d-d-twierdzenia-2">D-d Twierdzenia #2</a></li>
+</ul></li>
+</ul>
+<hr />
 <h2 id="lemat-a">Lemat A</h2>
 <p>Niech <span class="math inline">\((V,E,s,t,c)\)</span> będzie siecią. Niech <span class="math inline">\(f\)</span> będzie przepływem w sieci.<br />
 Niech <span class="math inline">\(X \subseteq V\)</span> będzie takim zbiorem, że <span class="math inline">\(s \in X\)</span> oraz <span class="math inline">\(t \notin X\)</span>.<br />

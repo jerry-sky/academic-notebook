@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista-1 Wstęp do teorii grafów</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +19,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="lista-1-wstęp-do-teorii-grafów">Lista-1 <em>Wstęp do teorii grafów</em></h1>
-<h2 id="index">Index</h2>
+<header id="title-block-header">
+<h1 class="title">Lista-1 <em>Wstęp do teorii grafów</em></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <ul>
 <li><a href="#zadanie-1">Zadanie 1</a></li>
 <li><a href="#zadanie-2">Zadanie 2</a></li>
@@ -37,8 +44,12 @@
 <li><a href="#zadanie-14">Zadanie 14</a></li>
 <li><a href="#zadanie-15">Zadanie 15</a></li>
 <li><a href="#zadanie-16">Zadanie 16</a></li>
-<li><a href="#zadanie-19">Zadanie 19</a></li>
+<li><a href="#zadanie-19">Zadanie 19</a>
+<ul>
+<li><a href="#191">19.1</a></li>
+</ul></li>
 </ul>
+<hr />
 <h2 id="zadanie-1">Zadanie 1</h2>
 <blockquote>
 <p>Niech <span class="math inline">\(G\)</span> będzie grafem prostym. Pokaż, że <span class="math inline">\(G\)</span> jest spójny lub <span class="math inline">\(\overline{G}\)</span> (dopełnienie grafu <span class="math inline">\(G\)</span>) jest spójny. Podaj przykład takiego grafu <span class="math inline">\(G\)</span>,że zarówno <span class="math inline">\(G\)</span> jak i <span class="math inline">\(\overline{G}\)</span> są grafami spójnymi.</p>
@@ -60,8 +71,11 @@
 <li>Weźmy dowolne <span class="math inline">\(c \in V\)</span>, wówczas <span class="math inline">\(\neg{(a \sim_G c \land c \sim_G b)}\)</span>, czyli istnieje <span class="math inline">\(( \neg(a \sim_G c) \lor \neg(c \sim_G b) )\)</span></li>
 <li>Analogicznie dla dowolnego <span class="math inline">\(d \in V\)</span></li>
 <li>Albo jest tak, że <span class="math inline">\(( \neg(a \sim_G c) \lor \neg(a \sim_G d) )\)</span> albo <span class="math inline">\(( \neg(b \sim_G c) \lor \neg(b \sim_G d) )\)</span> albo jedno z pary <span class="math inline">\(a,b\)</span> nie jest połączone z <span class="math inline">\(c\)</span>, a drugie z <span class="math inline">\(d\)</span></li>
-<li><h2 id="wtedy-w-każdym-przypadku-c-sim_overlineg-d">Wtedy w każdym przypadku <span class="math inline">\(c \sim_{\overline{G}} d\)</span></h2></li>
-<li><p>Przykładowym grafem <span class="math inline">\(G\)</span> takim, że <span class="math inline">\(G\)</span> lub <span class="math inline">\(\overline{G}\)</span> jest spójny, jest graf z jednym wierzchołkiem lub graf <span class="math inline">\(C_4\)</span> bez jednej krawędzi.</p></li>
+<li><p>Wtedy w każdym przypadku <span class="math inline">\(c \sim_{\overline{G}} d\)</span></p></li>
+</ol>
+<hr />
+<ol start="2" style="list-style-type: decimal">
+<li>Przykładowym grafem <span class="math inline">\(G\)</span> takim, że <span class="math inline">\(G\)</span> lub <span class="math inline">\(\overline{G}\)</span> jest spójny, jest graf z jednym wierzchołkiem lub graf <span class="math inline">\(C_4\)</span> bez jednej krawędzi.</li>
 </ol>
 <h2 id="zadanie-2">Zadanie 2</h2>
 <blockquote>

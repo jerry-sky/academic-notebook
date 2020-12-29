@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista-5</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,10 +19,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="lista-5">Lista-5</h1>
-<h2 id="zadanie-na-laboratorium">Zadanie na laboratorium</h2>
+<header id="title-block-header">
+<h1 class="title">Lista-5</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <blockquote>
-<p><strong>Ocena 3</strong> Napisz program który dla nieskompresowanego obrazu zapisanego w formacie TGA policzy obraz uzyskany w wyniku kwantyzacji równomiernej poszczególnych składowych koloru. Program powinien dodatkowo wypisać błąd średniokwadratowy dla całego obrazu i poszczególnych składowych koloru oraz stosunek sygnału do szumu. Program powinien czytać pięć argumentów w linii poleceń: obraz wejściowy, obraz wyjściowy, liczba bitów na czerwień, liczba bitów na zieleń i liczba bitów na niebieski (liczba bitów między <span class="math inline">\(0\)</span> a <span class="math inline">\(8\)</span> - układ RGB).</p>
+<p>Program powinien czytać pięć argumentów w linii poleceń: obraz wejściowy, obraz wyjściowy, liczba bitów na czerwień, liczba bitów na zieleń i liczba bitów na niebieski (liczba bitów między <span class="math inline">\(0\)</span> a <span class="math inline">\(8\)</span> - układ RGB).</p>
 <p>Przykładowe wywołanie programu powinno wyglądać następująco:</p>
 <pre><code>mgc@topaz:~$ ./kwantyzacja mg.tga mg332.tga 3 3 2
 mse =174.173323

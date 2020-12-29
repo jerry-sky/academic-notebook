@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Przeszukiwanie wszerz</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="przeszukiwanie-wszerz">Przeszukiwanie wszerz</h1>
+<header id="title-block-header">
+<h1 class="title">Przeszukiwanie wszerz</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#bfsg-s"><code>BFS</code><span class="math inline">\((G, s)\)</span></a>
+<ul>
+<li><a href="#złożoność-obliczeniowa">Złożoność obliczeniowa</a></li>
+<li><a href="#przykład">Przykład</a></li>
+</ul></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <h2 id="bfsg-s"><code>BFS</code><span class="math inline">\((G, s)\)</span></h2>
 <p>Mamy graf <span class="math inline">\(G = (V,E,l)\)</span> gdzie <span class="math inline">\(l: E \to \mathbb{R}\)</span> jest funkcją mierzącą długość krawędzi.</p>
 <p>Odległością między wierzchołkami <span class="math inline">\(v,u \in V\)</span> nazywamy długość najkrótszej ścieżki pomiędzy <span class="math inline">\(v\)</span> i <span class="math inline">\(u\)</span>. <em>Na początek założymy, że wszystkie krawędzie będą miały długość <span class="math inline">\(1\)</span> czyli <span class="math inline">\(\forall_{e \in E}~l(e) = 1\)</span> i będziemy pomijać funkcję <span class="math inline">\(l\)</span> dla uproszczenia.</em></p>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Kolejka priorytetowa</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +19,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="kolejka-priorytetowa">Kolejka priorytetowa</h1>
-<h2 id="operacje">Operacje</h2>
+<header id="title-block-header">
+<h1 class="title">Kolejka priorytetowa</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#implementacja-kolejki-przy-pomocy-kopca-binarnego">Implementacja kolejki przy pomocy kopca binarnego</a>
+<ul>
+<li><a href="#makequeuea-binary-heap"><code>MakeQueue</code><span class="math inline">\((A)\)</span> (Binary heap)</a></li>
+<li><a href="#insertqmathrmkey-binary-heap"><code>Insert</code><span class="math inline">\((Q,\mathrm{key})\)</span> (Binary heap)</a></li>
+<li><a href="#minimumq-binary-heap"><code>Minimum</code><span class="math inline">\((Q)\)</span> (Binary heap)</a></li>
+<li><a href="#extractminq-binary-heap"><code>ExtractMin</code><span class="math inline">\((Q)\)</span> (Binary heap)</a></li>
+<li><a href="#decreasekeyqi-1"><code>DecreaseKey</code><span class="math inline">\((Q,i)\)</span></a></li>
+<li><a href="#unionq_1-q_2-binary-heap"><code>Union</code><span class="math inline">\((Q_1, Q_2)\)</span> (Binary heap)</a></li>
+<li><a href="#deleteqi-1"><code>Delete</code><span class="math inline">\((Q,i)\)</span></a></li>
+</ul></li>
+<li><a href="#różne-implementacje">Różne implementacje</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <p><em>Zakładamy tutaj, że im mniejszy klucz tym element ma wyższy priorytet.</em></p>
 <h3 id="makequeuea"><code>MakeQueue</code><span class="math inline">\((A)\)</span></h3>
 <p>Tworzy kolejkę priorytetową z tablicy <span class="math inline">\(A\)</span> elementów posiadających priorytety.</p>

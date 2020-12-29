@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Kolorowanie I</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="kolorowanie-i">Kolorowanie I</h1>
+<header id="title-block-header">
+<h1 class="title">Kolorowanie I</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#def-kolorowanie-grafu">Def Kolorowanie grafu</a></li>
+<li><a href="#def-właściwe-kolorowanie-grafu">Def Właściwe kolorowanie grafu</a></li>
+<li><a href="#def-liczba-chromatyczna">Def Liczba chromatyczna</a>
+<ul>
+<li><a href="#przykłady-liczba-chromatyczna">Przykłady (liczba chromatyczna)</a></li>
+</ul></li>
+<li><a href="#fakt-1">Fakt #1</a>
+<ul>
+<li><a href="#d-d-faktu-1">D-d Faktu #1</a></li>
+</ul></li>
+<li><a href="#zachłanne-kolorowanie-greedy-colouring">Zachłanne kolorowanie <em>(Greedy Colouring)</em></a></li>
+<li><a href="#def-graf-k-zdegenerowany">Def Graf <span class="math inline">\(k\)</span>-zdegenerowany</a>
+<ul>
+<li><a href="#przykład-graf-kzdegenerowany">Przykład (graf <span class="math inline">\(k\)</span>–zdegenerowany)</a></li>
+<li><a href="#obserwacja-1">Obserwacja #1</a></li>
+</ul></li>
+<li><a href="#twierdzenie-1">Twierdzenie #1</a>
+<ul>
+<li><a href="#d-d-twierdzenia-1">D-d Twierdzenia #1</a></li>
+</ul></li>
+<li><a href="#twierdzenie-2">Twierdzenie #2</a>
+<ul>
+<li><a href="#wniosek-1">Wniosek #1</a>
+<ul>
+<li><a href="#d-d-wniosek-1">D-d (Wniosek #1)</a></li>
+</ul></li>
+<li><a href="#przykład-2">Przykład #2</a></li>
+</ul></li>
+<li><a href="#twierdzenie-3">Twierdzenie #3</a></li>
+<li><a href="#d-d-twierdzenia-3">D-d Twierdzenia #3</a>
+<ul>
+<li><a href="#wniosek-2">Wniosek #2</a></li>
+</ul></li>
+</ul>
+<hr />
 <h2 id="def-kolorowanie-grafu">Def Kolorowanie grafu</h2>
 <p>Mamy <span class="math inline">\(G = (V,E)\)</span>.</p>
 <p>Kolorowaniem grafu nazywamy funkcję <span class="math inline">\(f: V \to \mathbb{N}^+\)</span></p>

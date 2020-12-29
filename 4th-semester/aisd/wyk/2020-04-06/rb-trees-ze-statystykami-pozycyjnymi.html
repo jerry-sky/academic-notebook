@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-04-06" />
+  <title>Rozszerzone RB-Trees</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="rozszerzone-rb-trees">Rozszerzone RB-Trees</h1>
-<p><em>(2020-04-06)</em></p>
+<header id="title-block-header">
+<h1 class="title">Rozszerzone RB-Trees</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-04-06</p>
+</header>
+<hr />
+<ul>
+<li><a href="#goal">Goal</a></li>
+<li><a href="#steps">Steps</a>
+<ul>
+<li><a href="#os-select"><code>OS-Select</code></a></li>
+<li><a href="#os-rank"><code>OS-Rank</code></a></li>
+<li><a href="#final-thoughts">Final thoughts</a></li>
+</ul></li>
+</ul>
+<hr />
 <h2 id="goal">Goal</h2>
 <p>Mając dynamiczny zbiór danych (dane będą usuwane i dodawane) chcemy szybko wyznaczyć <span class="math inline">\(i\)</span>tą statystykę (<span class="math inline">\(i\)</span>ty najmniejszy element) oraz zwracać stat. poz. zadanego elementu.</p>
 <h2 id="steps">Steps</h2>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>BDSI-Lab Lista 3 Zadanie 6</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -17,7 +18,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="bdsi-lab-lista-3-zadanie-6">BDSI-Lab Lista 3 Zadanie 6</h1>
+<header id="title-block-header">
+<h1 class="title">BDSI-Lab Lista 3 Zadanie 6</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#raport-dotyczący-zadań-z-sekcji-sql-injection-advanced---webgoat">Raport dotyczący zadań z sekcji SQL Injection (Advanced) - WebGoat</a></li>
+<li><a href="#wnioski-nigdy-nie-można-ufać-użytkownikowi">Wnioski: <strong>nigdy nie można ufać użytkownikowi.</strong></a></li>
+</ul>
+<hr />
 <h2 id="raport-dotyczący-zadań-z-sekcji-sql-injection-advanced---webgoat">Raport dotyczący zadań z sekcji SQL Injection (Advanced) - WebGoat</h2>
 <p>Zadania polegały na wykorzystaniu błędu braku sanityzacji inputu użytkownika. Aplikacja bezpośrednio konkatenowała wejście użytkownika z kwerendą i ją wykonywała, przez co bardzo łatwo można było manipulować bazą danych.</p>
 <p>Celem w zadaniu 3 było wyciągnięcie dodatkowych informacji (tablicy zawierającej hasła użytkowników) z bazy danych. Jednym z rozwiązań było wykorzystanie komendy UNION, która łączy wyniki kwerend wybierających (SELECT) pod warunkiem, że liczba kolumn i ich typy zgadzają się pomiędzy tymi kwerendami wybierającymi.</p>

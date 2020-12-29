@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="description" content="MSTs" />
+  <title>Minimal spanning trees</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,19 +20,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="minimal-spanning-trees">Minimal spanning trees</h1>
-<p><em>MSTs</em></p>
+<header id="title-block-header">
+<h1 class="title">Minimal spanning trees</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<p id="document-description"><em>MSTs</em></p>
+<hr />
 <ul>
 <li><a href="#outline">Outline</a></li>
 <li><a href="#io">I/O</a></li>
 <li><a href="#drzewa">Drzewa</a></li>
-<li><a href="#algorytm-kruskala">Algorytm Kruskala</a></li>
+<li><a href="#algorytm-kruskala">Algorytm Kruskala</a>
+<ul>
 <li><a href="#poprawność-algorytmu-kruskala">Poprawność algorytmu Kruskala</a></li>
 <li><a href="#zbiory-rozłączne-disjoint-sets">Zbiory rozłączne (disjoint sets)</a></li>
 <li><a href="#pseudokod-algorytmu-kruskala">Pseudokod algorytmu Kruskala</a></li>
+</ul></li>
 <li><a href="#algorytm-prima">Algorytm Prima</a></li>
 <li><a href="#more">More</a></li>
 </ul>
+<hr />
 <h2 id="outline">Outline</h2>
 <p>Na wejściu dostajemy graf spójny <span class="math inline">\(G = (V,E,l)\)</span>, gdzie <span class="math inline">\(V\)</span> jest zbiorem wierzchołków, <span class="math inline">\(E\)</span> zbiorem krawędzi, a <span class="math inline">\(l: E \to \mathbb{R}_+\)</span> funkcją wagi krawędzi (zakładamy, że waga krawędzi jest dodatnia). Celem jest wyznaczenie podzbioru krawędzi tego grafu, który pozostawi graf spójnym oraz suma wag tych krawędzi będzie możliwie najmniejsza.</p>
 <h2 id="io">I/O</h2>

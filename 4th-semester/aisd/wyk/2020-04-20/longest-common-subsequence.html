@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-04-20" />
+  <title>Longest Common Subsequence (LCS)</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="longest-common-subsequence-lcs">Longest Common Subsequence (LCS)</h1>
-<p><em>(2020-04-20)</em></p>
+<header id="title-block-header">
+<h1 class="title">Longest Common Subsequence (LCS)</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-04-20</p>
+</header>
+<hr />
+<ul>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#przykład">Przykład</a></li>
+<li><a href="#brute-force">Brute force</a></li>
+<li><a href="#podejście-programowania-dynamicznego">Podejście programowania dynamicznego</a>
+<ul>
+<li><a href="#theorem-optimal-substructure-of-an-lcs">Theorem Optimal substructure of an LCS</a></li>
+<li><a href="#kolejność-pod-problemów">Kolejność pod-problemów</a></li>
+<li><a href="#pseudokod">Pseudokod</a></li>
+</ul></li>
+<li><a href="#odtwarzanie-lcs">Odtwarzanie LCS</a></li>
+</ul>
+<hr />
 <h2 id="problem">Problem</h2>
 <p>Znalezienie najdłuższego wspólnego podciągu dwóch ciągów <span class="math inline">\(x[1\dots m],~y[1\dots n]\)</span>.</p>
 <h2 id="przykład">Przykład</h2>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Kodowanie Huffmana</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,15 +19,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="kodowanie-huffmana">Kodowanie Huffmana</h1>
+<header id="title-block-header">
+<h1 class="title">Kodowanie Huffmana</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <ul>
-<li><a href="#przykład-kompresji-mp3">Przykład kompresji MP3</a></li>
+<li><a href="#przykład-kompresji-mp3">Przykład kompresji MP3</a>
+<ul>
 <li><a href="#przykładowe-kodowanie-mp3">Przykładowe kodowanie MP3</a></li>
 <li><a href="#niepotrzebne-bity">Niepotrzebne bity</a></li>
-<li><a href="#zastosowanie-kodu-huffmana">Zastosowanie kodu Huffmana</a></li>
+</ul></li>
+<li><a href="#zastosowanie-kodu-huffmana">Zastosowanie kodu Huffmana</a>
+<ul>
 <li><a href="#pseudokod-algorytmu">Pseudokod algorytmu</a></li>
+</ul></li>
 <li><a href="#more">More</a></li>
 </ul>
+<hr />
 <h2 id="przykład-kompresji-mp3">Przykład kompresji MP3</h2>
 <p>Schemat kompresji MP3 w sporym uproszczeniu składa się z trzech kroków: 1. Dźwięk jest próbkowany z zadaną częstotliwością (np. 44100 próbek na sekundę) i każda próbka jest opisana przez liczbę rzeczywistą. Otrzymujemy w tens sposób ciąg liczb rzeczywistych: <span class="math inline">\(s_1,\dots,s_T\)</span>. Dla przykładu 50 minut muzyki będzie opisane przy pomocy <span class="math inline">\(T = 50 \cdot 60 \cdot 44100 = 132300000\)</span> liczb rzeczywistych (dla uproszczenia zakładamy jeden kanał – <em>dźwięk mono</em>) 1. Każda liczba rzeczywista <span class="math inline">\(s_t\)</span> jest przybliżana przez najbliższą liczbę z ustalonego zbioru <span class="math inline">\(\Gamma\)</span>. Zbiór ten jest dobrany w taki sposób, aby jak najlepiej opowiadać ograniczeniom ludzkiego słuchu, a ciąg liczb wykorzystujący wartości ze zbioru <span class="math inline">\(\Gamma\)</span> powinien być nierozróżnialny dla człowieka. 2. Otrzymany ciąg liczb ze zbioru <span class="math inline">\(\Gamma\)</span> o długości <span class="math inline">\(T\)</span> jest zapisywany jako ciągi bitowe.</p>
 <h3 id="przykładowe-kodowanie-mp3">Przykładowe kodowanie MP3</h3>

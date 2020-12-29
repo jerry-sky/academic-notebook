@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-23" />
+  <title>Problem znalezienia ktej statystyki pozycyjnej w nieposortowanej tablicy</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="problem-znalezienia-ktej-statystyki-pozycyjnej-w-nieposortowanej-tablicy">Problem znalezienia <span class="math inline">\(k\)</span>tej statystyki pozycyjnej w nieposortowanej tablicy</h1>
-<p><em>(2020-03-23)</em></p>
+<header id="title-block-header">
+<h1 class="title">Problem znalezienia <span class="math inline">\(k\)</span>tej statystyki pozycyjnej w nieposortowanej tablicy</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-23</p>
+</header>
+<hr />
+<ul>
+<li><a href="#specyfikacja">Specyfikacja</a></li>
+<li><a href="#outline-problemu">Outline problemu</a></li>
+</ul>
+<hr />
 <h2 id="specyfikacja">Specyfikacja</h2>
 <p><code>input :</code> <span class="math inline">\(A = (a_1,\dots,a_n),~k\in \{1,\dots,n\}\)</span><br />
 <code>output:</code> <span class="math inline">\(k\)</span>ty najmniejszy element z tablicy <span class="math inline">\(A\)</span></p>

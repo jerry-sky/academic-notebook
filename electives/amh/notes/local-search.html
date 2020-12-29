@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>LocalSearch</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +19,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="localsearch"><code>LocalSearch</code></h1>
-<h2 id="outline">Outline</h2>
+<header id="title-block-header">
+<h1 class="title"><code>LocalSearch</code></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#1-outline">1. Outline</a></li>
+<li><a href="#2-concerns">2. <em>Concerns</em></a></li>
+</ul>
+<hr />
+<h2 id="outline">1. Outline</h2>
 <ol style="list-style-type: decimal">
 <li>Generujemy <em>w jakiś sposób (losowo nie zawsze jest dobrze)</em> rozwiązanie początkowe <span class="math inline">\(x_0\)</span>.</li>
 <li>Dopóki jakiś warunek jest <code>True</code> robimy:</li>
@@ -27,7 +40,7 @@
 <li>Jeśli <span class="math inline">\(\exists_{\hat{x}\in N(x)}~ f(\hat{x}) &lt; f(x)\)</span> wówczas <span class="math inline">\(x_0 := \hat{x}\)</span></li>
 <li><code>return</code> <span class="math inline">\(x_0\)</span>.</li>
 </ol>
-<h2 id="concerns"><em>Concerns</em></h2>
+<h2 id="concerns">2. <em>Concerns</em></h2>
 <ol style="list-style-type: decimal">
 <li>Jak dobrać <span class="math inline">\(x_0\)</span>?</li>
 <li>Funkcja w której szukamy <span class="math inline">\(\min\)</span> - losowo</li>

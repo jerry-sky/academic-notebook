@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,13 +19,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="najkrótsze-ścieżki-dopuszczając-ujemne-wagi-krawędzi">Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi</h1>
+<header id="title-block-header">
+<h1 class="title">Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <ul>
 <li><a href="#dijkstras-algorithm">Dijkstra's algorithm</a></li>
-<li><a href="#algorytm-bellmana-forda">Algorytm Bellmana-Forda</a></li>
+<li><a href="#algorytm-bellmana-forda">Algorytm Bellmana-Forda</a>
+<ul>
 <li><a href="#przykład-algorytm-bellmana-forda">Przykład (Algorytm Bellmana-Forda)</a></li>
+</ul></li>
 <li><a href="#more">More</a></li>
 </ul>
+<hr />
 <p>Wspomniany na <a href="../2020-05-20/dijkstras-algorithm">wcześniejszym wykładzie</a> algorytm Dijkstry pozwala na wyznaczenie najkrótszych ścieżek od startowego wierzchołka do wszystkich innych wierzchołków w grafie <span class="math inline">\(G = (V,E,l)\)</span>, w przypadku gdzie wagi krawędzi są dodatnie (<span class="math inline">\(l: E\to \mathbb{R}_+\)</span>). Teraz będziemy rozważać grafy, gdzie mamy również ujemne wagi krawędzi (<span class="math inline">\(l: E \to \mathbb{R}\)</span>).</p>
 <h2 id="dijkstras-algorithm">Dijkstra's algorithm</h2>
 <p>W algorytmie Dijkstry wykorzystywany był następujący fakt:<br />

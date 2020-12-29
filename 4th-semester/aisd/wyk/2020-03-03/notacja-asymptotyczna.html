@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-02" />
+  <title>Notacja asymptotyczna</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="notacja-asymptotyczna">Notacja asymptotyczna</h1>
-<p><em>(2020-03-02)</em></p>
+<header id="title-block-header">
+<h1 class="title">Notacja asymptotyczna</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-02</p>
+</header>
+<hr />
+<ul>
+<li><a href="#duże-o">Duże <span class="math inline">\(O\)</span></a>
+<ul>
+<li><a href="#example-o-1">Example <span class="math inline">\(O\)</span> #1</a></li>
+<li><a href="#example-o-2">Example <span class="math inline">\(O\)</span> #2</a></li>
+</ul></li>
+<li><a href="#duże-omega">Duże <span class="math inline">\(\Omega\)</span></a>
+<ul>
+<li><a href="#example-omega">Example <span class="math inline">\(\Omega\)</span></a></li>
+</ul></li>
+<li><a href="#duże-theta">Duże <span class="math inline">\(\Theta\)</span></a></li>
+<li><a href="#małe-o">Małe <span class="math inline">\(o\)</span></a>
+<ul>
+<li><a href="#example-o">Example <span class="math inline">\(o\)</span></a></li>
+</ul></li>
+<li><a href="#mała-omega">Mała <span class="math inline">\(\omega\)</span></a></li>
+</ul>
+<hr />
 <h2 id="duże-o">Duże <span class="math inline">\(O\)</span></h2>
 <p><span class="math inline">\(f,g: \natnums \to \reals\)</span></p>
 <p><span class="math display">\[

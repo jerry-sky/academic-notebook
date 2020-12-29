@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Binary Heap</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="binary-heap">Binary Heap</h1>
+<header id="title-block-header">
+<h1 class="title">Binary Heap</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#własność-kopca-minimalnego">Własność kopca minimalnego</a></li>
+<li><a href="#przykład">Przykład</a></li>
+<li><a href="#poruszanie-się-po-binary-heap">Poruszanie się po binary heap</a></li>
+<li><a href="#text-def-wysokość-węzła"><span class="math inline">\(\text {Def}\)</span> wysokość węzła</a></li>
+<li><a href="#heapifyai"><code>Heapify</code><span class="math inline">\((A,i)\)</span></a></li>
+<li><a href="#buildheapa"><code>BuildHeap</code><span class="math inline">\((A)\)</span></a>
+<ul>
+<li><a href="#złożoność-obliczeniowa-buildheap">Złożoność obliczeniowa <code>BuildHeap</code></a>
+<ul>
+<li><a href="#text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</a>
+<ul>
+<li><a href="#d-d-text-faktu-1">D-d <span class="math inline">\(\text {Fakt}\)</span>u #1</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#złożoność-obliczeniowa-buildheap-cd">Złożoność obliczeniowa <code>BuildHeap</code> c.d.</a></li>
+</ul></li>
+<li><a href="#kopiec-d-arny">Kopiec <span class="math inline">\(d\)</span>-arny</a></li>
+<li><a href="#więcej-o-kopcach">Więcej o kopcach</a></li>
+<li><a href="#heapsorta"><code>HeapSort</code><span class="math inline">\((A)\)</span></a>
+<ul>
+<li><a href="#złożoność-obliczeniowa-heapsorta">Złożoność obliczeniowa <code>HeapSort</code><span class="math inline">\((A)\)</span></a></li>
+</ul></li>
+<li><a href="#more">More</a></li>
+</ul>
+<hr />
 <p>Kopiec binarny (binary heap) to pełne drzewo binarne. Poziom <span class="math inline">\(i\)</span>ty ma <span class="math inline">\(2^i\)</span> elementów (liczymy od <span class="math inline">\(i=0\)</span>).</p>
 <div class="figure">
 <img src="full-binary-tree.png" alt="full binary tree" />

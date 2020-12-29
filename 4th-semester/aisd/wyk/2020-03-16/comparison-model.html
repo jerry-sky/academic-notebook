@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-16" />
+  <title>Comparison model</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="comparison-model">Comparison model</h1>
-<p><em>(2020-03-16)</em></p>
+<header id="title-block-header">
+<h1 class="title">Comparison model</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-16</p>
+</header>
+<hr />
+<ul>
+<li><a href="#binarne-drzewo-decyzyjne">Binarne drzewo decyzyjne</a></li>
+</ul>
+<hr />
 <h2 id="binarne-drzewo-decyzyjne">Binarne drzewo decyzyjne</h2>
 <p>Wszystkie dotychczas omówione algorytmy sortowania (<a href="../2020-03-03/insertion-sort"><code>InsertionSort</code></a>, <a href="../2020-03-03/merge-sort"><code>MergeSort</code></a>, <a href="../2020-03-11/quick-sort"><code>QuickSort</code></a>) zakładały, że aby ustalić kolejność elementów możemy je tylko porównywać między sobą - jest to tzw. <em>Comparison Model</em>. Przy użyciu binarnego drzewa decyzyjnego możemy udowodnić, że liczba porównań między sortowanymi elementami musi wynosić co najmniej <span class="math inline">\(\log(n!) = O\big(n\log n\big)\)</span>.</p>
 <p>Weźmy drzewo sortujące biorące za argument tablicę <span class="math inline">\(n\)</span>-elementową. Każdy z liści takiego drzewa jest permutacją <span class="math inline">\(\{1,2,\dots,n\}\)</span>. Mamy więc przynajmniej <span class="math inline">\(n!\)</span> liści. Warto zauważyć, że w drzewie binarnym o głębokości <span class="math inline">\(d\)</span> jest co najwyżej <span class="math inline">\(2^d\)</span> liści.</p>

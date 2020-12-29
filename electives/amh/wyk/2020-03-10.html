@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Wykład 2020-03-10</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="wykład-2020-03-10">Wykład 2020-03-10</h1>
+<header id="title-block-header">
+<h1 class="title">Wykład 2020-03-10</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#1-task-assignment">1. Task assignment</a>
+<ul>
+<li><a href="#11-zapis">1.1. Zapis</a></li>
+</ul></li>
+<li><a href="#2-travelling-salesman-problem">2. Travelling salesman problem</a></li>
+<li><a href="#3-metoda-newtona">3. Metoda Newtona</a></li>
+</ul>
+<hr />
 <p><span class="math inline">\(S\)</span>: - pole wyszukiwań - możliwe rozwiązania dopuszczalne</p>
 <p><span class="math inline">\(f(\overline{x})\)</span></p>
 <pre><code>|
@@ -36,13 +53,13 @@
 <p>TSP (Travelling salesman problem), <span class="math inline">\(n=7\)</span></p>
 <p>Kraków, Wrocław, ...</p>
 <p>wierzchołki: <span class="math inline">\(1,2,3,4,6,7\)</span></p>
-<h2 id="task-assignment">Task assignment</h2>
+<h2 id="task-assignment">1. Task assignment</h2>
 <p>minimalizacja czasu pracy pracowników</p>
 <p><span class="math inline">\(c_{ij}\)</span></p>
 <p><span class="math inline">\(\sum_{i=1}^3\sum_{j = 1}^3c_{ij}x_{ij}\)</span> przy czym <span class="math inline">\(x_{ij} \in \{0,1\}\)</span></p>
 <p><span class="math inline">\(\forall i~\sum_j^3x_{ij} = 1\)</span><br />
 <span class="math inline">\(\forall j~\sum_i^3x_{ij} = 1\)</span></p>
-<h3 id="zapis">Zapis</h3>
+<h3 id="zapis">1.1. Zapis</h3>
 <p><span class="math display">\[
 X =
 \begin{bmatrix}
@@ -55,9 +72,9 @@ X =
 <span class="math inline">\(J = (2,1,3)\)</span></p>
 <p>pracownik:<br />
 <span class="math inline">\(W = (2,1,3)\)</span></p>
-<h2 id="travelling-salesman-problem">Travelling salesman problem</h2>
+<h2 id="travelling-salesman-problem">2. Travelling salesman problem</h2>
 <p><span class="math inline">\(\sum_{i=1}^3\sum_{j = 1}^3d_{ij}x_{ij}\)</span> przy czym <span class="math inline">\(x_{ij} \in \{0,1\}\)</span></p>
-<h2 id="metoda-newtona">Metoda Newtona</h2>
+<h2 id="metoda-newtona">3. Metoda Newtona</h2>
 <p><span class="math display">\[
 \mathcal{H} =
 \begin{bmatrix}

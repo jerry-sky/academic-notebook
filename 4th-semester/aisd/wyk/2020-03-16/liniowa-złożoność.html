@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-16" />
+  <title>Liniowa złożoność obliczeniowa</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,9 +20,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="liniowa-złożoność-obliczeniowa">Liniowa złożoność obliczeniowa</h1>
-<p><em>(2020-03-16)</em></p>
+<header id="title-block-header">
+<h1 class="title">Liniowa złożoność obliczeniowa</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-16</p>
+</header>
+<hr />
 <p>Aby osiągnąć sortowanie o złożoności <span class="math inline">\(O(n)\)</span> należy dodać dodatkowe założenia na dane wejściowe <em>(wyjść poza <a href="comparison-model">comparison model</a>)</em>, takie jak <strong>sortujemy liczby naturalne</strong> z danego przedziału.</p>
+<hr />
+<ul>
+<li><a href="#countingsort"><code>CountingSort</code></a></li>
+<li><a href="#radixsort"><code>RadixSort</code></a></li>
+</ul>
+<hr />
 <h2 id="countingsort"><code>CountingSort</code></h2>
 <ul>
 <li>Input: <span class="math inline">\(A = (a_1,\dots,a_n), \forall{j}~a_j \in \{1,\dots,k\}\)</span></li>

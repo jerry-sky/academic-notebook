@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Pokrycie zbioru</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,17 +19,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="pokrycie-zbioru">Pokrycie zbioru</h1>
+<header id="title-block-header">
+<h1 class="title">Pokrycie zbioru</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
 <ul>
 <li><a href="#zobrazowanie">Zobrazowanie</a></li>
 <li><a href="#formalna-definicja">Formalna definicja</a></li>
-<li><a href="#algorytm">Algorytm</a></li>
+<li><a href="#algorytm">Algorytm</a>
+<ul>
 <li><a href="#przykład-do-algorytmu">Przykład do algorytmu</a></li>
-<li><a href="#twierdzenie-1">Twierdzenie #1</a></li>
+</ul></li>
+<li><a href="#twierdzenie-1">Twierdzenie #1</a>
+<ul>
 <li><a href="#d-d-twierdzenia-1">D-d Twierdzenia #1</a></li>
+</ul></li>
 <li><a href="#final-remarks">Final remarks</a></li>
 <li><a href="#more">More</a></li>
 </ul>
+<hr />
 <h2 id="zobrazowanie">Zobrazowanie</h2>
 <p>Problem pokrycia zbioru <em>(set cover)</em> można zobrazować na przykładzie planowania budowy szkół. Powiedzmy, że mamy zbiór wiosek <span class="math inline">\(B\)</span>, w których chcemy zbudować szkoły dla okolicznej młodzieży. Musimy przestrzegać następujących założeń: 1. każda szkoła musi być w wiosce 2. odległość, którą muszą przebyć uczniowie do szkoły nie może być większa niż np. 10km.</p>
 <p>Celem jest rozmieszczenie szkół w wioskach, aby wszystkie osoby chodzące do szkoły miały ją w odległości nie większej niż ustalona oraz aby wybudować minimalną liczbę szkół. Jeśli dla każdej wioski <span class="math inline">\(x \in B\)</span> zdefiniujemy podzbiór wiosek <span class="math inline">\(S_x \subset B\)</span> będących w odległości mniejszej niż ustalona od <span class="math inline">\(x\)</span> to możemy powiedzieć, że wybudowanie szkoły w wiosce <span class="math inline">\(x\)</span> pokrywa osoby z wiosek należących do zbioru <span class="math inline">\(S_x\)</span>.</p>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Dual-pivot QuickSort</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,7 +19,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="dual-pivot-quicksort">Dual-pivot <code>QuickSort</code></h1>
+<header id="title-block-header">
+<h1 class="title">Dual-pivot <code>QuickSort</code></h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#algorytm-sortujący-dual-pivot-quicksort">Algorytm sortujący Dual-pivot <code>QuickSort</code></a></li>
+<li><a href="#krótki-zarys-działania">Krótki zarys działania</a></li>
+</ul>
+<hr />
 <h2 id="algorytm-sortujący-dual-pivot-quicksort">Algorytm sortujący Dual-pivot <code>QuickSort</code></h2>
 <p>Należy zauważyć, że używając dwóch pivotów <span class="math inline">\(p &lt; q\)</span> dzielimy tablicę sortowaną na trzy pod-tablice: - elementy mniejsze od <span class="math inline">\(p\)</span> - elementy pomiędzy <span class="math inline">\(p\)</span> a <span class="math inline">\(q\)</span> - elementy większe od <span class="math inline">\(q\)</span></p>
 <p>W takim przypadku liczba porównań pomiędzy kluczami (elementami sortowanymi) jest zmienną losową, a nie deterministyczną funkcją zależną od <span class="math inline">\(n\)</span> <em>(jak to było w zwyczajnym <code>QuickSort</code>'cie)</em>.</p>

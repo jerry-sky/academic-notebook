@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <title>Optymalizacja</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,16 +19,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="optymalizacja">Optymalizacja</h1>
-<h2 id="funkcja-kosztu">Funkcja kosztu</h2>
+<header id="title-block-header">
+<h1 class="title">Optymalizacja</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<hr />
+<ul>
+<li><a href="#1-funkcja-kosztu">1. Funkcja kosztu</a></li>
+<li><a href="#2-zbiór-rozwiązań-dopuszczalnych-s">2. Zbiór rozwiązań dopuszczalnych <span class="math inline">\(S\)</span></a></li>
+<li><a href="#3-optimum-globalne">3. Optimum globalne</a></li>
+<li><a href="#4-epsilon-aproksymacja">4. <span class="math inline">\(\epsilon\)</span>-aproksymacja</a></li>
+</ul>
+<hr />
+<h2 id="funkcja-kosztu">1. Funkcja kosztu</h2>
 <p>Mamy funkcję kosztu <span class="math display">\[
 f(\overline{x}) = \mathbb{K}^n \rightarrow \mathbb{K}
 \]</span> która nam mówi o przydatności danego rozwiązania - chcemy jak najmniejszy koszt w celu uzyskania rozwiązania jak najbliższego optimum.</p>
-<h2 id="zbiór-rozwiązań-dopuszczalnych-s">Zbiór rozwiązań dopuszczalnych <span class="math inline">\(S\)</span></h2>
+<h2 id="zbiór-rozwiązań-dopuszczalnych-s">2. Zbiór rozwiązań dopuszczalnych <span class="math inline">\(S\)</span></h2>
 <p>Niech <span class="math inline">\(S\)</span> będzie zbiorem rozwiązań dopuszczalnych dla problemu (minimalizacyjnego) <span class="math inline">\(\mathcal{P}\)</span> o funkcji kosztu <span class="math inline">\(f\)</span>.</p>
-<h2 id="optimum-globalne">Optimum globalne</h2>
+<h2 id="optimum-globalne">3. Optimum globalne</h2>
 <p><strong>Rozwiązanie <span class="math inline">\(s^{\star} \in S\)</span> jest optimum globalnym <span class="math inline">\(\iff\)</span> <span class="math inline">\(\forall s \in S~ f(s^{\star}) \le f(s)\)</span>.</strong></p>
-<h2 id="epsilon-aproksymacja"><span class="math inline">\(\epsilon\)</span>-aproksymacja</h2>
+<h2 id="epsilon-aproksymacja">4. <span class="math inline">\(\epsilon\)</span>-aproksymacja</h2>
 <p>Niech <span class="math inline">\(Opt(x) = \min_{s\in S(x)} f(s)\)</span> gdzie <a href="#zbi%c3%b3r-rozwi%c4%85za%c5%84-dopuszczalnych-s">zbiór <span class="math inline">\(S\)</span> jest zbiorem rozwiązań dopuszczalnych.</a><br />
 Dla algorytmu <span class="math inline">\(M\)</span>, który rozwiązuje problem optymalizacyjny, tż. <span class="math inline">\(M(x) \in S(x)\)</span>, mówimy że jest <span class="math inline">\(\epsilon\)</span>-aproksymacją dla <span class="math inline">\(\epsilon \ge 0\)</span>, jeśli <span class="math inline">\(\forall x\)</span>: <span class="math display">\[
 \frac{|f(M(X)) - Opt(x)|}{\max\{Opt(x), f(M(x))\}} \le \epsilon

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-03-04" />
+  <title>Spójność</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="spójność">Spójność</h1>
-<p><em>(2020-03-04)</em></p>
+<header id="title-block-header">
+<h1 class="title">Spójność</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-03-04</p>
+</header>
+<hr />
+<ul>
+<li><a href="#twierdzenie-havel-hakimi"><span class="math inline">\(Twierdzenie\)</span> (Havel-Hakimi)</a>
+<ul>
+<li><a href="#dowód-twierdzenia-havel-hakimi">Dowód <span class="math inline">\(Twierdzenia\)</span> Havel-Hakimi</a></li>
+<li><a href="#przykład-downdownarrows">Przykład <span class="math inline">\(\downdownarrows\)</span></a></li>
+<li><a href="#oznaczenie-sąsiedzi-wierzchołka">Oznaczenie sąsiedzi wierzchołka</a></li>
+<li><a href="#claim">Claim</a>
+<ul>
+<li><a href="#przykład">Przykład</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#graficzne-zoo">Graficzne ZOO</a></li>
+<li><a href="#operacje-grafy-proste">Operacje (grafy proste)</a></li>
+<li><a href="#przykład-grafu-petersena">Przykład Grafu Petersena</a></li>
+<li><a href="#definicja-graf-krawędziowy"><span class="math inline">\(Definicja\)</span> Graf Krawędziowy</a>
+<ul>
+<li><a href="#przykład-1">Przykład</a></li>
+</ul></li>
+<li><a href="#hiper-kostka">Hiper-kostka</a>
+<ul>
+<li><a href="#przykład-2">Przykład</a></li>
+</ul></li>
+<li><a href="#definicje---poruszanie-się-po-grafie"><span class="math inline">\(Definicje\)</span> - <em>poruszanie się</em> po grafie</a></li>
+<li><a href="#fakt-circlearrowleft">Fakt <span class="math inline">\(\circlearrowleft\)</span></a></li>
+<li><a href="#składowe-spójne">Składowe spójne</a></li>
+<li><a href="#twierdzenie-2"><span class="math inline">\(Twierdzenie\)</span> #2</a>
+<ul>
+<li><a href="#dowód">Dowód</a>
+<ul>
+<li><a href="#claim-jest-x-in-v-takie-że-degx--1">Claim: jest <span class="math inline">\(x \in V\)</span> takie, że <span class="math inline">\(\deg(x) = 1\)</span></a></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
 <h2 id="twierdzenie-havel-hakimi"><span class="math inline">\(Twierdzenie\)</span> (Havel-Hakimi)</h2>
 <p><span class="math inline">\((d_1,...,d_n)\)</span> - ciąg graficzny<br />
 <span class="math inline">\(\equiv (d_2&#39;, d_3&#39;,...,d_n&#39;)\)</span> - graficzny, gdzie: <span class="math display">\[

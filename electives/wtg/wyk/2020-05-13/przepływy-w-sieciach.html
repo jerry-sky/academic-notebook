@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-05-13" />
+  <title>Przepływy w sieciach</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,8 +20,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="przepływy-w-sieciach">Przepływy w sieciach</h1>
-<p><em>(2020-05-13)</em></p>
+<header id="title-block-header">
+<h1 class="title">Przepływy w sieciach</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-05-13</p>
+</header>
+<hr />
+<ul>
+<li><a href="#wersje-twierdzenie-mengera-dla-digrafów">Wersje twierdzenie Mengera dla digrafów</a></li>
+<li><a href="#oznaczenie-1">Oznaczenie #1</a></li>
+<li><a href="#def-separator-minimalny">Def Separator minimalny</a>
+<ul>
+<li><a href="#d-d-separator-minimalny">D-d separator minimalny</a></li>
+</ul></li>
+<li><a href="#oznaczenie-2">Oznaczenie #2</a></li>
+<li><a href="#def-pseudo-potok">Def Pseudo-potok</a></li>
+<li><a href="#fakt-1">Fakt #1</a>
+<ul>
+<li><a href="#d-d-faktu-1">D-d Faktu #1</a></li>
+</ul></li>
+<li><a href="#twierdzenie-1">Twierdzenie #1</a>
+<ul>
+<li><a href="#d-d-twierdzenia-1">D-d Twierdzenia #1</a></li>
+</ul></li>
+<li><a href="#def-wartość-f">Def Wartość <span class="math inline">\(f\)</span></a></li>
+<li><a href="#def-sieć">Def Sieć</a></li>
+<li><a href="#def-potok">Def Potok</a></li>
+<li><a href="#twierdzenie-2">Twierdzenie #2</a></li>
+<li><a href="#def-ścieżka-powiększająca">Def Ścieżka powiększająca</a></li>
+<li><a href="#fakt-2">Fakt #2</a></li>
+</ul>
+<hr />
 <h2 id="wersje-twierdzenie-mengera-dla-digrafów">Wersje twierdzenie Mengera dla digrafów</h2>
 <p><em><a href="../2020-04-22/twierdzenie-mengera.md#text-twierdzenie-mengera-wersja-wierzchołkowa">oryginalne twierdzenie Mengera</a></em></p>
 <p>Ustalamy graf skierowany <span class="math inline">\(\vec{G} = (V, \vec{E})\)</span>, zbiory <span class="math inline">\(A,B\subseteq V\)</span>:</p>

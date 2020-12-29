@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title></title>
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2020-04-01" />
+  <title>Grafy Planarne I</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -18,9 +20,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 id="grafy-planarne-i">Grafy Planarne I*</h1>
-<p><em>*odwołany z powody koronawirusa</em><br />
-<em>(2020-04-01)</em></p>
+<header id="title-block-header">
+<h1 class="title">Grafy Planarne I</h1>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2020-04-01</p>
+</header>
+<hr />
+<ul>
+<li><a href="#kilka-pojęć-pomocniczych">Kilka pojęć pomocniczych</a>
+<ul>
+<li><a href="#krzywa-w-realsn">Krzywa w <span class="math inline">\(\reals^n\)</span></a></li>
+<li><a href="#krzywa-jordana">Krzywa Jordana</a></li>
+<li><a href="#twierdzenie-o-krzywej-jordana"><span class="math inline">\(Twierdzenie\)</span> o krzywej Jordana</a></li>
+</ul></li>
+<li><a href="#textdefinicja-graf-planarny"><span class="math inline">\(\text{Definicja}\)</span> <strong>graf planarny</strong></a>
+<ul>
+<li><a href="#textuwagi-co-do-grafów-planarnych"><span class="math inline">\(\text{Uwagi}\)</span> co do grafów planarnych</a></li>
+</ul></li>
+<li><a href="#texttwierdzenie-grafy-k_33-oraz-k_5-nie-są-planarne"><span class="math inline">\(\text{Twierdzenie}\)</span> Grafy <span class="math inline">\(K_{3,3}\)</span> oraz <span class="math inline">\(K_5\)</span> nie są planarne</a></li>
+<li><a href="#reprezentacja-planarna-grafu">Reprezentacja planarna grafu</a></li>
+<li><a href="#texttwierdzenie-eulera"><span class="math inline">\(\text{Twierdzenie}\)</span> Eulera</a></li>
+<li><a href="#d-d-texttwierdzenia-eulera">D-d <span class="math inline">\(\text{Twierdzenia}\)</span> Eulera</a></li>
+<li><a href="#wniosek-z-texttwierdzenia-eulera">Wniosek z <span class="math inline">\(\text{Twierdzenia}\)</span> Eulera</a></li>
+<li><a href="#texttwierdzenie-liczba-krawędzi-w-planarnym-grafie"><span class="math inline">\(\text{Twierdzenie}\)</span> liczba krawędzi w planarnym grafie</a>
+<ul>
+<li><a href="#d-d-texttwierdzenia-liczba-krawędzi-w-planarnym-grafie">D-d <span class="math inline">\(\text{Twierdzenia}\)</span> liczba krawędzi w planarnym grafie</a></li>
+<li><a href="#wniosek-texttwierdzenia-liczba-krawędzi-w-planarnym-grafie">Wniosek <span class="math inline">\(\text{Twierdzenia}\)</span> liczba krawędzi w planarnym grafie</a></li>
+<li><a href="#graf-k_5-nie-jest-planarny">Graf <span class="math inline">\(K_5\)</span> nie jest planarny</a></li>
+<li><a href="#graf-k_33-nie-jest-planarny">Graf <span class="math inline">\(K_{3,3}\)</span> nie jest planarny</a></li>
+</ul></li>
+<li><a href="#texttwierdzenie-1"><span class="math inline">\(\text{Twierdzenie}\)</span> #1</a>
+<ul>
+<li><a href="#d-d-texttwierdzenia-1">D-d <span class="math inline">\(\text{Twierdzenia}\)</span> #1</a></li>
+</ul></li>
+</ul>
+<hr />
 <h2 id="kilka-pojęć-pomocniczych">Kilka pojęć pomocniczych</h2>
 <h3 id="krzywa-w-realsn">Krzywa w <span class="math inline">\(\reals^n\)</span></h3>
 <p>Dowolne ciągłe odwzorowanie <span class="math inline">\(\gamma:[a,b] \rightarrow \reals^n\)</span></p>
