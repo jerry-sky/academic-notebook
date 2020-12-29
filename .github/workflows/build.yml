@@ -1,0 +1,36 @@
+# This workflow renders all the Markdown notes into a HTML website.
+
+name: 'Build the website'
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout `master`'
+        uses: actions/checkout@v2
+
+      - name: 'Checkout `gh-pages` into a separate directory'
+        uses: actions/checkout@v2
+        with:
+          path: 'dist'
+          ref: 'gh-pages'
+
+      - name: 'Render the website'
+        uses: 'jerry-sky/vyrow@v0.4'
+
+      - name: 'Get current time'
+        uses: gerred/actions/current-time@master
+        id: current-time
+
+      - name: push the changes
+        uses: EndBug/add-and-commit@v4.4.0
+        with:
+          message: "deployed on ${{ steps.current-time.outputs.time }}"
+          ref: 'gh-pages'
+          cwd: './dist/'
+          add: '*'
