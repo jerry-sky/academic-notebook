@@ -1,6 +1,11 @@
-# Pierwiastki wielomianów
+---
+lang: 'pl'
+title: 'Pierwiastki wielomianów'
+author: 'Jerry Sky'
+date: '2020-11-03'
+---
 
-*(2020-11-03)*
+---
 
 - [1. DEF](#1-def)
 - [2. *Zasadnicze Twierdzenie Algebry*](#2-zasadnicze-twierdzenie-algebry)
@@ -232,7 +237,7 @@ Pochodną $p'(z_0)$ możemy więc obliczyć stosując [algorytm Hornera](#6-alg
 ## 8. Twierdzenie#4
 
 Niech $x_k$ oraz $x_{k+1}$ będą kolejnymi przybliżeniami skonstruowanymi przez metodę Newtona zastosowaną do wielomianu $p$ stopnia $n$.\
-Wówczas istnieje miejsce zerowe wielomianu $p$ oddalone od $x_k$ w płaszczyźnie zespolonej o co najwyżej $n|x_k - x_{k+1}$.
+Wówczas istnieje miejsce zerowe wielomianu $p$ oddalone od $x_k$ w płaszczyźnie zespolonej o co najwyżej $n|x_k - x_{k+1}|$.
 
 ### 8.1. Uwaga
 W celu wyznaczenia pierwiastków zespolonych wielomianu $p(z)$ za pomocą metody Newtona, musimy zaprogramować metodę Newtona w arytmetyce zespolonej.

@@ -1,5 +1,22 @@
-# Longest Common Subsequence (LCS)
-*(2020-04-20)*
+---
+lang: 'pl'
+title: 'Longest Common Subsequence (LCS)'
+author: 'Jerry Sky'
+date: '2020-04-20'
+---
+
+---
+
+- [Problem](#problem)
+- [Przykład](#przykład)
+- [Brute force](#brute-force)
+- [Podejście programowania dynamicznego](#podejście-programowania-dynamicznego)
+    - [Theorem Optimal substructure of an LCS](#theorem-optimal-substructure-of-an-lcs)
+    - [Kolejność pod-problemów](#kolejność-pod-problemów)
+    - [Pseudokod](#pseudokod)
+- [Odtwarzanie LCS](#odtwarzanie-lcs)
+
+---
 
 [clrs]: https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf
 

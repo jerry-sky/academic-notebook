@@ -1,13 +1,19 @@
-# Lista-4
-*Grafy planarne*
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+description: 'Grafy planarne'
+---
 
-- [Lista-4](#lista-4)
-  - [Zadanie 42](#zadanie-42)
-  - [Zadanie 43 *świąteczne*](#zadanie-43-świąteczne)
-  - [Zadanie 44](#zadanie-44)
-  - [Zadanie 45](#zadanie-45)
-  - [Zadanie 48](#zadanie-48)
+---
 
+- [Zadanie 42](#zadanie-42)
+- [Zadanie 43 *świąteczne*](#zadanie-43-świąteczne)
+- [Zadanie 44](#zadanie-44)
+- [Zadanie 45](#zadanie-45)
+- [Zadanie 48](#zadanie-48)
+
+---
 
 ## Zadanie 42
 

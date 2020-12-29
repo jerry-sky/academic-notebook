@@ -1,6 +1,17 @@
-# `LocalSearch`
+---
+lang: 'pl'
+title: '`LocalSearch`'
+author: 'Jerry Sky'
+---
 
-## Outline
+---
+
+- [1. Outline](#1-outline)
+- [2. *Concerns*](#2-concerns)
+
+---
+
+## 1. Outline
 
 1. Generujemy *w jakiś sposób (losowo nie zawsze jest dobrze)* rozwiązanie początkowe $x_0$.
 2. Dopóki jakiś warunek jest `True` robimy:
@@ -8,7 +19,7 @@
    2. Jeśli $\exists_{\hat{x}\in N(x)}~ f(\hat{x}) < f(x)$ wówczas $x_0 := \hat{x}$
 3. `return` $x_0$.
 
-## *Concerns*
+## 2. *Concerns*
 
 1. Jak dobrać $x_0$?
    1. Funkcja w której szukamy $\min$ - losowo

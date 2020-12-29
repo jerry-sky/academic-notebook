@@ -1,5 +1,25 @@
-# Twierdzenie Mengera
-*(2020-04-22)*
+---
+lang: 'pl'
+title: 'Twierdzenie Mengera'
+author: 'Jerry Sky'
+date: '2020-04-22'
+---
+
+---
+
+- [Graf $K_5$ na torusie](#graf-k_5-na-torusie)
+- [$\text {Fakt}$ #1](#text-fakt-1)
+- [Oznaczenia](#oznaczenia)
+- [Wniosek #1](#wniosek-1)
+- [$\text {Twierdzenie}$ #1](#text-twierdzenie-1)
+    - [D-d $\text {Twierdzenia}$ #1](#d-d-text-twierdzenia-1)
+- [$\text {Definicja}$ Ścieżki wewnętrznie rozłączne](#text-definicja-ścieżki-wewnętrznie-rozłączne)
+- [$\text {Twierdzenie}$ Mengera (wersja wierzchołkowa)](#text-twierdzenie-mengera-wersja-wierzchołkowa)
+    - [D-d $\text {Twierdzenia}$ Mengera (wersji wierzchołkowej)](#d-d-text-twierdzenia-mengera-wersji-wierzchołkowej)
+- [$\text {Twierdzenie}$ Mengera (wersja krawędziowa)](#text-twierdzenie-mengera-wersja-krawędziowa)
+    - [D-d $\text {Twierdzenia}$ Mengera (wersji krawędziowej)](#d-d-text-twierdzenia-mengera-wersji-krawędziowej)
+
+---
 
 ## Graf $K_5$ na torusie
 

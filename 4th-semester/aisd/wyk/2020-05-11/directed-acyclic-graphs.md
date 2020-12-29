@@ -1,4 +1,27 @@
-# Skierowane grafy acykliczne
+---
+lang: 'pl'
+title: 'Skierowane grafy acykliczne'
+author: 'Jerry Sky'
+---
+
+---
+
+- [$\text {Fakt}$ #1](#text-fakt-1)
+    - [Szkic d-d $\text {Faktu}$](#szkic-d-d-text-faktu)
+- [Linearyzacja DAGa (sortowanie topologiczne)](#linearyzacja-daga-sortowanie-topologiczne)
+- [$\text {Fakt}$ #2](#text-fakt-2)
+- [`linearizeDAG`$(G)$](#linearizedagg)
+    - [Example of `linearizeDAG`](#example-of-linearizedag)
+- [Strongly connected components](#strongly-connected-components)
+    - [Własności](#własności)
+        - [Własność #1](#własność-1)
+        - [Własność #2](#własność-2)
+        - [Własność #3](#własność-3)
+- [`FindStronglyConnectedComponents`$(G)$](#findstronglyconnectedcomponentsg)
+- [Przykład](#przykład)
+- [More](#more)
+
+---
 
 ## $\text {Fakt}$ #1
 
@@ -89,4 +112,3 @@ Algorytm wyznaczania składowych silnie spójnych polega na dwukrotnym wykonaniu
 
 - [Chapter 3](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf)
 - [Chapter 22](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
-

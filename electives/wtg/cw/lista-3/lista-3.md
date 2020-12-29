@@ -1,11 +1,18 @@
-# Lista-3
-*Drzewa*
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+description: 'Drzewa'
+---
 
-- [Lista-3](#lista-3)
-  - [Zadanie 25](#zadanie-25)
-  - [Zadanie 26](#zadanie-26)
-  - [Zadanie 33](#zadanie-33)
-  - [Zadania 38, 39](#zadania-38-39)
+---
+
+- [Zadanie 25](#zadanie-25)
+- [Zadanie 26](#zadanie-26)
+- [Zadanie 33](#zadanie-33)
+- [Zadania 38, 39](#zadania-38-39)
+
+---
 
 ## Zadanie 25
 

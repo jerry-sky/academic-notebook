@@ -1,13 +1,18 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+---
 
-- [Lista-4](#lista-4)
-  - [The original task *(in polish)*](#the-original-task-in-polish)
+---
+
+- [The original task *(in polish)*](#the-original-task-in-polish)
     - [Translated task](#translated-task)
-  - [Useful commands](#useful-commands)
-  - [Setting up](#setting-up)
-  - [Testing](#testing)
-  - [Other caveats](#other-caveats)
-  - [Devices' configs](#devices-configs)
+- [Useful commands](#useful-commands)
+- [Setting up](#setting-up)
+- [Testing](#testing)
+- [Other caveats](#other-caveats)
+- [Devices' configs](#devices-configs)
     - [`R5` (last router before `Cloud`)](#r5-last-router-before-cloud)
     - [`R6`](#r6)
     - [`R2`](#r2)
@@ -16,7 +21,10 @@
     - [`PC-2`](#pc-2)
     - [`PC-3`](#pc-3)
 
+---
+
 ## The original task *(in polish)*
+
 [»English«](#translated-task)
 > 1. W symulatorze GNS3 skonfiguruj wirtualną sieć o podanej topologii, tak aby:
 >    ![simulation](original-task-image.svg)

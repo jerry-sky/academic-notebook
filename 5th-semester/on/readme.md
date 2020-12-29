@@ -1,5 +1,12 @@
-# Obliczenia Naukowe
-*(ON)*
+---
+lang: 'pl'
+title: 'Obliczenia Naukowe'
+author: 'Jerry Sky'
+description: 'Przedmiot Obliczenia Naukowe dotyczy nauki o skomplikowanych i zautomatyzowanych obliczeniach — mówi o tym jak najlepiej zapobiegać błędom wynikającym z wykonywania obliczeń.'
+keywords: 'on, pwr, wykład, wppt, laboratorium, ćwiczenia, lista, listy, zadań, zadania, zadanie, równania, nieliniowe, numeryczna reprezentacja liczb'
+---
+
+---
 
 - [Wykład](#wykład)
 - [Ćwiczenia](#ćwiczenia)

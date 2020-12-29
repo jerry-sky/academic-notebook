@@ -1,6 +1,11 @@
-# Struktury etykietowane i EGF
+---
+lang: 'pl'
+title: 'Struktury etykietowane i EGF'
+author: 'Jerry Sky'
+date: '2020-11-30'
+---
 
-*(2020-11-16, 2020-11-23, 2020-11-30)*
+---
 
 - [1. Struktury etykietowane](#1-struktury-etykietowane)
 - [2. Klasa kombinatoryczna (etykietowana)](#2-klasa-kombinatoryczna-etykietowana)

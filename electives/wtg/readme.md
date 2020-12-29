@@ -1,5 +1,20 @@
-# Wstęp do Teorii Grafów
-*WTG*
+---
+lang: 'pl'
+title: 'Wstęp do Teorii Grafów'
+author: 'Jerry Sky'
+description: 'Teoria grafów mówi o wielu zastosowaniach bardzo prostego konceptu — węzłów połączonych w dany sposób krawędziami.'
+keywords: 'pwr, wppt, Cichoń, wtg, grafy, graf, wprowadzenie, do, planarny, planarne, odległość, spójność, grafu, grafach, Menger, sieć, sieci, sieciach, przepływy, kolorowanie, wykład, ćwiczenia, wybieralny, elective'
+---
+
+---
+
+- [Wykład](#wykład)
+- [Ćwiczenia](#ćwiczenia)
+- [Definicje](#definicje)
+    - [Grafy](#grafy)
+    - [Ścieżki](#ścieżki)
+
+---
 
 ## Wykład
 

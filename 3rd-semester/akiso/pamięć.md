@@ -1,6 +1,8 @@
-# Pamięć
-
-## Ulotne
+---
+lang: 'pl'
+title: 'Pamięć'
+author: 'Jerry Sky'
+---
 
 - **SRAM** *Static Random-Access Memory*
 - **DRAM** *Dynamic Random-Access Memory*

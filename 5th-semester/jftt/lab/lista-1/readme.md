@@ -1,8 +1,11 @@
-# Lista-1
+---
+lang: 'pl'
+title: 'Lista-1'
+author: 'Jerry Sky'
+date: '2020-10-25'
+---
 
-*Jerzy Wroczyński*\
-*nr indeksu: 250075*\
-*(Termin oddania 2020-10-25)*
+---
 
 - [Treść zadania](#treść-zadania)
 - [Uruchomienie programów](#uruchomienie-programów)

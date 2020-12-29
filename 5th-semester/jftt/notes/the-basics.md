@@ -1,4 +1,12 @@
-# The Basics
+---
+lang: 'en-GB'
+title: 'The Basics'
+author: 'Jerry Sky'
+description: 'The basics of the Automata Theory.'
+keywords: 'automata theory, jftt, basics, introduction, note, academic, pwr'
+---
+
+---
 
 [book]: http://ce.sharif.edu/courses/94-95/1/ce414-2/resources/root/Text%20Books/Automata/John%20E.%20Hopcroft,%20Rajeev%20Motwani,%20Jeffrey%20D.%20Ullman-Introduction%20to%20Automata%20Theory,%20Languages,%20and%20Computations-Prentice%20Hall%20(2006).pdf
 

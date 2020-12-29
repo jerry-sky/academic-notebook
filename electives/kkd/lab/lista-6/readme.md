@@ -1,4 +1,10 @@
-# Lista-6
+---
+lang: 'pl'
+title: 'Lista-6'
+author: 'Jerry Sky'
+---
+
+---
 
 ## Zadanie na laboratorium
 

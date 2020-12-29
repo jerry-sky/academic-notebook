@@ -1,6 +1,12 @@
-# Środowisko Programisty
+---
+lang: 'pl'
+title: 'Środowisko Programisty'
+author: 'Jerry Sky'
+description: 'Środowisko programisty w rozumieniu narzędzi dostępnych dla programisty. Mówimy tutaj o systemach wersjonowania repozytoriów (Git, SVN) oraz o skryptach w powłoce uruchomieniowej (Bash).'
+keywords: 'pwr, wppt, sp, elective, wybieralny, wykład, laboratorium, Kik, bash, svn, git, lista, listy, zadań, zadanie, zadania'
+---
 
-*(SP)*
+---
 
 - [Wykład](#wykład)
 - [Laboratorium](#laboratorium)

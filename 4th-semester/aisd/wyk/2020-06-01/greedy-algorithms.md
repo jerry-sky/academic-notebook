@@ -1,4 +1,10 @@
-# Greedy Algorithms
+---
+lang: 'pl'
+title: 'Greedy Algorithms'
+author: 'Jerry Sky'
+---
+
+---
 
 Kolejną metodologią budowy algorytmów jest metodologia algorytmów zachłannych (greedy algorithms). Opowiemy sobie o niej na przykładzie problemu budowy minimalnego drzewa rozpinającego, kodowaniu Huffmana oraz problemie pokrycia zbioru.
 

@@ -1,6 +1,12 @@
-# Gramatyki bezkontekstowe
+---
+lang: 'pl'
+title: 'Gramatyki bezkontekstowe'
+author: 'Jerry Sky'
+date: '2020-10-29'
+keywords: 'wykład, jftt, pwr, definicja, przykład, język, gramatyka, bezkontekstowa, bezkontekstowy, język, Greibach, Greibacha, Chomsky, Chomskyego, twierdzenie, d-d, dowód, wyprowadzenie, drzewo, postać, normalna'
+---
 
-*(2020-10-29)*
+---
 
 - [1. DEF](#1-def)
 - [2. Relacja wyprowadzenia $\underset{G}{\Rightarrow}$](#2-relacja-wyprowadzenia-undersetgrightarrow)

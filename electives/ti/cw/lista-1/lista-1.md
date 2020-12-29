@@ -1,4 +1,10 @@
-# Lista 1
+---
+lang: 'pl'
+title: 'Lista 1'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zadanie 1.](#zadanie-1)
     - [1.a)](#1a)
@@ -253,6 +259,20 @@ $f\left(\frac{1}{q}\right) = -f(q) \qquad f(1) = f\left(q \cdot \frac{1}{q}\righ
 $f\left(2^{\frac{p}{q}}\right) = f\left( \left( 2^{\frac{1}{q}} \right) \right) = p\cdot f\left( 2^{\frac{1}{a}} \right) = p\cdot f$
 
 *do dokończenia — co z liczbami pomiędzy tymi dyskretnymi, które znaleźliśmy?*
+
+- $f(2^{nx}) = f(2^x \cdot 2^x \cdot \dotsb \cdot 2^x) \overset{z 1.}{=} n\cdot f(2^x)$
+- $f\left(2^{x \cdot \frac{n}{n}} \right) = f\left( 2^{\frac{x}{n} \cdot n} = n \cdot f\left( 2^{\frac{x}{n}} \right) \right)$
+    - $f\left( 2^{\frac{x}{n}} \right) = \frac{1}{n} \cdot f(2^x)$
+- stąd $f\left( 2^{\frac{p}{q} \cdot x} \right) = \frac{p}{q} f(2^x), \quad p,q \in \mathbb{N}$
+
+czyli mamy
+- $f(1) = f(1\cdot 1) = f(1) + f(1)$
+- $f(1) = 0$
+- $f(2^0) = f\left( 2^{x-x} \right) = f(2^x) + f(2^{-x})$
+    - $f(2^{-x}) = -f(2^x)$
+
+dalej
+- $q_n \xrightarrow{n \to \infty}: f(2^x) = f\left( 2^{\lim{_n \to \infty} q_n}\right) = f(\lim_{n \to \infty} 2^{q_n} = \lim_{n\to \infty} f(2^{q_n}) = \lim_{n\to \infty} q_n f(2) = x \cdot f(2) = x$
 
 ---
 

@@ -1,7 +1,33 @@
-# Przepływy w sieciach
-*(2020-05-13)*
+---
+lang: 'pl'
+title: 'Przepływy w sieciach'
+author: 'Jerry Sky'
+date: '2020-05-13'
+---
+
+---
+
+- [Wersje twierdzenie Mengera dla digrafów](#wersje-twierdzenie-mengera-dla-digrafów)
+- [Oznaczenie #1](#oznaczenie-1)
+- [Def Separator minimalny](#def-separator-minimalny)
+    - [D-d separator minimalny](#d-d-separator-minimalny)
+- [Oznaczenie #2](#oznaczenie-2)
+- [Def Pseudo-potok](#def-pseudo-potok)
+- [Fakt #1](#fakt-1)
+    - [D-d Faktu #1](#d-d-faktu-1)
+- [Twierdzenie #1](#twierdzenie-1)
+    - [D-d Twierdzenia #1](#d-d-twierdzenia-1)
+- [Def Wartość $f$](#def-wartość-f)
+- [Def Sieć](#def-sieć)
+- [Def Potok](#def-potok)
+- [Twierdzenie #2](#twierdzenie-2)
+- [Def Ścieżka powiększająca](#def-ścieżka-powiększająca)
+- [Fakt #2](#fakt-2)
+
+---
 
 ## Wersje twierdzenie Mengera dla digrafów
+
 *[oryginalne twierdzenie Mengera](../2020-04-22/twierdzenie-mengera.md#text-twierdzenie-mengera-wersja-wierzchołkowa)*
 
 Ustalamy graf skierowany $\vec{G} = (V, \vec{E})$, zbiory $A,B\subseteq V$:

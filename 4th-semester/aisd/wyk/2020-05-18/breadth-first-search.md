@@ -1,4 +1,17 @@
-# Przeszukiwanie wszerz
+---
+lang: 'pl'
+title: 'Przeszukiwanie wszerz'
+author: 'Jerry Sky'
+---
+
+---
+
+- [`BFS`$(G, s)$](#bfsg-s)
+    - [Złożoność obliczeniowa](#złożoność-obliczeniowa)
+    - [Przykład](#przykład)
+- [More](#more)
+
+---
 
 ## `BFS`$(G, s)$
 

@@ -1,6 +1,21 @@
-# Dijkstra's algorithm
+---
+lang: 'pl'
+title: 'Dijkstra's algorithm'
+author: 'Jerry Sky'
+date: '2020-05-18'
+---
 
-Algorytm [BFS](../2020-05-18/breadth-first-search.md) pozwala na wyznaczanie najkrótszych ścieżek od jednego startowego wierzchołka $s$ do wszystkich innych wierzchołków (do którego możemy dotrzeć z $s$) dla grafu, którego wszystkie krawędzie mają taką samą wagę. Uogólnienie tego algorytmu tak aby mógł wyszukiwać najkrótsze ścieżki w grafie $G = (V,E,l)$, gdzie $l: E\to \mathbb{R}_+$ jest funkcją wagi/długości krawędzi. Na ten moment zakładamy, że waga krawędzi jest dodatnią liczbą rzeczywistą.
+---
+
+- [Concept](#concept)
+- [Implementacja](#implementacja)
+- [Przykład](#przykład)
+- [Alternatywna interpretacja](#alternatywna-interpretacja)
+- [Poprawność działania algorytmu](#poprawność-działania-algorytmu)
+- [Złożoność obliczeniowa](#złożoność-obliczeniowa)
+- [More](#more)
+
+---
 
 ## Concept
 
@@ -76,4 +91,3 @@ Warto zauważyć, że złożoność ta ostatecznie zależy od gęstości grafu (
 
 - [Algorithms DPV~ Chapter 4.4](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf)
 - [Introduction to Algorithms CLRS~ Chapter 24](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
-

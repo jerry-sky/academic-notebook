@@ -1,4 +1,10 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+---
+
+---
 
 > 1. Uruchom bazę danych Hobby z listy 2. Utwórz indeksy dla tabel:
 >    - dla tabeli `osoba` indeks na kolumnie `imię`,

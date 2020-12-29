@@ -1,6 +1,11 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+date: '2020-12-06'
+---
 
-*(Termin oddania: 2020-12-06)*
+---
 
 - [Sprawozdanie](#sprawozdanie)
 - [Programy](#programy)

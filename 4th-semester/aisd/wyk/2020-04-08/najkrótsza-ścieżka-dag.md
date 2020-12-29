@@ -1,5 +1,20 @@
-# Najkrótsza ścieżka w DAG
-*(2020-04-08)*
+---
+lang: 'pl'
+title: 'Najkrótsza ścieżka w DAG'
+author: 'Jerry Sky'
+date: '2020-04-08'
+---
+
+---
+
+- [Problem](#problem)
+- [Input](#input)
+- [Output](#output)
+- [Remarks](#remarks)
+- [Pseudocode](#pseudocode)
+- [Summary](#summary)
+
+---
 
 ## Problem
 

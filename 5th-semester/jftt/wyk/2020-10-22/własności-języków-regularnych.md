@@ -1,6 +1,12 @@
-# Własności języków regularnych
+---
+lang: 'pl'
+title: 'Własności języków regularnych'
+author: 'Jerry Sky'
+date: '2020-10-22'
+keywords: 'wykład, jftt, pwr, pompowanie, lemat, lemat o pompowaniu, regularny, dowód, d-d, język'
+---
 
-*(2020-10-22)*
+---
 
 - [1. Lemat o pompowaniu](#1-lemat-o-pompowaniu)
     - [1.1. D-d](#11-d-d)

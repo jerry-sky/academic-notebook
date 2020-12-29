@@ -1,5 +1,23 @@
-# Notacja asymptotyczna
-*(2020-03-02)*
+---
+lang: 'pl'
+title: 'Notacja asymptotyczna'
+author: 'Jerry Sky'
+date: '2020-03-02'
+---
+
+---
+
+- [Duże $O$](#duże-o)
+    - [Example $O$ #1](#example-o-1)
+    - [Example $O$ #2](#example-o-2)
+- [Duże $\Omega$](#duże-omega)
+    - [Example $\Omega$](#example-omega)
+- [Duże $\Theta$](#duże-theta)
+- [Małe $o$](#małe-o)
+    - [Example $o$](#example-o)
+- [Mała $\omega$](#mała-omega)
+
+---
 
 ## Duże $O$
 
@@ -94,5 +112,3 @@ f(n) = \omega\big(g(n)\big) \equiv
   c\big|g(n)\big| \le \big|f(n)\big|
 ~\big)
 $$
-
-

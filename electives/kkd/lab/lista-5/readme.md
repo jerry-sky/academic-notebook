@@ -1,8 +1,10 @@
-# Lista-5
+---
+lang: 'pl'
+title: 'Lista-5'
+author: 'Jerry Sky'
+---
 
-## Zadanie na laboratorium
-
-> **Ocena 3** Napisz program który dla nieskompresowanego obrazu zapisanego w formacie TGA policzy obraz uzyskany w wyniku kwantyzacji równomiernej poszczególnych składowych koloru. Program powinien dodatkowo wypisać błąd średniokwadratowy dla całego obrazu i poszczególnych składowych koloru oraz stosunek sygnału do szumu.
+---
 > Program powinien czytać pięć argumentów w linii poleceń: obraz wejściowy, obraz wyjściowy, liczba bitów na czerwień, liczba bitów na zieleń i liczba bitów na niebieski (liczba bitów między $0$ a $8$ - układ RGB).
 >
 > Przykładowe wywołanie programu powinno wyglądać następująco:

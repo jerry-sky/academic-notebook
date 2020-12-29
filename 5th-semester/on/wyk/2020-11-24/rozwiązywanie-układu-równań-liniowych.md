@@ -1,6 +1,11 @@
-# Rozwiązywanie układu równań liniowych
+---
+lang: 'pl'
+title: 'Rozwiązywanie układu równań liniowych'
+author: 'Jerry Sky'
+date: '2020-11-24'
+---
 
-*(2020-11-24)*
+---
 
 - [1. Pierwszy etap eliminacji Gaussa](#1-pierwszy-etap-eliminacji-gaussa)
     - [1.1. Pseudokod](#11-pseudokod)

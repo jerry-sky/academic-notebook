@@ -1,5 +1,11 @@
-# Klasa Kombinatoryczna
-*(2020-10-08)*
+---
+lang: 'pl'
+title: 'Klasa Kombinatoryczna'
+author: 'Jerry Sky'
+date: '2020-10-08'
+---
+
+---
 
 - [1. DEF: Klasa kombinatoryczna](#1-def-klasa-kombinatoryczna)
 - [2. *OGF — ordinary generating function*](#2-ogf--ordinary-generating-function)

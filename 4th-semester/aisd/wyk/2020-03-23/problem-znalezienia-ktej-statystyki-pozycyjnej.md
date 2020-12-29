@@ -1,5 +1,16 @@
-# Problem znalezienia $k$tej statystyki pozycyjnej w nieposortowanej tablicy
-*(2020-03-23)*
+---
+lang: 'pl'
+title: 'Problem znalezienia $k$tej statystyki pozycyjnej w nieposortowanej tablicy'
+author: 'Jerry Sky'
+date: '2020-03-23'
+---
+
+---
+
+- [Specyfikacja](#specyfikacja)
+- [Outline problemu](#outline-problemu)
+
+---
 
 ## Specyfikacja
 

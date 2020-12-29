@@ -1,4 +1,27 @@
-# Przepływy w sieciach II
+---
+lang: 'pl'
+title: 'Przepływy w sieciach II'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Lemat A](#lemat-a)
+    - [D-d Lematu A](#d-d-lematu-a)
+- [Oznaczenie #1](#oznaczenie-1)
+- [Wniosek #1 (Lemat B)](#wniosek-1-lemat-b)
+    - [D-d Lematu B](#d-d-lematu-b)
+- [Twierdzenie (Ford-Fulkerson)](#twierdzenie-ford-fulkerson)
+    - [D-d Twierdzenia (Ford-Fulkerson)](#d-d-twierdzenia-ford-fulkerson)
+- [Metoda Forda-Fulkersona](#metoda-forda-fulkersona)
+    - [Przykład (Metoda Forda-Fulkersona)](#przykład-metoda-forda-fulkersona)
+- [Fakt #1](#fakt-1)
+- [Fakt #2](#fakt-2)
+- [Algorytm Edmontona-Karpa](#algorytm-edmontona-karpa)
+- [Twierdzenie #2](#twierdzenie-2)
+    - [D-d Twierdzenia #2](#d-d-twierdzenia-2)
+
+---
 
 ## Lemat A
 

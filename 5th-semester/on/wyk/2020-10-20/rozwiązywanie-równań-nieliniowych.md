@@ -1,6 +1,11 @@
-# Rozwiązywanie równań nieliniowych
+---
+lang: 'pl'
+title: 'Rozwiązywanie równań nieliniowych'
+author: 'Jerry Sky'
+date: '2020-10-20'
+---
 
-*(2020-10-20)*
+---
 
 - [1. Problem](#1-problem)
 - [2. Podejście](#2-podejście)

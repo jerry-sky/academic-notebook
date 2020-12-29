@@ -1,6 +1,12 @@
-# Teoria Informacji
+---
+lang: 'pl'
+title: 'Teoria Informacji'
+author: 'Jerry Sky'
+description: 'Teoria Informacji dotyczy sposobów przesyłania informacji, co to jest informacja i w jaki sposób ją należy reprezentować.'
+keywords: 'pwr, wppt, ti, wykład, laboratorium, teoria, informacji, Shannon, Hartley, Kraft, Jensen, kod, kody, kodowanie, kkd, miara'
+---
 
-*(TI)*
+---
 
 - [Wykład](#wykład)
 - [Ćwiczenia](#ćwiczenia)
@@ -30,5 +36,3 @@
 *Prowadzone przez: [dr Marcin Michalski](https://cs.pwr.edu.pl/michalski/)*
 
 - [Lista 0](cw/lista-0/lista-0.md)
-
-

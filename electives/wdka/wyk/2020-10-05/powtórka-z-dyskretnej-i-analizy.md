@@ -1,6 +1,11 @@
-# Powtórka z Dyskretnej i Analizy
+---
+lang: 'pl'
+title: 'Powtórka z Dyskretnej i Analizy'
+author: 'Jerry Sky'
+date: '2020-10-05'
+---
 
-*(2020-10-05)*
+---
 
 - [Iloczyn Cauchy’ego](#iloczyn-cauchyego)
 - [Liczebność w zbiorach $(n+m)$–elementowych](#liczebność-w-zbiorach-nmelementowych)

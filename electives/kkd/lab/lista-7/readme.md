@@ -1,4 +1,10 @@
-# Lista-7
+---
+lang: 'pl'
+title: 'Lista-7'
+author: 'Jerry Sky'
+---
+
+---
 
 ## Zadanie na laboratorium
 

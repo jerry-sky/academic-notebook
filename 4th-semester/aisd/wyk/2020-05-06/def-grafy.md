@@ -1,4 +1,18 @@
-# Grafy
+---
+lang: 'pl'
+title: 'Grafy'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Graf](#graf)
+- [Reprezentacja](#reprezentacja)
+    - [Macierz sąsiedztwa $A$](#macierz-sąsiedztwa-a)
+    - [Lista sąsiedztwa](#lista-sąsiedztwa)
+- [Wielkości](#wielkości)
+
+---
 
 ## Graf
 

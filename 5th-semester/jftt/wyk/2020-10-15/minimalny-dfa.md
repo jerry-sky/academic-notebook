@@ -1,6 +1,12 @@
-# Minimalny DFA
+---
+lang: 'pl'
+title: 'Minimalny DFA'
+author: 'Jerry Sky'
+date: '2020-10-15'
+keywords: 'wykład, jftt, pwr, dfa, minimalny, algorytm, minimalizacja, przykład'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Minimalny DFA](#1-minimalny-dfa)
 - [2. Idea algorytmu](#2-idea-algorytmu)

@@ -1,6 +1,11 @@
-# Ilorazy różnicowe
+---
+lang: 'pl'
+title: 'Ilorazy różnicowe'
+author: 'Jerry Sky'
+date: '2020-11-10'
+---
 
-*(2020-11-10)*
+---
 
 - [1. Ilorazy różnicowe](#1-ilorazy-różnicowe)
 - [2. Postać Newtona wzoru interpolacyjnego](#2-postać-newtona-wzoru-interpolacyjnego)

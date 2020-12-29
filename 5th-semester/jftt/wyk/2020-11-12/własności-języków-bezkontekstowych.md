@@ -1,6 +1,12 @@
-# Własności języków bezkontekstowych
+---
+lang: 'pl'
+title: 'Własności języków bezkontekstowych'
+author: 'Jerry Sky'
+date: '2020-11-12'
+keywords: 'wykład, jftt, pwr, język, języki, bezkontekstowe, lemat, Ogdena, Ogden, przykład, twierdzenie, d-d, dowód, pompowanie, lemat o pompowaniu'
+---
 
-*(2020-11-12)*
+---
 
 - [1. Lemat o pompowaniu dla języków bezkontekstowych](#1-lemat-o-pompowaniu-dla-języków-bezkontekstowych)
     - [1.1. D-d](#11-d-d)

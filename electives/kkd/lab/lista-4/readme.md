@@ -1,4 +1,10 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+---
+
+---
 
 ## Zadanie na laboratorium
 

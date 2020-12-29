@@ -1,6 +1,11 @@
-# Metoda Newtona
+---
+lang: 'pl'
+title: 'Metoda Newtona'
+author: 'Jerry Sky'
+date: '2020-10-20'
+---
 
-*(2020-10-20)*
+---
 
 - [1. Metoda Newtona (metoda stycznych)](#1-metoda-newtona-metoda-stycznych)
 - [2. Algorytm](#2-algorytm)

@@ -1,5 +1,17 @@
-# Merge sort
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Merge sort'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
+
+---
+
+- [Example 1](#example-1)
+- [Example 2](#example-2)
+- [Example 3](#example-3)
+
+---
 
 ## Example 1
 

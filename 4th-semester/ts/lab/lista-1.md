@@ -1,4 +1,30 @@
-# Lista 1
+---
+lang: 'pl'
+title: 'Lista-1'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Treść zadania](#treść-zadania)
+- [Droga do Japonii *(Amazon)*](#droga-do-japonii-amazon)
+    - [`traceroute amazon.jp`](#traceroute-amazonjp)
+        - [Przypadek pierwszy](#przypadek-pierwszy)
+        - [Przypadek drugi](#przypadek-drugi)
+        - [Różne liczby bajtów](#różne-liczby-bajtów)
+    - [`ping amazon.jp`](#ping-amazonjp)
+- [Droga do Chin *(Amazon)*](#droga-do-chin-amazon)
+    - [`traceroute amazon.cn`](#traceroute-amazoncn)
+    - [`ping amazon.cn`](#ping-amazoncn)
+- [Droga do serwerowni PPT](#droga-do-serwerowni-ppt)
+- [`traceroute cs.pwr.edu.pl`](#traceroute-cspwredupl)
+- [`ping cs.pwr.edu.pl`](#ping-cspwredupl)
+- [Opis programów](#opis-programów)
+    - [`ping`](#ping)
+    - [`traceroute`](#traceroute)
+    - [`wireshark`](#wireshark)
+
+---
 
 ## Treść zadania
 

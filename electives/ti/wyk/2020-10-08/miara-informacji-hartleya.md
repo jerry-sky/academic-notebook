@@ -1,5 +1,10 @@
-# Miara Informacji Hartley’a
-*(2020-10-08)*
+---
+lang: 'pl'
+title: 'Miara Informacji Hartley’a'
+author: 'Jerry Sky'
+date: '2020-10-08'
+description: 'Miara ilości informacji'
+---
 
 - [1. „Addytywność” owej miary](#1-addytywność-owej-miary)
 - [2. DEF: **Miara ilości informacji**](#2-def-miara-ilości-informacji)

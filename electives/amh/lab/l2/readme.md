@@ -1,4 +1,16 @@
-# Lista-2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+
+---
 
 > Celem listy jest praktyczne przećwiczenie metaheurystyk opartych na symulowanym wyżarzaniu. Dobór parametrów (np. temperatura początkowa, tempo wychładzania czy też poziom akceptacji) należy do autora programu. W czasie rozwiązywania listy autor powinien rozpoznać jaki wpływ na działanie programu (czas działania, wymagania pamięciowe, osiągany rezultat, podatność na utknięcia w lokalnym minimum, … ) mają poszczególne parametry.
 
@@ -15,7 +27,7 @@
 
 [code](z1/main.py)
 
-# Zadanie 2
+## Zadanie 2
 
 > Napisz program, który dla przedstawionej macierzy liczb całkowitych (zakres wartości między $0$ a $255$, można przyjąć typ `uint8` lub odpowiednik) $M$, znajdzie najbliższą macierz $M'$, spełniającą poniższe ograniczenia
 > - wykorzystujemy co najwyżej $8$ różnych wartości liczbowych: $0, 32, 64, 128, 160, 192, 223, 255$,
@@ -28,7 +40,7 @@
 
 [code](z2/main.py)
 
-# Zadanie 3
+## Zadanie 3
 
 > Napisz program, który będzie symulował poruszanie się agenta po kracie (wycinek $\mathbb{Z}^2$). Celem jest dotarcie agenta do wyznaczonego punktu, przy założeniach, że w każdym kroku może poruszyć się o $1$ w lewo, o $1$ w prawo, o $1$ w górę albo o $1$ w dół. Program powinien za pomocą symulowanego wyżarzania generować kolejne sekwencje kroków, tak by dotarcie do celu zajęło jak najmniej rund. Jeśli agent dotrze do celu przed wykonaniem wszystkich kroków, liczymy liczbę wykonanych kroków, jeśli po wykonaniu całej wygenerowanej sekwencji kroków, agent nie dotarł do celu - kontynuuje z miejsca, w którym wylądował a długość wykonanej sekwencji wlicza się do bieżącego rozwiązania albo zaczyna nową iterację.
 >

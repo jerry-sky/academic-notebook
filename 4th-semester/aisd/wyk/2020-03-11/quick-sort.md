@@ -1,5 +1,18 @@
-# Quick Sort
-*(2020-03-11)*
+---
+lang: 'pl'
+title: 'Quick Sort'
+author: 'Jerry Sky'
+date: '2020-03-11'
+---
+
+---
+
+- [The QuickSort sorting algorithm](#the-quicksort-sorting-algorithm)
+    - [Pseudocode `QuickSort`](#pseudocode-quicksort)
+    - [Pseudocode `partition`](#pseudocode-partition)
+- [Resolving the asymptotic of `QuickSort`](#resolving-the-asymptotic-of-quicksort)
+
+---
 
 ## The QuickSort sorting algorithm
 

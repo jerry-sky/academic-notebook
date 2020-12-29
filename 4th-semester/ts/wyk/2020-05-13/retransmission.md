@@ -1,4 +1,10 @@
-# Retransmission and positive acknowledgement
+---
+lang: 'pl'
+title: 'Retransmission and positive acknowledgement'
+author: 'Jerry Sky'
+---
+
+---
 
 ## What makes a network reliable?
 

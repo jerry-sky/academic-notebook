@@ -1,8 +1,12 @@
-# Lista-2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+date: '2020-11-15'
+keywords: 'laboratorium, jftt, pwr'
+---
 
-*Jerzy Wroczyński*\
-*nr indeksu: 250075*\
-*(Termin oddania 2020-11-15)*
+---
 
 - [Kompilacja wszystkich programów](#kompilacja-wszystkich-programów)
 - [Zadanie 1.](#zadanie-1)

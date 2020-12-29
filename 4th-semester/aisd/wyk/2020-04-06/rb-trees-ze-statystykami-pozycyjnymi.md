@@ -1,5 +1,19 @@
-# Rozszerzone RB-Trees
-*(2020-04-06)*
+---
+lang: 'pl'
+title: 'Rozszerzone RB-Trees'
+author: 'Jerry Sky'
+date: '2020-04-06'
+---
+
+---
+
+- [Goal](#goal)
+- [Steps](#steps)
+    - [`OS-Select`](#os-select)
+    - [`OS-Rank`](#os-rank)
+    - [Final thoughts](#final-thoughts)
+
+---
 
 ## Goal
 

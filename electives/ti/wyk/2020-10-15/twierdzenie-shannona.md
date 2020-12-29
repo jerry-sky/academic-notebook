@@ -1,6 +1,11 @@
-# Twierdzenie Shannon’a
+---
+lang: 'pl'
+title: 'Twierdzenie Shannon’a'
+author: 'Jerry Sky'
+date: '2020-10-15'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Twierdzenie Shannon’a — dokładniej](#1-twierdzenie-shannona--dokładniej)
     - [1.1. $L$](#11-l)

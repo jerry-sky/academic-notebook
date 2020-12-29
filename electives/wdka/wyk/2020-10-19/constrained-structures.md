@@ -1,6 +1,11 @@
-# Constrained structures
+---
+lang: 'pl'
+title: 'Constrained structures'
+author: 'Jerry Sky'
+date: '2020-10-19'
+---
 
-*(2020-10-19)*
+---
 
 - [1. Przykładowe struktury ograniczone](#1-przykładowe-struktury-ograniczone)
 

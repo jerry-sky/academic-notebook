@@ -1,6 +1,16 @@
-# `TabooSearch`
+---
+lang: 'pl'
+title: '`TabooSearch`'
+author: 'Jerry Sky'
+---
 
-## Outline
+---
+
+- [1. Outline](#1-outline)
+
+---
+
+## 1. Outline
 
 1. Generujemy *w jakiś sposób (losowo nie zawsze jest dobrze)* rozwiązanie początkowe $x_0$.
 2. Mamy zbiór tabu *(taboo)* $T = \emptyset$

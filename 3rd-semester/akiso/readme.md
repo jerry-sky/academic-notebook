@@ -1,5 +1,12 @@
-# Architektura Komputerów i Systemy Operacyjne
-*AKiSO*
+---
+lang: 'pl'
+title: 'Architektura Komputerów i Systemy Operacyjne'
+author: 'Jerry Sky'
+description: 'Architektura komputerów od podszewki — jak to działa i w jaki sposób zachodzi komunikacja między sprzętem (hardware) a oprogramowanie (software). Patrzymy tutaj również na skrypty w Bash-u oraz generalnie na systemy operacyjne typu Linux etc.'
+keywords: 'pwr, wppt, akiso, Zawada, wykład, laboratorium, ćwiczenia, Błaśkiewicz, Kobylański, notatki'
+---
+
+---
 
 ## Wykład
 

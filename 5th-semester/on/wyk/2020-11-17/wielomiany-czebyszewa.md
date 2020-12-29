@@ -1,6 +1,11 @@
-# Wielomiany Czebyszewa
+---
+lang: 'pl'
+title: 'Wielomiany Czebyszewa'
+author: 'Jerry Sky'
+date: '2020-11-17'
+---
 
-*(2020-11-17)*
+---
 
 - [1. DEF](#1-def)
 - [2. Twierdzenie#1](#2-twierdzenie1)

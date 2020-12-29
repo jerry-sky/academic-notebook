@@ -1,6 +1,11 @@
-# Interpolacja za pomocą wielomianów
+---
+lang: 'pl'
+title: 'Interpolacja za pomocą wielomianów'
+author: 'Jerry Sky'
+date: '2020-11-10'
+---
 
-*(2020-11-10)*
+---
 
 - [1. DEF](#1-def)
 - [2. Twierdzenie#1](#2-twierdzenie1)

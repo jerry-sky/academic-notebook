@@ -1,4 +1,15 @@
-# Dual-pivot `QuickSort`
+---
+lang: 'pl'
+title: 'Dual-pivot `QuickSort`'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Algorytm sortujący Dual-pivot `QuickSort`](#algorytm-sortujący-dual-pivot-quicksort)
+- [Krótki zarys działania](#krótki-zarys-działania)
+
+---
 
 ## Algorytm sortujący Dual-pivot `QuickSort`
 

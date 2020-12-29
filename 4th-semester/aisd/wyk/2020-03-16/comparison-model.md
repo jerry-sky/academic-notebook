@@ -1,5 +1,15 @@
-# Comparison model
-*(2020-03-16)*
+---
+lang: 'pl'
+title: 'Comparison model'
+author: 'Jerry Sky'
+date: '2020-03-16'
+---
+
+---
+
+- [Binarne drzewo decyzyjne](#binarne-drzewo-decyzyjne)
+
+---
 
 ## Binarne drzewo decyzyjne
 

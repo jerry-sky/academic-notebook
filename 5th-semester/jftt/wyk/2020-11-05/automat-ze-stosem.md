@@ -1,6 +1,12 @@
-# Automat ze stosem (PDA)
+---
+lang: 'pl'
+title: 'Automat ze stosem (PDA)'
+author: 'Jerry Sky'
+date: '2020-11-05'
+keywords: 'wykład, jftt, pwr, pda, definicja, automat, automat ze stosem, stos, alfabet, twierdzenie, bezkontekstowy, język, przykład, dowód, d-d, słowa, słowo'
+---
 
-*(2020-11-05)*
+---
 
 - [1. DEF: PDA](#1-def-pda)
     - [1.1. DEF: Opis chwilowy automatu](#11-def-opis-chwilowy-automatu)

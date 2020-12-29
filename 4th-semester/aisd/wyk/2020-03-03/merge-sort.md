@@ -1,5 +1,21 @@
-# Merge Sort
-*(2020-03-02)*
+---
+lang: 'pl'
+title: 'Merge Sort'
+author: 'Jerry Sky'
+date: '2020-03-02'
+---
+
+---
+
+- [Funkcja $MergeSort(A, n)$](#funkcja-mergesorta-n)
+    - [Example](#example)
+- [Funkcja $merge$](#funkcja-merge)
+    - [Example](#example-1)
+- [Właściwości](#właściwości)
+- [Nierekurencyjna wersja](#nierekurencyjna-wersja)
+    - [Example](#example-2)
+
+---
 
 ## Funkcja $MergeSort(A, n)$
 
@@ -106,4 +122,3 @@ $Q$:\
 `[2,3,5,7,10,13] [1,6]`\
 `[1,2,3,5,6,7,10,13]`\
 *done.*
-

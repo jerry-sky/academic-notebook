@@ -1,4 +1,10 @@
-## Lista-2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+---
+
+---
 
 ## Zadanie na laboratorium
 
@@ -19,4 +25,3 @@ Program używający dynamicznego kodowania Huffmana (na ocenę 4).
 W celu uruchomienia programu należy użyć:
 
 `./main.py <--encode|--decode> <input file> <output file>`.
-

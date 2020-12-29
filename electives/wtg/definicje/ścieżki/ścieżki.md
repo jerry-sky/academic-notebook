@@ -1,4 +1,18 @@
-# Definicje - ścieżki (nie dosłownie)
+---
+lang: 'pl'
+title: 'Definicje - ścieżki (nie dosłownie)'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Ścieżka Eulera](#ścieżka-eulera)
+- [Cykl Eulera](#cykl-eulera)
+- [Ścieżka Hamiltona](#ścieżka-hamiltona)
+- [Cykl Hamiltona](#cykl-hamiltona)
+- [Bridge](#bridge)
+
+---
 
 ## Ścieżka Eulera
 

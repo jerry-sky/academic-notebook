@@ -1,6 +1,11 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+date: '2020-12-09'
+---
 
-*(Termin oddania: 2020-12-09)*
+---
 
 - [Zadanie 1.](#zadanie-1)
     - [Nagrania `asciinema`](#nagrania-asciinema)

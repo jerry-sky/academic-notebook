@@ -1,6 +1,11 @@
-# Nierówność Jensen’a
+---
+lang: 'pl'
+title: 'Nierówność Jensen’a'
+author: 'Jerry Sky'
+date: '2020-10-22'
+---
 
-*(2020-10-22)*
+---
 
 - [1. Twierdzenie: Nierówność Jensen’a](#1-twierdzenie-nierówność-jensena)
     - [1.1. D-d](#11-d-d)

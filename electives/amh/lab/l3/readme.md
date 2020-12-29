@@ -1,4 +1,16 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+
+---
 
 > Celem listy jest praktyczne przećwiczenie metaheurystyk populacyjnych. Dobór parametrów (np. kodowanie, liczność populacji, liczba iteracji, operatory stochastyczne) należy do autora programu. W czasie rozwiązywania listy autor powinien rozpoznać jaki wpływ na działanie programu (czas działania, wymagania pamięciowe, osiągany rezultat, podatność na utknięcia w lokalnym minimum, … ) mają poszczególne parametry.
 

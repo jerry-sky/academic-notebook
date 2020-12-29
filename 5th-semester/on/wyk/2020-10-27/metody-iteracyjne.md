@@ -1,6 +1,11 @@
-# Metody iteracyjne
+---
+lang: 'pl'
+title: 'Metody iteracyjne'
+author: 'Jerry Sky'
+date: '2020-10-27'
+---
 
-*(2020-10-27)*
+---
 
 - [1. DEF](#1-def)
 - [2. Przykład](#2-przykład)

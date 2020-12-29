@@ -1,4 +1,20 @@
-# Procesy i wątki
+---
+lang: 'pl'
+title: 'Procesy i wątki'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zasób](#zasób)
+- [Proces](#proces)
+- [Zarządcy](#zarządcy)
+- [Deskryptor](#deskryptor)
+- [Stan procesu](#stan-procesu)
+- [Wątek **(thread)**](#wątek-thread)
+    - [Synchronizacja wątków](#synchronizacja-wątków)
+
+---
 
 ## Zasób
 

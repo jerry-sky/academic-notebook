@@ -1,6 +1,11 @@
-# Uwarunkowanie zadania
+---
+lang: 'pl'
+title: 'Uwarunkowanie zadania'
+author: 'Jerry Sky'
+date: '2020-10-13'
+---
 
-*(2020-10-13)*
+---
 
 - [1. DEF: Złe uwarunkowanie zadania](#1-def-złe-uwarunkowanie-zadania)
 - [2. Przykład (obliczanie wartości funkcji)](#2-przykład-obliczanie-wartości-funkcji)

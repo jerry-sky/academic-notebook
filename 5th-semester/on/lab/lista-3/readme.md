@@ -1,6 +1,11 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+date: '2020-11-22'
+---
 
-*(Termin oddania: 2020-11-22)*
+---
 
 - [Sprawozdanie](#sprawozdanie)
 - [Programy](#programy)

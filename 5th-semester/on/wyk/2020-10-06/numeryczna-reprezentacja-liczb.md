@@ -1,5 +1,11 @@
-# Numeryczna reprezentacja liczb
-*(2020-10-06)*
+---
+lang: 'pl'
+title: 'Numeryczna reprezentacja liczb'
+author: 'Jerry Sky'
+date: '2020-10-06'
+---
+
+---
 
 - [1. Postać znormalizowana](#1-postać-znormalizowana)
     - [1.1. Przykłady](#11-przykłady)

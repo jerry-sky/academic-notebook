@@ -1,4 +1,17 @@
-# Kodowanie i kompresja danych
+---
+lang: 'pl'
+title: 'Kodowanie i kompresja danych'
+author: 'Jerry Sky'
+description: 'Kodowanie i kompresja danych — patrzymy na różne formy kodowania różnego typu danych i próbujemy lepiej zapisać te dane (mniej miejsca).'
+keywords: 'pwr, wppt, kkd, Gębala, wykład, laboratorium, kodowanie, kody, kod, źródłowy, python3, Huffman, tga'
+---
+
+---
+
+- [Wykład](#wykład)
+- [Laboratorium](#laboratorium)
+
+---
 
 ## Wykład
 

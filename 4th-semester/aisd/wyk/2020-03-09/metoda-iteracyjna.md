@@ -1,5 +1,11 @@
-# Metoda iteracyjna
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Metoda iteracyjna'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
+
+---
 
 $T(n) = 3T(\frac{n}{4}) + n =...$\
 $T(1) = \Theta(1)$
@@ -30,4 +36,3 @@ przy czym $n^{\alpha}$ dla $~\alpha < 1$
 $$
 \le n\sum_{k=0}^{\infin}(\frac{3}{4})^k + \Theta(n^2) = \bold{O(n)}
 $$
-

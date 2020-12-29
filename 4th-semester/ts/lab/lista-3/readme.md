@@ -1,4 +1,15 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+
+---
 
 ## Zadanie 1
 

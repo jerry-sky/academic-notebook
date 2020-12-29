@@ -1,4 +1,16 @@
-# Lista-5
+---
+lang: 'pl'
+title: 'Lista-5'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+
+---
 
 W pliku `test-graph.txt` znajduje się podstawowy graf do testów zadań [2](#zadanie-2) i [3](#zadanie-3).
 

@@ -1,7 +1,20 @@
-# Liniowa złożoność obliczeniowa
-*(2020-03-16)*
+---
+lang: 'pl'
+title: 'Liniowa złożoność obliczeniowa'
+author: 'Jerry Sky'
+date: '2020-03-16'
+---
+
+---
 
 Aby osiągnąć sortowanie o złożoności $O(n)$ należy dodać dodatkowe założenia na dane wejściowe *(wyjść poza [comparison model](comparison-model.md))*, takie jak **sortujemy liczby naturalne** z danego przedziału.
+
+---
+
+- [`CountingSort`](#countingsort)
+- [`RadixSort`](#radixsort)
+
+---
 
 ## `CountingSort`
 

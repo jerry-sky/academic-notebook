@@ -1,6 +1,11 @@
-# Mnożenie macierzy $n\times n$
+---
+lang: 'pl'
+title: 'Mnożenie macierzy $n\times n$'
+author: 'Jerry Sky'
+description: 'Strassen'
+---
 
-## Algorytm mnożenia macierzy $n\times n$ *Strassen*'a
+---
 
 Należy zauważyć, że standardowe podejście do mnożenia macierzy daje algorytm o złożoności obliczeniowej $O(n^3)$.
 

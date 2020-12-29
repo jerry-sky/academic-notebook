@@ -1,6 +1,11 @@
-# Kod Shannona
+---
+lang: 'pl'
+title: 'Kod Shannona'
+author: 'Jerry Sky'
+date: '2020-10-15'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Kod Shannona](#1-kod-shannona)
     - [1.1. Uwaga](#11-uwaga)

@@ -1,5 +1,11 @@
-# Lemat?
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Lemat?'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
+
+---
 
 $$
 \begin{bmatrix}

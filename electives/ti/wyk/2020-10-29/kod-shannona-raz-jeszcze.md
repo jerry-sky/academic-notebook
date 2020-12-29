@@ -1,6 +1,11 @@
-# Kod Shannon’a raz jeszcze
+---
+lang: 'pl'
+title: 'Kod Shannon’a raz jeszcze'
+author: 'Jerry Sky'
+date: '2020-10-29'
+---
 
-*(2020-10-29)*
+---
 
 ([wcześniejsza notatka](../2020-10-15/kod-shannona.md))
 

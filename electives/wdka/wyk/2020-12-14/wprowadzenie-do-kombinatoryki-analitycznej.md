@@ -1,6 +1,11 @@
-# Wprowadzenie do kombinatoryki analitycznej
+---
+lang: 'pl'
+title: 'Wprowadzenie do kombinatoryki analitycznej'
+author: 'Jerry Sky'
+date: '2020-12-14'
+---
 
-*(2020-12-14)*
+---
 
 - [1. Przykład (jawna postać OGF oraz współczynniki)](#1-przykład-jawna-postać-ogf-oraz-współczynniki)
 - [2. Przykład (nieporządki)](#2-przykład-nieporządki)

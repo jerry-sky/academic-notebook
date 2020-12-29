@@ -1,4 +1,20 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+    - [Czas i liczba przestawień](#czas-i-liczba-przestawień)
+    - [Zużycie pamięci](#zużycie-pamięci)
+    - [Wpływ zakresu](#wpływ-zakresu)
+- [Zadanie 2](#zadanie-2)
+    - [Zadanie 2 - statystyki](#zadanie-2---statystyki)
+- [Zadanie 3](#zadanie-3)
+
+---
 
 ## Zadanie 1
 

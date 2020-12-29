@@ -1,8 +1,10 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+---
 
-## Zadanie na laboratorium
-
-> **Ocena 3** Napisz program który implementuje zmodyfikowany algorytm LZ77, który zamiast 3 liczb używa 2:
+---
 > - $(0, kod\_litery)$ – jeśli pierwszej litery w buforze kodowania nie ma w buforze słownika,
 > - $(i, j)$ – dla najdłuższego możliwego prefiksu z bufora kodowania występującego w buforze słownika (przedłużonym o bufor kodowania) i to przesunięcie w słowniku a $j + 1$ ilość znaków do skopiowania (omijamy kod ostatniej litery z klasycznego LZ77).\
 > W programie bufor słownika ma mieć 255 znaków a bufor kodowania 256 (stąd używane liczby są 8-bitowe).\

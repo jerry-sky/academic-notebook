@@ -1,4 +1,28 @@
-# Binary Heap
+---
+lang: 'pl'
+title: 'Binary Heap'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Własność kopca minimalnego](#własność-kopca-minimalnego)
+- [Przykład](#przykład)
+- [Poruszanie się po binary heap](#poruszanie-się-po-binary-heap)
+- [$\text {Def}$ wysokość węzła](#text-def-wysokość-węzła)
+- [`Heapify`$(A,i)$](#heapifyai)
+- [`BuildHeap`$(A)$](#buildheapa)
+    - [Złożoność obliczeniowa `BuildHeap`](#złożoność-obliczeniowa-buildheap)
+        - [$\text {Fakt}$ #1](#text-fakt-1)
+            - [D-d $\text {Fakt}$u #1](#d-d-text-faktu-1)
+    - [Złożoność obliczeniowa `BuildHeap` c.d.](#złożoność-obliczeniowa-buildheap-cd)
+- [Kopiec $d$-arny](#kopiec-d-arny)
+- [Więcej o kopcach](#więcej-o-kopcach)
+- [`HeapSort`$(A)$](#heapsorta)
+    - [Złożoność obliczeniowa `HeapSort`$(A)$](#złożoność-obliczeniowa-heapsorta)
+- [More](#more)
+
+---
 
 Kopiec binarny (binary heap) to pełne drzewo binarne. Poziom $i$ty ma $2^i$ elementów (liczymy od $i=0$).
 

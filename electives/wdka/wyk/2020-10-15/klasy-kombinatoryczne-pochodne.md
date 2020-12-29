@@ -1,6 +1,11 @@
-# Klasy kombinatoryczne pochodne
+---
+lang: 'pl'
+title: 'Klasy kombinatoryczne pochodne'
+author: 'Jerry Sky'
+date: '2020-10-15'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Suma](#1-suma)
     - [1.1. OGF](#11-ogf)

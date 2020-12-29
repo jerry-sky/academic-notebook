@@ -1,4 +1,19 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+    - [Szacowanie czasu działania każdej z operacji](#szacowanie-czasu-działania-każdej-z-operacji)
+    - [Szacowanie $n_t$](#szacowanie-n_t)
+- [Zadanie 2](#zadanie-2)
+    - [Testy na słowniku](#testy-na-słowniku)
+    - [Testy na `lotr.txt`](#testy-na-lotrtxt)
+
+---
 
 ## Zadanie 1
 

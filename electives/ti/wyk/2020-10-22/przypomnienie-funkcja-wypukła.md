@@ -1,6 +1,11 @@
-# Przypomnienie — funkcja wypukła
+---
+lang: 'pl'
+title: 'Przypomnienie — funkcja wypukła'
+author: 'Jerry Sky'
+date: '2020-10-22'
+---
 
-*(2020-10-22)*
+---
 
 - [1. DEF: Funkcja wypukła](#1-def-funkcja-wypukła)
 - [2. DEF: Funkcja ściśle wypukła](#2-def-funkcja-ściśle-wypukła)

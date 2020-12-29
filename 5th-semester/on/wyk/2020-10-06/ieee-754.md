@@ -1,6 +1,11 @@
-# IEEE-754
+---
+lang: 'pl'
+title: 'IEEE-754'
+author: 'Jerry Sky'
+date: '2020-10-06'
+---
 
-*(2020-10-06)*
+---
 
 - [1. Reprezentacja liczby rzeczywistej w IEEE-754](#1-reprezentacja-liczby-rzeczywistej-w-ieee-754)
     - [1.1. Cecha](#11-cecha)

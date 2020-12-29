@@ -1,5 +1,18 @@
-# Bazy Danych i Systemy Informacyjne
-*BDSI*
+---
+lang: 'pl'
+title: 'Bazy Danych i Systemy Informacyjne'
+author: 'Jerry Sky'
+description: 'Metody bazodanowe i systemy informacyjne — MySQL oraz MongoDB.'
+keywords: 'pwr, wppt, bdsi, Syga, ćwiczenia, laboratorium, wykład, lista, listy, zadań, zadanie, zadania, mongodb, mysql, sql, kwerenda, kwerendy, zapytania, zapytanie, kod'
+---
+
+---
+
+- [Wykład](#wykład)
+- [Ćwiczenia](#ćwiczenia)
+- [Laboratrium](#laboratrium)
+
+---
 
 ## Wykład
 

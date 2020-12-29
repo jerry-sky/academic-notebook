@@ -1,4 +1,10 @@
-# Lista 0
+---
+lang: 'pl'
+title: 'Lista 0'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zadanie 1](#zadanie-1)
 - [Zadanie 2](#zadanie-2)
@@ -258,5 +264,3 @@ $\mathrm{Var}X = \mathrm{E}X^2 - (\mathrm{E}X)^2 = n\cdot \frac{35}{12}$
 $\mathrm{E}Y^2_i = 0^2 \cdot \frac{1}{6} + 2^2 \cdot \frac{1}{6} + \dotsb + 6^2 \cdot \frac{1}{6} = \frac{56}{6}$\
 $\mathrm{Var}Y_i = \frac{56}{6} - 2^2 = \frac{32}{6} = \frac{16}{3}$\
 $\mathrm{Var}Y = \frac{16}{3}n$
-
-

@@ -1,6 +1,12 @@
-# Równoważność DFA, NFA oraz RE
+---
+lang: 'pl'
+title: 'Równoważność DFA, NFA oraz RE'
+author: 'Jerry Sky'
+date: '2020-10-15'
+keywords: 'wykład, jftt, pwr, dfa, nfa, re, wyrażenie regularne, wyrażenia, regularne, twierdzenie, epsilon, równoważność'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Fakt: Każdy DFA jest NFA](#1-fakt-każdy-dfa-jest-nfa)
 - [2. Twierdzenie#1](#2-twierdzenie1)

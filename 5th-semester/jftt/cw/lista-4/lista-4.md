@@ -1,4 +1,10 @@
-# Lista 4
+---
+lang: 'pl'
+title: 'Lista 4'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zadanie 1.](#zadanie-1)
 - [Zadanie 4.](#zadanie-4)

@@ -1,4 +1,10 @@
-# Lista-1
+---
+lang: 'pl'
+title: 'Lista-1'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zadanie 1.](#zadanie-1)
     - [1.1.](#11)

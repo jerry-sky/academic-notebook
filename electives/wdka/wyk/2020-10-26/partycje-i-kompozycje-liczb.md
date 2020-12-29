@@ -1,6 +1,11 @@
-# Partycje i kompozycje liczb
+---
+lang: 'pl'
+title: 'Partycje i kompozycje liczb'
+author: 'Jerry Sky'
+date: '2020-10-26'
+---
 
-*(2020-10-26)*
+---
 
 - [1. Partycje liczb a kompozycje liczb](#1-partycje-liczb-a-kompozycje-liczb)
 - [2. Klasa kombinatoryczna dla partycji liczb](#2-klasa-kombinatoryczna-dla-partycji-liczb)

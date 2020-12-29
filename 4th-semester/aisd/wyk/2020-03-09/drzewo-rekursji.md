@@ -1,5 +1,9 @@
-# Drzewo rekursji
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Drzewo rekursji'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
 
 ---
 
@@ -38,4 +42,3 @@ $T(n) = O(n^2)$
 
 $\sum_{k=0}^{\log n}n^2 \cdot (\frac{5}{16})^k = n^2(\frac{16}{11} - 5\cdot (\frac{5}{16})^{\log n})=$\
 $n^2(\frac{16}{11} - 5\cdot n^{\log \frac{5}{16}})$, $\log(\frac{5}{16}) = -1.67$
-

@@ -1,8 +1,11 @@
-# Działania arytmetyczne w arytmetyce *fl*
+---
+lang: 'pl'
+title: 'Działania arytmetyczne w arytmetyce *fl*'
+author: 'Jerry Sky'
+date: '2020-10-06'
+---
 
-*(2020-10-06)*
-
-- [1. Reprezentacja liczb w *fl*](#1-reprezentacja-liczb-w-fl)
+---
 - [2. Oznaczenia działań](#2-oznaczenia-działań)
 - [3. Przykład](#3-przykład)
     - [3.1. Błędy](#31-błędy)

@@ -1,4 +1,8 @@
-# Lista-2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+---
 
 > 1. Utwórz bazę danych Hobby. Utwórz użytkownika `'U '@'localhost'` (lub `'U '@'%'`), gdzie `U` jest twoim imieniem, skonkatenowanym z dwoma ostatnimi cyframi indeksu. Ustaw dla tego użytkownika hasło będące twoim numerem indeksu czytanym od tyłu. Nadaj utworzonemu użytkownikowi uprawnienia do Selectowania, wstawiania i zmieniania danych w tabeli, jednak nie do tworzenia usuwania i modyfikowania tabel.
 > 2. Wewnątrz utworzonej bazy, utwórz tabele

@@ -1,6 +1,12 @@
-# Języki formalne — wprowadzenie
+---
+lang: 'pl'
+title: 'Języki formalne — wprowadzenie'
+author: 'Jerry Sky'
+date: '2020-10-08'
+keywords: 'wykład, jftt, pwr, definicja, przykład, funkcja przejścia, NFA, wyrażenia regularne, wyrażenie regularne, niedeterministyczny, automat'
+---
 
-*(2020-10-08)*
+---
 
 - [1. Podstawowe definicje](#1-podstawowe-definicje)
 - [2. Deterministyczny Automat Skończony (DFA)](#2-deterministyczny-automat-skończony-dfa)

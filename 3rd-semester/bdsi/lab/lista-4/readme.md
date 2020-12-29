@@ -1,10 +1,22 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+---
 
-> ## Zasady
+---
+
+- [Zasady](#zasady)
+- [Zadania](#zadania)
+- [Rozwiązania i uruchomienie programów](#rozwiązania-i-uruchomienie-programów)
+
+---
+
+## Zasady
 > Celem listy jest praktyczne zapoznanie z NoSQL, na rozwiązanie zadań składać się powinny przygotowane wcześniej komendy, których działanie zostanie zaprezentowane na laboratorium. Zadania można rozwiązywać korzystając wyłącznie z konsoli Mongo lub po połączeniu się z bazą Mongo za pomocą wybranego języka programowania.\
 > Po uzgodnieniu z prowadzącym laboratorium listę można wykonać z wykorzystaniem innego systemu nierelacyjnych baz danych – efekt wykonywania odpowiednich poleceń powinien pozostać bez zmian. W celu uzyskania oceny 5.0 z listy wykonaj 4 pierwsze zadania oraz 5 wybranych z pozostałych.
->
-> ## Zadania
+
+## Zadania
 > 1. Zainstaluj MongoDB. Utwórz bazę danych `MDBHobby`. W skład bazy danych powinny wchodzić 3 kolekcje: `zwierzęta`, `sport`, `osoby`. **Uwaga**: dane do uzupełnienia bazy mogą być generowano losowo, częściowo wyeksportowane z rozwiązań list poprzednich lub pobrane (np. w formacie JSON) z gotowego źródła. W przypadku braku dokumentu w bazie spełniającego kryterium któregoś z zadań, dodaj odpowiednie dokumenty i powtórz zadanie.
 > 2. Dodaj przynajmniej 10 sportów. Każdy dokument powinien zawierać przynajmniej informacje o nazwie, miejscu wykonywania (hala, na zewnątrz) oraz tego czy jest sportem indywidualny czy zespołowym – 2 ostatnie atrybuty mogą mieć więcej niż jedną wartość dla wybranych sportów. Dla wybranych sportów dodaj inne atrybuty.
 > 3. Dodaj przynajmniej 10 gatunków zwierząt. Gatunek może, lecz nie musi, dzielić się na różne rasy (uwzględnij w bazie przynajmniej jeden gatunek z rasami). Każdy dokument powinien zawierać informację o minimalnej i maksymalnej wadze, dopuszczalnej gamie ubarwienia oraz oczekiwanej długości życia.
@@ -20,8 +32,12 @@
 > 13. Wyświetl imiona i nazwiska oraz narodowość wszystkich miłośników psów, wyniki uporządkuj rosnąco względem wieku.
 > 14. Wyświetl osoby, których imiona i nazwiska nie zawierają liter v, x, q, ł, ą, z pominięciem tych, którzy mają obywatelstwo polskie. Możesz wykorzystać wyrażenia regularne.
 
+---
+
 ## Rozwiązania i uruchomienie programów
 
 Pliki `ex-*.ts` zawierają implementację zadanych programów.
 
 Uruchomienie powyższych programów działa na takiej samej zasadzie jak na [liście zerowej](../lista-0/readme.md#uruchomienie-programów).
+
+---

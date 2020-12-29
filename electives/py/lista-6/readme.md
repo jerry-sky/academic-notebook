@@ -1,4 +1,14 @@
-# Lista-6
+---
+lang: 'pl'
+title: 'Lista-6'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+
+---
 
 ## Zadanie 1
 

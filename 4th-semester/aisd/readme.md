@@ -1,5 +1,19 @@
-# Algorytmy i Struktury Danych
-*(AiSD)*
+---
+lang: 'pl'
+title: 'Algorytmy i Struktury Danych'
+author: 'Jerry Sky'
+keywords: 'pwr, wppt, aisd, Gołębiewski, algorytm, drzewo, drzewa, rekursja, złożoność obliczeniowa, sortowanie, sort, funkcja, metoda, procedura, laboratorium, wykład, ćwiczenia, programowanie dynamiczne, dag, grafy, graf, wtg, search, szukanie, sekwencja, ciąg'
+---
+
+---
+
+- [Wykład](#wykład)
+- [Ćwiczenia](#ćwiczenia)
+- [Laboratorium](#laboratorium)
+    - [Verbindung](#verbindung)
+    - [Listy](#listy)
+
+---
 
 ## Wykład
 

@@ -1,5 +1,16 @@
+---
+lang: 'pl'
+title: 'BDSI-Lab Lista 3 Zadanie 6'
+author: 'Jerry Sky'
+---
 
-# BDSI-Lab Lista 3 Zadanie 6
+---
+
+- [Raport dotyczący zadań z sekcji SQL Injection (Advanced) - WebGoat](#raport-dotyczący-zadań-z-sekcji-sql-injection-advanced---webgoat)
+- [Wnioski: **nigdy nie można ufać użytkownikowi.**](#wnioski-nigdy-nie-można-ufać-użytkownikowi)
+
+---
+
 ## Raport dotyczący zadań z sekcji SQL Injection (Advanced) - WebGoat
 
 Zadania polegały na wykorzystaniu błędu braku sanityzacji inputu użytkownika. Aplikacja bezpośrednio konkatenowała wejście

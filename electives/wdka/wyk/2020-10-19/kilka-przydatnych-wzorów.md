@@ -1,6 +1,11 @@
-# Kilka przydatnych wzorów
+---
+lang: 'pl'
+title: 'Kilka przydatnych wzorów'
+author: 'Jerry Sky'
+date: '2020-10-19'
+---
 
-*(2020-10-19)*
+---
 
 - [Uogólnienie wzoru na rozwinięcie potęgowe](#uogólnienie-wzoru-na-rozwinięcie-potęgowe)
 - [Rozwinięcie potęgowe dla $\ln$](#rozwinięcie-potęgowe-dla-ln)

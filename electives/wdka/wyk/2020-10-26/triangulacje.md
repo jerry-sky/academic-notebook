@@ -1,6 +1,11 @@
-# Triangulacje
+---
+lang: 'pl'
+title: 'Triangulacje'
+author: 'Jerry Sky'
+date: '2020-10-26'
+---
 
-*(2020-10-26)*
+---
 
 - [1. Przykładowe triangulacje $(n+2)$–kąta](#1-przykładowe-triangulacje-n2kąta)
 - [2. Klasa kombinatoryczna](#2-klasa-kombinatoryczna)

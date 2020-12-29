@@ -1,6 +1,11 @@
-# Lista-4
+---
+lang: 'pl'
+title: 'Lista-4'
+author: 'Jerry Sky'
+date: '2020-12-20'
+---
 
-*(Termin oddania: 2020-12-20)*
+---
 
 - [Zadanie 1.](#zadanie-1)
 - [Zadanie 2.](#zadanie-2)

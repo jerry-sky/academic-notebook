@@ -1,15 +1,23 @@
-# Minimal spanning trees
-*MSTs*
+---
+lang: 'pl'
+title: 'Minimal spanning trees'
+author: 'Jerry Sky'
+description: 'MSTs'
+---
+
+---
 
 - [Outline](#outline)
 - [I/O](#io)
 - [Drzewa](#drzewa)
 - [Algorytm Kruskala](#algorytm-kruskala)
-  - [Poprawność algorytmu Kruskala](#poprawność-algorytmu-kruskala)
-  - [Zbiory rozłączne (disjoint sets)](#zbiory-rozłączne-disjoint-sets)
-  - [Pseudokod algorytmu Kruskala](#pseudokod-algorytmu-kruskala)
+    - [Poprawność algorytmu Kruskala](#poprawność-algorytmu-kruskala)
+    - [Zbiory rozłączne (disjoint sets)](#zbiory-rozłączne-disjoint-sets)
+    - [Pseudokod algorytmu Kruskala](#pseudokod-algorytmu-kruskala)
 - [Algorytm Prima](#algorytm-prima)
 - [More](#more)
+
+---
 
 ## Outline
 

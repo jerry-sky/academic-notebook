@@ -1,6 +1,11 @@
-# Twierdzenie Lagrange’a o inwersji
+---
+lang: 'pl'
+title: 'Twierdzenie Lagrange’a o inwersji'
+author: 'Jerry Sky'
+date: '2020-11-09'
+---
 
-*(2020-11-09)*
+---
 
 - [1. Twierdzenie Lagrange’a o inwersji](#1-twierdzenie-lagrangea-o-inwersji)
 - [2. Przykład](#2-przykład)

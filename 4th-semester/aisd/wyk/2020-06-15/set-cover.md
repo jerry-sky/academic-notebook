@@ -1,13 +1,21 @@
-# Pokrycie zbioru
+---
+lang: 'pl'
+title: 'Pokrycie zbioru'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zobrazowanie](#zobrazowanie)
 - [Formalna definicja](#formalna-definicja)
 - [Algorytm](#algorytm)
-  - [Przykład do algorytmu](#przykład-do-algorytmu)
+    - [Przykład do algorytmu](#przykład-do-algorytmu)
 - [Twierdzenie #1](#twierdzenie-1)
-  - [D-d Twierdzenia #1](#d-d-twierdzenia-1)
+    - [D-d Twierdzenia #1](#d-d-twierdzenia-1)
 - [Final remarks](#final-remarks)
 - [More](#more)
+
+---
 
 ## Zobrazowanie
 

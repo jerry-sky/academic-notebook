@@ -1,4 +1,16 @@
-# DFS na grafach skierowanych
+---
+lang: 'pl'
+title: 'DFS na grafach skierowanych'
+author: 'Jerry Sky'
+---
+
+---
+
+- [`pre` oraz `post`](#pre-oraz-post)
+- [Rodzaje krawędzi](#rodzaje-krawędzi)
+- [Przykład](#przykład)
+
+---
 
 ## `pre` oraz `post`
 

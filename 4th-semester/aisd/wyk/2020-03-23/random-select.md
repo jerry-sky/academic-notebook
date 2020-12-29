@@ -1,5 +1,11 @@
-# `RandomSelect`
-*(2020-03-23)*
+---
+lang: 'pl'
+title: '`RandomSelect`'
+author: 'Jerry Sky'
+date: '2020-03-23'
+---
+
+---
 
 ## Description
 

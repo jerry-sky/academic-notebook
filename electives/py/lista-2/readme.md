@@ -1,7 +1,19 @@
-# Lista 2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+---
 
-## Ogólne *concerns*
+---
 
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+- [Zadanie 4](#zadanie-4)
+
+---
+
+Moje *concerns*:
 1. Brak standaryzacji parsowania docstring'ów?
    - VS Code nie potrafi przypisać opisu z docstring'u danej funkcji do danego argumentu - po najechaniu kursorem na argument nie wyświetla się opis tego argumentu pomimo jego zdefiniowania w docstring'u danej funkcji.
    - Nie mogę znaleźć jedynego i słusznego systemu zapisywania deskrypcji argumentów funkcji, dlatego też trzymam się [Google's Python styleguide](http://google.github.io/styleguide/pyguide.html).

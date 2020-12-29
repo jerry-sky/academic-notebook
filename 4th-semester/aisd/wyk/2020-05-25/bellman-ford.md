@@ -1,9 +1,17 @@
-# Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi
+---
+lang: 'pl'
+title: 'Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Dijkstra's algorithm](#dijkstras-algorithm)
 - [Algorytm Bellmana-Forda](#algorytm-bellmana-forda)
-  - [Przykład (Algorytm Bellmana-Forda)](#przykład-algorytm-bellmana-forda)
+    - [Przykład (Algorytm Bellmana-Forda)](#przykład-algorytm-bellmana-forda)
 - [More](#more)
+
+---
 
 Wspomniany na [wcześniejszym wykładzie](../2020-05-20/dijkstras-algorithm.md) algorytm Dijkstry pozwala na wyznaczenie najkrótszych ścieżek od startowego wierzchołka do wszystkich innych wierzchołków w grafie $G = (V,E,l)$, w przypadku gdzie wagi krawędzi są dodatnie ($l: E\to \mathbb{R}_+$). Teraz będziemy rozważać grafy, gdzie mamy również ujemne wagi krawędzi ($l: E \to \mathbb{R}$).
 

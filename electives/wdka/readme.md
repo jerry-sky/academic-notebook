@@ -1,6 +1,12 @@
-# Wprowadzenie do Kombinatoryki Analitycznej
+---
+lang: 'pl'
+title: 'Wprowadzenie do Kombinatoryki Analitycznej'
+author: 'Jerry Sky'
+description: 'Kombinatoryka Analityczna to zbiór przydatnych maszynek do obrazowania i rozwiązywania problemów kombinatorycznych. Dzięki funkcjom generującym i klasom kombinatorycznym jesteśmy w stanie dużo opisać w sposób formalny.'
+keywords: 'pwr, wppt, wdka, wybieralny, elective, kombinatoryka, analityczna, Flajolet, lista, listy, zadań, zadania, zadanie, ćwiczenia, laboratorium, dyskretna, matematyka, klasa kombinatoryczna, ogf, egf, pgf, bgf, funkcja generująca, funkcje generujące, sekwencja, zbiór, potęgowy'
+---
 
-*(WDKA)*
+---
 
 - [Wykład](#wykład)
 - [Ćwiczenia](#ćwiczenia)

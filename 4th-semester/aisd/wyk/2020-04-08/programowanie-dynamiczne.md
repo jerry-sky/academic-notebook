@@ -1,5 +1,22 @@
-# Programowanie dynamiczne
-*(2020-04-08)*
+---
+lang: 'pl'
+title: 'Programowanie dynamiczne'
+author: 'Jerry Sky'
+date: '2020-04-08'
+---
+
+---
+
+- [Zarys](#zarys)
+- [How does it work](#how-does-it-work)
+- [Przykład #1](#przykład-1)
+- [Przykład #2](#przykład-2)
+- [Przykład #3](#przykład-3)
+- [Przykład #4](#przykład-4)
+- [Summary](#summary)
+- [More](#more)
+
+---
 
 ## Zarys
 

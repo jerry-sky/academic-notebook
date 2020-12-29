@@ -1,11 +1,25 @@
-# [Travelling salesman problem][tsp]
+---
+lang: 'pl'
+title: 'Travelling salesman problem'
+author: 'Jerry Sky'
+---
 
-## Rozwiązanie $x_0$
+---
+
+- [1. Rozwiązanie $x_0$](#1-rozwiązanie-x_0)
+- [2. Sąsiedztwo](#2-sąsiedztwo)
+- [3. Pętla główna](#3-pętla-główna)
+- [4. Koniec](#4-koniec)
+- [5. Najlepszy znany LocalSearch dla TSP](#5-najlepszy-znany-localsearch-dla-tsp)
+
+---
+
+## 1. Rozwiązanie $x_0$
 
 1. Podczas generowania wybierać najkrótszą drogę do następnego miasta.
 2. Losowa permutacja - *discouraged*.
 
-## Sąsiedztwo
+## 2. Sąsiedztwo
 
 1. Zamiana wierzchołków [2–opt][2-opt], ewentualnie [3-opt][3-opt]. Dwa rozwiązania $x_0,\hat{x}$ są sąsiednie $\iff$ $|$`diff x,y`$| = 2$ *(mamy tylko dwie różnice)*
 
@@ -41,15 +55,15 @@
     $$
 
 
-## Pętla główna
+## 3. Pętla główna
 
 Sprawdzamy tak długo aż nie znajdziemy lepszego sąsiada lub sprawdzimy wszystkich sąsiadów
 
-## Koniec
+## 4. Koniec
 
 Brak lepszych sąsiadów lub koniec czasu.
 
-## Najlepszy znany LocalSearch dla [TSP][tsp]
+## 5. Najlepszy znany LocalSearch dla [TSP][tsp]
 
 Połączenie pomiędzy 2–opt a 3–opt.
 
@@ -62,5 +76,3 @@ Połączenie pomiędzy 2–opt a 3–opt.
 [3-opt]: http://tsp-basics.blogspot.com/2017/03/3-opt-move.html
 
 [effective-alg]: https://www.cs.princeton.edu/~bwk/btl.mirror/tsp.pdf
-
-

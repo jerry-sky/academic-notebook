@@ -1,5 +1,17 @@
-# Sortowanie
-*(2020-02-26)*
+---
+lang: 'pl'
+title: 'Sortowanie'
+author: 'Jerry Sky'
+date: '2020-02-26'
+---
+
+---
+
+- [Input](#input)
+- [Output](#output)
+- [Insertion sort $(A,n)$](#insertion-sort-an)
+
+---
 
 ## Input
 $\sigma = (a_1, a_2, ... a_n) = A$
@@ -27,4 +39,3 @@ $a_{\sigma(1)} \le a_{\sigma(2)} \le ... \le a_{\sigma(n)}$
 13. $2,3,4,8 | 9,6$
 14. ...
 15. $2,3,4,6,8,9$
-

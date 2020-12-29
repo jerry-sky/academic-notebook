@@ -1,6 +1,11 @@
-# Przykładowe zastosowanie — Plane Trees
+---
+lang: 'pl'
+title: 'Przykładowe zastosowanie — Plane Trees'
+author: 'Jerry Sky'
+date: '2020-10-19'
+---
 
-*(2020-10-19)*
+---
 
 - [1. Drzewa uporządkowane](#1-drzewa-uporządkowane)
 - [2. Klasa kombinatoryczna](#2-klasa-kombinatoryczna)

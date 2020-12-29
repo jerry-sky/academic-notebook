@@ -1,6 +1,12 @@
-# Analiza leksykalna
+---
+lang: 'pl'
+title: 'Analiza leksykalna'
+author: 'Jerry Sky'
+date: '2020-10-22'
+keywords: 'wykład, jftt, pwr, symbole, leksykalne, analizator leksykalny, flex, lex, specyfikacja, kod źródłowy, przykład'
+---
 
-*(2020-10-22)*
+---
 
 - [1. DEF](#1-def)
 - [2. Podstawowe pojęcia](#2-podstawowe-pojęcia)

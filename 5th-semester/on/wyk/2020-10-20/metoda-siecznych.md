@@ -1,6 +1,11 @@
-# Metoda siecznych
+---
+lang: 'pl'
+title: 'Metoda siecznych'
+author: 'Jerry Sky'
+date: '2020-10-20'
+---
 
-*(2020-10-20)*
+---
 
 - [Metoda siecznych](#metoda-siecznych)
 - [Algorytm](#algorytm)

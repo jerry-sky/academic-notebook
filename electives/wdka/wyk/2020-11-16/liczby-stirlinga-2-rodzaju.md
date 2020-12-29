@@ -1,6 +1,11 @@
-# Liczby Stirlinga II rodzaju
+---
+lang: 'pl'
+title: 'Liczby Stirlinga II rodzaju'
+author: 'Jerry Sky'
+date: '2020-11-16'
+---
 
-*(2020-11-16)*
+---
 
 - [1. DEF](#1-def)
 - [2. Notacja](#2-notacja)

@@ -1,4 +1,21 @@
-# Lista-2
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Treść zadania](#treść-zadania)
+- [Sprawdzenie jednostki wzoru](#sprawdzenie-jednostki-wzoru)
+- [Sprawozdanie](#sprawozdanie)
+    - [Pierwsze uruchomienia programu](#pierwsze-uruchomienia-programu)
+    - [Zwiększenie natężeń](#zwiększenie-natężeń)
+    - [Zwiększenie przepustowości](#zwiększenie-przepustowości)
+    - [Dodawanie kolejnych krawędzi](#dodawanie-kolejnych-krawędzi)
+    - [Wnioski](#wnioski)
+
+---
 
 ## Treść zadania
 

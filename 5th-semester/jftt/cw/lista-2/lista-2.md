@@ -1,4 +1,10 @@
-# Lista 2
+---
+lang: 'pl'
+title: 'Lista 2'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Zadanie 1.](#zadanie-1)
 - [Zadanie 3.](#zadanie-3)

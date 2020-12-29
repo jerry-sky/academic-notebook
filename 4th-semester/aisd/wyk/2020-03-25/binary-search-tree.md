@@ -1,5 +1,32 @@
-# Binary Search Tree *(BST)*
-*(2020-03-25)*
+---
+lang: 'pl'
+title: 'Binary Search Tree *(BST)*'
+author: 'Jerry Sky'
+date: '2020-03-25'
+---
+
+---
+
+- [Description](#description)
+- [Węzeł drzewa](#węzeł-drzewa)
+- [Porządek w BST](#porządek-w-bst)
+- [Wysokość BST](#wysokość-bst)
+- [Operacje dla BST](#operacje-dla-bst)
+    - [$\mathrm{InorderTreeWalk}$](#mathrminordertreewalk)
+    - [$\mathrm{Search}(x)$](#mathrmsearchx)
+    - [$\mathrm{Insert}(x)$](#mathrminsertx)
+    - [$\mathrm{Delete}(x)$](#mathrmdeletex)
+    - [$\mathrm{Minimum}$](#mathrmminimum)
+    - [$\mathrm{Maximum}$](#mathrmmaximum)
+    - [$\mathrm{Successor}(x)$](#mathrmsuccessorx)
+    - [$\mathrm{Predecessor}(x)$](#mathrmpredecessorx)
+    - [$\mathrm{BSTSort}$](#mathrmbstsort)
+- [Własność #2](#własność-2)
+- [Twierdzenie #1](#twierdzenie-1)
+    - [D-d Twierdzenia #1](#d-d-twierdzenia-1)
+- [Sources](#sources)
+
+---
 
 ## Description
 
@@ -90,4 +117,3 @@ $\mathrm{E}(\text{wysokości BST o }n\text{ węzłach}) = O(\log n)$ zakładają
 ## Sources
 
 Więcej informacji na temat BST można znaleźć [tu (Chapter 12)](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf) oraz [tutaj](https://algs4.cs.princeton.edu/32bst/).
-

@@ -1,6 +1,14 @@
-# Numeryczna niestabilność
+---
+lang: 'pl'
+title: 'Numeryczna niestabilność'
+author: 'Jerry Sky'
+date: '2020-10-13'
+---
 
-*(2020-10-13)*
+---
+
+- [1. Nieformalna definicja](#1-nieformalna-definicja)
+- [2. Przykład (ciąg, rekurencja)](#2-przykład-ciąg-rekurencja)
 
 ---
 

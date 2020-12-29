@@ -1,5 +1,16 @@
-# Mnożenie $n$-bitowych liczb naturalnych
-*(2020-03-11)*
+---
+lang: 'pl'
+title: 'Mnożenie $n$-bitowych liczb naturalnych'
+author: 'Jerry Sky'
+date: '2020-03-11'
+---
+
+---
+
+- [Algorytm mnożenia $n$-bitowych liczb naturalnych $x \cdot y$](#algorytm-mnożenia-n-bitowych-liczb-naturalnych-x-cdot-y)
+- [Złożoność obliczeniowa](#złożoność-obliczeniowa)
+
+---
 
 ## Algorytm mnożenia $n$-bitowych liczb naturalnych $x \cdot y$
 

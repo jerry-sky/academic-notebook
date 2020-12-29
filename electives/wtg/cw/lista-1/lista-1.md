@@ -1,24 +1,31 @@
-# Lista-1 *Wstęp do teorii grafów*
+---
+lang: 'pl'
+title: 'Lista-1 *Wstęp do teorii grafów*'
+author: 'Jerry Sky'
+---
 
-## Index
+---
 
-  - [Zadanie 1](#zadanie-1)
-  - [Zadanie 2](#zadanie-2)
-  - [Zadanie 3](#zadanie-3)
-  - [Zadanie 4](#zadanie-4)
-  - [Zadanie 5](#zadanie-5)
-  - [Zadanie 6](#zadanie-6)
-  - [Zadanie 7](#zadanie-7)
-  - [Zadanie 8](#zadanie-8)
-  - [Zadanie 9](#zadanie-9)
-  - [Zadanie 10](#zadanie-10)
-  - [Zadanie 11](#zadanie-11)
-  - [Zadanie 12](#zadanie-12)
-  - [Zadanie 13](#zadanie-13)
-  - [Zadanie 14](#zadanie-14)
-  - [Zadanie 15](#zadanie-15)
-  - [Zadanie 16](#zadanie-16)
-  - [Zadanie 19](#zadanie-19)
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+- [Zadanie 4](#zadanie-4)
+- [Zadanie 5](#zadanie-5)
+- [Zadanie 6](#zadanie-6)
+- [Zadanie 7](#zadanie-7)
+- [Zadanie 8](#zadanie-8)
+- [Zadanie 9](#zadanie-9)
+- [Zadanie 10](#zadanie-10)
+- [Zadanie 11](#zadanie-11)
+- [Zadanie 12](#zadanie-12)
+- [Zadanie 13](#zadanie-13)
+- [Zadanie 14](#zadanie-14)
+- [Zadanie 15](#zadanie-15)
+- [Zadanie 16](#zadanie-16)
+- [Zadanie 19](#zadanie-19)
+    - [19.1](#191)
+
+---
 
 ## Zadanie 1
 
@@ -44,6 +51,7 @@
    3. Analogicznie dla dowolnego $d \in V$
    4. Albo jest tak, że $( \neg(a \sim_G c) \lor \neg(a \sim_G d) )$ albo $( \neg(b \sim_G c) \lor \neg(b \sim_G d) )$ albo jedno z pary $a,b$ nie jest połączone z $c$, a drugie z $d$
    5. Wtedy w każdym przypadku $c \sim_{\overline{G}} d$
+
 ---
 2. Przykładowym grafem $G$ takim, że $G$ lub $\overline{G}$ jest spójny, jest graf z jednym wierzchołkiem lub graf $C_4$ bez jednej krawędzi.
 

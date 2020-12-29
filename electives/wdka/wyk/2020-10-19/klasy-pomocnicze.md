@@ -1,6 +1,11 @@
-# Klasy pomocnicze
+---
+lang: 'pl'
+title: 'Klasy pomocnicze'
+author: 'Jerry Sky'
+date: '2020-10-19'
+---
 
-*(2020-10-19)*
+---
 
 - [1. DEF $\mathcal{E}$](#1-def-mathcale)
     - [1.1. Przykład zastosowania](#11-przykład-zastosowania)

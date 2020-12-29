@@ -1,6 +1,11 @@
-# Metoda bisekcji
+---
+lang: 'pl'
+title: 'Metoda bisekcji'
+author: 'Jerry Sky'
+date: '2020-10-22'
+---
 
-*(2020-10-22)*
+---
 
 - [1. Metoda bisekcji (połowienia)](#1-metoda-bisekcji-połowienia)
 - [2. Algorytm](#2-algorytm)

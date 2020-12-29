@@ -1,5 +1,22 @@
-# Koszt zamortyzowany
-*(2020-04-22)*
+---
+lang: 'pl'
+title: 'Koszt zamortyzowany'
+author: 'Jerry Sky'
+date: '2020-04-22'
+---
+
+---
+
+- [$\text {Def}$](#text-def)
+- [Metody analizy kosztu zamortyzowanego](#metody-analizy-kosztu-zamortyzowanego)
+    - [Metoda kosztu sumarycznego](#metoda-kosztu-sumarycznego)
+    - [Metoda księgowania](#metoda-księgowania)
+    - [Metoda potencjału](#metoda-potencjału)
+- [Stosujemy metodę potencjału](#stosujemy-metodę-potencjału)
+- [Przykład, `Increment`](#przykład-increment)
+    - [Wykorzystanie metody potencjału](#wykorzystanie-metody-potencjału)
+
+---
 
 ## $\text {Def}$
 
@@ -92,5 +109,3 @@ Wykorzystajmy metodę potencjału do obliczenia kosztu zamortyzowanego operacji 
     **Oznacza to tyle, że jeśli wykonamy przynajmniej $n=\Omega(k)$** razy operację `Increment` całkowity koszt zawsze będzie złożoności $O(n)$ niezależnie od początkowego stanu licznika.
 
     [Section 17.3](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
-
-

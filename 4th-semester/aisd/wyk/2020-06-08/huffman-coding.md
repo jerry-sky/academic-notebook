@@ -1,11 +1,19 @@
-# Kodowanie Huffmana
+---
+lang: 'pl'
+title: 'Kodowanie Huffmana'
+author: 'Jerry Sky'
+---
+
+---
 
 - [Przykład kompresji MP3](#przykład-kompresji-mp3)
-  - [Przykładowe kodowanie MP3](#przykładowe-kodowanie-mp3)
-  - [Niepotrzebne bity](#niepotrzebne-bity)
+    - [Przykładowe kodowanie MP3](#przykładowe-kodowanie-mp3)
+    - [Niepotrzebne bity](#niepotrzebne-bity)
 - [Zastosowanie kodu Huffmana](#zastosowanie-kodu-huffmana)
-  - [Pseudokod algorytmu](#pseudokod-algorytmu)
+    - [Pseudokod algorytmu](#pseudokod-algorytmu)
 - [More](#more)
+
+---
 
 ## Przykład kompresji MP3
 

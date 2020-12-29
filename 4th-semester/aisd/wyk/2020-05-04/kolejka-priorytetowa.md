@@ -1,6 +1,23 @@
-# Kolejka priorytetowa
+---
+lang: 'pl'
+title: 'Kolejka priorytetowa'
+author: 'Jerry Sky'
+---
 
-## Operacje
+---
+
+- [Implementacja kolejki przy pomocy kopca binarnego](#implementacja-kolejki-przy-pomocy-kopca-binarnego)
+    - [`MakeQueue`$(A)$ (Binary heap)](#makequeuea-binary-heap)
+    - [`Insert`$(Q,\mathrm{key})$ (Binary heap)](#insertqmathrmkey-binary-heap)
+    - [`Minimum`$(Q)$ (Binary heap)](#minimumq-binary-heap)
+    - [`ExtractMin`$(Q)$ (Binary heap)](#extractminq-binary-heap)
+    - [`DecreaseKey`$(Q,i)$](#decreasekeyqi-1)
+    - [`Union`$(Q_1, Q_2)$ (Binary heap)](#unionq_1-q_2-binary-heap)
+    - [`Delete`$(Q,i)$](#deleteqi-1)
+- [Różne implementacje](#różne-implementacje)
+- [More](#more)
+
+---
 
 *Zakładamy tutaj, że im mniejszy klucz tym element ma wyższy priorytet.*
 

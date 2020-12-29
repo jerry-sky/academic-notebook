@@ -1,4 +1,32 @@
-# Kolorowanie I
+---
+lang: 'pl'
+title: 'Kolorowanie I'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Def Kolorowanie grafu](#def-kolorowanie-grafu)
+- [Def Właściwe kolorowanie grafu](#def-właściwe-kolorowanie-grafu)
+- [Def Liczba chromatyczna](#def-liczba-chromatyczna)
+    - [Przykłady (liczba chromatyczna)](#przykłady-liczba-chromatyczna)
+- [Fakt #1](#fakt-1)
+    - [D-d Faktu #1](#d-d-faktu-1)
+- [Zachłanne kolorowanie *(Greedy Colouring)*](#zachłanne-kolorowanie-greedy-colouring)
+- [Def Graf $k$-zdegenerowany](#def-graf-k-zdegenerowany)
+    - [Przykład (graf $k$–zdegenerowany)](#przykład-graf-kzdegenerowany)
+    - [Obserwacja #1](#obserwacja-1)
+- [Twierdzenie #1](#twierdzenie-1)
+    - [D-d Twierdzenia #1](#d-d-twierdzenia-1)
+- [Twierdzenie #2](#twierdzenie-2)
+    - [Wniosek #1](#wniosek-1)
+        - [D-d (Wniosek #1)](#d-d-wniosek-1)
+    - [Przykład #2](#przykład-2)
+- [Twierdzenie #3](#twierdzenie-3)
+- [D-d Twierdzenia #3](#d-d-twierdzenia-3)
+    - [Wniosek #2](#wniosek-2)
+
+---
 
 ## Def Kolorowanie grafu
 

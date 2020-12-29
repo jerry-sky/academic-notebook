@@ -1,6 +1,12 @@
-# Academic Notebook
+---
+lang: 'en-GB'
+title: 'Academic Notebook'
+author: 'Jerry Sky'
+description: 'This notebook contains notes, programs and snippets of code related to studies of Computer Science B.Eng. at Wrocław University of Science and Technology.'
+keywords: 'pwr, wppt, academic, notebook, computer science, cs, polish, pwr, python, latex, markdown'
+---
 
-This notebook contains notes, programs and snippets of code related to studies of Computer Science B.Eng. at Wrocław University of Science and Technology.
+---
 
 Please note:
 - The main language of this repository is not English.

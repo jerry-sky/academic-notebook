@@ -1,6 +1,12 @@
-# Kompilatory — Wprowadzenie
+---
+lang: 'pl'
+title: 'Kompilatory — Wprowadzenie'
+author: 'Jerry Sky'
+date: '2020-10-08'
+keywords: 'wykład, jftt, pwr, kompilator, wprowadzenie, analiza, leksykalna, składniowa, semantyczna, symbol, symbole, kod, pośredni, wynikowy, kompilatora, przód, tył'
+---
 
-*(2020-10-08)*
+---
 
 - [1. DEF: Kompilator](#1-def-kompilator)
 - [2. Kompilacja typu analiza-synteza](#2-kompilacja-typu-analiza-synteza)

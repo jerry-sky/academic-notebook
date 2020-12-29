@@ -1,5 +1,15 @@
-# Lista-2
-*Grafy Eulerowskie i ścieżki Hamiltona*
+---
+lang: 'pl'
+title: 'Lista-2'
+author: 'Jerry Sky'
+description: 'Grafy Eulerowskie i ścieżki Hamiltona'
+---
+
+---
+
+- [Zadanie 21](#zadanie-21)
+
+---
 
 ## Zadanie 21
 

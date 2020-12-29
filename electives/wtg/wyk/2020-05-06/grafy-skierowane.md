@@ -1,5 +1,29 @@
-# Grafy skierowane
-*(2020-05-06)*
+---
+lang: 'pl'
+title: 'Grafy skierowane'
+author: 'Jerry Sky'
+date: '2020-05-06'
+---
+
+---
+
+- [$\text {Def}$ Graf skierowany](#text-def-graf-skierowany)
+- [$\text {Twierdzenie}$ #1](#text-twierdzenie-1)
+    - [D-d $\text {Twierdzenia}$ #1](#d-d-text-twierdzenia-1)
+- [$\text {Def}$ Szkielet](#text-def-szkielet)
+- [$\text {Fakt}$ #1](#text-fakt-1)
+- [$\text {Fakt}$ #2](#text-fakt-2)
+- [$\text {Def}$ Skierowany graf eulerowski](#text-def-skierowany-graf-eulerowski)
+- [$\text {Def}$ Silnie spójny graf](#text-def-silnie-spójny-graf)
+- [$\text {Def}$ Kondensacja](#text-def-kondensacja)
+- [$\text {Twierdzenie}$ #2](#text-twierdzenie-2)
+- [$\text {Def}$ Źródło/ Odpływ](#text-def-źródło-odpływ)
+- [$\text {Twierdzenie}$ #3](#text-twierdzenie-3)
+    - [D-d $\text {Twierdzenia}$ #3](#d-d-text-twierdzenia-3)
+- [$\text {Def}$ Graf orientowalny](#text-def-graf-orientowalny)
+- [$\text {Twierdzenie}$ #4](#text-twierdzenie-4)
+
+---
 
 ## $\text {Def}$ Graf skierowany
 
@@ -93,5 +117,3 @@ Graf $G$ jest orientowalny jeśli istnieje graf skierowany o zbiorze wierzchołk
 ## $\text {Twierdzenie}$ #4
 
 Graf $G$ jest [orientowalny](#text-def-graf-orientowalny) iff, gdy jest spójny i nie zawiera [mostu](../../definicje/ścieżki/ścieżki.md#bridge) (czyli jest spójny i każda krawędź leży na cyklu).
-
-

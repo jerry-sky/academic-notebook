@@ -1,5 +1,18 @@
-# Wzbogacanie struktur danych
-*(2020-04-06)*
+---
+lang: 'pl'
+title: 'Wzbogacanie struktur danych'
+author: 'Jerry Sky'
+date: '2020-04-06'
+---
+
+---
+
+- [Zarys](#zarys)
+- [Steps](#steps)
+- [Przykład](#przykład)
+- [Więcej](#więcej)
+
+---
 
 ## Zarys
 

@@ -1,4 +1,17 @@
-# Kolorowanie i Twierdzenie o Czterech Barwach
+---
+lang: 'pl'
+title: 'Kolorowanie i Twierdzenie o Czterech Barwach'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Twierdzenie Brooks 1941](#twierdzenie-brooks-1941)
+- [Twierdzenie #2](#twierdzenie-2)
+    - [Szkic Dowodu Twierdzenia #2](#szkic-dowodu-twierdzenia-2)
+- [Twierdzenie Appel-Haken 1976](#twierdzenie-appel-haken-1976)
+
+---
 
 ## Twierdzenie Brooks 1941
 

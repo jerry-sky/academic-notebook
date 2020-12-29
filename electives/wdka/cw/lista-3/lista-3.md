@@ -1,6 +1,11 @@
-# Lista-3
+---
+lang: 'pl'
+title: 'Lista-3'
+author: 'Jerry Sky'
+date: '2020-11-30'
+---
 
-*(Termin oddania: 2020-11-30)*
+---
 
 - [Zadanie 1.](#zadanie-1)
 - [Zadanie 2.](#zadanie-2)

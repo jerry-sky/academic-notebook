@@ -1,6 +1,11 @@
-# Funkcje sklejane
+---
+lang: 'pl'
+title: 'Funkcje sklejane'
+author: 'Jerry Sky'
+date: '2020-11-24'
+---
 
-*(2020-11-24)*
+---
 
 - [1. DEF](#1-def)
 - [2. Twierdzenie#4](#2-twierdzenie4)

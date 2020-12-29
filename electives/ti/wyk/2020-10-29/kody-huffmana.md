@@ -1,6 +1,11 @@
-# Kody Huffmana
+---
+lang: 'pl'
+title: 'Kody Huffmana'
+author: 'Jerry Sky'
+date: '2020-10-29'
+---
 
-*(2020-10-29)*
+---
 
 - [1. Overview](#1-overview)
 - [2. Przykład](#2-przykład)

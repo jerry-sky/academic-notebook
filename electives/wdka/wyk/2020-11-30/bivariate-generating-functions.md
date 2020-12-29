@@ -1,6 +1,11 @@
-# Bivariate generating functions (BGF)
+---
+lang: 'pl'
+title: 'Bivariate generating functions (BGF)'
+author: 'Jerry Sky'
+date: '2020-12-07'
+---
 
-*(2020-11-30, 2020-12-07)*
+---
 
 - [1. Klasa kombinatoryczna (zmodyfikowana)](#1-klasa-kombinatoryczna-zmodyfikowana)
 - [2. Przykład](#2-przykład)

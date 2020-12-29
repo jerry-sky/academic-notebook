@@ -1,4 +1,16 @@
-# Lista 2
+---
+lang: 'pl'
+title: 'Lista 2'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 3](#zadanie-3)
+- [Zadanie 4](#zadanie-4)
+
+---
 
 ## Zadanie 1
 
@@ -65,4 +77,3 @@ $\lim_{n\to\infin}\frac{n!}{n^n}$
 
 $\frac{1 * 2 * 3 * ... * n}{n * n * n * ... * n}$\
 $0 \le \frac{n!}{n^n} \le \frac{1}{n}$ z twierdzenia o trzech ciągach $\lim_{n\to\infin}\frac{n!}{n^n} = 0$
-

@@ -1,7 +1,24 @@
-# Divide and conquer
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Divide and conquer'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
+
+---
+
+- [Binary search$(x, A)$](#binary-searchx-a)
+    - [Worst case analysis](#worst-case-analysis)
+- [Podnoszenie do potęgi $x^n$](#podnoszenie-do-potęgi-xn)
+    - [Divide and conquer case](#divide-and-conquer-case)
+- [Liczenie $n$-tej liczby Fibonacciego](#liczenie-n-tej-liczby-fibonacciego)
+    - [Brute force](#brute-force)
+    - [Podejście *bottom-up*](#podejście-bottom-up)
+
+---
 
 ## Binary search$(x, A)$
+
 $A$ - posortowana tablica
 
 1. Dziel: porównujemy $x$ ze środkowym elementem z $A$
@@ -51,5 +68,3 @@ $\Theta(\phi^n)$, gdzie $\phi = \frac{1 + \sqrt{5}}{2}$
 $F_2, F_3, F_4,...F_n$ $\rightarrow$ $\Theta(n)$
 
 $F_n = \frac{1}{\sqrt{5}} \phi^n \plusmn \frac{1}{\sqrt{5}}\Big(\frac{1- \sqrt{5}}{2}\Big)^n$ $\rightarrow~O\big(\log n\big)$ mnożeń $\rightarrow$ przybliżenie z $\sqrt{5}$
-
-

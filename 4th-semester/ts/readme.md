@@ -1,4 +1,11 @@
-# Technologie Sieciowe
+---
+lang: 'pl'
+title: 'Technologie Sieciowe'
+author: 'Jerry Sky'
+keywords: 'pwr, wppt, ts, technologie, sieciowe, gpt3, ethernet, kabel, wirtualny, wirtualne, python3, transmission, transmisja'
+---
+
+---
 
 ## Wykład
 

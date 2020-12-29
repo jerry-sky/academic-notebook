@@ -1,18 +1,24 @@
-# Klauzule Horna
+---
+lang: 'pl'
+title: 'Klauzule Horna'
+author: 'Jerry Sky'
+---
+
+---
 
 Klauzulami Horna nazywamy zbiór formuł logicznych wykorzystywany do przeprowadzenia wnioskowania np. w automatycznym dowodzeniu twierdzeń i systemach eksperckich.
 
 - [Input](#input)
-  - [Przykład klauzul](#przykład-klauzul)
+    - [Przykład klauzul](#przykład-klauzul)
 - [Def Literał](#def-literał)
 - [Rodzaje formuł](#rodzaje-formuł)
-  - [1. Formuły implikacyjne](#1-formuły-implikacyjne)
-    - [Przykłady formuły implikacyjnej](#przykłady-formuły-implikacyjnej)
-  - [2. Formuły negacyjne](#2-formuły-negacyjne)
-    - [Przykład formuły negacyjnej](#przykład-formuły-negacyjnej)
+    - [1. Formuły implikacyjne](#1-formuły-implikacyjne)
+        - [Przykłady formuły implikacyjnej](#przykłady-formuły-implikacyjnej)
+    - [2. Formuły negacyjne](#2-formuły-negacyjne)
+        - [Przykład formuły negacyjnej](#przykład-formuły-negacyjnej)
 - [Cel](#cel)
 - [Przykładowy algorytm](#przykładowy-algorytm)
-  - [Poprawność algorytmu](#poprawność-algorytmu)
+    - [Poprawność algorytmu](#poprawność-algorytmu)
 
 ## Input
 

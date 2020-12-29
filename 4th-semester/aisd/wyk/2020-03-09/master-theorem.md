@@ -1,5 +1,11 @@
-# Master Theorem
-*(2020-03-09)*
+---
+lang: 'pl'
+title: 'Master Theorem'
+author: 'Jerry Sky'
+date: '2020-03-09'
+---
+
+---
 
 Jeśli $T(n) = a\cdot T\big(\lceil\frac{n}{b}\rceil\big) + O(n^d)$ ale pewnych stałych $a > 0$, $b > 1$, $d \ge 0$ wówczas:
 

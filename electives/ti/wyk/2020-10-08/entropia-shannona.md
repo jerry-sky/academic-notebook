@@ -1,5 +1,11 @@
-# Entropia Shannon’a
-*(2020-10-08)*
+---
+lang: 'pl'
+title: 'Entropia Shannon’a'
+author: 'Jerry Sky'
+date: '2020-10-08'
+---
+
+---
 
 - [1. DEF: Entropia Shannon’a](#1-def-entropia-shannona)
     - [1.1. Uwaga](#11-uwaga)

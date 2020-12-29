@@ -1,5 +1,33 @@
-# Twierdzenie Mengera II
-*(2020-04-29)*
+---
+lang: 'pl'
+title: 'Twierdzenie Mengera II'
+author: 'Jerry Sky'
+date: '2020-04-29'
+---
+
+---
+
+- [$\text {Def}$ Pełne skojarzenie](#text-def-pełne-skojarzenie)
+- [$\text {Def}$ Sąsiedztwo w grafie dwudzielnym](#text-def-sąsiedztwo-w-grafie-dwudzielnym)
+- [Prosta obserwacja #1](#prosta-obserwacja-1)
+- [$\text {Twierdzenie}$ Halla (o małżeństwach)](#text-twierdzenie-halla-o-małżeństwach)
+    - [D-d $\text {Twierdzenia}$ Halla (o małżeństwach)](#d-d-text-twierdzenia-halla-o-małżeństwach)
+- [$\text {Def}$ Skojarzenie](#text-def-skojarzenie)
+- [$\text {Def}$ #4](#text-def-4)
+- [$\text {Def}$ Pokrycie wierzchołkowe](#text-def-pokrycie-wierzchołkowe)
+- [$\text {Def}$ #6](#text-def-6)
+- [$\text {Fakt}$ #1](#text-fakt-1)
+    - [D-d $\text {Fakt}$u #1](#d-d-text-faktu-1)
+- [$\text {Twierdzenie}$ Königa (o grafie dwudzielnym).](#text-twierdzenie-königa-o-grafie-dwudzielnym)
+    - [D-d $\text {Twierdzenia}$ Königa (o grafie dwudzielnym)](#d-d-text-twierdzenia-königa-o-grafie-dwudzielnym)
+- [$\text {Def}$ #7](#text-def-7)
+- [$\text {Fakt}$ #2](#text-fakt-2)
+- [Wniosek #1](#wniosek-1)
+- [$\text {Twierdzenie}$ Dilwortha (o dekompozycji)](#text-twierdzenie-dilwortha-o-dekompozycji)
+    - [D-d $\text {Twierdzenia}$ Dilwortha (o dekompozycji)](#d-d-text-twierdzenia-dilwortha-o-dekompozycji)
+    - [Przykład zastosowania Dilwortha](#przykład-zastosowania-dilwortha)
+
+---
 
 **[Twierdzenia Mengera](../2020-04-22/twierdzenie-mengera.md) są prawdziwe dla dowolnego grafu!**
 
@@ -150,4 +178,3 @@ $$
 f(a_0) = \max\{f(a): a\in A\} = \min\{g(b): b\in B\}
 $$
 A z warunkami typu $(*)$ mieliśmy już kilka razy do czynienia. Na przykład, twierdzenie Mengera można zapisać skrótowo jako $\max\{|P|: P\text{ jest }(A,B)\text{-ścieżką}\} = \min\{|C|: C\text{ jest }(A,B)\text{-separatorem}\}$ (przy czym nierówność $\le$ jest oczywista), zaś twierdzenie Königa jako $\max\{|L|: L\text{ jest skojarzeniem}\} = \min\{|A|: A\text{ jest pokryciem}\}$ (gdzie nierówność $\le$ jest ponownie oczywista).
-

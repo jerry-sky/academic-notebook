@@ -1,4 +1,18 @@
-# Lista-0
+---
+lang: 'pl'
+title: 'Lista-0'
+author: 'Jerry Sky'
+---
+
+---
+
+- [Treść Zadania](#treść-zadania)
+- [Rozwiązania](#rozwiązania)
+- [Uruchomienie programów](#uruchomienie-programów)
+
+---
+
+## Treść Zadania
 
 > Przy pomocy wybranego języka programowania wczytaj dane z pliku [csv](menagerie.csv) lub [json](menagerie.json), a następnie:
 > 1. Dla każdego właściciela wypisz jedynie jego imię oraz imię jego pupila.

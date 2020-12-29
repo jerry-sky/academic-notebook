@@ -1,6 +1,11 @@
-# Języki
+---
+lang: 'pl'
+title: 'Języki'
+author: 'Jerry Sky'
+date: '2020-10-26'
+---
 
-*(2020-10-26)*
+---
 
 - [1. Słowa, języki](#1-słowa-języki)
     - [1.1. Przykład](#11-przykład)

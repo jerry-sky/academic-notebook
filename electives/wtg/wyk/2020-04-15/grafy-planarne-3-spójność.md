@@ -1,6 +1,35 @@
-# Grafy planarne III i spójność\*
-*\*odwołany z powody koronawirusa*\
-*(2020-04-15)*
+---
+lang: 'pl'
+title: 'Grafy planarne III i spójność'
+author: 'Jerry Sky'
+date: '2020-04-15'
+---
+
+---
+
+- [Kontrakcja krawędzi grafu](#kontrakcja-krawędzi-grafu)
+    - [Kontrakcja grafu Petersena](#kontrakcja-grafu-petersena)
+- [$\text {Fakt}$ #1](#text-fakt-1)
+- [$\text {Definicja}$ Minor grafu](#text-definicja-minor-grafu)
+- [$\text {Twierdzenie}$ Wagnera](#text-twierdzenie-wagnera)
+- [$K_{3,3}$ na torusie](#k_33-na-torusie)
+    - [Eliminacja jedno przecięcia grafu $K_{3,3}$](#eliminacja-jedno-przecięcia-grafu-k_33)
+    - [Topologiczna transformacja powierzchni](#topologiczna-transformacja-powierzchni)
+    - [Powierzchnie orientowalne o małych „genusach”](#powierzchnie-orientowalne-o-małych-genusach)
+- [$\text {Definicja}$ Genus grafu](#text-definicja-genus-grafu)
+    - [$\text {Fakt}$ Każdy graf (skończony) ma określony genus](#text-fakt-każdy-graf-skończony-ma-określony-genus)
+- [$\text {Twierdzenie}$ #2](#text-twierdzenie-2)
+- [$\text {Fakt}$ #3](#text-fakt-3)
+    - [D-d $\text {Faktu}$ #3](#d-d-text-faktu-3)
+- [$\text {Definicja}$ Spójność wierzchołkowa grafu spójnego](#text-definicja-spójność-wierzchołkowa-grafu-spójnego)
+- [$\text {Definicja}$ spójność krawędziowa grafu spójnego](#text-definicja-spójność-krawędziowa-grafu-spójnego)
+- [$\text {Twierdzenie}$ #3](#text-twierdzenie-3)
+    - [D-d $\text {Twierdzenia}$ #3](#d-d-text-twierdzenia-3)
+- [$\text {Definicja}$ $(A,B)$–ścieżka](#text-definicja-abścieżka)
+- [$\text {Definicja}$ $(A,B)$–konektor](#text-definicja-abkonektor)
+- [$\text {Definicja}$ $(A,B)$–separator](#text-definicja-abseparator)
+
+---
 
 ## Kontrakcja krawędzi grafu
 
@@ -115,4 +144,3 @@ Niech $A,B \subseteq V$. $(A,B)$–konektorem nazywamy dowolny zbiór parami roz
 ## $\text {Definicja}$ $(A,B)$–separator
 
 Niech $A,B \subseteq V$. $(A,B)$–separatorem nazywamy dowolny zbiór wierzchołków $X$, taki, że dla dowolnej $(A,B)$–ścieżki $P$ mamy $P\cap X \neq \emptyset$.
-

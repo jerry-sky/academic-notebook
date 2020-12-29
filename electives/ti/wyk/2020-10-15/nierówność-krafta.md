@@ -1,6 +1,11 @@
-# Nierówność Kraft’a
+---
+lang: 'pl'
+title: 'Nierówność Kraft’a'
+author: 'Jerry Sky'
+date: '2020-10-15'
+---
 
-*(2020-10-15)*
+---
 
 - [1. Nierówność Kraft’a](#1-nierówność-krafta)
     - [1.1. D-d](#11-d-d)

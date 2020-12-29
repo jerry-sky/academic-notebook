@@ -1,5 +1,12 @@
-# Języki Formalne i Techniki Translacji
-*(JFTT)*
+---
+lang: 'pl'
+title: 'Języki Formalne i Techniki Translacji'
+author: 'Jerry Sky'
+description: 'Przedmiot Języki FOrmalne i Techniki Translacji (JFTT) dotyczy nauki o sposobach przedstawiania zbiorów ciągów (alfabetu słów) oraz nauki o kompilatorach.'
+keywords: 'jftt, pwr, wppt, wykład, laboratorium, ćwiczenia, lista, listy, zadań, zadanie, zadania, notatki'
+---
+
+---
 
 - [Materiały](#materiały)
 - [Notatki własne](#notatki-własne)

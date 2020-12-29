@@ -1,4 +1,10 @@
-# Lista-1
+---
+lang: 'pl'
+title: 'Lista-1'
+author: 'Jerry Sky'
+---
+
+---
 
 > Ściągnij [bazę danych `menagerie database`](https://dev.mysql.com/doc/index-other.html), a następnie utwórz i wypełnij bazę danych zgodnie z instrukcjami w pliku `README`. Wykonaj poniższe polecenia, zapisz potrzebne kwerendy SQL.
 >

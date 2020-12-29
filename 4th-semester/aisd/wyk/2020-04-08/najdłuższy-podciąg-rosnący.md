@@ -1,5 +1,19 @@
-# Najdłuższy podciąg rosnący
-*(2020-04-08)*
+---
+lang: 'pl'
+title: 'Najdłuższy podciąg rosnący'
+author: 'Jerry Sky'
+date: '2020-04-08'
+---
+
+---
+
+- [Input](#input)
+- [Output](#output)
+- [Przykład $A$](#przykład-a)
+- [Steps](#steps)
+    - [Znalezienie najdłuższej ścieżki](#znalezienie-najdłuższej-ścieżki)
+
+---
 
 ## Input
 Ciąg $A = (a_1,\dots,a_n)$
@@ -35,4 +49,3 @@ return max{ L(i): i in [n] }
 Podobnie jak w [problemie najkrótszej ścieżki w DAG](najkrótsza-ścieżka-dag.md), jeśli zapamiętamy $a_j$ dla którego osiągnięty jest $\max\{L(j): (j,i) \in E\}$ to możemy odtworzyć uzyskany w wyniku podciąg.
 
 Złożoność obliczeniowa powyższego algorytmu wynosi $O(|E|)$ (podobnie jak to było w przypadku najkrótszych ścieżek w DAG), czyli w pesymistycznym przypadku $O(n^2)$, który zachodzi jeśli ciąg wejściowy jest posortowany rosnąco.
-

@@ -1,5 +1,18 @@
-# Depth First Search (DFS)
-*Przeszukiwanie w głąb*
+---
+lang: 'pl'
+title: 'Depth First Search (DFS)'
+author: 'Jerry Sky'
+description: 'Przeszukiwanie w głąb'
+---
+
+---
+
+- [`explore`$(G,v)$](#exploregv)
+- [`DFS`$(G)$](#dfsg)
+- [Zastosowanie - spójność grafu](#zastosowanie---spójność-grafu)
+- [More](#more)
+
+---
 
 DFS grafu nieskierowanego – procedura pozwalająca na eksplorację wszystkich wierzchołków grafu. DFS pozwala odpowiedzieć na pytanie do których wierzchołków grafu można dojść startując z zadanego wierzchołka.
 

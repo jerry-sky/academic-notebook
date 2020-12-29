@@ -1,6 +1,17 @@
-# Lista-1
+---
+lang: 'pl'
+title: 'Lista-1'
+author: 'Jerry Sky'
+description: 'Tabu Search'
+---
 
-> Celem listy jest praktyczne przećwiczenie metaheurystyk opartych na lokalnym przeszukiwaniu, w szczególności *Tabu Search*. Dobór parametrów (np. długość listy Tabu, definicję sąsiedztwa, wybór sąsiedniego rozwiązania i liczba sprawdzanych sąsiadów czy wybór pierwszego testowanego rozwiązania) należy do autora programu. W czasie rozwiązywania listy autor powinien rozpoznać jaki wpływ na działanie programu (czas działania, wymagania pamięciowe, osiągany rezultat, podatność na utknięcia w lokalnym minimum, … ) mają poszczególne parametry.
+---
+
+- [Zadanie 1](#zadanie-1)
+- [Zadanie 2](#zadanie-2)
+- [Zadanie 3](#zadanie-3)
+
+---
 
 ## Zadanie 1
 

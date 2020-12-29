@@ -1,4 +1,17 @@
-# Python
+---
+lang: 'pl'
+title: 'Python'
+author: 'Jerry Sky'
+description: 'Kurs z programowania w Pythonie.'
+keywords: 'pwr, wppt, python, kwjp, kurs, programowania, lista, listy, zadań, zadania, zadanie'
+---
+
+---
+
+- [Wykład](#wykład)
+- [Laboratorium](#laboratorium)
+
+---
 
 ## Wykład
 

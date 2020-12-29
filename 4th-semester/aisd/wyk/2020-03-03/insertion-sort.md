@@ -1,11 +1,18 @@
-# Insertion Sort
-*(2020-03-02)*
+---
+lang: 'pl'
+title: 'Insertion Sort'
+author: 'Jerry Sky'
+date: '2020-03-02'
+---
 
-## Index
+---
 
-  - [`Insertion sort(A,n)`](#insertion-sortan)
-  - [Worst Case Analysis](#worst-case-analysis)
-  - [Average Case Analysis](#average-case-analysis)
+- [`Insertion sort(A,n)`](#insertion-sortan)
+- [Worst Case Analysis](#worst-case-analysis)
+    - [Example](#example)
+- [Average Case Analysis](#average-case-analysis)
+
+---
 
 ## `Insertion sort(A,n)`
 
@@ -64,4 +71,3 @@ $$
 $$
 
 ## Average Case Analysis
-

@@ -1,6 +1,13 @@
-# Postać Newtona wzoru interpolacyjnego
+---
+lang: 'pl'
+title: 'Postać Newtona wzoru interpolacyjnego'
+author: 'Jerry Sky'
+date: '2020-11-17'
+---
 
-*(2020-11-17)*
+---
+
+- [Postać Newtona](#postać-newtona)
 
 ---
 

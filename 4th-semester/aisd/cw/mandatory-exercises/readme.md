@@ -1,4 +1,10 @@
-# Mandatory exercises
+---
+lang: 'pl'
+title: 'Mandatory exercises'
+author: 'Jerry Sky'
+---
+
+---
 
 Z powodu COVID-19 zostały nam zadane pewne zadania z list ćwiczeniowych, które należało wykonać zdalnie i wysłać prowadzącemu ćwiczenia z AiSD.
 

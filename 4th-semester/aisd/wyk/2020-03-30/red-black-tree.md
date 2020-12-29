@@ -1,5 +1,23 @@
-# Drzewa czerwono-czarne
-*(2020-03-30)*
+---
+lang: 'pl'
+title: 'Drzewa czerwono-czarne'
+author: 'Jerry Sky'
+date: '2020-03-30'
+---
+
+---
+
+- [Introduction](#introduction)
+- [Warunki na RB-Tree](#warunki-na-rb-tree)
+- [Lemma A](#lemma-a)
+    - [D-d Lemma A](#d-d-lemma-a)
+- [Operacje](#operacje)
+    - [$\mathrm{Recolor}(x, color)$](#mathrmrecolorx-color)
+    - [$\mathrm{Rotate_{right}}(T,x)$, $\mathrm{Rotate_{left}}(T,x)$](#mathrmrotate_righttx-mathrmrotate_lefttx)
+    - [$\mathrm{Insert_{RB}}$, $\mathrm{Delete_{RB}}$](#mathrminsert_rb-mathrmdelete_rb)
+- [Sources](#sources)
+
+---
 
 ## Introduction
 Na [poprzednim wykładzie](../2020-03-25/binary-search-tree.md) poznaliśmy strukturę BST, które pozwalają zaimplementować operacje na zbiorach dynamicznych w złożoności obliczeniowej $O(h)$, gdzie $h$ jest [wysokością BST](../2020-03-25/binary-search-tree.md#wysokość-bst).\
@@ -52,4 +70,3 @@ Więcej informacji na temat RB-Trees można znaleźć tutaj:
 - [Chapter 13](https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf)
 - [tu](https://algs4.cs.princeton.edu/33balanced/)
 - [dr Kik - aisd04.pdf](https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA)
-

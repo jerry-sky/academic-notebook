@@ -1,5 +1,15 @@
-# Rekurencja
-*(2020-03-02)*
+---
+lang: 'pl'
+title: 'Rekurencja'
+author: 'Jerry Sky'
+date: '2020-03-02'
+---
+
+---
+
+- [$1\degree$ Metoda indukcyjna](#1degree-metoda-indukcyjna)
+
+---
 
 ## $1\degree$ Metoda indukcyjna
 
@@ -39,6 +49,7 @@ $$
 $$
 T(n) = O(n^3)
 $$
+
 ---
 $$
 T(n) = O(n^2)
