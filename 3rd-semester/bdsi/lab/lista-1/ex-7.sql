@@ -1,0 +1,1 @@
+Select owner From pet Where name Like '%ffy' Group by owner;

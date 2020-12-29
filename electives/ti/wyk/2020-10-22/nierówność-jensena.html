@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="nierówność-jensena">Nierówność Jensen’a</h1>
+<p><em>(2020-10-22)</em></p>
+<ul>
+<li><a href="#1-twierdzenie-nierówność-jensena">1. Twierdzenie: Nierówność Jensen’a</a>
+<ul>
+<li><a href="#11-d-d">1.1. D-d</a>
+<ul>
+<li><a href="#111-ćwiczenie">1.1.1. Ćwiczenie</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#2-przykład">2. Przykład</a>
+<ul>
+<li><a href="#21-uwaga">2.1. Uwaga</a></li>
+<li><a href="#22-uwaga">2.2. Uwaga</a></li>
+</ul></li>
+<li><a href="#3-twierdzenie2">3. Twierdzenie#2</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a>
+<ul>
+<li><a href="#311-uwaga">3.1.1. Uwaga</a></li>
+</ul></li>
+<li><a href="#32-wniosek-frukt-z-twierdzenia">3.2. Wniosek (<em>frukt z twierdzenia</em>)</a>
+<ul>
+<li><a href="#321-ćwiczenie-było-podobne">3.2.1. Ćwiczenie (było podobne)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="twierdzenie-nierówność-jensena">1. Twierdzenie: Nierówność Jensen’a</h2>
+<p>Niech <span class="math inline">\(f: [a;b] \to \mathbb{R}\)</span> wypukła.</p>
+<p>Załóżmy, że <span class="math inline">\(x_0, x_1, \dots, x_n \in [a;b]\)</span> oraz <span class="math inline">\(p_0, p_1, \dots, p_n \ge 0 \quad \sum_{i=1}^{n} p_i = 1\)</span>.</p>
+<p>Wówczas <span class="math display">\[
+f\left(\sum_{i=0}^n p_ix_i\right) \ge \sum_{i=0}^n p_i f(x_i).
+\]</span></p>
+<p>[ Jeśli dodatkowo <span class="math inline">\(f\)</span> jest ściśle wypukła oraz <span class="math inline">\(|\{ x_0, x_1, \dots, x_n \}| \ge 2\)</span> i <span class="math inline">\(\forall i \enspace p_i &gt; 0\)</span>,<br />
+to nierówność jest ostra. ]</p>
+<h3 id="d-d">1.1. D-d</h3>
+<p>(przez indukcję względem <span class="math inline">\(n\)</span>)</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(n = 0\)</span> jest OK</li>
+<li><span class="math inline">\(n = 1\)</span> (z <a href="przypomnienie-funkcja-wypukła.md#1-def-funkcja-wypukła">DEF wypukłości</a>)</li>
+<li><span class="math inline">\(n \implies n+1\)</span>:
+<ol style="list-style-type: decimal">
+<li>ustalmy <span class="math inline">\(x_0, x_1, \dots, x_{n+1} \in [a;b]\)</span> oraz <span class="math inline">\(p_0, p_1, \dots, p_{n+1} \ge 0 \quad \sum_{i=0}^{n+1} p_i = 1\)</span></li>
+<li><span class="math inline">\(\sum_{i=0}^{n+1} p_i f(x_i) = \sum_{i=0}^{n} p_i f(x_i) + p_{n+1} f(x_{n+1}) = (p_0 + p_1 + \dotsb + p_n) \sum_{i=0}^{n} \frac{p_i}{p_0 + \dotsb p_n} f(x_i) + p_{n+1} f(x_{n+1}) = (*)\)</span></li>
+<li>z zał. ind. możemy postawić „<span class="math inline">\(\ge\)</span>” (<span class="math inline">\(q_i = \frac{p_i}{p_0 + \dotsb p_n} \sum_{i=0}^n q_i = 1\)</span>)</li>
+<li><span class="math inline">\((*) \ge (p_0 + \dotsb p_n) f\left( \sum_{i=0}^n \frac{p_i x_i}{p_0 + \dotsb + p_n} \right) + p_{n+1} f(x_{n+1}) = (**)\)</span></li>
+<li>z wypukłości możemy postawić „<span class="math inline">\(\ge\)</span>” (<span class="math inline">\(q_0 = p_0 + \dotsb p_n \qquad q_1 = p_{n+1}\)</span>)</li>
+<li><span class="math inline">\((**) \ge f\left( (p_0 + \dotsb p_n) \sum_{i=0}^{n} \frac{p_i x_i}{p_0 + \dotsb p_n + p_{n+1} x_{n+1}} \right) = f\left( \sum_{i=0}^{n+1} p_i x_i \right)\)</span></li>
+</ol></li>
+</ol>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<h4 id="ćwiczenie">1.1.1. Ćwiczenie</h4>
+<p>Ostrość!<br />
+Załóż, że <span class="math inline">\(x_0 &lt; x_1 &lt; \dots &lt; x_n\)</span> oraz <span class="math inline">\(p_i &gt; 0\)</span>.</p>
+<hr />
+<h2 id="przykład">2. Przykład</h2>
+<p><span class="math inline">\(f(x) = x \log_2 x\)</span></p>
+<ul>
+<li><span class="math inline">\(f&#39;(x) = \log_2 x + x\cdot\frac{1}{x} \frac{1}{\ln(2)} = \log_2 x + \frac{1}{\ln(2)}\)</span></li>
+<li><span class="math inline">\(f&#39;&#39;(x) = \frac{1}{x} \frac{1}{\ln(2)} &gt; 0\)</span></li>
+</ul>
+<p>(<span class="math inline">\(f\)</span> jest ściśle wypukła)</p>
+<h3 id="uwaga">2.1. Uwaga</h3>
+<p><span class="math inline">\(f: (0;\infty) \to \mathbb{R}\)</span><br />
+czasami wygodnie jest przyjąć <span class="math inline">\(f: [0; \infty) \to \mathbb{R}\)</span> kładąc <span class="math inline">\(f(0) = 0\)</span>. (Dlaczego?)</p>
+<h3 id="uwaga-1">2.2. Uwaga</h3>
+<p>Nierówność Jensen’a w zastosowaniach probabilistycznych przyjmuje postać <span class="math inline">\(\operatorname{E}(f(x)) \ge f(\operatorname{E}X)\)</span>. (Dlaczego?)</p>
+<hr />
+<h2 id="twierdzenie2">3. Twierdzenie#2</h2>
+<p>Niech <span class="math inline">\(x_0, x_1, \dots, x_n &gt; 0, \quad y_0, y_1, \dots, y_n &gt; 0\)</span> przy czym <span class="math inline">\(\sum_{i=0}^n x_i = \sum_{i=0}^n y_i = 1\)</span>.<br />
+Wówczas <span class="math display">\[
+\sum_{i=0}^n x_i \log_2 \frac{1}{x_i} \le \sum_{i=0}^n x_i \log_2 \frac{1}{y_i}.
+\]</span></p>
+<h3 id="d-d-1">3.1. D-d</h3>
+<p><span class="math display">\[
+\sum_{i=0}^n \log_2 \frac{1}{y_i} - \sum_{i=0}^n x_i \log_2 \frac{1}{x_i} = \sum_{i=0}^n x_i \left( \log_2 \frac{1}{y_i} + \log x_i \right) =\\
+= \sum_{i=0}^n y_i \cdot \frac{x_i}{y_i} \log_2 \frac{x_i}{y_i} = (*)
+\]</span> z <a href="#1-twierdzenie-nierówność-jensena">nierówności Jensen’a</a> dla - <span class="math inline">\(p_i = y_i\)</span> - <span class="math inline">\(t_i = \frac{x_i}{y_i}\)</span> - <span class="math inline">\(f(t) = t\log t\)</span></p>
+<p>mamy dalej: <span class="math display">\[
+(*) \ge f\left( \sum_{i=0}^{n} y_u \frac{x_i}{y_i} \right) = f(1) = 1 \cdot \log_2(1) = 0
+\]</span></p>
+<h4 id="uwaga-2">3.1.1. Uwaga</h4>
+<p>Można dopuścić <span class="math inline">\(&gt;0\)</span> oraz <span class="math inline">\(1 = \sum_{i=0}^n x_i \ge \sum_{i=0}^n y_i\)</span>.<br />
+Nawiasem mówiąc, jeśli <span class="math inline">\(\sum x_i &gt; \sum y_i\)</span> to dostaniemy ostrą nierówność.</p>
+<hr />
+<h3 id="wniosek-frukt-z-twierdzenia">3.2. Wniosek (<em>frukt z twierdzenia</em>)</h3>
+<ul>
+<li><span class="math inline">\(|X| = N \qquad H(X) = \sum_{i=1}^N p_i \log_2 \frac{1}{p_i}\)</span></li>
+<li><span class="math inline">\(H(X) \le \sum_{i=1}^N p_I \log_2 \frac{1}{q_i}\)</span> dla dowolnego (<span class="math inline">\(q_i &gt; 0 \enspace \sum_{i=1}^N q_i = 1\)</span>)</li>
+<li>dla <span class="math inline">\(q_1 = \frac{1}{N}\)</span> dostajemy:
+<ul>
+<li><span class="math inline">\(H(X) \le \sum_{i=1}^N p_i \log_2 N = \log_2 N\)</span>.</li>
+</ul></li>
+<li>dla <span class="math inline">\(p_i = \frac{1}{N}\)</span> mamy:
+<ul>
+<li><span class="math inline">\(H(X) = \log_2 N\)</span></li>
+</ul></li>
+</ul>
+<h4 id="ćwiczenie-było-podobne">3.2.1. Ćwiczenie (było podobne)</h4>
+<p>Dla jakich <span class="math inline">\(p_i\)</span> mamy <span class="math inline">\(H(X) = \log_2 N\)</span>.<br />
+Zastanowić się, kiedy nierówności są ostre!</p>
+<hr />
+</body>
+</html>

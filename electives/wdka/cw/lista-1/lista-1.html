@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-1">Lista-1</h1>
+<p><em>(Termin oddania: 2020-10-31)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+<li><a href="#zadanie-5">Zadanie 5.</a></li>
+<li><a href="#zadanie-6">Zadanie 6.</a></li>
+</ul>
+<hr />
+<p><em>Przyjmujemy, że OFG klasy <span class="math inline">\(\mathcal{A}\)</span> to <span class="math inline">\(A(z)\)</span>.</em></p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Ciąg <span class="math inline">\((a_1, a_2, \dots)\)</span> odpowiada funkcji generującej <span class="math inline">\(A(z)\)</span>. Jakim ciągom odpowiadają funkcje: 1. <span class="math inline">\(A&#39;(z) + A(z)\)</span> 2. <span class="math inline">\(2A(z)\)</span> 3. <span class="math inline">\(A^2(z)\)</span></p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(A&#39;(z) + A(z) = \left(\sum_{n\ge1} a_n z^n\right)&#39; + \sum_{n\ge1} a_n z^n = \sum_{n\ge0} (n+1) a_{n+1} z^{n} + \sum_{n\ge1} a_n z^n = a_1 + \sum_{n\ge1} ((n+1) a_{n+1} + a_n)z^n \overset{\text{zakładamy, że }a_0 = 0}{=} \sum_{n\ge0}((n+1)a_{n+1} + a_n)z^n\)</span><br />
+czyli mamy ciąg <span class="math inline">\((a_1 + 2a_2, a_2 + 3a_3, a_3 + 4a_4, \dots)\)</span></p></li>
+<li><p><span class="math inline">\(2A(z) = 2\cdot\left( \sum_{n\ge1} a_n z^n \right) = \sum_{n\ge1} (2\cdot a_n) \cdot z^n\)</span><br />
+czyli mamy ciąg <span class="math inline">\((2a_1, 2a_2, 2a_3, 2a_4, \dots)\)</span></p></li>
+<li><p><span class="math inline">\(\left( A(z) \right)^2 = \left( \sum_{n\ge1} a_n z^n \right)^2 = \sum_{n\ge1} \left( \sum_{k=0}^n a_k \cdot a_{n-k} \right) z^n\)</span><br />
+czyli mamy ciąg <span class="math inline">\(a_n&#39; = \sum_{k=0}^n a_k \cdot a_{n-k}\)</span></p></li>
+</ol>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Rozważamy dwie klasy kombinatoryczne: - <span class="math inline">\(\mathcal{A} = (A = \left\{ \star, 1, 2, \epsilon \right\}, |\cdot|_A = \left\{ \star \to 5, 1 \to 1, 2 \to 2, \epsilon \to 0 \right\})\)</span> - <span class="math inline">\(\mathcal{B} = (B = \left\{ a \right\}, |\cdot|_B = \left\{ a \to 1 \right\})\)</span></p>
+<p>Opisz poniższe klasy (jeśli istnieją) i podaj ich funkcje generujące:</p>
+</blockquote>
+<p>OGFs: - <span class="math inline">\(A(z) = 1 + z + z^2 + z^5\)</span> - <span class="math inline">\(B(z) = z\)</span></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\mathcal{A} + \mathcal{B} = (A \cup B, |\cdot|_{A\cup B})\)</span></p>
+<p>określamy nową funkcję wagi: <span class="math display">\[
+|\cdot|_{A\cup B} =
+\begin{cases}
+    |x|_A &amp; x \in A\\
+    |x|_B &amp; x \in B\\
+\end{cases}
+\]</span> gdzie <span class="math inline">\(A\)</span> to zbiór elementów w klasie <span class="math inline">\(\mathcal{A}\)</span>, <span class="math inline">\(B\)</span> to zbiór elementów w klasie <span class="math inline">\(\mathcal{B}\)</span>, <span class="math inline">\(|\cdot|_A\)</span> to funkcja wagi w klasie <span class="math inline">\(\mathcal{A}\)</span> a <span class="math inline">\(|\cdot|_B\)</span> to funkcja wagi w klasie <span class="math inline">\(\mathcal{B}\)</span></p>
+<p>OGF: <span class="math inline">\((\mathcal{A} + \mathcal{B})(z) = 1 + 2z + z^2 + z^5\)</span></p></li>
+<li><p><span class="math inline">\(\mathcal{A} \times \mathcal{B} = (A \times B, |\cdot|)\)</span></p>
+<p>określamy nową funkcją wagi:<br />
+<span class="math inline">\(\forall a\in A, b\in B \enspace |(a,b)| = |a|_A + |b|_B\)</span></p>
+<p>OGF: <span class="math inline">\((\mathcal{A} \times \mathcal{B})(z) = A(z) \cdot B(z) = z + z^2 + z^3 + z^6\)</span><br />
+(to się zgadza, bo klasę <span class="math inline">\(\mathcal{A}\)</span> mnożymy przez klasę <span class="math inline">\(\mathcal{B} \cong \mathcal{Z}\)</span>, czyli „kolorujemy” każdy element z <span class="math inline">\(A\)</span> elementem o wadze <span class="math inline">\(1\)</span>)</p></li>
+<li><p><span class="math inline">\(\operatorname{SEQ}(\mathcal{A})\)</span> nie działa, bo ma element wagi zero</p></li>
+<li><p><span class="math inline">\(\operatorname{SEQ}(\mathcal{B}) = (\left\{ \varepsilon, a, (a,a), (a,a,a), \dots \right\}, |(\beta_1, \dots, \beta_n)| = n)\)</span></p>
+<p>OGF: <span class="math inline">\(\operatorname{SEQ}(\mathcal{B})(z) = \frac{1}{1 - B(z)} = \frac{1}{1 - z}\)</span></p>
+<p>(liczby naturalne)</p></li>
+<li><p><span class="math inline">\(\operatorname{SEQ}(\mathcal{A} + \mathcal{B})\)</span> nie działa, bo ma element wagi zero</p></li>
+<li><p><span class="math inline">\(\operatorname{SEQ}(\mathcal{A}) + \operatorname{SEQ}(\mathcal{B})\)</span> tak samo jak dla <span class="math inline">\(\operatorname{SEQ}(\mathcal{A})\)</span>; ewentualnie możemy po prostu rozważać jak dla podpunktu 4. i zignorować <span class="math inline">\(\operatorname{SEQ}(\mathcal{A})\)</span>.</p></li>
+<li><p><span class="math inline">\(\operatorname{MSET}(\mathcal{B}) = (\left\{ \varepsilon, \{a\}, \{a,a\}, \{a,a,a\}, \dots \right\}, |\{\underbrace{a,\dots,a}_{n}\}| = n)\)</span></p>
+<p>Ewentualnie, zamiast pisać <span class="math inline">\(n\)</span> razy element <span class="math inline">\(a\)</span>, można zapisywać po prostu liczbę, która mówi ile mamy powtórzeń elementu <span class="math inline">\(a\)</span>.</p>
+<p>OGF: <span class="math inline">\(\operatorname{MSET}(\mathcal{B})(z) = \prod_{b \in B} \frac{1}{1 - z^{|b|_B}} = \frac{1}{1 - z}\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{PSET}(\mathcal{A}) + \operatorname{PSET}(\mathcal{B}) = (\left\{ \varepsilon, \{\star\}, \{1\}, \{2\}, \{\epsilon\}, \{a\}, \{\star, 1\}, \dots \right\}, |X| = \sum_{x \in X}|x|_{A \cup B})\)</span></p>
+<p><strong>Tutaj nie ma tutaj sytuacji, w której jeden zbiorek ma elementy i ze zbioru <span class="math inline">\(A\)</span> i ze zbioru <span class="math inline">\(B\)</span> jednocześnie.</strong> (np.: nie ma tutaj zbioru <span class="math inline">\(\{a, \star\}\)</span>) Sumujemy dwa <span class="math inline">\(\operatorname{PSET}\)</span>-y osobno.</p>
+<p>OGF: <span class="math inline">\((\operatorname{PSET}(\mathcal{A}) + \operatorname{PSET}(\mathcal{B}))(z) = \prod_{a \in A} (1 + z^{|a|}) + \prod_{b \in B} (1 + z^{|b|}) = (1 + z^5)(1 + z)(1 + z^2)(1 + z^0) + (1 + z) = (1+z)(1 + 2\cdot(1 + z^5)(1 + z^2)) = 2z^8 + 2z^7 + 2z^6 +2z^5 + 2z^3 + 2z^2 + 3z + 3\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{CYC}(\mathcal{A})\)</span> nie działa, bo ma element o wagi zero</p></li>
+</ol>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Policzyć <span class="math inline">\([z^{30}] \frac{1}{(1-z)^7}\)</span> (bez użycia komputera).</p>
+</blockquote>
+<p>Funkcję <span class="math inline">\(\frac{1}{(1-z)^7}\)</span> możemy zapisać inaczej: <span class="math display">\[
+A(x) = \frac{1}{(1-z)^7} = \sum_{n\ge0} \binom{6 + n}{6} z^n
+\]</span> korzystając ze wzoru 6. z <a href="#zadanie-5">zadania 5.</a>.</p>
+<p>Wówczas naszym wynikiem będzie <span class="math inline">\(\binom{36}{6}\)</span>.</p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Przepisać sobie wszystkie 6. opisanych na wykładzie 1 równań (tożsamości kombinatorycznych). Zapamiętać i zrozumieć nierówności 1-4.</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\((x+y)^n = \sum_{k = 0}^n \binom{n}{k} x^k y^{n-k}\)</span><br />
+Mnożymy ze sobą <span class="math inline">\(n\)</span> razy sumę <span class="math inline">\(x+y\)</span> i chcemy uzyskać sumę takiego ciągu, w którym element to jest pewien współczynnik oraz wyrażenie postaci <span class="math inline">\(x^k y^{n-k}\)</span>. Należy zauważyć, że taka konfiguracja elementów w tym mnożeniu pojawia się odpowiednią liczbę razy — spośród <span class="math inline">\(n\)</span> wystąpień wybieramy ile (<span class="math inline">\(k\)</span>) razy pojawił się symbol <span class="math inline">\(x^k y^{n-k}\)</span> z dokładnie taką potęgą <span class="math inline">\(k\)</span>.</p></li>
+<li><p><span class="math inline">\(\sum_{i=0}^\infty q_i = \frac{1}{1-q} \qquad (|q| &lt; 1)\)</span><br />
+Suma nieskończona ciągu geometrycznego. Wzór jest szczególnym przypadkiem — sumujemy po wszystkich liczbach naturalnych, przez co dla <span class="math inline">\(|q| &lt; 1\)</span> zachodzi: <span class="math inline">\(\lim_{n\to \infty} \frac{1 - q^n}{1 - q} = \frac{1}{1 - q}\)</span> (ułamek podniesiony do <span class="math inline">\(n \to \infty\)</span> dąży do zera).</p></li>
+<li><p><span class="math inline">\(\left( \sum_{n=0}^{\infty} a_n x^n \right)\cdot \left( \sum_{n=0}^{\infty} b_n x^n \right) = \sum_{n=0}^\infty \left( \sum_{k=0}^n a_k \cdot b_{n-k} x^n \right)\)</span><br />
+Przeplatające się ze sobą iloczyny szeregów.</p></li>
+<li><p><span class="math inline">\(\binom{n+m}{k} = \sum_{j = 0}^{k} \binom{n}{j} \binom{m}{k-j}\)</span><br />
+Lewa strona: Mamy zbiór <span class="math inline">\((n+m)\)</span>–elementowy i wybieramy spośród nich <span class="math inline">\(k\)</span>-elementowy zespół.<br />
+Prawa strona: Dzielimy ten zespół na dwie części — jeden zbiór <span class="math inline">\(n\)</span>-elementowy, drugi <span class="math inline">\(m\)</span>-elementowy i wybieramy dwa podzbiory, które razem dadzą <span class="math inline">\(k\)</span>-elementowy zbiór. (Musimy rozważyć wszystkie przypadki po ile elementów jest we wspomnianych częściach, dlatego używamy tutaj sumy.)</p></li>
+</ol>
+<h2 id="zadanie-6.">Zadanie 6.</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(\mathcal{N}\)</span> oznacza klasę kombinatoryczną liczb naturalnych z funkcją rozmiaru równą wartości liczby. Niech <span class="math inline">\(\mathcal{N}_{r,k}\)</span> oznacza klasę liczb naturalnych, które dają resztę <span class="math inline">\(r\)</span> z dzielenie przez <span class="math inline">\(k\)</span>. Uzasadnij, że <span class="math display">\[
+\mathcal{N} \cong \mathcal{N}_{0,k} + \dotsb + \mathcal{N}_{k-1, k}.
+\]</span></p>
+</blockquote>
+<p>Idea: dzielimy klasę liczb naturalnych na podklasy, w których mamy liczby wielokrotności <span class="math inline">\(k\)</span> z przesunięciem <span class="math inline">\(r\)</span>, czyli właśnie wszystkie reszty z dzielenia przez <span class="math inline">\(k\)</span>.</p>
+<p>Formalna definicja jednej podklasy: <span class="math display">\[
+\mathcal{N}_{r,k} = \Big(N_{r,k} = \{x \in \mathbb{N} : x \operatorname{mod} k = r\}, |x| = x \Big)
+\]</span></p>
+<p>Zsumujmy wszystkie zbiory podklas w rozumieniu wszystkich reszt z dzielenia przez <span class="math inline">\(k\)</span>: <span class="math display">\[
+\bigcup_{r = 0}^{k - 1} N_{r,k} = \bigcup_{r = 0}^{k - 1} \left\{ x \in \mathbb{N}: x \operatorname{mod} k = r \right\} =\\
+\left\{ x \in \mathbb{N}: x \operatorname{mod} k = r \land r \in \{0, \dots, k-1\} \right\} = (*)
+\]</span> a przez to, że rozważamy <span class="math inline">\(r\)</span> jako wszystkie możliwe reszty z dzielenia przez <span class="math inline">\(k\)</span> wówczas <span class="math display">\[
+(*) = \mathbb{N}
+\]</span></p>
+<p>Zatem <span class="math display">\[
+\mathcal{N} \cong \mathcal{N}_{0,k} + \dotsb + \mathcal{N}_{k-1, k}.
+\]</span></p>
+<hr />
+</body>
+</html>

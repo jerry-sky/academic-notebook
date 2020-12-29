@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kod-shannona-raz-jeszcze">Kod Shannon’a raz jeszcze</h1>
+<p><em>(2020-10-29)</em></p>
+<p>(<a href="../2020-10-15/kod-shannona">wcześniejsza notatka</a>)</p>
+<ul>
+<li><a href="#1-co-wiemy-o-kodach-shannona">1. <em>Co wiemy o kodach Shannon’a?</em></a>
+<ul>
+<li><a href="#11-frukt">1.1. Frukt</a></li>
+</ul></li>
+<li><a href="#twierdzenie-shannona-raz-jeszcze">Twierdzenie Shannon’a raz jeszcze</a></li>
+<li><a href="#uwaga-o-kodach-shannona">Uwaga o kodach Shannon’a</a></li>
+</ul>
+<hr />
+<h2 id="co-wiemy-o-kodach-shannona">1. <em>Co wiemy o kodach Shannon’a?</em></h2>
+<p><span class="math display">\[
+H(X) \le L_{Sh}(X) \le H(X) + 1 \qquad (\star)
+\]</span></p>
+<h3 id="frukt">1.1. Frukt</h3>
+<p>Z <a href="#1-co-wiemy-o-kodach-shannona">„<span class="math inline">\(\star\)</span>”</a>: <span class="math display">\[
+n \cdot H(X) \le n \cdot L_{Sh}(X) \le H(X_n) + 1 = n \cdot H(X) + 1\\
+H(X) \le \frac{L(X_n)}{n} \le H(X) + \frac{1}{n}.
+\]</span></p>
+<hr />
+<h2 id="twierdzenie-shannona-raz-jeszcze">Twierdzenie Shannon’a raz jeszcze</h2>
+<p><em>biorąc pod uwagę <a href="#11-frukt">Frukt z poprzedniego punktu</a>:</em> <span class="math display">\[
+\lim_{n \to \infty} \frac{L(X_n)}{n} = H(X)
+\]</span></p>
+<hr />
+<h2 id="uwaga-o-kodach-shannona">Uwaga o kodach Shannon’a</h2>
+<p><em>Kody Shannon’a bywają nieoptymalne.</em></p>
+<p>Bez straty ogólności dla <span class="math inline">\(|X| = N\)</span> jest skończenie wiele (rozsądnych) kodów.<br />
+(Można ograniczyć długość słowa kodowego przez ?)</p>
+<p><strong>Zrobimy optymalne kody!</strong><br />
+<em><a href="kody-huffmana">Kody Huffmana</a></em></p>
+<p>Kodowanie Shannon’a nie jest jednoznaczne!</p>
+<hr />
+</body>
+</html>

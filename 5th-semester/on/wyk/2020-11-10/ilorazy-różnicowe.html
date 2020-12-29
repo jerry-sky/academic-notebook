@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="ilorazy-różnicowe">Ilorazy różnicowe</h1>
+<p><em>(2020-11-10)</em></p>
+<ul>
+<li><a href="#1-ilorazy-różnicowe">1. Ilorazy różnicowe</a></li>
+<li><a href="#2-postać-newtona-wzoru-interpolacyjnego">2. Postać Newtona wzoru interpolacyjnego</a></li>
+<li><a href="#3-twierdzenie-o-ilorazach-różnicowych-wyższych-rzędów">3. Twierdzenie o ilorazach różnicowych wyższych rzędów</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+</ul></li>
+<li><a href="#4-sposób-uzyskiwania-współczynników">4. Sposób uzyskiwania współczynników</a>
+<ul>
+<li><a href="#41-przykład">4.1. Przykład</a></li>
+</ul></li>
+<li><a href="#5-twierdzenie4">5. Twierdzenie#4</a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+</ul></li>
+<li><a href="#6-twierdzenie5">6. Twierdzenie#5</a>
+<ul>
+<li><a href="#61-d-d">6.1. D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="ilorazy-różnicowe-1">1. Ilorazy różnicowe</h2>
+<p>Z <a href="interpolacja-za-pomocą-wielomianów.md#2-twierdzenie1">Twierdzenie#1</a> wiemy, że dla różnych węzłów <span class="math inline">\(x_0, x_1, \dots, x_n\)</span> istnieje dokładnie jeden wielomian <span class="math inline">\(p \in \Pi_n\)</span> interpolujący <span class="math inline">\(f\)</span> taki, że <span class="math display">\[
+p(x_i) = f(x_i) \quad (0 \le i \le n).
+\]</span></p>
+<p>Wielomian <span class="math inline">\(p\)</span> można przedstawić jako kombinację liniową wielomianów <span class="math inline">\(1,x,x^2, \dots, x^n\)</span> (baza <span class="math inline">\(\Pi_n\)</span>). Jednak takie przedstawienie nie jest zalecane, ponieważ prowadzi do układu z macierzą Vandermonde’a (zadanie źle uwarnukowane).<br />
+Przedstawmy <span class="math inline">\(p\)</span> w innej bazie <span class="math inline">\(\Pi_n\)</span>: <span class="math display">\[
+\begin{aligned}
+    q_0(x) &amp;= 1\\
+    q_1(x) &amp;= (x-x_0)\\
+    q_2(x) &amp;= (x-x_0)(x-x_1)\\
+    \dotsb\\
+    q_n(x) &amp;= (x-x_0) (x - x_1) \dotsb (x - x_{n-1})
+\end{aligned}
+\]</span></p>
+<p>Czyli mamy <span class="math display">\[
+p(x) = \sum_{j=0}^n c_j q_j(x).
+\]</span></p>
+<p>Z faktu, że <span class="math inline">\(p\)</span> spełnia warunki interpolacji, otrzymujemy układ równań, z którego wyznaczamy <span class="math inline">\(c_0, c_1, \dots, c_n\)</span>: <span class="math display">\[
+\sum_{j=0}^n c_j q_j (x_i) = f(x_i) \qquad (0 \le i \le n)
+\]</span></p>
+<div class="figure">
+<img src="ilorazy-różnicowe-układ-równań.png" />
+
+</div>
+<hr />
+<p>Rozwiązując układ z góry w dół wyznaczamy <span class="math inline">\(c_0, c_1, \dots, c_n\)</span>. Możemy zauważyć, że - <span class="math inline">\(c_0\)</span> zależy od <span class="math inline">\(f(x_0)\)</span> - <span class="math inline">\(c_1\)</span> zależy od <span class="math inline">\(f(x_0)\)</span> oraz od <span class="math inline">\(f(x_1)\)</span> - <span class="math inline">\(\dots\)</span> - <span class="math inline">\(c_n\)</span> zależ od <span class="math inline">\(f\)</span> w punktach <span class="math inline">\(x_0, x_1, \dots, x_n\)</span>.</p>
+<p>Wprowadzimy notację <span class="math inline">\(c_n = f[x_0, x_1, \dots, x_n]\)</span>.<br />
+<span class="math inline">\(f[x_0,x_1,\dots,x_n]\)</span> jest współczynnikiem przy <span class="math inline">\(q_n\)</span>.</p>
+<p>Jako, że <span class="math display">\[
+q_n(x) = (x - x_0) (x - x_1) \dotsb (x - x_{n-1}) = x^n + \dotsb
+\]</span> więc <span class="math inline">\(f[x_0, x_1, \dots, x_n]\)</span> jest współczynnikiem przy <span class="math inline">\(x^n\)</span> wielomianu stopnia co najwyżej <span class="math inline">\(n\)</span> interpolującego <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(x_0, x_1, \dots, x_n\)</span>. Wielkość <span class="math inline">\(f[x_0, x_1, \dots, x_n]\)</span> będziemy nazywali <strong>ilorazem różnicowym</strong> opartym na węzłach <span class="math inline">\(x_0, x_1, \dots, x_n\)</span>.</p>
+<p>Na przykład <span class="math inline">\(f[x_0]\)</span> jest współczynnikiem przy <span class="math inline">\(x^0\)</span> wielomianu stopnia <span class="math inline">\(0\)</span> interpolującego <span class="math inline">\(f\)</span> w <span class="math inline">\(x_0\)</span>. <span class="math display">\[
+f[x_0] = f(x_0).
+\]</span></p>
+<p><span class="math inline">\(f[x_0, x_1]\)</span> jest współczynnikiem przy <span class="math inline">\(x\)</span> wielomianu stopnia <span class="math inline">\(\le 1\)</span> interpolującego <span class="math inline">\(f\)</span> w <span class="math inline">\(x_0, x_1\)</span>. <span class="math display">\[
+p(x) = f(x_0) + \frac{f(x_1) - f(x_0)}{x_1 - x_0} (x - x_0) = f(x_0) + f[x_0, x_1](x - x_0).
+\]</span></p>
+<h2 id="postać-newtona-wzoru-interpolacyjnego">2. Postać Newtona wzoru interpolacyjnego</h2>
+<p>Ogólnie <span class="math inline">\(c_i\)</span> wyznaczamy z wcześniejszego układu równań <span class="math inline">\(c_0 = f[x_0], c_1 = f[x_0, x_1]\)</span> aż do <span class="math inline">\(c_n = f[x_0, x_1, \dots, x_n]\)</span>.<br />
+Otrzymujemy <strong>postać Newtona wzoru interpolacyjnego</strong> <span class="math display">\[
+p(x) = \sum_{k=0}^n c_k q_k (x) = \sum_{k=0}^n f[x_0, x_1,\dots, x_k] \prod_{j=0}^{k-1} (x - x_j).
+\]</span></p>
+<p>Oczywiście: <span class="math display">\[
+f[x_i] = f(x_i), \qquad (0 \le i \le n).
+\]</span></p>
+<hr />
+<h2 id="twierdzenie-o-ilorazach-różnicowych-wyższych-rzędów">3. Twierdzenie o ilorazach różnicowych wyższych rzędów</h2>
+<p>Ilorazy różnicowe spełniają równość: <span class="math display">\[
+f[x_0,x_1,\dots,x_n] = \frac{f[x_1,x_2,\dots,x_n] - f[x_0,x_1,\dots,x_{n-1}]}{x_n - x_0}.
+\]</span></p>
+<h3 id="d-d">3.1. D-d</h3>
+<p>Niech <span class="math inline">\(p_k \in \Pi_k\)</span> będzie wielomianem interpolującym <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(x_0, \dots, x_k\)</span>. Potrzebujemy wielomianów <span class="math inline">\(p_n\)</span> oraz <span class="math inline">\(p_{n-1}\)</span>. Niech będzie wielomianem <span class="math inline">\(q \in \Pi_{n-1}\)</span> interpolującym <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(x_1,\dots,x_n\)</span>.<br />
+Wówczas <span class="math display">\[
+p_n(x) = q(x) + \frac{x - x_n}{x_n - x_0} \left( q(x) - p_{n-1}(x) \right)
+\]</span></p>
+<p>Po obu stronach równości są wielomiany stopnia <span class="math inline">\(\le n\)</span>. Wartości tych wielomianów w punktach <span class="math inline">\(x_0, x_1, \dots, x_n\)</span> są takie same, co implikuje wielomiany muszą być identyczne. Potrzeba więc mieć po obu stronach identyczne współczynniki przy <span class="math inline">\(x^n\)</span>. Współczynnik wielomianu stopnia <span class="math inline">\(\le n\)</span> interpolującego <span class="math inline">\(f\)</span> w punktach <span class="math inline">\(x_0, x_1, \dots, x_n\)</span> jest równy <span class="math inline">\(f[x_0, x_1, \dots, x_n]\)</span>. Stąd dostajemy <span class="math display">\[
+f[x_0, x_1, \dots, x_n] = \frac{f[x_1, x_1,\dots, x_n] - f[x_0, x_1, \dots, x_{n-1}]}{x_n - x_0}
+\]</span></p>
+<hr />
+<h2 id="sposób-uzyskiwania-współczynników">4. Sposób uzyskiwania współczynników</h2>
+<p>Jeżeli dana jest tablica wartości funkcji <span class="math inline">\((x_i, f(x_i))\)</span>, wówczas ilorazy różnicowe łatwo obliczamy konstruując tablicę trójkątną.<br />
+Przykład: ilorazy różnicowe rzędów <span class="math inline">\(0,1,2,3\)</span> obliczamy:<br />
+<img src="ilorazy-różnicowe-przykład-współczynniki.png" /></p>
+<h3 id="przykład">4.1. Przykład</h3>
+<p><em>Skonstruować tablicę ilorazów różnicowych dla wartości z tabeli:</em><br />
+<img src="ilorazy-różnicowe-tabela-przykład.png" /></p>
+<p>Korzystając z <a href="#3-twierdzenie-o-ilorazach-różnicowych-wyższych-rzędów">Twierdzenia#3</a> konstruujemy tablicę ilorazów różnicowych<br />
+<img src="iloraz-różnicowe-tabela-przykład-2.png" /></p>
+<hr />
+<h2 id="twierdzenie4">5. Twierdzenie#4</h2>
+<p>Ilorazy różnicowe nie zależą od kolejności węzłów. Jeśli <span class="math inline">\((z_0,z_1, \dots, z_n)\)</span> jest permutacją <span class="math inline">\((x_0, x_1, \dots, x_n)\)</span>, to <span class="math display">\[
+f[z_0,z_1,\dots,z_n] = f[x_0,x_1,\dots,x_n].
+\]</span></p>
+<h3 id="d-d-1">5.1. D-d</h3>
+<p>Iloraz różnicowy jest równy współczynnikowi przy <span class="math inline">\(x^n\)</span> wielomianu stopnia <span class="math inline">\(\le n\)</span> interpolującego <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(z_0,z_1,\dots,z_n\)</span>. Podobnie iloraz różnicowy <span class="math inline">\(f[x_0,x_1,\dots,x_n]\)</span> jest równy współczynnikowi przy <span class="math inline">\(x^n\)</span> wielomianu stopnia <span class="math inline">\(\le n\)</span> interpolującego <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(x_0,x_1,\dots,x_n\)</span>. Wielomiany oczywiście są równe więc współczynniki są równe.</p>
+<hr />
+<h2 id="twierdzenie5">6. Twierdzenie#5</h2>
+<p>Niech <span class="math inline">\(p \in \Pi_n\)</span> interpolującym <span class="math inline">\(f\)</span> różnych węzłach <span class="math inline">\(x_0,x_1,\dots,x_n\)</span>. Jeżeli <span class="math inline">\(t \neq x_i\)</span>, wówczas <span class="math display">\[
+f(t) - p(t) = f[x_0,x_1,\dots,x_n,t] \prod_{j=0}^n (t-x_j).
+\]</span></p>
+<h3 id="d-d-2">6.1. D-d</h3>
+<p>Niech <span class="math inline">\(q \in \Pi_{n+1}\)</span> będzie wielomianem interpolującym <span class="math inline">\(f\)</span> w węzłach <span class="math inline">\(x_0,x_1,\dots,x_n,t\)</span>. Wielomian <span class="math inline">\(q\)</span> możemy otrzymać z <span class="math inline">\(p\)</span> przez dodanie jednego czynnika (<a href="#2-postać-newtona-wzoru-interpolacyjnego">postać Newtona</a>) <span class="math display">\[
+q(x) = p(x) + f[x_0,x_1,\dots,x_n,t] \prod_{j=0}^n (x-x_j).
+\]</span></p>
+<p>Ponieważ <span class="math inline">\(q(t) = f(t)\)</span> dla <span class="math inline">\(x = t\)</span>. Zatem <span class="math display">\[
+f(t) - p(t) = f[x_0,x_1,\dots,x_n,t] \prod_{j=0}^n (t - x_j).
+\]</span></p>
+<hr />
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-1">Lista-1</h1>
+<p><em>(Termin oddania 2020-10-31)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+<li><a href="#zadanie-5">Zadanie 5.</a></li>
+<li><a href="#zadanie-6">Zadanie 6.</a></li>
+<li><a href="#zadanie-7">Zadanie 7.</a></li>
+</ul>
+<hr />
+<p>Do rozwiązań dołączone są pliki o rozszerzeniu <code>.wls</code> — są to pliki zawierające skrypty napisane w <em>WolframScript</em> i realizują praktyczną część danego zadania.</p>
+<p>Uruchomienie na Linuxie (z zainstalowanym <em>Wolfram Mathematica</em> i <em>WolframScript</em>): <code>./ex-[numer zadania].wls</code>.</p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Dla jakich <span class="math inline">\(x\)</span> zachodzi: <span class="math display">\[
+x &gt; 10^6 \cdot \ln(x)
+\]</span></p>
+</blockquote>
+<p>Powyższe wyrażenie zachodzi dla <span class="math display">\[
+0 &lt; x &lt; 1.0000010000015\\
+\lor\\
+x &gt; 1.6626508901372496 \cdot 10^7.
+\]</span></p>
+<p>Wykresy (zielony — <span class="math inline">\(10^6 \cdot ln(x)\)</span>, czerwony — <span class="math inline">\(x\)</span>):</p>
+<p><img src="1.wykres-1.png" /><br />
+<img src="1.wykres-2.png" /><br />
+<img src="1.wykres-3.png" /></p>
+<p><a href="ex-1.wls">Kod programu</a> znajduje się w pliku <code>ex-1.wls</code>.</p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Na ile sposobów można wypłacić 200$ mając do dyspozycji 20 banknotów 20$, 10 banknotów 10$, 10 banknotów 5$ dolarowych oraz 50 banknotów 1$.<br />
+<em>Uwaga: banknoty są <strong>rozróżnialne</strong>.</em></p>
+</blockquote>
+<p>Określmy klasę kombinatoryczną pomocną w rozwiązaniu tego zadania: <span class="math display">\[
+\mathcal{B} = (\left\{ a_1, \dots, a_{20}, b_1, \dots, b_{10}, c_1, \dots, c_{10}, d_1, \dots, d_{50} \right\}, |\cdot|)\\
+\mathcal{A} = \operatorname{PSET}(\mathcal{B})
+\]</span> (<span class="math inline">\(\mathcal{B}\)</span> to klasa pomocnicza, bazowa; skupiamy się na <span class="math inline">\(\mathcal{A}\)</span>)<br />
+gdzie: - <span class="math inline">\(a_i\)</span> to banknoty $20 - <span class="math inline">\(b_i\)</span> to banknoty $10 - <span class="math inline">\(c_i\)</span> to banknoty $5 - <span class="math inline">\(d_i\)</span> to banknoty $1</p>
+<p>a funkcja wagi <span class="math inline">\(|\cdot|\)</span> przypisuje wszystkim poszczególnym banknotom wartości ich nominałów.</p>
+<p>OGF: <span class="math inline">\(A(z) = \prod_{n\ge0} \left( 1+z^n \right)^{b_n} = \left( 1 + z \right)^{50} \cdot \left( 1 + z^5 \right)^{10} \cdot \left( 1 + z^{10} \right)^{10} \cdot \left( 1 + z^{20} \right)^{20}\)</span></p>
+<p>Odpowiedzią na nasze pytanie jest <span class="math inline">\([z^{200}]A(z) = 1209902431363984921974763 = 1.2099024 \cdot 10^{24}\)</span>.</p>
+<p><a href="ex-3.wls">Kod programu</a> znajduje się w pliku <code>ex-3.wls</code>.</p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Na ile sposobów Rychu Peja może wypłacić 16 zł, mając do dyspozycji 3 monety 5 zł, 5 monet 2 zł, 10 monet 1 zł oraz 100 monet 10 gr. Zakładamy, że kolejność wydawania monet nie ma znaczenia, a monety są nierozróżnialne.</p>
+</blockquote>
+<p>Idea rozwiązania jest podobna do <a href="#zadanie-3">zadania 3.</a>, przy czym tutaj nie rozróżniamy poszczególnych monet (nie mają numerów seryjnych). Jednakże nadal mamy ograniczenia co do liczby wykorzystywanych monet, więc nie możemy użyć tutaj <span class="math inline">\(\operatorname{MSET}\)</span>. Znowu użyjemy <span class="math inline">\(\operatorname{PSET}\)</span> tylko zmodyfikujemy nieco rozważane elementy — np.: 3 monety 5 złotowe rozumiemy jako trzy różne sumy: <span class="math inline">\(5\)</span>, <span class="math inline">\(10\)</span> oraz <span class="math inline">\(15\)</span>. Załatwia nam to problem zachowania nierozróżnialności oraz ograniczenie liczby monet danego typu.</p>
+<p>Pozostaje jeszcze jeden problem z reprezentacją wartości monet — wagi elementów muszą być liczbami naturalnymi. Tutaj rozwiązanie jest proste — nominały zapisujemy w liczbach groszy, a nie złotych.</p>
+<p>Określamy klasę kombinatoryczną: <span class="math display">\[
+\mathcal{A} = \Big( \left\{ \epsilon, a_1, a_2, a_3 \right\} \times \left\{ \epsilon, b_1, \dots, b_5 \right\} \times\\
+\left\{ \epsilon, c_1, \dots, c_{10} \right\} \times \left\{ \epsilon, d_1, \dots, d_{100} \right\}, |\cdot| \Big)
+\]</span> (<span class="math inline">\(\mathcal{B}\)</span> to klasa pomocnicza, bazowa; skupiamy się na <span class="math inline">\(\mathcal{A}\)</span>)<br />
+gdzie: - <span class="math inline">\(a_i = 500i\)</span> - <span class="math inline">\(b_i = 200i\)</span> - <span class="math inline">\(c_i = 100i\)</span> - <span class="math inline">\(d_i = 10i\)</span> - <span class="math inline">\(\epsilon = 0\)</span></p>
+<p>OGF: <span class="math inline">\(A(z) = \left( 1 + z^{500} + z^{1000} + z^{1500} \right) \cdot \left( 1 + z^{200} + z^{400} + z^{600} + z^{800} + z^{1000} \right) \cdot \left( 1 + z^{100} + \dots + z^{1000} \right) \cdot \left( 1 + z^{10} + \dots + z^{1000} \right)\)</span></p>
+<p>Żądana wartość wynosi <span class="math inline">\([z^{1600}]A(z) = 106\)</span>.</p>
+<p><a href="ex-4.wls">Kod programu</a> znajduje się w pliku <code>ex-4.wls</code>.</p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Na ile sposobów można przedstawić liczbę <span class="math inline">\(200\)</span> jako sumę <span class="math inline">\(30\)</span> liczb ze zbioru <span class="math inline">\(\{1, 2, 3, 4, 5, 10, 50, 100\}\)</span>?<br />
+Zakładamy, że kolejność sumowania ma znaczenie (<span class="math inline">\(10 = 2 + 8 = 8 + 2\)</span> to dwie <em>różne</em> interpretacje).</p>
+</blockquote>
+<p>Określamy klasą kombinatoryczną: <span class="math display">\[
+\mathcal{B} = (\{1,2,3,4,5,10,50,100\}, |\cdot|)\\
+\mathcal{A} = \underbrace{\mathcal{B} \times \dotsb \times \mathcal{B}}_{30}
+\]</span> (<span class="math inline">\(\mathcal{B}\)</span> to klasa pomocnicza, bazowa; skupiamy się na <span class="math inline">\(\mathcal{A}\)</span>)</p>
+<p>OGFs: - <span class="math inline">\(B(z) = z + z^2 + z^3 + z^4 + z^5 + z^{10} + z^{50} + z^{100}\)</span> - <span class="math inline">\(A(z) = (B(z))^{30}\)</span></p>
+<p>Żądana wartość wynosi <span class="math inline">\([z^{200}]A(z) = 59115949907090587181520 = 5.9115949907 \cdot 10^{22}\)</span>.</p>
+<p><a href="ex-5.wls">Kod programu</a> znajduje się w pliku <code>ex-5.wls</code>.</p>
+<hr />
+<h2 id="zadanie-6.">Zadanie 6.</h2>
+<blockquote>
+<p>Ile jest naszyjników 3-kolorowych o długości 5? Który jest najładniejszy?</p>
+</blockquote>
+<p>Określamy klasę kombinatoryczną: <span class="math display">\[
+\mathcal{B} = \Big( \{1,2,3\}, |\cdot| \Big)\\
+\mathcal{A} = \operatorname{CYC}(\mathcal{B})
+\]</span> (<span class="math inline">\(\mathcal{B}\)</span> to klasa pomocnicza, bazowa; skupiamy się na <span class="math inline">\(\mathcal{A}\)</span>)</p>
+<p>OGFs: - <span class="math inline">\(B(z) = 3z\)</span> - <span class="math inline">\(A(z) = \sum_{k=1}^{\infty} \frac{\varphi(k)}{k} \ln\frac{1}{1 - B\left( z^k \right)}\)</span> gdzie <span class="math inline">\(\varphi\)</span> to funkcja Eulera</p>
+<p>Żądana wartość wynosi <span class="math inline">\([z^5]A(z) = 51\)</span>.</p>
+<p><em>(najładniejszy naszyjnik to taki który ma dwie połowy takiego samego koloru)</em></p>
+<p><a href="ex-6.wls">Kod programu</a> znajduje się w pliku <code>ex-6.wls</code>.</p>
+<hr />
+<h2 id="zadanie-7.">Zadanie 7.</h2>
+<blockquote>
+<p>Ile jest naszyjników 4-kolorowych o długości 20?</p>
+</blockquote>
+<p>Sytuacja prawie identyczna, jak w <a href="#zadanie-6">zadaniu 6.</a> — jedynie zmieniamy nieco parametry: - <span class="math inline">\(B(z) = 4z\)</span> (mamy cztery kolory) - szukamy wartości <span class="math inline">\([z^{20}]A(z)\)</span></p>
+<p>Żądana wartość wynosi <span class="math inline">\([z^{20}]A(z) = 54975633976 = 5.4975633976 \cdot 10^{10}\)</span>.</p>
+<p><a href="ex-7.wls">Kod programu</a> znajduje się w pliku <code>ex-7.wls</code>.</p>
+<hr />
+</body>
+</html>

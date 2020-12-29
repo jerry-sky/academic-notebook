@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="programowanie-dynamiczne">Programowanie dynamiczne</h1>
+<p><em>(2020-04-08)</em></p>
+<h2 id="zarys">Zarys</h2>
+<p>Programowanie dynamiczne jest kolejną metodologią budowy algorytmów pozwalająca na rozwiązywanie szerokiej gamy problemów (często tam gdzie <a href="../2020-03-09/divide-and-conquer">D&amp;C</a> nie może być użyta) choć głównie jest stosowana do tzw. <strong>problemów optymalizacyjnych</strong>.<br />
+Niestety przez jej ogólność rozwiązania nie muszą mieć optymalnej złożoności obliczeniowej.</p>
+<h2 id="how-does-it-work">How does it work</h2>
+<p>Podobnie jak w D&amp;C w programowaniu dynamicznym rozwiązujemy zadany problem dzieląc go na pod-problemy, a następnie łączymy je. Różnica natomiast polega na tym, że <strong>w metodologii D&amp;C pod-problemy są niezależne</strong>, a w <strong>programowaniu dynamicznym pod-problemy mogą zależeć od siebie</strong> (wykorzystuje się to zapamiętując rozwiązania pod-problemów i wykorzystując je w innych miejscach).</p>
+<h2 id="przykład-1">Przykład #1</h2>
+<p>Problem: <a href="najkrótsza-ścieżka-dag">Znalezienie najkrótszej ścieżki w skierowanym grafie acyklicznym</a> (<a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>).</p>
+<h2 id="przykład-2">Przykład #2</h2>
+<p>Problem: <a href="najdłuższy-podciąg-rosnący">Najdłuższy podciąg rosnący</a>.</p>
+<h2 id="przykład-3">Przykład #3</h2>
+<p>Problem: <a href="../2020-04-20/longest-common-subsequence">Longest Common Subsequence (LCS)</a>.</p>
+<h2 id="przykład-4">Przykład #4</h2>
+<p>Problem: <code>Edit-distance</code> — znalezienie odpowiednio zdefiniowanej odległości pomiędzy dwoma ciągami. Jest to problem, który również można rozwiązać przy pomocy programowania dynamicznego w stosunkowo podobny sposób jak problem <a href="#przyk%c5%82ad-3">LCS</a>.</p>
+<p><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">More here (Chapter 6.3)</a></p>
+<h2 id="summary">Summary</h2>
+<p>Kluczowa własność metodologii programowania dynamicznego: rozwiązując zadany problem jesteśmy w stanie zdefiniować: - zbiór pod-problemów - kolejność tych pod-problemów - relację pomiędzy pod-problemami, która pozwala rozwiązać większy (późniejszy w zdefiniowanej kolejności) pod-problem mając rozwiązania mniejszych (wcześniejszych w zdefiniowanej kolejności) pod-problemów</p>
+<pre><code>W przypadku [problemu znalezienia najkrótszej ścieżki w DAG-ach](#przyk%c5%82ad-1) relacją tą jest:
+$d(v_s,v) = \min\{d(v_s,u) + c(u,v): (u,v) \in E\}$.
+
+W przypadku [problemu problemu najdłuższego podciągu rosnącego](#przyk%c5%82ad-2) relacją tą jest:
+$L(i) = 1 + \max\{L(j): (j,i) \in E\}$.</code></pre>
+<h2 id="more">More</h2>
+<p>Więcej na temat programowania dynamicznego: - <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Chapter 6</a> - <a href="https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA">aisd05.pdf</a></p>
+</body>
+</html>

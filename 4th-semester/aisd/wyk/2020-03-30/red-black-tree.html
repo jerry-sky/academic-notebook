@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="drzewa-czerwono-czarne">Drzewa czerwono-czarne</h1>
+<p><em>(2020-03-30)</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Na <a href="../2020-03-25/binary-search-tree">poprzednim wykładzie</a> poznaliśmy strukturę BST, które pozwalają zaimplementować operacje na zbiorach dynamicznych w złożoności obliczeniowej <span class="math inline">\(O(h)\)</span>, gdzie <span class="math inline">\(h\)</span> jest <a href="../2020-03-25/binary-search-tree.md#wysokość-bst">wysokością BST</a>.<br />
+Operacje te działają więc szybko, jeżeli wysokość drzewa przeszukiwań jest mała. Jeśli jednak wysokość drzewa jest duża <span class="math inline">\(h = O(n)\)</span>, to koszty operacji mogą być równie duże jak dla zwykłych list.<br />
+Dlatego powstało dużo modyfikacji BST <em>(drzewa czerwono-czarne, drzewa AVL etc.)</em>, które pozwalają utrzymać drzewa poszukiwań w postaci zbalansowanej, czyli wysokość drzewa w pesymistycznym przypadku można ograniczyć przez <span class="math inline">\(\Theta(\log n)\)</span>.<br />
+Teraz zajmiemy się <strong>drzewami czerwono-czarnymi</strong> <em>(RB-Trees)</em>.</p>
+<h2 id="warunki-na-rb-tree">Warunki na RB-Tree</h2>
+<ol style="list-style-type: decimal">
+<li>Każdy węzeł drzewa przechowuje dodatkową informację: kolor węzła - czerwony albo czarny</li>
+<li>Każdy liść przechowujący wartość <span class="math inline">\(\mathrm{NIL}\)</span> jest czarny</li>
+<li>Jeśli węzeł jest czerwony, to obaj jego potomkowie są czarni</li>
+<li>Każda prosta ścieżka z ustalonego węzła do liścia ma tyle samo czarnych węzłów (liczbę tę nazywamy czarną wysokością węzła i oznaczamy przez <span class="math inline">\(bh()\)</span>)</li>
+</ol>
+<h2 id="lemma-a">Lemma A</h2>
+<p>RB-Tree o <span class="math inline">\(n\)</span> kluczach ma wysokość co najwyżej <span class="math inline">\(2\lg(n+1)\)</span> (czyli <span class="math inline">\(h \le 2\lg(n+1) = \Theta(\log n)\)</span>).</p>
+<h3 id="d-d-lemma-a">D-d Lemma A</h3>
+<ol style="list-style-type: decimal">
+<li>Rozpatrzmy drzewo <span class="math inline">\(T&#39;\)</span> powstałe z RB-Tree <span class="math inline">\(T\)</span> o <span class="math inline">\(n\)</span> kluczach (czyli <span class="math inline">\(2n+1\)</span> węzłach licząc razem z liśćmi) poprzez złączenie każdego czerwonego węzła z jego czarnym rodzicem. Tak powstałe drzewo <span class="math inline">\(T&#39;\)</span> (2-3-4-tree) ma węzły zawierające jeden, dwa lub trzy klucze i odpowiednio dwa, trzy lub cztery pod-drzewa. Wysokość tak powstałego drzewa <span class="math inline">\(h&#39;\)</span> jest równa czarnej wysokości korzenia oryginalnego drzewa <span class="math inline">\(T\)</span> <span class="math inline">\((h&#39; = bh(T))\)</span>.<br />
+Liczba liści (przechowujących wartość <span class="math inline">\(\mathrm{NIL}\)</span>) jest taka sama dla RB-Tree i drzewa powstałego po transformacji <span class="math inline">\(T&#39;\)</span> i jest równa <span class="math inline">\(n+1\)</span>.</li>
+<li>Zauważmy, że liczbę liści drzewa <span class="math inline">\(T&#39;\)</span> możemy ograniczyć przez <span class="math display">\[
+2^{h&#39;} \le \#liści \le 4^{h&#39;}
+\]</span> a zatem <span class="math inline">\(h&#39; \le \lg(n+1)\)</span>.</li>
+<li>Zauważmy również, że wysokość RB-Tree <span class="math inline">\(T\)</span> może wynosić maksymalnie <span class="math inline">\(2bh(T) = 2h&#39;\)</span>.<br />
+Zatem <span class="math inline">\(h \le 2\lg(n+1)\)</span>.</li>
+</ol>
+<h2 id="operacje">Operacje</h2>
+<p>Operacje dodawania i usuwania węzłów z drzewa znane z <a href="../2020-03-25/binary-search-tree">poprzedniego wykładu</a> w oczywisty sposób nie zachowują własności (porządku) RB-Tree, dlatego należy je rozszerzyć.<br />
+Rozszerzenia te będą wykonywały rekonstrukcję drzewa po której własności RB-Tree będą spełnione.<br />
+Wykorzystywane będą dwie procedury:</p>
+<h3 id="mathrmrecolorx-color"><span class="math inline">\(\mathrm{Recolor}(x, color)\)</span></h3>
+<p>Ustawia <span class="math inline">\(color\)</span> jako kolor węzła <span class="math inline">\(x\)</span>.<br />
+Złożoność obliczeniowa <span class="math inline">\(O(1)\)</span>.</p>
+<h3 id="mathrmrotate_righttx-mathrmrotate_lefttx"><span class="math inline">\(\mathrm{Rotate_{right}}(T,x)\)</span>, <span class="math inline">\(\mathrm{Rotate_{left}}(T,x)\)</span></h3>
+<p>Są to operacje odpowiednio prawej i lewej rotacji drzewa. Podczas rotacji drzewa względem węzła <span class="math inline">\(x\)</span>, węzeł <span class="math inline">\(x\)</span> jest zastępowany swoim odpowiednim potomkiem <span class="math inline">\(y\)</span> (dla prawej rotacji lewym potomkiem, dla lewej rotacji prawym potomkiem), <span class="math inline">\(x\)</span> staje się potomkiem <span class="math inline">\(y\)</span> (dla prawej rotacji prawym potomkiem, dla lewej lewym), a odpowiednie pod-drzewa <span class="math inline">\(x\)</span> i <span class="math inline">\(y\)</span> są przepinane w taki sposób aby własność BST była zachowana.<br />
+Złożoność obliczeniowa rotacji to <span class="math inline">\(O(1)\)</span>.</p>
+<h3 id="mathrminsert_rb-mathrmdelete_rb"><span class="math inline">\(\mathrm{Insert_{RB}}\)</span>, <span class="math inline">\(\mathrm{Delete_{RB}}\)</span></h3>
+<p>Operacje <span class="math inline">\(\mathrm{Insert_{RB}}\)</span>, <span class="math inline">\(\mathrm{Delete_{RB}}\)</span> mają asymptotyczną złożoność obliczeniową <span class="math inline">\(O(h)\)</span>, czyli taką jak w przypadku operacji <span class="math inline">\(\mathrm{Insert}\)</span> oraz <span class="math inline">\(\mathrm{Delete}\)</span> w zwykłym BST.<br />
+Natomiast jasne jest, że stała występujące przy <span class="math inline">\(h\)</span> będzie większa.</p>
+<h2 id="sources">Sources</h2>
+<p>Więcej informacji na temat RB-Trees można znaleźć tutaj: - <a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Chapter 13</a> - <a href="https://algs4.cs.princeton.edu/33balanced/">tu</a> - <a href="https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA">dr Kik - aisd04.pdf</a></p>
+</body>
+</html>

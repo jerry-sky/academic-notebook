@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="binary-search-tree-bst">Binary Search Tree <em>(BST)</em></h1>
+<p><em>(2020-03-25)</em></p>
+<h2 id="description">Description</h2>
+<p>Drzewa poszukiwań binarnych (ukorzenione drzewa, każdy węzeł ma dwóch potomków, liście mają zero potomków) są strukturami danych, na których można wykonywać różne operacje na zbiorach dynamicznych takie jak <span class="math inline">\(\mathrm{Search},~\mathrm{Minimum},~\mathrm{Maximum},~\mathrm{Predecessor},~\mathrm{Successor},~\mathrm{Insert},~\mathrm{Delete}\)</span>.</p>
+<h2 id="węzeł-drzewa">Węzeł drzewa</h2>
+<p>Węzeł drzewa składa się z: 1. <span class="math inline">\(\mathrm{key}\)</span> - wartość ze zbioru dynamicznego <span class="math inline">\(A\)</span>, którą możemy porównać z każdym innym elementem należącym do <span class="math inline">\(A\)</span> 2. <span class="math inline">\(\mathrm{left}\)</span> - wskaźnik na lewego potomka 3. <span class="math inline">\(\mathrm{right}\)</span> - wskaźnik na prawego potomka 4. <span class="math inline">\(\mathrm{parent}\)</span> - wskaźnik na rodzica <em>(opcjonalny)</em></p>
+<h2 id="porządek-w-bst">Porządek w BST</h2>
+<p>Niech <span class="math inline">\(x\)</span> będzie węzłem BST <span class="math inline">\(T\)</span>. Jeśli <span class="math inline">\(y \in\)</span> lewe pod-drzewo <span class="math inline">\(x\)</span> wtedy <span class="math inline">\(y.\mathrm{key} \le x.\mathrm{key}\)</span>, w przeciwnym przypadku <span class="math inline">\(y.\mathrm{key} \ge x.\mathrm{key}\)</span>.</p>
+<h2 id="wysokość-bst">Wysokość BST</h2>
+<p>Istotnym parametrem BST jest jego wysokość <span class="math inline">\(h\)</span>, czyli najdłuższa ścieżka między korzeniem drzewa, a liściem.</p>
+<h2 id="operacje-dla-bst">Operacje dla BST</h2>
+<h3 id="mathrminordertreewalk"><span class="math inline">\(\mathrm{InorderTreeWalk}\)</span></h3>
+<p>Operacja pozwalająca na przechodzenie drzewa w uporządkowany sposób. Operacja ta wywołana na drzewie o <span class="math inline">\(n\)</span> węzłach ma złożoność obliczeniową <span class="math inline">\(\Theta(n)\)</span>.</p>
+<h3 id="mathrmsearchx"><span class="math inline">\(\mathrm{Search}(x)\)</span></h3>
+<p>Operacja pozwalająca wyszukać węzeł w drzewie BST, którego pole <span class="math inline">\(\mathrm{key} == x\)</span>.<br />
+Jeśli taki element nie istnieje to zwraca <span class="math inline">\(\mathrm{null}\)</span>.<br />
+Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span> gdzie <span class="math inline">\(h\)</span> to <a href="#wysoko%c5%9b%c4%87-bst">wysokość BST</a>.</p>
+<h3 id="mathrminsertx"><span class="math inline">\(\mathrm{Insert}(x)\)</span></h3>
+<p>Operacja wstawiająca nowy węzeł do BST, którego pole <span class="math inline">\(\mathrm{key} := x\)</span>.<br />
+Operacja ta zachowuje oczywiście <a href="#porz%c4%85dek-w-bst">porządek w BST</a> do którego wstawiany jest nowy element.<br />
+Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span>.</p>
+<h3 id="mathrmdeletex"><span class="math inline">\(\mathrm{Delete}(x)\)</span></h3>
+<p>Operacja usuwająca element <span class="math inline">\(x\)</span> z BST.<br />
+Operacja ta jest bardziej złożona niż poprzednie, należy w niej rozpatrzeć czy usuwany węzeł jest: - liściem drzewa - ma jedno pod-drzewo, które nie jest węzłem <span class="math inline">\(\mathrm{null}\)</span>owym - ma dwa pod-drzewa, które nie są węzłami <span class="math inline">\(\mathrm{null}\)</span>owymi</p>
+<p>Operacja ta zachowuje oczywiście <a href="#porz%c4%85dek-w-bst">porządek w BST</a>, z którego usuwany jest węzeł <span class="math inline">\(x\)</span>.<br />
+Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span>.</p>
+<h3 id="mathrmminimum"><span class="math inline">\(\mathrm{Minimum}\)</span></h3>
+<p>Operacja zwraca element BST o najmniejszej wartości pola <span class="math inline">\(\mathrm{key}\)</span>, czyli element <em>„najbardziej po lewej stronie w drzewie”</em>.<br />
+Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span>.</p>
+<h3 id="mathrmmaximum"><span class="math inline">\(\mathrm{Maximum}\)</span></h3>
+<p>Operacja zwraca element BST o największej wartości pola <span class="math inline">\(\mathrm{key}\)</span>, czyli element <em>„najbardziej po prawej stronie w drzewie”</em>.<br />
+Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span>.</p>
+<h3 id="mathrmsuccessorx"><span class="math inline">\(\mathrm{Successor}(x)\)</span></h3>
+<p>Operacja zwraca węzeł BST, którego wartość pola <span class="math inline">\(\mathrm{key}\)</span> jest następnikiem węzła <span class="math inline">\(x\)</span>, czyli węzeł o najmniejszej wartości pola <span class="math inline">\(\mathrm{key}\)</span> większej niż <span class="math inline">\(x.\mathrm{key}\)</span> <em>(zakładając, że wszystkie klucze w drzewie są różne)</em>. Operacja ta ma złożoność obliczeniową <span class="math inline">\(O(h)\)</span>.</p>
+<h3 id="mathrmpredecessorx"><span class="math inline">\(\mathrm{Predecessor}(x)\)</span></h3>
+<p>Operacja analogiczna do <a href="#mathrmsuccessorx"><span class="math inline">\(\mathrm{Successor}\)</span></a>, zwracająca poprzednika węzła <span class="math inline">\(x\)</span>.</p>
+<h3 id="mathrmbstsort"><span class="math inline">\(\mathrm{BSTSort}\)</span></h3>
+<p>Rozpatrzmy operację <span class="math inline">\(\mathrm{BSTSort}\)</span>, która wstawia do BST wszystkie elementy zbioru <span class="math inline">\(A=(a_1,\dots,a_n)\)</span>, a następnie wykonuje na tym drzewie <span class="math inline">\(\mathrm{InorderTreeWalk}\)</span>.<br />
+Wynikiem będzie wypisanie posortowanego ciągu elementów ze zbioru <span class="math inline">\(A\)</span>. Warto zauważyć, że <span class="math inline">\(\mathrm{BSTSort}\)</span> wykonuje te same porównania co <a href="../2020-03-11/quick-sort"><span class="math inline">\(\mathrm{QuickSort}\)</span></a> wykonany na zbiorze <span class="math inline">\(A\)</span> <em>(tylko może w innej kolejności)</em>.</p>
+<p>Załóżmy, że wejściem do naszego algorytmu jest losowa permutacja elementów tablicy <span class="math inline">\(A\)</span>.<br />
+Wiedząc <a href="../2020-03-16/dual-pivot-quick-sort">z wcześniejszego wykładu</a>, że w <span class="math inline">\(\mathrm{QuickSort}\)</span>cie <span class="math inline">\(E(\#\text{porównań}) = \Theta(n\log n)\)</span>.<br />
+W takim razie dla BST: <span class="math display">\[
+\mathrm{E}(\text{średnia głębokość węzła w drzewie BST}) = \Theta(\log n)
+\]</span> gdzie <strong>głębokością węzła <span class="math inline">\(x\)</span> w BST jest jego odległość od korzenia drzewa</strong>.<br />
+Niestety, z tego faktu <strong>nie</strong> możemy wywnioskować, że wysokość drzewa jest również logarytmiczna <em>(istnieje drzewo o średniej głębokości węzła <span class="math inline">\(\Theta(\log n)\)</span> oraz wysokości <span class="math inline">\(\Theta\left(\sqrt{n}\right)\)</span></em></p>
+<h2 id="własność-2">Własność #2</h2>
+<p>Zauważmy, że jeśli do BST wstawimy <span class="math inline">\(n\)</span> elementów w uporządkowanej kolejności to jego wysokość będzie wynosić <span class="math inline">\(h=n\)</span>.</p>
+<h2 id="twierdzenie-1">Twierdzenie #1</h2>
+<p><span class="math inline">\(\mathrm{E}(\text{wysokości BST o }n\text{ węzłach}) = O(\log n)\)</span> zakładając, że kolejność wstawianych elementów do drzewa jest zadana przez losową permutację.</p>
+<h3 id="d-d-twierdzenia-1">D-d Twierdzenia #1</h3>
+<ol style="list-style-type: decimal">
+<li>Zamiast analizować zmienną losową wysokości drzewa <span class="math inline">\(H_n\)</span>, analizujemy zmienną <span class="math inline">\(Y_n = 2^{H_n}\)</span>.</li>
+<li>Wykorzystując indukcję dowodzimy, że <span class="math inline">\(\mathrm{E}(Y_n) = O(n^3)\)</span></li>
+<li>Wykorzystując nierówność Jensena oraz powyżej udowodnioną równość na wartości oczekiwanej <span class="math inline">\(Y_n\)</span> otrzymujemy <span class="math inline">\(\mathrm{E}(H_n) \le 3\log(n) + O(1)\)</span>. Luc Devroye w 1986r pokazał, że <span class="math inline">\(\mathrm{E}(H_n) = 2.9882\dots\log(n) + o(\log n)\)</span></li>
+</ol>
+<h2 id="sources">Sources</h2>
+<p>Więcej informacji na temat BST można znaleźć <a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">tu (Chapter 12)</a> oraz <a href="https://algs4.cs.princeton.edu/32bst/">tutaj</a>.</p>
+</body>
+</html>

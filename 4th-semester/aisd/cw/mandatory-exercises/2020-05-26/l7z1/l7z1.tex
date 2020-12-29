@@ -1,0 +1,66 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 7}
+\author{Zadanie 1}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Zadanie}
+
+Pokaż w jaki sposób można efektywnie przetrzymywać kopiec binarny rozmiaru $n$ w tablicy długości $n$. Jak to wygląda dla kopca d-arnego?
+
+\section{Rozwiązanie}
+
+Kopiec binarny możemy reprezentować bezpośrednio jako listę o długości równej wielkości drzewa binarnego jakim jest kopiec binarny. Zaczynając od poziomu korzenia drzewa a kończąc na ostatnim poziomie wpisujemy do tablicy $A$ kolejne wartości z węzłów drzewa od lewej do prawej – czyli wykorzystujemy tutaj podejście breadth-first.
+
+Teraz na pierwszej pozycji listy $A$ znajduje się korzeń drzewa.
+
+Poruszanie się po takim kopcu umożliwiają poniższe funkcje:
+$$
+\mathrm{parent}(i) = \left\lfloor\frac{i}{2}\right\rfloor
+$$
+$$
+\mathrm{left}(i) = 2\cdot i
+$$
+$$
+\mathrm{right}(i) = 2\cdot i + 1
+$$
+
+pozwalające odnaleźć indeksy potomków i rodziców poszczególnych węzłów.
+
+W przypadku kopca $d$-arnego sytuacja wygląda bardzo podobnie. Wystarczy uogólnić powyższe funkcje do $d$ potomków:
+$$
+\mathrm{parent}(i) = \left\lfloor\frac{i-2}{d+1}\right\rfloor
+$$
+$$
+\forall_{1\le j \le d} ~\mathrm{child}(i, j) = d\cdot (i-1) + j + 1
+$$
+
+Jako, że jesteśmy w stanie odwiedzać rodziców i potomków każdego z węzłów wszystkie operacje, które byłyby wykonywane na kopcu w formie drzewa binarnego działają też na reprezentacji w formie listy.
+
+\end{document}

@@ -1,0 +1,1 @@
+Select name, date From `event` Where Lower(`remark`) Like '%gave%'

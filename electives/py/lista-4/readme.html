@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista-4</h1>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Napisz dekorator, mający za zadanie drukować informacje o czasie wykonywania funkcji</p>
+</blockquote>
+<p><a href="ex-1.py">code</a></p>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Załóżmy, że mamy drzewo i reprezentujemy je na liście np.</p>
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python">[<span class="st">&quot;1&quot;</span>, [<span class="st">&quot;2&quot;</span>, [<span class="st">&quot;4&quot;</span>, [<span class="st">&quot;8&quot;</span>, <span class="va">None</span>, <span class="va">None</span>], [<span class="st">&quot;9&quot;</span>,<span class="va">None</span>,<span class="va">None</span>]], [<span class="st">&quot;5&quot;</span>,<span class="va">None</span>,<span class="va">None</span>]], [<span class="st">&quot;3&quot;</span>, [<span class="st">&quot;6&quot;</span>, <span class="va">None</span>, <span class="va">None</span>], [<span class="st">&quot;7&quot;</span>, <span class="va">None</span>, <span class="va">None</span>]]]</code></pre></div>
+<p>Napisz funkcję która generuje w sposób losowy drzewo podanej wysokości oraz generator który przechodzi drzewo w porządku DFS i BFS.</p>
+</blockquote>
+<p><a href="ex-2.py">code</a></p>
+<h2 id="zadanie-3">Zadanie 3</h2>
+<blockquote>
+<p>Napisz klasę <code>class Node(object)</code> do reprezentacji pojedynczego węzła drzewa z dowolną liczbą potomków. Podobnie jak w zadaniu poprzednim napisz funkcję która generuje losowo drzewo o danej wysokości i generator który przechodzi drzewo w porządku DFS i BFS.</p>
+</blockquote>
+<p><a href="ex-3.py">code</a></p>
+<h2 id="zadanie-4">Zadanie 4</h2>
+<blockquote>
+<p>Przeciążenie funkcji (function overloading) daje możliwość wykorzystania tej samej nazwy funkcji, ale z różnymi parametrami. Na przykład w innych językach możemy napisać</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">   <span class="dt">float</span> <span class="fu">norm</span>(<span class="dt">float</span> x, <span class="dt">float</span> y) {            <span class="co">// norma Euklidesowa</span>
+    <span class="kw">return</span> <span class="fu">sqrt</span>(x*x + y*y)
+  }
+  <span class="dt">float</span> <span class="fu">norm</span>(<span class="dt">float</span> x, <span class="dt">float</span> y, <span class="dt">float</span> z) {   <span class="co">// norma taksówkowa</span>
+    <span class="kw">return</span> <span class="fu">abs</span>(x) + <span class="fu">abs</span>(y) + <span class="fu">abs</span>(z)
+  }</code></pre></div>
+<p>W języku Python nie ma przeciążenia funkcji, po prostu następna definicja nadpisuje poprzednią. Napisz dekorator nazwijmy go <span class="citation">@overload</span>, który pozwala na taką własność.<br />
+Przykładowy program powinien wyglądać tak:</p>
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python">  <span class="at">@overload</span>
+  <span class="kw">def</span> norm(x,y):
+    <span class="cf">return</span> math.sqrt(x<span class="op">*</span>x <span class="op">+</span> y<span class="op">*</span>y)
+
+  <span class="at">@overload</span>
+  <span class="kw">def</span> norm(x,y,z):
+    <span class="cf">return</span> <span class="bu">abs</span>(x) <span class="op">+</span> <span class="bu">abs</span>(y) <span class="op">+</span> <span class="bu">abs</span>(z)
+
+  <span class="bu">print</span>(<span class="ss">f&quot;norm(2,4) = </span><span class="sc">{</span>norm(<span class="dv">2</span>,<span class="dv">4</span>)<span class="sc">}</span><span class="ss">&quot;</span>)
+
+  <span class="bu">print</span>(<span class="ss">f&quot;norm(2,3,4) = </span><span class="sc">{</span>norm(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)<span class="sc">}</span><span class="ss">&quot;</span>)</code></pre></div>
+<p>Otrzymujemy:</p>
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python">  norm(<span class="dv">2</span>,<span class="dv">4</span>) <span class="op">=</span> <span class="fl">4.47213595499958</span>
+  norm(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="op">=</span> <span class="dv">9</span></code></pre></div>
+<p>Wskazówka: Napisz dekorator, który wraca klasę z odpowiednio przeciążonym operatorem <code>__call__</code>, która przechowuje nazwy funkcji z parametrami. Do odróżnienia funkcji można wykorzystać np. <code>getfullargspec(f).args</code> z modułu <code>inspect</code> (<code>from inspect import getfullargspec</code>).</p>
+</blockquote>
+<p><a href="ex-4.py">code</a></p>
+</body>
+</html>

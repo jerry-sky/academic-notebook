@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista-4</h1>
+<blockquote>
+<h2 id="zasady">Zasady</h2>
+<p>Celem listy jest praktyczne zapoznanie z NoSQL, na rozwiązanie zadań składać się powinny przygotowane wcześniej komendy, których działanie zostanie zaprezentowane na laboratorium. Zadania można rozwiązywać korzystając wyłącznie z konsoli Mongo lub po połączeniu się z bazą Mongo za pomocą wybranego języka programowania.<br />
+Po uzgodnieniu z prowadzącym laboratorium listę można wykonać z wykorzystaniem innego systemu nierelacyjnych baz danych – efekt wykonywania odpowiednich poleceń powinien pozostać bez zmian. W celu uzyskania oceny 5.0 z listy wykonaj 4 pierwsze zadania oraz 5 wybranych z pozostałych.</p>
+<h2 id="zadania">Zadania</h2>
+<ol style="list-style-type: decimal">
+<li>Zainstaluj MongoDB. Utwórz bazę danych <code>MDBHobby</code>. W skład bazy danych powinny wchodzić 3 kolekcje: <code>zwierzęta</code>, <code>sport</code>, <code>osoby</code>. <strong>Uwaga</strong>: dane do uzupełnienia bazy mogą być generowano losowo, częściowo wyeksportowane z rozwiązań list poprzednich lub pobrane (np. w formacie JSON) z gotowego źródła. W przypadku braku dokumentu w bazie spełniającego kryterium któregoś z zadań, dodaj odpowiednie dokumenty i powtórz zadanie.</li>
+<li>Dodaj przynajmniej 10 sportów. Każdy dokument powinien zawierać przynajmniej informacje o nazwie, miejscu wykonywania (hala, na zewnątrz) oraz tego czy jest sportem indywidualny czy zespołowym – 2 ostatnie atrybuty mogą mieć więcej niż jedną wartość dla wybranych sportów. Dla wybranych sportów dodaj inne atrybuty.</li>
+<li>Dodaj przynajmniej 10 gatunków zwierząt. Gatunek może, lecz nie musi, dzielić się na różne rasy (uwzględnij w bazie przynajmniej jeden gatunek z rasami). Każdy dokument powinien zawierać informację o minimalnej i maksymalnej wadze, dopuszczalnej gamie ubarwienia oraz oczekiwanej długości życia.</li>
+<li>Dodaj do bazy danych przynajmniej 50osób, w każdym dokumencie powinno znajdować się przynajmniej imię i nazwisko, dodatkowo w większości dokumentów powinna być informacja o ich wieku, wzroście, zainteresowaniach (każda z osób ma więcej niż jedno zainteresowanie) oraz narodowości. Dla osób posiadających więcej niż jedno obywatelstwo uwzględnij te informacje korzystając z <code>array</code>, w przypadku krajów federalnych, jak np. USA, Niemcy, czy Rosja, wykorzystaj <code>embedded document</code> w celu podania również kraju związkowego. Korzystając z dokumentów zagnieżdżonych dodaj wszystkim posiadaczom zwierząt informację o gatunku oraz imieniu pupila lub pupili.</li>
+<li>Wyświetl wszystkie kolekcje w <code>MDBHobby</code>. Wyświetl wszystkie nie puste kolekcje w <code>MDBHobby</code>.</li>
+<li>Utwórz zapytanie wyświetlające wszystkie znajdujące się w bazie koty wraz z ich posiadaczem.</li>
+<li>Wypisz wszystkie osoby o imieniu <em>Jan</em> i obywatelstwie <em>polskim</em> lub posiadające więcej niż 1 obywatelstwo. Zadbaj by nie wyświetlało się pole z identyfikatorem dokumentu.</li>
+<li>Wypisz sporty, którymi interesuje się przynajmniej 5 osób.</li>
+<li>Pamiętając, iż MongoDB nie udostępnia bezpośrednio funkcjonalności odpowiadającej <code>JOIN</code>om, dla każdej osoby o nazwisku <em>Nowak</em> wypisz hobby. W wyniku wypisz imię, nazwisko i narodowość oraz nazwę i typ (indwydidualny lub zespołowy) sportu. Zadbaj by nie przypisać hobby niewłaściwej osobie o tym samym nazwisku.</li>
+<li>Usuń z bazy wszystkie osoby, które w hobby mają parę <code>['koszykówka', 'hokej']</code>.</li>
+<li>Dla wszystkich osób, które mają w hobby zarówno strzelectwo jak i narciarstwo, zamień je na biatlon.</li>
+<li>Wszystkim osobom z <em>Rosji</em> usuń informację o kraju związkowym (zastąp ją tylko informacją o rosyjskim obywatelstwie).</li>
+<li>Wyświetl imiona i nazwiska oraz narodowość wszystkich miłośników psów, wyniki uporządkuj rosnąco względem wieku.</li>
+<li>Wyświetl osoby, których imiona i nazwiska nie zawierają liter v, x, q, ł, ą, z pominięciem tych, którzy mają obywatelstwo polskie. Możesz wykorzystać wyrażenia regularne.</li>
+</ol>
+</blockquote>
+<h2 id="rozwiązania-i-uruchomienie-programów">Rozwiązania i uruchomienie programów</h2>
+<p>Pliki <code>ex-*.ts</code> zawierają implementację zadanych programów.</p>
+<p>Uruchomienie powyższych programów działa na takiej samej zasadzie jak na <a href="../lista-0/readme.md#uruchomienie-programów">liście zerowej</a>.</p>
+</body>
+</html>

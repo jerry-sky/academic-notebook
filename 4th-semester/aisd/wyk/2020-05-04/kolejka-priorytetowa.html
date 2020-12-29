@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kolejka-priorytetowa">Kolejka priorytetowa</h1>
+<h2 id="operacje">Operacje</h2>
+<p><em>Zakładamy tutaj, że im mniejszy klucz tym element ma wyższy priorytet.</em></p>
+<h3 id="makequeuea"><code>MakeQueue</code><span class="math inline">\((A)\)</span></h3>
+<p>Tworzy kolejkę priorytetową z tablicy <span class="math inline">\(A\)</span> elementów posiadających priorytety.</p>
+<h3 id="insertq-mathrmkey"><code>Insert</code><span class="math inline">\((Q, \mathrm{key})\)</span></h3>
+<p>Wstawia element o kluczu <span class="math inline">\(\mathrm{key}\)</span> do kolejki <span class="math inline">\(Q\)</span>.</p>
+<h3 id="minimumq"><code>Minimum</code><span class="math inline">\((Q)\)</span></h3>
+<p>Zwraca element należący do <span class="math inline">\(Q\)</span> o najmniejszym kluczu, czyli najwyższym priorytecie <em>(nie usuwa go z <span class="math inline">\(Q\)</span>)</em></p>
+<h3 id="extractminq"><code>ExtractMin</code><span class="math inline">\((Q)\)</span></h3>
+<p>Wykonuje <code>Minimum</code><span class="math inline">\((Q)\)</span>, a następnie usuwa zwrócony element z <span class="math inline">\(Q\)</span>.</p>
+<h3 id="decreasekeyqi"><code>DecreaseKey</code><span class="math inline">\((Q,i)\)</span></h3>
+<p>Informuje kolejkę, że element <span class="math inline">\(Q[i]\)</span> ma zmniejszony klucz (zwiększony priorytet), może to skutkować przesunięciem elementu <span class="math inline">\(Q[i]\)</span> w kolejce.</p>
+<h3 id="unionq_1-q_2"><code>Union</code><span class="math inline">\((Q_1, Q_2)\)</span></h3>
+<p>Zwraca kolejkę będącą złączeniem kolejek <span class="math inline">\(Q_1\)</span> oraz <span class="math inline">\(Q_2\)</span>.</p>
+<h3 id="deleteqi"><code>Delete</code><span class="math inline">\((Q,i)\)</span></h3>
+<p>Usuwa element <span class="math inline">\(Q[i]\)</span> z kolejki <span class="math inline">\(Q\)</span>.</p>
+<h2 id="implementacja-kolejki-przy-pomocy-kopca-binarnego">Implementacja kolejki przy pomocy <a href="../2020-04-27/binary-heap">kopca binarnego</a></h2>
+<h3 id="makequeuea-binary-heap"><code>MakeQueue</code><span class="math inline">\((A)\)</span> (Binary heap)</h3>
+<p>Procedura ta może zostać zaimplementowana przy użyciu procedury <a href="../2020-04-27/binary-heap.md#buildheapa"><code>BuildHeap</code><span class="math inline">\((A)\)</span></a>, która ma złożoność obliczeniową <span class="math inline">\(O(n)\)</span>, gdzie <span class="math inline">\(n\)</span> jest długością tablicy <span class="math inline">\(A\)</span>.</p>
+<h3 id="insertqmathrmkey-binary-heap"><code>Insert</code><span class="math inline">\((Q,\mathrm{key})\)</span> (Binary heap)</h3>
+<p>Procedura ta będzie dodawać nowy element w pierwszym możliwym miejscu (nowy liść), a następnie idąc w górę kopca (działając podobnie do <a href="../2020-04-27/binary-heap.md#heapifyai"><code>Heapify</code></a>, ale od dołu do góry) będzie szukane, gdzie umiejscowiony zostanie nowy element.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Q.\mathrm{size}\)</span><code>++</code></li>
+<li><span class="math inline">\(i = Q.\mathrm{size}\)</span></li>
+<li><code>while</code> <span class="math inline">\(i &gt; 1 \land Q[\mathrm{parent}(i)] &gt; \mathrm{key}\)</span>:</li>
+<li><span class="math inline">\(Q[i] = Q[\mathrm{parent}(i)]\)</span></li>
+<li><span class="math inline">\(i = \mathrm{parent}(i)\)</span></li>
+<li><span class="math inline">\(Q[i] = \mathrm{key}\)</span></li>
+</ol>
+<p>Złożoność obliczeniowa: nowy klucz będzie przesuwany w górę kopca, wykonując <span class="math inline">\(O(1)\)</span> operacji na każdym jego poziomie.<br />
+Zatem wiedząc, że wysokość kopca o <span class="math inline">\(n\)</span> elementach to <span class="math inline">\(O(\lg n)\)</span> wiemy, że złożoność obliczeniowa tej procedury wynosi <span class="math inline">\(O(\lg n)\)</span></p>
+<h3 id="minimumq-binary-heap"><code>Minimum</code><span class="math inline">\((Q)\)</span> (Binary heap)</h3>
+<p><code>return</code> <span class="math inline">\(Q[1]\)</span></p>
+<p>Kopiec jest zapisywany w tablicy <span class="math inline">\(Q\)</span>, zakładając, że jest to kopiec minimalny, jego pierwszy element będzie miał najmniejszy klucz. Złożoność obliczeniowa to <span class="math inline">\(\Theta(1)\)</span>.</p>
+<h3 id="extractminq-binary-heap"><code>ExtractMin</code><span class="math inline">\((Q)\)</span> (Binary heap)</h3>
+<ol style="list-style-type: decimal">
+<li><code>if</code> <span class="math inline">\(Q.\mathrm{size} &lt; 1\)</span>:</li>
+<li><code>return</code> <span class="math inline">\(\text{„empty queue”}\)</span></li>
+<li><code>else</code>:</li>
+<li><span class="math inline">\(\min = Q[1]\)</span></li>
+<li><span class="math inline">\(Q[1] = Q[Q.\mathrm{size}]\)</span></li>
+<li><span class="math inline">\(Q.\mathrm{size}\)</span><code>--</code></li>
+<li><code>Heapify</code><span class="math inline">\((Q,1)\)</span></li>
+<li><code>return</code> <span class="math inline">\(\min\)</span></li>
+</ol>
+<p>Jeśli kopiec nie jest pusty, zapisujemy wartość w jego korzeniu, zastępujemy ją ostatnią wartością z kolejki <span class="math inline">\(Q\)</span>, zmniejszamy rozmiar kolejki i przywracamy własność kopca.</p>
+<p>Złożoność obliczeniowa: wszystkie operacje poza <code>Heapify</code><span class="math inline">\((Q,1)\)</span> mają złożoność <span class="math inline">\(\Theta(1)\)</span>, natomiast <code>Heapify</code><span class="math inline">\((Q,1)\)</span> dla kolejki długości <span class="math inline">\(n\)</span> ma złożoność <span class="math inline">\(O(\lg n)\)</span>.<br />
+Zatem w sumie złożoność to <span class="math inline">\(O(\lg n)\)</span></p>
+<h3 id="decreasekeyqi-1"><code>DecreaseKey</code><span class="math inline">\((Q,i)\)</span></h3>
+<ol style="list-style-type: decimal">
+<li><code>while</code> <span class="math inline">\(i &gt; 1 \land Q[\mathrm{parent}(i)] &gt; Q[i]\)</span>:</li>
+<li><span class="math inline">\(Q[i] = Q[\mathrm{parent}(i)]\)</span></li>
+<li><span class="math inline">\(i = \mathrm{parent}(i)\)</span></li>
+</ol>
+<p>Niniejsza procedura jest bardzo podobna do procedury <a href="#insertqmathrmkey-binary-heap"><code>Insert</code><span class="math inline">\((Q,\mathrm{key}\)</span></a>. Jest realizowana poprzez sprawdzenie, czy własność kopca binarnego jest zachowana, jeśli nie to naprawia kopiec, przesuwając odpowiedni element w górę kopca.</p>
+<p>Podobne wnioskowanie jak w przypadku <code>Insert</code> daje nam złożoność obliczeniową <span class="math inline">\(O(\lg n)\)</span>.</p>
+<h3 id="unionq_1-q_2-binary-heap"><code>Union</code><span class="math inline">\((Q_1, Q_2)\)</span> (Binary heap)</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Q =\)</span> <code>Join</code><span class="math inline">\((Q_1, Q_2)\)</span> <span class="math inline">\(~\triangleright\)</span> złączenie elementów dwóch tablic</li>
+<li><code>BuildHeap</code><span class="math inline">\((Q)\)</span></li>
+</ol>
+<p>Złączenie kopców polega na przepisaniu obu kopców do jednej tablicy oraz wykonaniu procedury budowy kopca na nowej tablicy.</p>
+<p>Złożoność obliczeniowa: zarówno połączenie dwóch tablic <span class="math inline">\(Q_1, Q_2\)</span> jak i procedura <code>BuildHeap</code><span class="math inline">\((Q_1, Q_2)\)</span> możemy ograniczyć asymptotycznie przez złożoność liniową od sumarycznej wielkości tych tablic. Zakładając, że <span class="math inline">\(Q_1.\mathrm{size} + Q_2.\mathrm{size} = n\)</span> dostajemy złożoność <span class="math inline">\(O(n)\)</span>.</p>
+<h3 id="deleteqi-1"><code>Delete</code><span class="math inline">\((Q,i)\)</span></h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Q[i] = Q[Q.\mathrm{size}]\)</span></li>
+<li><span class="math inline">\(Q.\mathrm{size}\)</span><code>--</code></li>
+<li><code>Heapify</code><span class="math inline">\((Q,i)\)</span></li>
+</ol>
+<p>Usuwanie elementu o indeksie <span class="math inline">\(i\)</span> z kopca polega na przesunięciu tego elementu do części tablicy, które będzie poza kopcem, zmniejszeniem wielkości kopca oraz naprawieniem własności kopca.</p>
+<p>Złożoność obliczeniowa: operacja o największej złożoności obliczeniowej jest procedura <code>Heapify</code><span class="math inline">\((Q,i)\)</span>, która ma złożoność <span class="math inline">\(O(\lg n)\)</span>, zakładając, że <span class="math inline">\(n = Q.\mathrm{size}\)</span>.</p>
+<h2 id="różne-implementacje">Różne implementacje</h2>
+<p>Porównanie złożoności obliczeniowych procedur na kolejkach priorytetowych dla różnych implementacji kopców:</p>
+<table style="width:100%;">
+<colgroup>
+<col width="10%" />
+<col width="27%" />
+<col width="30%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Procedura</th>
+<th>Kopiec binarny (koszt pesymistyczny)</th>
+<th>Kopiec dwumianowy (koszt pesymistyczny)</th>
+<th>Kopiec Fibonacciego (koszt zamortyzowany)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Insert</code></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>Minimum</code></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>ExtractMin</code></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>DecreaseKey</code></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>Union</code></td>
+<td><span class="math inline">\(O(n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>Delete</code></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+<td><span class="math inline">\(O(\lg n)\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Chapter 6.5</a></li>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Chapter 4.5</a></li>
+<li><a href="https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA">aisd02.pdf, aisd09.pdf</a></li>
+</ul>
+</body>
+</html>

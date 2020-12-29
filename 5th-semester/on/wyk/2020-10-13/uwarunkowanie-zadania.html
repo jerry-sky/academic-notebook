@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="uwarunkowanie-zadania">Uwarunkowanie zadania</h1>
+<p><em>(2020-10-13)</em></p>
+<ul>
+<li><a href="#1-def-złe-uwarunkowanie-zadania">1. DEF: Złe uwarunkowanie zadania</a></li>
+<li><a href="#2-przykład-obliczanie-wartości-funkcji">2. Przykład (obliczanie wartości funkcji)</a></li>
+<li><a href="#3-def-wskaźniki-uwarunkowania">3. DEF: Wskaźniki uwarunkowania</a></li>
+<li><a href="#4-przykład-iloczyn-skalarny">4. Przykład (iloczyn skalarny)</a></li>
+<li><a href="#5-normy-wektorów">5. Normy wektorów</a>
+<ul>
+<li><a href="#51-definicja">5.1. Definicja</a>
+<ul>
+<li><a href="#511-przykład">5.1.1. Przykład</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#6-normy-macierzy">6. Normy macierzy</a>
+<ul>
+<li><a href="#61-definicja">6.1. Definicja</a></li>
+<li><a href="#62-normy">6.2. Normy</a>
+<ul>
+<li><a href="#621-przykład">6.2.1. Przykład</a></li>
+</ul></li>
+<li><a href="#63-przykład-ax--b">6.3. Przykład (<span class="math inline">\(Ax = b\)</span>)</a></li>
+<li><a href="#64-przykład-macierz-hilberta">6.4. Przykład (Macierz Hilberta)</a></li>
+<li><a href="#65-przykład-zaburzenia-macierzy-w-zadaniu-ax--b">6.5. Przykład (Zaburzenia macierzy w zadaniu <span class="math inline">\(Ax = b\)</span>)</a></li>
+</ul></li>
+<li><a href="#7-złośliwy-wielomian-wilkinson">7. „Złośliwy wielomian” (Wilkinson)</a>
+<ul>
+<li><a href="#71-uwarunkowanie-zadania-omegax--0">7.1. Uwarunkowanie zadania <span class="math inline">\(\omega(x) = 0\)</span></a>
+<ul>
+<li><a href="#711-wniosek">7.1.1. Wniosek</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="def-złe-uwarunkowanie-zadania">1. DEF: Złe uwarunkowanie zadania</h2>
+<p><em>Jeśli niewielkie względne zmiany danych powodują dużę względne odkształcenia wyników, to zadanie nazywamy źle uwarunkowanym.</em></p>
+<hr />
+<h2 id="przykład-obliczanie-wartości-funkcji">2. Przykład (obliczanie wartości funkcji)</h2>
+<p>Zbadajmy uwarunkowanie zadania obliczania wartości funkcji <span class="math inline">\(f(x) \neq 0\)</span> w punkcie <span class="math inline">\(x\)</span>. W tym celu zaburzymy dane <span class="math inline">\(x\)</span>, <span class="math inline">\(\widetilde{x} = x(1 + \delta) = x + x\delta\)</span>. Oszacujmy względną zmianę wyniku.</p>
+<p><span class="math display">\[
+\frac{|f(\widetilde{x}) - f(x)|}{|f(x)|} = \frac{|f(x + x\delta) - f(x)|}{|f(x)|} \approx \frac{|f&#39;(x)\cdot x \delta|}{|f(x)|} = cond(x) |\delta|
+\]</span></p>
+<p><span class="math inline">\(cond(x) = \frac{|f&#39;(x) \cdot x|}{|f(x)|}\)</span> jest wskaźnikiem uwarunkowania zadania.</p>
+<p><strong>Jeśli <span class="math inline">\(\bold{cond(x)}\)</span> jest mały (<span class="math inline">\(\bold{|f&#39;(x)|}\)</span> jest mała), to zadanie jest dobrze uwarunkowane.</strong></p>
+<hr />
+<h2 id="def-wskaźniki-uwarunkowania">3. DEF: Wskaźniki uwarunkowania</h2>
+<p>Wielkości charakteryzujące wpływ zaburzeń danych na odkształcenia wyników nazywamy <em>wskaźnikami uwarunkowania</em>.</p>
+<hr />
+<h2 id="przykład-iloczyn-skalarny">4. Przykład (iloczyn skalarny)</h2>
+<p>Mamy: - <span class="math inline">\(S(a,b) = \sum_{i=1}^{n} a_i b_i \neq 0\)</span> - <span class="math inline">\(a = (a_1, \dots, a_n)\)</span> - <span class="math inline">\(b = (b_1, \dots, b_n)\)</span></p>
+<p>Zaburzamy dane: - <span class="math inline">\(\widetilde{a} = (a_1(1 + \alpha_1), \dots, a_n(1 + \alpha_n))\)</span> - <span class="math inline">\(\widetilde{b} = (b_1(1 + \beta_1), \dots, b_n(1 + \beta_n))\)</span></p>
+<p>Oszacujmy względną zmianę wyniku:</p>
+<p><span class="math display">\[
+\frac{|S(\widetilde{a}, \widetilde{b}) - S(a,b)|}{|S(a,b)|} = \frac{|\sum_{i=1}^{n} a_i b_i (1 + \alpha_i)(1 + \beta_i) - \sum_{i=1}^{n} a_i b_i|}{|\sum_{i=1}^{n} a_i b_i|}\\
+= \frac{|\sum_{i=1}^{n} a_i b_i(1 + \alpha_i + \beta_i + \alpha_i\beta_i) - \sum_{i=1}^{n} a_i b_i|}{|\sum_{i=1}^{n} a_i b_i|} \approx\\
+\approx \frac{|\sum_{i=1}^{n} a_i b_i(\alpha_i + \beta_i)|}{|\sum_{i=1}^{n} a_i b_i|}\\
+\le \max_{1 \le i \le n} |\alpha_i + \beta_i|\frac{\sum_{i=1}^{n} |a_i b_i|}{|\sum_{i=1}^{n} a_i b_i|} = cond(a,b) \cdot \max_{1 \le i \le n}|\alpha_i + \beta_i|
+\]</span></p>
+<p>Jeśli <span class="math inline">\(a_i, b_i\)</span>, <span class="math inline">\(i = 1, \dots, n\)</span> są tego samego znaku, wówczas <span class="math inline">\(cond(a,b) = 1\)</span> i zadanie jest dobrze uwarunkowane.</p>
+<hr />
+<h2 id="normy-wektorów">5. Normy wektorów</h2>
+<h3 id="definicja">5.1. Definicja</h3>
+<p>Normą w <span class="math inline">\(\mathbb{R}^n\)</span> nazywamy funkcję rzeczywistą o własnościach: - <span class="math inline">\(||x|| \ge 0\)</span>, <span class="math inline">\(||x|| = 0 \Leftrightarrow x = 0\)</span> - <span class="math inline">\(||\alpha x|| = |\alpha|||x||\)</span>, <span class="math inline">\(\alpha \in \mathbb{R},~ x \in \mathbb{R}^n\)</span> - <span class="math inline">\(||x + y|| \le ||x|| + ||y||\)</span>, <span class="math inline">\(x,y \in \mathbb{R}^n\)</span></p>
+<h4 id="przykład">5.1.1. Przykład</h4>
+<p>Mamy <span class="math inline">\(x = (x_1, \dots, x_n)\)</span>.</p>
+<ul>
+<li>Norma sumacyjna: <span class="math inline">\(||x||_1 = \sum_{i=1}^{n} |x_i|\)</span></li>
+<li>Norma euklidesowa: <span class="math inline">\(||x||_2 = \sqrt{\sum_{i=1}^{n} x_i^2}\)</span></li>
+<li>Norma maksymalna: <span class="math inline">\(||x||_\infty = \max_{1\le i \le n}|x_i|\)</span></li>
+<li>(<em>Julia lang</em>) <code>norm(A, p::Real=2)</code> z pakietu <code>LinearAlgebra</code></li>
+</ul>
+<hr />
+<h2 id="normy-macierzy">6. Normy macierzy</h2>
+<h3 id="definicja-1">6.1. Definicja</h3>
+<p>Normą w <span class="math inline">\(\mathbb{R}^{m\times n}\)</span> nazywamy funkcję rzeczywistą o własnościach: - <span class="math inline">\(||A|| \ge 0\)</span>, <span class="math inline">\(||A|| = 0 \Leftrightarrow A = 0\)</span> - <span class="math inline">\(||\alpha A|| = |\alpha|||A||\)</span>, <span class="math inline">\(\alpha \in \mathbb{R}, A \in \mathbb{R}^{m\times n}\)</span> - <span class="math inline">\(||A + B|| \le ||A|| + ||B||\)</span>, <span class="math inline">\(A,B \in \mathbb{R}^{m\times n}\)</span></p>
+<h3 id="normy">6.2. Normy</h3>
+<p>Ważną podklasę norm macierzy stanowią normy macierzy <em>indukowane</em> przez normy wektorów definiowane jako <span class="math display">\[
+||A|| = \sup\{ ||Ax||: x \in \mathbb{R}^n,~ ||x|| = 1 \}
+\]</span></p>
+<p>Z powyższego wynika następująca nierówność <span class="math display">\[
+||Ax|| \le ||A||~ ||x||
+\]</span></p>
+<h4 id="przykład-1">6.2.1. Przykład</h4>
+<p>Mamy <span class="math inline">\(A \in \mathbb{R}^{m\times n}\)</span>.</p>
+<ul>
+<li><span class="math inline">\(||A||_1 = \max_{1 \le j \le n} \sum_{i=1}^{m} |a_{ij}|\)</span></li>
+<li>Norma spektralna: <span class="math inline">\(||A||-2 = \sqrt{\lambda_{\max} (A^T A)}\)</span>, gdzie <span class="math inline">\(\lambda_{\max}\)</span> jest maksymalną wartością własną macierzy <span class="math inline">\(A^T A\)</span>.</li>
+<li><span class="math inline">\(||A||_\infty = \max_{1\le i \le m} \sum_{j=1}^{n} |a_{ij}|\)</span></li>
+<li>(<em>Julia lang</em>) <code>norm(A, p::Real=2)</code> z pakietu <code>LinearAlgebra</code></li>
+</ul>
+<hr />
+<h3 id="przykład-ax-b">6.3. Przykład (<span class="math inline">\(Ax = b\)</span>)</h3>
+<p>Zbadajmy uwarunkowanie zadania rozwiązywania układu równań liniowych <span class="math display">\[
+Ax = b
+\]</span></p>
+<p>o danej nieosobliwej macierzy <span class="math inline">\(A~ (n\times n)\)</span> i o niezerowym wektorze <span class="math inline">\(b\)</span>.</p>
+<p>Zaburzymy wektor <span class="math inline">\(b\)</span> otrzymując <span class="math inline">\(\tilde{b} = (b_1 (1+\delta_1), \dots, b_n(1 + \delta_n))\)</span>. Jeśli <span class="math inline">\(x\)</span> oraz <span class="math inline">\(\tilde{x}\)</span> spełniają <span class="math inline">\(Ax = b\)</span> oraz <span class="math inline">\(A\tilde{x} = \tilde{b}\)</span>, to oszacujmy względną zmianę wyniku.</p>
+<p><span class="math display">\[
+||x - \tilde{x}|| = ||A^{-1}b - A^{-1}\tilde{b}|| = ||A^{-1}(b - \tilde{b})|| \le ||A^{-1}||~ ||b - \tilde{b}|| =\\
+||A^{-1}||~||b||~\frac{||b - \tilde{b}||}{||b||} = ||A^{-1}||~||Ax|| \frac{||b-\tilde{b}}{||b||} \le ||A^{-1}||~||x||\frac{||b - \tilde{b}||}{||b||}
+\]</span></p>
+<p><span class="math display">\[
+\frac{||x - \tilde{x}}{||x||} \le \bold{||A^{-1}||~||A||} \frac{||b - \tilde{b}||}{||b||} = cond(A) \frac{||b - \tilde{b}||}{||b||}
+\]</span></p>
+<p>Oczywiście <span class="math inline">\(cond(A)\)</span> to wskaźnik uwarunkowania macierzy.</p>
+<p>W <em>Julia lang</em> mamy <code>cond(M, p::Real=2)</code> z pakietu <code>LinearAlgebra</code>.</p>
+<hr />
+<h3 id="przykład-macierz-hilberta">6.4. Przykład (Macierz Hilberta)</h3>
+<p>Przykładem macierzy bardzo źle uwarunkowanej jest macierz Hilberta <span class="math inline">\(H_n = \left[\frac{1}{i + j - 1}\right]_{i,j=1}^{n}\)</span>.</p>
+<p>Wskaźniki <span class="math inline">\(cond(H_6) \approx 1.5 \cdot 10^7\)</span>, <span class="math inline">\(cond(H_{10}) \approx 1.6 \cdot 10^{13}\)</span>.</p>
+<hr />
+<h3 id="przykład-zaburzenia-macierzy-w-zadaniu-ax-b">6.5. Przykład (Zaburzenia macierzy w zadaniu <span class="math inline">\(Ax = b\)</span>)</h3>
+<p>Rozważmy teraz uwarunkowanie zadania <span class="math inline">\(Ax = b\)</span> ze względu na zaburzenia macierzy układu <span class="math inline">\(\tilde{A} = A + \delta A\)</span>. Oszacujmy względną zmianę wyniku. Oszacowanie podamy bez dowodu.</p>
+<p>Jeśli <span class="math inline">\(||A||~||\delta A|| &lt; 1\)</span> oraz <span class="math inline">\(||l|| = 1\)</span>, to <span class="math display">\[
+\frac{||x - \tilde{x}||}{||x||} \le \frac{||A^{-1}||~||A||\frac{||A - \tilde{A}||}{||A||}}{1 - ||A^{-1}||~||A||\frac{||A-\tilde{A}||}{||A||}} = \frac{cond(A)\frac{||A-\tilde{A}||}{||A||}}{1 - cond(A)\frac{||A-\tilde{A}||}{||A||}}.
+\]</span></p>
+<hr />
+<h2 id="złośliwy-wielomian-wilkinson">7. „Złośliwy wielomian” (Wilkinson)</h2>
+<p>Dany jest wielomian <span class="math display">\[
+\omega(x) = \prod{i=1}^{20}(x_i - i) = x^{20} + a_{19}x^{19} + \dotsb + a_1x + a_0
+\]</span> gdzie <span class="math inline">\(a_{19} = -210\)</span>. Zaburzymy teraz <span class="math inline">\(a_{19}\)</span>.</p>
+<p><span class="math display">\[
+\omega_\epsilon(x) = \omega(x) - \epsilon x^{19} = x^{20} - (210 + \epsilon)x^{19} + \dotsb + a_1 x + a_0
+\]</span> gdzie <span class="math inline">\(\epsilon = 2^{-23}\)</span>.</p>
+<p><span class="math display">\[
+a_{19}(\epsilon) = -210 - \epsilon = a_{19}\left( 1 + \frac{1}{2^{23}\cdot 210} \right) = a_{19}(1+\delta)
+\]</span> względne zaburzenie <span class="math inline">\(\delta &lt; 2^{-30}\)</span>.</p>
+<p>Dla tak niewielkiego względnego zaburzenia <span class="math inline">\(a_{19}\)</span> wielomian <span class="math inline">\(\omega_\epsilon(x)\)</span> ma zera zespolone.</p>
+<hr />
+<h3 id="uwarunkowanie-zadania-omegax-0">7.1. Uwarunkowanie zadania <span class="math inline">\(\omega(x) = 0\)</span></h3>
+<p>Załóżmy, że <span class="math inline">\(\omega&#39;(r) \neq 0\)</span>, gdzie <span class="math inline">\(r\)</span> jest pierwiastkiem <span class="math inline">\(\omega\)</span>, tj. <span class="math inline">\(\omega(r) = 0\)</span>.</p>
+<p>Zaburzymy <span class="math inline">\(\omega\)</span>: <span class="math display">\[
+\tilde{\omega} = \omega - \epsilon z
+\]</span> gdzie <span class="math inline">\(z \in C^2\)</span>.</p>
+<p>Pytanie: <em>Jaki jest pierwiastek <span class="math inline">\(\tilde{\omega}\)</span>, tj. <span class="math inline">\(r + h\)</span> taki, że <span class="math inline">\(\tilde{\omega}(r+h) = 0\)</span>?</em></p>
+<p>Rozwijamy <span class="math inline">\(\tilde{\omega}\)</span> w szereg Taylora: <span class="math display">\[
+\omega(r) + h\omega&#39;(r) + \frac{1}{2}h^2\omega&#39;&#39;(\eta) - \epsilon\left( z(r) + hz&#39;(r) + \frac{1}{2}h^2z&#39;&#39;(\xi) \right) = 0.
+\]</span> Stąd <span class="math display">\[
+h = \approx \epsilon\frac{z(r)}{\omega&#39;(r) - \epsilon z&#39;(r)} \approx \epsilon\frac{z(r)}{\omega&#39;(r)}.
+\]</span></p>
+<p><span class="math display">\[
+\omega(x) = \prod_{i=1}^{20} (x_i - i)
+\]</span></p>
+<p>Zaburzenie <span class="math inline">\(z(x) = \epsilon x^{19}\)</span>, <span class="math inline">\(\epsilon = 2^{-23}\)</span>.</p>
+<p>Pytanie: <em>jak powyższe zaburzenie wpływa na pierwiastek <span class="math inline">\(r = 20\)</span>?</em> <span class="math display">\[
+h \approx \epsilon\frac{z(20)}{\omega&#39;(20)} \approx \epsilon \frac{20^{19}}{19!} \approx \epsilon10^8 \approx 102.76
+\]</span></p>
+<h4 id="wniosek">7.1.1. Wniosek</h4>
+<p>Zadanie wyznaczania pierwiastków wielomianu jest źle uwarunkowane ze względu na zaburzenia współczynników.</p>
+<hr />
+</body>
+</html>

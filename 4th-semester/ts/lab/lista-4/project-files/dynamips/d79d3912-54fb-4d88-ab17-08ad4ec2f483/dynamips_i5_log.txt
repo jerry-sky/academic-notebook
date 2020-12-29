@@ -1,0 +1,31 @@
+Jun 02 14:56:14.110 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Jun 02 14:56:14.110 HYPERVISOR: Started on IP = localhost, TCP port = 39075.
+Jun 02 14:56:14.120 HYPERVISOR: exec_cmd: hypervisor version 
+Jun 02 14:56:14.121 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips 
+Jun 02 14:56:14.121 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips
+Jun 02 14:56:14.121 HYPERVISOR: exec_cmd: hypervisor working_dir /home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/e33c1173-242e-4e9c-9c5d-128474d890e1 
+Jun 02 14:56:14.121 GENERAL: working_dir=/home/jerry-sky/notebooks/academic-notebook/4th-semester/ts/lab/lista-4/project-files/dynamips/e33c1173-242e-4e9c-9c5d-128474d890e1
+Jun 02 14:56:14.121 HYPERVISOR: exec_cmd: vm create R3 3 c3725 
+Jun 02 14:56:14.121 VM: VM R3 created.
+Jun 02 14:56:14.122 HYPERVISOR: exec_cmd: vm set_con_tcp_port R3 5002 
+Jun 02 14:56:14.122 HYPERVISOR: exec_cmd: c3725 get_mac_addr R3 
+Jun 02 14:56:14.122 HYPERVISOR: exec_cmd: vm set_disk0 R3 0 
+Jun 02 14:56:14.122 HYPERVISOR: exec_cmd: vm get_status R3 
+Jun 02 14:56:14.123 HYPERVISOR: exec_cmd: vm set_idle_pc R3 0x60c09aa0 
+Jun 02 14:56:14.123 HYPERVISOR: exec_cmd: vm set_ios R3 /home/jerry-sky/GNS3/images/IOS/c3725-adventerprisek9-mz.124-15.T14.image 
+Jun 02 14:56:14.124 HYPERVISOR: exec_cmd: c3725 set_mac_addr R3 c203.34f8.0000 
+Jun 02 14:56:14.124 HYPERVISOR: exec_cmd: vm set_nvram R3 256 
+Jun 02 14:56:14.124 HYPERVISOR: exec_cmd: vm set_ram R3 300 
+Jun 02 14:56:14.124 HYPERVISOR: exec_cmd: vm slot_add_binding R3 0 16 WIC-1T 
+Jun 02 14:56:15.460 HYPERVISOR: exec_cmd: nio create_udp udp-66181d45-6137-4939-a85f-b6a8e239884d 10026 127.0.0.1 10027 
+Jun 02 14:56:15.678 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R3 0 0 udp-66181d45-6137-4939-a85f-b6a8e239884d 
+Jun 02 14:56:15.679 HYPERVISOR: exec_cmd: vm get_status R3 
+Jun 02 14:56:28.779 HYPERVISOR: exec_cmd: vm get_status R3 
+Jun 02 14:56:28.779 HYPERVISOR: exec_cmd: vm extract_config R3 
+Jun 02 14:56:29.087 HYPERVISOR: exec_cmd: vm get_status R3 
+Jun 02 14:56:29.088 HYPERVISOR: exec_cmd: vm extract_config R3 
+Jun 02 14:56:29.088 HYPERVISOR: exec_cmd: vm delete R3 
+Jun 02 14:56:29.088 VM: VM R3 destroyed.
+Jun 02 14:56:29.089 HYPERVISOR: exec_cmd: hypervisor stop 
+Jun 02 14:56:29.136 HYPERVISOR: Stopped.
+Jun 02 14:56:29.136 GENERAL: reset done.

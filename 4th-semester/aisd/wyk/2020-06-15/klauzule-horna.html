@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="klauzule-horna">Klauzule Horna</h1>
+<p>Klauzulami Horna nazywamy zbiór formuł logicznych wykorzystywany do przeprowadzenia wnioskowania np. w automatycznym dowodzeniu twierdzeń i systemach eksperckich.</p>
+<ul>
+<li><a href="#input">Input</a></li>
+<li><a href="#przykład-klauzul">Przykład klauzul</a></li>
+<li><a href="#def-literał">Def Literał</a></li>
+<li><a href="#rodzaje-formuł">Rodzaje formuł</a></li>
+<li><a href="#1-formuły-implikacyjne">1. Formuły implikacyjne</a>
+<ul>
+<li><a href="#przykłady-formuły-implikacyjnej">Przykłady formuły implikacyjnej</a></li>
+</ul></li>
+<li><a href="#2-formuły-negacyjne">2. Formuły negacyjne</a>
+<ul>
+<li><a href="#przykład-formuły-negacyjnej">Przykład formuły negacyjnej</a></li>
+</ul></li>
+<li><a href="#cel">Cel</a></li>
+<li><a href="#przykładowy-algorytm">Przykładowy algorytm</a></li>
+<li><a href="#poprawność-algorytmu">Poprawność algorytmu</a></li>
+</ul>
+<h2 id="input">Input</h2>
+<p>Podstawowym obiektem jest zmienna logiczna przyjmująca wartość <span class="math inline">\(\mathrm{True}\)</span> lub <span class="math inline">\(\mathrm{False}\)</span>.</p>
+<h3 id="przykład-klauzul">Przykład klauzul</h3>
+<p>Dla przykładu, zmienne <span class="math inline">\(x,y,z\)</span> mogą oznaczać następujące możliwości: - <span class="math inline">\(x \equiv\)</span> morderstwo miało miejsce w kuchni - <span class="math inline">\(y \equiv\)</span> lokaj jest niewinny - <span class="math inline">\(z \equiv\)</span> pułkownik spał o 8 wieczorem - <span class="math inline">\(u \equiv\)</span> pułkownik jest niewinny - <span class="math inline">\(w \equiv\)</span> morderstwo odbyło się o 8 wieczorem</p>
+<h2 id="def-literał">Def Literał</h2>
+<p>Literałem nazywamy zmienną np. <span class="math inline">\(x\)</span> lub jej negację <span class="math inline">\(\overline{x}\)</span>.</p>
+<h2 id="rodzaje-formuł">Rodzaje formuł</h2>
+<h3 id="formuły-implikacyjne">1. Formuły implikacyjne</h3>
+<p><em>deklaracja procedury</em></p>
+<p>Lewa strona implikacji jest koniunkcją pozytywnych literałów (niezanegowanych zmiennych), prawa strona implikacji składa się z jednego pozytywnego literału. Formuła taka odpowiada stwierdzeniom: jeśli warunki po lewej stronie zachodzą to stwierdzenie po prawej stronie również musi być prawdziwe.</p>
+<h4 id="przykłady-formuły-implikacyjnej">Przykłady formuły implikacyjnej</h4>
+<ol style="list-style-type: decimal">
+<li><em>rozszerzenie <a href="#przykład-klauzul">wcześniejszego przykładu</a></em><br />
+Formuła <span class="math inline">\((z \land w) \Rightarrow u\)</span> może oznaczać: jeśli pułkownik spał o 8 wieczorem i morderstwo odbyło się o 8 wieczorem to pułkownik jest niewinny.</li>
+<li>Możemy zapisać również implikację z pustą lewą stroną, np. <span class="math inline">\(\Rightarrow x\)</span> oznaczającą po prostu, że <span class="math inline">\(x\)</span> jest prawdą.</li>
+</ol>
+<h3 id="formuły-negacyjne">2. Formuły negacyjne</h3>
+<p><em>formuła celu</em></p>
+<p>Formuła negacyjna jest alternatywną negatywnych literałów (zanegowanych zmiennych).</p>
+<h4 id="przykład-formuły-negacyjnej">Przykład formuły negacyjnej</h4>
+<p><em>rozszerzenie <a href="#przykład-klauzul">wcześniejszego przykładu</a></em><br />
+Dla przykładu <span class="math inline">\((\overline{u} \lor \overline{y})\)</span> może oznaczać: obie postacie nie mogą być niewinne.</p>
+<hr />
+<h2 id="cel">Cel</h2>
+<p>Celem znalezienie takiego wartościowania zmiennych występujących w klauzuli Horna, aby wszystkie jej formuły miały wartościowanie spełniające.<br />
+Zauważmy, że <a href="#rodzaje-formuł">dwa rodzaje formuł</a> sprzyjają nadawaniu różnych wartościowań zmiennym: - <a href="#1-formuły-implikacyjne">formuły implikacyjne</a> sprzyjają nadawaniu zmiennym wartości <span class="math inline">\(\mathrm{True}\)</span> aby były spełnione, - <a href="#2-formuły-negacyjne">formuły negacyjne</a> sprzyjają nadawaniu zmiennym wartości <span class="math inline">\(\mathrm{False}\)</span> aby były spełnione.</p>
+<h2 id="przykładowy-algorytm">Przykładowy algorytm</h2>
+<p>Użyjmy następującego zachłannego rozwiązania problemu znalezienia wartościowania spełniającego:</p>
+<p><code>Horn</code><span class="math inline">\((\text{klauzula wejściowa})\)</span>: 1. ustaw wartość wszystkich zmiennych na <span class="math inline">\(\mathrm{False}\)</span> 2. <code>while</code> istnieje niespełniona implikacja: 1. ustaw zmienną po prawej stronie implikacji na <span class="math inline">\(\mathrm{True}\)</span> 3. <code>if</code> wszystkie formuły negacyjne są spełnione: 1. <code>return</code> wartościowanie spełniające wejściową klauzulę 4. <code>else</code>: 1. <code>return</code> wartościowanie spełniające nie istnieje</p>
+<h3 id="poprawność-algorytmu">Poprawność algorytmu</h3>
+<p>Jeśli algorytm zwróci wartościowanie spełniające to nie ma czego dowodzić, bo wartościowanie to rzeczywiście musi spełniać wejściową klauzulę Horna.<br />
+Zatem jedyny przypadek, który wymaga udowodnienia, to ten kiedy algorytm zwróci, że wartościowanie spełniające wejściową klauzulę Horna nie istnieje. Musimy pokazać, że rzeczywiśćie nie da się znaleźć innego przypisania wartości zmiennym, które spełni wejściową klauzulę.<br />
+W tym celu zauważmy, że nasze zachłanne nadawanie wartości <span class="math inline">\(\mathrm{True}\)</span> zmiennym w pętli <code>while</code> spełnia następujący niezmiennik: &gt; Jeśli zmienna ustawiona na <span class="math inline">\(\mathrm{True}\)</span> w pętli <code>while</code>, to musi ona mieć wartość <span class="math inline">\(\mathrm{True}\)</span> w każdym spełniającym wartościowaniu.</p>
+<p>Zatem, jeśli wartościowanie znalezione po pętli <code>while</code> nie spełnia wszystkich formuł negacyjnych wejściowej klauzuli, to nie istnieje takie wartościowanie.</p>
+</body>
+</html>

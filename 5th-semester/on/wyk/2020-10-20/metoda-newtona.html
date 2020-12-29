@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="metoda-newtona">Metoda Newtona</h1>
+<p><em>(2020-10-20)</em></p>
+<ul>
+<li><a href="#1-metoda-newtona-metoda-stycznych">1. Metoda Newtona (metoda stycznych)</a></li>
+<li><a href="#2-algorytm">2. Algorytm</a></li>
+<li><a href="#3-twierdzenie-o-lokalnej-zbieżności-metody-newtona">3. Twierdzenie o lokalnej zbieżności metody Newtona</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a>
+<ul>
+<li><a href="#311-wykładnik-zbieżności">3.1.1. Wykładnik zbieżności</a></li>
+<li><a href="#312-zbieżność">3.1.2. Zbieżność</a></li>
+</ul></li>
+<li><a href="#32-przykład">3.2. Przykład</a></li>
+</ul></li>
+<li><a href="#4-twierdzenie3">4. Twierdzenie#3</a></li>
+</ul>
+<hr />
+<h2 id="metoda-newtona-metoda-stycznych">1. Metoda Newtona (metoda stycznych)</h2>
+<p>Założenia: - <span class="math inline">\(f \in C^2[a,b]\)</span> - <span class="math inline">\(f&#39;(r) \neq 0\)</span> (<span class="math inline">\(r\)</span> jest pierwiastkiem jednokrotnym)</p>
+<div class="figure">
+<img src="metoda-newtona.png" />
+
+</div>
+<ul>
+<li><span class="math inline">\(f(x) = f(x_n) + f&#39;(x_n) \cdot (x - x_n) + \mathcal{O}((x - x_n)^2) \qquad\)</span> szereg Taylora</li>
+<li><span class="math inline">\(f(x) \approx f(x_n) + f&#39;(x_n)(x - x_n) \qquad\)</span> linearyzacja</li>
+<li><span class="math inline">\(x_{n+1} = x_n - \frac{f(x_n)}{f&#39;(x_n)} = x_n + h_n \enspace (n\ge 0) \qquad x_0\)</span> jest dane (<span class="math inline">\(h_n\)</span> to jest poprawka)</li>
+</ul>
+<p>Warunek końca: <span class="math inline">\(|x_{n+1} - x_n| \le \delta, \enspace |f(x_{n+1})| \le \epsilon\)</span>.</p>
+<h2 id="algorytm">2. Algorytm</h2>
+<ul>
+<li><em>Dane: <span class="math inline">\(x_0, M, \delta, \epsilon\)</span></em></li>
+<li><em>Wyniki: <span class="math inline">\(k, \tilde{r}, f(\tilde{r})\)</span></em></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(v \gets f(x_0)\)</span></li>
+<li><code>if</code> <span class="math inline">\(|v| &lt; \epsilon\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>return</code> <span class="math inline">\(0, x_0, v\)</span></li>
+</ol></li>
+<li><code>for</code> <span class="math inline">\(k \gets 1\)</span> <code>to</code> <span class="math inline">\(M\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(x_1 \gets x_0 - \frac{v}{f&#39;(x_0)}\)</span></li>
+<li><span class="math inline">\(v \gets f(x_1)\)</span></li>
+<li><code>if</code> <span class="math inline">\(|x_1 - x_0| &lt; \delta\)</span> <code>or</code> <span class="math inline">\(|v| &lt; \epsilon\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>return</code> <span class="math inline">\(k, x_1, v\)</span></li>
+</ol></li>
+<li><span class="math inline">\(x_0 \gets x_1\)</span></li>
+</ol></li>
+</ol>
+<p>Powyższy algorytm korzysta z funkcji liczących <span class="math inline">\(f(x)\)</span> oraz <span class="math inline">\(f&#39;(x)\)</span>.</p>
+<hr />
+<h2 id="twierdzenie-o-lokalnej-zbieżności-metody-newtona">3. Twierdzenie o lokalnej zbieżności metody Newtona</h2>
+<p>Niech <span class="math inline">\(f \in C^2[a,b]\)</span> oraz <span class="math inline">\(r\)</span> będzie jednokrotnym pierwiastkiem <span class="math inline">\(f\)</span>.<br />
+Wówczas istnieje otoczenie <span class="math inline">\(r\)</span> i stała <span class="math inline">\(C\)</span> i jeśli przybliżenie początkowe <span class="math inline">\(x_0\)</span> należy do otoczenia <span class="math inline">\(r\)</span>, to ciąg konstruowanych przez metodę Newtona przybliżeń <span class="math inline">\(\{ x_n \}\)</span> spełnia <span class="math display">\[
+|x_{n+1} - r| \le C\cdot (x_n - r)^2.
+\]</span></p>
+<p>Ponadto <span class="math inline">\(\lim_{n \to \infty} x_n = r\)</span>.</p>
+<h3 id="d-d">3.1. D-d</h3>
+<h4 id="wykładnik-zbieżności">3.1.1. Wykładnik zbieżności</h4>
+<p>Przez błąd rozumiemy wielkość <span class="math inline">\(e_n = x_n - r\)</span>. <span class="math display">\[
+e_{n+1} = x_{n+1} - r = x_n - \frac{f(x_n)}{f&#39;(x_n)} - r = e_n - \frac{f(x_n)}{f&#39;(x_n)} = \frac{e_n \cdot f&#39;(x_n) - f(x_n)}{f&#39;(x_n)}.
+\]</span></p>
+<p>Rozwijamy <span class="math inline">\(f\)</span> w szereg Taylora w otoczeniu <span class="math inline">\(x_n\)</span>: <span class="math display">\[
+f(r) = f(x_n) + f&#39;(x_n) \cdot (r-x_n) + \frac{1}{2} f&#39;&#39;(\zeta_n) \cdot (r - x_n)^2 =\\
+= f(x_n) - f&#39;(x_n) e_n + \frac{1}{2} f&#39;&#39;(\zeta_n) \cdot e_n^2
+\]</span> gdzie <span class="math inline">\(\zeta_n\)</span> jest liczbą leżącą między <span class="math inline">\(r\)</span> oraz <span class="math inline">\(x_n\)</span>.</p>
+<p><span class="math display">\[
+0 = f(r) = f(x_n) - f&#39;(x_n) \cdot e_n + \frac{1}{2} \cdot f&#39;&#39;(\zeta_n) \cdot e_n^2
+\]</span></p>
+<p>Przekształcając powyższe równanie otrzymujemy <span class="math display">\[
+f&#39;(x_n) \cdot e_n - f(x_n) = \frac{1}{2} \cdot f&#39;&#39;(\zeta_n) \cdot e_n^2
+\]</span></p>
+<p><span class="math display">\[
+e_{n+1} = \frac{e_n \cdot f&#39;(x_n) - f(x_n)}{f&#39;(x_n)} = \frac{1}{2} \frac{f&#39;&#39;(\zeta_n)}{f&#39;(x_n)} \cdot e_n^2 \approx\\
+\approx \frac{1}{2} \frac{f&#39;&#39;(r)}{f&#39;(r)} \cdot e_n^2 = C\cdot e_n^2
+\]</span> (zakładamy, że <span class="math inline">\(x_n \to r\)</span>)</p>
+<h4 id="zbieżność">3.1.2. Zbieżność</h4>
+<p>Zdefiniujmy <span class="math inline">\(c(\delta)\)</span>: <span class="math display">\[
+c(\delta) = \frac{1}{2} \frac{\max_{|x-r| \le \delta} |f&#39;&#39;(x)|}{\min_{|x-r| \le \delta} |f&#39;(x)|} \quad (\delta &gt; 0)
+\]</span></p>
+<p>Wybierzmy <span class="math inline">\(\delta\)</span> (zmniejszając wartość), takie, że <span class="math inline">\(\delta \cdot c(\delta) &lt; 1\)</span>. Można to zrobić, ponieważ jak <span class="math inline">\(\delta \to 0,\enspace c(\delta) \to \frac{1}{2} \frac{|f&#39;&#39;(r)|}{|f&#39;(r)|}\)</span>, to <span class="math inline">\(\delta \cdot c(\delta) \to 0\)</span>.<br />
+Ustalmy <span class="math inline">\(\delta\)</span> i połóżmy <span class="math inline">\(\rho = \delta \cdot c(\delta)\)</span>. Załóżmy, że <span class="math inline">\(x_0\)</span> jest punktem startowym metody Newtona spełniającym <span class="math inline">\(|x_0 - r| \le \delta\)</span>.<br />
+Wówczas <span class="math inline">\(|e_0| \le \delta\)</span> oraz <span class="math inline">\(|\zeta_0 - r| \le \delta\)</span>.<br />
+Stąd <span class="math display">\[
+\frac{1}{2} \left| \frac{f&#39;&#39;(\zeta_0)}{f&#39;(x_0)} \right| \le c(\delta).
+\]</span></p>
+<p>Pokażemy, że kolejne przybliżenie <span class="math inline">\(x_1\)</span> leży w otoczeniu <span class="math inline">\(r\)</span>. <span class="math display">\[
+|x_1 - r| = |e_1| \le e_0^2 \cdot c(\delta) = |e_0|\cdot |e_0| \cdot c(\delta) \le |e_0| \delta\cdot c(\delta) = |e_0| \rho &lt; |e_0| \le \delta
+\]</span></p>
+<p>Stąd mamy <span class="math inline">\(|e_1| \le \rho|e_0|.\)</span><br />
+Uogólniając <span class="math display">\[
+|e_n| \le \rho|e_{n-1}| \le \rho^2 |e_{n-2}| \le \dotsb \le \rho^n |e_0|.
+\]</span></p>
+<p>Z faktu, że <span class="math inline">\(\rho &lt; 1\)</span> wynika <span class="math inline">\(\lim_{n\to \infty} \rho^n = 0\)</span>, w konsekwencji <span class="math inline">\(\lim_{n \to \infty} e_n = 0\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+<hr />
+<h3 id="przykład">3.2. Przykład</h3>
+<p><span class="math inline">\(f(x) = \left( \frac{x}{2} \right)^2 + \sin x\)</span></p>
+<p><em>Wyznaczyć metodą Newtona miejsce zerowe funkcji <span class="math inline">\(f\)</span> w przedziale <span class="math inline">\([1.5; 2]\)</span> z dokładnością <span class="math inline">\(\delta = 0.5_{10}\)</span> a <span class="math inline">\(x_0 = 1.5\)</span>.</em></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">\(x_n\)</span></th>
+<th><span class="math inline">\(h_n\)</span></th>
+<th><span class="math inline">\(\lvert x_n - r \rvert\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(1.5\)</span></td>
+<td><span class="math inline">\(0.6439\)</span></td>
+<td><span class="math inline">\(-0.43374\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(2.14039\)</span></td>
+<td><span class="math inline">\(-0.18838\)</span></td>
+<td><span class="math inline">\(0.26644\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(1.95201\)</span></td>
+<td><span class="math inline">\(-0.018808\)</span></td>
+<td><span class="math inline">\(0.0111825\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(1.93393\)</span></td>
+<td><span class="math inline">\(-0.00018\)</span></td>
+<td><span class="math inline">\(0.00018\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(4\)</span></td>
+<td><span class="math inline">\(1.933375\)</span></td>
+<td><span class="math inline">\(&lt; 5_10 - 6\)</span></td>
+<td><span class="math inline">\(&lt; 5_10 - 6\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Metoda bisekcji wykonała <span class="math inline">\(17\)</span> iteracji dla <span class="math inline">\(a = 1.5\)</span> oraz <span class="math inline">\(b = 2\)</span>.</p>
+<hr />
+<h2 id="twierdzenie3">4. Twierdzenie#3</h2>
+<p>Niech <span class="math inline">\([a;b]\)</span> będzie przedziałem takim, że: - <span class="math inline">\(f(a)\)</span> oraz <span class="math inline">\(f(b)\)</span> mają przeciwne znaki - <span class="math inline">\(f&#39;&#39;(x)\)</span> jest ciągła i zmienia znaku na <span class="math inline">\([a;b]\)</span> - styczne do krzywej <span class="math inline">\(f(x)\)</span> poprowadzone w punktach o odciętych <span class="math inline">\(a\)</span> oraz <span class="math inline">\(b\)</span> przecinają <span class="math inline">\(\mathrm{OX}\)</span> wewnątrz przedziału <span class="math inline">\([a;b]\)</span></p>
+<p>Wówczas <span class="math inline">\(f\)</span> ma dokładnie jedno zero w <span class="math inline">\([a;b]\)</span> i metoda Newtona jest zbieżna do <span class="math inline">\(r\)</span> dla dowolnego punktu startowego <span class="math inline">\(x_0 \in [a;b]\)</span>.</p>
+<hr />
+</body>
+</html>

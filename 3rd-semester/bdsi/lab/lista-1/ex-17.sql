@@ -1,0 +1,1 @@
+Alter Table event Add performer VARCHAR(20) After `date`

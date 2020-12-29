@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="struktury-etykietowane-i-egf">Struktury etykietowane i EGF</h1>
+<p><em>(2020-11-16, 2020-11-23, 2020-11-30)</em></p>
+<ul>
+<li><a href="#1-struktury-etykietowane">1. Struktury etykietowane</a></li>
+<li><a href="#2-klasa-kombinatoryczna-etykietowana">2. Klasa kombinatoryczna (etykietowana)</a></li>
+<li><a href="#3-egf">3. EGF</a></li>
+<li><a href="#4-przykłady">4. Przykłady</a>
+<ul>
+<li><a href="#41-przykład">4.1. Przykład</a></li>
+<li><a href="#42-przykład-urny">4.2. Przykład (<em>Urny</em>)</a></li>
+<li><a href="#43-przykład">4.3. Przykład</a></li>
+</ul></li>
+<li><a href="#5-produkt-etykietowany-star-product">5. Produkt etykietowany (star product)</a>
+<ul>
+<li><a href="#51-przykład">5.1. Przykład</a></li>
+<li><a href="#52-definicja-formalna">5.2. Definicja formalna</a></li>
+</ul></li>
+<li><a href="#6-egf-klas-pochodnych">6. EGF klas pochodnych</a>
+<ul>
+<li><a href="#61-przykład-permutacje">6.1. Przykład (permutacje)</a></li>
+<li><a href="#62-przykład-nieporządki">6.2. Przykład (nieporządki)</a></li>
+<li><a href="#63-przykład-suriekcje">6.3. Przykład (suriekcje)</a></li>
+</ul></li>
+<li><a href="#7-drzewo-etykietowane-non-ordered-labelled-tree">7. Drzewo etykietowane (non-ordered labelled tree)</a></li>
+<li><a href="#8-mappings">8. <em>Mappings</em></a></li>
+<li><a href="#9-metoda-rho-pollarda">9. Metoda <span class="math inline">\(\rho\)</span>-Pollarda</a></li>
+</ul>
+<hr />
+<h2 id="struktury-etykietowane">1. Struktury etykietowane</h2>
+<p>Obiekt etykietowany to graf o <span class="math inline">\(n\)</span> wierzchołkach, w którym każdy elementy ma unikalną etykietę ze zbioru <span class="math inline">\(\{1,\dots,n\}\)</span>.</p>
+<p>Czyli jak wcześniej mieliśmy <span class="math inline">\(\mathcal{Z}_1 \times \mathcal{Z}_2\)</span>, która zawierała tylko jedną parę <span class="math inline">\((\circ, \circ)\)</span> to tutaj zaczynamy rozróżniać te dwa elementy w parze — każdy element dostaje etykietę.</p>
+<hr />
+<h2 id="klasa-kombinatoryczna-etykietowana">2. Klasa kombinatoryczna (etykietowana)</h2>
+<p><span class="math inline">\(\mathcal{A} = \left\{ A, |\cdot|, \beta \right\}\)</span><br />
+gdzie <span class="math inline">\(\forall a \in A \quad \beta: a \to \{1,\dots,n\}\)</span>.</p>
+<h2 id="egf">3. EGF</h2>
+<p><span class="math inline">\(A(z) = \sum_{\alpha \in A} \frac{z^{|\alpha|}}{|\alpha|!} = \sum_{n=0} \frac{A_n}{n!} z^n\)</span><br />
+gdzie <span class="math inline">\(A_n = n! \cdot [z^n] A(z)\)</span>.</p>
+<h2 id="przykłady">4. Przykłady</h2>
+<h3 id="przykład">4.1. Przykład</h3>
+<ul>
+<li><span class="math inline">\(\mathcal{Z} = \left\{ (1), |(1)| = 1, \beta \right\} \qquad Z(z) = z\)</span></li>
+<li><span class="math inline">\(\mathcal{E} = \left\{ \epsilon, |\epsilon| = 0 \right\} \qquad E(z) = 1\)</span></li>
+</ul>
+<p>Zobaczmy <span class="math inline">\(\operatorname{SEQ}(\mathcal{Z}) \cong P\)</span></p>
+<p>mamy <span class="math inline">\(\epsilon \quad (1) \quad (1,2); (2,1) \quad (1,2,3); (1,3,2); \dots (3,2,1)\)</span> (czyli faktycznie <span class="math inline">\(n!\)</span>)</p>
+<p><span class="math inline">\(P(z) = \sum_{n\ge0} \frac{n!}{n!} z^n = \frac{1}{1-z}\)</span></p>
+<hr />
+<h3 id="przykład-urny">4.2. Przykład (<em>Urny</em>)</h3>
+<p>Ile jest urn, które zawierają <span class="math inline">\(i\)</span> elementów?</p>
+<ol start="0" style="list-style-type: decimal">
+<li><span class="math inline">\(\epsilon\)</span></li>
+<li><span class="math inline">\((1)\)</span></li>
+<li><span class="math inline">\((1),(2)\)</span></li>
+<li><span class="math inline">\((1),(2),(3)\)</span></li>
+<li><span class="math inline">\(\dots\)</span></li>
+</ol>
+<p>zawsze jest tylko jedna taka urna, czyli ciąg <span class="math inline">\(u_n = (1,1,1,1,\dots)\)</span>.</p>
+<p>EGF: <span class="math inline">\(\sum_{n\ge0} u_n \frac{z^n}{n!} = \sum_{n\ge0} \frac{z^n}{n!} = \exp(z)\)</span>.</p>
+<hr />
+<h3 id="przykład-1">4.3. Przykład</h3>
+<p>Ile jest cykli z etykietowanymi elementami?</p>
+<ol style="list-style-type: decimal">
+<li>1: <span class="math inline">\((1)\)</span></li>
+<li>1: <span class="math inline">\((1) \to (2) \to (1)\)</span></li>
+<li>2: <span class="math inline">\((1) \to (2) \to (3) \to (1) \qquad (1) \to (3) \to (2) \to (1)\)</span></li>
+<li>6: <span class="math inline">\((1) \to (2) \to (3) \to (4) \to 1 \dots\)</span></li>
+</ol>
+<p>Możemy zauważyć, że permutujemy <span class="math inline">\(n\)</span> elementów. Jedyne co to jeszcze możemy dowolnie przesuwać otrzymane sekwencje, bo rozmawiamy o cyklach, czyli mamy ich <span class="math inline">\(\frac{n!}{n} = (n-1)!\)</span>.</p>
+<p>Czyli EGF: <span class="math display">\[
+C(z) = \sum_{n\ge0} \frac{(n-1)!}{n!} z^n = \sum_{n\ge0} \frac{z^n}{n} = \ln \frac{1}{1-z}
+\]</span></p>
+<hr />
+<h2 id="produkt-etykietowany-star-product">5. Produkt etykietowany (star product)</h2>
+<p>Mając dane dwie klasy etykietowane <span class="math inline">\(\mathcal{A}\)</span> oraz <span class="math inline">\(\mathcal{B}\)</span>,<br />
+<span class="math inline">\(\mathcal{A} \star \mathcal{B}\)</span> to klasa uporządkowanych par <span class="math inline">\((a,b)\)</span> takich, że <span class="math inline">\(a \in A\)</span> oraz <span class="math inline">\(b \in B\)</span>, poetykietowanych tak, że został zachowany porządek względny.</p>
+<h3 id="przykład-2">5.1. Przykład</h3>
+<p>Mamy - <span class="math inline">\(\mathcal{A} = (A, |\cdot|, \gamma_1)\)</span> - <span class="math inline">\(\mathcal{B} = (B, |\cdot|, \gamma_2)\)</span> - <span class="math inline">\(\mathcal{A} \star \mathcal{B} = (A \times B, |\cdot|, \gamma)\)</span></p>
+<p>Jeśli <span class="math inline">\(\alpha \in A\)</span>, <span class="math inline">\(\beta \in B\)</span>: - <span class="math inline">\(\alpha = (1)–(2)\)</span> - <span class="math inline">\(\beta = (2)–(1)–(3)\)</span></p>
+<p>wówczas <span class="math inline">\(\alpha \star \beta:\)</span> - <span class="math inline">\((1)–(2) \enspace (4)–(3)–(5)\)</span> - <span class="math inline">\((1)–(3) \enspace (4)–(2)–(5)\)</span> - <span class="math inline">\((2)–(5) \enspace (3)–(1)–(4)\)</span></p>
+<p>Możemy to zrobić na <span class="math inline">\(\binom{|\alpha| + |\beta|}{|\alpha|}\)</span> czyli tutaj <span class="math inline">\(\binom{5}{2}\)</span>.</p>
+<hr />
+<p>Funkcję etykietowaną <span class="math inline">\(\gamma\)</span> definiujemy w taki sposób, że - <span class="math inline">\(\forall x,y \in A \quad \gamma_1(x) &lt; \gamma_1(y) \implies \gamma(x) &lt; \gamma(y)\)</span> - <span class="math inline">\(\forall x,y \in B \quad \gamma_2(x) &lt; \gamma_2(y) \implies \gamma(x) &lt; \gamma(y)\)</span></p>
+<p>Czyli jeśli <span class="math inline">\(|a|_A = n\)</span> oraz <span class="math inline">\(|b|_B = m\)</span> wówczas <span class="math inline">\(|a \star b| = \binom{n+m}{n}\)</span>.</p>
+<h3 id="definicja-formalna">5.2. Definicja formalna</h3>
+<p>Mając <span class="math inline">\(\mathcal{C} = \mathcal{A} \star \mathcal{B}\)</span> mamy <span class="math inline">\(C_n = \bigcup\left\{ a \star b: |a| + |b| = n \right\} = \bigcup_{k=0}^n \left\{ a\star b: |a| = k \land |b| = n-k \right\}\)</span>.</p>
+<p>Czyli <span class="math inline">\(c_n = \sum_{k=0}^n a_k \cdot b_{n-k} \binom{n}{k}\)</span>.</p>
+<p>EGF: <span class="math inline">\(C(z) = \sum_{n\ge0} \frac{z^n}{n!} \left( \sum_{k=0}^n \binom{n}{k} a_{k} b_{n-k} \right) = \left( \sum_{n\ge0}\frac{a_n z^n}{n!} \right) \cdot \left( \sum_{n\ge0}\frac{b_n z^n}{n!} \right) = A(z) \cdot B(z)\)</span> co jest bardzo dobre!</p>
+<p>Ważne: <span class="math display">\[
+\frac{a_k \cdot b_{n-k} \cdot z^{k + (n-k)}}{k! (n-k)!} = \frac{\binom{n}{k} a_k a_{n-k} z^n}{n!}
+\]</span></p>
+<hr />
+<h2 id="egf-klas-pochodnych">6. EGF klas pochodnych</h2>
+<p>Niech - <span class="math inline">\(\mathcal{A}, \mathcal{B}\)</span> będą klasami kombinatorycznymi - <span class="math inline">\(A(z), B(z)\)</span> będą ich EGF</p>
+<p>Wówczas 1. <span class="math inline">\(\mathcal{A} + \mathcal{B} \iff A(z) + B(z)\)</span> 2. <span class="math inline">\(\mathcal{A} * \mathcal{B} \iff A(z) \cdot B(z)\)</span> 3. <span class="math inline">\(\operatorname{SEQ}(\mathcal{A}) \iff \frac{1}{1 - A(z)}\)</span> 4. <span class="math inline">\(\operatorname{CYC}(\mathcal{A}) \iff \ln \frac{1}{1 - A(z)} = \sum_{n\ge1} \frac{A^n(z)}{n}\)</span> 5. <span class="math inline">\(\operatorname{MSET}\)</span> <em>nie działa</em> 6. <span class="math inline">\(\operatorname{SET}(\mathcal{A})(z) = 1 + A(z) + \frac{A^2(z)}{2!} + \frac{A^3(z)}{3!} + \dots = \exp(A(z))\)</span></p>
+<hr />
+<h3 id="przykład-permutacje">6.1. Przykład (permutacje)</h3>
+<p>Mamy permutację: <span class="math display">\[
+\begin{aligned}
+    1 &amp;&amp; 2 &amp;&amp; 3 &amp;&amp; 4 &amp;&amp; 5 &amp;&amp; 6\\
+    3 &amp;&amp; 1 &amp;&amp; 2 &amp;&amp; 6 &amp;&amp; 5 &amp;&amp; 4
+\end{aligned}
+\]</span> Można na nią spojrzeć na następujące sposoby: 1. <span class="math inline">\((3)–(1)–(2)–(6)–(5)–(4)\)</span> 2. <span class="math inline">\((1)\to(3)\to(2)\to(1)\)</span><br />
+<span class="math inline">\((4)\to(6)\to(4)\)</span><br />
+<span class="math inline">\((5)\to(5)\)</span></p>
+<p>Permutacje określa klasa <span class="math display">\[
+\mathcal{P} = \operatorname{SEQ}(\mathcal{Z})\\
+P(z) = \frac{1}{1-z}
+\]</span></p>
+<p>A formę cykli określa klasa <span class="math display">\[
+\mathcal{P}&#39; = \operatorname{SET}(\operatorname{CYC}(\mathcal{Z}))
+\]</span> czyli OGF <span class="math inline">\(P&#39;(z) = \exp\left(\ln\frac{1}{1-z}\right)\)</span>, ale przecież <span class="math inline">\(\exp\left( \ln \frac{1}{1-z} \right) = \frac{1}{1-z}\)</span> — czyli obie sposoby „patrzenia” na permutacje są równoważne.</p>
+<hr />
+<h3 id="przykład-nieporządki">6.2. Przykład (nieporządki)</h3>
+<p><em>Nieporządki to permutacje bez punktów stałych — innymi słowy składają się z cykli o długości większej niż jeden.</em></p>
+<p>Opisuje tę sytuację klasa <span class="math inline">\(\mathcal{D} = \operatorname{SET}(\operatorname{CYC}_{&gt;1}(\mathcal{Z}))\)</span> z OGF <span class="math inline">\(D(z) = \exp(A(z))\)</span> gdzie <span class="math inline">\(A(z) = \ln\frac{1}{1-z} - z\)</span>, bo odejmujemy ten jeden cykl zwrotny.</p>
+<p>Czyli <span class="math inline">\(D(z) = \exp\left( \ln\frac{1}{1-z} - z \right) = \frac{\exp(-z)}{1 - z}\)</span>.</p>
+<hr />
+<h3 id="przykład-suriekcje">6.3. Przykład (suriekcje)</h3>
+<p><em>funkcje „na”</em></p>
+<p>Mamy <span class="math inline">\(\{1,\dots,n\} \to \{1,\dots,r\}\)</span> gdzie <span class="math inline">\(r \le n\)</span>. Każdy przeciwobraz każdego elementu ze zbioru <span class="math inline">\(\{1,\dots,r\}\)</span> jest niepusty.</p>
+<p>Możemy suriekcje utożsamić z urnami, gdzie dla każdego elementu z <span class="math inline">\(\{1,\dots,r\}\)</span> mamy urnę, gdzie jest przynajmniej jeden element z <span class="math inline">\(\{1,\dots,n\}\)</span>.</p>
+<p>Klasa kombinatoryczna: <span class="math inline">\(\mathcal{S} = \operatorname{SEQ}_{=r}\left( \operatorname{SET}_{\neq 0}(\mathcal{Z}) \right)\)</span> z EGF <span class="math inline">\(S(z) = (e^z - 1)^r\)</span>.</p>
+<p>Zapisujemy <span class="math inline">\(s_n^r = n! [z^n] (e^z - 1)^r\)</span> jako liczbę suriekcji ze zbioru <span class="math inline">\(n\)</span>-elementowego do zbioru <span class="math inline">\(r\)</span>-elementowego.</p>
+<hr />
+<h2 id="drzewo-etykietowane-non-ordered-labelled-tree">7. Drzewo etykietowane (non-ordered labelled tree)</h2>
+<p>Mamy drzewa gdzie każdy węzeł etykietujemy pewną liczbą naturalną, przy czym nie rozróżniamy w jakiej kolejności mamy uporządkowane gałęzie tego drzewa.<br />
+Czyli następujące drzewa są równoważne:<br />
+<img src="drzewa-etykietowane-równoważność.png" /></p>
+<p>Wówczas taka struktura może być reprezentowana przez klasę <span class="math inline">\(\mathcal{T} = \mathcal{Z} \times \operatorname{SET}(\mathcal{T})\)</span> z EGF <span class="math inline">\(T(z) = z \cdot \exp(T(z))\)</span>.</p>
+<p>Wówczas (z <a href="../2020-11-09/tw-lagrangea-o-inwersji">twierdzenia lagrange’a o inwersji</a>) mamy <span class="math display">\[
+T_n = n! [z^n] T(z) = n! \left( \frac{1}{n} [x^{n-1}] \cdot \left( e^x \right)^n \right) =\\
+= \frac{n!}{n} \cdot \left( [x^{n-1}] \sum_{k\ge0} \frac{(x\cdot n)^k}{k!} \right) = \frac{n!}{n} \cdot \frac{n^{n-1}}{(n-1)!} = n^{n-1},
+\]</span> czyli liczbę drzew o <span class="math inline">\(n\)</span> wierzchołkach.</p>
+<p><em>Cayley’s formula</em></p>
+<hr />
+<h2 id="mappings">8. <em>Mappings</em></h2>
+<p>Mamy <span class="math inline">\(\{1,\dots,n\} \to \{1,\dots,r\}\)</span> gdzie <span class="math inline">\(r \le n\)</span>. Takich funkcji mamy <span class="math inline">\(r^n\)</span>, bo dla każdego elementu z <span class="math inline">\(\{1,\dots,n\}\)</span> mamy zawsze do dyspozycji <span class="math inline">\(r\)</span> elementów.</p>
+<p>Klasa kombinatoryczna: <span class="math inline">\(\mathcal{F} = \operatorname{SEQ}_{=r}\left( \operatorname{SET}(\mathcal{Z}) \right)\)</span> z EGF <span class="math inline">\(F(z) = \left( e^z \right)^r = e^{zr}\)</span>.</p>
+<p>Liczba <em>mappings</em> z <span class="math inline">\(\{1,\dots,n\}\)</span> w <span class="math inline">\(\{1,\dots,r\}\)</span> wynosi: <span class="math display">\[
+F_n = n! [z^n] F(z) = n! [z^n] \sum_{k\ge0} \frac{(zr)^k}{k!} =\\
+= n! \cdot \frac{r^n}{n!} = r^n
+\]</span></p>
+<hr />
+<h2 id="metoda-rho-pollarda">9. Metoda <span class="math inline">\(\rho\)</span>-Pollarda</h2>
+<p>Szukamy konfliktów danej funkcji hashującej <span class="math inline">\(f\)</span>, czyli dla <span class="math inline">\(x_0 \neq x_1\)</span> mamy <span class="math inline">\(f(x_0) = f(x_1)\)</span>.</p>
+<p>Zamysł: bierzemy losowy <span class="math inline">\(x_0\)</span> i tworzymy ciąg <span class="math inline">\(x_n = f(x_{n_1})\)</span>.<br />
+Szukamy kolejnych wyrazów ciągu aż nie znajdziemy powtórki — wówczas mamy takie <em>graficzne <span class="math inline">\(\rho\)</span></em>:<br />
+<img src="metoda-rho-pollarda-graficzna-reprezentacja-rho.png" /></p>
+<p>Okazuje się, że klasę takich funkcji możemy określić przez <span class="math inline">\(\mathcal{F} = \operatorname{SET}\left( \operatorname{CYC}(\mathcal{T}) \right)\)</span>, gdzie <span class="math inline">\(\mathcal{T} = \mathcal{Z} \times \operatorname{SET}(\mathcal{T})\)</span> (<a href="#7-drzewo-etykietowane-non-ordered-labelled-tree">drzewa etykietowane</a>).</p>
+<p>Czyli mamy <span class="math display">\[
+F(z) = \exp\left( \ln \frac{1}{1-T(z)} \right) = \frac{1}{1 - T(z)}=\\
+= \sum_{k\ge0} \frac{T^k(z)}{k!}
+\]</span> i znowu stosując <a href="../2020-11-09/tw-lagrangea-o-inwersji">twierdzenia Lagrange’a o inwersji (tym razem drugi punkt)</a> możemy wyjść z rekursji w funkcji <span class="math inline">\(T(z)\)</span>.</p>
+<hr />
+</body>
+</html>

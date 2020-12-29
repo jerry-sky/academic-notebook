@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3-zadanie-4">Lista 3, Zadanie 4</h1>
+<h2 id="problem">Problem</h2>
+<p>Definiujemy <span class="math display">\[
+G_n =
+\begin{cases}
+  &amp;&amp;0 &amp; \mathrm{if}~n=0\\
+  &amp;&amp;1 &amp; \mathrm{if}~n=1\\
+  &amp;&amp;1 &amp; \mathrm{if}~n=2\\
+  &amp;&amp;G_{n-1} + G_{n-2} + G_{n-3} &amp; \mathrm{if}~n\ge3\\
+\end{cases}
+\]</span> Jest to ciąg generowany rekursywnie na podstawie ziarna <em>(seed-a)</em> w postaci trzech pierwszych wyrazów.</p>
+<h2 id="concept-bottom-up">Concept (bottom-up)</h2>
+<p>Analogicznie jest w przypadku ciągu Fibonacciego, który definiujemy następująco: <span class="math display">\[
+F_n =
+\begin{cases}
+  &amp;&amp;0 &amp; \mathrm{if}~n=0\\
+  &amp;&amp;1 &amp; \mathrm{if}~n=1\\
+  &amp;&amp;F_{n-1} + F_{n-2} &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<p>Jednakże możemy zapisać ciąg Fibonacciego w sposób macierzowy: <span class="math display">\[
+\begin{bmatrix}
+  1 &amp; 1\\
+  1 &amp; 0
+\end{bmatrix}^n
+=
+\begin{bmatrix}
+  F_{n+1} &amp; F_n\\
+  F_{n} &amp; F_{n-1}
+\end{bmatrix}
+\]</span> <span class="math display">\[
+\begin{bmatrix}
+  F_{n+1} &amp; F_n\\
+  F_{n} &amp; F_{n-1}
+\end{bmatrix} \times
+\begin{bmatrix}
+  1 &amp; 1\\
+  1 &amp; 0
+\end{bmatrix} =
+\begin{bmatrix}
+  F_{n+2} &amp; F_{n+1}\\
+  F_{n+1} &amp; F_{n}
+\end{bmatrix}
+\]</span></p>
+<p>Dla naszego <a href="#problem">problemu <span class="math inline">\(G_n\)</span></a> również musimy znaleźć odpowiednią macierz, którą po podniesieniu do odpowiedniej potęgi uzyskamy dostęp do <span class="math inline">\(n\)</span>-tego wyrazu ciągu <span class="math inline">\(G\)</span>.</p>
+<h2 id="rozwiązanie">Rozwiązanie</h2>
+<p>Musimy znaleźć taką macierz <span class="math inline">\(A\)</span>, że: <span class="math display">\[
+\begin{bmatrix}
+  G_n\\
+  G_{n-1}\\
+  G_{n-2}\\
+\end{bmatrix}
+=
+A\times
+\begin{bmatrix}
+  G_{n-1}\\
+  G_{n-2}\\
+  G_{n-3}\\
+\end{bmatrix}
+\]</span></p>
+<p>Czyli, żeby otrzymać rekurencję <span class="math inline">\(G_n = G_{n-1} + G_{n-2} + G_{n-3}\)</span> pierwszy wiersz <span class="math inline">\(A\)</span> musi wynosić <span class="math inline">\(A_1 = [~1~~1~~1~]\)</span>.<br />
+W przypadku wierszy <span class="math inline">\(A_2\)</span> oraz <span class="math inline">\(A_3\)</span> wystarczy <em>„przepisać”</em> wartości <span class="math inline">\(G_{n-1}\)</span> oraz <span class="math inline">\(G_{n-2}\)</span>. Więc wystarczy zrobić prostą mapę bitową przenoszącą te wartości do macierzy po prawej stronie. Dlatego też: <span class="math display">\[
+A =
+\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+\end{bmatrix}^2
+=
+\begin{bmatrix}
+  2 &amp; 2 &amp; 1\\
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+\end{bmatrix}
+\]</span> <span class="math display">\[
+\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+\end{bmatrix}^3
+=
+\begin{bmatrix}
+  4 &amp; 3 &amp; 2\\
+  2 &amp; 2 &amp; 1\\
+  1 &amp; 1 &amp; 1\\
+\end{bmatrix}
+\]</span> i ogólnie <span class="math display">\[
+\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+\end{bmatrix}^n
+=
+\begin{bmatrix}
+  G_n &amp; G_{n-1} + G_{n-2} &amp; G_{n-1}\\
+  G_{n-1} &amp; G_{n-2} + G_{n-3} &amp; G_{n-2}\\
+  G_{n-2} &amp; G_{n-3} + G_{n-4} &amp; G_{n-3}
+\end{bmatrix}
+\]</span> przy czym, żeby nie mieć problemu z określeniem liczb dla ujemnych indeksów (np. co to jest <span class="math inline">\(G_{n-4}\)</span> kiedy mamy <span class="math inline">\(n=3\)</span> ?) ustalimy macierz początkową <span class="math display">\[
+X =
+\begin{bmatrix}
+  1 &amp; 1 &amp; 1\\
+  1 &amp; 0 &amp; 0\\
+  0 &amp; 1 &amp; 0\\
+\end{bmatrix}^3
+=
+\begin{bmatrix}
+  4 &amp; 3 &amp; 2\\
+  2 &amp; 2 &amp; 1\\
+  1 &amp; 1 &amp; 1\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+  G_4 &amp; G_3 + G_2 &amp; G_3\\
+  G_3 &amp; G_2 + G_1 &amp; G_2\\
+  G_2 &amp; G_1 + G_0 &amp; G_1\\
+\end{bmatrix}
+\]</span> którą będziemy przemnażać przez macierz <span class="math inline">\(A\)</span> celem uzyskania kolejnych wyrazów ciągu <span class="math inline">\(G_n\)</span>.</p>
+<p>W takim układzie mamy na samym początku już policzone wyrazy od <span class="math inline">\(G_0\)</span> do <span class="math inline">\(G_4\)</span> a następne wyrazy będziemy uzyskiwali przez mnożenie macierzy <span class="math inline">\(X\)</span> przez <span class="math inline">\(A\)</span>.</p>
+<p>Teraz, problemem jest osiągnięcie złożoności obliczeniowej <span class="math inline">\(T(n) = O(\lg n)\)</span> przy przemnażaniu macierzy <span class="math inline">\(X\)</span> przez <span class="math inline">\(A\)</span>.<br />
+Należy zauważyć, że w ogólnym przypadku nie ma przemienności w mnożeniu macierzy. Tutaj jednak, operujemy na potęgach tak naprawdę jednej macierzy co daje nam przemienność.</p>
+<p>Przy przemnażaniu naszej <em>„macierzy atomowej”</em> <span class="math inline">\(A\)</span> nie należy się też martwić o złożoność, ponieważ za każdym razem jest to macierz o 3 kolumnach i 3 wierszach.</p>
+<p>Można użyć algorytmu analogicznego do liczenia potęg liczb naturalnych w czasie <span class="math inline">\(O(\lg n)\)</span>.</p>
+<p>Nasz algorytm działałby następująco: 1. Jeśli <span class="math inline">\(n\in\{0,\dots,4\}\)</span> zwróć zapisaną wartość. 2. W przeciwnym wypadku oblicz <span class="math inline">\(n-4\)</span> potęgę macierzy <span class="math inline">\(A\)</span> przy pomocy <a href="#liczenie-pot%c4%99gi-macierzy-w-czasie-olg-n">poniższej funkcji <code>power_matrix</code></a>, pomnóż wynik przez <span class="math inline">\(X\)</span> i go zwróć.</p>
+<h3 id="liczenie-potęgi-macierzy-w-czasie-olg-n">Liczenie potęgi macierzy w czasie <span class="math inline">\(O(\lg n)\)</span></h3>
+<p>Zdefiniujemy funkcję <code>PowerMatrix</code><span class="math inline">\((A, k)\)</span>: 1. <code>output =</code> <span class="math inline">\(\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span> 2. <code>while</code> <span class="math inline">\(k&gt;0\)</span>: 1. <code>if</code> <span class="math inline">\(2\not|~k\)</span>: 1. <code>output *=</code> <span class="math inline">\(A\)</span> 2. <span class="math inline">\(k = \lfloor\frac{k}{2}\rfloor\)</span> 3. <span class="math inline">\(A = A^2\)</span> 3. <code>return output</code></p>
+</body>
+</html>

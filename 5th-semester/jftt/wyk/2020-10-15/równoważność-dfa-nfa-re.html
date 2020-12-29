@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="równoważność-dfa-nfa-oraz-re">Równoważność DFA, NFA oraz RE</h1>
+<p><em>(2020-10-15)</em></p>
+<ul>
+<li><a href="#1-fakt-każdy-dfa-jest-nfa">1. Fakt: Każdy DFA jest NFA</a></li>
+<li><a href="#2-twierdzenie1">2. Twierdzenie#1</a>
+<ul>
+<li><a href="#21-d-d">2.1. D-d</a></li>
+<li><a href="#22-przykład-nfa--dfa">2.2. Przykład NFA → DFA</a></li>
+</ul></li>
+<li><a href="#3-fakt-każdy-nfa-jest-nfa_epsilon">3. Fakt: Każdy NFA jest NFA<span class="math inline">\(_\epsilon\)</span></a></li>
+<li><a href="#4-twierdzenie2">4. Twierdzenie#2</a>
+<ul>
+<li><a href="#41-d-d">4.1. D-d</a></li>
+</ul></li>
+<li><a href="#5-twierdzenie3">5. Twierdzenie#3</a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+</ul></li>
+<li><a href="#6-twierdzenie4">6. Twierdzenie#4</a>
+<ul>
+<li><a href="#61-d-d">6.1. D-d</a></li>
+<li><a href="#62-przykład">6.2. Przykład</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="fakt-każdy-dfa-jest-nfa">1. Fakt: Każdy DFA jest NFA</h2>
+<hr />
+<h2 id="twierdzenie1">2. Twierdzenie#1</h2>
+<p>Niech <span class="math inline">\(L\)</span> będzie językiem akceptowanym przez NFA. Wówczas istnieje DFA akceptujący język <span class="math inline">\(L\)</span>.**</p>
+<h3 id="d-d">2.1. D-d</h3>
+<p>Niech - NFA <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span> - DFA <span class="math inline">\(M&#39; = (Q&#39;, \Sigma, \delta&#39;, q_0&#39;, F&#39;)\)</span> symulujący równoległe wszystkie przejścia przez automat <span class="math inline">\(M\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    Q&#39; = 2^Q &amp; \quad \text{śledzimy wszystkie podzbiory stanów} M\\
+    F&#39; \subseteq Q&#39; &amp;\quad q \in F&#39; \Leftrightarrow \exists p\in q \enspace p\in F\\
+    q_0&#39; = \{q_0\}\\
+    \delta&#39;(q,a) &amp;= \bigcup_{p\in q} \delta(p,a)
+\end{aligned}
+\]</span></p>
+<p><em>&gt;Dowód indukcyjny po długości wczytywanego słowa.</em></p>
+<hr />
+<h3 id="przykład-nfa-dfa">2.2. Przykład NFA → DFA</h3>
+<p>Mamy NFA <span class="math inline">\(M = (\{q_0, q_1\}, \{0,1\}, \delta, q_0, \{q_1\})\)</span> | <span class="math inline">\(\delta\)</span> | <span class="math inline">\(0\)</span> | <span class="math inline">\(1\)</span> | | -------- | -------------- | -------------- | | <span class="math inline">\(q_0\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> | <span class="math inline">\(\{q_1\}\)</span> | | <span class="math inline">\(q_1\)</span> | <span class="math inline">\(\emptyset\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> |</p>
+<p>Równoważny DFA <span class="math inline">\(M&#39; = \left(\big\{ \{q_0\}, \{q_1\}, \{q_0, q_1\}, \emptyset \big\}, \{0,1\}, \delta&#39;, \{q_0\}, \big\{\{q_1\}\big\}\right)\)</span> | <span class="math inline">\(\delta&#39;\)</span> | <span class="math inline">\(0\)</span> | <span class="math inline">\(1\)</span> | | -------------- | -------------- | -------------- | | <span class="math inline">\(\{q_0\}\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> | <span class="math inline">\(\{q_1\}\)</span> | | <span class="math inline">\(\{q_1\}\)</span> | <span class="math inline">\(\emptyset\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> | | <span class="math inline">\(\{q_0, q_1\}\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> | <span class="math inline">\(\{q_0, q_1\}\)</span> | | <span class="math inline">\(\empty\)</span> | <span class="math inline">\(\empty\)</span> | <span class="math inline">\(\empty\)</span> |</p>
+<div class="figure">
+<img src="przykład-dfa-to-nfa.png" />
+
+</div>
+<hr />
+<h2 id="fakt-każdy-nfa-jest-nfa_epsilon">3. Fakt: Każdy NFA jest NFA<span class="math inline">\(_\epsilon\)</span></h2>
+<hr />
+<h2 id="twierdzenie2">4. Twierdzenie#2</h2>
+<p>Jeśli <span class="math inline">\(L\)</span> jest językiem akceptowanym przez NFA<span class="math inline">\(_\epsilon\)</span> to jest również akceptowany przez NFA.</p>
+<h3 id="d-d-1">4.1. D-d</h3>
+<p>Niech - NFA<span class="math inline">\(_\epsilon\)</span> <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span> - NFA <span class="math inline">\(M&#39; = (Q, \Sigma, \delta&#39;, q_0, F&#39;)\)</span></p>
+<p><span class="math display">\[
+F&#39; =
+\begin{cases}
+    F \cup \{q_0\} &amp; \text{jeśli z } q_0 \text{ można dojść do } q \in F ~\epsilon\text{-przejściami}\\
+    F &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\delta&#39;(q,a) = \bigcup_{x \in (\epsilon^*a\epsilon^*)}\hat{\delta}(q,x)
+\]</span></p>
+<p><span class="math inline">\(M&#39;\)</span> nie ma <span class="math inline">\(\epsilon\)</span>-przejść. Równość języków przez dowód indukcyjny po długości słowa.</p>
+<hr />
+<h2 id="twierdzenie3">5. Twierdzenie#3</h2>
+<p>Niech <span class="math inline">\(r\)</span> będzie wyrażeniem regularnym opisującym język <span class="math inline">\(L\)</span>. Wówczas istnieje NFA<span class="math inline">\(_\epsilon\)</span>, który akceptuje <span class="math inline">\(L\)</span>.</p>
+<h3 id="d-d-2">5.1. D-d</h3>
+<p>Indukcja po budowie wyrażenia regularnego.</p>
+<ul>
+<li><span class="math inline">\(\emptyset\)</span></li>
+<li><span class="math inline">\(\epsilon = \{\epsilon\}\)</span></li>
+<li><span class="math inline">\(\forall a \in \Sigma \enspace a = \{a\}\)</span></li>
+</ul>
+<div class="figure">
+<img src="twierdzenie3-d-d-1.png" />
+
+</div>
+<hr />
+<p><span class="math inline">\((r+s)\)</span></p>
+<div class="figure">
+<img src="twierdzenie3-d-d-2.png" />
+
+</div>
+<p><em>doklejamy nowe stany początkowe i końcowe</em></p>
+<hr />
+<p><span class="math inline">\(rs\)</span></p>
+<div class="figure">
+<img src="twierdzenie3-d-d-3.png" />
+
+</div>
+<p><em>łączymy w łańcuch</em></p>
+<hr />
+<p><span class="math inline">\(r^*\)</span></p>
+<div class="figure">
+<img src="twierdzenie3-d-d-4.png" />
+
+</div>
+<p><span class="math inline">\(|r| = n\)</span> jak duży, ile stanów ma automat<br />
+<span class="math inline">\(O(n)\)</span></p>
+<hr />
+<h2 id="twierdzenie4">6. Twierdzenie#4</h2>
+<p>Jeżeli <span class="math inline">\(L\)</span> jest akceptowany przez DFA, to <span class="math inline">\(L\)</span> jest reprezentowany przez wyrażenie regularne.</p>
+<h3 id="d-d-3">6.1. D-d</h3>
+<p>Niech <span class="math inline">\(L\)</span> będzie akceptowany przez DFA <span class="math inline">\(M = (\{ q_1,\dots, q_n \}, \Sigma, \delta, q_1, F)\)</span>.</p>
+<p>Zdefiniujmy <span class="math display">\[
+R_{ij}^k =
+\{ x \in \Sigma^*:~ \hat{\delta}(q_i, x) = q_j \land \\
+\land~ (\forall y=\mathrm{prefix}(x), y\neq \epsilon, y\neq x)(\hat{\delta}(q_i, y) = q_l \implies l \le k) \}
+\]</span></p>
+<p>Innymi słowy, <span class="math inline">\(R_{ij}^k\)</span> to zbiór wszystkich słów, z jakimi można przejść ze stanu <span class="math inline">\(q_i\)</span> do stanu <span class="math inline">\(q_j\)</span> używając po drodze tylko pierwszych <span class="math inline">\(k\)</span> stanów (<span class="math inline">\(i,j\)</span> mogą być większe od <span class="math inline">\(k\)</span>).<br />
+<span class="math inline">\(R_{ij}^k\)</span> — wszystkie łańcuchy, z którymi możemy przejść z <span class="math inline">\(q_i\)</span> do <span class="math inline">\(q_j\)</span>.</p>
+<p><span class="math display">\[
+L = \bigcup_{q_j \in F} R_{1j}^n
+\]</span></p>
+<p>Definicja rekurencyjna: <span class="math display">\[
+R_{ij}^0 =
+\begin{cases}
+    \{ a:~ \delta(q_1, a) = q_j \} &amp; i \neq j\\
+    \{ a:~ \delta(q_i, a) = q_i \} \cup \{ \epsilon \} &amp; i = j
+\end{cases}
+\]</span> <span class="math inline">\(R_{ij}^k = R_{ik}^{k-1} \left( R_{kk}^{k-1} \right)^* R_{kj}^{k-1} \cup R_{ij}^{k-1} \quad k&gt;0\)</span></p>
+<p>Łatwo skonstruować wyrażenie regularne <span class="math inline">\(r_{ij}^{k}\)</span> opisujące <span class="math inline">\(R_{ij}^k\)</span>.</p>
+<p>Dowód poprawności przez indukcję po <span class="math inline">\(k\)</span>.</p>
+<hr />
+<h3 id="przykład">6.2. Przykład</h3>
+<p>~ dla <span class="math inline">\(( \{ q_1, q_2 \}, \{ 0, 1 \},\\ \{ ((q_1, 0), q_1), ((q_1, 1), q_2), ((q_2, 0), q_1), ((q_2, 1), q_2) \}, q_1, \{ q_1 \} )\)</span></p>
+<p><span class="math inline">\(r_{ij}^k = r_{ik}^{k-1} \left( r_{kk}^{k-1} \right)^* r_{kj}^{k-1} + r_{ij}^{k-1} \quad k&gt;0\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    r_{11}^0 &amp;= 0 + \epsilon\\
+    r_{12}^0 &amp;= 1\\
+    r_{21}^0 &amp;= 0\\
+    r_{22}^0 &amp;= 1 + \epsilon\\
+    r_{11}^1 &amp;= (0 + \epsilon) + (0 + \epsilon)(0 + \epsilon)^* (0 + \epsilon) \equiv 0^*\\
+    r_{12}^1 &amp;= 1 + (0 + \epsilon)(0 + \epsilon)^* 1 \equiv 0^*1\\
+    r_{21}^1 &amp;= 0 + 0(0 + \epsilon)^*(0 + \epsilon) \equiv 00^*\\
+    r_{22}^1 &amp;= (1 + \epsilon) + 0(0 + \epsilon)^* 1 \equiv \epsilon + 0^*1\\
+    r_{11}^2 &amp;= 0^* + 0^*1(0^*1)^*0^*0
+\end{aligned}
+\]</span></p>
+<p>A tak naprawdę, najprostszym wyrażeniem regularnym dla tego języka jest <span class="math inline">\(\epsilon + (0 + 1)^*0\)</span></p>
+<hr />
+</body>
+</html>

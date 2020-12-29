@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-2">Lista 2</h1>
+<h2 id="opis">Opis</h2>
+<p>Cały kod źródłowy jest zawarty głównie w funkcji <a href="main.cpp"><code>main.cpp</code></a>, <a href="ex-1.cpp"><code>ex-1.cpp</code></a>, <a href="ex-2.cpp"><code>ex-2.cpp</code></a> oraz plikach w katalogu <code>shared</code>.</p>
+<p>W celu kompilacji programu należy użyć <code>make main.out</code>. <em>(Możliwe jest uprzednie posprzątanie <code>make clean</code>)</em><br />
+Żeby uruchomić program należy użyć <code>./main.out &lt;params&gt;</code>, gdzie <code>&lt;params&gt;</code>:</p>
+<ul>
+<li><code>--type</code> - uruchom program z algorytmem:</li>
+<li><code>quick</code> dla <code>QuickSort</code> <em>(domyślny)</em></li>
+<li><code>insert</code> dla <code>InsertSort</code></li>
+<li><code>merge</code> dla <code>MergeSort</code></li>
+<li><code>dual-pivot-quick</code> dla <code>DualPivotQuickSort</code></li>
+<li><code>--comp</code> - kolejność elementów:</li>
+<li><code>'&gt;='</code> malejąca</li>
+<li><code>'&lt;='</code> rosnąca <em>(domyślna)</em></li>
+<li><code>--stat nazwa_pliku k</code></li>
+<li><code>nazwa_pliku</code> plik do którego program ma zapisać statystyki</li>
+<li><code>k</code> ile razy ma wykonać pętlę opisaną w <a href="https://cs.pwr.edu.pl/golebiewski/teaching/1920/aisd/lab2.pdf">zadaniu</a></li>
+</ul>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Celem zadani jest zaimplementowanie i przetestowanie następujących algorytmów sortowania: - InsertionSort - MergeSort - QuickSort</p>
+<p>Program przyjmuje dwa parametry wejściowe <code>--type insert|merge|quick</code> – określający wykorzystywany algorytm sortowania oraz <code>--comp '&gt;='|'&lt;='</code> – określający porządek sortowania.<br />
+Wejściem dla programu są kolejno: - liczba <span class="math inline">\(n\)</span> – długość sortowanej tablicy - tablica elementów do posortowania (niech elementy tej tablicy zostaną nazwane kluczami).</p>
+<p>Program powinien sortować tablicę wybranym algorytmem i wypisywać na standardowym wyjściu błędów wykonywane operacje (porównania, przestawienia). Po zakończeniu sortowania, na standardowym wyjściu błędów powinna zostać wypisana łączna liczba porównań między kluczami, łączna liczba przestawień kluczy oraz czas działania algorytmu sortującego. Finalnie, program sprawdza, czy wynikowy ciąg jest posortowany zgodnie z wybranym porządkiem, a następnie wypisuje na standardowe wyjście liczbę posortowanych elementów oraz posortowaną tablicę.<br />
+Przykładowe wywołanie:</p>
+<pre><code>./main --type quick --comp &#39;&gt;=&#39;
+5
+9 1 -7 1000 4</code></pre>
+</blockquote>
+<p><a href="ex-1.cpp">kod</a></p>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Uzupełnij program z <a href="#zadanie-1">zadania 1</a> o możliwość wywołania go z dodatkowym parametrem uruchomienia <code>--stat nazwa_pliku k</code>, wtedy pomija on wczytywanie danych i dla każdego <span class="math inline">\(n \in \{100,200,300,\dots,10000\}\)</span> wykonuje po <span class="math inline">\(k\)</span> niezależnych powtórzeń: - generowania losowej tablicy <span class="math inline">\(n\)</span> elementowej (zadbaj o dobry generator pseudo-losowy) - sortowania kopii wygenerowanej tablicy - dla każdego z sortowań, zapisania do pliku <code>nazwa_pliku</code> statystyk odnośnie rozmiaru danych <span class="math inline">\(n\)</span>, liczby wykonanych porównań między kluczami, liczby przestawień kluczy oraz czasu działania algorytmu sortującego.</p>
+<p>Po zakończeniu programu, korzystając z zebranych danych przedstaw na wykresach, za pomocą wybranego narzędzia (np. <code>numpy</code>, Matlab, Mathematica): - średnią liczbę wykonanych porównań kluczy <span class="math inline">\((c)\)</span> w zależności od <span class="math inline">\(n\)</span>, - średnią liczbę przestawień kluczy <span class="math inline">\((s)\)</span> w zależności od <span class="math inline">\(n\)</span> - średni czas działania algorytmu w zależności od <span class="math inline">\(n\)</span> iloraz <span class="math inline">\(\frac{c}{n}\)</span> w zależności od <span class="math inline">\(n\)</span> iloraz <span class="math inline">\(\frac{s}{n}\)</span> w zależności od <span class="math inline">\(n\)</span></p>
+<p>Zadbaj o to, by dane dotyczące różnych algorytmów sortujących można było nakładać na te same osie i porównywać. Sprawdź, jak wykresy zmieniają się dla różnych <span class="math inline">\(k\)</span> (np. <span class="math inline">\(k=1,k=10,k=1000\)</span>).</p>
+</blockquote>
+<p><a href="ex-2.cpp">kod</a></p>
+<p>Wykresy wykonałem w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> (<code>numpy</code>) na podstawie <a href="ex-2-stats/logs/dual-k-10.log">logów wygenerowanych przy pomocy mojego programu</a>.</p>
+<p>Zrzuty ekranu wykresów są dostępne bezpośrednio w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> albo poniżej:</p>
+<ul>
+<li><img src="ex-2-stats/comparisons-avg.png" alt="comparisons" /></li>
+<li><img src="ex-2-stats/swaps-avg.png" alt="swaps" /></li>
+<li><img src="ex-2-stats/time-avg.png" alt="time" /></li>
+<li><img src="ex-2-stats/c-over-n.png" alt="c over n" /></li>
+<li><img src="ex-2-stats/s-over-n.png" title="fig:" alt="s over n" /></li>
+</ul>
+<p>gdzie: - kolor czerwony -&gt; <code>QuickSort</code> - kolor zielony -&gt; <code>DualPivotQuickSort</code> - kolor niebieski -&gt; <code>MergeSort</code> - kolor czarny -&gt; <code>InsertionSort</code> <em>(nie wyświetlony, bo ma za duże wartości w porównaniu do innych)</em></p>
+<p>Istnieje możliwość zobaczenia jak zadziałał <code>InsertionSort</code> po uruchomieniu go w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> <em>(odkomentowanie odpowiednich linijek)</em> jednakże wszystkie wykresy wskazują na to, że <code>InsertionSort</code> jest najgorszym algorytmem z wszystkich:</p>
+<div class="figure">
+<img src="ex-2-stats/insertion-sort.png" alt="insertion sort" />
+<p class="caption">insertion sort</p>
+</div>
+<p>jako, że pozostałych wykresów praktycznie nie widać bo są tak małe w porównaniu z <code>InsertionSort</code>em.</p>
+<h2 id="zadanie-3">Zadanie 3</h2>
+<blockquote>
+<p>Uzupełnij <a href="#zadanie-1">zadanie 1</a> o algorytm Dual-pivot QuickSort używając strategii Count: - Mamy dwa pivoty <span class="math inline">\(p\)</span> i <span class="math inline">\(q\)</span> oraz załóżmy, że <span class="math inline">\(p &lt; q\)</span>. - Załóżmy, że w procedurze <code>partition</code> klasyfikując <span class="math inline">\(i\)</span>-ty element tablicy mamy <span class="math inline">\(s_{i-1}\)</span> elementów małych (mniejszych od <span class="math inline">\(p\)</span>) oraz <span class="math inline">\(l_{i-1}\)</span> elementów dużych (większych od <span class="math inline">\(q\)</span>). - Jeśli <span class="math inline">\(l_{i-1} &gt; s_{i-1}\)</span>: porównuj <span class="math inline">\(i\)</span>-ty element w pierwszej kolejności z <span class="math inline">\(q\)</span>, a następnie, jeśli jest taka potrzeba, z <span class="math inline">\(p\)</span>. - Jeśli <span class="math inline">\(l_{i-1} \le s_{i-1}\)</span>: porównuj <span class="math inline">\(i\)</span>-ty element w pierwszej kolejności z <span class="math inline">\(p\)</span>, a następnie jeśli jest taka potrzeba z <span class="math inline">\(q\)</span>.</p>
+<p>Dokonaj szczegółowych porównań otrzymanych statystyk dla algorytmu QuickSort i Dual-pivot QuickSort. Eksperymentalnie wyznacz stałą stojącą przy czynniku <span class="math inline">\(n\ln(n)\)</span> dla liczby porównań między kluczami.</p>
+</blockquote>
+<p><a href="shared/algorithms/dual-pivot-quick-sort.cpp">kod <code>DualPivotQuickSort</code></a></p>
+<p>Stała przy <code>n ln(n)</code> dla <code>QuickSort</code>a wyniosła <code>1.6554738137365612</code><br />
+za to dla <code>DualPivotQuickSort</code>a wyniosła <code>1.5186710672510784</code>.</p>
+</body>
+</html>

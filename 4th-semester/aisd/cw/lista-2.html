@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-2">Lista 2</h1>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<p><em>side-note:</em> <span class="math inline">\(\sum_{k=0}^{n}c^k \le \sum_{k=0}^{\infin}c^k = \frac{1}{1-c}\)</span> dla <span class="math inline">\(|c| &lt; 1\)</span></p>
+<p><span class="math inline">\(g(n) = 1 + c + c^2 + ... + c^n, ~ c&gt;0\)</span></p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\Theta(1)\)</span> jeśli <span class="math inline">\(c&lt;1\)</span>
+<ul>
+<li><span class="math inline">\(0&lt;c&lt;1\)</span><br />
+<span class="math inline">\(g(n) = 1 \frac{1-c^{n+1}}{1 - c} = \frac{1 - c^{n+1}}{1-c}\)</span><br />
+<span class="math inline">\(\lim_{n\to \infin}\frac{\frac{1-c^{n+1}}{1-c}}{1} = \lim_{n\to \infin}\frac{1 - c^{n+1}}{1-c} = \frac{1}{1-c}\lim_{n\to \infin}(1 - c^{n+1}) = \frac{1}{1-c} \cdot 1 = \frac{1}{1-c}\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Theta(n)\)</span> jeśli <span class="math inline">\(c = 1\)</span></li>
+</ol>
+<ul>
+<li><span class="math inline">\(g(n) = 1+n\)</span><br />
+<span class="math inline">\(\lim_{n\to \infin}\frac{1+n}{n} = 1\)</span></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(\Theta(c^n)\)</span> jeśli <span class="math inline">\(c &gt; 1\)</span></li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(\lim_{n\to \infin}\frac{1 + c + c^2 + ... + c^n}{c^n} =\)</span><br />
+<span class="math inline">\(\lim_{n\to \infin}(\frac{1}{c^n} + \frac{c}{c^n} + \frac{c^2}{c^n} + ... + \frac{c^n}{c^n}) =\)</span><br />
+<span class="math inline">\(\lim_{n\to \infin}\frac{\frac{1 - c^{n+1}}{1-c}}{c^n}=\)</span><br />
+<span class="math inline">\(\lim_{n\to \infin}(\frac{1 - c^{n+1}}{(1-c)c^n})=\)</span><br />
+<span class="math inline">\(\frac{1}{1-c}\lim_{n\to \infin}(\frac{1-c^{n+1}}{c^n}) =\)</span><br />
+<span class="math inline">\(\frac{1}{1-c}\lim_{n\to\infin}(\frac{1}{c^n}-c)=\)</span><br />
+<span class="math inline">\(\frac{1}{1-c}\cdot(-c) = \bold{\frac{c}{c-1}}\)</span></p>
+<p>3'. <em>(końcówka)</em><br />
+<span class="math inline">\(c &gt; 1\)</span><br />
+<span class="math inline">\(g(n) = \frac{1 - c^{n-1}}{1- c} = (*) = \Theta(c^n)\)</span><br />
+<span class="math inline">\(f(n) = \Theta(~h(n)~) \equiv (\exists d_1, d_2 \exists n_0 \forall n \ge n_0 d_1|h(n)| \le |f(n)| \le d_2|h(n)|)\)</span><br />
+<span class="math inline">\((*) = \frac{1}{1-c} + \frac{c}{c-1}c^n\)</span><br />
+<span class="math inline">\(d_1 = 1 = \frac{1-c}{1-c} = \frac{c}{c-1} + \frac{1}{1-c},~ d_2 = \frac{c}{c-1},~ n_0 =10\)</span><br />
+<span class="math inline">\(1*c^n \le c^n\frac{c}{c-1} + \frac{1}{1-c} \le \frac{c}{c-1}c^n\)</span> przy czym <span class="math inline">\(\frac{1}{1-c}\)</span> jest ujemne<br />
+<span class="math inline">\(\frac{c}{c-1}c^n + \frac{1}{c-1}c^n \le \frac{c}{c-1}c^n + \frac{1}{1-c}\)</span> dzielimy obie strony przez <span class="math inline">\(\frac{1}{1-c}\)</span><br />
+<span class="math inline">\(c^n \ge 1\)</span></p></li>
+</ul>
+<h2 id="zadanie-3">Zadanie 3</h2>
+<p>Udowodnij, że <span class="math inline">\(\max\{ f(n), g(n) \} = \Theta(~f(n) + g(n)~)\)</span></p>
+<p><span class="math inline">\(\max\{ f(n), g(n) \} \le f(n) + g(n) =\)</span><br />
+<span class="math inline">\(\max\{ f(n), g(n) \} + \min\{ f(n), g(n) \}\)</span> przy czym <span class="math inline">\(\max\{ f(n), g(n) \} \le 0\)</span> oraz <span class="math inline">\(\min\{ f(n), g(n) \} \le 0\)</span></p>
+<p><span class="math inline">\(c(f(n) + g(n)) \le \max\{ f(n), g(n) \}\)</span>, BSO <span class="math inline">\(\max\{ f(n), g(n) \} = f(n)\)</span><br />
+<span class="math inline">\(c \le \frac{f(n)}{f(n) + g(n)} = \frac{1}{1 + \frac{g(n)}{f(n)}} \in [\frac{1}{2}, 1)\)</span> przy czym <span class="math inline">\(\frac{g(n)}{f(n)} \in (0,1]\)</span><br />
+np <span class="math inline">\(c = \frac{1}{4}\)</span></p>
+<p><span class="math inline">\(\upuparrows\)</span> to wszystko od jakiegoś <span class="math inline">\(n_0\)</span></p>
+<h2 id="zadanie-4">Zadanie 4</h2>
+<p>Udowodnij, że <span class="math inline">\(n! = o(n^n)\)</span></p>
+<p><span class="math inline">\(f(n) = o(g(n) \equiv (\forall \epsilon &gt; 0)(\exists n_0)(\forall n \ge n_0)(|f(n)| \le c*g(n))\)</span></p>
+<p><span class="math inline">\(\lim_{n\to\infin} \frac{f(n)}{g(n)} = 0 \equiv (\forall \epsilon &gt; 0)(\exists n_0)(\forall n \ge n_0)(|\frac{f(n)}{g(n)}| \le \epsilon)\)</span><br />
+<span class="math inline">\(n! \sim (\frac{n}{2})^2\sqrt{2\pi n}\)</span><br />
+<span class="math inline">\(\lim_{n\to\infin}\frac{n!}{(\frac{n}{3})^n\sqrt{2\pi n}} = 1\)</span></p>
+<p><span class="math inline">\(\lim_{n\to\infin}\frac{n!}{n^n} = \lim_{n\to\infin}\frac{(\frac{n}{e})^n\sqrt{2\pi n}}{n^n} = \lim_{n\to\infin}\frac{\frac{n^n}{e^n}\sqrt{2\pi n}}{n^n} = \lim_{n\to\infin}\frac{\sqrt{2\pi n}}{e^n} = 0\)</span></p>
+<p><span class="math inline">\(n! \le n^n\)</span></p>
+<p><em>side-note without Stirling's approximation:</em></p>
+<p><span class="math inline">\(\lim_{n\to\infin}\frac{n!}{n^n}\)</span></p>
+<p><span class="math inline">\(\frac{1 * 2 * 3 * ... * n}{n * n * n * ... * n}\)</span><br />
+<span class="math inline">\(0 \le \frac{n!}{n^n} \le \frac{1}{n}\)</span> z twierdzenia o trzech ciągach <span class="math inline">\(\lim_{n\to\infin}\frac{n!}{n^n} = 0\)</span></p>
+</body>
+</html>

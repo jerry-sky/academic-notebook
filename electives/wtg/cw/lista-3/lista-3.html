@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3">Lista-3</h1>
+<p><em>Drzewa</em></p>
+<ul>
+<li><a href="#lista-3">Lista-3</a></li>
+<li><a href="#zadanie-25">Zadanie 25</a></li>
+<li><a href="#zadanie-26">Zadanie 26</a></li>
+<li><a href="#zadanie-33">Zadanie 33</a></li>
+<li><a href="#zadania-38-39">Zadania 38, 39</a></li>
+</ul>
+<h2 id="zadanie-25">Zadanie 25</h2>
+<blockquote>
+<p>Załóżmy, że <span class="math inline">\(G = (V, E)\)</span> jest takim grafem prostym, że <span class="math inline">\(|E| \ge |V|\)</span>. Pokaż, że graf <span class="math inline">\(G\)</span> zawiera cykl.</p>
+</blockquote>
+<p>Niech <span class="math inline">\(|V| = n\)</span>. Wówczas <span class="math inline">\(|E| \ge n\)</span>.</p>
+<p>Minimalną liczbą krawędzi jaką musi mieć graf spójny jest <span class="math inline">\(n-1\)</span> – mamy wtedy <a href="../../wyk/2020-03-18/2020-03-18">drzewo</a>, w którym nie ma żadnych cykli. Jednakże mamy do dyspozycji przynajmniej <span class="math inline">\(n\)</span> krawędzi, co daje nam możliwość „doklejenia” gdzieś w naszym drzewie jednej krawędzi zamykając cykl jednej ze już istniejących ścieżek w drzewie.</p>
+<p>W przypadku grafów niespójnych (mamy więcej niż jedną składową) sytuacja jest podobna – tutaj mamy nawet więcej możliwości budowania cykli z już istniejących ścieżek.</p>
+<h2 id="zadanie-26">Zadanie 26</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(G = (V, E)\)</span> będzie grafem prostym. Załóżmy, że <span class="math inline">\(v \in V\)</span> jest wierzchołkiem o stopniu nieparzystym. Pokaż, że istnieje inny wierzchołek <span class="math inline">\(u \in V\)</span> o rzędzie nieparzystym od którego jest jakaś droga od <span class="math inline">\(v\)</span>.<br />
+<em>Wskazówka: Zajmij się komponentą spójną grafu G do której należy wierzchołek v.</em></p>
+</blockquote>
+<p>W każdym spójnym grafie (a możemy tutaj według wskazówki ograniczyć się do komponenty gdzie mamy nasze <span class="math inline">\(v\)</span> oraz <span class="math inline">\(u\)</span> i traktować to jako osobny graf) zachodzi: <span class="math display">\[
+\sum_{x \in V} \deg(v) = 2\cdot|E|
+\]</span></p>
+<p>Co oznacza, że albo każdy wierzchołek ma parzysty <span class="math inline">\(\deg\)</span> (poza zakresem zadania) albo liczba wierzchołków o nieparzystym <span class="math inline">\(\deg\)</span> jest parzysta. Jako, że wiemy o istnieniu takiego wierzchołka <span class="math inline">\(v\)</span>, że <span class="math inline">\(2 \nmid \deg(v)\)</span> to ta liczba musi wynosić przynajmniej <span class="math inline">\(2\)</span> – czyli istnieje drugi wierzchołek <span class="math inline">\(u\)</span> o takim samym <span class="math inline">\(\deg\)</span>.</p>
+<h2 id="zadanie-33">Zadanie 33</h2>
+<blockquote>
+<p>Wyznacz liczbę grafów rozpinających w grafach <span class="math inline">\(K_{2,n}\)</span>.</p>
+</blockquote>
+<p>Nazwijmy dwie części grafu <span class="math inline">\(A\)</span> oraz <span class="math inline">\(B\)</span> gdzie <span class="math inline">\(A\)</span> to dwa wierzchołki z pierwszej składowej <span class="math inline">\(K_{\bold{2},n}\)</span>, a <span class="math inline">\(B\)</span> to pozostałe <span class="math inline">\(n\)</span> wierzchołków z drugiej składowej.</p>
+<p>Wyznaczmy pierwsze drzewo startując na jednym z wierzchołków ze zbioru <span class="math inline">\(A\)</span>: <img src="z33-1.png" alt="1" /></p>
+<p>Wybieramy jeden wierzchołek z <span class="math inline">\(B\)</span> który łączymy z wszystkimi wierzchołkami ze zbioru <span class="math inline">\(A\)</span>.</p>
+<p>Teraz musimy doliczyć wszystkie pozostałe drzewa rozpinające. Zauważmy, że musi być zawsze jeden wierzchołek z <span class="math inline">\(B\)</span> łączący oba wierzchołki z <span class="math inline">\(A\)</span> (swego rodzaju <em>mediator</em> pomiędzy wierzchołkami z <span class="math inline">\(A\)</span>). Mamy <span class="math inline">\(n\)</span> możliwości do wyboru takiego wierzchołka.</p>
+<p>Następnie musimy rozdystrybuować resztę <span class="math inline">\(n-1\)</span> wierzchołków z <span class="math inline">\(B\)</span> pomiędzy dwa wierzchołki z <span class="math inline">\(A\)</span>. Robimy to na <span class="math inline">\(2^{n-1}\)</span> sposobów jako, że iterując po wszystkich pozostałych <span class="math inline">\(n-1\)</span> wierzchołkach z <span class="math inline">\(B\)</span> za każdym razem mamy dwie opcje do wyboru.</p>
+<p>Dzielimy otrzymany wynik przez <span class="math inline">\(2\)</span>, żeby nie liczyć dwa razy grafów które są izomorficzne ze sobą.<br />
+Zatem ostatecznym wynikiem będzie <span class="math inline">\(n\cdot 2^{n-2}\)</span> dla <span class="math inline">\(n\ge 2\)</span> kiedy dla <span class="math inline">\(n=1\)</span> mamy tylko jedno takie drzewo.</p>
+<h2 id="zadania-38-39">Zadania 38, 39</h2>
+<blockquote>
+<h3 id="zadanie-38">Zadanie 38</h3>
+<p>W dodatku A znajduje się kod prostej klasy języka Python implementującą graf prosty.</p>
+<ol style="list-style-type: decimal">
+<li>Dodaj do taj klasy metody służące do wyznaczania <span class="math inline">\(\delta(G)\)</span>, <span class="math inline">\(\overline{d}(G)\)</span> oraz <span class="math inline">\(\Delta(G)\)</span></li>
+<li>Dodaj do tej klasy metodę <code>ecc</code> która służy do obliczania ekscentryczności wierzchołka</li>
+<li>Dodaj do tej klasy metodę służącą do wyznaczania promienia i średnicy grafu.</li>
+</ol>
+<h3 id="zadanie-39">Zadanie 39</h3>
+<p>Do klasy z dodatku A dodaj metodę służącą do wyznaczania drzewa rozpinającego grafu.</p>
+</blockquote>
+<p><a href="ex-38-39.py">kod</a></p>
+</body>
+</html>

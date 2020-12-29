@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="własności-języków-regularnych">Własności języków regularnych</h1>
+<p><em>(2020-10-22)</em></p>
+<ul>
+<li><a href="#1-lemat-o-pompowaniu">1. Lemat o pompowaniu</a>
+<ul>
+<li><a href="#11-d-d">1.1. D-d</a></li>
+</ul></li>
+<li><a href="#2-dowodzenie-że-l-nie-jest-regularny">2. Dowodzenie, że <span class="math inline">\(L\)</span> nie jest regularny</a>
+<ul>
+<li><a href="#21-przykład">2.1. Przykład</a></li>
+<li><a href="#22-przykład">2.2. Przykład</a></li>
+<li><a href="#23-przykład">2.3. Przykład</a></li>
+</ul></li>
+<li><a href="#3-lemat-o-zamknięciu-na-działania">3. Lemat o zamknięciu na działania</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+</ul></li>
+<li><a href="#4-lemat-o-liczebności-języków">4. Lemat o liczebności języków</a></li>
+<li><a href="#5-lemat-o-równoważności-języków">5. Lemat o równoważności języków</a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="lemat-o-pompowaniu">1. Lemat o pompowaniu</h2>
+<p>Niech <span class="math inline">\(L\)</span> będzie językiem regularnym. Wówczas istnieje stała <span class="math inline">\(n\)</span> taka, że jeśli <span class="math inline">\(z\)</span> jest dowolnym słowem z <span class="math inline">\(L\)</span> oraz <span class="math inline">\(|z| \ge n\)</span>, to <span class="math inline">\(z\)</span> możemy przedstawić w postaci <span class="math inline">\(z = uvw\)</span>, gdzie <span class="math inline">\(|uv| \le n\)</span> oraz <span class="math inline">\(|v| \ge 1\)</span> oraz <span class="math inline">\(uv^iw\)</span> należy do <span class="math inline">\(L\)</span> dla każdego <span class="math inline">\(i \ge 0\)</span>.</p>
+<ul>
+<li><em>(<span class="math inline">\(n\)</span> jest nie większe niż liczba stanów najmniejszego DFA akceptującego <span class="math inline">\(L\)</span>)</em></li>
+<li><em>(lemat ten jest używany do pokazywania, że dany język <strong>nie</strong> jest regularny)</em></li>
+</ul>
+<h3 id="d-d">1.1. D-d</h3>
+<ul>
+<li><span class="math inline">\(n\)</span> — liczba stanów DFA</li>
+<li><span class="math inline">\(L \ni x_1,x_2,x_3,\dots, x_n,x_{n+1},\dots,x_m\)</span></li>
+<li>mamy układ: <span class="math inline">\(q_{i_0} \xrightarrow{x_1} q_{i_1} \xrightarrow{x_2} q_{i_2} \xrightarrow{x_3} \dots \xrightarrow{x_n} q_{i_n} \xrightarrow{x_{n+1}} \dots \xrightarrow{x_m} q_{\text{akceptujący}}\)</span></li>
+<li><p>zauważmy, że elementów iteratora w stanach od <span class="math inline">\(q_{i_0}\)</span> do <span class="math inline">\(q_{i_n}\)</span> jest <span class="math inline">\(n+1\)</span>, kiedy stanów naszego DFA jest <span class="math inline">\(n\)</span> czyli z zasady Dirichleta mamy przynajmniej jeden stan, który wystąpił dwa razy: <span class="math inline">\(q_{i_k} = q_{i_j}\)</span></p></li>
+<li>czytamy: <span class="math display">\[
+\overbrace{x_1, \dots, x_k\underbrace{\text{»«}}_{\text{tu jesteśmy w }q_{i_k} = q_{i_j}}}^{u}\overbrace{x_{k+1},\dots,x_j \underbrace{\text{»«}}_{q_{i_j} = q_{i_k}}}^{v} \overbrace{x_{j+1},\dots,x_m \underbrace{»«}_{q_{\text{akceptujący}}}}^{w}
+\]</span></li>
+<li><p>stąd (że mamy powtarzające się stany) możemy pominąć lub powielić część <span class="math inline">\(v\)</span></p></li>
+</ul>
+<hr />
+<h2 id="dowodzenie-że-l-nie-jest-regularny">2. Dowodzenie, że <span class="math inline">\(L\)</span> nie jest regularny</h2>
+<ol style="list-style-type: decimal">
+<li>Załóżmy, że <span class="math inline">\(L\)</span> jest regularny i istnieje odpowiednie <span class="math inline">\(n\)</span>.</li>
+<li>Wybierzmy słowo <span class="math inline">\(z\)</span> zgodne z lematem (jego długość musi zależeć od <span class="math inline">\(n\)</span>).</li>
+<li>Pokażmy, że dla każdego podziału <span class="math inline">\(z\)</span> zgodnego z lematem istnieje <span class="math inline">\(i\)</span> takie, że <span class="math inline">\(uv^iw \notin L\)</span>.</li>
+</ol>
+<h3 id="przykład">2.1. Przykład</h3>
+<p>Mamy <span class="math inline">\(L = \left\{ 0^{i^2}: i \in \mathbb{N} \right\}\)</span>.</p>
+<p>Załóżmy, że <span class="math inline">\(L\)</span> jest regularny i weźmy <span class="math inline">\(n\)</span> z Lematu o pompowaniu.<br />
+Weźmy <span class="math inline">\(z = 0^{n^2}\)</span> oraz podzielmy <span class="math inline">\(z = uvw\)</span> w taki sposób, że: - <span class="math inline">\(|uv| \le n\)</span> - <span class="math inline">\(|v| \ge 1\)</span></p>
+<p>Bierzemy <span class="math inline">\(i = 2\)</span> (czyli patrzymy czy słowo należy do języka, jeśli zdwukrotnimy <span class="math inline">\(v\)</span>).</p>
+<p><em>(szukamy słów o długości równej kwadratowi liczby naturalnej)</em></p>
+<p><span class="math display">\[
+n^2 &lt; |uv^2w| = |uvw| + |v| \le n^2 + n &lt; (n+1)^2
+\]</span></p>
+<p>Nasze nowe słowo jest w przedziale <strong>otwartym</strong> <span class="math inline">\((n^2; (n+1)^2)\)</span> co oznacza, że na pewno nie spełnia żądanego warunku długości słowa (miało być kwadratem liczby naturalnej).<br />
+Zatem <span class="math inline">\(L\)</span> nie jest regularny.</p>
+<h3 id="przykład-1">2.2. Przykład</h3>
+<p>Mamy <span class="math inline">\(L = \left\{ x \in \left\{ a,b \right\}^*: |x|_a = |x|_b \right\}\)</span> czyli takie słowa, które mają taką samą liczbę <span class="math inline">\(a\)</span> co liczbę liter <span class="math inline">\(b\)</span>.</p>
+<ul>
+<li>zakładamy, że <span class="math inline">\(L\)</span> jest regularny i istnieje <span class="math inline">\(n\)</span> z <a href="#1-lemat-o-pompowaniu">Lematu o pompowaniu</a></li>
+<li><span class="math inline">\(z = a^n b^n\)</span></li>
+<li>patrzymy na możliwe podziały</li>
+<li><span class="math inline">\(\forall k = \left\{ 1,\dots,n \right\}\enspace (v^k)^i a^{n-k}b^n\)</span></li>
+<li>łatwo zauważyć, że dodanie dowolnej liczby literek „<span class="math inline">\(a\)</span>” wyrzuca nas z języka <span class="math inline">\(\implies\)</span> <span class="math inline">\(L\)</span> jest nieregularny</li>
+</ul>
+<h3 id="przykład-2">2.3. Przykład</h3>
+<p>Mamy <span class="math inline">\(L = \left\{ x \in \left\{ a,b \right\}^*: |x|_a \neq |x|_b \right\}\)</span> czyli takie słowa, które mają różne liczby literek <span class="math inline">\(a\)</span> oraz <span class="math inline">\(b\)</span>.</p>
+<ul>
+<li>zakładamy, że <span class="math inline">\(L\)</span> jest regularny i istnieje <span class="math inline">\(n\)</span> z <a href="#1-lemat-o-pompowaniu">Lematu o pompowaniu</a></li>
+<li><span class="math inline">\(z = a^n b^{n+1}\)</span></li>
+<li>patrzymy na możliwe podziały</li>
+<li><span class="math inline">\(\forall i \enspace (a^2)^i a^{n-2} b^{n+1} \in L\)</span> — nie udało się udowodnić</li>
+<li>bierzemy inne słowo <span class="math inline">\(z = a^n b^{n! + n} \in L\)</span> — znowu nie</li>
+<li>bierzemy <span class="math inline">\(k \in \left\{ 1, \dots, n \right\}\)</span></li>
+<li>bierzemy słowo <span class="math inline">\((a^k)^i a^{n-k} b^{n! + n}\)</span></li>
+<li>tutaj wystarczy wziąć <span class="math inline">\(i = \frac{n!}{k} + 1\)</span>, żeby słowo wyleciało z języka, ponieważ po podstawieniu wychodzi, że mamy tyle samo liter <span class="math inline">\(a\)</span> co <span class="math inline">\(b\)</span> (<span class="math inline">\(k \cdot \left( \frac{n!}{k} + 1 \right) + (n-k) = n! + n\)</span>)</li>
+<li>zatem <span class="math inline">\(L\)</span> jest nieregularny</li>
+</ul>
+<hr />
+<h2 id="lemat-o-zamknięciu-na-działania">3. Lemat o zamknięciu na działania</h2>
+<p>Klasa języków regularnych jest zamknięta na operację sumy, dopełnienia, przecięcia, złożenia i domknięcia Kleene’ego.</p>
+<h3 id="d-d-1">3.1. D-d</h3>
+<ol style="list-style-type: decimal">
+<li>Suma, złożenie i domknięcie Kleene’ego (z <a href="../2020-10-08/języki-formalne-wprowadzenie.md#52-działania">definicji RE</a>)</li>
+<li><p>Dopełnienie:</p>
+<p>jeśli <span class="math inline">\(L\)</span> jest akceptowany przez DFA <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span><br />
+wówczas <span class="math inline">\(\overline{L}\)</span> akceptowany przez <span class="math inline">\(M&#39; = (Q,\Sigma, \delta, q_0, Q \setminus F)\)</span>.</p></li>
+<li><p>Przecięcie:</p>
+<p>Jeśli <span class="math inline">\(L_1\)</span> oraz <span class="math inline">\(L_2\)</span> są akceptowane przez odpowiednie DFA <span class="math inline">\(M_1 = (Q_1, \Sigma, \delta_1, q_1, F_1)\)</span> oraz <span class="math inline">\(M_2 = (Q_2, \Sigma, \delta_2, q_2, F_2)\)</span><br />
+wówczas <span class="math inline">\(L_1 \cap L_2\)</span> jest akceptowany przez <span class="math inline">\(M = (Q_1 \times Q_2, \Sigma, \delta, (q_1, q_2), F_1 \times F_2)\)</span>, gdzie <span class="math inline">\(\delta((p,q),a) = (\delta_1(p,a), \delta_2(q,a))\)</span>.</p></li>
+<li><p>Suma:</p>
+<p><span class="math inline">\(M = \big(Q_1 \times Q_2, \Sigma, \delta, (q_1, q_2), (Q_1 \times Q_2) \setminus ((Q_1 \setminus F_1) \times (Q_2 \setminus F_2))\big)\)</span>.</p></li>
+</ol>
+<hr />
+<h2 id="lemat-o-liczebności-języków">4. Lemat o liczebności języków</h2>
+<p>Zbiór słów akceptowanych przez DFA <span class="math inline">\(M\)</span> o <span class="math inline">\(n\)</span> stanach jest: 1. niepusty <span class="math inline">\(\iff M\)</span> akceptuje słowo o długości mniejszej niż <span class="math inline">\(n\)</span> 2. nieskończony, jeśli <span class="math inline">\(M\)</span> akceptuje słowo o długości <span class="math inline">\(l\)</span>, dla <span class="math inline">\(n \le l \le 2n\)</span>.</p>
+<hr />
+<h2 id="lemat-o-równoważności-języków">5. Lemat o równoważności języków</h2>
+<p>Istnieje algorytm rozstrzygający czy dwa automaty skończone są równoważne (akceptują te same języki).</p>
+<h3 id="d-d-2">5.1. D-d</h3>
+<ul>
+<li>weźmy <span class="math inline">\(M_1\)</span> oraz <span class="math inline">\(M_2\)</span>, które są DFA akceptującymi odpowiednio języki <span class="math inline">\(L_1\)</span> oraz <span class="math inline">\(L_2\)</span></li>
+<li>jeśli <span class="math inline">\(L_1 \neq L_2\)</span> wówczas <span class="math inline">\((L_1 \cap \overline{L_2}) \cup (\overline{L_1} \cap L_2)\)</span> jest niepusty</li>
+</ul>
+<hr />
+</body>
+</html>

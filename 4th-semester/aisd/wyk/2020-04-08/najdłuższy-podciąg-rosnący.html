@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="najdłuższy-podciąg-rosnący">Najdłuższy podciąg rosnący</h1>
+<p><em>(2020-04-08)</em></p>
+<h2 id="input">Input</h2>
+<p>Ciąg <span class="math inline">\(A = (a_1,\dots,a_n)\)</span></p>
+<h2 id="output">Output</h2>
+<p>Najdłuższy rosnący podciąg <span class="math inline">\(A\)</span>.</p>
+<p>Podciągiem ciągu <span class="math inline">\(A\)</span> nazywamy ciąg <span class="math inline">\((a_{i_1}, \dots, a_{i_k})\)</span>, gdzie <span class="math inline">\(1 \le i_1 &lt; \dotsb &lt; i_k \le n\)</span>, jeśli dodatkowo ma on być rosnący to <span class="math inline">\(a_{i_1} &lt; \dotsb &lt; a_{i_k}\)</span>.</p>
+<h2 id="przykład-a">Przykład <span class="math inline">\(A\)</span></h2>
+<p>Mamy <span class="math inline">\(A = (5,2,8,5,3,7,9,8)\)</span>.</p>
+<p>Wówczas najdłuższy pociąg <span class="math inline">\(A\)</span> to np. <span class="math inline">\((2,3,7,9)\)</span>, ale istnieją również inne podciągi tej samej długości np. <span class="math inline">\((2,5,7,8)\)</span>.</p>
+<h2 id="steps">Steps</h2>
+<ol style="list-style-type: decimal">
+<li>Budujemy <a href="najkrótsza-ścieżka-dag">DAG</a> <span class="math inline">\(G = (V,E,c)\)</span> odpowiadającego naszemu problemowi.</li>
+<li>Niech zbiór wierzchołków stanowią elementy ciągu wejściowego <span class="math inline">\(A\)</span>: <span class="math inline">\(V = \{a_1,\dots,a_n\}\)</span>.</li>
+<li>Wstawiamy krawędzie tylko pomiędzy wierzchołkami, które mogą być kolejnymi elementami rosnącego podciągu, czyli <span class="math inline">\((a_i, a_j) \in E\)</span> jeśli <span class="math inline">\(i&lt;j \land a_i &lt; a_j\)</span>.</li>
+<li>Niech waga (długość) każdej krawędzi będzie równa <span class="math inline">\(1\)</span>, czyli <span class="math inline">\(\forall(u,v) \in E: c(u,v) = 1\)</span>.</li>
+</ol>
+<p>Zauważmy, że tak powstały graf <span class="math inline">\(G\)</span> jest DAG-iem oraz, że ścieżki w tak zdefiniowanym grafie odpowiadają podciągom rosnącym ciągu <span class="math inline">\(A\)</span>. Zatem naszym zadaniem teraz jest znalezienie najdłuższej ścieżki w tak zdefiniowanym grafie.</p>
+<h3 id="znalezienie-najdłuższej-ścieżki">Znalezienie najdłuższej ścieżki</h3>
+<p>Niech <span class="math inline">\(L(i)\)</span> będzie długością najdłuższego podciągu kończącego się na elemencie <span class="math inline">\(a_i\)</span>, wówczas:</p>
+<pre><code>for i = 1 to n:
+  L(i) = 1 + max{ L(j): (j,i) in E }
+return max{ L(i): i in [n] }</code></pre>
+<p>Podobnie jak w <a href="najkrótsza-ścieżka-dag">problemie najkrótszej ścieżki w DAG</a>, jeśli zapamiętamy <span class="math inline">\(a_j\)</span> dla którego osiągnięty jest <span class="math inline">\(\max\{L(j): (j,i) \in E\}\)</span> to możemy odtworzyć uzyskany w wyniku podciąg.</p>
+<p>Złożoność obliczeniowa powyższego algorytmu wynosi <span class="math inline">\(O(|E|)\)</span> (podobnie jak to było w przypadku najkrótszych ścieżek w DAG), czyli w pesymistycznym przypadku <span class="math inline">\(O(n^2)\)</span>, który zachodzi jeśli ciąg wejściowy jest posortowany rosnąco.</p>
+</body>
+</html>

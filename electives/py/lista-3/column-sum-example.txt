@@ -1,0 +1,6 @@
+  127.0.0.1 -  - "GET /ply/  HTTP/1.1" 200 7587
+  127.0.0.1 -  - "GET /favicon.ico HTTP/1.1" 404 133
+  127.0.0.1 -  - "GET /ply/bookplug.gif" 200 23903
+  127.0.0.1 -  - "GET /ply/ply.html HTTP/1.1" 200 97238
+  127.0.0.1 -  - "GET /ply/example.html HTTP/1.1" 200 2359
+  127.0.0.1 -  - "GET /index.html" 200 4447

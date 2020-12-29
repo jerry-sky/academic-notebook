@@ -1,0 +1,15 @@
+50 11 3
+a 2
+u 2
+n 1
+e 1
+a 2
+p 1
+b 4
+s 3
+t 1
+h 1
+d 5
+bean
+stead
+daubs

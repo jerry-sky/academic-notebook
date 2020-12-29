@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kolorowanie-i">Kolorowanie I</h1>
+<h2 id="def-kolorowanie-grafu">Def Kolorowanie grafu</h2>
+<p>Mamy <span class="math inline">\(G = (V,E)\)</span>.</p>
+<p>Kolorowaniem grafu nazywamy funkcję <span class="math inline">\(f: V \to \mathbb{N}^+\)</span></p>
+<h2 id="def-właściwe-kolorowanie-grafu">Def Właściwe kolorowanie grafu</h2>
+<p>Mamy <span class="math inline">\(G = (V,E)\)</span>.</p>
+<p>Właściwym kolorowaniem grafu nazywamy funkcję <span class="math inline">\(f: V \to \mathbb{N}^+\)</span> taką, że <span class="math inline">\((\forall x,y \in V)(\{x,y\} \in E \to c(x) \neq c(y))\)</span></p>
+<p><em>Uwaga: będziemy się zajmować tylko grafami prostymi (wielokrotność krawędzi nie ma znaczenia; graf nie może mieć pętli).</em></p>
+<h2 id="def-liczba-chromatyczna">Def Liczba chromatyczna</h2>
+<p><span class="math inline">\(\mathcal{X}(G) = \min \{ k \in \mathbb{N}: \text{ istnieje właściwe kolorowanie grafu } G \text{ elementami } \{1,2,\dots,k\} \}\)</span>.</p>
+<h3 id="przykłady-liczba-chromatyczna">Przykłady (liczba chromatyczna)</h3>
+<ul>
+<li><span class="math inline">\(\mathcal{X}(K_n) = n\)</span></li>
+<li><span class="math inline">\(\mathcal{X}(C_{2n}) = 2\)</span></li>
+<li><span class="math inline">\(\mathcal{X}(C_{2n+1}) = 3\)</span></li>
+<li><span class="math inline">\(\mathcal{X}(K_{m,n}) = 2\)</span></li>
+</ul>
+<h2 id="fakt-1">Fakt #1</h2>
+<p><span class="math inline">\(\mathcal{X}((V, E_1 \cup E_2)) \le \mathcal{X}((V,E_1)) \mathcal{X}((V,E_2))\)</span></p>
+<h3 id="d-d-faktu-1">D-d Faktu #1</h3>
+<p>Bierzemy kolorowanie <span class="math inline">\(c_i\)</span> grafów <span class="math inline">\((V,E_i)\)</span> (<span class="math inline">\(i=1,2\)</span>) i kładziemy <span class="math inline">\(c(x) = (c_1(x),c_2(x))\)</span></p>
+<h2 id="zachłanne-kolorowanie-greedy-colouring">Zachłanne kolorowanie <em>(Greedy Colouring)</em></h2>
+<p>Mamy częściowe kolorowanie <span class="math inline">\(c\)</span> czyli funkcję <span class="math inline">\(c\)</span> taką, że <span class="math inline">\(\mathcal{domain}(c) \subseteq V\)</span> oraz mamy ciąg <span class="math inline">\(x_1,\dots,x_k\)</span> wierzchołków taki, że <span class="math inline">\(\{ x_1, \dots, x_k \} \cap \mathrm{domain}(c) = \emptyset\)</span>.</p>
+<p>Input: <span class="math inline">\((c; x_1,x_2, \dots, x_k)\)</span></p>
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(i = 1 \dots k\)</span></li>
+<li><span class="math inline">\(f := \min ( \mathbb{N}^+ \setminus \{ c(y): \{x,y\} \in E \land y \in \mathrm{domain}(c) \} )\)</span></li>
+<li><span class="math inline">\(c := c \cup \{ (x_i,f) \}\)</span></li>
+<li><code>return</code> <span class="math inline">\(c\)</span></li>
+</ol>
+<h2 id="def-graf-k-zdegenerowany">Def Graf <span class="math inline">\(k\)</span>-zdegenerowany</h2>
+<p>Graf jest zdegenerowany jeśli dla dowolnego niepustego podzbioru <span class="math inline">\(X \subseteq V\)</span> istnieje <span class="math inline">\(x \in X\)</span> taki, że <span class="math inline">\(\deg_{G[X]}(x) \le k\)</span>.</p>
+<h3 id="przykład-graf-kzdegenerowany">Przykład (graf <span class="math inline">\(k\)</span>–zdegenerowany)</h3>
+<p>Każde drzewo jest <span class="math inline">\(1\)</span>–zdegenerowanym grafem (każde drzewo ma liść, czyli wierzchołek o rzędzie <span class="math inline">\(1\)</span>).</p>
+<h3 id="obserwacja-1">Obserwacja #1</h3>
+<p><strong>Każdy graf <span class="math inline">\(G\)</span> jest <span class="math inline">\(\Delta(G)\)</span>–zdegenerowany.</strong></p>
+<h2 id="twierdzenie-1">Twierdzenie #1</h2>
+<p>Graf jest <span class="math inline">\(k\)</span>-zdegenerowany iff, gdy istnieje takie uporządkowanie <span class="math inline">\((v_1,\dots,v_n)\)</span> (wszystkich) wierzchołków takie, że <span class="math display">\[
+(\forall i)(|\{ j&lt;iL \{v_j,v_i\} \in E \}| \le k)
+\]</span></p>
+<h3 id="d-d-twierdzenia-1">D-d Twierdzenia #1</h3>
+<p>„<span class="math inline">\(\implies\)</span>”:<br />
+Indukcja po liczbie wierzchołków; wybieramy <span class="math inline">\(v_n \in V\)</span> taki, że <span class="math inline">\(\deg_G(x) \le k\)</span>; założenie indukcyjne stosujemy do <span class="math inline">\(V \setminus \{v_n\}\)</span>.</p>
+<p>„<span class="math inline">\(\impliedby\)</span>”:<br />
+Bierzemy ciąg <span class="math inline">\((v_1,\dots,v_n)\)</span> spełniający powyższy warunek. Rozważamy <span class="math inline">\(X \subseteq V\)</span>. Bierzemy <span class="math inline">\(x = v_i \in X\)</span> taki, że jeśli <span class="math inline">\(v_j \in X\)</span> to <span class="math inline">\(j \le i\)</span> (czyli: wybieramy element zbioru <span class="math inline">\(X\)</span> o największym indeksie w rozważanym ciągu).</p>
+<h2 id="twierdzenie-2">Twierdzenie #2</h2>
+<p>Jeśli graf <span class="math inline">\(G\)</span> jest <span class="math inline">\(k\)</span>–zdegenerowany i <span class="math inline">\((v_1,\dots,v_n)\)</span> jest takim uporządkowaniem wierzchołków, które spełnia warunek z <a href="#twierdzenie-1">ostatniego twierdzenia</a>, to <a href="#zachłanne-kolorowanie-greedy-colouring">algorytm Greedy Colouring</a> dla <span class="math inline">\((\emptyset;x_1,\dots,x_n)\)</span> zwraca właściwe <span class="math inline">\(k+1\)</span>–kolorowanie grafu <span class="math inline">\(G\)</span>.</p>
+<h3 id="wniosek-1">Wniosek #1</h3>
+<p>Dla dowolnego grafu <span class="math inline">\(G\)</span> mamy <span class="math inline">\(\mathcal{X}(G) \le \Delta(G) + 1\)</span>.<br />
+<em>Uwaga: możemy to pokazać w prosty sposób metodą indukcji matematycznej względem liczby wierzchołków; wprowadziliśmy go przy pomocy zdegenerowania grafu gdyż pojęcie to przyda się nam w dalszych rozważaniach.</em></p>
+<h4 id="d-d-wniosek-1">D-d (Wniosek #1)</h4>
+<p>Indukcja po liczbie <span class="math inline">\(k = |V|\)</span>. Dla <span class="math inline">\(k=1\)</span> mamy <span class="math inline">\(\mathcal{X}(G) = 1\)</span> oraz <span class="math inline">\(\Delta(G) + 1 = 0 + 1 = 1\)</span>.<br />
+Zakładamy teraz, że <span class="math inline">\(k&gt;1\)</span> oraz, że twierdzenie jest prawdziwe dla <span class="math inline">\(G\)</span> taki, że <span class="math inline">\(|V(G)| &lt; k\)</span>. Bierzemy graf <span class="math inline">\(G\)</span> taki, że <span class="math inline">\(|V(G)| = k\)</span>. Bierzemy dowolny wierzchołek <span class="math inline">\(v \in V\)</span>. Graf <span class="math inline">\(G&#39; = G[V \setminus \{v\}]\)</span> ma <span class="math inline">\(k-1\)</span> wierzchołków. Co więcej <span class="math inline">\(\Delta(G&#39;) \le \Delta(G)\)</span>. Mamy więc (założenie indukcyjne) właściwe kolorowanie <span class="math inline">\(c&#39;: V(G&#39;) \to \{1,\dots,\Delta(G)+1\}\)</span>. Zbiór <span class="math inline">\(\mathcal{N}(v)\)</span> ma moc nie większą niż <span class="math inline">\(\Delta(G)\)</span>. Zatem <span class="math display">\[
+\{1,\dots,\Delta(G)+1\} \setminus \{ c(x): x\in \mathcal{N}(v) \neq \emptyset \}.
+\]</span> Bierzemy dowolny element <span class="math inline">\(a\)</span> z tego zbioru i rozszerzamy kolorowanie <span class="math inline">\(c&#39;\)</span>: <span class="math display">\[
+c = c&#39; \cup \{(v,a)\}.
+\]</span> To jest właściwe kolorowanie grafu <span class="math inline">\(G\)</span> za pomocą <span class="math inline">\(\Delta(G) + 1\)</span> kolorów.</p>
+<h3 id="przykład-2">Przykład #2</h3>
+<p>Każde drzewo jest <span class="math inline">\(2\)</span>–kolorowalne (czyli jeśli <span class="math inline">\(T\)</span> jest drzewem, to <span class="math inline">\(\mathcal{X}(T) = 2\)</span>)</p>
+<h2 id="twierdzenie-3">Twierdzenie #3</h2>
+<p>Każdy graf planarny jest <span class="math inline">\(5\)</span>–zdegenerowany.</p>
+<h2 id="d-d-twierdzenia-3">D-d Twierdzenia #3</h2>
+<p>Na <a href="../2020-04-01/2020-04-01.md#texttwierdzenie-1">jednym z poprzednich wykładów</a> pokazaliśmy, że w każdym grafie planarnym istnieje wierzchołek o rzędzie nie większym niż <span class="math inline">\(5\)</span>. Ponadto, pod-graf grafu planarnego jest planarny, więc ma wierzchołek rzędu <span class="math inline">\(\le 5\)</span>.</p>
+<h3 id="wniosek-2">Wniosek #2</h3>
+<p><strong>Każdy graf planarny jest <span class="math inline">\(\bold6\)</span>–kolorowalny</strong></p>
+</body>
+</html>

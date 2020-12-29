@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-1">Lista-1</h1>
+<p><em>(Termin oddania: 2020-10-25)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+<li><a href="#zadanie-5">Zadanie 5.</a></li>
+<li><a href="#zadanie-6">Zadanie 6.</a></li>
+</ul>
+<p>Wszystkie zadania znajdują się w plikach <code>ex-*.sh</code>.</p>
+<p>W pliku <code>recording.cast</code> znajduje się zapis komend i ich wynik prezentujący działanie zadań. Niniejszy zapis może zostać odtworzony przy pomocy komendy</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">asciinema</span> play recording.cast</code></pre></div>
+<p>przy zainstalowanym programie <code>asciinema</code> w systemie.</p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Napisz skrypt, który jako argument otrzymuje: - ścieżkę do katalogu (korzenia poddrzewa katalogów, zawierającego pliki tekstowe),</p>
+<p>i drukuje listę wszystkich regularnych plików (nie katalogów) w tym poddrzewie.</p>
+</blockquote>
+<p><a href="ex-1.sh">kod</a></p>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 1, który dla wszystkich słów występujących w plikach w danym poddrzewie katalogów, drukuje statystyki, ile razy dane słowo wystąpiło we wszystkich tych plikach.</p>
+<p>Przez słowo rozumiemy każdy niepusty podciąg sąsiadujących znaków liter ograniczony białymi znakami (white space).</p>
+<p><em>Uwaga: Można założyć, że w plikach występują tylko litery, spacje i znaki nowej linii.</em></p>
+</blockquote>
+<p><a href="ex-2.sh">kod</a></p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 1, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów, drukuje liczbę plików, w których to słowo występuje.</p>
+</blockquote>
+<p><a href="ex-3.sh">kod</a></p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 1, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów, drukuje linie, w których to słowo występuje, poprzedzone nazwą pliku, z którego pochodzą.</p>
+</blockquote>
+<p><a href="ex-4.sh">kod</a></p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 1, który we wszystkich plikach zastępuje wszystkie wystąpienia znaku 'a' znakiem 'A'.</p>
+</blockquote>
+<p><a href="ex-5.sh">kod</a></p>
+<hr />
+<h2 id="zadanie-6.">Zadanie 6.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 1, który drukuje słowa występujące więcej niż raz w jakimś wierszu, wraz z tymi wierszami i nazwami plików, z których te wiersze pochodzą.</p>
+</blockquote>
+<p><a href="ex-6.sh">kod</a></p>
+<hr />
+</body>
+</html>

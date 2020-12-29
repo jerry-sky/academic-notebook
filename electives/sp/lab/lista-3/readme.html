@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3">Lista-3</h1>
+<p><em>(Termin oddania: 2020-12-09)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a>
+<ul>
+<li><a href="#nagrania-asciinema">Nagrania <code>asciinema</code></a></li>
+<li><a href="#polecenia-które-należy-wykonać-w-celu-realizacji-zadania">Polecenia, które należy wykonać w celu realizacji zadania</a></li>
+</ul></li>
+<li><a href="#skrypt-pomocniczy-do-zadań-2-i-3">Skrypt pomocniczy do zadań 2. i 3.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+</ul>
+<hr />
+<p>Wszystkie zadania są reprezentowane przez pliki <code>ex-*.cast</code>, które są nagraniami wykonanymi przy pomocy programu <code>asciinema</code>.</p>
+<p>Zapisy te mogą zostać odtworzone przy pomocy komendy</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">asciinema</span> play <span class="op">&lt;</span>recording<span class="op">&gt;</span>.cast</code></pre></div>
+<p>przy zainstalowanym programie <code>asciinema</code> w systemie.</p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Studenci zostali podzieleni na cztery grupy ze względu na dwie ostatnie cyfry numeru indeksu i uzyskali dostęp do odpowiednich repozytoriów.</p>
+<p>Każda grupa ma wspólnie pracować nad stworzeniem aplikacji <code>app_1</code> w swoim repozytorium. W ramach każdej grupy każdy student ma dorobić swój własny moduł dodający jakąś funkcjonalność, wykonując następujące czynności: - utworzyć swoją kopię roboczą projektu, - przejrzeć plik README i pozostałe pliki, aby zorientować się w zasadach organizacji projektu i nazywania plików i katalogów, - utworzyć własne rozgałęzienie w <code>app1/branches</code> , w którym zaimplementuje swój własny podprogram, - zsynchronizować swoją gałąź z <code>trunk</code>-iem (być może kilka razy) - zreintegrować swoją gałąź z <code>trunk</code>-iem - usunąć niepotrzebną gałąź po reintegracji - utworzyć <code>tag</code>-a z poprawną wersją projektu zawierającą własny podprogram. - w prezentacji pokazać, że program z utworzonego <code>tag</code>-a kompiluje się i wykonuje poprawnie.</p>
+<p>Wykonując polecenia należy je nagrywać z terminala wraz z wyświetlanymi komunikatami do sprawozdań <code>asciinema</code>.</p>
+<p>Można utworzyć więcej niż jedno nagranie, ale ich nazwy powinny zawierać numery wskazujące, w jakiej kolejności należy je wyświetlać. Ostatnie nagranie zakończyć wyświetleniem <code>svn log -v …</code> dla utworzonego przez siebie <code>tag</code>-a. Utworzone prezentacje można skleić w jedną, nagrywając wykonanie skryptu, który odtwarza je w kolejności. Przykład można obejrzeć, wykonując polecenie:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> cat https://repo.cs.pwr.edu.pl/info/asciinema/6_sklejanie_prezentacji.cast <span class="kw">|</span> <span class="ex">asciinema</span> play -i 0.1 -</code></pre></div>
+<p>W każdym repozytorium, swoje zadanie wykonał „Sztuczny Student” o numerze indeksu <code>999</code>. Nie uzyskał jeszcze zaliczenia bo zapomniał usunąć swoją gałąź i nie przygotował sprawozdania. Pozostałe czynności wykonał poprawnie i można prześledzić jego działania (poleceniami <code>svn log …</code>, <code>svn diff …</code>).</p>
+<p>Uwaga: Zadania 1. nie warto odkładać na ostatnią chwilę, gdyż wtedy jest najwięcej konfliktów.</p>
+</blockquote>
+<h3 id="nagrania-asciinema">Nagrania <code>asciinema</code></h3>
+<p>Odpowiednie nagrania wykonane przy pomocy programu <code>asciinema</code> znajdują się w plikach <code>ex-1.1.cast</code> oraz <code>ex-1.2.cast</code>.</p>
+<h3 id="polecenia-które-należy-wykonać-w-celu-realizacji-zadania">Polecenia, które należy wykonać w celu realizacji zadania</h3>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Wykonujemy</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">.</span> <span class="ex">../repo.sh</span></code></pre></div>
+żeby pod zmienną <code>$RP</code> znajdował się adres główny do wszystkich repozytoriów z tego kursu.</li>
+<li><p>Tworzymy kopię roboczą projektu</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> co <span class="va">$RP</span>/p_75</code></pre></div></li>
+<li>Wchodzimy w katalog <code>app_1/trunk</code> i odczytujemy plik <code>README</code>.</li>
+<li>W tym pliku będziemy zapisywać opis naszego podprogramu.</li>
+<li>Rozglądając się dalej widzimy pliki <code>program.h</code>, <code>main.c</code>, <code>program_usage.c</code> oraz podprogramy innych studentów <code>s*_podprogram.c</code>.</li>
+<li><p>Po rozeznaniu się z projektem tworzymy nową gałąź:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> copy <span class="va">$RP</span>/p_75/app_1/trunk <span class="va">$RP</span>/p_75/app_1/branches/250075</code></pre></div></li>
+<li>Tworzymy nowy plik <code>s250075_podprogram.c</code> z nowym programem (a dokładniej funkcją w języku <em>C</em>).</li>
+<li>Odpowiednio modyfikujemy pliki <code>program.h</code>, <code>makefile</code> oraz <code>main.c</code>, żeby nasz program „podpiąć” pod główny program, który uruchamia poszczególne podprogramy.</li>
+<li><p>Wykonujemy polecenie</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> commit -m <span class="st">&#39;added a new subprogram that prints a given real number in its scientific notation&#39;</span></code></pre></div>
+żeby zapisać nasze zmiany w aktualnej gałęzi.</li>
+<li>Odpowiednio aktualizujemy plik <code>README</code> dodając opis naszego podprogramu i też <code>commit</code>ujemy zmiany.</li>
+<li>Przechodzimy do katalogu <code>^/app_1/trunk</code>.</li>
+<li><p>Przy pomocy komendy</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> merge ^/app_1/branches/250075</code></pre></div>
+reintegrujemy zmiany z gałęzi <code>250075</code> do <code>trunk</code>a.</li>
+<li><p>Poleceniem</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> rm ^/app_1/branches/250075</code></pre></div>
+usuwamy niepotrzebną już gałąź.</li>
+<li><p>Dodatkowo tworzymy nowego <code>tag</code>a dla naszego stanu całego programu:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">svn</span> copy ^/app_1/trunk ^/app_1/tags/v_250075</code></pre></div></li>
+<li><p>Nagranie <code>ex-1.cast</code> pokazuje, że wersja programu dostępna w katalogu <code>^/app_1/tags/v_250075</code> kompiluje się i działa jak należy.</p></li>
+</ol>
+<hr />
+<h2 id="skrypt-pomocniczy-do-zadań-2.-i-3.">Skrypt pomocniczy do zadań 2. i 3.</h2>
+<p>Do zadań 2. i 3. używamy tutaj skryptu pomocniczego <code>svn-ls-all.sh</code>, który jest niedalekim kuzynem skryptu z rozwiązania zadania 1. z listy 1. Wypisuje on wszystkie pliki w danym pod-katalogu danego repozytorium dla danej rewizji.</p>
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Napisz skrypt, który jako argument otrzymuje:</p>
+<p>Nr rewizji w repozytorium SVN URL do katalogu w repozytorium SVN (korzenia poddrzewa katalogów, zawierającego pliki tekstowe), który dla wszystkich słów występujących w plikach w danym poddrzewie katalogów w danej rewizji, drukuje statystyki, ile razy dane słowo wystąpiło we wszystkich tych plikach. (Odpowiednik <a href="../lista-1/readme.md#zadanie-2">zadania 2 z listy 1.</a>) Niech skrypt będzie w pliku: <code>./l3z2.bash</code>. W prezentacji umieść wykonania poleceń:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">./l3z2.bash</span> 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+<span class="ex">./l3z2.bash</span> 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/</code></pre></div>
+</blockquote>
+<p>Plik wykonywalny <a href="l3z2.bash"><code>l3z2.bash</code></a> jest rozwiązaniem tego zadania. Jego działanie można zobaczyć na nagraniu <code>ex-2.cast</code>.</p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Skrypt, wywoływany jak w zadaniu 2, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów w danej rewizji, drukuje liczbę plików, w których to słowo występuje. (Odpowiednik zadania 3 z listy 1.) Niech skrypt będzie w pliku: <code>./l3z3.bash</code>. W prezentacji umieść wykonania poleceń:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">./l3z3.bash</span> 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/
+<span class="ex">./l3z3.bash</span> 18 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/</code></pre></div>
+</blockquote>
+<p>Plik wykonywalny <a href="l3z3.bash"><code>l3z3.bash</code></a> jest rozwiązaniem tego zadania. Jego działanie można zobaczyć na nagraniu <code>ex-3.cast</code>.</p>
+<hr />
+</body>
+</html>

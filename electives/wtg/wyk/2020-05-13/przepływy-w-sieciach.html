@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="przepływy-w-sieciach">Przepływy w sieciach</h1>
+<p><em>(2020-05-13)</em></p>
+<h2 id="wersje-twierdzenie-mengera-dla-digrafów">Wersje twierdzenie Mengera dla digrafów</h2>
+<p><em><a href="../2020-04-22/twierdzenie-mengera.md#text-twierdzenie-mengera-wersja-wierzchołkowa">oryginalne twierdzenie Mengera</a></em></p>
+<p>Ustalamy graf skierowany <span class="math inline">\(\vec{G} = (V, \vec{E})\)</span>, zbiory <span class="math inline">\(A,B\subseteq V\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\((A,B)\)</span>–droga: ciąg <span class="math inline">\(x_0,e_1,x_1,e_2,\dots,e_n,x_n\)</span> takie, że <span class="math inline">\(x_0 \in A, x_n\in B\)</span> oraz <span class="math inline">\(e_i\)</span> jest krawędzią (skierowaną) od <span class="math inline">\(x_{i-1}\)</span> do <span class="math inline">\(x_i\)</span> czyli tak samo jak dla grafów, z krawędziami zastąpionymi krawędziami skierowanymi</li>
+<li>Podobnie definiujemy pojęcie <span class="math inline">\((A,B)\)</span>–łącznika wierzchołkowo rozłącznego, krawędziowo rozłącznego, <span class="math inline">\((A,B)\)</span>–separatora wierzchołkowego i separatora krawędziowego.</li>
+<li>Podstawowe twierdzenie: maksymalna moc <span class="math inline">\((A,B)\)</span>–łącznika jest równa minimalnej mocy <span class="math inline">\((A,B)\)</span>–separatora<br />
+D-d: powtórzenie <a href="../2020-04-22/twierdzenie-mengera.md#d-d-text-twierdzenia-mengera-wersji-wierzchołkowej">dowodu dla grafów</a> (indukcja po <span class="math inline">\(|\vec{E}|\)</span>)</li>
+</ol>
+<h2 id="oznaczenie-1">Oznaczenie #1</h2>
+<p>Dla digrafu <span class="math inline">\(G = (V,E,\varphi)\)</span> i <span class="math inline">\(X,Y\subseteq V\)</span> zbiór krawędzi z <span class="math inline">\(X\)</span> do <span class="math inline">\(Y\)</span> oznaczamy przez <span class="math inline">\(E(X,Y)\)</span>, czyli: <span class="math display">\[
+E(X,Y) = \{e\in E: \mathrm{fst}(e) \in X\land \mathrm{snd}(e) \in Y\}.
+\]</span></p>
+<h2 id="def-separator-minimalny">Def Separator minimalny</h2>
+<p>Załóżmy, że <span class="math inline">\(G = (V,E,\varphi)\)</span> jest digrafem, <span class="math inline">\(s,t\in V\)</span> oraz, że zbiór krawędzi <span class="math inline">\(K\)</span> jest <span class="math inline">\((\{s\},\{t\})\)</span>–separatorem. Wówczas istnieje zbiór <span class="math inline">\(X\subseteq V\)</span> taki, że <span class="math inline">\(s\in X, t\in X^\complement = V\setminus X\)</span> oraz <span class="math inline">\(E(X,X^\complement)\subseteq K\)</span>.</p>
+<h3 id="d-d-separator-minimalny">D-d separator minimalny</h3>
+<p>Niech <span class="math inline">\(X = \{x\in V: \text{jest droga od s do x w grafie } G\setminus K\}\)</span>. Weźmy krawędź <span class="math inline">\(e\)</span> taką, że <span class="math inline">\(\mathrm{fst}(e) \in X\)</span> oraz <span class="math inline">\(\mathrm{snd}(e) \in X^\complement\)</span>:</p>
+<div class="figure">
+<img src="d-d-1-1.png" alt="d-d 1 1" />
+<p class="caption">d-d 1 1</p>
+</div>
+<p>Wówczas <span class="math inline">\(e \in K\)</span>, gdyż inaczej mielibyśmy <span class="math inline">\(y\in X\)</span>. Zatem <span class="math inline">\(E(X,X^\complement)\subseteq K\)</span>.</p>
+<h2 id="oznaczenie-2">Oznaczenie #2</h2>
+<p>Niech <span class="math inline">\((V,E)\)</span> będzie grafem skierowanym i <span class="math inline">\(f: E\to \mathbb{R}\)</span>. Niech <span class="math inline">\(X\subseteq V\)</span>. Kładziemy <span class="math inline">\(\mathrm{out}_f(X)=\sum\{f(e): e\in E(X,X^\complement)\}\)</span> i <span class="math inline">\(\mathrm{in}_f(X) = \sum\{f(e): e\in E(X^\complement, X)\}\)</span>.</p>
+<p>Dla uproszczenia notacji definiujemy również <span class="math inline">\(\mathrm{out}_f(x) = \mathrm{out}_f(\{x\})\)</span> i <span class="math inline">\(\mathrm{in}_f(x) = \mathrm{in}_f(\{x\})\)</span>.</p>
+<div class="figure">
+<img src="out-in-notatcja.png" />
+
+</div>
+<h2 id="def-pseudo-potok">Def Pseudo-potok</h2>
+<p>Niech <span class="math inline">\(G=(V,E)\)</span> będzie grafem skierowanym, <span class="math inline">\(s,t\in V\)</span> i <span class="math inline">\(s\neq t\)</span>. Funkcję <span class="math inline">\(f:E\to \mathbb{R}\)</span> nazywamy pseudo-potokiem w <span class="math inline">\((V,E,s,t)\)</span> jeśli: <span class="math display">\[
+(\forall x\in V\setminus\{s,t\})(\mathrm{out}_f(x) = \mathrm{in}_f(x)).
+\]</span></p>
+<h2 id="fakt-1">Fakt #1</h2>
+<p>Niech <span class="math inline">\(f: E\to \mathbb{R}\)</span> będzie pseudo-potokiem w <span class="math inline">\((V,E,s,t)\)</span> oraz <span class="math inline">\(X\subseteq V\setminus \{s,t\}\)</span>. Wówczas: <span class="math display">\[
+\mathrm{out}_f(X) = \mathrm{in}_f(X)
+\]</span></p>
+<h3 id="d-d-faktu-1">D-d Faktu #1</h3>
+<p>Zakładamy najpierw, że nie ma żadnych krawędzi od <span class="math inline">\(s\)</span> do <span class="math inline">\(t\)</span> ani od <span class="math inline">\(t\)</span> do <span class="math inline">\(s\)</span>.</p>
+<p>Zauważmy, że: <span class="math display">\[
+0 = \sum_{x\in X}(\mathrm{out}_f(x) - \mathrm{in}_f(x))
+\\= \sum_{x\in X}\left(\sum_{e}f(e)(\llbracket\mathrm{fst}(e) = x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)\right)
+\\= \sum_{e}f(e)\sum_{x\in X}(\llbracket\mathrm{fst}(e)=x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)
+\]</span></p>
+<p>Niech <span class="math inline">\(\alpha(e) = \sum_{x\in X}(\llbracket\mathrm{fst}(e)=x\rrbracket - \llbracket\mathrm{snd}(e)=x\rrbracket)\)</span>. Rozważmy dowolną krawędź <span class="math inline">\(e\)</span>.<br />
+Jeśli <span class="math inline">\(\mathrm{fst}(e) \notin X\)</span> i <span class="math inline">\(\mathrm{snd}(e)\notin X\)</span> to <span class="math inline">\(\alpha(e) = 0\)</span>.<br />
+Jeśli <span class="math inline">\(\mathrm{fst}(e) \in X\)</span> i <span class="math inline">\(\mathrm{snd}(e)\in X\)</span> to <span class="math inline">\(\alpha(e) = 0\)</span>.<br />
+Jeśli <span class="math inline">\(\mathrm{fst}(e)\in X\)</span> i <span class="math inline">\(\mathrm{snd}(e)\notin X\)</span> to <span class="math inline">\(\alpha(e)=1\)</span><br />
+Jeśli <span class="math inline">\(\mathrm{fst}(e)\notin X\)</span> i <span class="math inline">\(\mathrm{snd}(e)\in X\)</span> to <span class="math inline">\(\alpha(e) = -1\)</span>.</p>
+<p>Zatem <span class="math inline">\(0 = \mathrm{out}_f(X)-\mathrm{in}_f(X)\)</span>.</p>
+<p>Załóżmy teraz, że są jakieś krawędzie od <span class="math inline">\(s\)</span> do <span class="math inline">\(t\)</span> lub od <span class="math inline">\(t\)</span> do <span class="math inline">\(s\)</span>. Stosujemy następujący <em>trick</em>: <img src="d-d-2.png" /></p>
+<h2 id="twierdzenie-1">Twierdzenie #1</h2>
+<p>Niech <span class="math inline">\(f: E\to \mathbb{R}\)</span> będzie <a href="#def-pseudo-potok">pseudo-potokiem</a> w <span class="math inline">\((V,E,s,t)\)</span>. Wówczas: <span class="math display">\[
+\mathrm{out}_f(s) - \mathrm{in}_f(s) = -(\mathrm{out}_f(t) - \mathrm{in}_f(t)).
+\]</span></p>
+<h3 id="d-d-twierdzenia-1">D-d Twierdzenia #1</h3>
+<p>Stosujemy <a href="#fakt-1">poprzedni fakt</a> do zbioru <span class="math inline">\(X=V\setminus \{s,t\}\)</span>. Zauważamy, że <span class="math inline">\(\mathrm{out}_f(X) = \mathrm{in}_f(s) + \mathrm{in}_f(t)\)</span> oraz <span class="math inline">\(\mathrm{in}_f(X)=\mathrm{out}_f(s)+\mathrm{out}_f(t)\)</span>.</p>
+<div class="figure">
+<img src="d-d-3.png" />
+
+</div>
+<h2 id="def-wartość-f">Def Wartość <span class="math inline">\(f\)</span></h2>
+<p>Jeśli <span class="math inline">\(f\)</span> jest <a href="#def-pseudo-potok">pseudo-potokiem</a> w <span class="math inline">\((V,E,s,t)\)</span> to liczbę <span class="math inline">\(\mathrm{out}_f(s) - \mathrm{in}_f(s)\)</span> nazywamy wartością <span class="math inline">\(f\)</span> i oznaczamy ją przez <span class="math inline">\(\lVert f\rVert\)</span></p>
+<p>Liczbę tę możemy interpretować jako produktywność źródła bądź jako konsumpcję ujścia. Równość z poprzedniego twierdzenia możemy interpretować tak: „ilość tego co wyprodukuje źródło jest równa ilości tego co pochłania ujście.</p>
+<h2 id="def-sieć">Def Sieć</h2>
+<p>Siecią nazywamy <span class="math inline">\(\mathcal{N} = (V,E,s,t,c)\)</span> taką, że <span class="math inline">\((V,E)\)</span> jest digrafem, <span class="math inline">\(s,t \in V\)</span>, <span class="math inline">\(s\neq t\)</span> oraz <span class="math inline">\(c: E \to [0,\infty) \cup \{\infty\}\)</span></p>
+<h2 id="def-potok">Def Potok</h2>
+<p>Jeśli <span class="math inline">\(\mathcal{N} = (V,E,s,t,c)\)</span> jest siecią, to funkcję <span class="math inline">\(f: E\to [0,\infty]\)</span> nazywamy potokiem w <span class="math inline">\(\mathcal{N}\)</span> jeśli <span class="math inline">\(f\)</span> jest <a href="#def-pseudo-potok">pseudo-potokiem</a> w <span class="math inline">\((V,E,s,t)\)</span> oraz <span class="math inline">\((\forall e \in E)(0\le f(e) \le c(e))\)</span>.</p>
+<p><strong>Zadanie optymalizacyjne, które będzie rozważane na dalszych wykładach: mamy daną sieć <span class="math inline">\(\mathcal{N}\)</span>. Chcemy znaleźć przepływ przez <span class="math inline">\(\mathcal{N}\)</span> o największej wartości.</strong></p>
+<h2 id="twierdzenie-2">Twierdzenie #2</h2>
+<p>Niech <span class="math inline">\(\mathcal{N}\)</span> będzie siecią (skończoną). Istnieje wtedy przepływ <span class="math inline">\(f^* w \mathcal{N}\)</span> taki, że: <span class="math display">\[
+\lVert f^* \rVert = \sup\{ \lVert f \rVert: f \text{ jest potokiem w } \mathcal{N} \}
+\]</span></p>
+<div class="figure">
+<img src="szukanie-potoku.png" alt="szukanie potoku" />
+<p class="caption">szukanie potoku</p>
+</div>
+<h2 id="def-ścieżka-powiększająca">Def Ścieżka powiększająca</h2>
+<p>Ścieżką powiększającą potoku <span class="math inline">\(f\)</span> nazywamy ciąg <span class="math inline">\(x_0 e_1 x_1 e_2\dots e_n x_n\)</span> taki, że <span class="math inline">\(x_0 = s, x_n = t\)</span> oraz dla każdego <span class="math inline">\(i = 1,\dots,n\)</span> mamy: <span class="math display">\[
+( \varphi(e_i) = (x_{i-1}, x_i) \land f(e_i) &lt; c(e_i) ) \lor ( \varphi(e_i) = (x_i, x_{i-1}) \land f(e_i) &gt; 0 ).
+\]</span> Zapasem takiego potoku nazywamy liczbę <span class="math inline">\(\delta = \min\{ \delta_1,\dots, \delta_n \}\)</span> gdzie <span class="math display">\[
+\delta_i =
+\begin{cases}
+  c(e_i) - f(e_i) &amp;: \varphi(e_i) = (x_{i-1}, x_i)\\
+  f(e_i) &amp;: \varphi(e_i) = (x_i, x_{i-1})
+\end{cases}
+\]</span></p>
+<h2 id="fakt-2">Fakt #2</h2>
+<p>Jeśli istnieje ścieżka powiększająca dla potoku <span class="math inline">\(f\)</span> o zapasie <span class="math inline">\(\delta &gt; 0\)</span>, to istnieje potok <span class="math inline">\(f^*\)</span> taki, że <span class="math inline">\(\lVert f^* \rVert = \lVert f \rVert + \delta\)</span>.</p>
+<p>Obserwacja ta jest podstawą metody Forda-Fulkersona szukania potoków maksymalnych.</p>
+</body>
+</html>

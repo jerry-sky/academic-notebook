@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="gramatyki-bezkontekstowe">Gramatyki bezkontekstowe</h1>
+<p><em>(2020-10-29)</em></p>
+<ul>
+<li><a href="#1-def">1. DEF</a></li>
+<li><a href="#2-relacja-wyprowadzenia-undersetgrightarrow">2. Relacja wyprowadzenia <span class="math inline">\(\underset{G}{\Rightarrow}\)</span></a></li>
+<li><a href="#3-def-język-generowany-przez-g">3. DEF: Język generowany przez <span class="math inline">\(G\)</span></a>
+<ul>
+<li><a href="#31-przykład">3.1. Przykład</a></li>
+</ul></li>
+<li><a href="#4-drzewo-wyprowadzania">4. Drzewo wyprowadzania</a>
+<ul>
+<li><a href="#41-przykład">4.1. Przykład</a></li>
+<li><a href="#42-przykład">4.2. Przykład</a></li>
+</ul></li>
+<li><a href="#5-twierdzenie-o-istnieniu-drzewa-wyprowadzenia-dla-gramatyki-g">5. Twierdzenie o istnieniu drzewa wyprowadzenia dla gramatyki <span class="math inline">\(G\)</span></a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+<li><a href="#52-def-lewo--i-prawostronne-wyprowadzanie">5.2. DEF: Lewo- i prawostronne wyprowadzanie</a>
+<ul>
+<li><a href="#521-przykład">5.2.1. Przykład</a></li>
+</ul></li>
+<li><a href="#53-def-gramatyka-wieloznaczna">5.3. DEF: Gramatyka wieloznaczna</a></li>
+</ul></li>
+<li><a href="#6-def-symbole-bezużyteczne">6. DEF: Symbole bezużyteczne</a></li>
+<li><a href="#7-lemat-o-usuwaniu-symboli-bezużytecznych1">7. Lemat o usuwaniu symboli bezużytecznych#1</a>
+<ul>
+<li><a href="#71-d-d-szkic">7.1. D-d (szkic)</a></li>
+</ul></li>
+<li><a href="#8-lemat-o-usuwaniu-symboli-bezużytecznych2">8. Lemat o usuwaniu symboli bezużytecznych#2</a>
+<ul>
+<li><a href="#81-d-d-szkic">8.1. D-d (szkic)</a></li>
+</ul></li>
+<li><a href="#9-twierdzenie2">9. Twierdzenie#2</a></li>
+<li><a href="#10-twierdzenie3">10. Twierdzenie#3</a>
+<ul>
+<li><a href="#101-d-d">10.1. D-d</a></li>
+</ul></li>
+<li><a href="#11-twierdzenie4">11. Twierdzenie#4</a>
+<ul>
+<li><a href="#111-d-d">11.1. D-d</a></li>
+</ul></li>
+<li><a href="#12-postać-normalna-chomskyego">12. Postać normalna Chomsky’ego</a>
+<ul>
+<li><a href="#121-d-d">12.1. D-d</a></li>
+<li><a href="#122-przykład">12.2. Przykład</a></li>
+</ul></li>
+<li><a href="#13-postać-normalna-greibach">13. Postać normalna Greibach</a>
+<ul>
+<li><a href="#131-lemat1">13.1. Lemat#1</a>
+<ul>
+<li><a href="#1311-d-d">13.1.1. D-d</a></li>
+</ul></li>
+<li><a href="#132-lemat2">13.2. Lemat#2</a>
+<ul>
+<li><a href="#1321-d-d">13.2.1. D-d</a></li>
+</ul></li>
+<li><a href="#133-twierdzenie5">13.3. Twierdzenie#5</a>
+<ul>
+<li><a href="#1331-d-d">13.3.1. D-d</a></li>
+</ul></li>
+<li><a href="#134-przykład">13.4. Przykład</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="def">1. DEF</h2>
+<p>Gramatyka bezkontekstowe <span class="math inline">\(G\)</span> to czwórka <span class="math inline">\(G = (N, T, P, S)\)</span> gdzie - <span class="math inline">\(N\)</span> — skończony zbiór zmiennych (<strong>nieterminale</strong>) - <span class="math inline">\(T\)</span> — skończony zbiór symboli końcowych (<strong>terminale</strong>, alfabet) - <span class="math inline">\(P\)</span> — skończony zbiór produkcji postaci <span class="math inline">\(A \to \alpha\)</span> , gdzie <span class="math inline">\(A \in N\)</span> oraz <span class="math inline">\(\alpha \in (N \cup T)^*\)</span> - <span class="math inline">\(S \in N\)</span> — symbol początkowy</p>
+<h2 id="relacja-wyprowadzenia-undersetgrightarrow">2. Relacja wyprowadzenia <span class="math inline">\(\underset{G}{\Rightarrow}\)</span></h2>
+<p>Jeśli <span class="math inline">\(A \to \beta\)</span> jest produkcją w <span class="math inline">\(G\)</span> oraz <span class="math inline">\(\alpha, \gamma \in (N \cup T)^*\)</span> wówczas <span class="math inline">\(\alpha A \gamma \underset{G}{\Rightarrow} \alpha\beta\gamma\)</span>.<br />
+(<span class="math inline">\(\alpha\beta\gamma\)</span> jest bezpośrednio wyprowadzany z <span class="math inline">\(\alpha A \gamma\)</span> w gramatyce <span class="math inline">\(G\)</span>).</p>
+<p>Notacja: - Będziemy pisać tylko <span class="math inline">\(\Rightarrow\)</span> gdy gramatyka jest oczywista. - <span class="math inline">\(\Rightarrow^*\)</span> — zwrotne i przechodnie domknięcie <span class="math inline">\(\Rightarrow\)</span>.</p>
+<hr />
+<h2 id="def-język-generowany-przez-g">3. DEF: Język generowany przez <span class="math inline">\(G\)</span></h2>
+<p><span class="math display">\[
+L(G) = \left\{ w: w \in T^* \land S \underset{G}{\Rightarrow}^* w \right\}.
+\]</span></p>
+<p>Język <span class="math inline">\(L\)</span> nazywamy bezkontekstowym jeśli jest identyczny z <span class="math inline">\(L(G)\)</span> dla pewnej gramatyki bezkontekstowej <span class="math inline">\(G\)</span>.<br />
+<span class="math inline">\(G_1\)</span> i <span class="math inline">\(G_2\)</span> są równoważne, jeżeli <span class="math inline">\(L(G_1) = L(G_2)\)</span>.</p>
+<h3 id="przykład">3.1. Przykład</h3>
+<p><span class="math display">\[
+G = \big(~ \{S\}, \{0,1\}, \left\{ S \to \varepsilon, S \to 1, S \to 0S0, S \to 1S1 \right\}, S ~\big)
+\]</span> lub inaczej (krócej) zapisując <span class="math display">\[
+S \to \epsilon|0|1|0S0|1S1.
+\]</span></p>
+<p>Wyprowadzenie słowa <span class="math inline">\(0110\)</span>: <span class="math display">\[
+S \Rightarrow 0S0 \Rightarrow 01S10 \Rightarrow 0110.
+\]</span></p>
+<hr />
+<h2 id="drzewo-wyprowadzania">4. Drzewo wyprowadzania</h2>
+<p>Drzewo o następujących własnościach 1. każdy wierzchołek ma etykietę z <span class="math inline">\(N \cup T \cup \{\varepsilon\}\)</span> 2. korzeń ma etykietę <span class="math inline">\(S\)</span> (symbol początkowy) 3. wierzchołki wewnętrzne mają etykiety z <span class="math inline">\(N\)</span> 4. jeżeli wierzchołek wewnętrzny ma etykietę <span class="math inline">\(A\)</span> a jego potomkowie od lewej mają kolejno etykiety <span class="math inline">\(X_1, \dots, X_n\)</span> to <span class="math inline">\(A \to X_1 \dots X_n\)</span> jest produkcją w <span class="math inline">\(P\)</span></p>
+<p>Jeśli konkatenacja wszystkich liści czytanych od lewej do prawej daje <span class="math inline">\(\alpha\)</span> to drzewo nazywamy drzewem wyprowadzenia <span class="math inline">\(\alpha\)</span>.</p>
+<hr />
+<h3 id="przykład-1">4.1. Przykład</h3>
+<p><em>kontynuacja <a href="#31-przykład">przykładu wcześniejszego</a></em><br />
+<img src="drzewo-wyprowadzania-przykład-1.png" /></p>
+<hr />
+<h3 id="przykład-2">4.2. Przykład</h3>
+<p>Mamy: - gramatykę <span class="math inline">\(E \to (E + E) | (E * E) | id\)</span> - chcemy uzyskać <span class="math inline">\(id + id * id\)</span></p>
+<div class="figure">
+<img src="drzewo-wyprowadzania-przykład-2.png" />
+
+</div>
+<p>Jak widać, możemy uzyskać dwa drzewa dla tego słowa w tej gramatyce.<br />
+Oznacza to, że <em>gramatyka jest niejednoznaczna</em>.</p>
+<hr />
+<h2 id="twierdzenie-o-istnieniu-drzewa-wyprowadzenia-dla-gramatyki-g">5. Twierdzenie o istnieniu drzewa wyprowadzenia dla gramatyki <span class="math inline">\(G\)</span></h2>
+<p>Niech <span class="math inline">\(G = (N,T,P,S)\)</span> będzie gramatyką bezkontekstową. Wówczas <span class="math inline">\(S \Rightarrow^* \alpha \iff\)</span> istnieje drzewo wyprowadzenia <span class="math inline">\(\alpha\)</span> w gramatyce <span class="math inline">\(G\)</span>.</p>
+<h3 id="d-d">5.1. D-d</h3>
+<p>«Indukcja względem liczby wierzchołków wewnętrznych w drzewie.»</p>
+<hr />
+<h3 id="def-lewo--i-prawostronne-wyprowadzanie">5.2. DEF: Lewo- i prawostronne wyprowadzanie</h3>
+<p>Jeżeli w każdym kroku wyprowadzenia stosujemy produkcję do nieterminala leżącego najbardziej na lewo (prawo), to wyprowadzenie nazywamy lewostronnym (prawostronnym). Jeżeli <span class="math inline">\(w \in L(G)\)</span> to w ma co najmniej jedno drzewo wyprowadzenia. Każdemu drzewu wyprowadzenia odpowiada dokładnie jedno wyprowadzenie lewostronne (prawostronne).</p>
+<h4 id="przykład-3">5.2.1. Przykład</h4>
+<p><em>kontynuacja <a href="#42-przykład">przykładu wcześniejszego</a></em></p>
+<ol style="list-style-type: decimal">
+<li>Lewostronne wyprowadzenie:<br />
+<span class="math inline">\(E \Rightarrow \underline{E} + E \Rightarrow id + E \Rightarrow id + E * E \Rightarrow id + id * E \Rightarrow id + id * E\)</span></li>
+<li>Prawostronne wyprowadzenie:<br />
+<span class="math inline">\(E \Rightarrow E + \underline{E} \Rightarrow E + E * E \Rightarrow E + E * id \Rightarrow E + id * id \Rightarrow id + id * id\)</span></li>
+</ol>
+<hr />
+<h3 id="def-gramatyka-wieloznaczna">5.3. DEF: Gramatyka wieloznaczna</h3>
+<p>Jeśli <span class="math inline">\(L(G)\)</span> istnieje słowo mające dwa różne drzewa wyprowadzenia to <span class="math inline">\(G\)</span> nazywamy <em>wieloznaczną</em> (niejednoznaczną).</p>
+<hr />
+<h2 id="def-symbole-bezużyteczne">6. DEF: Symbole bezużyteczne</h2>
+<p>Symbol <span class="math inline">\(X\)</span> jest użyteczny, jeśli istnieje wyprowadzenie postaci <span class="math inline">\(S \Rightarrow^* \alpha X \gamma w\)</span> gdzie <span class="math inline">\(w \in T^*\)</span><br />
+otherwise <span class="math inline">\(X\)</span> jest <em>bezużyteczny</em>.</p>
+<p>Niech <span class="math inline">\(L\)</span> — niepusty język bezkontekstowy, wówczas <span class="math inline">\(L\)</span> można wygenerować za pomocą gramatyki <span class="math inline">\(G\)</span> o następujących własnościach: 1. każdy symbol pojawia się w wyprowadzeniu jakiegoś słowa z <span class="math inline">\(L\)</span> 2. nie ma produkcji postaci <span class="math inline">\(A \to B\)</span> (produkcje jednostkowe), gdzie <span class="math inline">\(A, B \in N\)</span></p>
+<p>Co więcej, jeśli <span class="math inline">\(\varepsilon \notin L\)</span> to w <span class="math inline">\(G\)</span> nie ma produkcji postaci <span class="math inline">\(A \to \varepsilon\)</span>.</p>
+<hr />
+<h2 id="lemat-o-usuwaniu-symboli-bezużytecznych1">7. Lemat o usuwaniu symboli bezużytecznych#1</h2>
+<p>Dla dowolnej gramatyki bezkontekstowej <span class="math inline">\(G = (N,T,P,S)\)</span> z <span class="math inline">\(L(G) \neq \emptyset\)</span> można efektywnie znaleźć równoważną gramatykę bezkontekstową <span class="math inline">\(G&#39; = (N&#39;, T, P&#39;, S)\)</span> taką, że dla dowolnego <span class="math inline">\(A \in N&#39;\)</span> istnieje <span class="math inline">\(w \in T^*\)</span> takie, że <span class="math inline">\(A \Rightarrow^* w\)</span>.</p>
+<h3 id="d-d-szkic">7.1. D-d (szkic)</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(N_S \gets \emptyset\)</span></li>
+<li><span class="math inline">\(N_n \gets \left\{ A: (A \to w) \in P \land w \in T^* \right\}\)</span></li>
+<li><code>while</code> <span class="math inline">\(N_S \neq N_n\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(N_S \gets N_n\)</span></li>
+<li><span class="math inline">\(N_n \gets N_S \cup \left\{ A: (A \to \alpha) \in P \land \alpha \in (T \cup N_S)^* \right\}\)</span></li>
+</ol></li>
+<li><span class="math inline">\(N&#39; \gets N_n\)</span></li>
+<li><span class="math inline">\(P&#39; \gets \left\{ (A \to \alpha) \in P: A \in N_n \land \alpha \in (T \cup N_S)^* \right\}\)</span></li>
+</ol>
+<hr />
+<h2 id="lemat-o-usuwaniu-symboli-bezużytecznych2">8. Lemat o usuwaniu symboli bezużytecznych#2</h2>
+<p>Dla dowolnej gramatyki bezkontekstowej <span class="math inline">\(G = (N,T,P,S)\)</span> można efektywnie znaleźć równoważną gramatykę bezkontekstową <span class="math inline">\(G&#39; = (N&#39;, T&#39;, P&#39;, S)\)</span> taką, że dla każdego <span class="math inline">\(X \in (N&#39; \cup T&#39;)\)</span> istnieją <span class="math inline">\(\alpha, \beta \in (N&#39; \cup T&#39;)^*\)</span> takie, że <span class="math inline">\(S \Rightarrow^* \alpha X \beta\)</span>.</p>
+<h3 id="d-d-szkic-1">8.1. D-d (szkic)</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(N&#39; \gets \{S\}\)</span></li>
+<li><code>while</code> można zmienić <span class="math inline">\(N&#39;\)</span>:
+<ol style="list-style-type: decimal">
+<li>Jeśli <span class="math inline">\(A \in N&#39;\)</span> oraz <span class="math inline">\(A \gets \alpha_1|\dots|\alpha_n\)</span> to dodaje wszystkie nieterminale z <span class="math inline">\(\alpha_1,\dots,\alpha_n\)</span> do <span class="math inline">\(N&#39;\)</span> a terminale do <span class="math inline">\(T&#39;\)</span></li>
+</ol></li>
+<li>Do <span class="math inline">\(P&#39;\)</span> przenieś tylko te produkcje z <span class="math inline">\(P\)</span>, które zawierają symbole z <span class="math inline">\(N&#39; \cup T&#39; \cup \{\varepsilon\}\)</span>.</li>
+</ol>
+<hr />
+<h2 id="twierdzenie2">9. Twierdzenie#2</h2>
+<p>Każdy niepusty język bezkontekstowy jest generowany przez gramatykę bezkontekstową niezawierającą symboli bezużytecznych.</p>
+<hr />
+<h2 id="twierdzenie3">10. Twierdzenie#3</h2>
+<p>Jeżeli <span class="math inline">\(L = L(G)\)</span> dla gramatyki bezkontekstowej <span class="math inline">\(G = (N,T,P,S)\)</span> to dla <span class="math inline">\(L \setminus \{\varepsilon\}\)</span> istnieje gramatyka bezkontekstowa <span class="math inline">\(G&#39;\)</span> niezawierająca <span class="math inline">\(\varepsilon\)</span>-produkcji i symboli bezużytecznych.</p>
+<hr />
+<h3 id="d-d-1">10.1. D-d</h3>
+<p>Symbole bezużyteczne usunęliśmy dzięki <a href="#9-twierdzenie2">poprzedniemu twierdzeniu</a>.</p>
+<p>Dla każdego nieterminala <span class="math inline">\(A\)</span> sprawdzamy czy <span class="math inline">\(A \Rightarrow^* \varepsilon\)</span>. Jeśli tak to każdą produkcję <span class="math inline">\(B \to \alpha A \beta\)</span> zastępujemy produkcjami <span class="math inline">\(B \to \alpha A \beta\)</span> oraz <span class="math inline">\(B \to \alpha \beta\)</span> (ale nie dołączamy <span class="math inline">\(B \to \varepsilon\)</span>).<br />
+Następnie usuwamy wszystkie <span class="math inline">\(\varepsilon\)</span>-produkcje</p>
+<hr />
+<h2 id="twierdzenie4">11. Twierdzenie#4</h2>
+<p>Każdy język bezkontekstowy niezawierający <span class="math inline">\(\varepsilon\)</span> jest definiowany za pomocą gramatyki niezawierającej symboli bezużytecznych, <span class="math inline">\(\varepsilon\)</span>-produkcji oraz produkcji jednostkowych.</p>
+<h3 id="d-d-2">11.1. D-d</h3>
+<p>Jeżeli dla nieterminala <span class="math inline">\(A\)</span> mamy <span class="math inline">\(A \Rightarrow^* B\)</span> oraz <span class="math inline">\(A \neq B\)</span>,<br />
+to dla każdej niejednostkowej produkcji <span class="math inline">\(B \to \alpha\)</span> dodajemy produkcję <span class="math inline">\(A \to \alpha\)</span>.</p>
+<p>Następnie usuwamy produkcje jednostkowe.</p>
+<hr />
+<h2 id="postać-normalna-chomskyego">12. Postać normalna Chomsky’ego</h2>
+<p>Dowolny język bezkontekstowy niezawierający <span class="math inline">\(\varepsilon\)</span> jest generowany przez gramatykę, której wszystkie produkcje są postaci <span class="math inline">\(A \to BC\)</span> lub <span class="math inline">\(A \to a\)</span>, gdzie <span class="math inline">\(A,B,C \in N\)</span> oraz <span class="math inline">\(a \in T\)</span>.</p>
+<h3 id="d-d-3">12.1. D-d</h3>
+<p>Niech <span class="math inline">\(G\)</span> będzie gramatyką bez symboli bezużytecznych, <span class="math inline">\(\varepsilon\)</span>-produkcji i produkcji jednostkowych. Wówczas jeśli prawa strona produkcji jest długości <span class="math inline">\(1\)</span> to jest postaci <span class="math inline">\(A \to a\)</span>.</p>
+<p>Dla pozostałych produkcji wykonujemy następujące operacje: 1. Jeśli po prawej stronie występuje terminal <span class="math inline">\(a\)</span> to dodajemy do <span class="math inline">\(N\)</span> nowy nieterminal <span class="math inline">\(C_a\)</span> a do produkcji <span class="math inline">\(C_a \to a\)</span> i zastępujemy <span class="math inline">\(a\)</span> przez <span class="math inline">\(C_a\)</span>. 2. Teraz jeśli prawa strona produkcji jest dłuższa niż <span class="math inline">\(1\)</span> to zawiera tylko nieterminale. Jeśli jest postaci <span class="math inline">\(A \to B_1\dots B_n\)</span> dla <span class="math inline">\(n &gt; 2\)</span>, to tworzymy nowe nieterminale <span class="math inline">\(D_1,\dots,D_{n-2}\)</span> i zastępujemy tę produkcję przez <span class="math inline">\(A \to B_1 D_1, D_1 \to B_2 D_2, \dots, D_{n-3} \to B_{n-2}D_{n-2}, D_{n-2} \to B_{n-1}B_n\)</span>.</p>
+<div class="figure">
+<img src="postać-normalna-chomskyego-d-d.png" />
+
+</div>
+<hr />
+<h3 id="przykład-4">12.2. Przykład</h3>
+<p>Mamy: - <span class="math inline">\(S \to bA|aB\)</span> - <span class="math inline">\(A \to bAA|aS|a\)</span> - <span class="math inline">\(B \to aBB|bS|b\)</span></p>
+<p>Wówczas, postać normalna Chomsky’ego: - <span class="math inline">\(S \to C_b A | C_a B\)</span> - <span class="math inline">\(A \to C_b D_A | C_a S | a\)</span> - <span class="math inline">\(B \to C_a D_B | C_b S | b\)</span> - <span class="math inline">\(C_a \to a\)</span> - <span class="math inline">\(C_b \to b\)</span> - <span class="math inline">\(D_A \to AA\)</span> - <span class="math inline">\(D_B \to BB\)</span></p>
+<hr />
+<h2 id="postać-normalna-greibach">13. Postać normalna Greibach</h2>
+<p>Produkcje są postaci <span class="math inline">\(A \to a\alpha\)</span>, gdzie <span class="math inline">\(A \in N,\enspace a \in T,\enspace, \alpha \in N^*\)</span>.</p>
+<p>Określmy jako <span class="math inline">\(A\)</span>-produkcje wszystkie produkcje z nieterminalem <span class="math inline">\(A\)</span> po lewej stronie.</p>
+<h3 id="lemat1">13.1. Lemat#1</h3>
+<p>Niech <span class="math inline">\(G = (N,T,P,S)\)</span> będzie gramatyką bezkontekstową.<br />
+Niech <span class="math inline">\(A \to \alpha_1 B \alpha_2\)</span> będzie produkcją w <span class="math inline">\(P\)</span> i niech <span class="math inline">\(B \to \beta_1|\dots|\beta_r\)</span> będzie zbiorem wszystkich <span class="math inline">\(B\)</span>-produkcji.<br />
+Niech <span class="math inline">\(G&#39; = (N,T,P&#39;,S)\)</span> będzie gramatyką otrzymaną z <span class="math inline">\(G\)</span> przez usunięcie produkcji <span class="math inline">\(A \to \alpha_1 B \alpha_2\)</span> i dodanie produkcji <span class="math inline">\(A \to \alpha_1 \beta_1 \alpha_2 | \dots | \alpha_1 \beta_r \alpha_2\)</span>. Wówczas <span class="math inline">\(L(G) = L(G&#39;)\)</span>.</p>
+<h4 id="d-d-4">13.1.1. D-d</h4>
+<p><em>Dowód po strukturze drzewa wyprowadzenia.</em></p>
+<hr />
+<h3 id="lemat2">13.2. Lemat#2</h3>
+<p>Niech <span class="math inline">\(G = (N,T,P,S)\)</span> będzie gramatyką bezkontekstową.</p>
+<p>Niech <span class="math inline">\(A \to A \alpha_1 | \dots | A \alpha_r\)</span> będzie zbiorem tych <span class="math inline">\(A\)</span>-produkcji, których prawe strony zaczynają się od <span class="math inline">\(A\)</span>. Niech <span class="math inline">\(A \to \beta_1 | \dots | \beta_S\)</span> będzie zbiorem pozostałych <span class="math inline">\(A\)</span>-produkcji. Niech <span class="math inline">\(G&#39; = (N \cup \{B\}, T, P&#39;, S)\)</span> będzie gramatyką utworzoną poprzez dodanie nowego nieterminala <span class="math inline">\(B\)</span> i zastąpienie wszystkich <span class="math inline">\(A\)</span>-produkcji przez następujące produkcje <span class="math display">\[
+\begin{aligned}
+    A \to \beta_i|\beta_i B &amp;\quad&amp; 1 \le i \le s\\
+    B \to \alpha_j | \alpha_j B &amp;\quad&amp; 1 \le j \le r\\
+\end{aligned}
+\]</span> Wówczas <span class="math inline">\(L(G) = L(G&#39;)\)</span>.</p>
+<h4 id="d-d-5">13.2.1. D-d</h4>
+<div class="figure">
+<img src="greibach-lemat2-d-d.png" />
+
+</div>
+<p>W wyprowadzeniu lewostronnym ciąg produkcji postaci <span class="math inline">\(A \to A \alpha_i\)</span> musi kiedyś skończyć się produkcją <span class="math inline">\(A \to \beta_j\)</span>: <span class="math display">\[
+A \Rightarrow A \alpha_{i_1} \Rightarrow A \alpha_{i_2} \alpha_{i_1} \Rightarrow \dots \Rightarrow A \alpha_{i_n} \dots \alpha_{i_1} \Rightarrow \beta_j \alpha_{i_n} \dots \alpha_{i_1}
+\]</span> Można to zastąpić przez <span class="math display">\[
+A \Rightarrow \beta_j B \Rightarrow \beta_j \alpha_{i_n} B \Rightarrow \dots \Rightarrow \beta_j\alpha_{i_n} \dots \alpha_{i_2}B \Rightarrow \Beta_j \alpha_{i_n} \dots \alpha_{i_1}
+\]</span></p>
+<p>Ponieważ transformacja ta jest obustronna to <span class="math inline">\(L(G) = L(G&#39;)\)</span>.</p>
+<hr />
+<h3 id="twierdzenie5">13.3. Twierdzenie#5</h3>
+<p>Każdy język bezkontekstowy <span class="math inline">\(L\)</span> niezawierający <span class="math inline">\(\varepsilon\)</span> jest generowany przez pewną gramatykę, w której każda produkcja jest postaci <span class="math inline">\(A \to a \alpha\)</span>, gdzie <span class="math inline">\(a \in T,\enspace A \in N,\enspace \alpha \in N^*\)</span>.</p>
+<h4 id="d-d-6">13.3.1. D-d</h4>
+<p>Niech <span class="math inline">\(G = (N,T,P,S)\)</span> będzie gramatyką w <a href="#12-postać-normalna-chomskyego">postaci normalnej Chomsky’ego</a>.<br />
+Załóżmy, że <span class="math inline">\(N = \{A_1, \dots, A_n\}\)</span>.<br />
+Modyfikujemy produkcje tak, aby jeśli produkcja jest postaci <span class="math inline">\(A_i \to A_j \alpha\)</span> to <span class="math inline">\(i &lt; j\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(k \gets 1\)</span> <code>to</code> <span class="math inline">\(n\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(j \gets 1\)</span> <code>to</code> <span class="math inline">\((k-1)\)</span>:
+<ol style="list-style-type: decimal">
+<li>Za każdą produkcję postaci <span class="math inline">\(A_k \to A_j \alpha\)</span> wstaw produkcje <span class="math inline">\(A_k \to \beta \alpha\)</span> dla wszystkich produkcji <span class="math inline">\(A_j \to \beta\)</span> (<a href="#131-lemat1">Lemat#1</a>).</li>
+<li>Dla produkcji postaci <span class="math inline">\(A_k \to A_k \alpha\)</span> wykonaj <a href="#132-lemat2">Lemat 2</a> używając nowych nieterminali <span class="math inline">\(B_k\)</span>.</li>
+</ol></li>
+</ol></li>
+</ol>
+<p>Po wykonaniu tego algorytmu mamy gramatykę równoważną o produkcjach w postaci: 1. <span class="math inline">\(A_i \to A_j \gamma\)</span>, gdzie zawsze <span class="math inline">\(i &lt; j\)</span> 2. <span class="math inline">\(A_i \to a \gamma\)</span>, gdzie <span class="math inline">\(a \in T\)</span> 3. <span class="math inline">\(B_i \to \gamma\)</span>, dzie <span class="math inline">\(\gamma \in (N \cup \{B_1, \dots, B_{i-1}\})^*\)</span>.</p>
+<p>Zauważmy, że <span class="math inline">\(A_n\)</span>-produkcje muszą zaczynać się terminalem.</p>
+<p>Teraz rozważmy <span class="math inline">\(A_{n-1}\)</span>–produkcje: ich lewe strony muszą zaczynać się terminalem lub nieterminalem <span class="math inline">\(A_n\)</span> więc możemy je z <a href="#131-lemat1">Lematu#1</a> zastąpić prawymi stronami <span class="math inline">\(A_n\)</span>-produkcji (wszystkie zaczynają się terminalem). I tak do <span class="math inline">\(A_1\)</span>.</p>
+<p>Łatwo zauważyć, że <span class="math inline">\(B\)</span>-produkcje nigdy nie zaczynają się nieterminalem <span class="math inline">\(B\)</span>, więc też z <a href="#131-lemat1">Lemat#1</a> możemy je zastąpić prawymi stronami <span class="math inline">\(A\)</span>-produkcji.</p>
+<hr />
+<h3 id="przykład-5">13.4. Przykład</h3>
+<p>Mamy: - <span class="math inline">\(A_1 \to A_2 A_3\)</span> - <span class="math inline">\(A_2 \to A_3 A_1 | b\)</span> - <span class="math inline">\(A_3 \to A_1 A_2 | a\)</span></p>
+<p>Nie pasuje <span class="math inline">\(A_3 \to A_1 A_2\)</span> więc z <a href="#131-lemat1">Lemat#1</a> dostajemy <span class="math inline">\(A_3 \to A_2 A_3 A_2\)</span>.</p>
+<p>Dalej nie pasuje, więc ponownie z <a href="#131-lemat1">Lemat#1</a> otrzymujemy <span class="math inline">\(A_3 \to A_3 A_1 A_3 A_2 | b A_3 A_2\)</span>.</p>
+<p>Teraz mamy <span class="math inline">\(A_3 \to A_3 A_1 A_3 A_2 | b A_3 A_2 | a\)</span>, korzystamy z <a href="#132-lemat2">Lemat#2</a> i otrzymujemy<br />
+<span class="math inline">\(A_3 \to a| aB_3 | b A_3 A_2 | b A_3 A_2 B_3\)</span> oraz <span class="math inline">\(B_3 \to A_1 A_3 A_2 | A_1 A_3 A_2 B_3\)</span>.</p>
+<p>Teraz odpowiednio podstawiając zgodnie z <a href="#131-lemat1">Lemat#1</a> otrzymujemy: - <span class="math inline">\(A_3 \to a | aB_3 | b A_3 A_2 | b A_3 A_2 B_3\)</span> - <span class="math inline">\(A_2 \to a A_1 | a B_3 A_1 | b A_3 A_2 A_1 | b A_3 A_2 B_3 A_1 | b\)</span> - <span class="math inline">\(A_1 \to a A_1 A_3 | a B_3 A_1 A_3 | b A_3 A_2 A_1 A_3 | b A_3 A_2 B_3 A_1 A_3 | b A_3\)</span> - <span class="math inline">\(B_3 \to a A_1 A_3 A_3 A_2 \\| a B_3 A_1 A_3 A_3 A_2 \\| b A_3 A_2 A_1 A_3 A_3 A_2 \\| b A_3 A_2 B_3 A_1 A_3 A_3 A_2 \\| bA_3 A_3 A_2 \\|a A_1 A_3 A_3 A_2 B_3 \\| a B_3 A_1 A_3 A_3 A_2 B_3 \\| b A_3 A_2 A_1 A_3 A_3 A_2 B_3 \\| b A_3 A_2 B_3 A_1 A_3 A_3 A_2 B_3 \\| b A_3 A_3 A_2 B_3\)</span></p>
+<hr />
+</body>
+</html>

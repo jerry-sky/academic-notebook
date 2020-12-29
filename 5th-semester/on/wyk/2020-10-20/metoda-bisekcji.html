@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="metoda-bisekcji">Metoda bisekcji</h1>
+<p><em>(2020-10-22)</em></p>
+<ul>
+<li><a href="#1-metoda-bisekcji-połowienia">1. Metoda bisekcji (połowienia)</a></li>
+<li><a href="#2-algorytm">2. Algorytm</a></li>
+<li><a href="#3-twierdzenie-o-zbieżności-metody-bisekcji">3. Twierdzenie o zbieżności metody bisekcji</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+<li><a href="#32-przykład">3.2. Przykład</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="metoda-bisekcji-połowienia">1. Metoda bisekcji (połowienia)</h2>
+<p>Założenia: - <span class="math inline">\(f\)</span> jest funkcją ciągłą w <span class="math inline">\([a;b]\)</span> - <span class="math inline">\(f(a) \cdot f(b) &lt; 0\)</span> (<span class="math inline">\(f\)</span> zmienia znak)</p>
+<div class="figure">
+<img src="metoda-bisekcji.png" />
+
+</div>
+<p><span class="math display">\[
+c_n = \frac{1}{2} (a_n + b_n) \quad (n\ge 0)
+\]</span></p>
+<p>Warunek końca: <span class="math inline">\(|b_n - a_n| \le \delta\)</span>, <span class="math inline">\(|f(c_n)| \le \epsilon\)</span></p>
+<h2 id="algorytm">2. Algorytm</h2>
+<ul>
+<li><em>Dane: <span class="math inline">\(a,b,M, \delta, \epsilon\)</span></em></li>
+<li><em>Wyniki <span class="math inline">\(k, \tilde{r}, f(\tilde{r})\)</span></em></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(u \gets f(a)\)</span></li>
+<li><span class="math inline">\(v \gets f(b)\)</span></li>
+<li><span class="math inline">\(e \gets b - a\)</span></li>
+<li><code>if</code> <span class="math inline">\(\operatorname{sgn}(u) = \operatorname{sgn}(v)\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>return error</code></li>
+</ol></li>
+<li><code>for</code> <span class="math inline">\(k \gets 1\)</span> <code>to</code> <span class="math inline">\(M\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(e \gets \frac{e}{2}\)</span></li>
+<li><span class="math inline">\(c \gets a + e\)</span></li>
+<li><span class="math inline">\(w \gets f(c)\)</span></li>
+<li><code>if</code> <span class="math inline">\(|e| &lt; \delta\)</span> <code>or</code> <span class="math inline">\(|w| &lt; \epsilon\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>return</code> <span class="math inline">\(k,c,w\)</span></li>
+</ol></li>
+<li><code>if</code> <span class="math inline">\(\operatorname{sgn}(w) \neq \operatorname{u}\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(b \gets c\)</span></li>
+<li><span class="math inline">\(v \gets w\)</span></li>
+</ol></li>
+<li><code>else</code>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(a \gets c\)</span></li>
+<li><span class="math inline">\(u \gets w\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<hr />
+<h2 id="twierdzenie-o-zbieżności-metody-bisekcji">3. Twierdzenie o zbieżności metody bisekcji</h2>
+<p>Niech <span class="math inline">\([a_0, b_0]; [a_1, b_2]; \dots; [a_n, b_n]; \dots\)</span> będzie ciągiem przedziałów konstruowanych przez metodę bisekcji. Wówczas istnieją granice <span class="math inline">\(\lim_{n \to \infty} a_n\)</span> oraz <span class="math inline">\(\lim_{n \to \infty} b_n\)</span> i są sobie równe, reprezentujące zero <span class="math inline">\(r\)</span> funkcji <span class="math inline">\(f\)</span>.</p>
+<p>Jeśli <span class="math inline">\(r = \lim_{n \to \infty} c_n\)</span> oraz <span class="math inline">\(c_n = \frac{1}{2}(a_n + b_n)\)</span>, wówczas <span class="math display">\[
+|r - c_n| \le 2^{-(n+1)} (b_0 - a_0).
+\]</span></p>
+<h3 id="d-d">3.1. D-d</h3>
+<p>Końce generowanych przedziałów spełniają zależności <span class="math display">\[
+a_0 \le a_1 \le a_2 \le \dotsb \le b_0\\
+b_0 \ge b_1 \ge b_2 \ge \dotsb \ge a_0\\
+\]</span></p>
+<p><span class="math display">\[
+b_n - a_n = \frac{1}{2}(b_{n-1} - a_{n-1}) = 2^{-n} (b_0 - a_0)
+\]</span></p>
+<p>Ponieważ ciąg <span class="math inline">\(\{ a_n \}\)</span> (odp. <span class="math inline">\(\{ b_n \}\)</span>) jest rosnący (odp. malejący) i ograniczony z góry (odp. dołu), więc zbieżny.<br />
+Zatem <span class="math display">\[
+\lim_{n \to \infty} b_n - \lim_{n \to \infty} a_n = \lim_{n \to \infty} 2^{-n} (b_0 - a_0) = 0
+\]</span></p>
+<p>Stąd <span class="math inline">\(\lim_{n \to \infty} b_n = \lim_{n \to \infty} a_n = r\)</span>. Przechodząc do granicy w nierówności <span class="math inline">\(0 \ge f(a_n) \cdot f(b_n)\)</span>, otrzymujemy <span class="math inline">\(0 \ge \left( f(r) \right)^2\)</span>. Co implikuje <span class="math inline">\(f(r) = 0\)</span> (zbieżność).<br />
+Niech <span class="math inline">\([a_n, b_n]\)</span> będzie przedziałem wygenerowanym przez metodę bisekcji. Jeśli warunek końca jest już spełniony, oczywiście <span class="math inline">\(r \in [a_n, b_n]\)</span>, wówczas najlepszym przybliżeniem pierwiastka <span class="math inline">\(r\)</span> jest środek przedziału <span class="math inline">\(c_n = \frac{a_n + b_n}{2}\)</span>.<br />
+Błąd możemy oszacować następująco: <span class="math display">\[
+|r - c_n| \le \frac{1}{2} (b_n - a_n) = 2^{-(n+1)} (b_0 - a_0) \quad \blacksquare
+\]</span></p>
+<hr />
+<h3 id="przykład">3.2. Przykład</h3>
+<p>Niech <span class="math inline">\([50, 63]\)</span> będzie przedziałem, w którym <span class="math inline">\(f\)</span> ma pierwiastek.<br />
+<em>Jaka jest liczba iteracji metody bisekcji, aby wyznaczyć pierwiastek z błędem względnym <span class="math inline">\(10^{-12}\)</span>?</em> <span class="math display">\[
+\frac{|r - c_n|}{|r|} \le \frac{|r - c_n|}{50} \le 2^{-(n+1)} \frac{13}{50} \le 10^{-12}
+\]</span></p>
+<p>Rozwiązując powyższą nierówność otrzymujemy <span class="math inline">\(n \ge 37\)</span>.</p>
+<hr />
+</body>
+</html>

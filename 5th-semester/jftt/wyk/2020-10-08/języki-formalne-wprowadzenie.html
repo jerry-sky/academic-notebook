@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="języki-formalne-wprowadzenie">Języki formalne — wprowadzenie</h1>
+<p><em>(2020-10-08)</em></p>
+<ul>
+<li><a href="#1-podstawowe-definicje">1. Podstawowe definicje</a></li>
+<li><a href="#2-deterministyczny-automat-skończony-dfa">2. Deterministyczny Automat Skończony (DFA)</a>
+<ul>
+<li><a href="#21-rozszerzenie-funkcji-przejścia">2.1. Rozszerzenie funkcji przejścia</a></li>
+<li><a href="#22-przykład-dfa">2.2. Przykład DFA</a></li>
+</ul></li>
+<li><a href="#3-niedeterministyczny-automat-skończony-nfa">3. Niedeterministyczny Automat Skończony (NFA)</a>
+<ul>
+<li><a href="#31-przykład-nfa">3.1. Przykład NFA</a></li>
+</ul></li>
+<li><a href="#4-textnfa_epsilon">4. <span class="math inline">\(\text{NFA}_\epsilon\)</span></a></li>
+<li><a href="#5-wyrażenia-regularne-re">5. Wyrażenia regularne (RE)</a>
+<ul>
+<li><a href="#51-def">5.1. DEF</a></li>
+<li><a href="#52-działania">5.2. Działania</a></li>
+<li><a href="#53-przykłady">5.3. Przykłady</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="podstawowe-definicje">1. Podstawowe definicje</h2>
+<ol style="list-style-type: decimal">
+<li>Alfabet (<span class="math inline">\(\Sigma\)</span>) — skończony zbiór symboli</li>
+<li>Słowo — skończony ciąg symboli z alfabetu</li>
+<li>Język — zbiór słów nad danym alfabetem (<span class="math inline">\(\emptyset\)</span> — język pusty)</li>
+<li><span class="math inline">\(\epsilon\)</span> — słowo puste</li>
+</ol>
+<hr />
+<h2 id="deterministyczny-automat-skończony-dfa">2. Deterministyczny Automat Skończony (DFA)</h2>
+<p>— uporządkowana piątka <span class="math inline">\((Q, \Sigma, \delta, q_0, F)\)</span> gdzie - <span class="math inline">\(Q\)</span> — skończony zbiór stanów - <span class="math inline">\(\Sigma\)</span> — skończony alfabet wejściowy - <span class="math inline">\(\delta\)</span> — funkcja przejścia postaci <span class="math inline">\(Q \times \Sigma \to Q\)</span> - <span class="math inline">\(q_0\)</span> — stan początkowy - <span class="math inline">\(F \subseteq Q\)</span> — zbiór stanów akceptujących</p>
+<h3 id="rozszerzenie-funkcji-przejścia">2.1. Rozszerzenie funkcji przejścia</h3>
+<p>Funkcję <span class="math inline">\(\delta\)</span> możemy rozszerzyć w taki sposób, żeby akceptowała całe słowa (możemy tak zrobić jeśli <span class="math inline">\(\hat\delta(q, \epsilon) = q\)</span>): <span class="math display">\[
+\hat{\delta}(q, wa) = \delta(\hat{\delta}(q,w),a)
+\]</span></p>
+<p><em>Automat akceptuje słowo <span class="math inline">\(w\)</span> jeśli <span class="math inline">\(\hat{delta}(q_0, w) \in F\)</span>.</em></p>
+<hr />
+<h3 id="przykład-dfa">2.2. Przykład DFA</h3>
+<p>Mamy DFA <span class="math inline">\(M = (\{q_0, q_1, q_2, q_3\}, \{0,1\}, \delta, q_0, \{q_0\})\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\delta\)</span></th>
+<th><span class="math inline">\(0\)</span></th>
+<th><span class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(q_0\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(q_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_1\)</span></td>
+<td><span class="math inline">\(q_3\)</span></td>
+<td><span class="math inline">\(q_0\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(q_0\)</span></td>
+<td><span class="math inline">\(q_3\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_3\)</span></td>
+<td><span class="math inline">\(q_1\)</span></td>
+<td><span class="math inline">\(q_2\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="przykład-dfa.png" />
+
+</div>
+<p>Maszyna ta pozwala tylko na takie ciągi, w których mamy parzystą liczbę <span class="math inline">\(0\)</span> oraz parzystą liczbę <span class="math inline">\(1\)</span>.</p>
+<hr />
+<h2 id="niedeterministyczny-automat-skończony-nfa">3. Niedeterministyczny Automat Skończony (NFA)</h2>
+<p>Modyfikacja <a href="#2-deterministyczny-automat-skończony-dfa">DFA</a>:<br />
+istnieje <code>*</code> przejść ze stanu przy tym samym symbolu wejściowym. <span class="math display">\[
+\delta: Q \times \Sigma \to 2^Q
+\]</span></p>
+<p>Automat niedeterministyczny akceptuje słowo <span class="math inline">\(w\)</span> jeżeli istnieje odpowiadający mu ciąg przejść ze stanu początkowego do stanu akceptującego.</p>
+<h3 id="przykład-nfa">3.1. Przykład NFA</h3>
+<p>Mamy NFA <span class="math inline">\(M = (\{q_0, q_1, q_2, q_3, q_4\}, \{0,1\}, \delta, q_0, \{q_2, q_4\})\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\delta\)</span></th>
+<th><span class="math inline">\(0\)</span></th>
+<th><span class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(q_0\)</span></td>
+<td><span class="math inline">\(\{q_0, q_3\}\)</span></td>
+<td><span class="math inline">\(\{q_0, q_1\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_1\)</span></td>
+<td><span class="math inline">\(\emptyset\)</span></td>
+<td><span class="math inline">\(\{q_2\}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(q_2\)</span></td>
+<td><span class="math inline">\(\{q_2\}\)</span></td>
+<td><span class="math inline">\(\{q_2\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_3\)</span></td>
+<td><span class="math inline">\(\{q_4\}\)</span></td>
+<td><span class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(q_4\)</span></td>
+<td><span class="math inline">\(\{q_4\}\)</span></td>
+<td><span class="math inline">\(\emptyset\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_5\)</span></td>
+<td><span class="math inline">\(\{q_4\}\)</span></td>
+<td><span class="math inline">\(\{q_4\}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="przykład-nfa.png" />
+
+</div>
+<p><em>Maszyna ta akceptuje tylko ciągi z infiksem <span class="math inline">\(00\)</span> lub z infiksem <span class="math inline">\(11\)</span>.</em></p>
+<hr />
+<h2 id="textnfa_epsilon">4. <span class="math inline">\(\text{NFA}_\epsilon\)</span></h2>
+<p>Wprowadzamy dodatkową modyfikację: dopuszczamy przejścia między stanami bez symboli wejściowych. <span class="math display">\[
+\delta: Q \times (\Sigma \cup \{\epsilon\}) \to 2^Q
+\]</span></p>
+<hr />
+<h2 id="wyrażenia-regularne-re">5. Wyrażenia regularne (RE)</h2>
+<p>Niech <span class="math inline">\(L, L_1, L_2\)</span> — języki nad alfabetem <span class="math inline">\(\Sigma\)</span>.<br />
+Wówczas <span class="math display">\[
+\begin{aligned}
+    L_1L_2 &amp;= \{xy : x\in L_1 \land y \in L_2\}\\
+    L^0 &amp;= \{\epsilon\}\\
+    L^{i+1} &amp;= LL^i \quad \text{dla } i &gt; 0\\
+    L^* &amp;= \bigcup_{i=0}^{\infty} L^i \quad \text{domknięcie Kleene’ego} \quad \left( L^+ = \bigcup_{i=1}^{\infty} L^i \right)
+\end{aligned}\\
+\]</span></p>
+<h3 id="def">5.1. DEF</h3>
+<p>Wyrażenia regularne: - <span class="math inline">\(\emptyset\)</span> — język pusty - <span class="math inline">\(\epsilon\)</span> — język <span class="math inline">\(\{\epsilon\}\)</span> - <span class="math inline">\(a\)</span> — język <span class="math inline">\(\{a\}\)</span> dla <span class="math inline">\(a \in \Sigma\)</span></p>
+<h3 id="działania">5.2. Działania</h3>
+<p>Mamy wyrażenia regularne <span class="math inline">\(r\)</span> oraz <span class="math inline">\(s\)</span> reprezentujące odpowiednio języki <span class="math inline">\(R\)</span> oraz <span class="math inline">\(S\)</span>, wówczas: - <span class="math inline">\((r+s)\)</span> reprezentuje język <span class="math inline">\(R \cup S\)</span> - <span class="math inline">\((rs)\)</span> reprezentuje język <span class="math inline">\(RS\)</span> - <span class="math inline">\(r^*\)</span> reprezentuje język <span class="math inline">\(R^*\)</span></p>
+<hr />
+<h3 id="przykłady">5.3. Przykłady</h3>
+<ul>
+<li><span class="math inline">\(\emptyset^* = \{\epsilon\} \cup \emptyset \cup \dotsb = \{\epsilon\}\)</span></li>
+<li><span class="math inline">\((0+1)^*\)</span> – wszystkie ciągi nad alfabetem <span class="math inline">\(\{0, 1\}\)</span> (w tym <span class="math inline">\(\epsilon\)</span>)</li>
+<li><span class="math inline">\(00 = 00\epsilon\epsilon\)</span></li>
+<li><span class="math inline">\(11 = \epsilon\epsilon11\)</span></li>
+</ul>
+<hr />
+</body>
+</html>

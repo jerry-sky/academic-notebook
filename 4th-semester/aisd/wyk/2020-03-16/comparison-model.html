@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="comparison-model">Comparison model</h1>
+<p><em>(2020-03-16)</em></p>
+<h2 id="binarne-drzewo-decyzyjne">Binarne drzewo decyzyjne</h2>
+<p>Wszystkie dotychczas omówione algorytmy sortowania (<a href="../2020-03-03/insertion-sort"><code>InsertionSort</code></a>, <a href="../2020-03-03/merge-sort"><code>MergeSort</code></a>, <a href="../2020-03-11/quick-sort"><code>QuickSort</code></a>) zakładały, że aby ustalić kolejność elementów możemy je tylko porównywać między sobą - jest to tzw. <em>Comparison Model</em>. Przy użyciu binarnego drzewa decyzyjnego możemy udowodnić, że liczba porównań między sortowanymi elementami musi wynosić co najmniej <span class="math inline">\(\log(n!) = O\big(n\log n\big)\)</span>.</p>
+<p>Weźmy drzewo sortujące biorące za argument tablicę <span class="math inline">\(n\)</span>-elementową. Każdy z liści takiego drzewa jest permutacją <span class="math inline">\(\{1,2,\dots,n\}\)</span>. Mamy więc przynajmniej <span class="math inline">\(n!\)</span> liści. Warto zauważyć, że w drzewie binarnym o głębokości <span class="math inline">\(d\)</span> jest co najwyżej <span class="math inline">\(2^d\)</span> liści.</p>
+<p>Wówczas głębokość naszego drzewa i złożoność algorytmu sortującego zarazem wynosi <span class="math inline">\(\log(n!)\)</span>.<br />
+Za to <span class="math inline">\(\log(n!) \ge c\cdot n \log n\)</span> dla pewnych <span class="math inline">\(c &gt; 0\)</span> jest znanym faktem. Chociażby <span class="math inline">\(n! \ge \big(\frac{n}{2}\big)^{\frac{n}{2}}\)</span>, ponieważ <span class="math inline">\(n! = 1\cdot 2 \dotsb n\)</span> zawiera przynajmniej <span class="math inline">\(\frac{n}{2}\)</span> współczynników większych od <span class="math inline">\(\frac{n}{2}\)</span> - wówczas wystarczy nałożyć <span class="math inline">\(\log\)</span> na obie strony nierówności.</p>
+<p>W takim razie już wiemy, że w najgorszym przypadku mamy <span class="math inline">\(\Omega(n\log n)\)</span> porównań.</p>
+<p>Source: <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Algorithms: Dasgupta, Papadimitriou, Vazirani</a> - end of paragraph 2.3</p>
+</body>
+</html>

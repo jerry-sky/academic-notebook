@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="spójność">Spójność</h1>
+<p><em>(2020-03-04)</em></p>
+<h2 id="twierdzenie-havel-hakimi"><span class="math inline">\(Twierdzenie\)</span> (Havel-Hakimi)</h2>
+<p><span class="math inline">\((d_1,...,d_n)\)</span> - ciąg graficzny<br />
+<span class="math inline">\(\equiv (d_2&#39;, d_3&#39;,...,d_n&#39;)\)</span> - graficzny, gdzie: <span class="math display">\[
+d_i =
+\begin{cases}
+  d_i - 1: i = 2,..., d_1 + 1\\
+  d_i: i = d_1+2,..n
+\end{cases}
+\]</span></p>
+<h3 id="dowód-twierdzenia-havel-hakimi">Dowód <span class="math inline">\(Twierdzenia\)</span> Havel-Hakimi</h3>
+<p><span class="math inline">\(\upuparrows\)</span></p>
+<div class="figure">
+<img src="graphs/havel-hakimi-dowód.png" alt="dowód" />
+<p class="caption">dowód</p>
+</div>
+<p><span class="math inline">\(d_1 = 3\)</span></p>
+<p>rzędy wierzchołków: <span class="math inline">\(d_2 - 1\)</span><br />
+<span class="math inline">\(d_3 - 1\)</span><br />
+<span class="math inline">\(d_4 - 1\)</span><br />
+<span class="math inline">\(d_5 - 1\dots\)</span></p>
+<p>dołączamy do każdego z powyższych dodatkowy węzeł:</p>
+<div class="figure">
+<img src="graphs/havel-hakimi.png" alt="havel hakimi" />
+<p class="caption">havel hakimi</p>
+</div>
+<h3 id="przykład-downdownarrows">Przykład <span class="math inline">\(\downdownarrows\)</span></h3>
+<div class="figure">
+<img src="graphs/havel-hakimi-przykład-1.png" alt="dowód-1" />
+<p class="caption">dowód-1</p>
+</div>
+<p><span class="math inline">\((3,2,2,2,1)\)</span></p>
+<p><span class="math inline">\((2,1,1,0)\)</span></p>
+<p><span class="math inline">\((3,2,2,2,1)\)</span></p>
+<p><span class="math inline">\((1,1,1,1)\)</span></p>
+<ul>
+<li>Szukamy grafu o wierszu <span class="math inline">\(\{ 1,\dots,n \}\)</span></li>
+<li>Wybieramy taki graf <span class="math inline">\(G = (\{ 1,\dots,n \}, E)\)</span>, że <span class="math inline">\(\sum_{ \{1,x\} \in E }\deg(x)\)</span> jest największe.<br />
+<span class="math inline">\(\deg(i) = d_i\)</span></li>
+</ul>
+<h3 id="oznaczenie-sąsiedzi-wierzchołka">Oznaczenie sąsiedzi wierzchołka</h3>
+<p><span class="math inline">\(\mathcal{N}(x) = \{ y \in V: (\exists e \in E)( \{x,y\} \in \phi(e) ) \}\)</span></p>
+<h3 id="claim">Claim</h3>
+<p><span class="math inline">\(\{ \deg(y): y\in \mathcal{N}(1) \} = \{ d_2, d_3,..., d_{d_1 +1} \}\)</span></p>
+<p>Zał. że <strong>nie</strong></p>
+<p>Jest <span class="math inline">\(x \in \mathcal{N}(1)\)</span> takie, że <span class="math inline">\(\deg(x) &lt; \deg(d_{1+d_1})\)</span></p>
+<h4 id="przykład">Przykład</h4>
+<p><span class="math inline">\(d_1 = 4\)</span></p>
+<div class="figure">
+<img src="graphs/havel-hakimi-dowód-2.png" alt="havel hakimi" />
+<p class="caption">havel hakimi</p>
+</div>
+<p><span class="math inline">\(v_4 \leftarrow\)</span> lipny, taki, że <span class="math inline">\(\deg(v_4) &lt; d_{1 + d_1}\)</span></p>
+<p>Jest <span class="math inline">\(y\)</span> taki, że 1. <span class="math inline">\(y \notin \mathcal{N}(1)\)</span> 2. <span class="math inline">\(\deg(y) &gt; \deg(v_4)\)</span></p>
+<p>Jest <span class="math inline">\(z\)</span> taki, że 1. <span class="math inline">\(z \in \mathcal{N}(y)\)</span> 2. <span class="math inline">\(z \notin \mathcal{N}(v_4)\)</span></p>
+<div class="figure">
+<img src="graphs/havel-hakimi-dowód-3.png" alt="havel hakimi" />
+<p class="caption">havel hakimi</p>
+</div>
+<p><span class="math inline">\(G&#39;\)</span>: 1. <span class="math inline">\(\deg(1) = \deg_6(1) = 4\)</span> 2. <span class="math inline">\(\mathcal{N}(1) = \{ v_1, v_2, v_3, y \}\)</span><br />
+2'. <span class="math inline">\(\deg_{6&#39;}(y) = \deg_6(y)\)</span> 3. <span class="math inline">\(\sum_{u \in \mathcal{N}(1)}\deg(u) ? \sum_{u \in \mathcal{N}(1)}\deg_G(u)\)</span></p>
+<p>Czyli jest graf <span class="math inline">\(G\)</span> na <span class="math inline">\(\{ 1,...,n \}\)</span> taki, że: 1. jego <span class="math inline">\(\deg\)</span>, to <span class="math inline">\((d_1,...,d_n)\)</span> 2. <span class="math inline">\(\mathcal{N}(1) = \{2,3,...,d_1+1\}\)</span><br />
+<span class="math inline">\(\deg(i) = d_i~dla~i =2,...,d_1+1\)</span> <span class="math inline">\(\blacksquare\)</span></p>
+<h2 id="graficzne-zoo">Graficzne ZOO</h2>
+<ul>
+<li>graf zupełny: <span class="math inline">\(K_n \cong (\{1,...,n\}, [\{1,...,n\}]^2)\)</span><br />
+<img src="graphs/zoo-1.png" alt="zoo 1" /></li>
+<li>graf pusty: <span class="math inline">\(E_n \cong (\{1,...,n\}, \emptyset)\)</span></li>
+<li>graf liniowy: <span class="math inline">\(L_n = ( \{1,...,n\}, \{\{i,i+1\}: i = 1,...,n-1\} )\)</span><br />
+<img src="graphs/zoo-2.png" alt="zoo 2" /></li>
+<li>graf cykliczny: <span class="math inline">\(C_N\)</span> - jak liniowy, ale połączony w cykl &lt;insert graph&gt;<br />
+<img src="graphs/zoo-4.png" alt="zoo 4" /></li>
+<li>graf <span class="math inline">\((V,E)\)</span> jest dwudzielny, jeśli istnieją <span class="math inline">\(X,Y\)</span> takie, że:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X\cup Y = V \land X \cap Y = \emptyset \land X \neq \emptyset \land Y \neq \emptyset\)</span></li>
+<li><span class="math inline">\(E \subseteq \{ \{x,y\}: x \in X \land y \in Y \}\)</span></li>
+</ol>
+<div class="figure">
+<img src="graphs/zoo-3.png" alt="zoo 3" />
+<p class="caption">zoo 3</p>
+</div>
+<p><span class="math inline">\(K_{n,m} = (X\cup Y, \{\{x,y\}: x \in X, y \in Y\})\)</span><br />
+<span class="math inline">\(|X| = n, |Y| = m\)</span></p></li>
+</ul>
+<h2 id="operacje-grafy-proste">Operacje (grafy proste)</h2>
+<p>Mamy <span class="math inline">\(G(V,E)\)</span></p>
+<ol style="list-style-type: decimal">
+<li>Dopełnienie: <span class="math inline">\(\overline{G}=(V, [V]^2\setminus E)\)</span><br />
+<em>przykład: <span class="math inline">\(\overline{K_n} = E_n\)</span></em></li>
+<li>Usunięcie krawędzi: <span class="math inline">\(e \in E\)</span>: <span class="math inline">\(G\setminus e = (V, E \setminus \{e\})\)</span></li>
+<li>Usunięcie węzła: <span class="math inline">\(x \in V\)</span>: <span class="math inline">\(G - x = (V \setminus\{x\}, E \cap [V \setminus \{x\}]^2)\)</span></li>
+</ol>
+<h2 id="przykład-grafu-petersena">Przykład Grafu Petersena</h2>
+<div class="figure">
+<img src="graphs/petersena.png" alt="petersena" />
+<p class="caption">petersena</p>
+</div>
+<p><span class="math inline">\(\forall x \in V~~deg(x) =3\)</span> jest to graf regularny <span class="math inline">\(\equiv (\exists c)(\forall x \in V)(\deg(x) = c)\)</span></p>
+<p><strong>graf kubiczny</strong> <span class="math inline">\(\equiv\)</span> 3-regularny</p>
+<h2 id="definicja-graf-krawędziowy"><span class="math inline">\(Definicja\)</span> Graf Krawędziowy</h2>
+<p>Niech <span class="math inline">\(G = (V,E)\)</span> będzie grafem prostym.<br />
+Grafem krawędziowym grafu <span class="math inline">\(G\)</span> nazywamy <span class="math display">\[
+L(G) = (E, \{\{L,K\}\in [E]^2: L\cap K \neq \emptyset\})
+\]</span></p>
+<h3 id="przykład-1">Przykład</h3>
+<div class="figure">
+<img src="graphs/krawędziowy.png" alt="krawędziowy przykład" />
+<p class="caption">krawędziowy przykład</p>
+</div>
+<p><span class="math inline">\(L(K_3) \underset{IZO}{\cong} K_3\)</span></p>
+<p>Konstrukcja:</p>
+<ul>
+<li><span class="math inline">\(K_5 = (\{0,1,2,3,4\}, [0...4]^2)\)</span></li>
+</ul>
+<p>Tu mamy <span class="math inline">\(\binom{5}{2} = \frac{5~\cdot~4}{2} = 10\)</span> krawędzi. - <span class="math inline">\(L(K_5) = \left(\{0...4\}^2, \left\{\{A,B\}\in\left[\left[0,4\right]^2\right]^2: A\neq B \land A \cap B \neq \emptyset\right\}\right)\)</span> - <span class="math inline">\(\overline{L(K_5)} = \left(\left\{\{0...4\}^2: \left[\left\{0...4\right\}^2\right]^2: A \neq B \land A \cap B = \emptyset\right\}\right)\)</span> - Fakt: <span class="math inline">\(L(K_5) \underset{IZO}{\cong}\)</span> graf Petersena</p>
+<h2 id="hiper-kostka">Hiper-kostka</h2>
+<p><span class="math inline">\(H_n = (\{(i_1,...,i_n): i_1,...,i_n \in \{0,1\}\}, \{\{\overline{x}, \overline{y}\}:(\exists i)(\overline{x}(i) \neq \overline{y}(i)\land (\forall j)(\overline{x}(j) = \overline{y}(j)))\})\)</span></p>
+<h3 id="przykład-2">Przykład</h3>
+<p><span class="math inline">\(n = 3\)</span> <span class="math inline">\((i_1, i_2, i_3)\)</span></p>
+<p><span class="math inline">\(H_2\)</span></p>
+<p><span class="math inline">\(H_3\)</span></p>
+<div class="figure">
+<img src="graphs/hiperkostka.png" alt="hiperkostka" />
+<p class="caption">hiperkostka</p>
+</div>
+<ul>
+<li>Suma grafów<br />
+<span class="math inline">\(G_1=(V_1, E_1)\)</span>, <span class="math inline">\(G_2 = (V_2, E_2)\)</span>; <span class="math inline">\(V_1 \cap V_2 = \emptyset\)</span><br />
+<span class="math inline">\(G_1 + G_2 = (V_1 \cup V_2, E_1 \cup E_2)\)</span></li>
+<li>Złączenie grafów <span class="math inline">\(G_1\)</span> oraz <span class="math inline">\(G_2\)</span>:</li>
+<li><span class="math inline">\(G_1*G_2 = (V_1 \cup V_2, E_1 \cup E_2 \cup \{\{x,y\}: x \in V_1 \land y \in V_2\})\)</span></li>
+<li>Przykład: <span class="math inline">\(E_3 * E_2 = K_{3,2}\)</span></li>
+</ul>
+<h2 id="definicje---poruszanie-się-po-grafie"><span class="math inline">\(Definicje\)</span> - <em>poruszanie się</em> po grafie</h2>
+<p>Ustalmy graf <span class="math inline">\(G=(V,E,\phi)\)</span> 1. Trasa w grafie <span class="math inline">\(G\)</span> - ciąg <span class="math inline">\(x_0e_1x_1e_1...x_ne_n\)</span> taki że - <span class="math inline">\(x_0,...,x_n \in V\)</span> - <span class="math inline">\(e_1,...,e_n \in E\)</span> - <span class="math inline">\(\{x_i, x_{i+1}\} = \phi(e_{i+1})\)</span> <span class="math inline">\(i = 0...(n-1)\)</span> - <img src="graphs/trasa.png" alt="trasa" /> 2. Ścieżka: trasa bez powtórzonych krawędzi 3. Droga: ścieżka bez powtórzonych wierzchołków 4. Cykl: ścieżka taka, że <span class="math inline">\(x_0 = x_n\)</span> 5. Cykl elementarny: <span class="math inline">\((x_0x_1...x_{n-1}x_n) = x_0\)</span> przy czym <span class="math inline">\((x_0x_1...x_{n-1}x_n)\)</span> to jest droga</p>
+<p>Nazewnictwo: | <span class="math inline">\(\equiv\)</span> | <span class="math inline">\(\equiv\)</span> | <span class="math inline">\(\equiv\)</span> | | -------- | -------- | ----------------- | -------------- | | trasa | trail | droga | trasa | | ścieżka | walk | droga prosta | ścieżka | | droga | path | droga elementarna | ścieżka prosta |</p>
+<h2 id="fakt-circlearrowleft">Fakt <span class="math inline">\(\circlearrowleft\)</span></h2>
+<ol style="list-style-type: decimal">
+<li>Jest trasa od <span class="math inline">\(x\)</span> do <span class="math inline">\(y\)</span></li>
+<li>Jest droga od <span class="math inline">\(x\)</span> do <span class="math inline">\(y\)</span></li>
+</ol>
+<div class="figure">
+<img src="graphs/fakt-trasa-droga.png" alt="fakt trasa droga" />
+<p class="caption">fakt trasa droga</p>
+</div>
+<h2 id="składowe-spójne">Składowe spójne</h2>
+<p>Mamy graf <span class="math inline">\(G=(V,E, \phi)\)</span>.</p>
+<p>Na <span class="math inline">\(V\)</span> określamy relację:<br />
+<span class="math inline">\(x \sim y \iff\)</span> kiedy istnieje droga od <span class="math inline">\(x\)</span> do <span class="math inline">\(y\)</span></p>
+<p><strong>Fakt: <span class="math inline">\(\sim\)</span> jest to relacja równoważności</strong></p>
+<p>Terminologia: składowe spójne <span class="math inline">\(\equiv V_{/\sim}\)</span><br />
+<span class="math inline">\(c(G) = |V_{/\sim}|\)</span></p>
+<p><span class="math inline">\(G\)</span> jest spójny <span class="math inline">\(\equiv\)</span> <span class="math inline">\(c(G) = 1\)</span></p>
+<h2 id="twierdzenie-2"><span class="math inline">\(Twierdzenie\)</span> #2</h2>
+<p>Niech <span class="math inline">\(G=(V,E)\)</span> będzie grafem prostym.</p>
+<p>Jeśli <span class="math inline">\(G\)</span> jest spójny to <span class="math inline">\(|E| \ge |V| - 1\)</span></p>
+<div class="figure">
+<img src="graphs/twierdzenie-spójny-e-v.png" alt="twierdzenie" />
+<p class="caption">twierdzenie</p>
+</div>
+<h3 id="dowód">Dowód</h3>
+<p><span class="math inline">\(n=1\)</span> <span class="math inline">\(\rightarrow\)</span> OK<br />
+<span class="math inline">\(n=2\)</span> <span class="math inline">\(\rightarrow\)</span> OK</p>
+<p>Załóżmy, że dla grafów takich, że <span class="math inline">\(|V| = n\)</span> to jest OK<br />
+Niech <span class="math inline">\((V,E)\)</span> będzie spójny, <span class="math inline">\(|V| = n+1\)</span> ale <span class="math inline">\(|E| &lt; |V| - 1 = (n+1) -1 = n\)</span>, czyli <span class="math inline">\(|E| \le n-1\)</span></p>
+<h4 id="claim-jest-x-in-v-takie-że-degx-1">Claim: jest <span class="math inline">\(x \in V\)</span> takie, że <span class="math inline">\(\deg(x) = 1\)</span></h4>
+<p>Załóżmy, że <span class="math inline">\((\forall x \in V)(\deg(x) \ge 2)\)</span></p>
+<p><span class="math display">\[
+(n+1)*2 \le \sum_{x\in V}\deg(x) = 2|E| \le 2(n-1)
+\]</span></p>
+<div class="figure">
+<img src="graphs/twierdzenie-dowód.png" alt="twierdzenie dowód" />
+<p class="caption">twierdzenie dowód</p>
+</div>
+<p><span class="math inline">\(V_1 = V \setminus \{x\},~|V_1| = n\)</span><br />
+<span class="math inline">\(G_1 = G \setminus \{x\}\)</span> <span class="math inline">\(\leftarrow\)</span> spójny</p>
+</body>
+</html>

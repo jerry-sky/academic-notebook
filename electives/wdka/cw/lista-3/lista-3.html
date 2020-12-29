@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3">Lista-3</h1>
+<p><em>(Termin oddania: 2020-11-30)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(\mathcal{L}\)</span> będzie językiem nad alfabetem <span class="math inline">\(\{a, b, c\}\)</span> złożonym ze słów, które zawierają ciąg <span class="math inline">\(acac\)</span>. Opisać odpowiedni automat skończony oraz przedstawić OGF dla <span class="math inline">\(\mathcal{L}\)</span>.</p>
+</blockquote>
+<p>Mamy: - alfabet <span class="math inline">\(\mathcal{A} = (A = \{a,b,c\}, |\cdot| = \{x \in A: x \to 1\})\)</span> - <a href="../../wyk/2020-10-26/języki.md#4-wzorce-blokowe">wzorzec blokowy</a> <span class="math inline">\(\overline{p} = acac\)</span></p>
+<p>Budujemy odpowiedni automat skończony (<a href="../../../../5th-semester/jftt/wyk/2020-10-08/języki-formalne-wprowadzenie.md#2-deterministyczny-automat-skończony-dfa">DFA</a>):<br />
+<img src="z1.automat.png" /><br />
+który akceptuje słowo, które ma w sobie ciąg <span class="math inline">\(\overline{p}\)</span>.</p>
+<p>Definiujemy klasy kombinatoryczne bazujące na powyższym automacie: - <span class="math inline">\(\mathcal{L}_0 = \{a\}\mathcal{L}_1 + \{b\}\mathcal{L}_0 + \{c\}\mathcal{L}_0\)</span> - <span class="math inline">\(\mathcal{L}_1 = \{a\}\mathcal{L}_1 + \{b\}\mathcal{L}_0 + \{c\}\mathcal{L}_0\)</span> - <span class="math inline">\(\mathcal{L}_2 = \{a\}\mathcal{L}_3 + \{b\}\mathcal{L}_0 + \{c\}\mathcal{L}_0\)</span> - <span class="math inline">\(\mathcal{L}_3 = \{a\}\mathcal{L}_1 + \{b\}\mathcal{L}_0 + \{c\}\mathcal{L}_4\)</span> - <span class="math inline">\(\mathcal{L}_4 = \{a\}\mathcal{L}_4 + \{b\}\mathcal{L}_4 + \{c\}\mathcal{L}_4 + \{\epsilon\}\)</span></p>
+<p>oraz odpowiadające im OGFs: - <span class="math inline">\(L_0(z) = 2zL_0(z) + zL_1(z)\)</span> - <span class="math inline">\(L_1(z) = zL_0(z) + zL_1(z) + zL_2(z)\)</span> - <span class="math inline">\(L_2(z) = 2zL_0(z) + zL_3(z)\)</span> - <span class="math inline">\(L_3(z) = zL_1(z) + zL_4(z) + zL_0(z)\)</span> - <span class="math inline">\(L_4(z) = 3zL_4(z) + 1\)</span></p>
+<p>Po rozwiązaniu układu równań otrzymujemy: <span class="math display">\[
+L_0(z) = \frac{-z^4}{(3z-1)(z^4 - 3z^3 + z^2 - 3z + 1)}.
+\]</span></p>
+<p>Jako, że <span class="math inline">\(\mathcal{L} = \mathcal{L}_0\)</span> żądana OGF jest równa podanej powyżej <span class="math inline">\(L_0\)</span>.</p>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Ile jest słów długości n nad alfabetem <span class="math inline">\(\{a, b, c, d, e, f, g\}\)</span>, które zawierają wzorzec blokowy <span class="math inline">\(aabbaa\)</span>?</p>
+</blockquote>
+<p>Skorzystamy tutaj ze <a href="../../wyk/2020-10-26/języki.md#42-ciągi-długości-n-z-wzorcem-overlinep">wzoru z wykładu</a> na OGF dla klasy ciągów bez danego wzorca blokowego: <span class="math display">\[
+S(z) = \frac{C(z)}{z^k + (1 - mz) \cdot C(z)}.
+\]</span></p>
+<p>W naszym przypadku: - <span class="math inline">\(m = 7\)</span> (liczba liter w alfabecie) - <span class="math inline">\(C(z) = 1 + z^4 + z^5\)</span> (wielomian charakterystyczny dla <span class="math inline">\(\overline{p}\)</span>) - <span class="math inline">\(k = 6\)</span> (długość wzorca <span class="math inline">\(\overline{p}\)</span>)</p>
+<p>Oczywiście, w zadaniu chcemy uzyskać takie słowa, które akurat mają ten wzorzec przynajmniej raz — wystarczy odjąć od wszystkich możliwych słów: <span class="math display">\[
+\mathcal{L} \cong \operatorname{SEQ}(\mathcal{A}) - \mathcal{S}
+\]</span> (użyty tutaj „<span class="math inline">\(-\)</span>” jest <em>debatable</em>, ale reprezentuje naszą ideę)<br />
+co daje nam OGF: <span class="math display">\[
+L(z) = \frac{1}{1-7z} - \frac{1 + z^4 + z^5}{z^6 + (1 - 7z)(1 + z^4 + z^5)} =\\
+= \sum_{n\ge0} 7^n z^n - (1 + z^4 + z^5) \cdot \left( \frac{1}{1 - (6z^6 + 6z^5 - z^4 + 7z)} \right)
+\]</span></p>
+<p>Odpowiedzią będzie po prostu <span class="math inline">\([z^n]L(z) = 7^n - [z^n]\left( \frac{1 + z^4 + z^5}{1 - (6z^6 + 6z^5 - z^4 + 7z)} \right)\)</span></p>
+<p>Sprawdzenie: - dla <span class="math inline">\(n &lt; 6\)</span>, czyli np. <span class="math inline">\(n = 5\)</span> wynik <span class="math inline">\([z^n]\left( \frac{1 + z^4 + z^5}{1 - (6z^6 + 6z^5 - z^4 + 7z)} \right)\)</span> wynosi dokładnie <span class="math inline">\(7^5\)</span> (<a href="https://www.wolframalpha.com/input/?i=SeriesCoefficient%5B+%281+%2B+z%5E4+%2B+z%5E5%29%2F%281+-+6z%5E6+-+6z%5E5+%2B+z%5E4+-+7z%29%2C+%7Bz%2C+0%2C+5%7D%5D+%3D+7%5E5">WolframAlpha</a>) co daje wynik ostateczny <span class="math inline">\([z^n]L(z) = 7^5 - 7^5 = 0\)</span>. - dla <span class="math inline">\(n \ge 6\)</span> mamy już jakieś słowa, które się zaliczają (<a href="https://www.wolframalpha.com/input/?i=7%5E8+-+SeriesCoefficient%5B+%281+%2B+z%5E4+%2B+z%5E5%29%2F%281+-+6z%5E6+-+6z%5E5+%2B+z%5E4+-+7z%29%2C+%7Bz%2C+0%2C+8%7D%5D">WolframAlpha</a>) i np. dla <span class="math inline">\(n = 8\)</span> mamy już <span class="math inline">\(147\)</span> takich wyrazów.</p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Zastosować tw. Lagrange’a do policzenia współczynnika przy wyrazie <span class="math inline">\(z^n\)</span> dla funkcji <span class="math inline">\(L(z)\)</span>, będącej rozwiązaniem równania <span class="math display">\[
+\frac{L(z)}{z} = 1 + (L(z))^3
+\]</span></p>
+</blockquote>
+<p>Na początku uprośćmy wyrażenie: <span class="math display">\[
+L(z) = z\left(1 + (L(z))^3\right)
+\]</span></p>
+<p>Teraz według <a href="../../wyk/2020-11-09/tw-lagrangea-o-inwersji">twierdzenia Lagrange’a o inwersji</a> określamy funkcję pomocniczą <span class="math inline">\(\varphi\)</span>: <span class="math display">\[
+\varphi(x) = 1 + x^3
+\]</span> co daje nam możliwość zredefiniowania funkcji <span class="math display">\[
+L(z) = z \cdot \varphi(L(z)).
+\]</span></p>
+<p>Następnie korzystamy ze wzoru <span class="math inline">\([z^n] y(z) = \frac{1}{n} [x^{n-1}] \varphi^n(x)\)</span> gdzie <span class="math inline">\(y\)</span> to tutaj <span class="math inline">\(L\)</span>: <span class="math display">\[
+[z^n] L(z) = \frac{1}{n}[x^{n-1}] \varphi^n(x) =\\
+= \frac{1}{n} [x^{n-1}] \left( 1 + x^3 \right)^n =\\
+= \frac{1}{n} [x^{n-1}] \sum_{k=0}^n x^{3k} \binom{n}{k}=\\
+=\frac{1}{n} \cdot
+\begin{cases}
+    \binom{n}{\frac{n-1}{3}} &amp; n \equiv 1 \mod 3\\
+    0 &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Napisz wzór OGF <span class="math inline">\(S^{(4)}(z)\)</span> takiej, że współczynnik przy wyrazie <span class="math inline">\(z^n\)</span> będzie liczbą Strilinga II rodzaju <span class="math inline">\({ n \brace 4}\)</span> to znaczy <span class="math inline">\([z^n]S^{(4)}(z) = {n \brace 4}\)</span>.</p>
+</blockquote>
+<p>Liczba Stirlinga <span class="math inline">\({n \brace 4}\)</span> określa liczbę sposobów, na jakich możemy podzielić zbiór <span class="math inline">\(n\)</span>-elementowy na <span class="math inline">\(4\)</span> niepuste podzbiory.</p>
+<p>Dla każdego elementu w wejściowym zbiorze <span class="math inline">\(n\)</span>-elementowym możemy przypisać jakąś indywidualną liczbę naturalną — etykietę. Wówczas mamy odpowiadający wejściowemu zbiorowi zbiór <span class="math inline">\(\{1,\dots,n\}\)</span>.</p>
+<p>Żeby podzielić teraz ten zbiór na cztery podzbiory, najpierw wybieramy liderów. Teraz dobieramy kolejne elementy do każdego podzbioru — chcemy, żeby były one większe niż ich liderzy. Wówczas jednym z liderów musi być zawsze „<span class="math inline">\(1\)</span>”.</p>
+<p>Idea jest taka: zaczynając od jedynki, napotykamy kolejne elementy — narazie należą one do podzbioru <span class="math inline">\(s_1\)</span> o liderze <span class="math inline">\(1\)</span>. Następnie natrafiamy na kolejnego lidera drugiego podzbioru <span class="math inline">\(s_2\)</span> — idąc dalej, natrafiamy na kolejne elementy, które mogą należeć albo do podzbioru <span class="math inline">\(s_1\)</span> albo <span class="math inline">\(s_2\)</span>. Kiedy napotykamy lidera podzbioru <span class="math inline">\(s_3\)</span> mamy tą samą sytuację — i tak dalej aż do wyczerpania elementów zbioru wejściowego.</p>
+<p>Ta powyższa <em>bajeczka</em> jest prawdziwa, ponieważ takie podejście załatwia nam zachowanie <em>jednego</em> porządku elementów, co jest ważne, bo nie chcemy liczyć wielu rozstawień elementów. Mówimy o zbiorach, gdzie kolejność elementów nie ma znaczenia.</p>
+<p>Możemy powyższą <em>historyjkę</em> opisać klasą kombinatoryczną: <span class="math display">\[
+\begin{aligned}
+\mathcal{S}^{(4)} \cong&amp; s_1\, \operatorname{SEQ}(s_1)\, s_2 \operatorname{SEQ}(s_1 + s_2)\,\\
+&amp;s_3\, \operatorname{SEQ}(s_1 + s_2 + s_3)\, s_4\, \operatorname{SEQ}(s_1 + s_2 + s_3 + s_4)
+\end{aligned}
+\]</span> a stąd mamy też OGF: <span class="math display">\[
+S^{(4)}(z) = z^4 \cdot \frac{1}{(1-z)(1-2z)(1-3z)(1-4z)}
+\]</span></p>
+<hr />
+</body>
+</html>

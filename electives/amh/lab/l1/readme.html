@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-1">Lista-1</h1>
+<blockquote>
+<p>Celem listy jest praktyczne przećwiczenie metaheurystyk opartych na lokalnym przeszukiwaniu, w szczególności <em>Tabu Search</em>. Dobór parametrów (np. długość listy Tabu, definicję sąsiedztwa, wybór sąsiedniego rozwiązania i liczba sprawdzanych sąsiadów czy wybór pierwszego testowanego rozwiązania) należy do autora programu. W czasie rozwiązywania listy autor powinien rozpoznać jaki wpływ na działanie programu (czas działania, wymagania pamięciowe, osiągany rezultat, podatność na utknięcia w lokalnym minimum, … ) mają poszczególne parametry.</p>
+</blockquote>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<ol style="list-style-type: lower-alpha">
+<li><p><code>HappyCat</code>: <span class="math display">\[
+h(\overline{x})=\left[\left(||\overline{x}||^2 - 4\right)^2\right]^\frac{1}{8} + \frac{1}{4}\left(\frac{1}{2}||\overline{x}||^2+\sum_{i=1}^{4}x_i\right)+\frac{1}{2}
+\]</span> <span class="math display">\[
+\overline{x} = (x_1,~x_2,~x_3,~x_4)
+\]</span> <span class="math display">\[
+||\overline{x}|| := \sqrt{x_1^2 + \dotsb + x_n^2}
+\]</span></p></li>
+<li><p><code>Griewank</code>: <span class="math display">\[
+g(\overline{x}) = 1 + \sum_{i+1}^{4}\frac{x^2_i}{4000} - \prod_{i=1}^{4}\cos\left(\frac{x_i}{\sqrt{i}}\right)
+\]</span> <span class="math display">\[
+\overline{x} = (x_1,~x_2,~x_3,~x_4)
+\]</span></p></li>
+</ol>
+<blockquote>
+<p>Napisz program, który za pomocą wybranej modyfikacji przeszukiwania lokalnego znajdzie minimum funkcji.</p>
+<p><strong>In</strong>: Para liczb całkowitych <code>t</code> <span class="math inline">\(b\)</span> oddzielonych spacją. <code>t</code> – maksymalna liczba sekund, która może wykonywać się program w tym uruchomieniu, <span class="math inline">\(b\)</span> – jeśli parametr ma wartość 0, to powinien minimalizować funkcję <span class="math inline">\(h\)</span>, w p.p. funkcję <span class="math inline">\(g\)</span>.</p>
+<p><strong>Out</strong>: 5 liczb typu <code>double</code> oddzielonych spacją, z czego cztery pierwsze to <span class="math inline">\(\overline{x}\)</span>, natomiast piąta to wartość odpowiedniej funkcji w punkcie <span class="math inline">\(\overline{x}\)</span>.</p>
+</blockquote>
+<p><a href="z1/main.cpp">code</a></p>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Napisz program, który dla przedstawionej instancji problemu TSP znajdzie, z wykorzystaniem Tabu Search, cykl o możliwie najmniejszym koszcie, rozpoczynając z pierwszego miasta.</p>
+<p><strong>In</strong>: Dane wejściowe składać się będą z <span class="math inline">\(n+1\)</span> linii. W pierwszej linii będą umieszczone, oddzielone spacją liczby całkowite <code>t</code> i <span class="math inline">\(n\)</span>, gdzie <code>t</code> jest limitem czasu, jak w zadaniu 1, natomiast <span class="math inline">\(n\)</span> liczbą miast do odwiedzenia. W kolejnych <span class="math inline">\(n\)</span> liniach będą znajdowały się odległości pomiędzy miastami oddzielone co najmniej jedną spacją. Uwaga, odległość z miasta i do miasta i zawsze wynosi <span class="math inline">\(0\)</span>, natomiast nie należy zakładać, że mamy zadany problem Metric TSP, ani że odległości między wybranymi dwoma miastami są takie same w obu kierunkach. Przykładowe dane wejściowe można znaleźć <a href="z2/l1z2a.txt">tu</a> i <a href="z2/l1z2b.txt">tutaj</a>.</p>
+<p><strong>Out</strong>: Na standardowym wyjściu znaleźć się powinien jedynie koszt pokonania cyklu. Ostatnią linią na standardowym wyjściu błędów powinien być <span class="math inline">\((n + 1)\)</span>–elementowy ciąg liczb całkowitych oddzielonych spacjami, oznaczający kolejno odwiedzane miasta, np. <code>1 5 4 3 2 6 1</code>.</p>
+</blockquote>
+<p><a href="z2/main.py">code</a></p>
+<h2 id="zadanie-3">Zadanie 3</h2>
+<blockquote>
+<p>Napisz program, który będzie symulował poruszanie się agenta po kracie (wycinek <span class="math inline">\(\mathbb{Z}^2\)</span>). Celem jest dotarcie agenta do wyznaczonego punktu, przy założeniach, że w każdym kroku może poruszyć się o 1 w lewo, o 1 w prawo, o 1 w górę albo o 1 w dół. Program powinien za pomocą Tabu Search powinien generować kolejne sekwencje kroków, tak by dotarcie do celu zajęło jak najmniej rund. Jeśli agent dotrze do celu przed wykonaniem wszystkich kroków, liczymy liczbę wykonanych kroków, jeśli po wykonaniu całej wygenerowanej sekwencji kroków, agent nie dotarł do celu - kontynuuje z miejsca, w którym wylądował a długość wykonanej sekwencji wlicza się do bieżącego rozwiązania.</p>
+<p><strong>In</strong>: Dane wejściowe składać się będą z <span class="math inline">\(n+1\)</span> linii. W pierwszej linii będą umieszczone, oddzielone spacją liczby całkowite <code>t</code>, <span class="math inline">\(n\)</span> i <span class="math inline">\(m\)</span>, gdzie <code>t</code> jest limitem czasu, jak w zadaniu 1, natomiast <span class="math inline">\(n\)</span> i <span class="math inline">\(m\)</span> oznaczają wymiary kraty (odpowiednio liczba wierszy i kolumn w labiryncie, który będzie chciał opuścić agent). W kolejnych <span class="math inline">\(n\)</span> liniach będą znajdowały się cyfry tworzące labirynt. Między cyframi nie będzie spacji. Możliwe cyfry: - 0 – standardowe, puste pole, po którym agent może się poruszać - 1 – ściana, która nie może zostać pokonana (Uwaga: ściany będą znajdować się jedynie na obrzeżach, nie będzie ścian wewnątrz labiryntu). - 5 – symbol agenta, oznaczający jego pozycję początkową (Uwaga: nie ma konieczności wizualizacji kolejnych kroków). - 8 – symbol wyjścia, oznaczający pozycję celu, na który agent powinien dotrzeć (Uwaga: jest dokładnie jeden symbol 8 oraz znajduje się on na obrzeżu).</p>
+<p>Uwaga: Agent nie zna swojej pozycji początkowej, ani pozycji celu. Można założyć, że agent potrafi rozpoznać rodzaj pola (cyfrę) swoich czterech sąsiadów oraz, że zna <span class="math inline">\(n\)</span> oraz <span class="math inline">\(m\)</span>. Przykładowe dane wejściowe można znaleźć <a href="z3/l1z3a.txt">tu</a> i <a href="z3/l1z3b.txt">tutaj</a>.</p>
+<p><strong>Out</strong>: Na standardowym wyjściu znaleźć się powinna jedynie łączna liczba kroków k od pozycji startowej do celu, wykonana w wybranym rozwiązaniu. Ostatnią linią na standardowym wyjściu błędów powinien być <span class="math inline">\(k\)</span>-elementowy ciąg znaków <code>U</code>, <code>D</code>, <code>R</code>, <code>L</code> oznaczający kolejne wybrane kierunki w rozwiązaniu, gdzie litery kodują odpowiednio krok w górę, krok w dół, krok w prawo i krok w lewo.</p>
+</blockquote>
+<p><a href="z3/main.py">code</a></p>
+</body>
+</html>

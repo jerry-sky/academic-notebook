@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-5">Lista-5</h1>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Napisz wykorzystując regresję liniową program, który na podstawie oceny filmów przez użytkowników będzie starał się przewidzieć ocenę innych użytkowników. Jako dane wykorzystamy zbiór MovieLens Latest Datasets. Dokładnie wybierzemy mniejszy zbiór, pobierz plik <a href="data/ratings.csv">ml-latest-small.zip</a>. Zadanie polega na wybraniu z pliku <a href="data/ratings.csv">ratings.csv</a> tych użytkowników (<code>userId</code>), którzy ocenili film 'Toy Story (1995)', który w tym pliku ma identyfikator '1' (patrz movies.csv). W tym pliku osób takich jest 215. Wtedy zgodnie z zapisem z wykładu: <span class="math inline">\(x_{ij}\)</span> będzie oceną <span class="math inline">\(i\)</span>-tego użytkownika dla <span class="math inline">\(i = 0,\dots,214\)</span>, bo taki jest nasz zbiór osób, które oceniły 'Toy Story' oraz <span class="math inline">\(j\)</span> będzie oceną <span class="math inline">\(j\)</span>-tego filmu dla <span class="math inline">\(j = 0,\dots,m\)</span>. Jako <span class="math inline">\(j\)</span> można wybrać <code>movieId</code> filmu, czyli np. film o <code>movieId</code> <span class="math inline">\(= 42\)</span> oceniony przez użytkownika 5 (nie jest to <code>userId</code>, tylko piąta osoba ze zbioru 215 osób), który ocenił film jako np. <code>3.5</code> wpisujemy <span class="math inline">\(x[5,42] = 3.5\)</span>. Natomiast <span class="math inline">\(y_i\)</span> to ocena 'Toy Story' przez <span class="math inline">\(i\)</span>-tego użytkownika. Zatem tworzymy macierz <span class="math inline">\(X = [x_{ij}]\)</span> oraz wektor <span class="math inline">\(y_i\)</span> gdzie <span class="math inline">\(i = 0,\dots,215\)</span> oraz <span class="math inline">\(j = 0,\dots,m\)</span>. Dla tak przygotowanych danych wykonujemy: - regresje liniową na całym zbiorze użytkowników dla <span class="math inline">\(m = 10,1000,10000\)</span>, czyli np. dla <span class="math inline">\(m = 10\)</span> ignorujemy filmy o <code>movieId</code> <span class="math inline">\(&gt; 10\)</span> i robimy regresje dla tak okrojonego zbioru ocen. Jakie dostajemy błędy. Pokaż na wykresie. - podziel zbiór osób na tzw. zbiór treningowy oraz zbiór testowy np. weźmy <span class="math inline">\(i = 0,\dots,200\)</span> to będzie zbiór treningowy i na takim zbiorze osób wykonajmy regresje natomiast później sprawdzamy już dla całości (215). Zatem ostatnie 15 ocen będziemy chcieli przewidzieć (zbiór testowy). Zrób przewidywanie dla <span class="math inline">\(m = 10,100,200,500,1000,10000\)</span>. Wyświetl wynik predykcji i wynik prawidłowy dla tych 15 osób. Przykład danych do regresji jakie otrzymujemy dla <span class="math inline">\(m = 10\)</span> i <span class="math inline">\(n = 215\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python">X <span class="op">=</span> [[<span class="fl">0.</span>  <span class="fl">4.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">4.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">3.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">4.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">3.</span>  <span class="fl">3.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">2.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">2.</span>  <span class="fl">0.</span> ]
+     [<span class="fl">3.5</span> <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">0.</span>  <span class="fl">5.</span>  <span class="fl">0.</span> ]
+     ...
+y <span class="op">=</span> [[<span class="fl">4.</span> ]
+     [<span class="fl">4.</span> ]
+     [<span class="fl">4.5</span>]
+     [<span class="fl">2.5</span>]
+     [<span class="fl">4.5</span>]
+     [<span class="fl">3.5</span>]
+     [<span class="fl">4.</span> ]
+     [<span class="fl">3.5</span>]
+     ...</code></pre></div>
+</blockquote>
+<p><a href="ex-1.py">code</a></p>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Napisz system rekomendacji filmów. Systemy takie są wykorzystywane przez różne firmy np. Netflix organizował konkurs na opracowanie algorytmu, który będzie przewidywał ocenę użytkownika (Netflix Prize). W zadaniu tym zaimplementujemy podobny system, który jednak zamiast przewidywania będzie na podstawie preferencji użytkownika rekomendował filmy, które najprawdopodobniej mu się spodobają. Istnieje wiele sposobów, aby taki system napisać, dla zainteresowanych bardziej tematem proponuje zobaczyć np. Recommendation Systems. W tym zadaniu wybierzemy w miarę prosty i łatwy do implementacji system rekomendacji. Sformalizujmy problem. Załóżmy, że mamy macierz oceny, gdzie wiersze będą reprezentować użytkowników a kolumny filmy np.:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Matrix</th>
+<th>Star Wars IV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Alice</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Bob</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>John</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Ada</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Patrząc na powyższą macierz widać, że kolumny pierwsza i druga mają podobne oceny stąd można wywnioskować, że filmy Matrix i Star Wars IV są (według użytkowników) podobne do siebie, czyli jeśli komuś podobał się Matrix to jest duża szansa, że będzie podobał mu się Star Wars i odwrotnie. Dlatego &quot;podobieństwo&quot; sformalizujemy przez wykorzystanie <a href="https://en.wikipedia.org/wiki/Cosine_similarity">podobieństwa cosinusowego</a>, czyli jeśli <span class="math inline">\(x = (x_1,x_2,\dots,x_n)\)</span> i <span class="math inline">\(y = (y_1, y_2, \dots, y_n)\)</span>, wówczas: <span class="math display">\[
+x_1y_1 = + x_ 2 y_2 + \dotsb + x_n y_n = x \cdot y = \lVert x \rVert \lVert y \lVert \cos(\theta)
+\]</span> gdzie <span class="math inline">\(\theta\)</span> jest kątem między wektorami. Wygodniej będzie nam normalizować wektory. Wówczas: <span class="math display">\[
+x_1 y_1 + x_2 y_2 + \dotsb x_n y_n = \cos(\theta)
+\]</span> Wtedy <span class="math inline">\(\cos(\theta)\)</span> reprezentuje podobieństwo jednego wektora do drugiego, czyli jak bardzo jedne oceny są bliskie innym. Dla naszej macierzy otrzymujemy:</p>
+<pre class="shell"><code>&gt;&gt;&gt; x = np.array([[5,0,2,5], [4,1,2,5]]).T
+&gt;&gt;&gt; x
+array([[5, 4],
+       [0, 1],
+       [2, 2],
+       [5, 5]])
+
+# obliczamy normę wektorów kolumnowych
+&gt;&gt;&gt; np.linalg.norm(x, axis=0)
+array([7.34846923, 6.78232998])
+
+# obliczamy znormalizowaną macierz
+&gt;&gt;&gt; x/np.linalg.norm(x, axis=0)
+array([[0.68041382, 0.58976782],
+       [0.        , 0.14744196],
+       [0.27216553, 0.29488391],
+       [0.68041382, 0.73720978]])
+
+# teraz weźmy własną ocenę filmów Matrix - 4, &gt; Star Wars IV - 3
+# dla wygody zapisujemy jako wektor kolumnowy
+&gt;&gt;&gt; y = [[4],[3]]
+
+# obliczamy podobieństwo cosinusowe z każdym &gt; użytkownikiem (skorzystamy z mnożenia &gt; macierzowego)
+&gt;&gt;&gt; z=np.dot(x/np.linalg.norm(x, axis=0), np.&gt; array(y)/np.linalg.norm(y))
+&gt;&gt;&gt; z
+array([[0.89819175],
+       [0.08846517],
+       [0.39466277],
+       [0.98665692]])
+
+# normalizujemy otrzymany wektor (będzie on &gt; reprezentował nasz profil filmowy)
+&gt;&gt;&gt; z/np.linalg.norm(z)
+array([[0.64422929],
+       [0.06345177],
+       [0.28307243],
+       [0.70768107]])</code></pre>
+<p>Teraz musimy obliczyć podobieństwo cosinusowe między naszym profilem a każdą kolumną macierzy, aby znaleźć takie filmy, które są podobne do naszego profilu. Sortujemy po otrzymanym podobieństwu i dostajemy rekomendacje. Wykorzystując nasz przykład, otrzymujemy</p>
+<pre class="shell"><code>&gt;&gt;&gt; X = x/np.linalg.norm(x, axis=0)
+&gt;&gt;&gt; Z = z/np.linalg.norm(z)
+&gt;&gt;&gt; np.dot(X.T, Z)
+array([[0.99690104],
+       [0.99448407]])</code></pre>
+<p>Stąd dostaliśmy większą rekomendacje dla filmu Matrix (<code>0.996</code>) niż Star Wars IV (<code>0.994</code>). Co było oczywiście oczekiwane skoro nasza ocena była Matrix - 4, a Star Wars IV - 3. Możemy, teraz przejść do właściwej części zadania. Napisz system rekomendacji filmów który będzie wykorzystywał dane MovieLens Latest Datasets. Dokładnie mniejszy zbiór (który dodatkowo trochę jeszcze zmniejszymy). Interesować, będą nas głównie dwa pliki <a href="data/movies.csv">movies.csv</a> oraz <a href="data/ratings.csv">ratings.csv</a>. W pliku <a href="data/ratings.csv">ratings.csv</a> mamy właściwie wszystkie dane, które będą nam potrzebne aby stworzyć macierz oceny. Ponieważ nawet w tym przypadku otrzymana macierz będzie dość duża dlatego w trakcie wczytywania danych z pliku proszę wziąć pod uwagę tylko te wiersze (z pliku <a href="data/ratings.csv">ratings.csv</a>) w których movie_id (druga kolumna) jest mniejsze od <span class="math inline">\(10000\)</span> (resztę ignorujemy). Dla aktualnych danych ze strony otrzymamy, wtedy macierz mniej więcej 611×9019. Przykładowy wynik dla wybranego profilu filmowego:</p>
+<pre class="shell"><code># wektor my_ratings odpowiada wektorowi y z przykładu wyżej
+my_ratings = np.zeros((9019,1))
+my_ratings[2571] = 5      # patrz movies.csv  2571 - Matrix
+my_ratings[32] = 4        # 32 - Twelve Monkeys
+my_ratings[260] = 5       # 260 - Star Wars IV
+my_ratings[1097] = 4
+my_ratings_norm = my_ratings/np.linalg.norm(my_ratings)
+
+...
+
+# otrzymujemy wynik rekomendacji po posortowaniu
+# (cos(θ), movies_id)
+(0.8675507828468105, 260)
+(0.8362098349303669, 2571)
+(0.8227451213877744, 1196)
+(0.8002349214247857, 1210)
+(0.7458504689612442, 1097)
+(0.7286029159733108, 32)
+(0.7265369898748615, 1198)
+(0.7095672455110477, 1240)
+(0.7029872178855614, 1270)</code></pre>
+<p>Otrzymane reprezentacje wyświetl w postaci nazw filmów, korzystając z <a href="data/movies.csv">movies.csv</a>. Uwaga: w rzeczywistych danych otrzymamy dużą liczbę zer, nawet całe kolumny, wtedy dostaniemy wartości <code>NaN</code> przy dzieleniu! Rozwiąż ten problem wykorzystując <code>np.nan_to_num(...)</code>.</p>
+</blockquote>
+<p><a href="ex-2.py">code</a></p>
+</body>
+</html>

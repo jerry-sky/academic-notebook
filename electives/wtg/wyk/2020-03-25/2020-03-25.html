@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="drzewa">Drzewa*</h1>
+<p><em>*odwołany z powodu koronawirusa</em><br />
+<em>(2020-03-25)</em></p>
+<h2 id="fakt-1"><span class="math inline">\(Fakt\)</span> #1</h2>
+<p>Załóżmy, że <span class="math inline">\(G\)</span> jest lasem o <span class="math inline">\(k\)</span> składowych.<br />
+Wówczas <span class="math inline">\(\lvert E(G)\rvert = \lvert V(G)\rvert - k\)</span>.</p>
+<h3 id="dowód-faktu-1">Dowód <span class="math inline">\(Faktu\)</span> #1</h3>
+<p>Niech <span class="math inline">\(X_1,\dots,X_k\)</span> będą składowymi spójnymi lasu <span class="math inline">\(G\)</span>. Wtedy <span class="math inline">\(G[X_i] = (X_i, E~\cap~[X_i]^2)\)</span> jest drzewem.<br />
+Zatem <span class="math display">\[
+\lvert E(G)\rvert = \sum_{i=1}^{k}\Big\lvert E\big(G[X_i]\big)\Big\rvert = \sum_{i=1}^{k}\bigg(\Big\lvert V\big(G[X_i]\big)\Big\rvert -1\bigg) = \dots = \big\lvert E(G) \big\rvert -k
+\]</span></p>
+<h2 id="twierdzenie-cayley"><span class="math inline">\(Twierdzenie\)</span> (Cayley)</h2>
+<p>Niech <span class="math inline">\(n \ge 2\)</span>.<br />
+Zbiór wszystkich drzew na zbiorze <span class="math inline">\(\{1,\dots\}\)</span> istnieje <span class="math inline">\(n^{n-2}\)</span> drzew.</p>
+<p>Istnieje wiele dowodów tego twierdzenia. Najbardziej obrazowym jest dowód używający ciągów Prüfera.</p>
+<h3 id="dowód-twierdzenia-cayleya-z-ciągami-prüfera">Dowód <span class="math inline">\(Twierdzenia\)</span> Cayleya z ciągami Prüfera</h3>
+<p>Pokażemy, że możemy przejść z drzewa mającego <span class="math inline">\(n\)</span> wierzchołków do ciągu <span class="math inline">\((a_1,a_2,\dots,a_{n-2})\)</span> gdzie <span class="math inline">\(\forall_{i\in\{1\dots n-2\}}~a_i \in \{1\dots n\}\)</span>. Jeśli pokażemy taką zależność udowodnimy powyższe twierdzenie jako, że takich ciągów jest dokładnie <span class="math inline">\(n^{n-2}\)</span>.</p>
+<p>Dla <span class="math inline">\(n\in \{1,2\}\)</span> jest OK.</p>
+<p>Mamy drzewo <span class="math inline">\(T\)</span> posiadające <span class="math inline">\(n\)</span> wierzchołków oraz <em>(narazie)</em> pusty ciąg <span class="math inline">\(P\)</span>.</p>
+<p>Niech <span class="math inline">\(b_1\)</span> będzie najmniejszą liczbą będącą label-em liścia drzewa <span class="math inline">\(T\)</span>, za to <span class="math inline">\(a_1\)</span> będzie liczbą będącą label-em sąsiada tego wierzchołka z label-em <span class="math inline">\(b_1\)</span>.</p>
+<p>Usuwamy wierzchołek z label-em <span class="math inline">\(b_1\)</span> i krawędź łączącą go z resztą <span class="math inline">\(T\)</span> i do ciągu <span class="math inline">\(P\)</span> append-ujemy <span class="math inline">\(a_1\)</span>.</p>
+<p>Powtarzamy proces, aż nie otrzymamy <span class="math inline">\(P = (a_1,a_2,\dots,a_{n-2})\)</span> a drzewo <span class="math inline">\(T\)</span> będzie <span class="math inline">\(K_2\)</span> (będzie miało tylko dwa wierzchołki).</p>
+<p>Teraz w drugą stronę.</p>
+<p>Mamy ciąg <span class="math inline">\(P = (a_1,a_2,\dots,a_{n-2})\)</span> oraz pusty graf <span class="math inline">\(T\)</span>.</p>
+<p>Niech <span class="math inline">\(b_1\)</span> będzie najmniejszą liczbą <span class="math inline">\(\in \{1\dots n\}\)</span>, która nie występuje ciągu <span class="math inline">\(P\)</span> i połączmy ze sobą wierzchołki <span class="math inline">\(a_1\)</span> oraz <span class="math inline">\(b_1\)</span>.</p>
+<p>Usuwamy <span class="math inline">\(a_1\)</span> z <span class="math inline">\(P\)</span> oraz usuwamy <span class="math inline">\(b_1\)</span> z naszego alfabetu liczb <span class="math inline">\(A=\{1\dots n\}\)</span>.<br />
+Czyli teraz <span class="math inline">\(A = \{1\dots n\} \setminus \{b_1\}\)</span>.</p>
+<p>Powtarzamy proces aż nie wykorzystamy wszystkich elementów ciągu <span class="math inline">\(P\)</span>.</p>
+<p>Zatem, pokazaliśmy proces przejścia z drzewa do ciągu Prüfera oraz na odwrót co kończy dowód.<br />
+<span class="math inline">\(\blacksquare\)</span></p>
+<p>Bardzo obrazowo i klarownie dowód został przedstawiony przez dr Sarada Herke <a href="https://www.youtube.com/watch?v=Ve447EOW8ww">tu</a> oraz <a href="https://www.youtube.com/watch?v=utfW-xsDp3Y">tutaj</a>.</p>
+<h2 id="definicje-rzędy-wierzchołków"><span class="math inline">\(Definicje\)</span> rzędy wierzchołków</h2>
+<p>Mamy graf <span class="math inline">\(G\)</span>.</p>
+<h3 id="minimalny-rząd-wierzchołka">Minimalny rząd wierzchołka</h3>
+<p><span class="math inline">\(\delta(G) = \min\{\deg(x):~x \in V(G)\}\)</span> ### Średni rząd wierzchołka <span class="math inline">\(\overline{d}(G) = \frac{\sum_{x\in V(G)}\deg(x)}{\lvert V(G) \rvert}\)</span> ### Maksymalny rząd wierzchołka <span class="math inline">\(\Delta(G) = \max\{\deg(x):~x\in V(G)\}\)</span></p>
+<p>Oczywiście mamy: <span class="math display">\[
+\delta(G) \le \overline{d}(G) \le \Delta(G)
+\]</span></p>
+<h2 id="definicje-w-grafie-spójnym"><span class="math inline">\(Definicje\)</span> w grafie spójnym</h2>
+<p>Mamy spójny graf <span class="math inline">\(G\)</span>.</p>
+<h3 id="ekscentryczność-wierzchołka">Ekscentryczność wierzchołka</h3>
+<p><span class="math inline">\(v\in V(G)\)</span><br />
+<span class="math inline">\(\mathrm{ecc}(v) = \max\big\{d(v,y):~y \in V(G)\big\}\)</span></p>
+<p><a href="#algorytm-wyznaczania-ekscentryczno%c5%9bci-wierzcho%c5%82ka">Algorytm wyznaczania <span class="math inline">\(\mathrm{ecc}\)</span> wierzchołka</a></p>
+<h3 id="promień-grafu">Promień grafu</h3>
+<p><span class="math inline">\(\min\big\{\mathrm{ecc}(x):~x \in V(G)\big\}\)</span></p>
+<h3 id="średnica-grafu">Średnica grafu</h3>
+<p><span class="math inline">\(\max\big\{d(x,y):~x,y \in V(G)\big\}\)</span></p>
+<h2 id="algorytm-wyznaczania-ekscentryczności-wierzchołka">Algorytm wyznaczania ekscentryczności wierzchołka</h2>
+<p>Zakładamy, że dla każdego wierzchołka <span class="math inline">\(x\)</span> mamy metodę wyznaczania listy jego sąsiadów <span class="math inline">\(N(x)\)</span>.</p>
+<p><code>INPUT  :</code> <span class="math inline">\(v \in V\)</span><br />
+<code>OUTPUT :</code> <span class="math inline">\(\mathrm{ecc}(v)\)</span></p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">L <span class="op">=</span> <span class="dv">0</span>
+visited <span class="op">=</span> [v]
+active  <span class="op">=</span> N(v)
+<span class="cf">while</span> active <span class="op">!=</span> []:
+  L <span class="op">+=</span> <span class="dv">1</span> <span class="co"># (1)</span>
+  visited <span class="op">+=</span> active
+  active <span class="op">=</span> [y <span class="cf">for</span> x <span class="kw">in</span> active <span class="cf">for</span> y <span class="kw">in</span> N(x) <span class="cf">if</span> y <span class="kw">not</span> <span class="kw">in</span> visited]
+
+<span class="cf">return</span> L</code></pre></div>
+<p>Zauważmy, że po operacji <code>(1)</code> mamy <code>active</code> <span class="math inline">\(=\{x \in V(G):~d(v,x) = L\}\)</span> przez cały czas działania pętli.</p>
+<p>Metodę tę nazywamy metodą <em>„przeszukiwania grafu wszerz”</em>.</p>
+<p><img src="ecc-1.png" alt="ecc-1" /> <img src="ecc-2.png" alt="ecc-2" /> <img src="ecc-3.png" alt="ecc-3" /></p>
+<p>Powyższa metoda została opisana również na <a href="../../../../4th-semester/aisd/wyk/2020-05-18/breadth-first-search">wykładzie AiSD</a></p>
+</body>
+</html>

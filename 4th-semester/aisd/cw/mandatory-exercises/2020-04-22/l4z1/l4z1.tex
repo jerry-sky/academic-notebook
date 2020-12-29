@@ -1,0 +1,35 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+
+\linespread{1.3}
+
+\title{Lista 4}
+\author{Zadanie 1}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+Rozważając jakikolwiek algorytm szukający elementu $x$ mamy do czynienia z pewną liczbą porównań pomiędzy elementem szukanym $x$ oraz elementami tablicy wejściowej $A$.
+
+W tym przypadku wiemy, że $A$ jest już posortowana oraz jesteśmy w stanie stwierdzić w stałym czasie czy dana liczba $z \le A[i]$, czy też $z \ge A[i]$ dla wszystkich $i \in \{1..n\}$. Korzystając tylko z takich operacji porównań chcemy sie dowiedzieć czy dany element $x$ należy do tablicy $A$. Dzielimy więc tablicę $A$ na dwie połowy $A\left[1\dots \left\lfloor \frac{n}{2} \right\rfloor\right]$ oraz $A\left[\left(\left\lfloor \frac{n}{2} \right\rfloor +1\right) \dots n\right]$ i wybieramy lewą bądź prawą stronę na podstawie wyniku nierówności $x \le A[i]$ i powtarzamy rekurencyjnie ten krok $\lg n$ razy. Po zredukowaniu tablicy $A$ do tablicy jednoelementowej wynik równości $A[0]$ \texttt{==} $x$ jest rozwiązaniem zadanego problemu.
+
+Żądany wynik osiągniemy w czasie $\Omega(\lg n)$ ponieważ dzielimy daną połówkę tablicy (bądź początkową tablicę) na kolejne połówki i robimy tak do momentu kiedy nie mamy jednego elementu czyli $\lg n$ razy.
+
+Nie biorąc pod uwagę sposobów o podobnej idei do algorytmu \href{https://en.wikipedia.org/wiki/Bogosort}{BogoSort} nie ma lepszego sposobu na znalezienie danego elementu w posortowanej tablicy, dlatego minimalny czas na znalezienie elementu $x$ w posortowanej tablicy $A$ zajmie przynajmniej $\Omega(\lg n)$.
+
+\end{document}

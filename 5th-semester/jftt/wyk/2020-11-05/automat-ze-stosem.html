@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="automat-ze-stosem-pda">Automat ze stosem (PDA)</h1>
+<p><em>(2020-11-05)</em></p>
+<ul>
+<li><a href="#1-def-pda">1. DEF: PDA</a>
+<ul>
+<li><a href="#11-def-opis-chwilowy-automatu">1.1. DEF: Opis chwilowy automatu</a></li>
+<li><a href="#12-def-relacja-przejścia-w-jednym-kroku-vdash_m">1.2. DEF: Relacja przejścia w jednym kroku <span class="math inline">\(\vdash_M\)</span></a></li>
+<li><a href="#13-sposoby-akceptowania-słów-języka">1.3. Sposoby akceptowania słów języka</a></li>
+</ul></li>
+<li><a href="#2-przykład">2. Przykład</a></li>
+<li><a href="#3-przykład">3. Przykład</a></li>
+<li><a href="#4-deterministyczny-pda">4. Deterministyczny PDA</a></li>
+<li><a href="#5-twierdzenie-język-bezkontekstowy-implies-pda">5. Twierdzenie: język bezkontekstowy <span class="math inline">\(\implies\)</span> PDA</a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+<li><a href="#52-przykład">5.2. Przykład</a></li>
+</ul></li>
+<li><a href="#6-twierdzenie-pda-implies-język-bezkontekstowy">6. Twierdzenie: PDA <span class="math inline">\(\implies\)</span> język bezkontekstowy</a>
+<ul>
+<li><a href="#61-d-d">6.1. D-d</a></li>
+<li><a href="#62-przykład">6.2. Przykład</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="def-pda">1. DEF: PDA</h2>
+<p>Automat z dodatkową pamięcią w postaci stosu (widać tylko ostatnio włożony symbol).</p>
+<p>Automatem ze stosem nazywamy <span class="math inline">\(M = (Q,\Sigma, \Gamma, \delta, q_0, Z_0, F)\)</span>, gdzie - <span class="math inline">\(Q\)</span> — skończony zbiór stanów - <span class="math inline">\(\Sigma\)</span> — alfabet wejściowy - <span class="math inline">\(\Gamma\)</span> — alfabet stosowy - <span class="math inline">\(q_0 \in Q\)</span> — stan początkowy - <span class="math inline">\(Z_0 \in \Gamma\)</span> — symbol początkowy na stosie - <span class="math inline">\(F \in Q\)</span> — zbiór stanów akceptujących (jeśli <span class="math inline">\(F = \emptyset\)</span> to akceptujemy przez pusty stos) - <span class="math inline">\(\delta\)</span> funkcja przejścia postaci: <span class="math inline">\(\delta: Q\times\left( \Sigma \cup \{\epsilon\} \right) \times \Gamma \to 2^{Q \times \Gamma^*}\)</span></p>
+<h3 id="def-opis-chwilowy-automatu">1.1. DEF: Opis chwilowy automatu</h3>
+<p>— to trójka <span class="math inline">\((q, \alpha, \gamma)\)</span>, gdzie - <span class="math inline">\(q \in Q\)</span> — stan automatu - <span class="math inline">\(\alpha \in \Sigma^*\)</span> — nieprzeczytane jeszcze wejście - <span class="math inline">\(\gamma \in \Gamma^*\)</span> — zawartość stosu (szczyt stosu z lewej strony)</p>
+<h3 id="def-relacja-przejścia-w-jednym-kroku-vdash_m">1.2. DEF: Relacja przejścia w jednym kroku <span class="math inline">\(\vdash_M\)</span></h3>
+<p><span class="math inline">\(\vdash^*\)</span> — zwrotne i przechodnie domknięcie <span class="math inline">\(\vdash\)</span>,<br />
+<span class="math inline">\(\vdash^i\)</span> — <span class="math inline">\(i\)</span>-krotne złożenie <span class="math inline">\(\vdash\)</span>.</p>
+<ul>
+<li><span class="math inline">\((q, a\alpha, Z_\gamma) \vdash_M (p_i, \alpha, \gamma_i\gamma)\)</span> jeśli istnieje przejście <span class="math inline">\(\delta(q, a, Z) = \left\{ (p_1,\gamma_1), \dots, (p_m, \gamma_m) \right\}\)</span> i wybraliśmy <span class="math inline">\(i\)</span>-tą możliwość.</li>
+<li><span class="math inline">\((q, \alpha, Z_\gamma) \vdash_M (p_i, \alpha, \gamma_i\gamma)\)</span> jeśli istnieje przejście <span class="math inline">\(\delta(q, \epsilon, Z) = \left\{ (p_1, \gamma_1), \dots, (p_m, \gamma_m) \right\}\)</span> i wybraliśmy <span class="math inline">\(i\)</span>-tą możliwość.</li>
+</ul>
+<hr />
+<h3 id="sposoby-akceptowania-słów-języka">1.3. Sposoby akceptowania słów języka</h3>
+<ol style="list-style-type: decimal">
+<li><p>Język Akceptowany przez PDA <span class="math inline">\(M\)</span> przy pustym stosie (<span class="math inline">\(F = \emptyset\)</span>) to <span class="math display">\[
+N(M) = \left\{ w \in \Sigma^*: \exists p\in Q \enspace (q_0, w, Z_0) \vdash^* (p, \epsilon, \epsilon) \right\}
+\]</span></p></li>
+<li><p>Język akceptowany przez PDA <span class="math inline">\(M\)</span> przez stan końcowy to <span class="math display">\[
+L(M) = \left\{ w \in \Sigma^*: \exists p\in F \enspace \exists \gamma\in \Gamma^* \enspace (q, w, Z_0) \vdash^* (p, \epsilon, \gamma) \right\}
+\]</span></p></li>
+</ol>
+<p><strong>Oba sposoby akceptowania są równoważne.</strong></p>
+<hr />
+<h2 id="przykład">2. Przykład</h2>
+<p><em>Palindrom z gramatyką <span class="math inline">\(S \to 0S0|1S1|\#\)</span></em></p>
+<ol style="list-style-type: decimal">
+<li>Automat startuje z pustym stosem i w stanie <span class="math inline">\(q_1\)</span>.</li>
+<li>Jeżeli jesteśmy w stanie <span class="math inline">\(q_1\)</span> i na wejściu widzimy <span class="math inline">\(a \in \{0,1\}\)</span> to wstawiamy <span class="math inline">\(a\)</span> na stos, pozostajemy w stanie <span class="math inline">\(q_1\)</span> i idziemy do następnego symbolu wejściowego.</li>
+<li>Jeżeli jesteśmy w stanie <span class="math inline">\(q_1\)</span> i na wejściu widzimy <span class="math inline">\(\#\)</span> to przechodzimy do stanu <span class="math inline">\(q_2\)</span> i idziemy do następnego symbolu wejściowego.</li>
+<li>Jeżeli jesteśmy w stanie <span class="math inline">\(q_2\)</span> i na wejściu widzimy <span class="math inline">\(a \in \{0,1\}\)</span> i na stosie jest także <span class="math inline">\(a\)</span> to pozostajemy w stanie <span class="math inline">\(q_2\)</span>, ściągamy <span class="math inline">\(a\)</span> ze stosu i idziemy do następnego symbolu wejściowego.</li>
+<li>Jeżeli jesteśmy w stanie <span class="math inline">\(q_2\)</span>, skończyliśmy czytać wejście i stos jest pusty, to akceptujemy słowo wejściowe.</li>
+<li>W każdym innym przypadku odrzucamy słowo wejściowe.</li>
+</ol>
+<hr />
+<h2 id="przykład-1">3. Przykład</h2>
+<p>Mamy maszynę <span class="math inline">\(M = \left( \{q_1,q_2\}, \{0,1\}, \{A,B,Z\}, \delta, q_1, Z, \emptyset \right)\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\delta\)</span></th>
+<th></th>
+<th><span class="math inline">\((0, A)\)</span></th>
+<th><span class="math inline">\((0, B)\)</span></th>
+<th><span class="math inline">\((0, Z)\)</span></th>
+<th><span class="math inline">\((1, A)\)</span></th>
+<th><span class="math inline">\((1, B)\)</span></th>
+<th><span class="math inline">\((1, Z)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(q_1\)</span></td>
+<td></td>
+<td><span class="math inline">\((q_1, AA)\)</span></td>
+<td><span class="math inline">\((q_1, AB)\)</span></td>
+<td><span class="math inline">\((q_1, A)\)</span></td>
+<td><span class="math inline">\((q_1, BA)\)</span></td>
+<td><span class="math inline">\((q_1, BB)\)</span></td>
+<td><span class="math inline">\((q_1, B)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_2\)</span></td>
+<td></td>
+<td><span class="math inline">\((q_2, \epsilon)\)</span></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span class="math inline">\((q_2, \epsilon)\)</span></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Oczywiście mamy język <span class="math inline">\(N(M) = \left\{ ww^R: w \in \{0,1\}^* \right\}\)</span>.</p>
+<hr />
+<h2 id="deterministyczny-pda">4. Deterministyczny PDA</h2>
+<p>PDA może być deterministyczny, jeśli w każdym przypadku możemy wykonać co najwyżej jedno przejście (czyli może też być zero przejść w przeciwieństwie do <a href="../2020-10-08/języki-formalne-wprowadzenie.md#2-deterministyczny-automat-skończony-dfa">zwykłego DFA</a>): 1. <span class="math inline">\(\forall q \in Q \enspace \forall Z \in \Gamma \enspace \delta(q, \epsilon, Z) \neq \emptyset \implies \forall a \in \Sigma \enspace \delta(q,a,Z) = \emptyset\)</span> 2. <span class="math inline">\(\forall q \in Q \enspace \forall a \in \Sigma \cup \{\epsilon\} \enspace \forall Z \in \Gamma \enspace \left\lvert \delta(q, a, Z) \right\rvert \le 1\)</span></p>
+<p><strong>Niestety takie DPDA są słabsze od PDA.</strong><br />
+<strong>Np. język z <a href="#3-przykład">przykładu</a> nie jest rozpoznawalny przez żaden DPDA.</strong></p>
+<hr />
+<h2 id="twierdzenie-język-bezkontekstowy-implies-pda">5. Twierdzenie: język bezkontekstowy <span class="math inline">\(\implies\)</span> PDA</h2>
+<p><em>Jeśli <span class="math inline">\(L\)</span> jest językiem bezkontekstowym to istnieje PDA <span class="math inline">\(M\)</span> taki, że <span class="math inline">\(L = N(M)\)</span>.</em></p>
+<h3 id="d-d">5.1. D-d</h3>
+<p>Załóżmy, że <span class="math inline">\(L\)</span> nie zawiera <span class="math inline">\(\epsilon\)</span> i jest zdefiniowany przez gramatykę bezkontekstową w <a href="../2020-10-29/gramatyki-bezkontekstowe.md#13-postać-normalna-greibach">postaci Greibach</a> <span class="math inline">\(G = (N, T, P, S)\)</span>. Definiujemy PDA <span class="math inline">\(M\)</span> następująco: - <span class="math inline">\(M = \left( \{q\}, T, N, \delta, q, S, \emptyset \right)\)</span> - <span class="math inline">\(\delta(q, a, A) = \left\{ (q, \gamma): (A \to a\gamma) \in P \right\}\)</span>.</p>
+<p><span class="math inline">\(M\)</span> symuluje wprowadzenie lewostronne gramatyki <span class="math inline">\(G\)</span>. Ponieważ <span class="math inline">\(G\)</span> jest typu Greibach każdy kolejny napis w wyprowadzeniu lewostronnym ma formę <span class="math inline">\(x\alpha\)</span>, gdzie <span class="math inline">\(x \in T^*\)</span> oraz <span class="math inline">\(\alpha \in N^*\)</span>. Maszyna <span class="math inline">\(M\)</span> przechowuje <span class="math inline">\(\alpha\)</span> na stosie po przeczytaniu przedrostka <span class="math inline">\(x\)</span>.</p>
+<p>Teraz d-d indukcyjny po długości wyprowadzenia (liczby kroków), że <span class="math display">\[
+S \underset{G}{\Rightarrow}^* \iff (q, x, S) \underset{M}{\vDash}^* (q, \epsilon, \epsilon)
+\]</span></p>
+<hr />
+<h3 id="przykład-2">5.2. Przykład</h3>
+<p><span class="math inline">\(G = \left( \{A,B\}, \{a,b\}, \{A \to aAB|aB, B \to b\}, A \right)\)</span></p>
+<p>A więc <span class="math inline">\(M = \left( \{q\}, \{a,b\}, \{A,B\}, \delta, q, A, \emptyset \right)\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\delta\)</span></th>
+<th></th>
+<th><span class="math inline">\((a,A)\)</span></th>
+<th><span class="math inline">\((a, B)\)</span></th>
+<th><span class="math inline">\((b, A)\)</span></th>
+<th><span class="math inline">\((b, B)\)</span></th>
+<th><span class="math inline">\((\epsilon, A)\)</span></th>
+<th><span class="math inline">\((\epsilon, B)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(q\)</span></td>
+<td></td>
+<td><span class="math inline">\((q, AB), (q, B)\)</span></td>
+<td>—</td>
+<td>—</td>
+<td><span class="math inline">\((q, \epsilon)\)</span></td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Czyli na przykład mamy:<br />
+<span class="math inline">\(A \Rightarrow aAB \Rightarrow aaBB \Rightarrow aabB \Rightarrow aabb\)</span>.</p>
+<p>I właśnie teraz równoważnie:<br />
+<span class="math inline">\((q, aabb, A) \vdash (q, abb, AB) \vdash (q, bb, BB), \vdash (q, b, B) \vdash (q, \epsilon, \epsilon)\)</span>.</p>
+<hr />
+<h2 id="twierdzenie-pda-implies-język-bezkontekstowy">6. Twierdzenie: PDA <span class="math inline">\(\implies\)</span> język bezkontekstowy</h2>
+<p><em>Jeśli <span class="math inline">\(L = N(M)\)</span> dla PDA <span class="math inline">\(M\)</span> to <span class="math inline">\(L\)</span> jest językiem bezkontekstowym.</em></p>
+<h3 id="d-d-1">6.1. D-d</h3>
+<p>Weźmy PDA <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, \emptyset)\)</span>. Konstruujemy gramatykę bezkontekstową <span class="math inline">\(G = (N, \Sigma, P, S)\)</span>, gdzie - <span class="math inline">\(N\)</span> — zbiór obiektów postaci <span class="math inline">\([q, A, p]\)</span> (<span class="math inline">\(p, q \in Q, A \in \Gamma\)</span>) oraz nowy symbol <span class="math inline">\(S\)</span> - <span class="math inline">\(P\)</span> — zbiór produkcji postaci: - <span class="math inline">\(S \to [q_0, Z_0, q]\)</span> dla każdego <span class="math inline">\(q \in Q\)</span> - <span class="math inline">\([q, A, q_{m+1}] \to a[q_1, B_1, q_2] [q_2, B_2, q_3] \dots [q_m, B_m, q_{m+1}]\)</span> dla dowolnych <span class="math inline">\(q, q_1, \dots, q_{m+1} \in Q\)</span>, dla każdego <span class="math inline">\(a \in \Sigma \cup \{\epsilon\}\)</span> i dowolnych <span class="math inline">\(A, B_1, \dots, B_m \in \Gamma\)</span> takich, że <span class="math inline">\((q_1, B_1, \dots, B_m) \in \delta(q, a, A)\)</span> - <span class="math inline">\([q, A, p] \to a\)</span> jeśli <span class="math inline">\((p, \epsilon) \in \delta(q, a, A)\)</span>.</p>
+<p>Wyprowadzenie lewostronne w <span class="math inline">\(G\)</span> symuluje ruchy <span class="math inline">\(M\)</span> na wejściu <span class="math inline">\(x\)</span>.</p>
+<p><span class="math inline">\([q, A, p]\)</span> wyprowadza <span class="math inline">\(x \iff M\)</span> będąc w stanie <span class="math inline">\(q\)</span> i mając na stosie <span class="math inline">\(A \alpha\)</span> po wczytaniu <span class="math inline">\(x\)</span> znajdzie się w stanie <span class="math inline">\(p\)</span>, na stosie będzie <span class="math inline">\(\alpha\)</span> i <span class="math inline">\(\alpha\)</span> nie była zmieniana i czytana w tym czasie.</p>
+<p>Teraz dowód indukcyjny po liczbie kroków, że <span class="math display">\[
+[q, A, p] \underset{G}{\Rightarrow}^* x \iff (q, x, A) \underset{M}{\vdash}^* (p, \epsilon, \epsilon)
+\]</span></p>
+<hr />
+<h3 id="przykład-3">6.2. Przykład</h3>
+<p>Mamy <span class="math inline">\(M = \left( \{p,q\}, \{a,b\}, \{X,Z\}, \delta, p, Z, \emptyset \right)\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\delta\)</span></th>
+<th></th>
+<th><span class="math inline">\((a, X)\)</span></th>
+<th><span class="math inline">\((a, Z)\)</span></th>
+<th><span class="math inline">\((b, X)\)</span></th>
+<th><span class="math inline">\((b, Z)\)</span></th>
+<th><span class="math inline">\((\epsilon, X)\)</span></th>
+<th><span class="math inline">\((\epsilon, Z)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p\)</span></td>
+<td></td>
+<td><span class="math inline">\((p, XX)\)</span></td>
+<td><span class="math inline">\((p, X)\)</span></td>
+<td><span class="math inline">\((q, \epsilon)\)</span></td>
+<td>—</td>
+<td>—</td>
+<td><span class="math inline">\((q, \epsilon)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q\)</span></td>
+<td></td>
+<td>—</td>
+<td>—</td>
+<td><span class="math inline">\((q, \epsilon)\)</span></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Możemy powyższą tabelkę zapisać w następujący sposób:<br />
+<img src="pda-to-j.bezkontekstowy-1.png" width=400px/></p>
+<p>Tworzymy produkcje:<br />
+<img src="pda-to-j.bezkontekstowy-2.png" width=600px/></p>
+<p>i od razu je „przetwarzamy” na podstawie funkcji przejścia <span class="math inline">\(\delta\)</span> i patrząc na <a href="#61-d-d">dowód twierdzenia</a>.<br />
+Następnie usuwamy niepotrzebne elementy, które albo się zapętlają, albo prowadzą do nikąd.</p>
+<hr />
+</body>
+</html>

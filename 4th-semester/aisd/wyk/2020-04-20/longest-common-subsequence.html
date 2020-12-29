@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="longest-common-subsequence-lcs">Longest Common Subsequence (LCS)</h1>
+<p><em>(2020-04-20)</em></p>
+<h2 id="problem">Problem</h2>
+<p>Znalezienie najdłuższego wspólnego podciągu dwóch ciągów <span class="math inline">\(x[1\dots m],~y[1\dots n]\)</span>.</p>
+<h2 id="przykład">Przykład</h2>
+<p>Mamy <span class="math inline">\(x = (A,B,C,B,D,A,B)\)</span> oraz <span class="math inline">\(y = (B,D,C,A,B,A)\)</span>.<br />
+Najdłuższym wspólnym podciągiem tych ciągów są <span class="math inline">\(\text{BDAB}\)</span>, <span class="math inline">\(\text{BCAB}\)</span> oraz <span class="math inline">\(\text{BCBA}\)</span>.</p>
+<h2 id="brute-force">Brute force</h2>
+<p>Dla każdego podciągu ciągu <span class="math inline">\(x\)</span> sprawdź czy taki istnieje w ciągu <span class="math inline">\(y\)</span> i zapamiętaj najdłuższy do tej pory znaleziony.<br />
+Liczba możliwych podciągów ciągu <span class="math inline">\(x\)</span> o długości <span class="math inline">\(m\)</span> to <span class="math inline">\(2^m\)</span>. Sprawdzenie czy jakiś podciąg <span class="math inline">\(x\)</span> występuje w <span class="math inline">\(y\)</span> długości <span class="math inline">\(n\)</span> zajmuje <span class="math inline">\(O(n)\)</span>, zatem złożoność obliczeniowa takiego algorytmu to <span class="math inline">\(O(n2^m)\)</span> — wykładnicza złożoność obliczeniowa.</p>
+<h2 id="podejście-programowania-dynamicznego">Podejście programowania dynamicznego</h2>
+<p>Musimy zdefiniować pod-problemy, ich kolejność oraz relację pomiędzy nimi, co da nam DAG-a odpowiadającego problemowi LCS. Podobnie jak w poprzednio rozpatrywanych problemach, tutaj również zaczniemy od znalezienia długości najdłuższego wspólnego podciągu <span class="math inline">\(|\mathrm{LCS}(x,y)|\)</span>, a następnie podamy procedurę odtworzenia <span class="math inline">\(\mathrm{LCS}(x,y)\)</span>.</p>
+<p>Niech <span class="math inline">\(c(i,j) = |\mathrm{LCS}(x[1\dots i], y[\dots j])|\)</span> będzie długością najdłuższego wspólnego podciągu prefiksów ciągów <span class="math inline">\(x\)</span> oraz <span class="math inline">\(y\)</span>. Dla każdego <span class="math inline">\(i = 1,\dots,m\)</span> oraz <span class="math inline">\(j = 1,\dots,n: c(i,j)\)</span> będą pod-problemami, a <span class="math inline">\(c(m,n)\)</span> będzie długością najdłuższego wspólnego pociągu ciągów <span class="math inline">\(x\)</span> oraz <span class="math inline">\(y\)</span>.</p>
+<p>Zauważmy, że <span class="math display">\[
+c(i,j) =
+\begin{cases}
+  0 &amp; i = 0 \lor j = 0\\
+  c(i - 1, j - 1) + 1 &amp; x[i] = y[j]\\
+  \max\{~c(i-1, j),~c(i,j-1)~\} &amp; \text{otherwise}
+\end{cases}
+\]</span> Powyższy fakt ma dowód pochodzący z <a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">rozdziału 15.4 książki Introduction to algorithms by CLRS</a>:</p>
+<h3 id="theorem-optimal-substructure-of-an-lcs">Theorem Optimal substructure of an LCS</h3>
+<p>Let <span class="math inline">\(X = \langle x_1,x_2,\dots,x_m\rangle\)</span> and <span class="math inline">\(Y = \langle y_1,y_2,\dots,y_n\rangle\)</span> be sequences and let <span class="math inline">\(Z = \langle z_1,z_2,\dots,z_k\rangle\)</span> be any LCS of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p><em>A prefix of <span class="math inline">\(A\)</span> is noted as <span class="math inline">\(A_t\)</span>. <span class="math inline">\(A_t\)</span> contains first <span class="math inline">\(t\)</span> elements of <span class="math inline">\(A\)</span>.</em></p>
+<ol style="list-style-type: decimal">
+<li>If <span class="math inline">\(x_m = y_n\)</span>, then <span class="math inline">\(z_k = x_m = y_n\)</span> and <span class="math inline">\(Z_{k-1}\)</span> is an LCS of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y_{n-1}\)</span>.</li>
+<li>If <span class="math inline">\(x_m \neq y_n\)</span>, then <span class="math inline">\(z_k \neq x_m\)</span> implies that <span class="math inline">\(Z\)</span> in an LCS of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y\)</span>.</li>
+<li>If <span class="math inline">\(x_m \neq y_n\)</span>, then <span class="math inline">\(z_k \neq y_n\)</span> implies that <span class="math inline">\(Z\)</span> is an LCS of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y_{n-1}\)</span>.</li>
+</ol>
+<p><strong>Proof</strong>: 1. If <span class="math inline">\(z_k \neq x_m\)</span>, then we could append <span class="math inline">\(x_m = y_n\)</span> to <span class="math inline">\(Z\)</span> to obtain a common subsequence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of length <span class="math inline">\(k+1\)</span>, contradicting the supposition that <span class="math inline">\(Z\)</span> is a <em>longest</em> common subsequence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Thus, we must have <span class="math inline">\(z_k = x_m = y_n\)</span>. Now, the prefix <span class="math inline">\(Z_{k-1}\)</span> is a length-<span class="math inline">\((k-1)\)</span> common subsequence of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y_{n-1}\)</span>. We wish to show that is in an LCS. Suppose for the puprose of contradiction that there exists a common subsequence <span class="math inline">\(W\)</span> of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y_{n-1}\)</span> with length greater than <span class="math inline">\(k-1\)</span>. Then appending <span class="math inline">\(x_m = y_n\)</span> to <span class="math inline">\(W\)</span> produces a common subsequence of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> whose length is greater than <span class="math inline">\(k\)</span>, which is a contradiction [with the supposition that <span class="math inline">\(Z\)</span> is the LCM of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>]. 2. If <span class="math inline">\(z_k \neq x_m\)</span>, then <span class="math inline">\(Z\)</span> is a common subsequence of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y\)</span>. If there were a common subsequence <span class="math inline">\(W\)</span> of <span class="math inline">\(X_{m-1}\)</span> and <span class="math inline">\(Y\)</span> with length greater than <span class="math inline">\(k\)</span>, then <span class="math inline">\(W\)</span> would also be a common sequence of <span class="math inline">\(X_m\)</span> and <span class="math inline">\(Y\)</span>, contradicting assumption is an LCS of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. 3. The proof is symmetric to <code>2.</code>.</p>
+<h3 id="kolejność-pod-problemów">Kolejność pod-problemów</h3>
+<p>Fakt ten określa nam kolejność pod-problemów <span class="math inline">\(c(i -1, j -1)\)</span>, <span class="math inline">\(c(i-1,j)\)</span>, <span class="math inline">\(c(i,j-1)\)</span> są w porządku przed problemem <span class="math inline">\(c(i,j)\)</span>, oraz relację pomiędzy nimi.<br />
+Możemy zatem zauważyć, że DAG odpowiadający problemowi LCS jest kratą z wierzchołkami <span class="math inline">\(c(i,j)\)</span> i krawędziami <span class="math inline">\(c(i-1,j-1) \rightarrow c(i,j)\)</span>, <span class="math inline">\(c(i,j-1) \rightarrow c(i,j)\)</span> oraz <span class="math inline">\(c(i-1,j) \rightarrow c(i,j)\)</span> dla <span class="math inline">\(i = 0,\dots,m\)</span> oraz <span class="math inline">\(j = 0,\dots,n\)</span>.</p>
+<p>Algorytm obliczający długość najdłuższego wspólnego podciągu sprowadza się do zaimplementowania obliczania <span class="math inline">\(c(i,j)\)</span> w porządku określonym przez stworzony DAG (zapamiętując rozwiązania pod-problemów) oraz wykorzystując relację pomiędzy pod-problemami opisaną w powyższym fakcie.</p>
+<h3 id="pseudokod">Pseudokod</h3>
+<pre><code>LCS-Length(X,Y):
+  m = X.length
+  n = Y.length
+  let b[1..m, 1..n] and c[0..,0..n] be new tables
+
+  for i = 1 to m:
+    c[i,0] = 0
+  for j = 0 to n:
+    c[0,j] = 0
+  for i = 1 to m:
+    for j = 1 to n:
+      if x_i == y_j:
+        c[i,j] = c[i-1, j-1] + 1
+        b[i,j] = „↖”
+      elif c[i-1, j] ≥ c[i, j-1]:
+        c[i,j] = c[i-1,j]
+        b[i,j] = „↑”
+      else:
+        b[i,j] = „←”
+
+  return c and b</code></pre>
+<p><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Source (Chapter 15.4)</a></p>
+<p>Złożoność obliczeniowa tak zdefiniowanego algorytmu wynosi <span class="math inline">\(O(n\cdot m)\)</span>: mamy <span class="math inline">\(n\cdot m\)</span> pod-problemów, każdy rozwiązujemy w czasie stałym (wyniki to z relacji pomiędzy pod-problemami) jeśli mamy już rozwiązane pod-problemy, które występują wcześniej w określonym porządku.</p>
+<h2 id="odtwarzanie-lcs">Odtwarzanie LCS</h2>
+<p>W celu odtworzenia jednego ze zbioru najdłuższych wspólnych podciągów, obliczając <span class="math inline">\(c(i,j)\)</span> musimy zapamiętać z którego pod-problemu korzystamy: <span class="math inline">\(c(i-1,j-1)\)</span>, <span class="math inline">\(c(i-1,j)\)</span>, <span class="math inline">\(c(i,j-1)\)</span>. Następnie po obliczeniu wszystkich <span class="math inline">\(c(i,j)\)</span> zaczynamy przechodzić po naszym DAG-u rozpoczynając od wierzchołka <span class="math inline">\(c(m,n)\)</span> według następujących zasad: - jeśli rozwiązując <span class="math inline">\(c(i,j)\)</span> użyliśmy <span class="math inline">\(c(i-1,j-1)\)</span> to dodajemy <span class="math inline">\(x[i]\)</span> (tożsame z <span class="math inline">\(y[j]\)</span>) do naszego rozwiązanie i przechodzimy do <span class="math inline">\(c(i-1, j-1)\)</span> - jeśli rozwiązując <span class="math inline">\(c(i,j)\)</span> użyliśmy <span class="math inline">\(c(i, j-1)\)</span> to przechodzimy do <span class="math inline">\(c(i,j-1)\)</span> (nie dodajemy nic do rozwiązania) - jeśli rozwiązując <span class="math inline">\(c(i,j)\)</span> użyliśmy <span class="math inline">\(c(i-1,j)\)</span> to przechodzimy do <span class="math inline">\(c(i-1, j)\)</span> (nie dodajemy nic do rozwiązania) - kończymy jeśli <span class="math inline">\(i=0 \lor j=0\)</span>.</p>
+</body>
+</html>

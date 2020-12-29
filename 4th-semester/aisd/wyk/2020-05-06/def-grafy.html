@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="grafy">Grafy</h1>
+<h2 id="graf">Graf</h2>
+<p>Oznaczenie: <span class="math inline">\(G = (V,E)\)</span>, <span class="math inline">\(V = \{v_1, \dots, v_n\}\)</span></p>
+<h2 id="reprezentacja">Reprezentacja</h2>
+<h3 id="macierz-sąsiedztwa-a">Macierz sąsiedztwa <span class="math inline">\(A\)</span></h3>
+<p>Mamy <span class="math inline">\(|V| = n\)</span>.</p>
+<p>Macierz sąsiedztwa jest rozmiaru <span class="math inline">\(n\times n\)</span>, gdzie <span class="math inline">\(A = \{a_{i,j}: 1\le i,j\le n\}\)</span> oraz <span class="math display">\[
+    a_{i,j} =
+    \begin{cases}
+      1 &amp; \text{jeśli istnieje krawędź od }v_i\text{ do }v_j\\
+      0 &amp; \text{otherwise}
+    \end{cases}
+    \]</span></p>
+<pre><code>Dla grafów nieskierowanych macierz sąsiedztwa jest symetryczna, zatem możemy przetrzymywać w pamięci tylko jej połowę. Największą zaletą reprezentacji grafy przy pomocy macierzy sąsiedztwa jest możliwość sprawdzenia istnienia krawędzi pomiędzy wybranymi wierzchołkami grafu w złożoności obliczeniowej $O(1)$.\
+Minusem takiej reprezentacji jest jej duży rozmiar $O(n^2)$, zatem jeśli w grafie mamy mało krawędzi to większość elementów macierzy to zera i jest to duża strata pamięci.</code></pre>
+<h3 id="lista-sąsiedztwa">Lista sąsiedztwa</h3>
+<p>Dla każdego wierzchołka tworzymy listę, w której przetrzymujemy sąsiadów danego wierzchołka. Rozmiar takiej reprezentacji jest proporcjonalny do liczby krawędzi w grafie <span class="math inline">\(|E|\)</span> <em>(dla grafów skierowanych każda krawędź pojawia się raz, dla nieskierowanych dwa razy)</em>.<br />
+Wadą listy sąsiedztwa jest złożoność obliczeniowa dostępu do krawędzi grafu, która jest zależna od długości list i w pesymistycznym przypadku może być nawet <span class="math inline">\(O(n)\)</span>.</p>
+<p>Wybór reprezentacji grafu należy dostosować do kontekstu w jakim grafy będą używane oraz dostępnych informacji na temat wejściowych grafów.<br />
+Jeśli grafy będą gęste (liczba krawędzi <span class="math inline">\(\Omega(n^2)\)</span>) to preferowaną reprezentacją jest macierz sąsiedztwa. Jeśli grafy będą rzadkie to preferowaną reprezentacją może być lista sąsiedztwa.</p>
+<hr />
+<h2 id="wielkości">Wielkości</h2>
+<p>Przez wielkość grafu rozumiemy <span class="math inline">\(|V| + |E|\)</span>, anie tylko liczbę wierzchołków <span class="math inline">\(|V|\)</span>.</p>
+<p>Przykładowo: dla grafu pełnego o liczbie wierzchołków <span class="math inline">\(|V| = n\)</span> mamy <span class="math inline">\(|E| = \binom{n}{2} = \Theta(n^2)\)</span>. Jeśli zatem algorytm będzie działał w złożoności <span class="math inline">\(O(n^2) = O(|E|)\)</span> na tym grafie to będziemy mówili o liniowej złożoności względem wielkości grafu.</p>
+</body>
+</html>

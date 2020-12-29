@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="partycje-i-kompozycje-liczb">Partycje i kompozycje liczb</h1>
+<p><em>(2020-10-26)</em></p>
+<ul>
+<li><a href="#1-partycje-liczb-a-kompozycje-liczb">1. Partycje liczb a kompozycje liczb</a></li>
+<li><a href="#2-klasa-kombinatoryczna-dla-partycji-liczb">2. Klasa kombinatoryczna dla partycji liczb</a>
+<ul>
+<li><a href="#21-ogf">2.1. OGF</a></li>
+<li><a href="#22-przykład-partycji-liczby-3">2.2. Przykład partycji liczby <span class="math inline">\(3\)</span></a></li>
+</ul></li>
+<li><a href="#3-partycje-ograniczone">3. Partycje ograniczone</a>
+<ul>
+<li><a href="#31-przykład-partycji-ograniczonej">3.1. Przykład partycji ograniczonej</a></li>
+<li><a href="#32-przykład-kompozycji-ograniczonej">3.2. Przykład kompozycji ograniczonej</a></li>
+</ul></li>
+<li><a href="#4-kompozycja-z-podziałem">4. Kompozycja z podziałem</a></li>
+<li><a href="#5-partycja-z-ograniczeniami">5. Partycja z ograniczeniami</a></li>
+</ul>
+<hr />
+<h2 id="partycje-liczb-a-kompozycje-liczb">1. Partycje liczb a kompozycje liczb</h2>
+<p>Partycje liczb to są kompozycje liczb z pewnym ograniczeniem: <span class="math display">\[
+n = x_1 + x_2 + x_3 + \dotsb + x_k \qquad x_i \ge 1\\
+x_1 \ge x_2 \ge x_3 \ge \dots \ge x_k
+\]</span></p>
+<hr />
+<h2 id="klasa-kombinatoryczna-dla-partycji-liczb">2. Klasa kombinatoryczna dla partycji liczb</h2>
+<p>Kiedy kompozycje można określić klasą <span class="math inline">\(\mathcal{C} \cong \operatorname{SEQ}(\operatorname{SEQ}_{\ge 1}(\mathcal{Z}))\)</span> to klasę opisującą partycje liczb można określić przez: <span class="math display">\[
+\mathcal{P} \cong \operatorname{MSET}(\operatorname{SEQ}_{\ge 1}(\mathcal{Z}))
+\]</span></p>
+<h3 id="ogf">2.1. OGF</h3>
+<p><span class="math inline">\(P(z) = \prod_{n=1}^\infty \frac{1}{1 - z^n}\)</span></p>
+<hr />
+<h3 id="przykład-partycji-liczby-3">2.2. Przykład partycji liczby <span class="math inline">\(3\)</span></h3>
+<ul>
+<li><span class="math inline">\(3 = 2 + 1\)</span></li>
+<li><span class="math inline">\(3 = 1 + 1 + 1\)</span></li>
+<li><span class="math inline">\(3 = 3\)</span></li>
+</ul>
+<hr />
+<h2 id="partycje-ograniczone">3. Partycje ograniczone</h2>
+<ul>
+<li><span class="math inline">\(\mathcal{P}^{T} \cong \operatorname{MSET}(\operatorname{SEQ}^{T}(\mathcal{Z}))\)</span></li>
+<li><span class="math inline">\(n = x_1 + x_2 + x_3 + \dotsb + x_k\)</span>, gdzie <span class="math inline">\(\forall i \enspace x_i \ge x_{i+1}\)</span> oraz <span class="math inline">\(\forall i\enspace x_i \in T\)</span></li>
+<li><span class="math inline">\(T \subseteq \mathbb{N}\)</span></li>
+</ul>
+<hr />
+<h3 id="przykład-partycji-ograniczonej">3.1. Przykład partycji ograniczonej</h3>
+<p>Partycja liczb na <span class="math inline">\(1\)</span> oraz <span class="math inline">\(2\)</span>.</p>
+<p><span class="math inline">\(\mathcal{P}^{\left\{1,2\right\}}(z) = \frac{1}{1-z} \cdot \frac{1}{1-z^2}\)</span></p>
+<hr />
+<h3 id="przykład-kompozycji-ograniczonej">3.2. Przykład kompozycji ograniczonej</h3>
+<ul>
+<li><span class="math inline">\(\mathcal{C}^{\left\{ 1,2 \right\}} \cong \operatorname{SEQ}(\left\{ 1,2 \right\})\)</span></li>
+<li><span class="math inline">\(\mathcal{C}^{\left\{ 1,2 \right\}}(z) = \frac{1}{1 - z - z^2}\)</span></li>
+</ul>
+<p>Swoją drogą to <span class="math inline">\(\mathcal{C}_n^{\left\{ 1,2 \right\}} = F_{n+1}\)</span>, bo zachodzi równość <span class="math inline">\(\mathcal{C}_{n+1}^{\left\{ 1,2 \right\}} = \mathcal{C}_{n-1}^{\left\{ 1,2 \right\}} + \mathcal{C}_{n}^{\left\{ 1,2 \right\}}\)</span></p>
+<p><em>Visual aid</em> jako przykład dla liczby <span class="math inline">\(9\)</span>:<br />
+<img src="przykład-kompozycji-ograniczonej.png" /></p>
+<hr />
+<h2 id="kompozycja-z-podziałem">4. Kompozycja z podziałem</h2>
+<p>Oznaczenie: <span class="math inline">\(\mathcal{C}^{(k)}\)</span> — kompozycja z podziałem na <span class="math inline">\(k\)</span> elementów</p>
+<p><span class="math inline">\(\mathcal{C}^{(k)} \cong \operatorname{SEQ}_k(\mathcal{I}) = (\mathcal{I})^k \quad \mathcal{I} = \mathcal{N}_+\)</span> (w rozumieniu liczby naturalne bez zera)</p>
+<ul>
+<li><span class="math inline">\(I(z) = \frac{z}{1-z}\)</span></li>
+<li><span class="math inline">\([z^n]\left( \frac{z}{1-z} \right)^k = \binom{n-1}{k-1}\)</span></li>
+</ul>
+<hr />
+<h2 id="partycja-z-ograniczeniami">5. Partycja z ograniczeniami</h2>
+<p>Przy ustalonym pewnym <span class="math inline">\(k\)</span> mamy <span class="math display">\[
+n = x_1 + x_2 + \dotsb + x_k\\
+\text{przy czym } x_1 \ge x_2 \ge x_3 \ge \dotsb \ge x_k
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathcal{P}^{(k)} \cong \operatorname{MSET}(\operatorname{SEQ}_{\le k}(\mathcal{Z}))\)</span></li>
+<li><span class="math inline">\(P^{(k)}(z) = \prod_{m=1}^k \frac{1}{(1-z^m)}\)</span></li>
+</ul>
+<hr />
+</body>
+</html>

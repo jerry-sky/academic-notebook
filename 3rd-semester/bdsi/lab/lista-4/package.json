@@ -1,0 +1,15 @@
+{
+  "name": "list-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mongodb": "^3.3.11",
+    "mongodb": "^3.3.5"
+  }
+}

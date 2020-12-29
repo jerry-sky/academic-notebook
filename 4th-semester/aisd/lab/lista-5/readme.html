@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-5">Lista-5</h1>
+<p>W pliku <code>test-graph.txt</code> znajduje się podstawowy graf do testów zadań <a href="#zadanie-2">2</a> i <a href="#zadanie-3">3</a>.</p>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Napisz program, który symuluje działanie kolejki priorytetowej. Struktura powinna umożliwiać przechowywanie wartości typu <code>int</code> wraz z ich priorytetem, będącym nieujemną liczbą całkowitą przy czym najwyższym priorytetem jest wartość <span class="math inline">\(0\)</span>. Program nie powinien wymagać żadnych parametrów uruchomienia, a na standardowym wejściu przyjmuje dodatnią liczbę całkowitą <span class="math inline">\(M\)</span> (liczba operacji), a następnie (w liniach <span class="math inline">\(2\)</span>–<span class="math inline">\((M + 1)\)</span>) jedną z operacji:</p>
+<ul>
+<li><code>insert</code> <span class="math inline">\(x\)</span> <span class="math inline">\(p\)</span> - wstaw do struktury wartość <span class="math inline">\(x\)</span> o priorytecie <span class="math inline">\(p\)</span></li>
+<li><code>empty</code> - wypisz wartość <span class="math inline">\(1\)</span> dla pustej struktury, wartość <span class="math inline">\(0\)</span> w p.p.</li>
+<li><code>top</code> - wypisz wartość o najwyższym priorytecie lub pustą linię w przypadku braku elementów w strukturze</li>
+<li><code>pop</code> - wypisz wartość o najwyższym priorytecie a następnie usuń ją ze struktury (wypisz pustą linię w przypadku braku elementów w strukturze)</li>
+<li><code>priority</code> <span class="math inline">\(x\)</span> <span class="math inline">\(p\)</span> - dla każdego elementu o wartości <span class="math inline">\(x\)</span> obecnego w strukturze ustawia priorytet <span class="math inline">\(p\)</span> jeśli jest on wyższy od aktualnego priorytetu danego elementu</li>
+<li><code>print</code> - wypisuje w jednej linii zawartość struktury w postaci <span class="math inline">\((x_i, p_i)\)</span>, gdzie <span class="math inline">\(x_i\)</span> to kolejne wartości przechowywane w kolejce a <span class="math inline">\(p_i\)</span> odpowiadające im priorytety.</li>
+</ul>
+<p>Dla liczby elementów w kolejce <span class="math inline">\(n\)</span>, koszt operacji musi wynosić <span class="math inline">\(O(log n)\)</span>, dla wszystkich poleceń z pominięciem <code>print</code>.</p>
+</blockquote>
+<p><a href="priority_queue.py">kod</a></p>
+<p>Aby uruchomić program należy wykonać <code>./priority_queue.py</code>.</p>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Korzystając ze struktury zaimplementowanej w <a href="#zadanie-1">zadaniu 1</a> lub kopca Fibonacciego, zaimplementuj program realizujący algorytm Dijkstry, dla podanego grafu skierowanego <span class="math inline">\(G = (V,E)\)</span>, znajdujący najkrótsze ścieżki z wybranego wierzchołka <span class="math inline">\(v \in V\)</span> do każdego <span class="math inline">\(\overline{v} \in V\)</span>.<br />
+Program nie powinien wymagać żadnych parametrów uruchomienia. Po uruchomieniu programu, na standardowym wejściu, podajemy definicję grafu <span class="math inline">\(G\)</span> oraz wierzchołek startowy <span class="math inline">\(v\)</span>. Kolejno wczytywane są:</p>
+<ul>
+<li>liczba wierzchołków <span class="math inline">\(n = |V|\)</span> (przyjmijmy, że wierzchołki są etykietowane kolejnymi liczbami naturalnymi <span class="math inline">\(\{0,\dots,n-1\}\)</span>)</li>
+<li>liczba krawędzi <span class="math inline">\(m = |E|\)</span> (krawędzie są postaci <span class="math inline">\((u,v,w)\)</span>, gdzie <span class="math inline">\(u\)</span> to źródło krawędzi, <span class="math inline">\(v\)</span> jest wierzchołkiem docelowym a <span class="math inline">\(w\)</span> wagą krawędzi – zakładamy, że wagi są nieujemnymi liczbami rzeczywistymi, ale niekoniecznie spełniona jest nierówność trójkąta, ponadto przyjmujemy iż ścieżka z <span class="math inline">\(u\)</span> do <span class="math inline">\(u\)</span> zawsze istnieje i ma koszt <span class="math inline">\(0\)</span>)</li>
+<li>kolejno <span class="math inline">\(m\)</span> definicji krawędzi w postaci <code>u v w</code></li>
+<li>etykieta wierzchołka startowego</li>
+</ul>
+<p>Na standardowym wyjściu powinno zostać <span class="math inline">\(n\)</span> linii, w formacie <code>id_celu waga_drogi</code>, natomiast na standardowym wyjściu błędów powinny być wypisane dokładne ścieżki (tzn. wierzchołki pośrednie i wagi) do każdego z wierzchołków docelowych oraz czas działania programu w milisekundach.</p>
+</blockquote>
+<p><a href="dijkstra.py">kod</a></p>
+<p>Aby uruchomić program należy wykonać <code>./dijkstra.py &lt;test-graph.txt</code> dla przykładowego grafu.</p>
+<h2 id="zadanie-3">Zadanie 3</h2>
+<blockquote>
+<p>Korzystając ze struktury z <a href="#zadanie-1">zadania 1</a> zaimplementuj algorytmy znajdujące dla podanego grafu nieskierowanego <span class="math inline">\(G = (V,E)\)</span> minimalne drzewa rozpinające.</p>
+<p>Program powinien umożliwiać wykonanie algorytmu Prima (parametr uruchomienia <code>-p</code>) oraz algorytmu Kruskala (parametr uruchomienia <code>-k</code>). Niezależnie od parametru uruchomienia, dane wejściowe przyjmują postać:</p>
+<ul>
+<li>liczba wierzchołków <span class="math inline">\(n = |V|\)</span> (przyjmujemy, że wierzchołki są etykietowane kolejnymi liczbami naturalnymi <span class="math inline">\(\{0,\dots,n-1\}\)</span>)</li>
+<li>liczba krawędzi <span class="math inline">\(m = |E|\)</span> (krawędzie są postaci <span class="math inline">\((u,v,w)\)</span>, gdzie <span class="math inline">\(u\)</span> to źródło krawędzi, <span class="math inline">\(v\)</span> jest wierzchołkiem docelowym a <span class="math inline">\(w\)</span> wagą krawędzi – zakładamy, że wagi są nieujemnymi liczbami rzeczywistymi, ale niekoniecznie spełniona jest nierówność trójkąta, ponadto przyjmujemy iż ścieżka z <span class="math inline">\(u\)</span> do <span class="math inline">\(u\)</span> zawsze istnieje i ma koszt <span class="math inline">\(0\)</span> oraz <span class="math inline">\(\forall_{u,v}~(u,v,w) \iff (v,u,w)\)</span>, ponadto przyjmujemy, że graf jest spójny)</li>
+<li>kolejno <span class="math inline">\(m\)</span> definicji krawędzi w postaci <code>u v w</code></li>
+</ul>
+<p>Na standardowym wyjściu powinny zostać wypisane, w kolejnych liniach krawędzie <code>u v w</code> użyte w drzewie rozpinającym (przyjmujemy, że <span class="math inline">\(u &lt; v\)</span>) oraz łączną wagę drzewa rozpinającego.</p>
+</blockquote>
+<p><a href="msts.py">kod</a></p>
+<p>Aby uruchomić program należy wykonać <code>./msts.py &lt;test-graph.txt</code> dla przykładowego grafu.</p>
+</body>
+</html>

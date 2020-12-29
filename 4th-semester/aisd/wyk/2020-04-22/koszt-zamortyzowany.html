@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="koszt-zamortyzowany">Koszt zamortyzowany</h1>
+<p><em>(2020-04-22)</em></p>
+<h2 id="text-def"><span class="math inline">\(\text {Def}\)</span></h2>
+<p>Koszt zamortyzowany (zamortyzowana złożoność obliczeniowa) operacji jest jej średnim kosztem w najgorszym przypadku.</p>
+<h2 id="metody-analizy-kosztu-zamortyzowanego">Metody analizy kosztu zamortyzowanego</h2>
+<h3 id="metoda-kosztu-sumarycznego">Metoda kosztu sumarycznego</h3>
+<p>Określa się górne ograniczenie <span class="math inline">\(T(n)\)</span> na całkowitą złożoność obliczeniową (w pesymistycznym przypadku) ciągu <span class="math inline">\(n\)</span> badanych operacji. Koszt zamortyzowany każdej operacji rozumiemy wtedy przez <span class="math inline">\(T(n)/n\)</span>.</p>
+<h3 id="metoda-księgowania">Metoda księgowania</h3>
+<p>Rozpatrując ciąg operacji, zawyżamy koszt operacji znajdujących się na początku ciągu. Nadpłaty te zostają potem zużyte na „zapłacenie” za operacje, których złożoność jest mniejsza niż faktycznie poniesione koszty.</p>
+<h3 id="metoda-potencjału">Metoda potencjału</h3>
+<p>Podobnie jak w <a href="#metoda-ksi%c4%99gowania">metodzie księgowania</a>, przypisujemy większy koszt wcześniejszym operacjom, aby skompensować późniejsze nadmierne wydatki. W metodzie potencjału „kredyt” jest reprezentowany jako „energia potencjalna” całej struktury danych i nie jest związana z pojedynczymi obiektami (jak to ma miejsce w <a href="#metoda-ksi%c4%99gowania">metodzie księgowania</a>).<br />
+Skupimy się na metodzie potencjału.</p>
+<h2 id="stosujemy-metodę-potencjału">Stosujemy metodę potencjału</h2>
+<p>Będziemy rozpatrywali ciąg <span class="math inline">\(n+1\)</span> struktur <span class="math inline">\(D_0,D_1,\dots,D_n\)</span>, gdzie <span class="math inline">\(D_i\)</span> będzie strukturą danych powstałą ze struktury <span class="math inline">\(D_{i-1}\)</span> po wykonaniu <span class="math inline">\(i\)</span>-tej operacji.</p>
+<p>Rozważmy funkcją potencjału <span class="math inline">\(\Phi\)</span> przyporządkowującą każdej strukturze <span class="math inline">\(D_i\)</span> liczbę rzeczywistę nazywaną potencjałem struktury <span class="math inline">\(D_i\)</span>.</p>
+<p>Dla każdego <span class="math inline">\(i = 1,\dots,n\)</span> niech <span class="math inline">\(c_i\)</span> oznacza faktyczną złożoność obliczeniową <span class="math inline">\(i\)</span>-tej operacji, a <span class="math inline">\(\hat c_i\)</span> oznacza koszt zamortyzowany dla <span class="math inline">\(i\)</span>-tej operacji i definiujemy go jako <span class="math inline">\(\hat c_i = c_i + \Phi(D_i) - \Phi(D_{i-1})\)</span>.</p>
+<p>Zatem po prostych przekształceniach koszt zamortyzowany ciągu <span class="math inline">\(n\)</span> operacji wynosi: <span class="math display">\[
+\sum_{i=1}^{n}\hat{c}_i = \sum_{i=1}^{n}c_i + \Phi(D_n) - \Phi(D_0)
+\]</span> Zwykle dla wygody definiuje się <span class="math inline">\(\Phi(D_0) = 0\)</span>. Jeśli jesteśmy w stanie pokazać, że <span class="math inline">\(\Phi(D_j) \ge 0\)</span> dla każdego <span class="math inline">\(j =1,\dots,n\)</span> wówczas koszt zamortyzowany ciąg <span class="math inline">\(j\)</span> operacji (dla dowolnego <span class="math inline">\(j\)</span>) ogranicza z góry koszt faktyczny ciąg <span class="math inline">\(j\)</span> operacji: <span class="math display">\[
+\sum_{i=1}^{j}c_i \le \sum_{i=1}^{j}\hat{c}_i
+\]</span></p>
+<p>Koszt zamortyzowany zdefiniowany jak powyżej zależy od wybory funkcji potencjału <span class="math inline">\(\Phi\)</span>. Używając różnych funkcji potencjału, można otrzymać różne koszty zamortyzowane i mimo wszystko otrzymać górne ograniczenie faktycznej złożoności obliczeniowej ciągu operacji.</p>
+<h2 id="przykład-increment">Przykład, <code>Increment</code></h2>
+<p>W celu zilustrowania obliczania kosztu zamortyzowanego posłużymy się przykładem <span class="math inline">\(k\)</span> bitowego licznika binarnego, który zlicza od <span class="math inline">\(0\)</span> za pomocą operacji <code>Increment</code>. Licznik jest przetrzymywany w tablicy bitów <span class="math inline">\(A[0\dots k-1]\)</span> długości <span class="math inline">\(k\)</span>. Najmniej znaczący bit występuje w <span class="math inline">\(A[0]\)</span>, a najbardziej znaczący w <span class="math inline">\(A[k-1]\)</span>, zatem jeśli licznik przechowuje liczbę <span class="math inline">\(x\)</span> to <span class="math display">\[
+x = \sum_{i=0}^{k-1}A[i]\cdot2^i
+\]</span> Licznik inicjalizujemy ustawiając bit <span class="math inline">\(0\)</span> w każdej komórce tablicy <span class="math inline">\(A\)</span>. Aby zwiększyć wartość licznika o <span class="math inline">\(1\)</span> (modulo <span class="math inline">\(2^k\)</span>), używamy wcześniej wspomnianej procedury:</p>
+<pre><code>Increment(A):
+  i = 0
+  while i &lt; k and A[i] == 1:
+    A[i] = 0
+    i++
+  if i &lt; k:
+    A[i] = 1</code></pre>
+<p>Operacja ta dokonuje zmiany odpowiednich bitów (zaczynając od najmniej znaczących): <span class="math inline">\(1\to0\)</span> i po natrafieniu na najmniej znaczący bit zerowy zamienia go na <span class="math inline">\(1\)</span>.<br />
+Koszt (złożoność obliczeniowa) każdej operacji <code>Increment</code> jest równy liczbie zmienionych bitów. Analizując złożoność obliczeniową pojedynczej operacji <code>Increment</code> w <em>worst case scenario</em>, widzimy, że asymptotycznie wynosi ona <span class="math inline">\(\Theta(k)\)</span>, bo w najgorszym przypadku w tablicy wszystkie bity będą ustawione na <span class="math inline">\(1\)</span> i będziemy musieli je wyzerować lub wszystkie bity poza najbardziej znaczącym zostaną one wyzerowane, a bit <span class="math inline">\(A[k-1]\)</span> zostanie ustawiony na <span class="math inline">\(1\)</span>.</p>
+<p>Zauważmy natomiast, że w innych przypadkach liczba modyfikowanych bitów będzie mniejsza, więc istnieje szansa, że da się ograniczyć pesymistyczną złożoność ciągu <span class="math inline">\(n\)</span> operacji <code>Increment</code> przez coś mniejszego niż <span class="math inline">\(O(n\cdot k)\)</span>.</p>
+<h3 id="wykorzystanie-metody-potencjału">Wykorzystanie metody potencjału</h3>
+<p>Wykorzystajmy metodę potencjału do obliczenia kosztu zamortyzowanego operacji <code>Increment</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Wybór funkcji potencjału: <span class="math inline">\(\Phi(D_i)\)</span> będzie liczbą jedynek w liczniku po <span class="math inline">\(i\)</span>-tej operacji.</li>
+<li>Załóżmy, że <span class="math inline">\(i\)</span>-ta operacja <code>Increment</code> zeruje <span class="math inline">\(t_i\)</span> bitów. Faktyczny koszt tej operacji jest więc ograniczony przez <span class="math inline">\(c_i \le t_i + 1\)</span>, ponieważ oprócz zerowania <span class="math inline">\(t_i\)</span> bitów może ona przypisać wartość co najwyżej jednemu bitowi.</li>
+<li>Z poprzedniego punktu możemy uzyskać ograniczenie na wyżej zdefiniowaną funkcję potencjału: <span class="math display">\[
+\Phi(D_i) \le \Phi(D_{i-1}) - t_i + 1.
+\]</span></li>
+<li><p>Stąd koszt zamortyzowany <span class="math inline">\(i\)</span>-tej operacji możemy wyliczyć w następujący sposób: <span class="math display">\[
+\hat c_i = c_i + \Phi(D_i) - \Phi(D_{i-1}) \le (t_i + 1) - (-t_i + 1) = 2 = \Theta(1).
+\]</span> Jeśli zaczynamy zliczać za pomocą licznika od zera, to <span class="math inline">\(\Phi(D_0) = 0\)</span>.</p>
+Ponieważ <span class="math inline">\(\Phi(D_i) \ge 0\)</span> dla każdego <span class="math inline">\(i\)</span>, to koszt zamortyzowany ciągu <span class="math inline">\(n\)</span> operacji <code>Increment</code> jest górnym ograniczeniem kosztu faktycznego, co daje pesymistyczny koszt ciągu <span class="math inline">\(n\)</span> operacji równy <span class="math inline">\(O(n)\)</span>.</li>
+<li><p>Za pomocą metody potencjału łatwo jest również dokonać analizy w przypadku gdy licznik nie startuje od <span class="math inline">\(0\)</span>.</p>
+<p>Załóżmy, że początkowo było <span class="math inline">\(b_0\)</span> zer oraz po wykonaniu <span class="math inline">\(n\)</span> razy operacji <code>Increment</code> mamy <span class="math inline">\(b_n\)</span> jedynek., gdzie <span class="math inline">\(0 \le b_0 \land b_n \le k\)</span>, wówczas: <span class="math display">\[
+\sum_{i=1}^{n} = \sum_{i=1}^{n}\hat c_i - \Phi(D_n) + \Phi(D_0).
+\]</span> Mamy <span class="math inline">\(\forall_{1\le i\le n}~ \hat c_i \le 2\)</span>. Skoro <span class="math inline">\(\Phi(D_0) = b_0\)</span> oraz <span class="math inline">\(\Phi(D_n) = b_n\)</span>, całkowity koszt wykonania <span class="math inline">\(n\)</span> razy operacji <code>Increment</code> wynosi <span class="math display">\[
+\sum_{i=1}^{n} \le \sum_{i=1}^{n}2 - b_n + b_0 = 2n - b_n + b_0.
+\]</span> Należy zauważyć, że jeśli <span class="math inline">\(k = O(n)\)</span> to <span class="math inline">\(b_0 \le k\)</span> co daje nam całkowity koszt równy <span class="math inline">\(O(n)\)</span>.</p>
+<p><strong>Oznacza to tyle, że jeśli wykonamy przynajmniej <span class="math inline">\(n=\Omega(k)\)</span></strong> razy operację <code>Increment</code> całkowity koszt zawsze będzie złożoności <span class="math inline">\(O(n)\)</span> niezależnie od początkowego stanu licznika.</p>
+<p><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Section 17.3</a></p></li>
+</ol>
+</body>
+</html>

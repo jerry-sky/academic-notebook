@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="twierdzenie-mengera-ii">Twierdzenie Mengera II</h1>
+<p><em>(2020-04-29)</em></p>
+<p><strong><a href="../2020-04-22/twierdzenie-mengera">Twierdzenia Mengera</a> są prawdziwe dla dowolnego grafu!</strong></p>
+<h2 id="text-def-pełne-skojarzenie"><span class="math inline">\(\text {Def}\)</span> Pełne skojarzenie</h2>
+<p>Pełnym skojarzeniem (z <span class="math inline">\(C\)</span> do <span class="math inline">\(D\)</span>) w grafie dwudzielnym <span class="math inline">\(G = G(D,C)\)</span> nazywamy dowolną różnowartościową funkcję <span class="math inline">\(f: D \to C\)</span> taką, że <span class="math inline">\((\forall x\in D)(\{x, f(x)\} \in E(G))\)</span>.</p>
+<h2 id="text-def-sąsiedztwo-w-grafie-dwudzielnym"><span class="math inline">\(\text {Def}\)</span> Sąsiedztwo w grafie dwudzielnym</h2>
+<p>Niech <span class="math inline">\(G = G(D,C)\)</span> będzie grafem dwudzielnym. Dla <span class="math inline">\(X\subseteq D\)</span> określamy <span class="math display">\[
+\mathcal{N}(X) = \{y\in C: (\exists x \in X)(\{x,y\} \in E(G))\}
+\]</span></p>
+<h2 id="prosta-obserwacja-1">Prosta obserwacja #1</h2>
+<p>Jeśli istnieje <a href="#text-def-pe%c5%82ne-skojarzenie">pełne skojarzenie</a> w grafie dwudzielnym <span class="math inline">\(G = G(D,C)\)</span>, to dla dowolnego <span class="math inline">\(X \subseteq D\)</span> mamy <span class="math inline">\(|X| \le |\mathcal{N}(X)|\)</span>.</p>
+<h2 id="text-twierdzenie-halla-o-małżeństwach"><span class="math inline">\(\text {Twierdzenie}\)</span> Halla (o małżeństwach)</h2>
+<p>Niech <span class="math inline">\(G = G(A,B)\)</span> będzie grafem dwudzielnym.<br />
+<span class="math inline">\(\circlearrowright\)</span>: 1. Istnieje pełne skojarzenie w grafie <span class="math inline">\(G\)</span> z <span class="math inline">\(A\)</span> do <span class="math inline">\(B\)</span> 2. <span class="math inline">\((\forall X \subseteq A)(|X| \le |\mathcal{N}(X)|)\)</span></p>
+<h3 id="d-d-text-twierdzenia-halla-o-małżeństwach">D-d <span class="math inline">\(\text {Twierdzenia}\)</span> Halla (o małżeństwach)</h3>
+<p>Wiemy już, że <span class="math inline">\((1) \implies (2)\)</span>. Zajmijmy się odwrotną implikacją.</p>
+<p>Załóżmy więc, że <span class="math inline">\((2)\)</span> jest prawdziwa. Rozważamy następujący graf <span class="math inline">\(G&#39;\)</span>: jego wierzchołkami są zbiory <span class="math inline">\(A\cup B\cup \{a,b\}\)</span> (<span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> są jakimiś elementami nie należącymi do <span class="math inline">\(A \cup B\)</span>); jego krawędziami jest zbiór <span class="math display">\[
+E(G) \cup \big\{ \{a,x\}: x\in A \big\} \cup \big\{ \{y,b\}: y \in B \big\}.
+\]</span> <img src="d-d-hall.png" alt="d-d hall" /></p>
+<p>Claim: <strong>każdy <span class="math inline">\((a,b)\)</span>–separator w grafie <span class="math inline">\(G&#39;\)</span> ma moc <span class="math inline">\(\ge |A|\)</span></strong></p>
+<p>Niech <span class="math inline">\(X\)</span> będzie <span class="math inline">\((a,b)\)</span>–separatorem.<br />
+Wówczas: <span class="math display">\[
+|A| = |A \cap X| + |A \setminus X| \le |A \cap X| + |\mathcal{N}(A\setminus X)|\\
+\le |A\cap X| + |B\cap X| = |X|.
+\]</span> Zbiór <span class="math inline">\(A\)</span> jest <span class="math inline">\((a,b)\)</span>–separatorem. Zatem najmniejsza moc separatora to <span class="math inline">\(|A|\)</span>. Na mocy twierdzenia Mengera istnieje zbiór wewnętrznie rozłącznych <span class="math inline">\((a,b)\)</span>–ścieżek mocy <span class="math inline">\(|A|\)</span>. Z tego zbioru otrzymujemy pełne skojarzenie.</p>
+<h2 id="text-def-skojarzenie"><span class="math inline">\(\text {Def}\)</span> Skojarzenie</h2>
+<p>Skojarzeniem w grafie <span class="math inline">\(G\)</span> nazywamy dowolny zbiór krawędzi <span class="math inline">\(\mathcal{E}\subseteq E(G)\)</span> taki, że <span class="math inline">\((\forall e,f \in \mathcal{E})(e\neq f\implies e\cap f =\emptyset)\)</span>.</p>
+<h2 id="text-def-4"><span class="math inline">\(\text {Def}\)</span> #4</h2>
+<p><span class="math inline">\(\nu(G) = \max\{|\mathcal{E}|: \mathcal{E}\text{ jest skojarzeniem w } G\}\)</span></p>
+<h2 id="text-def-pokrycie-wierzchołkowe"><span class="math inline">\(\text {Def}\)</span> Pokrycie wierzchołkowe</h2>
+<p>Pokryciem wierzchołkowym grafu <span class="math inline">\(G\)</span> nazywamy dowolny zbiór wierzchołków <span class="math inline">\(A\subseteq V(G)\)</span> taki, że <span class="math inline">\((\forall e\in E(G))(e \cap A\neq\emptyset)\)</span>.</p>
+<h2 id="text-def-6"><span class="math inline">\(\text {Def}\)</span> #6</h2>
+<p><span class="math inline">\(\tau(G) = \min\{|A|: A\text{ jest pokryciem wierzchołkowym } G\)</span></p>
+<h2 id="text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</h2>
+<p><span class="math inline">\(\nu(G) \le \tau(G) \le 2\nu(G)\)</span></p>
+<h3 id="d-d-text-faktu-1">D-d <span class="math inline">\(\text {Fakt}\)</span>u #1</h3>
+<p>Niech <span class="math inline">\(\mathcal{E}\)</span> będzie dowolnym <a href="#text-def-skojarzenie">skojarzeniem</a> zaś <span class="math inline">\(A\)</span> dowolnym <a href="#text-def-pokrycie-wierzcho%c5%82kowe">pokryciem</a>. Wówczas dla każdej krawędzi <span class="math inline">\(e \in \mathcal{E}\)</span> istnieje <span class="math inline">\(a_e \in A\cap e\)</span>. Z rozłączności krawędzi ze skojarzenia wynika, że odwzorowanie <span class="math inline">\(e\to a_e\)</span> jest różnowartościowe.<br />
+Zatem <span class="math inline">\(|\mathcal{E} \le |A|\)</span>. To dowodzi pierwszej nierówności.</p>
+<p>Rozważmy teraz skojarzenie <span class="math inline">\(\mathcal{E}\)</span> o największej mocy. Niech <span class="math inline">\(A = \bigcup\mathcal{E}\)</span>. Wówczas <span class="math inline">\(|A| = 2\nu(G)\)</span>. Ponadto <span class="math inline">\(A\)</span> jest pokryciem, bo dla dowolnej krawędzi <span class="math inline">\(e\)</span> mamy <span class="math inline">\(e\cap A \neq \emptyset\)</span> (to wynika z maksymalności <span class="math inline">\(\mathcal{E}\)</span>).<br />
+A to pokazuje drugą nierówność.</p>
+<h2 id="text-twierdzenie-königa-o-grafie-dwudzielnym."><span class="math inline">\(\text {Twierdzenie}\)</span> Königa (o grafie dwudzielnym).</h2>
+<p>Jeśli <span class="math inline">\(G\)</span> jest grafem dwudzielnym, to <span class="math inline">\(\nu(G) = \tau(G)\)</span>.</p>
+<h3 id="d-d-text-twierdzenia-königa-o-grafie-dwudzielnym">D-d <span class="math inline">\(\text {Twierdzenia}\)</span> Königa (o grafie dwudzielnym)</h3>
+<p>Niech <span class="math inline">\(G = G(X,Y)\)</span>. Zastosujemy <a href="../2020-04-22/twierdzenie-mengera.md#text-twierdzenie-mengera-wersja-wierzcho%c5%82kowa">twierdzenie Mengera</a> do zbiorów <span class="math inline">\(A = X\)</span> i <span class="math inline">\(B = Y\)</span>.<br />
+Każde <a href="#text-def-skojarzenie">skojarzenie</a> w <span class="math inline">\(G\)</span> definiuje rodzinę parami rozłącznych <span class="math inline">\((A,B)\)</span>–ścieżek. I odwrotnie: każda rodzina parami rozłącznych <span class="math inline">\((A,B)\)</span>–ścieżek generuje skojarzenie.</p>
+<p>Bierzemy zbiór <span class="math inline">\(\mathcal{P}\)</span> wierzchołkowo rozłącznych <span class="math inline">\((A,B)\)</span>–ścieżek największej mocy, którą oznaczamy przez <span class="math inline">\(k\)</span>. Z twierdzenia Mengera wynika istnienie <span class="math inline">\((A,B)\)</span>–separatora mocy <span class="math inline">\(k\)</span>. Każdy separator przecina każdą krawędź.<br />
+Istnieje więc pokrycie wierzchołkowe mocy <span class="math inline">\(k\)</span>.</p>
+<h2 id="text-def-7"><span class="math inline">\(\text {Def}\)</span> #7</h2>
+<p>Niech <span class="math inline">\(\mathcal{X} = (X,\preceq)\)</span> będzie częściowym porządkiem. 1. Podzbiór <span class="math inline">\(L\subseteq X\)</span> nazywamy łańcuchem w <span class="math inline">\(\mathcal{X}\)</span> jeśli <span class="math inline">\((\forall x,y \in L)(x\preceq y\lor x=y \lor y\preceq x)\)</span> 2. Podzbiór <span class="math inline">\(A\subseteq X\)</span> nazywamy antyłańcuchem w <span class="math inline">\(\mathcal{X}\)</span> jeśli <span class="math inline">\((\forall x,y \in A)(x\neq y \implies (\neg(x\preceq y)\land \neg(y\preceq x)))\)</span></p>
+<h2 id="text-fakt-2"><span class="math inline">\(\text {Fakt}\)</span> #2</h2>
+<p>Jeśli <span class="math inline">\(L\)</span> jest łańcuchem oraz <span class="math inline">\(A\)</span> jest antyłańcuchem, to <span class="math inline">\(|A\cap L| \le 1\)</span>.</p>
+<h2 id="wniosek-1">Wniosek #1</h2>
+<p>Jeśli <span class="math inline">\(\mathcal{L}\)</span> jest rozbiciem <span class="math inline">\(X\)</span> na łańcuchy i <span class="math inline">\(A\)</span> jest antyłańcuchem, to <span class="math inline">\(|A| \le |\mathcal{L}|\)</span></p>
+<h2 id="text-twierdzenie-dilwortha-o-dekompozycji"><span class="math inline">\(\text {Twierdzenie}\)</span> Dilwortha (o dekompozycji)</h2>
+<p>Dla dowolnego skończonego częściowego porządku <span class="math inline">\(\mathcal{X} = (X,\preceq)\)</span> następujące dwie liczby są równe: 1. <span class="math inline">\(\min\{|\mathcal{L}|: \mathcal{L}\text{ jest rozbiciem }X\text{ na łańcuchy}\}\)</span> 2. <span class="math inline">\(\max\{|A|: A\text{ jest antyłańcuchem w }\mathcal{X}\}\)</span></p>
+<h3 id="d-d-text-twierdzenia-dilwortha-o-dekompozycji">D-d <span class="math inline">\(\text {Twierdzenia}\)</span> Dilwortha (o dekompozycji)</h3>
+<p>Niech <span class="math inline">\(\mathcal{X} = (X,\preceq)\)</span> będzie częściowym porządkiem. Definiujemy graf <span class="math inline">\(G(V,E)\)</span>:<br />
+<span class="math inline">\(V = \{x^-:x\in X\}\cup\{x^+:x\in X\}\)</span><br />
+<span class="math inline">\(E = \big\{\{x^+,y^+\}: x\prec y\big\}\)</span></p>
+<p><img src="Dilworth.png" alt="d-d dilworth" /> To jest graf dwudzielny. Znajdujemy skojarzenie <span class="math inline">\(M\)</span> największej mocy <span class="math inline">\(k\)</span> (krawędzie czerwone, druga część rysunku, tutaj <span class="math inline">\(k=3\)</span>). Powracamy do wyjściowego częściowego porządku (trzecia część rysunku). Otrzymujemy rozbicie <span class="math inline">\(\mathcal{L}\)</span> na zbiorze <span class="math inline">\(X\)</span> na łańcuchy. Niech <span class="math inline">\(C\)</span> będzie zbiorem najmniejszych elementów w tych łańcuchach.<br />
+Wówczas <span class="math inline">\(|X \setminus C| = |M|\)</span> oraz, oczywiście, <span class="math inline">\(|C| = |\mathcal{L}|\)</span>.<br />
+Zatem <span class="math inline">\(|\mathcal{L}| = |X| - |M| = |X| - k\)</span>.</p>
+<p>Na mocy <a href="#text-twierdzenie-k%c3%b6niga-o-grafie-dwudzielnym">twierdzenia Königa</a> mamy <a href="#text-def-pokrycie-wierzcho%c5%82kowe">pokrycie wierzchołkowe</a> <span class="math inline">\(A\)</span> grafu <span class="math inline">\(G\)</span> mocy <span class="math inline">\(k\)</span>.<br />
+Niech <span class="math inline">\(B = \{x\in X: x^+\in A\lor x^-\in A\}\)</span>. Wówczas <span class="math inline">\(|B| \le |A| = k\)</span>.</p>
+<p>Claim: <span class="math inline">\(X\setminus B\)</span> jest antyłańcuchem.<br />
+Załóżmy, że <span class="math inline">\(x,y\in X\setminus B\)</span> oraz <span class="math inline">\(x\neq y\)</span>. Gdyby <span class="math inline">\(x\prec y\)</span>, to <span class="math inline">\(\{x^+,y^-\}\in E\)</span>, więc <span class="math inline">\(\{x^+,y^-\}\cap A \neq \emptyset\)</span>, więc <span class="math inline">\(x \in B \lor y \in B\)</span>. Podobnie, nie jest możliwe aby <span class="math inline">\(y\prec x\)</span></p>
+<p>Zbiór <span class="math inline">\(C = X\setminus B\)</span> jest więc antyłańcuchem w <span class="math inline">\(\mathcal{X}\)</span>, oraz <span class="math display">\[
+|C| = |X\setminus B| = |X| - |B| \ge |X| - k.
+\]</span> Zatem istnieją rozbicie <span class="math inline">\(\mathcal{L}\)</span> na łańcuchy oraz antyłańcuch <span class="math inline">\(C\)</span> takie, że <span class="math inline">\(|C|\ge|\mathcal{L}|\)</span>, co kończy dowód.</p>
+<h3 id="przykład-zastosowania-dilwortha">Przykład zastosowania Dilwortha</h3>
+<p>Typowe użycie twierdzenie Dilwortha: rozważamy częściowy porządek na zbiorze <span class="math inline">\(X = \{1,\dots,n\} \times \{1,\dots,n\}\)</span> określony wzorem: <span class="math display">\[
+(x,y) \preceq (x&#39;, y&#39;) \leftrightarrow (x\le x&#39;) \land (y\le y&#39;)
+\]</span></p>
+<p>Jaka jest moc największego antyłańcucha?</p>
+<div class="figure">
+<img src="dilworth-częściowy-porządek-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<p>Na pierwszym rysunku mamy antyłańcuch mocy <span class="math inline">\(n\)</span> (czerwone kropki)<br />
+Na drugim rysunku mamy rozbicie na <span class="math inline">\(n\)</span> łańcuchów (różne kolory). Wiemy, że <span class="math inline">\(\max\{\text{antyłańcuch}\} = \min\{\text{rozbicie}\}\)</span>, więc w naszym przykładzie mamy <span class="math display">\[
+n \le \max\{\text{antyłańcuch}\} = \min\{\text{rozbicie}\} \le n
+\]</span> więc największa moc antyłańcucha jest równa <span class="math inline">\(n\)</span>.</p>
+<p>Czyli: <strong>metoda ta polega na znalezieniu antyłańcucha i rozbicia na łańcuchy tej samej mocy.</strong></p>
+<p>Zadanie: <em>Rozwiąż to zadanie bez korzystania z twierdzenie Dilwortha.</em></p>
+<p>Spójrzmy na ostatni przykład bardziej abstrakcyjnie. Załóżmy, że mamy dwa zbiory <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> oraz na funkcje <span class="math inline">\(f: A\to \mathbb{R}\)</span> i <span class="math inline">\(g: B\to \mathbb{R}\)</span>. Załóżmy, że wiemy, że: <span class="math display">\[
+\Big(~ \max\{f(a): a\in A\} \le \min\{g(b): b\in B\} ~\Big) \equiv (*)
+\]</span> (czyli <span class="math inline">\((\forall a\in A)(\forall b \in B)(~f(a)\le g(b)~)\)</span>).</p>
+<p>Załóżmy ponadto, że udało nam się wskazać na dwa obiekty <span class="math inline">\(a_0 \in A\)</span> oraz <span class="math inline">\(b_0 \in B\)</span> takie, że <span class="math inline">\(f(a_0) = g(b_0)\)</span>.<br />
+Wówczas: <span class="math display">\[
+f(a_0) = \max\{f(a): a\in A\} = \min\{g(b): b\in B\}
+\]</span> A z warunkami typu <span class="math inline">\((*)\)</span> mieliśmy już kilka razy do czynienia. Na przykład, twierdzenie Mengera można zapisać skrótowo jako <span class="math inline">\(\max\{|P|: P\text{ jest }(A,B)\text{-ścieżką}\} = \min\{|C|: C\text{ jest }(A,B)\text{-separatorem}\}\)</span> (przy czym nierówność <span class="math inline">\(\le\)</span> jest oczywista), zaś twierdzenie Königa jako <span class="math inline">\(\max\{|L|: L\text{ jest skojarzeniem}\} = \min\{|A|: A\text{ jest pokryciem}\}\)</span> (gdzie nierówność <span class="math inline">\(\le\)</span> jest ponownie oczywista).</p>
+</body>
+</html>

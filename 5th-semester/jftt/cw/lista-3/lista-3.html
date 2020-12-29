@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3">Lista 3</h1>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a>
+<ul>
+<li><a href="#zadanie-11">Zadanie 1.1.</a></li>
+<li><a href="#zadanie-12">Zadanie 1.2.</a></li>
+</ul></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a>
+<ul>
+<li><a href="#postać-normalna-chomskyego">Postać normalna Chomsky’ego</a></li>
+<li><a href="#postać-normalna-greibach">Postać normalna Greibach</a></li>
+</ul></li>
+<li><a href="#zadanie-5">Zadanie 5.</a></li>
+<li><a href="#zadanie-6">Zadanie 6.</a>
+<ul>
+<li><a href="#zadanie-61">Zadanie 6.1.</a></li>
+<li><a href="#zadanie-62">Zadanie 6.2.</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Podać gramatyki bezkontekstowe generujące następujące języki</p>
+</blockquote>
+<h3 id="zadanie-1.1.">Zadanie 1.1.</h3>
+<blockquote>
+<p>zbiór wszystkich słów nad alfabetem <span class="math inline">\(\{0,1\}\)</span>, w których liczba zer jest nie mniejsza niż liczba jedynek i nie większa niż trzykrotna liczba jedynek.</p>
+</blockquote>
+<p>Mamy język <span class="math inline">\(L(G) = \left\{ w: w \in \{0,1\}^* \land |w|_1 \le |w|_0 \le 3 \cdot |w|_1 \right\}\)</span></p>
+<p>Rozważmy przypadek brzegowy <span class="math inline">\(w = \epsilon \in L\)</span>, bo <span class="math inline">\(0 \le 0 \le 0\)</span>. Czyli dla symbolu początkowego istnieje przejście <span class="math inline">\(S \to \epsilon\)</span>. Zastanówmy się teraz, jak wygląda niepuste słowo <span class="math inline">\(w\)</span> z <span class="math inline">\(L\)</span>: <span class="math display">\[
+w = \dots 0 \dots 0 \dots 1 \dots 0 \dots
+\]</span></p>
+<p>Zasadniczo, w tym słowie każdej jedynce da się przyporządkować od <span class="math inline">\(1\)</span> do <span class="math inline">\(3\)</span> różnych zer (z dowolnego miejsca w słowie) tak, że każde zero jest przyporządkowane do dokładnie jednej jedynki. W miejscu <span class="math inline">\(\dots\)</span> znajduje się ciąg bitów o tej samej własności.</p>
+<p>Możemy wypisać wszystkie takie ciągi <em>atomowe</em>, spełniające ten stosunek liczby jedynek do liczby zer: - <span class="math inline">\(10\)</span> - <span class="math inline">\(01\)</span> - <span class="math inline">\(001\)</span> - <span class="math inline">\(010\)</span> - <span class="math inline">\(100\)</span> - <span class="math inline">\(0001\)</span> - <span class="math inline">\(0010\)</span> - <span class="math inline">\(0100\)</span> - <span class="math inline">\(1000\)</span></p>
+<p>gdzie pomiędzy znakami powyższych ciągów możemy znowu znaleźć kolejne instancje takich ciągów.<br />
+Zatem gramatyka <span class="math inline">\(G\)</span> jest postaci <span class="math inline">\((\{S\}, \{0,1\}, P, S)\)</span> gdzie <span class="math inline">\(P\)</span>: <span class="math display">\[
+\begin{aligned}
+    S &amp;\to \epsilon\\
+    S &amp;\to S0S1S | S1S0S\\
+    S &amp;\to S0S0S1S | S0S1S0S | S1S0S0S\\
+    S &amp;\to S0S0S0S1S | S0S0S1S0S | S0S1S0S0S | S1S0S0S0S\\
+\end{aligned}
+\]</span></p>
+<h3 id="zadanie-1.2.">Zadanie 1.2.</h3>
+<blockquote>
+<p>zbiór wszystkich słów nad alfabetem <span class="math inline">\(\{(,)\}\)</span>, gdzie nawiasy są dobrze rozstawione, tzn. każdy lewy nawias ma odpowiadający mu prawy nawias i pary odpowiadających nawiasów są odpowiednio zagnieżdżone.</p>
+</blockquote>
+<p>Mamy język <span class="math inline">\(L(G) = \left\{ w: w\in \{(,)\} \land \text{nawiasy w słowie są dobrze rozstawione} \right\}\)</span>.</p>
+<p>Znowu możemy mieć <span class="math inline">\(\epsilon\)</span>, żeby zakończyć dane słowo. Jeśli mamy słowo <span class="math inline">\(w \in L\)</span> to możemy mieć też <span class="math inline">\((w) \in L\)</span> i oczywiście możemy mieć złączenie <span class="math inline">\(w,v \in L\)</span>: <span class="math inline">\(wv \in L\)</span>.</p>
+<p>Zatem mamy gramatykę <span class="math inline">\(G = (\{S\}, \{(,)\}, P, S)\)</span> gdzie <span class="math inline">\(P\)</span>: <span class="math display">\[
+S \to \epsilon | (S) | SS.
+\]</span></p>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(G\)</span> będzie gramatyką <span class="math display">\[
+S \to aS | aSbS | \epsilon
+\]</span></p>
+<p>Udowodnić, że <span class="math display">\[
+L(G) = \{x: \text{każdy przedrostek ma co najmniej tyle symboli } a \text{, co symboli } b\}
+\]</span></p>
+</blockquote>
+<p>Zaczynamy od <span class="math inline">\(S\)</span>. Mamy trzy możliwości: 1. <span class="math inline">\(S \to aS\)</span> 2. <span class="math inline">\(S \to aSbS\)</span> 3. <span class="math inline">\(S \to \epsilon\)</span></p>
+<p>W pierwszym przypadku nasz „licznik” literek <span class="math inline">\(a\)</span> zwiększamy o jeden, więc nawet jeśli przed wykonaniem przejścia „licznik” literek <span class="math inline">\(b\)</span> był o jeden większy niż „licznik” literek <span class="math inline">\(a\)</span> teraz mamy znowu równość między nimi.</p>
+<p>W drugim przypadku mamy wszystko stałe — do obu „liczników” dodajemy jeden.</p>
+<p>W trzecim przypadku „liczników” nie zmieniamy.</p>
+<p>Za każdym razem, kiedy budujemy dane słowo (a co za tym idzie jego przedrostek) „licznik” literek <span class="math inline">\(a\)</span> nigdy nie spadnie poniżej „licznika” literek <span class="math inline">\(b\)</span>.</p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Znaleźć gramatykę bezkontekstową bez symboli bezużytecznych równoważną z gramatyką <span class="math inline">\(G = \left( \{S, A, B, C, D\}, \{a,b,c\}, P, S \right)\)</span>, gdzie <span class="math inline">\(P\)</span> jest postaci <span class="math display">\[
+\begin{aligned}
+    S &amp;\to AB | CA\\
+    A &amp;\to a\\
+    B &amp;\to BC | AB\\
+    C &amp;\to aB | b\\
+    D &amp;\to DB | c
+\end{aligned}
+\]</span></p>
+</blockquote>
+<p>Stosujemy algorytm usuwania symboli bezużytecznych: najpierw szukamy wszystkich nieterminali, które wytwarzają ciąg składających się wyłącznie z terminali (pośrednio lub bezpośrednio): <span class="math display">\[
+N&#39; = \{A,C,D\}^* \Rightarrow \{A,C,D,S\}^* \Rightarrow \{S,A,C,D\}
+\]</span></p>
+<p>Czyli usuwamy wszystkie produkcje z <span class="math inline">\(B\)</span>, mamy nowy zestaw produkcji <span class="math inline">\(P&#39;\)</span>: <span class="math display">\[
+\begin{aligned}
+    S &amp;\to CA\\
+    A &amp;\to a\\
+    C &amp;\to b\\
+    D &amp;\to c
+\end{aligned}
+\]</span></p>
+<p>Następnie szukamy wszystkich nieterminali, które możemy otrzymać z <span class="math inline">\(S\)</span> stosując produkcje z <span class="math inline">\(P&#39;\)</span>: <span class="math display">\[
+N&#39;&#39; = \{S\}* \Rightarrow \{S,A,C\}^* \Rightarrow \{S,A,C\}
+\]</span></p>
+<p>Czyli usuwamy zbędną produkcję <span class="math inline">\(D\)</span>, która jest nieosiągalna.</p>
+<p>Mamy nową gramatykę <span class="math inline">\(G&#39;&#39; = \left( \{S,A,C\}, \{a,b\}, P&#39;&#39;, S \right)\)</span> gdzie <span class="math inline">\(P&#39;&#39;\)</span>: <span class="math display">\[
+\begin{aligned}
+    S &amp;\to CA\\
+    A &amp;\to a\\
+    C &amp;\to b
+\end{aligned}
+\]</span> co tak naprawdę sprowadza się do jednego słowa <span class="math inline">\(ac\)</span>.</p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(G\)</span> będzie gramatyką generującą poprawnie zbudowane formuły rachunku zdań ze zmiennymi zdaniowymi <span class="math inline">\(p\)</span> i <span class="math inline">\(q\)</span>. Symbolami terminalnymi w <span class="math inline">\(G\)</span> są <span class="math inline">\(p,q,(,),\neg,\Rightarrow\)</span>, a produkcjami <span class="math inline">\(S \to \neg S | (S \Rightarrow S) | p | q\)</span>.</p>
+<p>Znajdź gramatykę w postaci normalnej Chomsky’ego generującą ten sam język.<br />
+Dla uzyskanej gramatyki w <a href="../../wyk/2020-10-29/gramatyki-bezkontekstowe.md#12-postać-normalna-chomskyego">postaci normalnej Chomsky’ego</a> znajdź równoważną gramatykę w <a href="../../wyk/2020-10-29/gramatyki-bezkontekstowe.md#13-postać-normalna-greibach">postaci normalnej Greibach</a>.</p>
+</blockquote>
+<h3 id="postać-normalna-chomskyego">Postać normalna Chomsky’ego</h3>
+<p>Najpierw przekształcamy do postaci normalnej Chomsky’ego.</p>
+<p>Narazie mamy: <span class="math inline">\(S \to p|q\)</span>.</p>
+<p>Produkcję <span class="math inline">\(S \to \neg S\)</span> zastępujemy: - <span class="math inline">\(S \to AS\)</span> - <span class="math inline">\(A \to \neg\)</span></p>
+<p>Produkcję <span class="math inline">\(S \to (S \Rightarrow S)\)</span> zastępujemy: - <span class="math inline">\(S \to BC\)</span> - <span class="math inline">\(B \to (\)</span> - <span class="math inline">\(C \to SD\)</span> - <span class="math inline">\(D \to EF\)</span> - <span class="math inline">\(E \to \Rightarrow\)</span> - <span class="math inline">\(F \to SG\)</span> - <span class="math inline">\(G \to )\)</span></p>
+<hr />
+<h3 id="postać-normalna-greibach">Postać normalna Greibach</h3>
+<p>Teraz przekształcamy do postaci normalnej Greibach.</p>
+<p>Narazie mamy: - <span class="math inline">\(S \to p|q\)</span> - <span class="math inline">\(A \to \neg\)</span> - <span class="math inline">\(B \to (\)</span> - <span class="math inline">\(E \to \Rightarrow\)</span> - <span class="math inline">\(G \to )\)</span></p>
+<p>Produkcję <span class="math inline">\(S \to AS\)</span> zastępujemy przez <span class="math inline">\(S \to \neg S\)</span>.</p>
+<p>Produkcję <span class="math inline">\(S \to BC\)</span> zastępujemy przez <span class="math inline">\(S \to (C\)</span>.</p>
+<p>Produkcję <span class="math inline">\(D \to EF\)</span> zastępujemy przez <span class="math inline">\(D \to \Rightarrow F\)</span></p>
+<p>Pozostają do przekształcenia produkcje <span class="math inline">\(C \to SD\)</span> oraz <span class="math inline">\(F \to SG\)</span>. Ponieważ wszystkie produkcje z <span class="math inline">\(S\)</span> są w postaci normalnej Greibach, zastępujemy <span class="math inline">\(S\)</span> z prawej strony wszystkim, czym możemy: - <span class="math inline">\(C \to pD | qD | \neg SD | (CD\)</span> - <span class="math inline">\(F \to pG | qG | \neg SG | (CG\)</span></p>
+<p>Usuwamy już niepotrzebne produkcje <span class="math inline">\(A,B,E\)</span> .</p>
+<p>Ostatecznie mamy produkcje: <span class="math display">\[
+\begin{aligned}
+    S &amp;\to p | q | \neg S | (C\\
+    C &amp;\to pD | qD | \neg SD | (CD\\
+    D &amp;\to \Rightarrow F\\
+    F &amp;\to pG | qG | \neg SG | (CG\\
+    G &amp;\to )
+\end{aligned}
+\]</span></p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Znaleźć gramatykę w <a href="../../wyk/2020-10-29/gramatyki-bezkontekstowe.md#13-postać-normalna-greibach">postaci normalnej Greibach</a> równoważną z następującą gramatyką bezkontekstową: <span class="math display">\[
+\begin{aligned}
+    S &amp;\to AA | 0\\
+    A &amp;\to SS | 1\\
+\end{aligned}
+\]</span> z nieterminalami <span class="math inline">\(S\)</span> i <span class="math inline">\(A\)</span> oraz terminalami <span class="math inline">\(0\)</span> i <span class="math inline">\(1\)</span>.</p>
+</blockquote>
+<p>Mamy produkcje: <span class="math display">\[
+\begin{aligned}
+    A_1 &amp;\to A_2 A_1 | 0\\
+    A_2 &amp;\to A_1 A_1 | 1\\
+\end{aligned}
+\]</span></p>
+<p>Ponieważ prawe strony produkcji <span class="math inline">\(A_1 \to A_2 A_2 | 0\)</span> zaczynają się od terminali lub nieterminali o wyższych indeksach robimy podstawienie: <span class="math display">\[
+\begin{aligned}
+    A_1 &amp;\to A_2 A_2 | 0\\
+    A_2 &amp;\to A_2 A_2 A_1 | 0 A_1 | 1\\
+\end{aligned}
+\]</span></p>
+<p>Do produkcji <span class="math inline">\(A_2 \to A_2 \underbrace{A_2 A_1}_{\alpha_1} | \underbrace{0 A_1}_{\beta_1} | \underbrace{1}_{\beta_2}\)</span> wykorzystujemy <a href="../../wyk/2020-10-29/gramatyki-bezkontekstowe.md#132-lemat2">lemat z wykładu</a>.</p>
+<p>Otrzymujemy zatem: <span class="math display">\[
+\begin{aligned}
+    A_2 &amp;\to \overbrace{0 A_1}^{\beta_1} | \overbrace{1}^{\beta_2} | \overbrace{0 A_1 B}^{\beta_1 B} | \overbrace{1 B}^{\beta_2 B}\\
+    B &amp;\to \underbrace{A_2 A_1}_{\alpha_1} | \underbrace{A_2 A_1 B}_{\alpha_1 B}
+\end{aligned}
+\]</span></p>
+<p>Ponieważ wszystkie produkcje z <span class="math inline">\(A_2\)</span> są w postaci normalnej Greibach, robimy podstawienie za pierwsze <span class="math inline">\(A_2\)</span> znajdujące się po prawej stronie produkcji z <span class="math inline">\(A_1\)</span> oraz z <span class="math inline">\(B\)</span>: <span class="math display">\[
+\begin{aligned}
+    A_1 &amp;\to 0 A_1 A_2 | 1 A_2 | 0 A_1 B A_2 | 1 B A_2 | 0\\
+    A_2 &amp;\to 0 A_1 | 1 | 0 A_1 B | 1B\\
+    B   &amp;\to 0 A_1 A_1 | 1 A_1 | 0 A_1 B A_1 | 1 B A_1 | 0 A_1 A_1 B | 1 A_1 B | 0 A_1 B A_1 B | 1 B A_1 B
+\end{aligned}
+\]</span></p>
+<p>Teraz wystarczy tylko zamienić <span class="math inline">\(A_1\)</span> na <span class="math inline">\(S\)</span> oraz <span class="math inline">\(A_2\)</span> na <span class="math inline">\(A\)</span>.</p>
+<hr />
+<h2 id="zadanie-6.">Zadanie 6.</h2>
+<h3 id="zadanie-6.1.">Zadanie 6.1.</h3>
+<blockquote>
+<p>Pokazać, że jeśli wszystkie produkcje gramatyki bezkontekstowej mają postać <span class="math inline">\(A \to wB\)</span> lub <span class="math inline">\(A \to w\)</span>, gdzie <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> są symbolami nieterminalnymi a w słowem złożonym tylko z symboli terminalnych, to język generowany przez tą gramatykę jest regularny.</p>
+</blockquote>
+<p>Mamy - gramatykę <span class="math inline">\(G = (N,T,P,S)\)</span>, gdzie - <span class="math inline">\(P = \left\{ A \to wB \lor A \to w:\enspace w \in T^+ \land A,B \in N \right\}\)</span> - NFA <span class="math inline">\(M = \left(Q, T, \delta, S, \{q_F\}\right)\)</span>, gdzie - <span class="math inline">\(Q = N \cup \{q_F\}\)</span></p>
+<p><strong>Cel: pokazać, że <span class="math inline">\(L(M) = L(G)\)</span></strong>, bo jeżeli mamy NFA to mamy też wyrażenie regularne.</p>
+<p>Definiujemy funkcję przejścia:<br />
+Stanami są nieterminale, bo nieterminale oznaczają, że słowo się jeszcze nie skończyło — tak samo, jak w automacie, gdzie tylko jeden (ten dodatkowy) stan <span class="math inline">\(q_F\)</span> jest akceptujący, kiedy pozostałe są stanami „tymczasowymi”. - <span class="math inline">\(\delta(A, w) = \{B: (A \to wB) \in P\}\)</span> - <span class="math inline">\(\delta(A, w) = \{q_F\}\)</span>, jeśli <span class="math inline">\((A \to w) \in P\)</span>, bo jeśli nieterminal przechodzi na sam ciąg terminali oznacza to zamknięcie wyprowadzania słowa</p>
+<p>Istotne jest zauważyć, że skoro w gramatyce dla pewnego słowa <span class="math inline">\(w = w_1 w_2\dots w_n\)</span><br />
+mamy pewne wyprowadzenie <span class="math inline">\(S \Rightarrow w_1 A_1 \Rightarrow w_1 w_2 A_2 \Rightarrow \dots \Rightarrow w_1 w_2 \dots w_{n-1} A_{n-1} \Rightarrow w_1 w_2 \dots w_n\)</span>,<br />
+to również przy pomocy funkcji przejścia <span class="math inline">\(\delta\)</span> jesteśmy w stanie wyprowadzić takie same słowo, czyli dojść do stanu akceptującego <span class="math inline">\(q_F\)</span>:<br />
+<span class="math inline">\(q_F \in \delta(A_{n-1}, w_n);\, A_{n-1} \in \delta(A_{n-2}, w_{n-1});\, \dots; A_2 \in \delta(A_1, w_2);\, A_1 \in \delta(S, w_1)\)</span>, a wynika to z definicji funkcji <span class="math inline">\(\delta\)</span>, którą przed chwilą zdefiniowaliśmy.</p>
+<p>Czyli jesteśmy w stanie „wystrugać” sobie takie samo słowo używając obu języków <span class="math inline">\(L(G), L(M)\)</span>. Skłania to do stwierdzenia, że <span class="math inline">\(L(G) = L(M)\)</span>.</p>
+<hr />
+<h3 id="zadanie-6.2.">Zadanie 6.2.</h3>
+<blockquote>
+<p>Pokazać, że jeśli język jest regularny, to istnieje gramatyka bezkontekstowa generująca ten język, w której wszystkie produkcje mają postać <span class="math inline">\(A \to aB\)</span> lub <span class="math inline">\(A \to a\)</span>, gdzie <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> są symbolami nieterminalnymi a <span class="math inline">\(a\)</span> symbolem terminalnym.</p>
+</blockquote>
+<p>Mamy - DFA (odpowiadający wyrażeniu regularnemu) <span class="math inline">\(M = (Q, \Sigma, \delta, S, F)\)</span> - gramatykę <span class="math inline">\(G = (Q, \Sigma, P, S)\)</span> gdzie - <span class="math inline">\(P = \left\{ A \to aB:\enspace a \in T \land A \in N \land (B \in N \lor B = \epsilon) \right\}\)</span></p>
+<p><strong>Cel: pokazać, że <span class="math inline">\(L(M) = L(G)\)</span></strong>.</p>
+<p>I znowu tłumaczymy zapis automatowy na gramatyczny, definiujemy produkcję <span class="math inline">\(P\)</span> tłumacząc <span class="math inline">\(\delta(A, a) = B\)</span> na produkcje: - <span class="math inline">\(A \to aB\)</span> jeśli <span class="math inline">\(B \notin F\)</span> (nie jest stanem akceptującym, nie można zakończyć wyprowadzenia słowa) - <span class="math inline">\(A \to a\)</span> jeśli <span class="math inline">\(B \in F\)</span> oth.</p>
+<p>oczywiście <span class="math inline">\(A,B \in Q\)</span> (stany, przetłumaczone na nieterminale), kiedy <span class="math inline">\(a\)</span> to dany terminal.</p>
+<p>Analogicznie do <a href="#zadanie-61">zadania 6.1.</a> jesteśmy w stanie przetłumaczyć przejścia w automacie na przejścia w wyprowadzaniu słowa w gramatyce.</p>
+<p>Należy zauważyć, że skoro w automacie dla pewnego słowa <span class="math inline">\(a = a_1 a_2 \dots a_n\)</span> możemy znaleźć drogę z stanu początkowego <span class="math inline">\(S\)</span> do pewnego stanu <span class="math inline">\(B \in F\)</span>:<br />
+<span class="math inline">\(\delta(S, a_1) = A_1;\, \delta(A_1, a_2) = A_2;\, \dots; \delta(A_{n-2}, a_{n-1}) = A_{n-1};\, \delta(A_{n-1}, a_n) = B\)</span>,<br />
+to również w gramatyce <span class="math inline">\(G\)</span> jesteśmy w stanie wyprowadzić takie samo słowo:<br />
+<span class="math inline">\(S \Rightarrow a_1 A_1 \Rightarrow a_1 a_2 A_2 \Rightarrow \dots \Rightarrow a_1 a_2 \dots a_{n-1} A_{n-1} \Rightarrow a_1 a_2 \dots a_n\)</span><br />
+a wynika to z budowy zbioru produkcji, który przed chwilą zdefiniowaliśmy. <em>(tutaj, w celu zobrazowania analogii, można na końcu jeszcze dopisać nieterminal <span class="math inline">\(B\)</span>, który przechodzi na <span class="math inline">\(\epsilon\)</span>)</em></p>
+<p>Czyli jesteśmy w stanie „wystrugać” sobie takie samo słowo używając obu języków <span class="math inline">\(L(G), L(M)\)</span>. Skłania to do stwierdzenia, że <span class="math inline">\(L(G) = L(M)\)</span>.</p>
+<hr />
+</body>
+</html>

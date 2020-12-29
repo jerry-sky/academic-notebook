@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-2">Lista-2</h1>
+<p><em>(Termin oddania 2020-11-11)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a>
+<ul>
+<li><a href="#zadanie-11">Zadanie 1.1.</a></li>
+<li><a href="#zadanie-12">Zadanie 1.2.</a></li>
+<li><a href="#zadanie-13">Zadanie 1.3.</a></li>
+<li><a href="#zadanie-14">Zadanie 1.4.</a></li>
+</ul></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-5">Zadanie 5.</a></li>
+<li><a href="#zadanie-6">Zadanie 6.</a></li>
+<li><a href="#zadanie-7">Zadanie 7.</a></li>
+</ul>
+<hr />
+<p>Do rozwiązań dołączone są pliki o rozszerzeniu <code>.wls</code> — są to pliki zawierające skrypty napisane w <em>WolframScript</em> i realizują praktyczną część danego zadania.</p>
+<p>Uruchomienie na Linuxie (z zainstalowanym <em>Wolfram Mathematica</em> i <em>WolframScript</em>): <code>./ex-[numer zadania].wls</code>.</p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Niech <span class="math inline">\(N\)</span> będzie drugim imieniem Rycha Pei a <span class="math inline">\(L\)</span> będzie liczbą lat jakie ukończył Rychu Peja.</p>
+</blockquote>
+<h3 id="zadanie-1.1.">Zadanie 1.1.</h3>
+<blockquote>
+<p>Ile jest kompozycji liczby <span class="math inline">\(L\)</span>?</p>
+</blockquote>
+<p>Określamy klasę kombinatoryczną dla kompozycji liczb: <span class="math display">\[
+\mathcal{C} \cong \operatorname{SEQ}(\mathcal{N}_{\ge1})
+\]</span> oraz OGF dla tej klasy: <span class="math display">\[
+C(z) = \frac{1}{1 - \frac{z}{1-z}} = \frac{1-z}{1 - 2z}.
+\]</span></p>
+<p>Zatem naszym wynikiem będzie: <span class="math display">\[
+[z^L]C(z) = [z^L] \frac{1}{1-2z} - [z^L] \frac{z}{1-2z} = 2^L - 2^{L-1} = 2^{L-1} \overset{L = 44}{=} 2^{43} =\\
+= 8796093022208 = 8.796093022208 \cdot 10^{12}
+\]</span></p>
+<p><a href="ex-1.1.wls">Kod programu</a> znajduje się w pliku <code>ex-1.1.wls</code>.</p>
+<hr />
+<h3 id="zadanie-1.2.">Zadanie 1.2.</h3>
+<blockquote>
+<p>Ile jest partycji liczby <span class="math inline">\(L\)</span> na liczby ze zbioru <span class="math inline">\(\left\{ 1,2,20,21 \right\}\)</span>?</p>
+</blockquote>
+<p>Określamy klasę kombinatoryczną dla partycji liczby na podliczby ze zbioru <span class="math inline">\(\{1,2,20,21\}\)</span>: <span class="math display">\[
+\mathcal{P}^{\left\{ 1,2,20,21 \right\}} \cong \operatorname{MSET}(\mathcal{N}_{\in \{1,2,20,21\}})
+\]</span> oraz OGF dla tej klasy: <span class="math display">\[
+P_a(z) = P^{\{1,2,20,21\}}(z) = \frac{1}{1-z} \cdot \frac{1}{1-z^2} \cdot \frac{1}{1-z^{20}} \cdot \frac{1}{1-z^{21}}.
+\]</span></p>
+<p>Zatem naszym wynikiem będzie: <span class="math display">\[
+[z^L]P_a(z) = 55.
+\]</span></p>
+<p><a href="ex-1.2.wls">Kod programu</a> znajduje się w pliku <code>ex-1.2.wls</code>.</p>
+<hr />
+<h3 id="zadanie-1.3.">Zadanie 1.3.</h3>
+<blockquote>
+<p>Ile jest słów będących permutacją liter ze słowa <span class="math inline">\(N\)</span>?</p>
+</blockquote>
+<p>Słowo: <em>Waldemar</em> — powtarzają się tylko jedna litera (<em>a</em>) tylko jeden raz.</p>
+<p>Mamy <span class="math inline">\(n = 8\)</span>. Gdyby wszystkie litery byłyby różne mamy wszystkich takich permutacji <span class="math inline">\(8!\)</span>. Jednakże, mamy jedno powtórzenie, więc dzielimy przez <span class="math inline">\(2!\)</span> (bo literek <em>a</em> jest dwa — wyrzucamy rozróżnienie między nimi).</p>
+<p>Zatem nasz wynik wynosi <span class="math inline">\(\frac{8!}{2!} = 20160\)</span>.</p>
+<p><a href="ex-1.3.wls">Kod programu</a> znajduje się w pliku <code>ex-1.3.wls</code>.</p>
+<hr />
+<h3 id="zadanie-1.4.">Zadanie 1.4.</h3>
+<blockquote>
+<p>Ile jest słów będących permutacją liter ze słowa <span class="math inline">\(N\)</span>, które nie mają więcej niż <span class="math inline">\(3\)</span> spółgłosek obok siebie.</p>
+</blockquote>
+<p>Słowo: <em>Waldemar</em> — powtarzają się tylko jedna litera (<em>a</em>) tylko jeden raz.</p>
+<p>Rozważamy przegródki, gdzie ścianami wewnętrznymi są samogłoski (jest ich <span class="math inline">\(3\)</span>) a w przegródkach mamy spółgłoski. Liczba spółgłosek wynosi pięć, więc suma liczebności z poszczególnych przegródek też musi tyle wynosić. Określamy <span class="math inline">\(x_i\)</span> jako liczbę spółgłosek w <span class="math inline">\(i\)</span>-tej przegródce (mamy ich <span class="math inline">\(4\)</span>). Przy czym w żadnej przegródce nie może być więcej niż trzy spółgłoski.<br />
+Czyli: <span class="math display">\[
+\sum_{i=1}^4 x_i = 5, \quad \forall i \enspace x_i \in \{0,\dots,3\}.
+\]</span></p>
+<p>Odpowiada temu pewna klasa kombinatoryczna <span class="math inline">\(\mathcal{A}\)</span> o OGF: <span class="math display">\[
+A(z) = (1 + z + z^2 + z^3)^4.
+\]</span></p>
+<p>Pośredni wynik wynosi <span class="math inline">\([z^5]A(z) = 28\)</span>.</p>
+<p>Pozostało jeszcze pomnożyć ten współczynnik przez odpowiednią liczbę, która nada rozróżnialność między literami <span class="math inline">\(28 \cdot \frac{5! \cdot 3!}{2!}\)</span> jako, że mamy <span class="math inline">\(5\)</span> spółgłosek oraz <span class="math inline">\(3\)</span> samogłoski, przy czym mamy dwie kopie tej samej spółgłoski dlatego dzielimy przez <span class="math inline">\(2!\)</span>.</p>
+<p>Wynik ostateczny: <span class="math inline">\(14400\)</span>.</p>
+<p><a href="ex-1.4.wls">Kod programu</a> znajduje się w pliku <code>ex-1.4.wls</code>.</p>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Losujemy niezależnie ciąg 100 bitów. Niech <span class="math inline">\(R\)</span> będzie najdłuższym ciągiem samych jedynek obok siebie (np. Dla <span class="math inline">\(00101010101110\)</span> mamy <span class="math inline">\(R = 3\)</span>). Oblicz p-stwo, że <span class="math inline">\(R = 10\)</span>.</p>
+</blockquote>
+<p>Myślimy o zerach jako o ścianach przegródek, a w tych przegródkach siedzą jedynki. Przy czym, rozważamy różne liczby zer i musimy oczywiście wykluczyć te sytuacje, w których mamy za mało zer. Co ważniejsze, musimy liczyć tylko dla tych sytuacji, w których mamy co najmniej <span class="math inline">\(10\)</span> jedynek w co najmniej jednej przegródce. Używamy następującej sumy do opisania bloków jedynek: <span class="math display">\[
+\left(\sum_{k=0}^{10} z^k \right)^{n+1}
+\]</span> bo mamy <span class="math inline">\(n+1\)</span> ścianek dla <span class="math inline">\(n\)</span> przegródek. Jednakże musimy odjąć takie bloki, dla których liczba jedynek może być mniejsza niż <span class="math inline">\(10\)</span>: <span class="math display">\[
+\left( \sum_{k=0}^{9} z^k \right)^{n+1}
+\]</span> i chcemy z tych sum wyciągnąć współczynniki dla potęg <span class="math inline">\([z^{100-n}]\)</span>, jako że chcemy uzyskać liczbę jedynek (<span class="math inline">\(n\)</span> to liczba zer, więc <span class="math inline">\(100-n\)</span> to liczba jedynek).</p>
+<p>Zatem: <span class="math display">\[
+\sum_{n=0}^{90} \left( [z^{100-n}]\left(\sum_{k=0}^{10} z^k \right)^{n+1} - [z^{100-n}]\left( \sum_{k=0}^{9} z^k \right)^{n+1} \right)
+\]</span> jest naszym rozwiązaniem (sumujemy wszystkie możliwości dla zer).</p>
+<p>Wynik ostateczny: <span class="math inline">\(0.022107962880719877 \approx 2\%\)</span>.</p>
+<p><a href="ex-2.wls">Kod programu</a> znajduje się w pliku <code>ex-2.wls</code>.</p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Ile mamy uporządkowanych drzew o <span class="math inline">\(20\)</span> węzłach, w których każdy węzeł ma <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> lub <span class="math inline">\(2\)</span> potomków?</p>
+</blockquote>
+<p>Sytuacja podobna do <a href="../../cw/lista-2/lista-2.md#zadanie-2">zadania 2. z listy 2. z ćwiczeń</a> — przy czym tutaj mamy małe rozszerzenie — każdy potomek może mieć teraz również tylko jednego potomka.</p>
+<p>Zmienia to nieco postać klasy kombinatorycznej: <span class="math display">\[
+\mathcal{T} \cong \mathcal{Z} \times (\mathcal{E} + \mathcal{T} + \mathcal{T} \times \mathcal{T}).
+\]</span></p>
+<p>I znowu budujemy OGF: <span class="math display">\[
+T(z) = z \cdot \left( 1 + T(z) + T^2(z) \right)
+\]</span> i dochodzimy do tego samego problemu — musimy tutaj użyć Twierdzenia Lagrange’a o inwersji. Określamy funkcję: <span class="math display">\[
+\varphi(x) = 1 + x + x^2,
+\]</span> która jest funkcją analityczną (wielomian; jest swoim rozwinięciem Taylora).</p>
+<p>Wiemy również, że <span class="math display">\[
+[z^n]T(z) = \frac{1}{n}[x^{n-1}]\varphi^n(x).
+\]</span></p>
+<p>Zatem, możemy uzyskać nasz wynik: <span class="math display">\[
+[z^{20}]T(z) = \frac{1}{20} [x^{19}] (1 + x + x^2)^n = 18199284 = 1.8199284 \cdot 10^{7}
+\]</span></p>
+<p><a href="ex-5.wls">Kod programu</a> znajduje się w pliku <code>ex-5.wls</code>.</p>
+<hr />
+<h2 id="zadanie-6.">Zadanie 6.</h2>
+<blockquote>
+<p>Ile jest triangulacji <span class="math inline">\(20\)</span>-kąta?</p>
+</blockquote>
+<p>Wykorzystujemy wzór <span class="math display">\[
+T(z) = \sum_{n=0}^{\infty} \frac{1}{n+1} \binom{2n}{n} \cdot z^n.
+\]</span></p>
+<p>Ostateczny wynik: <span class="math inline">\([z^{18}] T(z) = 477638700 = 4.77638700 \cdot 10^{8}\)</span>.</p>
+<p><a href="ex-6.wls">Kod programu</a> znajduje się w pliku <code>ex-6.wls</code>.</p>
+<hr />
+<h2 id="zadanie-7.">Zadanie 7.</h2>
+<blockquote>
+<p>Święty Mikołaj ma w worku dziesięć różnych przedmiotów o wadze <span class="math inline">\(1\)</span> kg, trzy różne przedmioty o wadze <span class="math inline">\(2\)</span> kg oraz jeden przedmiot o masie <span class="math inline">\(7\)</span> kg. 1. Na ile sposobów może przygotować prezent o masie <span class="math inline">\(12\)</span> kg? 2. A na ile sposobów prezent o masie co najmniej <span class="math inline">\(12\)</span> kg?</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p>Będzie to zbiór potęgowy tych wszystkich przedmiotów. Czyli OGF będzie postaci: <span class="math display">\[
+A(z) = (1 + z)^{10} \cdot (1 + z^2)^{3} \cdot (1 + z^7)
+\]</span></p>
+<p>Ostateczny wynik: <span class="math inline">\([z^{12}]A(z) = 990\)</span></p></li>
+<li><p>Tutaj robimy sumę od <span class="math inline">\(12\)</span> do maksymalnej liczby kilogramów, jaką jest Święty Mikołaj zbudować z dostępnych przedmiotów. <span class="math display">\[
+\sum_{n=0}^{23} [z^{n}]A(z) = 8192.
+\]</span></p></li>
+</ol>
+<p><a href="ex-7.wls">Kod programu</a> znajduje się w pliku <code>ex-7.wls</code>.</p>
+<hr />
+</body>
+</html>

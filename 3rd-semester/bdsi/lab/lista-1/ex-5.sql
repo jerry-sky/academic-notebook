@@ -1,0 +1,1 @@
+Select species From pet Where sex = 'm' Group by species

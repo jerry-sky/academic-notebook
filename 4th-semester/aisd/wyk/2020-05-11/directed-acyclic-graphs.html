@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="skierowane-grafy-acykliczne">Skierowane grafy acykliczne</h1>
+<h2 id="text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</h2>
+<p>Graf skierowany posiada cykl iff gdy podczas wykonywania procedury DFS zostanie wykryta <a href="dfs-directed-graphs.md#rodzaje-kraw%c4%99dzi">back edge</a></p>
+<h3 id="szkic-d-d-text-faktu">Szkic d-d <span class="math inline">\(\text {Faktu}\)</span></h3>
+<p>Jeśli <span class="math inline">\(\exists\)</span> back edge <span class="math inline">\(\implies\)</span> graf skierowany posiada cykl; jeśli <span class="math inline">\((u,v)\)</span> jest typu back edge, wówczas mamy cykl zawierający krawędź <span class="math inline">\((u,v)\)</span> oraz krawędzie występujące pomiędzy <span class="math inline">\(v\)</span> i <span class="math inline">\(u\)</span> w drzewie DFS</p>
+<p>Graf skierowany posiada cykl<br />
+<span class="math inline">\(C: v_0 \to v_1 \to \dotsb \to v_k \to v_0 \implies\)</span> back edge: znajdźmy wierzchołek należący do tego cyklu (powiedzmy <span class="math inline">\(v_i\)</span>), który został jako pierwszy odkryty podczas wykonywania procedury DFS (czyli wartość <span class="math inline">\(v_i.\mathrm{pre}\)</span> jest mniejsza od wszystkich innych wartości <span class="math inline">\(v_j.\mathrm{pre}\)</span> dla wierzchołków <span class="math inline">\(v_j\)</span> należących do tego cyklu). Wszystkie inne wierzchołki <span class="math inline">\(v_j\)</span> należące do tego cyklu będą potomkami wierzchołka <span class="math inline">\(v_i\)</span> w drzewie DFS. Wśród potomków będzie również wierzchołek <span class="math inline">\(v_{i-1}\)</span> (lub <span class="math inline">\(v_k\)</span> jeśli <span class="math inline">\(i=0\)</span>) z którego można dojść do <span class="math inline">\(v_i\)</span> (ponieważ <span class="math inline">\(v_{i-1} \to v_i \in C\)</span>) i krawędź <span class="math inline">\((v_{i-1}, v_i) \in E\)</span> jest z definicji back edge.</p>
+<p>Zatem wykonując DFS możemy wykrywać czy skierowany graf ma cykl wykrywając krawędź typu back edge.</p>
+<h2 id="linearyzacja-daga-sortowanie-topologiczne">Linearyzacja DAGa (sortowanie topologiczne)</h2>
+<p>Wierzchołki skierowanego grafu acyklicznego można uporządkować w taki sposób, że wszystkie krawędzie grafu będą skierowane od wierzchołków będących wcześniej w porządku do wierzchołków będących później w tym porządku.</p>
+<p>Jest to jedna z pierwszych rzeczy, które należy wykonać m.in. podczas realizacji metodologii <a href="../2020-04-08/programowanie-dynamiczne">programowania dynamicznego</a>.</p>
+<h2 id="text-fakt-2"><span class="math inline">\(\text {Fakt}\)</span> #2</h2>
+<p>W skierowanym grafie acyklicznym dla każdej krawędzi <span class="math inline">\((u,v) \in E\)</span> zachodzi <span class="math inline">\(u.\mathrm{post} &gt; v.\mathrm{post}\)</span>.</p>
+<h2 id="linearizedagg"><code>linearizeDAG</code><span class="math inline">\((G)\)</span></h2>
+<p>Powyższy fakt daje łatwy przepis na algorytm zwracający interesujący nas porządek wierzchołków w DAGu:</p>
+<p><code>linearizeDAG</code><span class="math inline">\((G)\)</span>: 1. Wykonaj <a href="dfs-directed-graphs">DFS</a> uzupełniając wartości <span class="math inline">\(\mathrm{post}\)</span> w procedurze <code>postvisit</code> 2. <code>return</code> porządek wierzchołków od największej wartości <span class="math inline">\(\mathrm{post}\)</span> do najmniejszej</p>
+<h3 id="example-of-linearizedag">Example of <code>linearizeDAG</code></h3>
+<div class="figure">
+<img src="linearizing-dag-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<h2 id="strongly-connected-components">Strongly connected components</h2>
+<p>Spójność grafu skierowanego definiujemy przy użyciu następującej relacji:</p>
+<blockquote>
+<p>Wierzchołki <span class="math inline">\(u\)</span> oraz <span class="math inline">\(v\)</span> należące do <span class="math inline">\(G\)</span> skierowanego są połączone jeśli istnieje ścieżka od <span class="math inline">\(u\)</span> do <span class="math inline">\(v\)</span> oraz ścieżka od <span class="math inline">\(v\)</span> do <span class="math inline">\(u\)</span>.</p>
+</blockquote>
+<p>Relacja ta dzieli zbiór wierzchołków <span class="math inline">\(V\)</span> na rozłączne podzbiory, gdzie w każdym podzbiorze występują wierzchołki, które są ze sobą połączone. Podzbiory te nazywamy <em>składowymi silnie spójnymi</em> i tworzą one meta-graf będący skierowanym grafem acyklicznym.</p>
+<h3 id="własności">Własności</h3>
+<h4 id="własność-1">Własność #1</h4>
+<p>Procedura <a href="../2020-05-06/depth-first-search.md#exploregv"><code>explore</code></a> rozpoczęta w wierzchołku <span class="math inline">\(u \in V\)</span> zakończy się gdy wszystkie wierzchołki, do których można dojść z <span class="math inline">\(u\)</span>, zostaną odwiedzone.</p>
+<p>Własność ta mówi nam, że jeśli wykonamy procedurę <code>explore</code> w wierzchołku należącym do składowej będącej ujściem (wierzchołkiem, z którego już nigdzie nie można przejść) w meta-grafie to przejdziemy przez wszystkie wierzchołki należące do tej składowej. Sugeruje to nam w jaki sposób możemy znajdować silnie spójne składowe, ale zostają jeszcze dwa nierozwiązane problemy: - w jaki sposób znajdziemy wierzchołek należący do składowej będącej ujściem w meta-grafie składowych silnie spójnych - w jaki sposób będziemy kontynuować odkrywanie silnie spójnych składowych po odkryciu jednej z nich będącej ujściem</p>
+<h4 id="własność-2">Własność #2</h4>
+<p>Wierzchołek mający największą wartość <span class="math inline">\(\mathrm{post}\)</span> po wykonaniu procedury <a href="../2020-05-06/depth-first-search">DFS</a> musi leżeć w źródle (czyli wierzchołku do którego nie wchodzą żadne krawędzie) meta-grafu skłądowych silnie spójnych.</p>
+<p>Własność ta wynika z <a href="#w%c5%82asno%c5%9b%c4%87-3">własności #3</a>, która będzie dowiedziona w następnym punkcie. Własność ta pozwala nam zidentyfikować wierzchołek grafu <span class="math inline">\(G\)</span> należący do źródła meta-grafu składowych silnie spójnych, czyli odwrotności ujścia, na którym nam zależy. Zatem jeśli rozważymy graf <span class="math inline">\(G^R\)</span>, w którym odwrócimy kierunki wszystkich krawędzi to DFS zwróci nam największą wartość <span class="math inline">\(\mathrm{post}\)</span> dla wierzchołka należącego do źródła <span class="math inline">\(G^R\)</span>, a z relacji pomiędzy grafami <span class="math inline">\(G\)</span> i <span class="math inline">\(G^R\)</span> wiemy, że źródło meta-grafu stworzonego z <span class="math inline">\(G^R\)</span> jest ujściem meta-grafu stworzonego z <span class="math inline">\(G\)</span>. To rozwiązuje nam <a href="#w%c5%82asno%c5%9b%c4%87-1">problem pierwszy z własności #1</a> znalezienia wierzchołka należącego do ujścia meta-grafu składowych silnie spójnych grafu <span class="math inline">\(G\)</span>.</p>
+<h4 id="własność-3">Własność #3</h4>
+<p>Niech <span class="math inline">\(C\)</span> i <span class="math inline">\(C&#39;\)</span> będą składowymi silnie spójnymi grafu <span class="math inline">\(G = (V,E)\)</span> oraz niech istnieje krawędź <span class="math inline">\((u,v) \in E\)</span> taka, że <span class="math inline">\(u\in C\)</span>, a <span class="math inline">\(v \in C&#39;\)</span>, wtedy największa wartość <span class="math inline">\(\mathrm{post}\)</span> spośród wierzchołków należących do <span class="math inline">\(C\)</span> jest większa niż największa wartość <span class="math inline">\(\mathrm{post}\)</span> spośród wierzchołków należących do <span class="math inline">\(C&#39;\)</span> (czyli <span class="math inline">\(\max\{x.\mathrm{post}: x\in C\} &gt; \max\{y.\mathrm{post}: y \in C&#39;\}\)</span>).</p>
+<p>Szkic dowodu:<br />
+Jeśli spośród wierzchołków należących do <span class="math inline">\(C\)</span> i <span class="math inline">\(C&#39;\)</span> pierwszy odwiedzony będzie <span class="math inline">\(u\in C\)</span> wtedy z <a href="#w%c5%82asno%c5%9b%c4%87-1">własności 1</a> wiemy, że procedura <code>explore</code><span class="math inline">\((u)\)</span> nada wartość <span class="math inline">\(u.\mathrm{post}\)</span> po odwiedzeniu wszystkich innych wierzchołków należących do <span class="math inline">\(C\)</span> i <span class="math inline">\(C&#39;\)</span> będzie miał wierzchołek <span class="math inline">\(u \in C\)</span>.<br />
+Jeśli spośród wierzchołków należących do <span class="math inline">\(C\)</span> i <span class="math inline">\(C&#39;\)</span> pierwszy odwiedzony będzie wierzchołek <span class="math inline">\(v \in C&#39;\)</span> to najpierw odwiedzimy wszystkie inne należące do <span class="math inline">\(C&#39;\)</span> i procedura <code>explore</code><span class="math inline">\((v)\)</span> zakończy działania. Następnie DFS wykona procedurę <code>explore</code><span class="math inline">\((u)\)</span> na wierzchołku <span class="math inline">\(u \in C\)</span> i odwiedzi wszystkie inne wierzchołki należące do <span class="math inline">\(C\)</span>. Stąd wierzchołki należące do <span class="math inline">\(C\)</span> będą miały większe wartości <span class="math inline">\(\mathrm{post}\)</span> od wierzchołków należących do <span class="math inline">\(C&#39;\)</span>.</p>
+<p>Własność 3 można odczytać również jako:<br />
+składowe silnie spójne meta-grafu mogą zostać uporządkowane (linearyzowane) w kolejności malejącej po największych wartościach <span class="math inline">\(\mathrm{post}\)</span> wierzchołków należących do tych składowych. Własność 3 pozwala nam na rozwiązanie <a href="#w%c5%82asno%c5%9b%c4%87-1">problemu drugiego z własności 1</a>: po znalezieniu i eksploracji śladowej silnie spójnej będącej ujściem w meta-grafie możemy usunąć należące do niej wierzchołki grafu <span class="math inline">\(G\)</span> i rozpocząć znajdowanie kolejnej składowej silnie spójnej od wierzchołka z największą wartością <span class="math inline">\(\mathrm{post}\)</span> spośród wierzchołków, które nie zostały usunięte z grafu <span class="math inline">\(G\)</span>.</p>
+<h2 id="findstronglyconnectedcomponentsg"><code>FindStronglyConnectedComponents</code><span class="math inline">\((G)\)</span></h2>
+<p>Teraz możemy określić algorytm znajdujący silnie połączone składowe grafu:</p>
+<p><code>FindStronglyConnectedComponents</code><span class="math inline">\((G)\)</span>: 1. Wykonaj DFS na grafie <span class="math inline">\(G^R\)</span> zapisując wartości <span class="math inline">\(\mathrm{post}\)</span> dla węzłów 2. Wykonaj algorytm sprawdzania spójności grafu (wersja dla grafu nieskierowanego) na grafie <span class="math inline">\(G\)</span> przy użyciu procedury DFS używając przy tym kolejności malejącej wartości <span class="math inline">\(\mathrm{post}\)</span> wyznaczone wyżej</p>
+<p>Złożoność obliczeniowa:<br />
+Algorytm wyznaczania składowych silnie spójnych polega na dwukrotnym wykonaniu procedury DFS, która działa w czasie liniowym. Zatem złożoność obliczeniowa algorytmu wyznaczania składowych silnie spójnych to <span class="math inline">\(O(|V| + |E|)\)</span>.</p>
+<h2 id="przykład">Przykład</h2>
+<div class="figure">
+<img src="strongly-connected-components-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Chapter 3</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Chapter 22</a></li>
+</ul>
+</body>
+</html>

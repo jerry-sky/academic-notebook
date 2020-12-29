@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="insertion-sort">Insertion Sort</h1>
+<p><em>(2020-03-02)</em></p>
+<h2 id="index">Index</h2>
+<ul>
+<li><a href="#insertion-sortan"><code>Insertion sort(A,n)</code></a></li>
+<li><a href="#worst-case-analysis">Worst Case Analysis</a></li>
+<li><a href="#average-case-analysis">Average Case Analysis</a></li>
+</ul>
+<h2 id="insertion-sortan"><code>Insertion sort(A,n)</code></h2>
+<p><span class="math inline">\(A = \{ a_1, a_2, ... a_n \}\)</span></p>
+<pre><code>for j = 1 to n {
+  key = A[j]
+  i = j-1
+  while( i &gt;= 0 &amp;&amp; A[i] &gt; key) {
+    A[i+1] = A[i]
+    i--
+  }
+  A[i+1] = key
+}</code></pre>
+<p>kroki:</p>
+<pre><code>[X][ ][ ]...[ ]
+ 1  2  3 ... n</code></pre>
+<pre><code>       m
+[X][X][ ]...[a_k]|...[ ]
+ 1  2  3 ...k   ... n</code></pre>
+<h2 id="worst-case-analysis">Worst Case Analysis</h2>
+<p><span class="math inline">\(max(\)</span> Liczba porównań pomiędzy elementami input'u <span class="math inline">\(A)\)</span></p>
+<h3 id="example">Example</h3>
+<pre><code>[9, 7, 5, 3, 1]
+ 1  2  3  4  5
+[5, 7, 9, 3, 1]</code></pre>
+<p><span class="math display">\[
+T(n) =
+\sum^{n-1}_{j=1} O(j) =
+O\Bigg(
+  \sum^{n-1}_{j=1}j
+\Bigg) = (*)
+\]</span> przy czym <span class="math display">\[
+\sum^{n-1}_{j=1}j = \binom{n}{2} = \frac{n(n-1)}{2}
+\]</span> dlatego <span class="math display">\[
+(*) = O(n^2)
+\]</span></p>
+<h2 id="average-case-analysis">Average Case Analysis</h2>
+</body>
+</html>

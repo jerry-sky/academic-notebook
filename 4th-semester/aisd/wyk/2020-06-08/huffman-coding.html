@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kodowanie-huffmana">Kodowanie Huffmana</h1>
+<ul>
+<li><a href="#przykład-kompresji-mp3">Przykład kompresji MP3</a></li>
+<li><a href="#przykładowe-kodowanie-mp3">Przykładowe kodowanie MP3</a></li>
+<li><a href="#niepotrzebne-bity">Niepotrzebne bity</a></li>
+<li><a href="#zastosowanie-kodu-huffmana">Zastosowanie kodu Huffmana</a></li>
+<li><a href="#pseudokod-algorytmu">Pseudokod algorytmu</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<h2 id="przykład-kompresji-mp3">Przykład kompresji MP3</h2>
+<p>Schemat kompresji MP3 w sporym uproszczeniu składa się z trzech kroków: 1. Dźwięk jest próbkowany z zadaną częstotliwością (np. 44100 próbek na sekundę) i każda próbka jest opisana przez liczbę rzeczywistą. Otrzymujemy w tens sposób ciąg liczb rzeczywistych: <span class="math inline">\(s_1,\dots,s_T\)</span>. Dla przykładu 50 minut muzyki będzie opisane przy pomocy <span class="math inline">\(T = 50 \cdot 60 \cdot 44100 = 132300000\)</span> liczb rzeczywistych (dla uproszczenia zakładamy jeden kanał – <em>dźwięk mono</em>) 1. Każda liczba rzeczywista <span class="math inline">\(s_t\)</span> jest przybliżana przez najbliższą liczbę z ustalonego zbioru <span class="math inline">\(\Gamma\)</span>. Zbiór ten jest dobrany w taki sposób, aby jak najlepiej opowiadać ograniczeniom ludzkiego słuchu, a ciąg liczb wykorzystujący wartości ze zbioru <span class="math inline">\(\Gamma\)</span> powinien być nierozróżnialny dla człowieka. 2. Otrzymany ciąg liczb ze zbioru <span class="math inline">\(\Gamma\)</span> o długości <span class="math inline">\(T\)</span> jest zapisywany jako ciągi bitowe.</p>
+<h3 id="przykładowe-kodowanie-mp3">Przykładowe kodowanie MP3</h3>
+<p>Przyjrzyjmy się temu ostatniemu krokowi. Powiedzmy, że <span class="math inline">\(\Gamma = \{A,B,C,D\}\)</span> jest czteroelementowym zbiorem. Najprostszy sposób opisania ciągami bitowymi wartości ze zbioru <span class="math inline">\(\Gamma\)</span> będzie nadanie kolejnych dwu-bitowych kodów np. w następujący sposób: <span class="math inline">\(A\)</span> będzie miało kod <span class="math inline">\(00\)</span>, <span class="math inline">\(B\)</span> będzie miało kod <span class="math inline">\(01\)</span>, <span class="math inline">\(C\)</span> będzie miało kod <span class="math inline">\(10\)</span>, a <span class="math inline">\(D\)</span> będzie miało kod <span class="math inline">\(11\)</span>. Zatem zapisanie przykładowych 50 minut muzyki będzie wymagało <span class="math inline">\(264.6\)</span> megabitów. Zauważmy, że odczytanie ciągu bitowego odpowiadającego ciągowi wartości ze zbioru <span class="math inline">\(\Gamma\)</span> jest łatwe: czytamy ciąg bitowy od początku do końca biorąc po 2 bity i konwertując je na wartości ze zbioru <span class="math inline">\(\Gamma\)</span>.</p>
+<h3 id="niepotrzebne-bity">Niepotrzebne bity</h3>
+<p>Zastanówmy się, czy da się zapisać interesujący nas ciąg w bardziej efektywny sposób (przy użyciu mniejszej ilości bitów)? Możemy to uczynić posiadając dodatkową informację, np. w postaci częstotliwości występowania w interesującym nas ciągu wartości ze zbioru <span class="math inline">\(\Gamma\)</span>. Powiedzmy, że wartość <span class="math inline">\(A\)</span> występuje <span class="math inline">\(3000000\)</span> razy, <span class="math inline">\(B\)</span> występuje <span class="math inline">\(72200000\)</span> razy, <span class="math inline">\(C\)</span> występuje <span class="math inline">\(37000000\)</span> razy, a <span class="math inline">\(D\)</span> występuje <span class="math inline">\(20100000\)</span> razy.</p>
+<p>Idea pozwalająca na lepszą kompresję ciągu polega na tym, że częściej występującej wartości chcemy nadać kod bitowy o mniejszej liczbie bitów, czyli będziemy stosowali kodowanie o zmiennej liczbie bitów.</p>
+<p>Zauważmy, że to wiąże się z możliwymi problemami z konwersją ciągu bitowego z powrotem na wartości ze zbioru <span class="math inline">\(\Gamma\)</span>. Dla przykładu, jeśli wartości <span class="math inline">\(B\)</span> nadamy kod <span class="math inline">\(0\)</span> wartości <span class="math inline">\(C\)</span> kod <span class="math inline">\(1\)</span>, a wartości <span class="math inline">\(A\)</span> kod <span class="math inline">\(01\)</span> i otrzymamy ciąg <span class="math inline">\(001\)</span> to nie jesteśmy w stanie stwierdzić, czy to jest zapis ciągu <span class="math inline">\(BBC\)</span>, czy może <span class="math inline">\(BA\)</span>?<br />
+Rozwiązaniem tego problemu są kody prefiksowe, czyli takie, że żaden kod nie jest prefiksem innego kodu.</p>
+<h2 id="zastosowanie-kodu-huffmana">Zastosowanie kodu Huffmana</h2>
+<p>Teraz możemy już zdefiniować problem, który znany jest jako <strong>kodowanie Huffmana</strong>:</p>
+<p><em>Input:</em> tablica częstotliwości <span class="math inline">\(f[1,\dots,n]\)</span> wartości ze zbioru <span class="math inline">\(\Gamma\)</span>, gdzie <span class="math inline">\(|\Gamma| = n\)</span>.</p>
+<p><em>Output:</em> prefiksowe kody binarne przypisane do wartości ze zbioru <span class="math inline">\(\Gamma\)</span> minimalizujące długość ciągu bitowego odpowiadającemu ciągowi o wejściowych częstotliwościach.</p>
+<p>Zauważmy, że ukorzenione drzewo binarne (czyli takie, którego węzły mają dwóch potomków lub są liśćmi) może reprezentować kodowanie prefiksowe w następujący sposób: - liście drzewa odpowiadają kodowanym symbolom ze zbioru <span class="math inline">\(\Gamma\)</span> – dzięki temu, że wykorzystujemy liście drzewa (a nie węzły wewnętrzne) dostajemy kody prefiksowe - ścieżka od korzenia drzewa do liścia odpowiada kodowi przypisanemu wartości przypisanej do liścia, zakładając że pójście do lewego potomka koduje <span class="math inline">\(0\)</span>, a pójście do prawego potomka koduje <span class="math inline">\(1\)</span></p>
+<p>Drzewo kodowe dla <a href="#przykład-kompresji-mp3">wcześniej zaprezentowanego przykładu</a>:</p>
+<div class="figure">
+<img src="huffman-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<p>Dla przykładowego drzewa kodowego długość wyjściowego kodu będzie wynosić <span class="math inline">\(3000000 \cdot 3 + 72200000 \cdot 1 + 37000000 \cdot 2 + 20100000 \cdot 3 = 215.5\)</span> megabitów, czyli ponad <span class="math inline">\(18\%\)</span> lepiej niż poprzednio.</p>
+<p>Zauważmy, że aby wykonać konwersję kodu binarnego na wartości ze zbioru <span class="math inline">\(\Gamma\)</span> wystarczy przejść wielokrotnie drzewo od korzenia do liścia, tak że jeśli trafimy na <span class="math inline">\(0\)</span> to przechodzimy do lewego potomka, jeśli trafimy na <span class="math inline">\(1\)</span> to przechodzimy do prawego potomka, a jeśli dotrzemy do liścia to zapisujemy odpowiadającą mu wartość.</p>
+<p>Formalnie optymalne kodowanie jest takie, które będzie minimalizować długość ciągu binarnego odpowiadającemu ciągowi wartości ze zbioru <span class="math inline">\(\Gamma\)</span>, czyli: <span class="math display">\[
+\text{długość kodu całego ciągu} =
+\\
+=\sum_{i=1}^{n} f_i \cdot \text{długość kodu } i\text{-tej wartości ze zbioru } \Gamma
+\]</span></p>
+<p>Możemy zauważyć, że dla każdej wartości <span class="math inline">\(\alpha \in \Gamma\)</span> długość kodu bitowego odpowiadającego <span class="math inline">\(\alpha\)</span> jest równa głębokości liścia odpowiadającego wartości <span class="math inline">\(\alpha\)</span> w drzewie kodowym. Zatem możemy zapisać długość kodu całego ciągu jako: <span class="math display">\[
+\text{długość kodu całego ciągu} =
+\\
+= \sum_{i=1}^{n} f_i \cdot \text{głębokość liścia odp. } i\text{-tej wartości}
+\]</span></p>
+<p>Powyższy wzór mówi nam, że dwa symbole z najmniejszą częstotliwością muszą występować w drzewie kodowym, bo w przeciwnym przypadku możemy otrzymać tylko większą długość kodu całego ciągu. Obserwacja ta może być podstawą do pierwszego zachłannego kroku budowy drzewa kodowego.</p>
+<p>Zauważmy również, że możemy zdefiniować częstotliwość węzłów wewnętrznych drzewa, która będzie równa sumie częstotliwości potomków danego węzła. Częstotliwość ta odpowiada dokładnie ile razy dany wierzchołek będzie odwiedzony podczas przechodzenia drzewa przy konwersji kodów. Zatem możemy jeszcze inaczej zapisać długość ciągu binarnego na wyjściu: <span class="math display">\[
+\text{długość kodu całego ciągu} = \sum_{v \in T,~ v \neq \mathrm{root}} f_v
+\]</span> gdzie <span class="math inline">\(T\)</span> jest drzewem kodowym, <span class="math inline">\(f_v\)</span> jest częstotliwością węzła <span class="math inline">\(v\)</span> należącego do drzewa <span class="math inline">\(T\)</span>. Do długości kodu nie dodajemy częstotliwości korzenia drzewa, ponieważ (jak wcześniej zostało to zdefiniowane) przejście krawędzi odpowiada bitowi <span class="math inline">\(0\)</span> lub <span class="math inline">\(1\)</span>, więc będąc w korzeniu nie dokładamy bitów do ciągu wyjściowego.</p>
+<p>Wykorzystując powyższe obserwacje możemy skonstruować algorytm zachłanny budujący optymalne drzewo kodowe, a co za tym idzie kody binarne przypisane do wartości ze zbioru <span class="math inline">\(\Gamma\)</span> w następujący sposób: - znajdź dwie wartości ze zbioru <span class="math inline">\(\Gamma\)</span> z najmniejszą częstotliwością (oznaczamy je przez <span class="math inline">\(\alpha,\beta \in \Gamma\)</span>, a ich częstotliwości przez <span class="math inline">\(f_1, f_2\)</span>), będą one liśćmi i potomkami węzła <span class="math inline">\(v\)</span> o częstotliwości <span class="math inline">\(f_v = f_1 + f_2\)</span> - z trzeciego wzoru na długość ciągu binarnego wiemy, że długość ta będzie równa sumie już użytych częstotliwości <span class="math inline">\(f_1 + f_2\)</span> oraz długości ciągu wynikającego z reszty powstającego drzewa, które teraz będzie miało <span class="math inline">\(n-1\)</span> liści o częstotliwościach <span class="math inline">\(f_v,f_3,f_4,\dots,f_n\)</span>.</p>
+<h3 id="pseudokod-algorytmu">Pseudokod algorytmu</h3>
+<p><code>Huffman</code><span class="math inline">\((f[1,\dots,n])\)</span>: 1. <span class="math inline">\(\triangleright\)</span> niech <span class="math inline">\(Q\)</span> będzie <a href="../2020-05-04/kolejka-priorytetowa">kolejką priorytetową</a> gdzie priorytetami są częstotliwości; im mniejsza częstotliwość tym większy priorytet 2. <code>for</code> <span class="math inline">\(i \gets 1\)</span> <code>to</code> <span class="math inline">\(n\)</span>: 1. <code>insert</code><span class="math inline">\((Q, (i, f[i]))\)</span> 3. <code>for</code> <span class="math inline">\(k \gets n+1\)</span> <code>to</code> <span class="math inline">\(2n-1\)</span>: 1. <span class="math inline">\((i, f[i]) \gets\)</span> <a href="../2020-05-04/kolejka-priorytetowa.md#extractminq"><code>ExtractMin</code><span class="math inline">\((Q)\)</span></a> 2. <span class="math inline">\((j, f[j]) \gets\)</span> <a href="../2020-05-04/kolejka-priorytetowa.md#extractminq"><code>ExtractMin</code><span class="math inline">\((Q)\)</span></a> 3. <span class="math inline">\(\triangleright\)</span> stwórz węzeł o indeksie <span class="math inline">\(k\)</span> z potomkami <span class="math inline">\(i\)</span> oraz <span class="math inline">\(j\)</span> 4. <span class="math inline">\(f[k] = f[i] + f[j]\)</span> 5. <code>insert</code><span class="math inline">\((Q, (k, f[k]))\)</span></p>
+<p><em>Złożoność obliczeniowa:</em> Używając np. <a href="../2020-04-27/binary-heap">kopca binarnego</a> w celu implementacji <a href="../2020-05-04/kolejka-priorytetowa">kolejki priorytetowej</a> otrzymujemy algorytm o złożoności <span class="math inline">\(O(n\log n)\)</span>, bo w pętlach długości <span class="math inline">\(n\)</span> wykonujemy stałą liczbę operacji o złożoności <span class="math inline">\(O(\log n)\)</span>.</p>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">sekcja 5.2 Algorithms</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">sekcja 24 Introduction to Algorithms</a></li>
+</ul>
+</body>
+</html>

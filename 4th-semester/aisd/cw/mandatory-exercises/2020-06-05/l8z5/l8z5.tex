@@ -1,0 +1,61 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 8}
+\author{Zadanie 5}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+
+Rozważamy graf skierowany $G$, w którym wszystkie krawędzie mają dodatnie wagi oprócz krawędzi wychodzących bezpośrednio z wierzchołka $s$ gdzie mamy krawędzie o wagach ujemnych.
+
+Czy algorytm Dijkstry zaczynający od $s$ będzie działał poprawnie dla takiego grafu?
+
+\section{Concept}
+
+Rozważmy graf skierowany, w którym \textit{wszystkie} krawędzie mogą mieć ujemne krawędzie. Wówczas, naiwne „naprawienie” algorytmu Dijkstry do wyszukiwania najkrótszej (najtańszej) drogi w takim grafie polegało by na dodaniu odpowiedniej liczby $t$ do wag wszystkich krawędzi w grafie.
+
+Oryginalny graf nazwijmy $X$, a zmienioną wersję $X'$. Niestety, po takiej modyfikacji mamy do czynienia z zupełnie innym grafem jako, że najkrótsza droga w grafie $X'$ uległa zmianie. Rozważmy sytuację, w której mamy ścieżkę $x$, która jest najkrótszą drogą w grafie $X$ oraz ścieżkę $y$, która nie jest najkrótszą drogą, ale wykorzystuje mniejszą liczbę krawędzi. Wówczas, po dodaniu wcześniej wspomnianej liczby $t$ do wag wszystkich krawędzi do całkowitego kosztu ścieżki $x$ dodajemy więcej wielokrotności liczby $t$ niż do ścieżki $y$ jako, że liczba krawędzi w ścieżce $x$ jest większa niż liczba krawędzi w ścieżce $y$. Czyli najkrótsza ścieżka w grafie $X$ może być już inna niż w grafie $X'$.
+
+Teraz, rozważmy graf $G$ z zadania. Wszystkie krawędzie mają dodatnie wagi poza tymi wychodzącymi z wierzchołka $s$. Stosujemy metodę podobną do powyższej, jednakże nie dodajemy pewnej liczby $t$ do wag wszystkich krawędzi w grafie, a jedynie do wag tych krawędzi wychodzących z wierzchołka $s$. Wówczas, nie mamy sytuacji opisanej w poprzednim paragrafie, bo dla każdej możliwej najkrótszej ścieżki dodajemy tylko jeden raz liczbę $t$.
+
+\section{Rozwiązanie}
+
+Założenia:
+\begin{enumerate}
+  \item Niech $c: E\to \mathbb{R}$ będzie pierwotną funkcją wagi krawędzi w grafie $G$. Definiujemy nową, zmodyfikowaną funkcję wagi $\hat{c}: E\to \mathbb{R}$ na grafie $G$.
+  \item Niech $\mathrm{fst}: E\to V$ będzie funkcją określającą początek krawędzi.
+\end{enumerate}
+
+Dla każdej krawędzi $\hat{e}$ ze zbioru $A = \{ \hat{e}\in E: \mathrm{fst}(\hat{e}) = s \}$ niech $\hat{c}(\hat{e}) = t + c(\hat{e})$ gdzie $t=\left|\min\left\{ c(\hat{e}): \hat{e} \in A \right\}\right|$. Dla pozostałych krawędzi ze zbioru $E\setminus A$ mamy $\hat{c}(e) = c(e)$.
+
+Możemy myśleć o liczbie $t$ jako dodatkowym „koszcie wyjazdu” z wierzchołka $s$.
+
+Jako, że algorytm Dijkstry działa na każdym grafie o krawędziach z wagami dodatnimi to zadziała też w naszym grafie.
+
+\end{document}

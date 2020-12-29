@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="nierówność-krafta">Nierówność Kraft’a</h1>
+<p><em>(2020-10-15)</em></p>
+<ul>
+<li><a href="#1-nierówność-krafta">1. Nierówność Kraft’a</a>
+<ul>
+<li><a href="#11-d-d">1.1. D-d</a>
+<ul>
+<li><a href="#111-ćwiczenie">1.1.1. Ćwiczenie</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#2-fakt1">2. Fakt#1</a>
+<ul>
+<li><a href="#21-d-d">2.1. D-d</a></li>
+</ul></li>
+<li><a href="#3-fakt2">3. Fakt#2</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="nierówność-krafta-1">1. Nierówność Kraft’a</h2>
+<p><span class="math inline">\(\sum_{i=1}^{N} 2^{-l_i} \le 1\)</span> (dla kodu prefiksowego)</p>
+<h3 id="d-d">1.1. D-d</h3>
+<p>Wizualizacja kodów prefiksowych (drzewo):</p>
+<div class="figure">
+<img src="1.1.drzewo-kodów-prefiksowych-1.png" alt="drzewo jeden" />
+<p class="caption">drzewo jeden</p>
+</div>
+<p><span class="math inline">\(l\)</span> - maksymalna głębokość, czyli długość najdłuższego kodu</p>
+<div class="figure">
+<img src="1.1.drzewo-kodów-prefiksowych-2.png" alt="drzewo dwa (udawane)" />
+<p class="caption">drzewo dwa (udawane)</p>
+</div>
+<ul>
+<li><p>ile liści na ostatnim poziomie „wyznacza” <span class="math inline">\(i\)</span>-ta wisienka? (każda wisienka ma swoje pod-drzewka)</p></li>
+<li><p>kod <span class="math inline">\(i\)</span>-tej wiśni jest długości <span class="math inline">\(l_i\)</span></p></li>
+<li><p>liczba liście to <span class="math inline">\(2^{l-l_i}\)</span></p></li>
+</ul>
+<p>Zatem <span class="math display">\[
+\sum_{i=1}^{N} 2^{l-l_i} \le 2^l \qquad\blacksquare
+\]</span></p>
+<h4 id="ćwiczenie">1.1.1. Ćwiczenie</h4>
+<p>Pokaż, że na odwrót.</p>
+<hr />
+<h2 id="fakt1">2. Fakt#1</h2>
+<p><span class="math inline">\(\forall x&gt;0 \qquad \ln(x) \le x-1\)</span>.</p>
+<h3 id="d-d-1">2.1. D-d</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(f(x) = x-1-\ln(x) \qquad \boldsymbol| \text{ różniczkujemy}\)</span></li>
+<li><span class="math inline">\(f&#39;(x) = 1 - \frac{1}{x}\)</span>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(f&#39;(x) &lt; 0\)</span> dla <span class="math inline">\(x \in (0;1)\)</span></li>
+<li><span class="math inline">\(f&#39;(1) = 0\)</span></li>
+<li><span class="math inline">\(f&#39;(x) &gt; 0\)</span> dla <span class="math inline">\(x &gt; 1\)</span></li>
+</ol></li>
+<li><span class="math inline">\(f\)</span> ma minimum w <span class="math inline">\(1\)</span>.</li>
+<li><span class="math inline">\(f(1) = 0\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+<hr />
+<h2 id="fakt2">3. Fakt#2</h2>
+<p><span class="math inline">\(\log_2(x) = \log_2(e) \ln(x) \le (\log_2(e)) \cdot (x-1)\)</span></p>
+<h3 id="d-d-2">3.1. D-d</h3>
+<p><em><a href="twierdzenie-shannona">(Twierdzenie Shannon’a)</a></em></p>
+<p><span class="math inline">\(L - H = \sum_{i=1}^{N} p_i l_i + \sum_{i=1}^{N} p_i \log p_i = \sum_{i=1}^{N} p_i \log (2^{k_i} \cdot p_i)\)</span></p>
+<p><span class="math inline">\(H - L = \sum_{i=1}^{N} p_i \log\frac{1}{2^{l_i} \cdot p_i} \le \sum_{i=1}^{N} p_i \left( \frac{1}{2^{l_i} p_i} -1 \right) \log_2 (e) = \log_2(e) \left( \sum_{i=1}^{N} \frac{1}{2^{l_i}} - \sum_{i=1}^{N} p_i \right) \le \log_2(e) \left( 1 - 1 \right) = 0\)</span><br />
+<em>czyli sukces <span class="math inline">\(\blacksquare\)</span></em></p>
+<hr />
+</body>
+</html>

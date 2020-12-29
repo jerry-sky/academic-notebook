@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="grafy-planarne-iii-i-spójność">Grafy planarne III i spójność*</h1>
+<p><em>*odwołany z powody koronawirusa</em><br />
+<em>(2020-04-15)</em></p>
+<h2 id="kontrakcja-krawędzi-grafu">Kontrakcja krawędzi grafu</h2>
+<p>Niech <span class="math inline">\((V, E, \varphi)\)</span> będzie grafem i <span class="math inline">\(e \in E\)</span><br />
+Niech <span class="math inline">\(\varphi(e) = \{a,b\}\)</span></p>
+<p>Kontrakcją grafu <span class="math inline">\(G\)</span> względem krawędzi <span class="math inline">\(e\)</span> nazywamy graf <span class="math inline">\(G/e\)</span> - ze zbiorem wierzchołków <span class="math inline">\((V \setminus \{x,y\}) \cup \{w\}\)</span> (gdzie <span class="math inline">\(w\)</span> jest jakimś elementem nie należącym do <span class="math inline">\(V\)</span>) - ze zbiorem krawędzi <span class="math inline">\(E \setminus \{e\}\)</span> - funkcją incydencji <span class="math inline">\(\varphi&#39;\)</span> określoną wzorem <span class="math display">\[
+    \varphi&#39;(f) =
+    \begin{cases}
+      \{x,w\} &amp; \varphi(f) = \{x,a\} \lor \varphi(f) = \{x,b\}\\
+      \varphi(f) &amp; \text{otherwise}\\
+    \end{cases}
+    \]</span> <em>Uwaga: formalna definicja jest nieco zawiła, ale intuicja jest prosta: krawędź <span class="math inline">\(\{a,b\}\)</span> ściągamy do jednego wierzchołka.</em></p>
+<h3 id="kontrakcja-grafu-petersena">Kontrakcja grafu Petersena</h3>
+<div class="figure">
+<img src="peterson-contract.png" alt="petersen contraction" />
+<p class="caption">petersen contraction</p>
+</div>
+<h2 id="text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</h2>
+<p>Następujące operacje nie zmieniają planarności grafów: - usunięcie wierzchołka - usunięcie krawędzi - kontrakcja krawędzi</p>
+<h2 id="text-definicja-minor-grafu"><span class="math inline">\(\text {Definicja}\)</span> Minor grafu</h2>
+<p>Graf <span class="math inline">\(G\)</span> jest minorem grafu <span class="math inline">\(H\)</span> (<span class="math inline">\(G \preceq H\)</span>) jeśli <span class="math inline">\(G\)</span> może być otrzymany z grafu <span class="math inline">\(H\)</span> za pomocą skończonej liczby operacji usunięcia wierzchołka, usunięcia krawędzi lub kontrakcji krawędzi.</p>
+<h2 id="text-twierdzenie-wagnera"><span class="math inline">\(\text {Twierdzenie}\)</span> Wagnera</h2>
+<p>Graf nie jest planarny <span class="math inline">\(\iff\)</span> <span class="math inline">\((K_{3,3} \preceq G \lor K_5 \preceq G)\)</span></p>
+<h2 id="k_33-na-torusie"><span class="math inline">\(K_{3,3}\)</span> na torusie</h2>
+<div class="figure">
+<img src="3_utilities_problem_torus.png" alt="K_{3,3} on a torus" />
+<p class="caption"><span class="math inline">\(K_{3,3}\)</span> on a torus</p>
+</div>
+<h3 id="eliminacja-jedno-przecięcia-grafu-k_33">Eliminacja jedno przecięcia grafu <span class="math inline">\(K_{3,3}\)</span></h3>
+<div class="figure">
+<img src="K3,3-on-torus.jpg" alt="K_{3,3} on a torus" />
+<p class="caption"><span class="math inline">\(K_{3,3}\)</span> on a torus</p>
+</div>
+<h3 id="topologiczna-transformacja-powierzchni">Topologiczna transformacja powierzchni</h3>
+<div class="figure">
+<img src="Mug_and_Torus_morph.gif" alt="mug and torus morph" />
+<p class="caption">mug and torus morph</p>
+</div>
+<h3 id="powierzchnie-orientowalne-o-małych-genusach">Powierzchnie orientowalne o małych „genusach”</h3>
+<div class="figure">
+<img src="genuses.png" alt="genuses" />
+<p class="caption">genuses</p>
+</div>
+<h2 id="text-definicja-genus-grafu"><span class="math inline">\(\text {Definicja}\)</span> Genus grafu</h2>
+<p>Genus Grafu = minimalna liczba <a href="#eliminacja-jedno-przeci%c4%99cia-grafu-k33">rączek</a>, które należy dodać do płaszczyzny (lub sfery) potrzebnych do narysowania grafu na tej powierzchni „bez przecięć”. ### <span class="math inline">\(\text {Fakt}\)</span> Każdy graf (skończony) ma określony genus</p>
+<h2 id="text-twierdzenie-2"><span class="math inline">\(\text {Twierdzenie}\)</span> #2</h2>
+<p>Jeśli graf ma genus <span class="math inline">\(g\)</span> to <span class="math display">\[
+F - E + V = 2 - 2 \cdot g
+\]</span></p>
+<h2 id="text-fakt-3"><span class="math inline">\(\text {Fakt}\)</span> #3</h2>
+<p>Jeśli graf <span class="math inline">\((V,E)\)</span> jest spójny, <span class="math inline">\(n = |V| \ge 2\)</span> i nie jest grafem pełnym, to istnieje zbiór <span class="math inline">\(X \subseteq V\)</span> taki, że <span class="math inline">\(|X| = n-2\)</span> i <span class="math inline">\(G \setminus X\)</span> nie jest spójny.</p>
+<h3 id="d-d-text-faktu-3">D-d <span class="math inline">\(\text {Faktu}\)</span> #3</h3>
+<p>Załóżmy, że <span class="math inline">\(a,b \in V\)</span>, <span class="math inline">\(a \neq b\)</span> oraz <span class="math inline">\(\{a, b\} \notin E\)</span>. Kładziemy <span class="math inline">\(X = V\setminus \{a, b\}\)</span> i mamy <span class="math inline">\(G \setminus X = (\{a,b\}, \emptyset)\)</span>.</p>
+<h2 id="text-definicja-spójność-wierzchołkowa-grafu-spójnego"><span class="math inline">\(\text {Definicja}\)</span> Spójność wierzchołkowa grafu spójnego</h2>
+<p>Mamy graf spójny <span class="math inline">\(G = (V,E)\)</span>. Spójność wierzchołkowa <span class="math inline">\(G\)</span>: <span class="math display">\[
+\kappa(G) =
+\begin{cases}
+  n-1 &amp; : G \sim K_n \\
+  \min\{|X|: X \subseteq V \land G\setminus X ~\text{nie jest spójny}\} &amp; : \text{nie jest zupełny}
+\end{cases}
+\]</span> <em>Uwaga: z powyższego faktu wynika, że dla dowolnego spójnego grafu prostego <span class="math inline">\((V,E)\)</span> mamy <span class="math inline">\(\kappa(G) \le |V| - 1\)</span>;</em><br />
+<em>co więcej: <span class="math inline">\(\kappa(G) = |V| - 1\)</span> <span class="math inline">\(\iff\)</span> graf jest <a href="../2020-03-04/2020-03-04.md#graficzne-zoo">grafem zupełnym</a></em></p>
+<h2 id="text-definicja-spójność-krawędziowa-grafu-spójnego"><span class="math inline">\(\text {Definicja}\)</span> spójność krawędziowa grafu spójnego</h2>
+<p>Mamy graf spójny <span class="math inline">\(G = (V,E)\)</span>. Spójność krawędziowa <span class="math inline">\(G\)</span>: <span class="math display">\[
+\lambda(G) = \min\{|Y|: Y \subseteq E \land G\setminus Y ~\text{nie jest spójny}\}
+\]</span></p>
+<h2 id="text-twierdzenie-3"><span class="math inline">\(\text {Twierdzenie}\)</span> #3</h2>
+<p>Dla dowolnego grafu spójnego <span class="math inline">\(G = (V,E)\)</span> takiego, że <span class="math inline">\(|V| \ge 2\)</span> mamy <span class="math inline">\(\kappa(G) \le \lambda(G)\)</span>.</p>
+<h3 id="d-d-text-twierdzenia-3">D-d <span class="math inline">\(\text {Twierdzenia}\)</span> #3</h3>
+<p>Niech <span class="math inline">\(E&#39;\)</span> będzie zbiorem krawędzi takim, że <span class="math inline">\(G\setminus E&#39;\)</span> nie jest spójny oraz, że <span class="math inline">\(|E&#39;| = \lambda(G)\)</span>. Wtedy <span class="math inline">\(G\setminus E&#39;\)</span> ma dwie składowe spójne (dowolna krawędź z <span class="math inline">\(E&#39;\)</span> uspójnia <span class="math inline">\(G\setminus E&#39;\)</span>). Oznaczmy je przez <span class="math inline">\(S\)</span> oraz <span class="math inline">\(\overline{S}\)</span>.</p>
+<p>Zauważmy, że <span class="math inline">\((\forall x\in S)(\forall y \in \overline{S})(\{x,y\} \in E \rightarrow \{x,y\} \in E&#39;)\)</span>.<br />
+Jeśli <span class="math inline">\((\forall x\in S)(\forall y\in \overline{S})(\{x,y\} \in E)\)</span>, to <span class="math inline">\(\lambda(G) = |S| \cdot |\overline{S}| = |S|(|V| - |S|) \ge |V| - 1\)</span><br />
+Ale <span class="math inline">\(\kappa(G) \le |V| - 1\)</span>, więc w tym przypadku dowodzona nierówność jest prawdziwa.</p>
+<p>Załóżmy więc, że są <span class="math inline">\(a \in S\)</span> oraz <span class="math inline">\(b \in \overline{S}\)</span> takie, że <span class="math inline">\(\{a,b\} \notin E\)</span>.<br />
+Niech <span class="math inline">\(T_1 = \{y \in \overline{S}: \{a,y\} \in E\}\)</span>, <span class="math inline">\(T_2 = \{x \in S\setminus\{a\}: (\exists y\in \overline{S})(\{x,y\}\in E\}\)</span>.<br />
+Niech <span class="math inline">\(T = T_1 \cup T_2\)</span> <img src="d-d-twierdzenie-3.png" alt="d-d twierdzenia #3" /> Zauważmy, że <span class="math inline">\(b\in\overline{S}\setminus T\)</span> oraz <span class="math inline">\(a\in S\setminus T\)</span>. Usuwając wierzchołki ze zbioru <span class="math inline">\(T\)</span> usuwamy wszystkie krawędzie ze zbioru <span class="math inline">\(E&#39;\)</span>. Zbiór <span class="math inline">\(T\)</span> jest więc zbiorem rozspajającym (wierzchołki <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> leżą w różnych komponentach spójnych <span class="math inline">\(G\setminus T\)</span>). Ponadto <span class="math inline">\(|T| \le |E&#39;|\)</span>.<br />
+Zatem <span class="math inline">\(\kappa(G) \le |E&#39;| = \lambda(G)\)</span>.</p>
+<h2 id="text-definicja-abścieżka"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–ścieżka</h2>
+<p>Niech <span class="math inline">\(A,B \subseteq V\)</span>. <span class="math inline">\((A,B)\)</span>–ścieżką nazywamy drogę <span class="math inline">\(x_0,x_1,\dots,x_{n-1},x_n\)</span> w grafie taką, że <span class="math inline">\(x_0 \in A\)</span>, <span class="math inline">\(x_n \in B\)</span> oraz <span class="math inline">\(\{x_1,\dots,x_{n-1}\} \cap (A\cup B) = \emptyset\)</span>.</p>
+<p><em>Uwaga: jeśli <span class="math inline">\(A\cap B \neq \emptyset \land c \in A\cap B\)</span>, to ciąg (<span class="math inline">\(c\)</span>) jest <span class="math inline">\((A,B)\)</span>–ścieżką długości <span class="math inline">\(0\)</span>.</em></p>
+<h2 id="text-definicja-abkonektor"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–konektor</h2>
+<p>Niech <span class="math inline">\(A,B \subseteq V\)</span>. <span class="math inline">\((A,B)\)</span>–konektorem nazywamy dowolny zbiór parami rozłącznych <span class="math inline">\((A,B)\)</span>–ścieżek.</p>
+<h2 id="text-definicja-abseparator"><span class="math inline">\(\text {Definicja}\)</span> <span class="math inline">\((A,B)\)</span>–separator</h2>
+<p>Niech <span class="math inline">\(A,B \subseteq V\)</span>. <span class="math inline">\((A,B)\)</span>–separatorem nazywamy dowolny zbiór wierzchołków <span class="math inline">\(X\)</span>, taki, że dla dowolnej <span class="math inline">\((A,B)\)</span>–ścieżki <span class="math inline">\(P\)</span> mamy <span class="math inline">\(P\cap X \neq \emptyset\)</span>.</p>
+</body>
+</html>

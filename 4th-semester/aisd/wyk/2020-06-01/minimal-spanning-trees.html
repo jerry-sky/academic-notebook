@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="minimal-spanning-trees">Minimal spanning trees</h1>
+<p><em>MSTs</em></p>
+<ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#io">I/O</a></li>
+<li><a href="#drzewa">Drzewa</a></li>
+<li><a href="#algorytm-kruskala">Algorytm Kruskala</a></li>
+<li><a href="#poprawność-algorytmu-kruskala">Poprawność algorytmu Kruskala</a></li>
+<li><a href="#zbiory-rozłączne-disjoint-sets">Zbiory rozłączne (disjoint sets)</a></li>
+<li><a href="#pseudokod-algorytmu-kruskala">Pseudokod algorytmu Kruskala</a></li>
+<li><a href="#algorytm-prima">Algorytm Prima</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<h2 id="outline">Outline</h2>
+<p>Na wejściu dostajemy graf spójny <span class="math inline">\(G = (V,E,l)\)</span>, gdzie <span class="math inline">\(V\)</span> jest zbiorem wierzchołków, <span class="math inline">\(E\)</span> zbiorem krawędzi, a <span class="math inline">\(l: E \to \mathbb{R}_+\)</span> funkcją wagi krawędzi (zakładamy, że waga krawędzi jest dodatnia). Celem jest wyznaczenie podzbioru krawędzi tego grafu, który pozostawi graf spójnym oraz suma wag tych krawędzi będzie możliwie najmniejsza.</p>
+<h2 id="io">I/O</h2>
+<p><em>Input:</em> nieskierowany graf <span class="math inline">\(G = (V,E,l), l: E \to \mathbb{R}_+\)</span>.</p>
+<p><em>Output:</em> drzewo <span class="math inline">\(T = (V,E&#39;)\)</span>, gdzie <span class="math inline">\(E&#39; \subseteq E\)</span>, który minimalizuje wagę drzewa <span class="math inline">\(\mathrm{waga}(T) = \sum_{e\in E&#39;}l(e)\)</span>.</p>
+<h2 id="drzewa">Drzewa</h2>
+<p>Nim przejdziemy do budowy algorytmów zachłannych rozwiązujących problem MST przyjrzyjmy się pewnym własnościom grafów (drzew nieukorzenionych): - drzewo jest nieskierowanym grafem spójnym i acyklicznym - Własność 1:<br />
+Usunięcie krawędzi należącej do cyklu w grafie nie rozspójni grafu. - Własność 2:<br />
+Drzewo o <span class="math inline">\(n\)</span> wierzchołkach ma <span class="math inline">\(n-1\)</span> krawędzi.</p>
+<pre><code>Własność tą można pokazać zaczynając od grafu o $n$ wierzchołkach i $0$ krawędziach.\
+Następnie dokładając krawędź:
+- możemy dodać tylko krawędź pomiędzy dwoma niepołączonymi składowymi, bo w przeciwnym przypadku otrzymamy cykl, więc nie drzewo
+- Każda poprawnie dodana krawędź redukuje liczbę spójnych składowych grafu o $1$.
+
+Zatem pod dodaniu $n-1$ krawędzi otrzymamy jedną spójną składową o $n$ wierzchołkach, a całość będzie tworzyła drzewo.</code></pre>
+<ul>
+<li><p>Własność 3:<br />
+Każdy spójny nieskierowany graf <span class="math inline">\(G = (V,E)\)</span> taki, że <span class="math inline">\(|E| = |V| - 1\)</span> jest drzewem.</p>
+<p>Aby udowodnić tą własność musimy jedynie pokazać, że <span class="math inline">\(G\)</span> jest acykliczny. Załóżmy nie wprost, że <span class="math inline">\(G\)</span> zawiera cykl. Usuńmy jedną krawędź należącą do cyklu z tego grafu, otrzymamy <span class="math inline">\(G&#39; = (V,E)\)</span>, gdzie <span class="math inline">\(E&#39; \subseteq E\)</span>, który będzie acykliczny i, z własności 1, spójny.</p>
+<p>Zatem graf <span class="math inline">\(G&#39;\)</span> jest drzewem (z definicji drzewa) i, z własności 2, mamy <span class="math inline">\(|E&#39;| = |V| - 1\)</span> <span class="math inline">\(\implies\)</span> sprzeczność.</p>
+Zauważmy, że z powyższych własności wynika np. że aby stwierdzić czy spójny graf jest drzewem wystarczy sprawdzić, czy jego liczba krawędzi jest równa <span class="math inline">\(\text{liczbie wierzchołków}-1\)</span>.</li>
+<li><p>Własność 4:</p>
+<p>Nieskierowany graf jest drzewem iff gdy istnieje unikatowa ścieżka pomiędzy dwoma wierzchołkami w tym grafie.</p>
+Zauważmy, że jeśli między jakimiś dwoma węzłami istniały by dwie różne ścieżki to po połączeniu tych ścieżek otrzymalibyśmy cykl, a więc graf nie byłby drzewem. Ponadto, jeśli w grafie istnieje ścieżka między dowolnymi dwoma węzłami to graf jest spójny.</li>
+<li><p><em>Cut property</em>:</p>
+<p>Załóżmy, że zbiór krawędzi <span class="math inline">\(X\)</span> jest podzbiorem krawędzi minimalnego drzewa rozpinającego grafu <span class="math inline">\(G = (V,E)\)</span>. Wybierzmy podzbiór wierzchołków <span class="math inline">\(S \subset V\)</span> taki, że żadne krawędź pomiędzy <span class="math inline">\(S\)</span> i <span class="math inline">\(V \setminus S\)</span> nie należy do <span class="math inline">\(X\)</span>. Niech <span class="math inline">\(e\)</span> będzie krawędzią o minimalnej wadze pomiędzy wierzchołkami z <span class="math inline">\(S\)</span> i wierzchołkami <span class="math inline">\(V \setminus S\)</span>. Wtedy <span class="math inline">\(X \cup e\)</span> jest również podzbiorem krawędzi minimalnego drzewa rozpinającego grafu <span class="math inline">\(G\)</span>.</p>
+Zauważmy, że jeśli krawędzie <span class="math inline">\(X\)</span> są podzbiorem krawędzi minimalnego drzewa rozpinającego <span class="math inline">\(T\)</span> grafu <span class="math inline">\(G\)</span> oraz wybrana krawędź <span class="math inline">\(e\)</span> należy do tego drzewa <span class="math inline">\(T\)</span> to wniosek jest oczywisty. Załóżmy zatem, że <span class="math inline">\(e \notin T\)</span>. Skonstruujemy inne MST <span class="math inline">\(T&#39;\)</span>, które będą się różnić od MST <span class="math inline">\(T\)</span> zmianą jednej krawędzi. Dodajmy zatem krawędź <span class="math inline">\(e\)</span> do drzewa <span class="math inline">\(T\)</span>. Skoro <span class="math inline">\(T\)</span> było spójne to dodanie krawędzi <span class="math inline">\(e\)</span> utworzyło cykl. Zatem musi istnieć inna krawędź <span class="math inline">\(e&#39;\)</span> łącząca wierzchołki ze zbioru <span class="math inline">\(S\)</span> z wierzchołkami ze zbioru <span class="math inline">\(V \setminus S\)</span>. Jeśli usuniemy tą krawędź dostaniemy <span class="math inline">\(T&#39; = T \cup e \setminus s&#39;\)</span>, które będzie drzewem, ponieważ:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(T&#39;\)</span> będzie spójne z Własności 1, ponieważ <span class="math inline">\(e&#39;\)</span> należało do cyklu,</li>
+<li><span class="math inline">\(T&#39;\)</span> ma tą samą liczbę krawędzi co drzewo <span class="math inline">\(T\)</span>, więc z Własności 2 i 3 jest drzewem.</li>
+</ol>
+<p>Ponadto <span class="math inline">\(T&#39;\)</span> będzie minimalnym drzewem rozpinającym, ponieważ <span class="math display">\[
+\mathrm{waga}(T&#39;) = \mathrm{waga}(T) + l(e) - l(e&#39;)
+\]</span> oraz obie krawędzie <span class="math inline">\(e\)</span> i <span class="math inline">\(e&#39;\)</span> łączą wierzchołki zbioru <span class="math inline">\(S\)</span> z wierzchołkami zbioru <span class="math inline">\(V \setminus S\)</span>, a dodatkowo <span class="math inline">\(e\)</span> została wybrana tak, że jej waga jest najmniejsza spośród krawędzi przechodzącymi pomiędzy tymi zbiorami. Zatem <span class="math inline">\(l(e) \le l(e&#39;)\)</span>, co implikuje <span class="math inline">\(\mathrm{waga}(T&#39;) \le \mathrm{waga(T)}\)</span>. Ale skoro <span class="math inline">\(T\)</span> było minimalnym drzewem rozpinającym to <span class="math inline">\(\mathrm{waga}(T&#39;) = \mathrm{waga}(T)\)</span>, a zatem <span class="math inline">\(T&#39;\)</span> jest również minimalnym drzewem rozpinającym, co kończy dowód.</p>
+<p>Zauważmy, że <em>cut property</em> precyzuje które krawędzie można dodawać pomiędzy zbiorami wierzchołków <span class="math inline">\(S\)</span> i <span class="math inline">\(V \setminus S\)</span> zakładając, że zbiory te już połączone krawędzią. Możemy zatem zbudować różne algorytmy wyznaczania MST bazując na różnych strategiach wyboru krawędzi do minimalnego drzewa rozpinającego, jeśli strategie te będą wykorzystywać poprawnie <em>cut property</em>.</p>
+<p>Dobrą wizualizację <em>cut property</em> daje <span class="math inline">\(\text{Figure 5.3}\)</span> oraz sekcja <span class="math inline">\(\text{5.1.2 The cut property}\)</span> w <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">książce Algorithms</a>.</p></li>
+</ul>
+<h2 id="algorytm-kruskala">Algorytm Kruskala</h2>
+<p>Algorytm ten buduje minimalne drzewo rozpinające dla wejściowego grafu <span class="math inline">\(G = (V,E,l)\)</span> i jest bardzo dobrą ilustracją zachłannego wyboru.</p>
+<p>&gt;<em>Do MST <span class="math inline">\(T\)</span> dodawaj kolejne krawędzie o najmniejszej wadze, które nie tworzą cyklu.</em></p>
+<h3 id="poprawność-algorytmu-kruskala">Poprawność algorytmu Kruskala</h3>
+<p>Zauważmy, że po kilku krokach algorytmu Kruskala mamy częściowe rozwiązanie, które składa się ze zbioru spójnych składowych będących drzewami. Kolejna dodawana krawędź <span class="math inline">\(e\)</span> będzie łączyć dwie spójne składowe, powiedzmy <span class="math inline">\(T_1\)</span> oraz <span class="math inline">\(T_2\)</span>. Skoro <span class="math inline">\(e\)</span> jest krawędzią o najmniejszej wadze nietworzącą cyklu to jest ona również krawędzią o najmniejszej wadze pomiędzy wierzchołkami należącymi do <span class="math inline">\(T_1\)</span> i <span class="math inline">\(V\setminus T_1\)</span>. A zatem z <em>cut property</em> jest ona częścią MST, co dowodzi poprawności algorytmu Kruskala.</p>
+<h3 id="zbiory-rozłączne-disjoint-sets">Zbiory rozłączne (disjoint sets)</h3>
+<p>Ostatnią rzecz, którą pozostaje zrobić aby zaimplementować algorytm Kruskala, to wymyślić w jaki sposób możemy efektywnie stwierdzać, czy wybrana krawędź łączy ze sobą dwie różne komponenty (czyli nie tworzy cyklu). Użyjemy w tym celu struktury <em>zbiorów rozłącznych</em>, która będzie implementować następujące procedury: - <code>makeset</code><span class="math inline">\((x)\)</span> – tworzy jednoelementowy zbiór <span class="math inline">\(x\)</span> - <code>find</code><span class="math inline">\((x)\)</span> – sprawdza do którego zbioru należy element <span class="math inline">\(x\)</span> - <code>union</code><span class="math inline">\((x,y)\)</span> – łączy zbiór, do którego należą elementy <span class="math inline">\(x\)</span> ze zbiorem do którego należą elementy <span class="math inline">\(y\)</span></p>
+<p>Jednym ze sposobów reprezentowania zbiorów jest użycie ukorzenionego drzewa, gdzie: - każdy wierzchołek drzewa reprezentuje element należący do zbioru - każdy wierzchołek ma wskaźnik na swojego przodka (wskaźniki na potomków nie są potrzebne) - korzeń drzewa jest reprezentantem zbioru opisanego przez drzewo (identyfikator korzenia jest traktowana jako identyfikator całego zbioru opisanego przez jego drzewo) i można go odróżnić od innych wierzchołków, bo jego wskaźnik na ojca wskazuje na niego samego, - dodatkowo, każdy węzeł drzewa posiada pole <code>rank</code>, które może być chwilowo interpretowana jako wysokość pod-drzewa zawieszonego w danym węźle</p>
+<p>Implementacja metod struktury dla ukorzenionych drzew:</p>
+<p><code>makeset</code><span class="math inline">\((x)\)</span>: 1. <span class="math inline">\(x.\mathrm{parent} \gets x\)</span> 2. <span class="math inline">\(x.\mathrm{rank} \gets 0\)</span></p>
+<p><code>find</code><span class="math inline">\((x)\)</span>: 1. <code>while</code> <span class="math inline">\(x \neq x.\mathrm{parent}\)</span>: 1. <span class="math inline">\(x \gets x.\mathrm{parent}\)</span> 2. <code>return</code> <span class="math inline">\(x\)</span></p>
+<p><code>union</code><span class="math inline">\((x,y)\)</span> 1. <span class="math inline">\(\mathrm{rootX} \gets\)</span> <code>find</code><span class="math inline">\((x)\)</span> 2. <span class="math inline">\(\mathrm{rootY} \gets\)</span> <code>find</code><span class="math inline">\((y)\)</span> 3. <code>if</code> <span class="math inline">\(\mathrm{rootX} = \mathrm{rootY}\)</span>: 1. <code>return</code> 4. <span class="math inline">\(\triangleright\)</span> łączymy drzewa poprzez podłączanie wyższego drzewa do korzenia niższego 5. <code>if</code> <span class="math inline">\(\mathrm{rootX}.\mathrm{rank} &gt; \mathrm{rootY}.\mathrm{rank}\)</span>: 1. <span class="math inline">\(\mathrm{rootY}.\mathrm{parent} \gets \mathrm{rootX}\)</span> 6. <code>else</code>: 1. <span class="math inline">\(\mathrm{rootX}.\mathrm{parent} \gets \mathrm{rootY}\)</span> 2. <code>if</code> <span class="math inline">\(\mathrm{rootX}.\mathrm{parent} = \mathrm{rootY}\)</span>: 1. <span class="math inline">\(\mathrm{rootY}.\mathrm{rank} \gets \mathrm{rootY}.\mathrm{rank} + 1\)</span></p>
+<p>Procedura <code>union</code> łącząc zbiory buduje drzewa reprezentujące te zbiory w taki sposób, że zachowane są następujące własności: 1. <span class="math inline">\(d_1\)</span>: dla każdego <span class="math inline">\(x\)</span>, <span class="math inline">\(x.\mathrm{rank} &lt; x.\mathrm{parent}.\mathrm{rank}\)</span>;<br />
+Własność zachodzi, ponieważ węzeł z <span class="math inline">\(\mathrm{rank}\)</span> równym <span class="math inline">\(k\)</span> jest tworzony poprzez złączenie dwóch drzew, których korzenie mieli <span class="math inline">\(\mathrm{rank}\)</span> równy <span class="math inline">\(k-1\)</span> (rozumowanie to można rozszerzyć do formalnego dowodu indukcyjnego). 2. <span class="math inline">\(d_2\)</span>: każdy korzeń mający <span class="math inline">\(\mathrm{rank}\)</span> równy <span class="math inline">\(k\)</span> jest korzeniem drzewa mającego co najmniej <span class="math inline">\(2^k\)</span> węzłów.<br />
+Jeśli zbiór ma <span class="math inline">\(n\)</span> elementów, a korzeń jego drzewa ma <span class="math inline">\(\mathrm{rank}\)</span> równą <span class="math inline">\(k\)</span> to <span class="math inline">\(n &gt; 2^k\)</span> co implikuje, że <span class="math inline">\(k &lt; \log(n)\)</span>, co daje logarytmiczne ograniczenie na wysokość drzewa. Zatem procedury <code>find</code> oraz <code>union</code> mają pesymistyczną złożoność obliczeniową <span class="math inline">\(O(\log(n))\)</span> dla zbiorów wielkości <span class="math inline">\(n\)</span>.</p>
+<p>W <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">sekcji 5.1.4 książki Algorithms</a> jest pokazane jak można jeszcze usprawnić tę implementację.</p>
+<h3 id="pseudokod-algorytmu-kruskala">Pseudokod algorytmu Kruskala</h3>
+<p><code>Kruskal</code><span class="math inline">\((G)\)</span>: 1. <code>for all</code> <span class="math inline">\(v \in V\)</span>: 1. <code>makeset</code><span class="math inline">\((v)\)</span> 2. <span class="math inline">\(X \gets \{\}\)</span> 3. <span class="math inline">\(\text{posortuj krawędzie ze zbioru } E \text{ według ich wagi}\)</span> 4. <code>for all</code> <span class="math inline">\(\{u,v\} \in E\)</span> w kolejności rosnącej: 1. <code>if</code> <code>find</code><span class="math inline">\((u)\)</span> <span class="math inline">\(\neq\)</span> <code>find</code><span class="math inline">\((v)\)</span>: 1. <span class="math inline">\(\text{dodaj krawędź } \{u,v\} \text{ do } X\)</span> 2. <code>union</code><span class="math inline">\((u,v)\)</span></p>
+<p><em>Złożoność obliczeniowa:</em> W pesymistycznym przypadku algorytm Kruskala wykona <span class="math inline">\(|V| \times\)</span> <code>makeset</code>, <span class="math inline">\(2|E| \times\)</span> <code>find</code> oraz <span class="math inline">\((|V| - 1) \times\)</span> <code>union</code>.</p>
+<h2 id="algorytm-prima">Algorytm Prima</h2>
+<p>Algorytm szukający MST wykorzystując <em>cut property</em>. W przypadku tego algorytmu wybrane krawędzie do zbioru <span class="math inline">\(X\)</span> (oznaczenia zgodne z wcześniejszymi z <em>cut property</em>) zawsze formują drzewo (czyli graf spójny, a nie jak w przypadku algorytmu Kruskala rozłączne komponenty), a zbiór wierzchołków <span class="math inline">\(S\)</span> jest po prostu zbiorem węzłów tego drzewa tworzonego przez krawędzie <span class="math inline">\(X\)</span>.</p>
+<p><code>Prim</code><span class="math inline">\((G)\)</span>: 1. <code>for all</code> <span class="math inline">\(v \in V\)</span>: 1. <span class="math inline">\(v.\mathrm{cost} \gets \infty\)</span> 2. <span class="math inline">\(v.\mathrm{prev} \gets\)</span> <code>null</code> 2. <span class="math inline">\(\mathrm{wybierz węzeł startowy } s\)</span> 3. <span class="math inline">\(s.\mathrm{cost} \gets 0\)</span> 4. <span class="math inline">\(s.\mathrm{prev} \gets s\)</span> 5. <span class="math inline">\(\triangleright\)</span> używa <span class="math inline">\(v.\mathrm{cost}\)</span> jako kluczy w <a href="../2020-05-04/kolejka-priorytetowa">kolejce priorytetowej</a>; im mniejsza wartość <span class="math inline">\(\mathrm{cost}\)</span> tym wyższy priorytet 6. <span class="math inline">\(Q \gets\)</span> <code>MakeQueue</code><span class="math inline">\((V)\)</span> 7. <code>while</code> <span class="math inline">\(Q \neq \emptyset\)</span>: 1. <span class="math inline">\(v \gets\)</span> <code>ExtractMin</code><span class="math inline">\((Q)\)</span> 2. <code>for all</code> <span class="math inline">\(\{v,z\} \in E\)</span>: 1. <code>if</code> <span class="math inline">\(z.\mathrm{cost} &gt; l(v,z)\)</span>: 1. <span class="math inline">\(z.\mathrm{cost} \gets l(v,z)\)</span> 2. <span class="math inline">\(z.\mathrm{prev} = v\)</span> 3. <code>DecreaseKey</code><span class="math inline">\((Q,z)\)</span></p>
+<p>Algorytm Prima w każdej iteracji pętli <code>while</code> dodaje krawędź do zbioru <span class="math inline">\(X\)</span> (realizowane jest to przez <a href="../2020-05-04/kolejka-priorytetowa.md#extractminq"><code>ExtractMin</code></a>). Dodawana krawędź ma najmniejszą wagę spośród krawędzi pomiędzy wierzchołkami należącymi do zbioru <span class="math inline">\(S\)</span> i <span class="math inline">\(V \setminus S\)</span>, co jest realizacją <em>cut property</em>. Z tego wynika poprawność algorytmu Prima.</p>
+<p><em>Złożoność obliczeniowa:</em> Łatwo zauważyć, że algorytm Prima jest bardzo podobny do <a href="../2020-05-20/dijkstras-algorithm">algorytmu Dijkstry</a>, a główna różnica polega na tym, że priorytetem wierzchołka w algorytmie Prima jest waga najlżejszej krawędzi łączącej ten wierzchołek z wierzchołkami ze zbioru <span class="math inline">\(S\)</span> (w algorytmie Dijkstry była to łączna długość ścieżki od węzła startowego). Zatem algorytm Prima ma taką samą złożoność jak algorytm Dijkstry i jak już wiemy jest ona zależna od <a href="../2020-05-04/kolejka-priorytetowa">implementacji kolejki priorytetowej</a>.</p>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">sekcja 5.1 Algorithms</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">sekcja 24 Introduction to Algorithms</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="drzewo-rekursji">Drzewo rekursji</h1>
+<p><em>(2020-03-09)</em></p>
+<hr />
+<p><span class="math inline">\(T(n) = T\big(\frac{n}{2}\big) = T\big(\frac{n}{4}\big) + n^2\)</span>, <span class="math inline">\(T(1) = \Theta(1)\)</span></p>
+<p>&lt;insert tree&gt;</p>
+<p><span class="math inline">\(\rightarrow\)</span> rozmiar 1. <span class="math inline">\(n^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(n\)</span> 1. <span class="math inline">\((\frac{n}{2})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{2} + \frac{n}{4}\)</span> 1. <span class="math inline">\((\frac{n}{4})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{4} + 2 \cdot \frac{n}{16}\)</span> 2. <span class="math inline">\((\frac{n}{8})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{4} + 2 \cdot \frac{n}{16}\)</span> 2. <span class="math inline">\((\frac{n}{4})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{2} + \frac{n}{4}\)</span> 1. <span class="math inline">\((\frac{n}{8})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{4} + 2 \cdot \frac{n}{16}\)</span> 2. <span class="math inline">\((\frac{n}{16})^2\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\frac{n}{4} + 2 \cdot \frac{n}{16}\)</span></p>
+<p>Koszt:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(n^2\)</span></li>
+<li><span class="math inline">\(n^2 \cdot \frac{15}{16}\)</span></li>
+<li><span class="math inline">\(n^2 \cdot \frac{25}{256} = n^2 \cdot (\frac{5}{16})^2\)</span></li>
+<li><span class="math inline">\(n^2 \cdot (\frac{5}{16})^3\)</span></li>
+</ol>
+<p>&lt;insert tree&gt;</p>
+<p><span class="math inline">\(height = \log n +1\)</span></p>
+<p><span class="math inline">\(\frac{n}{2^x} = 1\)</span><br />
+<span class="math inline">\(x = \log_2n\)</span></p>
+<p>mamy <span class="math inline">\(\sum_{j=0}^{\infin}q^j = \frac{1}{1-q}\)</span> dla <span class="math inline">\(|q| &lt; 1\)</span></p>
+<p><span class="math inline">\(T(n) \le \sum_{k=0}^{\log n}n^2 \cdot (\frac{5}{16})^k \le n^2 \cdot \sum_{k=0}^{\infin}\big(\frac{5}{16}\big)^k = \frac{16}{11} n^2\)</span></p>
+<p><span class="math inline">\(T(n) = O(n^2)\)</span></p>
+<p><span class="math inline">\(\sum_{k=0}^{\log n}n^2 \cdot (\frac{5}{16})^k = n^2(\frac{16}{11} - 5\cdot (\frac{5}{16})^{\log n})=\)</span><br />
+<span class="math inline">\(n^2(\frac{16}{11} - 5\cdot n^{\log \frac{5}{16}})\)</span>, <span class="math inline">\(\log(\frac{5}{16}) = -1.67\)</span></p>
+</body>
+</html>

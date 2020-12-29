@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="przykładowe-zastosowanie-plane-trees">Przykładowe zastosowanie — Plane Trees</h1>
+<p><em>(2020-10-19)</em></p>
+<ul>
+<li><a href="#1-drzewa-uporządkowane">1. Drzewa uporządkowane</a></li>
+<li><a href="#2-klasa-kombinatoryczna">2. Klasa kombinatoryczna</a>
+<ul>
+<li><a href="#21-ogf">2.1. OGF</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="drzewa-uporządkowane">1. Drzewa uporządkowane</h2>
+<p>Drzewa takie, w których zachowujemy orientację całego drzewa<br />
+<img src="plane-trees-orientacja.png" /><br />
+i dokładną pozycję każdego z węzłów.</p>
+<p>Nie chodzi nam o drzewa w rozumieniu grafów.</p>
+<p>Lista możliwych drzew dla liczby węzłów <span class="math inline">\([0;4]\)</span>:<br />
+<img src="plane-trees-lista.png" /></p>
+<hr />
+<h2 id="klasa-kombinatoryczna">2. Klasa kombinatoryczna</h2>
+<p>Spójrzmy na drzewa uporządkowane nieco „z góry”:<br />
+<img src="plane-trees-z-góry.png" /></p>
+<p>Można zauważyć, że każde drzewo jest zbudowane z korzenia oraz z pewnej liczby poddrzew.</p>
+<p>Czyli mamy: <span class="math display">\[
+\mathcal{T} \cong \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})
+\]</span></p>
+<hr />
+<p>Możemy też podejść do sprawy nieco inaczej:<br />
+<span class="math inline">\(T^{(i)}\)</span> — klasa drzew o głębokości <span class="math inline">\(&lt;i\)</span> - <span class="math inline">\(T^{(1)} = \mathcal{Z} \times \operatorname{SEQ}(\emptyset)\)</span> - <span class="math inline">\(T^{(2)} = \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T}^{(1)})\)</span> - <span class="math inline">\(T^{(3)} = \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T}^{(2)})\)</span></p>
+<p>wizualnie:<br />
+<img src="plane-trees-klasy.png" /></p>
+<ul>
+<li><span class="math inline">\(\mathcal{T}^{(i)} \subseteq \mathcal{T}^{(i+1)}\)</span></li>
+<li><span class="math inline">\(\bigcup_{i=1}^{\infty} \mathcal{T}^{(i)} \cong \lim_{i\to\infty} \mathcal{T}^{(i)}\)</span></li>
+<li><span class="math inline">\(\lim_{i\to \infty} T^{(i)}(z) = T(z)\)</span></li>
+</ul>
+<hr />
+<h3 id="ogf">2.1. OGF</h3>
+<p>Jednakże do liczenia OGF użyjemy tej pierwszej metody: <span class="math display">\[
+\mathcal{T} \cong \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})
+\]</span></p>
+<p>czyli mamy OGF: <span class="math inline">\(T(z) = z \cdot \frac{1}{1 - T(z)}\)</span> - <span class="math inline">\(T(z)(1-T(z)) = z\)</span> - <span class="math inline">\((T(z))^2 - T(z) + z = 0\)</span> - <span class="math inline">\(\bold{T(z) = \frac{1}{2}\left( 1 - \sqrt{1 - 4z} \right)}\)</span> - <span class="math inline">\(\sout{T(z) = \frac{1}{2}\left( 1 + \sqrt{1 - 4z} \right)}\)</span></p>
+<p>Mamy też coś takiego: <span class="math inline">\(\sqrt{1 - 4z} = \sum_{n=0}^\infty (4z)^n \cdot \binom{\frac{1}{2}}{n} = \sum_{n=0}^\infty \frac{1}{n} \binom{2n - 2}{n-1} \cdot z^n\)</span></p>
+<p>Sprawdźmy dla <span class="math inline">\(n=4\)</span>:<br />
+<span class="math inline">\(\frac{1}{4} \cdot \binom{6}{3} = 5\)</span><br />
+i to się zgadza z <a href="#1-drzewa-uporządkowane">tym, co otrzymaliśmy wcześniej</a></p>
+<hr />
+</body>
+</html>

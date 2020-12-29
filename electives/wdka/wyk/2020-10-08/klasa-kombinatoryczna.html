@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="klasa-kombinatoryczna">Klasa Kombinatoryczna</h1>
+<p><em>(2020-10-08)</em></p>
+<ul>
+<li><a href="#1-def-klasa-kombinatoryczna">1. DEF: Klasa kombinatoryczna</a></li>
+<li><a href="#2-ogf--ordinary-generating-function">2. <em>OGF — ordinary generating function</em></a></li>
+<li><a href="#3-przykład-łączenia-dwóch-klas">3. Przykład łączenia dwóch klas</a></li>
+<li><a href="#4-przykłady-klas">4. Przykłady klas</a>
+<ul>
+<li><a href="#41-przykład">4.1. Przykład</a></li>
+<li><a href="#42-przykład">4.2. Przykład</a></li>
+<li><a href="#43-przykład">4.3. Przykład</a></li>
+<li><a href="#44-przykład">4.4. Przykład</a></li>
+<li><a href="#45-przykład">4.5. Przykład</a></li>
+<li><a href="#46-przykład">4.6. Przykład</a></li>
+<li><a href="#47-przykład">4.7. Przykład</a></li>
+<li><a href="#48-przykład">4.8. Przykład</a></li>
+</ul></li>
+<li><a href="#5-izomorfizm">5. Izomorfizm</a></li>
+</ul>
+<hr />
+<h2 id="def-klasa-kombinatoryczna">1. DEF: Klasa kombinatoryczna</h2>
+<p><span class="math inline">\(\mathcal{A}(A, |\cdot|)\)</span></p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(A \neq \emptyset\)</span></li>
+<li><span class="math inline">\(|\cdot|: A \to \mathbb{N}_+\)</span></li>
+<li><span class="math inline">\(\{a \in A: |a| = n\} = A_n\)</span></li>
+</ol>
+<p><span class="math inline">\(a_n = |A_n| &lt; \infty\)</span></p>
+<h2 id="ogf-ordinary-generating-function">2. <em>OGF — ordinary generating function</em></h2>
+<p><span class="math inline">\(A(z) = \sum_{n\ge0} a_n z^n\)</span></p>
+<p><span class="math inline">\([z^n]A(z) = a_n\)</span></p>
+<h2 id="przykład-łączenia-dwóch-klas">3. Przykład łączenia dwóch klas</h2>
+<p><span class="math inline">\(\mathcal{A} = (A,|\cdot|_A)\)</span><br />
+<span class="math inline">\(\mathcal{B} = (B,|\cdot|_B)\)</span></p>
+<p><span class="math inline">\(A\cap B = \emptyset\)</span></p>
+<p><span class="math inline">\(\mathcal{A} + \mathcal{B} = (A\cup B, |\cdot|)\)</span></p>
+<p><span class="math display">\[
+|\cdot| =
+\begin{cases}
+    |x|_A &amp; x \in A\\
+    |x|_B &amp; x \in B
+\end{cases}
+\]</span></p>
+<p><span class="math inline">\((A+B)(z) = \sum_{x \in A\sum B} z^{|x|} = \sum_{x\in A} z^{|x|_A} + \sum_{x \in B} z^{|x|_B} = A(z) + B(z)\)</span></p>
+<hr />
+<h2 id="przykłady-klas">4. Przykłady klas</h2>
+<h3 id="przykład">4.1. Przykład</h3>
+<p><span class="math inline">\(\mathcal{A} = (\{\epsilon\}, |\cdot|) \quad |\epsilon| = 0\)</span></p>
+<p><span class="math inline">\(A(z) = \sum_{a\in A} z^{|a|} = z^{|\epsilon|} = z^0 = 1\)</span></p>
+<hr />
+<h3 id="przykład-1">4.2. Przykład</h3>
+<p><span class="math inline">\(\mathcal{A} = (\{\circledcirc, \square, \triangle\}, |\cdot| = \{ \circledcirc \to 1, \square \to 1, \triangle \to 0 \}\)</span></p>
+<p><span class="math inline">\(A(z) = 2z + 1 \cdot z^0 = 2z + 1\)</span></p>
+<p><span class="math inline">\(\mathcal{N}(\mathbb{N}, |\cdot|) ~~~~~ |i| = i\)</span></p>
+<p><span class="math inline">\(\mathcal{N}(z) = z^0 + z^1 + \cdots = \frac{1}{1-z}\)</span></p>
+<hr />
+<h3 id="przykład-2">4.3. Przykład</h3>
+<p><span class="math inline">\(\mathcal{N} = (\{0,1,2,3,\dots\}, |\cdot|) \quad |i| = i\)</span></p>
+<p><span class="math inline">\(N(z) = \sum_{i\in N} z^{|i|} = \sum_{i\ge0} z^i = \frac{1}{1-z}\)</span></p>
+<hr />
+<h3 id="przykład-3">4.4. Przykład</h3>
+<p><span class="math inline">\(\mathcal{N}^+ = (\{1,2,3,\dots\}, |\cdot|) \quad |i| = i\)</span></p>
+<p><span class="math inline">\(\mathcal{N}^+ = \frac{z}{1-z}\)</span></p>
+<hr />
+<h3 id="przykład-4">4.5. Przykład</h3>
+<p><span class="math inline">\(\mathcal{N}_{\ge3} = (\{ 3,4,5,6,\dots \}, |\cdot|)\)</span></p>
+<p><span class="math inline">\(\mathcal{N}_{\ge3}(z) = \sum_{x\in N_{\ge3}} z^{|x|} = z^3 + z^4 + z^5 + \cdots = z^3(1+z+\cdots) = z^3 \cdot \frac{1}{1-z} = \frac{z^3}{1-z}\)</span></p>
+<hr />
+<h3 id="przykład-5">4.6. Przykład</h3>
+<p><span class="math inline">\(\mathcal{P} = \{\epsilon, 1, 1–2, 2–1, 1–2–3, 1–3–2,3–2–1,\dots\}\)</span></p>
+<p><span class="math inline">\(|P_n| = n!\)</span></p>
+<p><span class="math inline">\(P(z) = \sum_{n\ge 0} n! z^n\)</span> zbieżna tylko dla <span class="math inline">\(z = 0\)</span></p>
+<hr />
+<h3 id="przykład-6">4.7. Przykład</h3>
+<p><span class="math inline">\(\mathcal{N}_{Even} = (\{0,2,4,6,8,\dots\}, |\cdot|)\)</span><br />
+<span class="math inline">\(\mathcal{N}_{Odd} = (\{1,3,5,7,\dots\}, |\cdot|)\)</span></p>
+<p><span class="math inline">\(\mathcal{N}_{Even}(z) = z^0 + z^2 + z^4 + \cdots = 1 + z^2 + z^4 + \cdots = \frac{1}{1-z^2}\)</span></p>
+<p><span class="math inline">\(\mathcal{N}_{Odd}(z) = \cdots = z\cdot\mathcal{N}_{Even}(z) = \frac{1}{1-z^2} \cdot z\)</span></p>
+<p><span class="math inline">\(\mathcal{A} \sim A(z) ~~~~~ \mathcal{B} \sim B(z)\)</span><br />
+<span class="math inline">\(\mathcal{A} + \mathcal{B} \sim A(z) + B(z)\)</span></p>
+<p><span class="math inline">\(\mathcal{N}_{Even} + \mathcal{N}_{Odd} \sim \mathcal{N}\)</span></p>
+<p><span class="math inline">\(\mathcal{N}_{Odd}(z) + \mathcal{N}_{Even}(z) = \frac{1}{1-z^2} + \frac{1}{1-z^2} = \frac{1+z}{1-z^2} = \frac{1}{1-z} = 1 + z + z^2 + z^3 + \cdots = \mathcal{N}(z)\)</span></p>
+<hr />
+<h3 id="przykład-7">4.8. Przykład</h3>
+<p><span class="math inline">\(\mathcal{W} = (\{\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, 010, 100, 110, \dots\}, |\cdot|)\)</span></p>
+<p><span class="math inline">\(|w| =\)</span> długość ciągu</p>
+<p><span class="math inline">\(W(z) = \sum_{n\ge0} 2^n z^n = \sum_{n\ge0} (2z)^n = \frac{1}{1 - 2z}\)</span></p>
+<p><span class="math inline">\([z^{1000}]W(z) = 2^{1000}\)</span></p>
+<hr />
+<h2 id="izomorfizm">5. Izomorfizm</h2>
+<p>Dwie klasy kombinatoryczne <span class="math inline">\(\mathcal{A}\)</span> oraz <span class="math inline">\(\mathcal{B}\)</span> o OGF <span class="math inline">\(A(z)\)</span> oraz <span class="math inline">\(B(z)\)</span> są izomorficzne wtedy i tylko wtedy gdy <span class="math inline">\(A(z) = B(z)\)</span>. Wówczas piszemy <span class="math display">\[
+\mathcal{A} \cong \mathcal{B}
+\]</span></p>
+</body>
+</html>

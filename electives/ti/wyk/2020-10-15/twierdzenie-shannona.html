@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="twierdzenie-shannona">Twierdzenie Shannon’a</h1>
+<p><em>(2020-10-15)</em></p>
+<ul>
+<li><a href="#1-twierdzenie-shannona--dokładniej">1. Twierdzenie Shannon’a — dokładniej</a>
+<ul>
+<li><a href="#11-l">1.1. <span class="math inline">\(L\)</span></a></li>
+<li><a href="#12-uwaga">1.2. Uwaga</a></li>
+<li><a href="#13-uwaga">1.3. Uwaga</a>
+<ul>
+<li><a href="#131-ćwiczenie">1.3.1. Ćwiczenie</a></li>
+<li><a href="#132-ćwiczenie">1.3.2. Ćwiczenie</a>
+<ul>
+<li><a href="#1321-przykład">1.3.2.1. Przykład</a></li>
+<li><a href="#1322-przykład">1.3.2.2. Przykład</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="twierdzenie-shannona-dokładniej">1. Twierdzenie Shannon’a — dokładniej</h2>
+<p><span class="math inline">\(H \le L\)</span></p>
+<p>Dokładniej:</p>
+<p><span class="math inline">\(X = \{x_1, \dots, x_N\} ~~~~~ p_1, p_2, \dots, p_N\)</span></p>
+<p><span class="math inline">\(H(X) = -\sum_{i=1}^{N} p_i \log_2 p_i\)</span></p>
+<ul>
+<li><p>kod to jest funkcja <span class="math inline">\(c: X \to \{0,1\}^*\)</span></p></li>
+<li><p><span class="math inline">\(c\)</span> jest iniekcją</p></li>
+<li><p>wiemy, że <span class="math inline">\(c\)</span> jest prefiksowy, tzn <span class="math inline">\(\forall~ x, x&#39;~ x \neq x&#39; \implies c(x) \text{ nie jest prefiksem } c(x&#39;)\)</span></p></li>
+</ul>
+<hr />
+<h3 id="l">1.1. <span class="math inline">\(L\)</span></h3>
+<p><span class="math inline">\(L = L(c) = \sum_{i=1}^{N} p_i \underbrace{|c(x_i)|}_{l_i} = \sum_{i=1}^{N} p_i l_i\)</span></p>
+<h3 id="uwaga">1.2. Uwaga</h3>
+<ul>
+<li>są też kody sufiksowe</li>
+<li>kody jednoznacznie dekodowalne:
+<ul>
+<li>dla dowolnego ciągu <span class="math inline">\(\{0,1\}^*\)</span> istnieje co najwyżej jeden podział <span class="math inline">\(\sigma = \sigma_1 \frown \sigma_2 \frown \dots \frown \sigma_k\)</span>, taki by <span class="math inline">\(\forall i \sigma_i \mathrm{rng}(XXXXXXXXXXXXXXXXXXXXXXXXXX)\)</span></li>
+</ul></li>
+</ul>
+<h3 id="uwaga-1">1.3. Uwaga</h3>
+<p>Kody prefiksowe (i też sufiksowe) są jednoznacznie dekodowalne</p>
+<h4 id="ćwiczenie">1.3.1. Ćwiczenie</h4>
+<p>Znajdź jednoznacznie dekodowalny kod, który nie jest ani sufiksowy ani prefiksowy.</p>
+<h4 id="ćwiczenie-1">1.3.2. Ćwiczenie</h4>
+<p>Kiedy co najwyżej można zamienić na dokładnie? ##### 1.3.2.1. Przykład <span class="math inline">\(\{x_1, x_2\} \qquad c(x_1) = 0 \qquad c(x_2) = 11\)</span></p>
+<p><span class="math inline">\(\sigma = 111\)</span> nie da się podzielić na słowo kodowe</p>
+<p><span class="math inline">\(\hat{c}(x_1) = 0 \qquad \hat{c}(x_2) = 1\)</span> i wtedy O.K.</p>
+<h5 id="przykład">1.3.2.2. Przykład</h5>
+<p>Jeśli istnieje <span class="math inline">\(l\)</span> takie, że <span class="math inline">\(\forall i \enspace l_i = l\)</span>, to <span class="math inline">\(c\)</span> jest jednoznaczne dekodowalny (prefiksowy).</p>
+<hr />
+</body>
+</html>

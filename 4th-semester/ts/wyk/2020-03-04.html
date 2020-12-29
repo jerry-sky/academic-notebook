@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="wykład-2020-03-04">Wykład 2020-03-04</h1>
+<pre class="pseudo"><code>
+for i = 1 to N
+  foreach e \in E
+    r = $[0,1]
+    if r &gt; P(e)
+      E = E \ {e}
+  S = check_connectivity of &#39;G&#39;
+  if S
+    success++
+</code></pre>
+<p><span class="math inline">\(\frac{success}{N}\)</span></p>
+<pre class="pseudo"><code>
+for i =1 to {liczba eksperymentów Monte Carlo}
+
+  connectivity of G&#39;
+</code></pre>
+<p><span class="math display">\[
+N =
+\begin{array}{c}
+\begin{matrix}
+\\
+1 \\
+2 \\
+3 \\
+\end{matrix}
+\begin{array}{r}
+\begin{matrix}
+1 &amp; 2 &amp; 3~~~~~
+\end{matrix} \\
+\begin{Bmatrix}
+  - &amp; 1 &amp; 2 \\
+  1 &amp; - &amp; 3 \\
+  2 &amp; 3 &amp; -
+\end{Bmatrix}
+\end{array}
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(\frac{success}{liczba eksperymentów Monte Carlo}\)</span></p>
+<div class="figure">
+<img src="graph-1.png" alt="graph-1" />
+<p class="caption">graph-1</p>
+</div>
+<h3 id="opóźnienie-średnie">Opóźnienie średnie</h3>
+<p><span class="math inline">\(T_{średnie} = \frac{1}{|N|}*\sum\frac{\lambda}{\frac{c}{\mu}-\lambda}\)</span> gdzie - <span class="math inline">\(\lambda \equiv\)</span> przepływ - <span class="math inline">\(c \equiv\)</span> przepustowość</p>
+<p>???:</p>
+<ul>
+<li>dobierz trasy dla każdej pary wierzchołków</li>
+<li>policz <span class="math inline">\(\lambda_{e}\)</span></li>
+<li><span class="math inline">\(\lambda_e \ge c_p\)</span></li>
+<li></li>
+</ul>
+<p><span class="math inline">\(T_{średnie} \le T_{dopuszczalne}\)</span> - sukces</p>
+</body>
+</html>

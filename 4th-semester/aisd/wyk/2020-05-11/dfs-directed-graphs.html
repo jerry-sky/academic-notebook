@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="dfs-na-grafach-skierowanych">DFS na grafach skierowanych</h1>
+<h2 id="pre-oraz-post"><code>pre</code> oraz <code>post</code></h2>
+<p>Dodajemy do każdego wierzchołka parametry <code>pre</code> oraz <code>post</code>, które będą przechowywać wartości zegara gdy odpowiednio pierwszy raz odwiedzamy wierzchołek i gdy go opuszczamy. Wykonuje się to przez zainicjowani zmiennej <code>clock = 1</code> na początku <a href="depth-first-search">DFS</a>a oraz następujące wersje procedur:</p>
+<p><code>previsit</code><span class="math inline">\((v)\)</span>: 1. <span class="math inline">\(v.\)</span><code>pre = clock</code> 2. <code>clock++</code></p>
+<p><code>postvisit</code><span class="math inline">\((v)\)</span>: 1. <span class="math inline">\(v.\)</span><code>.post = clock</code> 2. <code>clock++</code></p>
+<h2 id="rodzaje-krawędzi">Rodzaje krawędzi</h2>
+<ol style="list-style-type: decimal">
+<li>Tree edges – krawędzie należące do zbioru drzew DFS</li>
+<li>Forward edges – krawędzie od wierzchołka do jego potomka w drzewie DFS, ale nie należące do drzewa DFS</li>
+<li>Back edges – krawędzie od wierzchołka do jego poprzednika w drzewie DFS, ale nie należące do drzewa DFS</li>
+<li>Cross edges – krawędzie od wierzchołka do innego wierzchołka nie będącego jego potomkiem lub poprzednikiem (czyli wierzchołka wcześniej odwiedzonego i opuszczonego), ale nie należące do drzewa DFS</li>
+</ol>
+<p>Wykrywanie rodzajów krawędzi <span class="math inline">\((u,v) \in E\)</span>: - Tree/Forward | <span class="math inline">\(u.\mathrm{pre} &lt; v.\mathrm{pre} &lt; v.\mathrm{post} &lt; u.\mathrm{post}\)</span> - Back | <span class="math inline">\(v.\mathrm{pre} &lt; u.\mathrm{pre} &lt; u.\mathrm{post} &lt; v.\mathrm{post}\)</span> - Cross | <span class="math inline">\(v.\mathrm{pre} &lt; v.\mathrm{post} &lt; u.\mathrm{pre} &lt; u.\mathrm{post}\)</span></p>
+<h2 id="przykład">Przykład</h2>
+<div class="figure">
+<img src="dfs-directed-graph-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+</body>
+</html>

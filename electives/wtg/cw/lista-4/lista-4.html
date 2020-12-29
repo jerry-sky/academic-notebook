@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista-4</h1>
+<p><em>Grafy planarne</em></p>
+<ul>
+<li><a href="#lista-4">Lista-4</a></li>
+<li><a href="#zadanie-42">Zadanie 42</a></li>
+<li><a href="#zadanie-43-świąteczne">Zadanie 43 <em>świąteczne</em></a></li>
+<li><a href="#zadanie-44">Zadanie 44</a></li>
+<li><a href="#zadanie-45">Zadanie 45</a></li>
+<li><a href="#zadanie-48">Zadanie 48</a></li>
+</ul>
+<h2 id="zadanie-42">Zadanie 42</h2>
+<blockquote>
+<p>Przedstaw grafy <span class="math inline">\(K_{3,3}\)</span> i <span class="math inline">\(K_5\)</span> jako grafy na płaszczyźnie z minimalną liczbą przecięć.</p>
+</blockquote>
+<div class="figure">
+<img src="l4z42.png" alt="solution" />
+<p class="caption">solution</p>
+</div>
+<h2 id="zadanie-43-świąteczne">Zadanie 43 <em>świąteczne</em></h2>
+<blockquote>
+<p>Zaopatrz się w brystol, wytnij na podstawie następującego rysunku [rysunek] szablony brył platońskich i sklej je.</p>
+</blockquote>
+<p><img src="l4z43.png" alt="solution" /> <img src="l4z43-2.png" alt="alternative solution" /></p>
+<h2 id="zadanie-44">Zadanie 44</h2>
+<blockquote>
+<p>Pokaż, że graf Petersena nie jest planarny. <em>Wskazówka: Usuń dwie ”poziome” krawędzie i skorzystaj z twierdzenia Kuratowskiego.</em></p>
+</blockquote>
+<p>Usuwamy dwie „poziome” krawędzie według wskazówki: <img src="l4z44-1.png" alt="1" /></p>
+<p>Następnie kondensujemy zaznaczone krawędzie: <img src="l4z44-2.png" alt="2" /></p>
+<p>Wówczas otrzymujemy graf <span class="math inline">\(K_{3,3}\)</span> który nie jest planarny: <img src="l4z44-3.png" alt="3" /></p>
+<p>Możemy dodatkowo przesunąć górny wierzchołek na dół, żeby ujrzeć bardziej <em>klasyczną</em> wersję tego grafu. <img src="l4z44-4.png" alt="4" /></p>
+<h2 id="zadanie-45">Zadanie 45</h2>
+<blockquote>
+<p>Narysuj na płaszczyźnie graf Petersena tak aby na rysunku były tylko dwa przecięcia krawędzi.</p>
+</blockquote>
+<div class="figure">
+<img src="l4z45.png" alt="petersen&#39;s graph" />
+<p class="caption">petersen's graph</p>
+</div>
+<h2 id="zadanie-48">Zadanie 48</h2>
+<blockquote>
+<p>Pokaż, że każde drzewo jest planarne.</p>
+<p><em>Wskazówka: To jest proste ćwiczenie na indukcję matematyczną; indukcję zrób po liczbie wierzchołków.</em></p>
+</blockquote>
+<p>Niech zadane drzewo będzie <span class="math inline">\(T\)</span>.</p>
+<p>Stworzymy graf izomorficzny z drzewem <span class="math inline">\(T\)</span>. Bierzemy wierzchołek <span class="math inline">\(r \in V(T)\)</span>, który traktujemy jako korzeń drzewa. Wszystkie wierzchołki należące do sąsiedztwa <span class="math inline">\(r\)</span> dorysowujemy na nowym grafie w takiej samej odległości jednak każdy skierowany w inną stronę i łączymy te wierzchołki krawędziami z <span class="math inline">\(r\)</span>. Teraz dla każdego z tych wierzchołków sąsiednich do <span class="math inline">\(r\)</span> powtarzamy tę procedurę aż nie skończą się nam wierzchołki.<br />
+Kształt powstałego grafu może przypominać gwiazdę, bo rysując kolejne krawędzie oddalamy się od <span class="math inline">\(r\)</span> i nie przecinamy żadnych innych krawędzi podczas rysowania nowych – mamy taką możliwość, ponieważ żyjemy w przestrzeni <span class="math inline">\(\reals\times\reals\)</span>, która daje nam nieskończoną precyzję i nieskończone możliwości kładzenia kolejnych krawędzi i wierzchołków :).</p>
+</body>
+</html>

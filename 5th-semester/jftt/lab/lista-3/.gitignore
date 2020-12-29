@@ -1,0 +1,8 @@
+
+ex-1
+ex-2
+*.c
+*.o
+*.h
+parser.out
+parsetab.py

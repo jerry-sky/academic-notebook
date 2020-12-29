@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="analiza-leksykalna">Analiza leksykalna</h1>
+<p><em>(2020-10-22)</em></p>
+<ul>
+<li><a href="#1-def">1. DEF</a></li>
+<li><a href="#2-podstawowe-pojęcia">2. Podstawowe pojęcia</a></li>
+<li><a href="#3-przykład-symboli-leksykalnych">3. Przykład symboli leksykalnych</a></li>
+<li><a href="#4-zapis-wzorca">4. Zapis wzorca</a></li>
+<li><a href="#5-implementacja-analizatora-leksykalnego">5. Implementacja analizatora leksykalnego</a>
+<ul>
+<li><a href="#51-złożoność-pamięciowa-i-czasowa-automatów-skończonych">5.1. Złożoność pamięciowa i czasowa automatów skończonych</a></li>
+</ul></li>
+<li><a href="#6-koncepcja-flex-a">6. Koncepcja <em>FLEX</em>-a</a>
+<ul>
+<li><a href="#61-specyfikacja-pliku-źródłowego">6.1. Specyfikacja pliku źródłowego</a></li>
+<li><a href="#62-podstawowe-reguły-działania">6.2. Podstawowe reguły działania</a></li>
+<li><a href="#63-przykład-programu">6.3. Przykład programu</a></li>
+<li><a href="#64-wyrażenia-regularne">6.4. Wyrażenia regularne</a></li>
+<li><a href="#65-zmienne-wbudowane">6.5. Zmienne wbudowane</a></li>
+<li><a href="#66-niejednoznaczność">6.6. Niejednoznaczność</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="def">1. DEF</h2>
+<p>Rozbicie ciągu znaków wejściowych na symbole leksykalne (wyrazy posiadające określone znaczenie). Ciąg symboli leksykalnych stanowi wejście dla analizatora składniowego.</p>
+<hr />
+<h2 id="podstawowe-pojęcia">2. Podstawowe pojęcia</h2>
+<ol style="list-style-type: decimal">
+<li>symbol leksykalny (token)</li>
+<li>leksem (symbol leksykalny może mieć wiele leksemów)</li>
+<li>wzorzec (coś w rodzaju wyrażenia regularnego)</li>
+</ol>
+<hr />
+<h2 id="przykład-symboli-leksykalnych">3. Przykład symboli leksykalnych</h2>
+<p>Weźmy kawałek kodu w <code>C</code>:</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">double</span> sqr(<span class="dt">double</span> x)
+{
+    <span class="cf">return</span> x*x;
+}</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Token</th>
+<th>Leksem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Identyfikator_typu</code></td>
+<td><code>double</code></td>
+</tr>
+<tr class="even">
+<td><code>Identyfikator</code></td>
+<td><code>sqr</code></td>
+</tr>
+<tr class="odd">
+<td>«<code>(</code>»</td>
+<td><code>(</code></td>
+</tr>
+<tr class="even">
+<td><code>Identyfikator</code></td>
+<td><code>x</code></td>
+</tr>
+<tr class="odd">
+<td>«<code>)</code>»</td>
+<td><code>)</code></td>
+</tr>
+<tr class="even">
+<td>«<code>{</code>»</td>
+<td><code>{</code></td>
+</tr>
+<tr class="odd">
+<td><code>KW_return</code></td>
+<td><code>return</code></td>
+</tr>
+<tr class="even">
+<td><code>Operator_binarny</code></td>
+<td><code>*</code></td>
+</tr>
+<tr class="odd">
+<td>«<code>;</code>»</td>
+<td><code>;</code></td>
+</tr>
+<tr class="even">
+<td>«<code>}</code>»</td>
+<td><code>}</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="zapis-wzorca">4. Zapis wzorca</h2>
+<ul>
+<li>wzorce zapisujemy jako wyrażenia regularne</li>
+<li>składnia wyrażeń rozszerzona, aby umożliwić zwięzły zapis</li>
+<li>w opisie przez wyrażenia regularne używamy następujących priorytetów: gwiazdka Kleen’ego, złożenie, suma</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol leksykalny</th>
+<th>Wyrażenie regularne</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Identyfikator</code></td>
+<td><code>[a-zA-Z][a-zA-Z0-9]*</code></td>
+</tr>
+<tr class="even">
+<td>«<code>(</code>»</td>
+<td><code>\(</code></td>
+</tr>
+<tr class="odd">
+<td>«<code>{</code>»</td>
+<td><code>\{</code></td>
+</tr>
+<tr class="even">
+<td><code>Operator_binarny</code></td>
+<td><code>\*</code></td>
+</tr>
+<tr class="odd">
+<td><code>KW_return</code></td>
+<td><code>return</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="implementacja-analizatora-leksykalnego">5. Implementacja analizatora leksykalnego</h2>
+<ul>
+<li>wykorzystanie generatorów analizatorów leksykalnych (np. <em>LEX</em>, <em>FLEX</em>)</li>
+<li>napisanie analizatora bezpośrednio w jakimś języku programowania</li>
+</ul>
+<h3 id="złożoność-pamięciowa-i-czasowa-automatów-skończonych">5.1. Złożoność pamięciowa i czasowa automatów skończonych</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Automat</th>
+<th>Pamięć</th>
+<th>Czas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DFA</td>
+<td><span class="math inline">\(O(2^{\lvert r \rvert})\)</span></td>
+<td><span class="math inline">\(O(\lvert x \rvert)\)</span></td>
+</tr>
+<tr class="even">
+<td>NFA</td>
+<td><span class="math inline">\(O(\lvert r \rvert)\)</span></td>
+<td><span class="math inline">\(O(\lvert x \rvert \cdot \lvert r \rvert)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>gdzie: - <span class="math inline">\(|r|\)</span> — długość wyrażenia regularnego - <span class="math inline">\(|x|\)</span> — długość łańcucha wejściowego</p>
+<p>Jednak implementacja DFA jest duża łatwiejsza, a wielkość zmniejsza się w trakcie minimalizacji.</p>
+<hr />
+<h2 id="koncepcja-flex-a">6. Koncepcja <em>FLEX</em>-a</h2>
+<ul>
+<li>generowanie kodu analizatora na podstawie zadanej specyfikacji</li>
+<li>domyślnie analizator jest w języku <em>C</em></li>
+<li>wygenerowany kod źródłowy kompilujemy, jako samodzielny program lub moduł programu</li>
+<li><code>yylex()</code> — funkcja wygenerowana przez <em>LEX</em>-a odpowiedzialna za działanie leksera (można ją wykorzystać w innej aplikacji)</li>
+</ul>
+<p><code>scan.l</code> <span class="math inline">\(\to\)</span> <em>flex</em> <span class="math inline">\(\to\)</span> <code>scan.c</code> <span class="math inline">\(\to\)</span> <code>gcc</code> <span class="math inline">\(\to\)</span> <code>scan[.exe]</code></p>
+<hr />
+<h3 id="specyfikacja-pliku-źródłowego">6.1. Specyfikacja pliku źródłowego</h3>
+<ol style="list-style-type: decimal">
+<li>Sekcja definicji</li>
+<li>Sekcja reguł przetwarzania, gdzie regułą składa się z dwóch części
+<ol style="list-style-type: decimal">
+<li>wzorca (wyrażenie regularne)</li>
+<li>operacji (zapisanej w <em>C</em>)</li>
+</ol></li>
+<li>Sekcja podprogramów</li>
+</ol>
+<h3 id="podstawowe-reguły-działania">6.2. Podstawowe reguły działania</h3>
+<ul>
+<li>niedopasowane znaki są przepisywane na wyjście</li>
+<li>można definiować operacje puste (wzorzec bez reguły przetwarzania)</li>
+<li>znaki specjalne poprzedzamy znakiem <code>\</code></li>
+<li>wzorce zawierające spacej ujmujemy w <code>&quot;&quot;</code></li>
+</ul>
+<hr />
+<h3 id="przykład-programu">6.3. Przykład programu</h3>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">%{<span class="co">// sekcja — biblioteki i inne ustawienia w normalnym C</span>
+<span class="pp">#include</span><span class="im">&lt;stdio.h&gt;</span>
+
+<span class="dt">int</span> yywrap();
+<span class="dt">int</span> yylex();
+<span class="dt">int</span> NL=<span class="dv">0</span>;
+%}
+%%<span class="co">// tutaj określamy definicje znaków</span>
+^[[:blank:]]*<span class="dt">register</span>[[:blank:]]+   ;
+<span class="dt">long</span>[[:blank:]]+<span class="dt">int</span> printf(<span class="st">&quot;long&quot;</span>);
+<span class="dt">unsigned</span>[[:blank:]]+<span class="dt">int</span> printf(<span class="st">&quot;unsigned int&quot;</span>);
+<span class="dt">signed</span>[[:blank:]]+<span class="dt">int</span>   printf(<span class="st">&quot;int&quot;</span>);
+\n          { printf(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>); NL++; }
+%%
+<span class="dt">int</span> yywrap() {
+    printf(<span class="st">&quot;---</span><span class="sc">\n</span><span class="st">\%d</span><span class="sc">\n</span><span class="st">&quot;</span>,NL);
+    <span class="cf">return</span> <span class="dv">1</span>;
+}
+<span class="dt">int</span> main() {
+    <span class="cf">return</span> yylex();
+}</code></pre></div>
+<h3 id="wyrażenia-regularne">6.4. Wyrażenia regularne</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Wyrażenie</th>
+<th>Opis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>^x</code></td>
+<td>wzorzec od początku linii</td>
+</tr>
+<tr class="even">
+<td><code>x$</code></td>
+<td>wzorzec do końca linii</td>
+</tr>
+<tr class="odd">
+<td><code>xy</code></td>
+<td>konkatenacja wzorców</td>
+</tr>
+<tr class="even">
+<td><code>x|y</code></td>
+<td>alternatywa wzorców</td>
+</tr>
+<tr class="odd">
+<td><code>x*</code></td>
+<td>domknięcie zwrotne</td>
+</tr>
+<tr class="even">
+<td><code>x+</code></td>
+<td>domknięcie dodatnie</td>
+</tr>
+<tr class="odd">
+<td><code>x?</code></td>
+<td>opcjonalność (występuje 0 lub 1 raz)</td>
+</tr>
+<tr class="even">
+<td><code>x{3}</code></td>
+<td>występuje dokładnie trzy razy</td>
+</tr>
+<tr class="odd">
+<td><code>x{2,4}</code></td>
+<td>występuje 2, 3, lub 4 razy</td>
+</tr>
+<tr class="even">
+<td><code>x{2,}</code></td>
+<td>występuje co najmniej dwa razy</td>
+</tr>
+<tr class="odd">
+<td><code>(x|y)z</code></td>
+<td>nawiasy wyrażają priorytet</td>
+</tr>
+<tr class="even">
+<td><code>[a-z]</code></td>
+<td>klasa znaków, tu: jeden znak ze zbiour od <code>a</code> do <code>z</code></td>
+</tr>
+<tr class="odd">
+<td><code>[^a-z]</code></td>
+<td>dowolny znak spoza klasy</td>
+</tr>
+<tr class="even">
+<td><code>.</code></td>
+<td>dowolny znak (poza znakiem <code>\n</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="zmienne-wbudowane">6.5. Zmienne wbudowane</h3>
+<ul>
+<li><code>yytext</code> — wskaźnik na ostatnio rozpoznany (dopasowany)</li>
+<li><code>yyleng</code> — długość dopasowanego leksema</li>
+</ul>
+<hr />
+<h3 id="niejednoznaczność">6.6. Niejednoznaczność</h3>
+<p><em>Co zrobi LEX jeśli tekst może się dopasować do kilku wzorców?</em></p>
+<p>Stosujemy zasady: 1. Zasada najdłuższego dopasowania 2. Zasada wcześniejszego dopasowania</p>
+<hr />
+</body>
+</html>

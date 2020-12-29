@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kody-huffmana">Kody Huffmana</h1>
+<p><em>(2020-10-29)</em></p>
+<ul>
+<li><a href="#1-overview">1. Overview</a></li>
+<li><a href="#2-przykład">2. Przykład</a></li>
+<li><a href="#3-fakt-o-słowach-kodowych-huffmana">3. Fakt o słowach kodowych Huffmana</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+</ul></li>
+<li><a href="#4-fakt-o-własnościach-optymalnych-kodów">4. Fakt o własnościach optymalnych kodów</a>
+<ul>
+<li><a href="#41-d-d">4.1. D-d</a></li>
+</ul></li>
+<li><a href="#5-fakt3">5. Fakt#3</a>
+<ul>
+<li><a href="#51-d-d">5.1. D-d</a></li>
+</ul></li>
+<li><a href="#6-twierdzenie-o-kodach-huffmana">6. Twierdzenie o kodach Huffmana</a>
+<ul>
+<li><a href="#61-d-d">6.1. D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="overview">1. Overview</h2>
+<p><span class="math inline">\(X = \{x_1, x_2, \dots, x_N\} \quad p_1 \ge p_2 \ge \dots \ge p_N\)</span></p>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Budujemy las o drzewach jednoelementowych:</p>
+<p><span class="math display">\[
+\underset{x_1}{\overset{p_1}{\circ}}\quad
+\underset{x_2}{\overset{p_2}{\circ}}\quad
+\underset{x_3}{\overset{p_3}{\circ}}\quad
+\dots\quad
+\underset{x_N}{\overset{p_N}{\circ}}.
+\]</span></p></li>
+<li>Wybieramy dwa drzewa o najmniejszych „wagach” i robimy z nich drzewo.</li>
+<li><p>Dostajemy las o drzewach:</p>
+<p><span class="math display">\[
+\underset{x_1}{\overset{p_1}{\circ}}\quad
+\underset{x_2}{\overset{p_2}{\circ}}\quad
+\dots\quad
+\underset{x_{N-2}}{\overset{p_{N-2}}{\circ}}
+\]</span> oraz<br />
+<img src="szkic-algorytmu-2.-drzewo-dwuelementowe.png" />.</p></li>
+<li><p>Sortujemy las względem „wag” i kończymy, jeśli zostało tylko jedno drzewo lub idziemy do kroku 1.</p></li>
+</ol>
+<p>Na „dowidzenia” dostaniemy drzewo binarne (o wadze <span class="math inline">\(1\)</span>) i liściach etykietowanych <span class="math inline">\(\{x_1, x_2, \dots, x_N\}\)</span>. Możemy z tego odczytać kody!</p>
+<p>Gratis: <strong>owe kody są prefiksowe.</strong></p>
+<hr />
+<h2 id="przykład">2. Przykład</h2>
+<p>Mamy - <span class="math inline">\(X = \{x_1, x_2, x_3, x_4, x_5\}\)</span> - <span class="math inline">\(p_1 = \frac{1}{2}, \enspace p_2 = \frac{1}{3},\enspace p_3 = p_4 = p_5 = \frac{1}{18}\)</span></p>
+<p>Czyli mamy las początkowy: <span class="math display">\[
+    \underset{x_1}{\overset{\frac{1}{2}}{\circ}}\quad
+    \underset{x_2}{\overset{\frac{1}{3}}{\circ}}\quad
+    \underset{x_3}{\overset{\frac{1}{18}}{\circ}}\quad
+    \underset{x_4}{\overset{\frac{1}{18}}{\circ}}\quad
+    \underset{x_5}{\overset{\frac{1}{18}}{\circ}}.
+\]</span></p>
+<p>Iterujemy:<br />
+<img src="huffman-przykład-1.png" /><br />
+<img src="huffman-przykład-2.png" /><br />
+<img src="huffman-przykład-3.png" /></p>
+<p>Czyli teraz możemy policzyć kody poszczególnych symboli: - <span class="math inline">\(c(x_1) = 0\)</span> - <span class="math inline">\(c(x_2) = 10\)</span> - <span class="math inline">\(c(x_3) = 111\)</span> - <span class="math inline">\(c(x_4) = 1100\)</span> - <span class="math inline">\(c(x_5) = 1101\)</span></p>
+<hr />
+<h2 id="fakt-o-słowach-kodowych-huffmana">3. Fakt o słowach kodowych Huffmana</h2>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(l_1 \le l_2 \le l_3 \le \dots \le l_N\)</span> (<span class="math inline">\(l_i = |c(x_i)|\)</span>)</li>
+<li><span class="math inline">\(l_{N-1} = L_N\)</span></li>
+<li><span class="math inline">\(c(x_N)\)</span> oraz <span class="math inline">\(c(x_{N-1})\)</span> różnią się tylko ostatnim bitem.</li>
+</ol>
+<h3 id="d-d">3.1. D-d</h3>
+<p><em>Punkty 2. oraz 3. są oczywiste.</em><br />
+(patrz <a href="#2-przykład">przykład</a> — pierwsze połączone wisienki)</p>
+<ol style="list-style-type: decimal">
+<li>mniej oczywiste, zaraz zostanie wyjaśnione</li>
+</ol>
+<hr />
+<h2 id="fakt-o-własnościach-optymalnych-kodów">4. Fakt o własnościach optymalnych kodów</h2>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(l_1 \le l_2 \le l_3 \le \dots \le l_N\)</span></li>
+<li><span class="math inline">\(l_{N-1} = l_N\)</span></li>
+</ol>
+<h3 id="d-d-1">4.1. D-d</h3>
+<ol style="list-style-type: decimal">
+<li><p>Załóżmy, że <span class="math inline">\(l_i &gt; l_j\)</span> dla pewnego <span class="math inline">\(i&lt;j\)</span></p>
+<span class="math inline">\(|c(x_k)| = l_k\)</span>.<br />
+Robimy kodowanie <span class="math inline">\(\tilde{c}\)</span>:
+<ul>
+<li><span class="math inline">\(\tilde{c}(x_i) = c(x_j) \quad \tilde{c}(x_j) = c(x_i)\)</span></li>
+<li><span class="math inline">\(\tilde{c}(x_k) = c(x_k)\)</span> dla <span class="math inline">\(k \notin \{i,j\}\)</span></li>
+</ul>
+<p><span class="math inline">\(l_{\tilde{c}} = \sum_{k=1}^N p_k \tilde{l}_k = \sum_{k \neq i,j} p_k \tilde{l}_k + p_i \tilde{l}_i + p_j \tilde{l}_j = \sum_{k \neq j,i} p_k l_k + p_i l_j + p_j l_i &lt; \sum_{k} p_k l_k\)</span>,<br />
+ponieważ<br />
+<span class="math inline">\(p_i l_j + p_j l_i &lt; p_i l_i + p_j l_j\)</span>,<br />
+<span class="math inline">\(p_i (l_j - l_i) &lt; p_j (l_j - l_i)\)</span>,<br />
+<span class="math inline">\(p_i &gt; p_j\)</span><br />
+(<em>ostrość!</em>)</p>
+<p><em>generalnie <span class="math inline">\(p_i &lt; p_j \implies l_i \le l_j\)</span></em></p></li>
+<li><p>Jeśli <span class="math inline">\(l_N \neq l_{N-1}\)</span>, to <span class="math inline">\(l_n &gt; l_{N-1}\)</span> oraz <span class="math inline">\(l_N\)</span> jedyna;<br />
+tzn. <span class="math inline">\(\{N\} = \{i: l_i = l_N\}\)</span></p>
+<p><span class="math inline">\(c(x_N) = \varepsilon_1 \varepsilon_2 \dots \varepsilon_{l_N} \qquad \tilde{c}(x_N) = \varepsilon_1 \varepsilon_2 \dots \varepsilon_{N-1}\)</span><br />
+<span class="math inline">\(\tilde{c}(x_k) = c(x_k)\)</span> dla <span class="math inline">\(k &lt; N\)</span><br />
+<span class="math inline">\(\tilde{L} &lt; L \quad\)</span> <em>sprzeczność</em></p>
+<p>Eureka: <span class="math inline">\(\tilde{c}\)</span> jest prefiksowy!</p></li>
+</ol>
+<hr />
+<h2 id="fakt3">5. Fakt#3</h2>
+<p>Istnieje kod optymalny <span class="math inline">\(c\)</span> (dla <span class="math inline">\(p_1 \ge p_2 \ge p_3 \ge \dots \ge p_N\)</span>) spełniają warunki: 1. <span class="math inline">\(l_1 \le l_2 \le \dots l_N\)</span> 2. <span class="math inline">\(l_{N-1} = l_N\)</span> 3. <span class="math inline">\(c(x_N)\)</span> oraz <span class="math inline">\(c(x_{N-1})\)</span> różnią się tylko ostatnim bitem.</p>
+<h3 id="d-d-2">5.1. D-d</h3>
+<p>Punkty 1. i 2. OK.</p>
+<p>Aby zrobić 3., trzeba zmodyfikować kod optymalny, który mamy <span class="math inline">\(c&#39;\)</span>.</p>
+<p>Liczby <span class="math inline">\(l_1, \dots, l_N\)</span> spełniają <a href="../2020-10-15/nierówność-krafta">nierówność Kraft’a</a>. Można zrobić kod prefiksowy spełniający dodatkowo punkt 3.</p>
+<p><span class="math inline">\(\square\)</span></p>
+<hr />
+<h2 id="twierdzenie-o-kodach-huffmana">6. Twierdzenie o kodach Huffmana</h2>
+<p><strong><em>— Kody Huffmana są optymalne!</em></strong></p>
+<h3 id="d-d-3">6.1. D-d</h3>
+<p>(przez indukcję względem <span class="math inline">\(N\)</span>; <span class="math inline">\(N=1,2\)</span> nie sprawia problemu)</p>
+<p>Mamy <span class="math inline">\(\{p_1, p_2, \dots, p_N\}\)</span> i robimy <span class="math inline">\(\{q_1, q_2, \dots, q_{N-1}\}\)</span> gdzie <span class="math inline">\(q_i = p_i\)</span> dla <span class="math inline">\(i \le N-2\)</span>; <span class="math inline">\(q_{N-1} = p_{N-1} + p_N\)</span>.</p>
+<p>Niech: - <span class="math inline">\(L^*_N\)</span> — średnia długość optymalnego kodu (prefiksowego) dla <span class="math inline">\(p\)</span>. - <span class="math inline">\(L^*_{N-1}\)</span> średnia długość optymalnego kodu (prefiksowego) dla <span class="math inline">\(q\)</span>.</p>
+<p><span class="math inline">\(L_N\)</span> — średnia długość kodu Huffmana dla <span class="math inline">\(p\)</span>.</p>
+<p><span class="math inline">\(L_N = \sum_{i=1}^N p_i l_I = \sum_{i=1}^{N-2} p_i l_i + \underbrace{p_{N-1} l_{N-1} + p_N l_N}_{(p_{N-1} + p_N) l_N} = (*)\)</span><br />
+i niech: - <span class="math inline">\(p_{N-1} + p_n = q_k&#39;\)</span> („<span class="math inline">\(&#39;\)</span>”, bo uporządkowane) - <span class="math inline">\(l_N = l_{N-1} = l_k&#39; + 1\)</span></p>
+<p>Dalej: <span class="math display">\[
+(*) = \sum_{i\neq k}q_i&#39; l_i&#39; + q_k- (l_k&#39; + 1) = \bold{L_{N-1}^* + p_{N-1} + p_N}.
+\]</span></p>
+<hr />
+</body>
+</html>

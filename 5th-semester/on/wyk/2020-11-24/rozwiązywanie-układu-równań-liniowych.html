@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="rozwiązywanie-układu-równań-liniowych">Rozwiązywanie układu równań liniowych</h1>
+<p><em>(2020-11-24)</em></p>
+<ul>
+<li><a href="#1-pierwszy-etap-eliminacji-gaussa">1. Pierwszy etap eliminacji Gaussa</a>
+<ul>
+<li><a href="#11-pseudokod">1.1. Pseudokod</a></li>
+<li><a href="#12-macierzowe-sformułowanie-jednego-kroku">1.2. Macierzowe sformułowanie jednego kroku</a>
+<ul>
+<li><a href="#121-kroki">1.2.1. Kroki</a></li>
+<li><a href="#122-rozkład-lu">1.2.2. Rozkład <span class="math inline">\(LU\)</span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="#2-drugi-etap-eliminacji-gaussa">2. Drugi etap eliminacji Gaussa</a></li>
+</ul>
+<hr />
+<h2 id="pierwszy-etap-eliminacji-gaussa">1. Pierwszy etap eliminacji Gaussa</h2>
+<p><em>Chcemy sprowadzić macierz kwadratową do macierzy trójkątnej.</em></p>
+<p>Mamy <span class="math inline">\(Ax = b\)</span>, gdzie - <span class="math inline">\(A \in \reals^{n\times n}\)</span> - <span class="math inline">\(x \in \reals^n\)</span> - <span class="math inline">\(b \in \reals^n\)</span> - <span class="math inline">\(\det(A) \neq 0\)</span></p>
+<p>Znakiem <span class="math inline">\(^{(k)}\)</span> oznaczamy <span class="math inline">\(k\)</span>-ty krok. Wówczas oczywiście <span class="math inline">\(A^{(1)} = A,\enspace b^{(1)} = b\)</span>.</p>
+<p><span class="math display">\[
+A^{(1)} x = b^{(1)}:
+\quad
+\begin{matrix}
+    a^{(1)}_{11} x_1 &amp;+ &amp;a^{(1)}_{12} x_2 &amp;+ &amp;\dotsb &amp;+ &amp;a^{(1)}_{1n} x_n &amp;= &amp;b^{(1)}_1\\
+    a^{(1)}_{21} x_1 &amp;+ &amp;a^{(1)}_{22} x_2 &amp;+ &amp;\dotsb &amp;+ &amp;a^{(1)}_{2n} x_n &amp;= &amp;b^{(1)}_2\\
+    \vdots &amp;&amp; \vdots &amp;&amp;&amp;&amp; \vdots &amp;&amp; \vdots\\
+    a^{(1)}_{n1} x_1 &amp;+ &amp;a^{(1)}_{n2} x_2 &amp;+ &amp;\dotsb &amp;+ &amp;a^{(1)}_{nn} x_n &amp;= &amp;b^{(1)}_n\\
+\end{matrix}
+\]</span></p>
+<p>Eliminujemy zmienną <span class="math inline">\(x_1\)</span> z równań od <span class="math inline">\(2\)</span>-go do <span class="math inline">\(n\)</span>-tego. Mnożymy <span class="math inline">\(1\)</span>-sze równanie przez <span class="math display">\[
+l_{i1} = \frac{a^{(1)}_{i1}}{a^{(1)}_{11}},\quad i = 2,\dots,n
+\]</span> i odejmujemy od pozostałych.</p>
+<p>Po pierwszym kroku mamy <span class="math display">\[
+A^{(2)}x = b^{(2)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &amp;+ &amp; a_{12}^{(1)} x_2 &amp;+ &amp;\dots &amp;+ &amp;a_{1n}^{(1)} x_n &amp;= &amp;b_1^{(1)}\\
+    &amp;&amp; a_{22}^{(2)} x_1 &amp;+ &amp;\dots &amp;+ &amp;a_{2n}^{(2)} x_n &amp;= &amp;b_2^{(2)}\\
+    &amp;&amp;\vdots &amp;&amp;&amp;&amp; \vdots &amp;&amp; \vdots\\
+    &amp;&amp; a_{n2}^{(2)} x_2 &amp;+ &amp;\dots &amp;+ &amp;a_{nn}^{(2)} x_n &amp;= &amp;b_n^{(2)}\\
+\end{matrix}
+\]</span></p>
+<p>Eliminujemy zmienną <span class="math inline">\(x_2\)</span> z równań od <span class="math inline">\(3\)</span>-go do <span class="math inline">\(n\)</span>-tego. Mnożymy <span class="math inline">\(2\)</span>-gie równanie przez <span class="math display">\[
+l_{i2} = \frac{a_{i2}^{(2)}}{2_{22}^{(2)}}, \enspace i = 3,\dots,n
+\]</span> i odejmujemy od pozostałych.</p>
+<p>Ogólnie po <span class="math inline">\(k-1\)</span> krokach otrzymujemy <span class="math display">\[
+A^{(k)} x = b^{(k)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &amp;+ &amp; a_{12}^{(1)} x_2 &amp;+ &amp;\dots &amp;+ &amp;a_{1n}^{(1)} x_n &amp;= &amp;b_1^{(1)}\\
+    &amp;&amp; a_{22}^{(2)} x_1 &amp;+ &amp;\dots &amp;+ &amp;a_{2n}^{(2)} x_n &amp;= &amp;b_2^{(2)}\\
+    &amp;&amp;&amp; \ddots &amp;&amp;&amp;&amp; \vdots &amp;&amp; \vdots\\
+    &amp;&amp;&amp;&amp;a_{kk}^{(k)} x_k &amp;+ \dots + &amp;a_{kn}^{(k)} x_n &amp;= &amp;b_k^{(k)}\\
+    &amp;&amp;&amp;&amp;\vdots &amp;&amp; \vdots &amp;&amp; \vdots\\
+    &amp;&amp;&amp;&amp; a_{nk}^{(k)} x_2 &amp;+ \dots + &amp;a_{nn}^{(k)} x_n &amp;= &amp;b_n^{(k)}\\
+\end{matrix}
+\]</span></p>
+<p>Eliminujemy zmienną <span class="math inline">\(x_k\)</span> z równań od <span class="math inline">\((k+1)\)</span>–tego do <span class="math inline">\(n\)</span>-tego. Mnożymy <span class="math inline">\(k\)</span>-te równanie przez <span class="math display">\[
+l_{ik} = \frac{a_{i2}^{(k)}}{a_{kk}^{(k)}}, \enspace i = (k+1),\dots,n
+\]</span> i odejmujemy od pozostałych.</p>
+<hr />
+<p>Po <span class="math inline">\(n-1\)</span> krokach dostajemy układ z macierzą górno-trójkątną: <span class="math display">\[
+A^{(n)} x = b^{(n)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &amp;+ &amp; a_{12}^{(1)} x_2 &amp;+ &amp;\dots &amp;+ &amp;a_{1n}^{(1)} x_n &amp;= &amp;b_1^{(1)}\\
+    &amp;&amp; a_{22}^{(2)} x_1 &amp;+ &amp;\dots &amp;+ &amp;a_{2n}^{(2)} x_n &amp;= &amp;b_2^{(2)}\\
+    &amp;&amp;&amp; \ddots &amp;&amp;&amp; \vdots &amp;&amp; \vdots\\
+    &amp;&amp;&amp;&amp;&amp;&amp;a_{nn}^{(n)} x_n &amp;= &amp;b_n^{(n)}\\
+\end{matrix}
+\]</span></p>
+<h3 id="pseudokod">1.1. Pseudokod</h3>
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(k \gets 1\)</span> <code>to</code> <span class="math inline">\((n-1)\)</span>:
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(i \gets (k+1)\)</span> <code>to</code> <span class="math inline">\(n\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(l_{ik} \gets \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}\)</span></li>
+<li><code>for</code> <span class="math inline">\(j \gets (k+1)\)</span> <code>to</code> <span class="math inline">\(n\)</span>:
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(a_{ij}^{(k+1)} \gets a_{ij}^{(k)} - l_{ik} a_{kj}^{(k)}\)</span></li>
+</ol></li>
+<li><span class="math inline">\(b_i^{(k+1)} \gets b_i^{(k)} - l_{ik} b^{(k)}_k\)</span></li>
+</ol></li>
+</ol></li>
+</ol>
+<h3 id="macierzowe-sformułowanie-jednego-kroku">1.2. Macierzowe sformułowanie jednego kroku</h3>
+<p>Przejście od macierzy <span class="math inline">\(A^{(k)}\)</span> do <span class="math inline">\(A^{(k+1)}\)</span> i od wektora <span class="math inline">\(b^{(k)}\)</span> do <span class="math inline">\(b^{(k+1)}\)</span> możemy zapisać <span class="math display">\[
+A^{(k+1)} = L^{(k)}A^{(k)}, \quad b^{(k+1)} = L^{(k)}b^{(k)},
+\]</span> gdzie <span class="math display">\[
+L^{(k)} =
+\begin{bmatrix}
+    1\\
+    &amp; \ddots\\
+    &amp;&amp;&amp; 1\\
+    &amp;&amp;&amp; -l_{k+1,k} &amp; 1\\
+    &amp;&amp;&amp; -l_{k+2,k}\\
+    &amp;&amp;&amp; \vdots &amp;&amp;&amp;\ddots\\
+    &amp;&amp;&amp; -l_{n,k} &amp;&amp;&amp;&amp; 1
+\end{bmatrix}
+\]</span></p>
+<h4 id="kroki">1.2.1. Kroki</h4>
+<p>Proces sprowadzania macierzy <span class="math inline">\(A^{(1)}\)</span> do macierzy górno-trójkątnej <span class="math inline">\(A^{(n)}\)</span> w <span class="math inline">\((n-1)\)</span> krokach możemy zapisać <span class="math display">\[
+A^{(n)} = L^{(n-1)} \dots L^{(2)} L^{(1)} A^{(1)}.
+\]</span></p>
+<p>Oznaczając <span class="math inline">\(A^{(n)}\)</span> przez <span class="math inline">\(U\)</span> oraz z tego, że <span class="math inline">\(A = A^{(1)}\)</span> mamy <span class="math display">\[
+\begin{aligned}
+    U &amp;= L^{(n-1)} \dots L^{(2)} L^{(1)} A\\
+    A &amp;= \left( L^{(n-1)} \dots L^{(2)} L^{(1)} \right)^{-1} U\\
+    A &amp;= L^{(1)^{-1}} L^{(2)^{-1}} \dots L^{(n-1)^{-1}} U
+\end{aligned}
+\]</span></p>
+<h4 id="rozkład-lu">1.2.2. Rozkład <span class="math inline">\(LU\)</span></h4>
+<p><span class="math display">\[
+L^{(k)^{-1}}=
+\begin{bmatrix}
+    1\\
+    &amp;\ddots\\
+    &amp;&amp;&amp; 1\\
+    &amp;&amp;&amp; l_{k+1,k} &amp; 1\\
+    &amp;&amp;&amp; l_{k+2,k}\\
+    &amp;&amp;&amp; \vdots &amp;&amp;&amp; \ddots\\
+    &amp;&amp;&amp; l_{n,k} &amp;&amp;&amp;&amp; 1
+\end{bmatrix}
+\quad
+L =
+\begin{bmatrix}
+    1\\
+    l_{21} &amp; 1\\
+    l_{31} &amp; l_{32} &amp; 1\\
+    \vdots &amp;&amp;&amp;&amp; \ddots\\
+    l_{n1} &amp; l_{n2} &amp; \dotsb &amp; l_{n,n-1} &amp; 1
+\end{bmatrix}
+\]</span> gdzie <span class="math inline">\(L = L^{(1)^{-1}} L^{(2)^{-1}} \dots L^{(n-1)^{-1}}\)</span>.</p>
+<p>Jak widać elminacja Gaussa jest równoważna rozkładowi macierzy <span class="math inline">\(A\)</span> na iloczyn <span class="math inline">\(A = LU\)</span> macierzy dolnej i górno-trójkątnej.</p>
+<hr />
+<h2 id="drugi-etap-eliminacji-gaussa">2. Drugi etap eliminacji Gaussa</h2>
+<p>Mamy <span class="math inline">\(Ux = B\)</span>, gdzie - <span class="math inline">\(U \in \reals^{n\times n}\)</span> - <span class="math inline">\(x \in \reals^n\)</span> - <span class="math inline">\(b \in \reals^n\)</span></p>
+<p>Czyli: <span class="math display">\[
+\begin{matrix}
+    u_{11} x_1 &amp;+ &amp;u_{12} x_2 &amp;+ &amp;\dotsb &amp;+&amp; u_{1n}x_n &amp;= &amp;b_1\\
+    &amp; &amp;u_{22} x_2 &amp;+ &amp;\dotsb &amp;+ u_{2n} x_n &amp;= &amp;b_2\\
+    &amp;&amp; &amp;\ddots &amp; &amp; \vdots &amp;&amp; \vdots\\
+    &amp;&amp;&amp;&amp;&amp; u_{nn} &amp;= &amp;b_n
+\end{matrix}
+\]</span> <em>(idziemy od dołu do góry stopniowo, jeden po drugim, wyznaczając kolejne zmienne)</em></p>
+<p>Zakładamy, że macierz <span class="math inline">\(U\)</span> jest nieosobliwa (<span class="math inline">\(\det(U) \neq 0\)</span>) stąd <span class="math inline">\(u_{kk} \neq 0\)</span> dla <span class="math inline">\(k = 1,\dots,n\)</span>. Wyznaczamy <span class="math inline">\(x_n\)</span> z ostatniego równania <span class="math display">\[
+x_n = \frac{b_n}{u_{nn}}
+\]</span></p>
+<p>Dalej wyznaczamy <span class="math inline">\(x_k\)</span> dla <span class="math inline">\(k = (n-1),\dots,1\)</span> <span class="math display">\[
+x_k = \frac{b_k - \sum_{j = k+1}^n u_{kj} x_j}{u_{kk}}
+\]</span></p>
+<hr />
+</body>
+</html>

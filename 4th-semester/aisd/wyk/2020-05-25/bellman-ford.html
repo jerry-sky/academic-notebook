@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="najkrótsze-ścieżki-dopuszczając-ujemne-wagi-krawędzi">Najkrótsze ścieżki dopuszczając ujemne wagi krawędzi</h1>
+<ul>
+<li><a href="#dijkstras-algorithm">Dijkstra's algorithm</a></li>
+<li><a href="#algorytm-bellmana-forda">Algorytm Bellmana-Forda</a></li>
+<li><a href="#przykład-algorytm-bellmana-forda">Przykład (Algorytm Bellmana-Forda)</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<p>Wspomniany na <a href="../2020-05-20/dijkstras-algorithm">wcześniejszym wykładzie</a> algorytm Dijkstry pozwala na wyznaczenie najkrótszych ścieżek od startowego wierzchołka do wszystkich innych wierzchołków w grafie <span class="math inline">\(G = (V,E,l)\)</span>, w przypadku gdzie wagi krawędzi są dodatnie (<span class="math inline">\(l: E\to \mathbb{R}_+\)</span>). Teraz będziemy rozważać grafy, gdzie mamy również ujemne wagi krawędzi (<span class="math inline">\(l: E \to \mathbb{R}\)</span>).</p>
+<h2 id="dijkstras-algorithm">Dijkstra's algorithm</h2>
+<p>W algorytmie Dijkstry wykorzystywany był następujący fakt:<br />
+<em>najkrótsza ścieżka od wierzchołka startowego <span class="math inline">\(s\)</span> do wierzchołka <span class="math inline">\(v\)</span> może przechodzić tylko przez wierzchołki będące w mniejszej odległości od <span class="math inline">\(s\)</span> nie wierzchołek <span class="math inline">\(v\)</span>.</em><br />
+Własność ta nie jest prawdziwa jeśli dopuścimy ujemne wagi krawędzi grafu:</p>
+<div class="figure">
+<img src="dijkstra-negative-example.png" alt="negative example with Dijkstra" />
+<p class="caption">negative example with Dijkstra</p>
+</div>
+<p>Zauważmy, że algorytm Dijkstry wykonuje pewną sekwencję procedur <code>update</code><span class="math inline">\(((u,v) \in E)\)</span>: 1. <span class="math inline">\(v.\mathrm{dist} = \min \{ v.\mathrm{dist}, u.\mathrm{dist} + l(u,v) \}\)</span></p>
+<p>Procedura <code>update</code> ma następujące własności: - ustawia prawidłową wartość <span class="math inline">\(v.\mathrm{dist}\)</span> jeśli <span class="math inline">\(u\)</span> jest przedostatnim wierzchołkiem na najkrótszej ścieżce z <span class="math inline">\(s\)</span> do <span class="math inline">\(v\)</span>, czyli najkrótsza ścieżka wygląda tak: <span class="math inline">\(s \to \dotsb \to u \to v\)</span>. - Nigdy nie ustawi <span class="math inline">\(v.\mathrm{dist}\)</span> na wartość mniejszą niż prawidłowa. Oznacza to, że procedura <code>update</code> może zostać wykonana nadmiarową liczbę razy.</p>
+<p>Widzimy zatem, że wykonując dowolną sekwencję procedur <code>update</code> wartości <span class="math inline">\(v.\mathrm{dist}\)</span> dla każdego wierzchołka <span class="math inline">\(v \in V\)</span> przyjmuje wartość większą lub równą prawdziwej najkrótszej odległości od wierzchołka startowego <span class="math inline">\(s\)</span>.</p>
+<p>Na poprzedniej ilustracji widzieliśmy przykład grafu, dla którego sekwencja wykonań procedur <code>update</code> wykonywana przez algorytm Dijkstry nie pozwoli wyznaczyć prawidłowej najkrótszej ścieżki od wierzchołka <span class="math inline">\(S\)</span> do <span class="math inline">\(A\)</span>. Zastanówmy się jakie własności musi mieć najkrótsza ścieżka od wierzchołka <span class="math inline">\(s\)</span> do <span class="math inline">\(v\)</span> (powiedzmy, że będzie ona wyglądać następująco <span class="math inline">\(s \to u_1 \to u_2 \to \dotsb \to u_k \to v\)</span>) oraz sekwencja procedur <code>update</code> pozwalająca ją wyznaczyć: - długość najkrótszej ścieżki pomiędzy dwoma wierzchołkami nie będzie dłuższa niż <span class="math inline">\(|V| - 1\)</span> (ścieżka długości <span class="math inline">\(|V| - 1\)</span> przechodzi przez wszystkie wierzchołki) - jeśli sekwencja procedur <code>update</code> zostanie wykonana na krawędziach <span class="math inline">\((s,u_1),~(u_1,u_2),\dots,(u_k,v)\)</span> w tej kolejności, to z pierwszej własności procedury <code>update</code> wiemy, że odległość od <span class="math inline">\(s\)</span> do <span class="math inline">\(t\)</span> zostanie poprawnie wyliczona (bez względu na to dla jakich innych krawędzi grafu zostanie wykonana procedura <code>update</code>)</p>
+<h2 id="algorytm-bellmana-forda">Algorytm Bellmana-Forda</h2>
+<p>W celu uniknięcia zastanawiania się czy wykonamy procedurę <code>update</code> w odpowiedniej kolejności możemy wykonać ją dla każdej krawędzi w grafie <span class="math inline">\(|V| - 1\)</span> razy. Zauważmy jednak, że w przypadku wielu grafów ścieżki będą miały mnie krawędzi niż <span class="math inline">\(|V| - 1\)</span>, czyli mniejsza liczba (niż <span class="math inline">\(|V| - 1\)</span>) powtórzeń procedury <code>update</code> dla każdego wierzchołka wystarczy aby wyznaczyć najkrótsze ścieżki. Zauważmy, że jeśli wykonamy procedurę <code>update</code> dla każdej krawędzi w grafie, ale nie zmodyfikujemy żadnej ścieżki to dalsze wykonywanie procedury <code>update</code> już nic nie zmieni.</p>
+<p><code>Bellman-Ford</code><span class="math inline">\((G,s)\)</span>: 1. <code>for all</code> <span class="math inline">\(v \in V\)</span>: 1. <span class="math inline">\(v.\mathrm{dist} \gets \infty\)</span> 2. <span class="math inline">\(v.\mathrm{prev} \gets\)</span> <code>null</code> 2. <span class="math inline">\(s.\mathrm{dist} \gets 0\)</span> 3. <span class="math inline">\(s.\mathrm{prev} \gets s\)</span> 4. <code>repeat until</code> <span class="math inline">\(\mathrm{change} = True\)</span>: 1. <span class="math inline">\(\mathrm{change} \gets False\)</span> 2. <code>for all</code> <span class="math inline">\((u,v) \in E\)</span>: 1. <code>if</code> <span class="math inline">\(v.\mathrm{dist} &gt; u.\mathrm{dist} + l(u,v)\)</span> 1. <span class="math inline">\(v.\mathrm{dist} = u.\mathrm{dist} + l(u,v)\)</span> 2. <span class="math inline">\(v.\mathrm{prev} = u\)</span> 3. <span class="math inline">\(\mathrm{change} = True\)</span></p>
+<p>Złożoność obliczeniowa: wewnętrzna pętla ma złożoność obliczeniową <span class="math inline">\(O(|E|)\)</span> i jest wykonywana co najwyżej <span class="math inline">\(O(|V|)\)</span> razy co daje złożoność obliczeniową całego algorytmu <span class="math inline">\(O(|E| \cdot |V|)\)</span>.</p>
+<h3 id="przykład-algorytm-bellmana-forda">Przykład (Algorytm Bellmana-Forda)</h3>
+<div class="figure">
+<img src="bellman-ford-example.png" alt="example bellman ford" />
+<p class="caption">example bellman ford</p>
+</div>
+<p>Zauważmy, że jeśli w grafie istnieje ujemny cykl (tzn. suma wag krawędzi w cyklu jest ujemna) to przechodzenie w kolejne razy tego ujemnego cyklu będzie zmniejszać długość ścieżek w grafie. W takim przypadku zakładamy, że najkrótsza ścieżka nie istnieje. Aby sprawdzić, czy graf posiada ujemny cykl wystarczy powtórzyć wykonanie procedury <code>update</code> dla każdej krawędzi <span class="math inline">\(|V|\)</span> razy. Jeśli w ostatniej rundzie wykonywania procedury <code>update</code> któraś wartość <span class="math inline">\(v.\mathrm{dist}\)</span> ulegnie zmianie to wiemy, że w grafie mamy ujemny cykl (ponieważ jak wcześniej zauważyliśmy najkrótsza ścieżka może mieć co najwyżej <span class="math inline">\(|V| - 1\)</span> krawędzi).</p>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Algorithms DPV~ Chapter 4.6</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Introduction to Algorithms CLRS~ Chapter 24</a></li>
+</ul>
+</body>
+</html>

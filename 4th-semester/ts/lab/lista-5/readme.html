@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-5">Lista-5</h1>
+<ul>
+<li><a href="#lista-5">Lista-5</a></li>
+<li><a href="#treść-zadania">Treść zadania</a></li>
+<li><a href="#oryginalny-skrypt-server3pl">Oryginalny skrypt <code>server3.pl</code></a></li>
+<li><a href="#prosty-serwer-expressjs">Prosty serwer <code>express.js</code></a></li>
+<li><a href="#analiza-przechwyconych-komunikatów">Analiza przechwyconych komunikatów</a></li>
+</ul>
+<h2 id="treść-zadania">Treść zadania</h2>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Plik <a href="server3.pl"><code>server3.pl</code></a> zawiera przykładowy program serwera protokołu HTTP.</li>
+<li>Uruchom ten skrypt, przetestuj, zastanów się jak działa.</li>
+<li>Nawiąż połączenie za pomocą przeglądarki internetowej.</li>
+<li>Zmień skrypt (lub napisz własny serwer w dowolnym języku programowania) tak aby wysyłał do klienta nagłówek jego żądania.</li>
+<li>Zmień skrypt (lub napisz własny serwer w dowolnym języku programowania) tak aby obsugiwał żądania klienta do prostego tekstowego serwisu WWW (kilka statycznych ston z wzajemnymi odwołaniami) zapisanego w pewnym katalogu dysku lokalnego komputera na którym uruchomiony jest skrypt serwera.</li>
+<li>Przechwyć komunikaty do/od serwera za pomocą analizatora sieciowego - przeanalizuj ich konstrukcję.</li>
+</ol>
+</blockquote>
+<h2 id="oryginalny-skrypt-server3.pl">Oryginalny skrypt <code>server3.pl</code></h2>
+<p>Aby uruchomić oryginalny skrypt podstawowego serwera lokalnego HTTP należy wykonać <code>./server3.pl</code> upewniwszy się że <code>perl</code> jest zainstalowany w systemie.</p>
+<h2 id="prosty-serwer-express.js">Prosty serwer <code>express.js</code></h2>
+<p>Przed uruchomieniem serwera należy mieć zainstalowane <code>node</code> oraz <code>npm</code> w systemie.</p>
+<p>Żeby zainstalować potrzebne paczki należy wykonać <code>npm install</code>.</p>
+<p>W celu uruchomienia serwera należy wykonać <code>node .</code>, <code>./index.js</code> lub <code>npm run start</code>.</p>
+<p>Po uruchomieniu należy otworzyć <a href="http://localhost:3000">stronę localhost:3000</a> w przeglądarce.</p>
+<h2 id="analiza-przechwyconych-komunikatów">Analiza przechwyconych komunikatów</h2>
+<p>Wszystkie zapytania i odpowiedzi są przechwytywane bez problemu i można odczytać ich zawartość jako, że nie używamy tutaj protokołu SSL.</p>
+<p>W prawie wszystkich przypadkach zapytanie o daną podstronę statyczną skutkuje odpowiedzią <code>304 NOT MODIFIED</code> co wskazuje na brak zmian w danym pliku <code>.html</code>. Oczywiście, jeśli dodamy lub usuniemy część zawartości w danym pliku odpowiedź <code>200 OK</code> będzie zawierać nową wersję danego pliku <code>.html</code>.<br />
+Warto zaznaczyć, że w przypadku <a href="http://localhost/request-headers">podstrony localhost:3000/request-headers</a> zawsze mamy do czynienia z zapytaniem wynikającym odpowiedzi <code>200 OK</code> jako, że dane zwrotne są generowane na bieżąco, „dynamicznie” w przeciwieństwie do serwowania zwykłego statycznego pliku.</p>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista 4</h1>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+<li><a href="#zadanie-5">Zadanie 5.</a>
+<ul>
+<li><a href="#zadanie-51">Zadanie 5.1.</a></li>
+<li><a href="#zadanie-52">Zadanie 5.2.</a></li>
+<li><a href="#zadanie-53">Zadanie 5.3.</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Zbuduj automat ze stosem rozpoznający język dobrze rozstawionych nawiasów dwóch rodzajów generowany przez gramatykę <span class="math display">\[
+S \to SS \,|\, (S) \,|\, [S] \,|\, \varepsilon
+\]</span> która ma jeden symbol nieterminalny <span class="math inline">\(S\)</span> i cztery symbole terminalne <span class="math inline">\(\texttt{(},\texttt{)}, \texttt{[}, \texttt{]}\)</span>.</p>
+</blockquote>
+<p>Mamy <a href="../../wyk/2020-11-05/automat-ze-stosem.md#1-def-pda">PDA</a> <span class="math inline">\(M = (Q, \Sigma, \Gamma, q_0, Z_0, F)\)</span>, gdzie - <span class="math inline">\(Q = \{q\}\)</span> - <span class="math inline">\(q_0 = q\)</span> - <span class="math inline">\(\Sigma = \Gamma\)</span></p>
+<p>Definiujemy funkcję przejścia <span class="math inline">\(\delta\)</span>: - <span class="math inline">\(\delta(q, \texttt{(}, Z_0) = (q, \texttt{(}Z_0)\)</span> - <span class="math inline">\(\delta(q, \texttt{[}, Z_0) = (q, \texttt{[}Z_0)\)</span> - <span class="math inline">\(\delta(q, \texttt{(}, \texttt{(}) = (q, \texttt{((})\)</span> - <span class="math inline">\(\delta(q, \texttt{[}, \texttt{(}) = (q, \texttt{[(})\)</span> - <span class="math inline">\(\delta(q, \texttt{(}, \texttt{[}) = (q, \texttt{([})\)</span> - <span class="math inline">\(\delta(q, \texttt{[}, \texttt{[}) = (q, \texttt{[[})\)</span> - <span class="math inline">\(\delta(q, \texttt{]}, \texttt{[}) = (q, \varepsilon)\)</span> (ściągamy ze stosu) - <span class="math inline">\(\delta(q, \texttt{)}, \texttt{(}) = (q, \varepsilon)\)</span> - <span class="math inline">\(\delta(q, \varepsilon, Z_0) = (q, \varepsilon)\)</span></p>
+<p>Skonstruowany automat poprawnie wykonuje zadane polecenie, bo za każdym razem, kiedy napotyka otwierający nawias, zostawia go, ale kiedy ma na stosie aktualnie otwierający i natrafi na zamykający, usuwa go ze stosu.</p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Zbuduj PDA i gramatykę bezkontekstową dla języka <span class="math display">\[
+\{0,1\}^* \setminus \left\{ ww : w \in \{0,1\}^* \right\}.
+\]</span></p>
+</blockquote>
+<p>Idea: słowa o długości nieparzystej należy do języka. Patrzymy na słowa o długości parzystej — przynajmniej jeden znak w jednej i w drugiej połówce (na tym samym miejscu) musi się różnić.</p>
+<p>Niech długość słowa wynosi <span class="math inline">\(2n\)</span>, czyli każda z połówek słowa ma <span class="math inline">\(n\)</span> znaków. Wówczas mamy: <span class="math display">\[
+z = \underbrace{z_1 \dots z_{i-1}}_{i-1}\, 1\, \underbrace{z_{i+1} \dots z_{n+i-1}}_{n-1}\, 0\, \underbrace{z_{n+i+1} \dots z_{2n}}_{n-i}
+\]</span> czyli <span class="math inline">\(z = w 1 w&#39; v 0 v&#39;\)</span> lub <span class="math inline">\(z = w 0 w&#39; v 1 v&#39;\)</span>, gdzie <span class="math inline">\(|w| = |w&#39;|\)</span> oraz <span class="math inline">\(|v| = |v&#39;|\)</span>, bo możemy zamienić ten środek długości <span class="math inline">\(n-1\)</span> (który składa się ze słów długości <span class="math inline">\((i-1)\)</span>, <span class="math inline">\((n-i)\)</span>) na dwa słowa długości <span class="math inline">\((i-1)\)</span> oraz <span class="math inline">\((n-i)\)</span>.</p>
+<p>Teraz możemy na tej podstawie stworzyć gramatykę o następujących produkcjach: - <span class="math inline">\(S \to J | Z | JZ | ZJ\)</span> - <span class="math inline">\(J \to 1 | 0J0 | 0J1 | 1J0 | 1J1\)</span> - <span class="math inline">\(Z \to 0 | 0Z0 | 0Z1 | 1Z0 | 1Z1\)</span></p>
+<p>PDA konstruujemy z <a href="../../wyk/2020-11-05/automat-ze-stosem.md#5-twierdzenie-język-bezkontekstowy-implies-pda">twierdzenia</a>. Generalnie taki automat musi akceptować wszystkie słowa długości nieparzystej oraz parzystej postaci <span class="math inline">\(w0w&#39; v1v&#39;\)</span> lub <span class="math inline">\(w1w&#39; v0v&#39;\)</span>, gdzie <span class="math inline">\(|w| = |w&#39;|\)</span> oraz <span class="math inline">\(|v| = |v&#39;|\)</span>.</p>
+<hr />
+<h2 id="zadanie-5.">Zadanie 5.</h2>
+<blockquote>
+<p>Pokaż, że następujące języki nie są bezkontekstowe</p>
+</blockquote>
+<p><a href="#1-lemat-o-pompowaniu-dla-języków-bezkontekstowych">«Uogólniony lemat o pompowaniu»</a></p>
+<h3 id="zadanie-5.1.">Zadanie 5.1.</h3>
+<blockquote>
+<p><span class="math inline">\(L_1 = \{a^i b^j b^k: i &lt; j &lt; k\}\)</span></p>
+</blockquote>
+<p>Niech <span class="math inline">\(n\)</span> będzie stałą z lematu o pompowaniu dla języków bezkontekstowych. Weźmy <span class="math inline">\(z = a^n b^{n+1} c^{n+2}\)</span>. Musimy rozważyć wszystkie takie podziały słowa <span class="math inline">\(z = uvwxy\)</span> takie, że - <span class="math inline">\(|vx| \ge 1\)</span> - <span class="math inline">\(|vwx| \le n\)</span></p>
+<p>Warto zauważyć, że skoro <span class="math inline">\(|vwx| \le n\)</span> to nie będziemy pompować jednocześnie liter <span class="math inline">\(a\)</span> i <span class="math inline">\(c\)</span>, bo pomiędzy nimi stoi <span class="math inline">\((n+1)\)</span> liter <span class="math inline">\(b\)</span>.</p>
+<p>Pompujemy: <span class="math inline">\(u v^i w x^i y = z&#39;\)</span></p>
+<p>Przypadki: 1. pompujemy jednocześnie <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> (w <span class="math inline">\(v\)</span> lub w <span class="math inline">\(x\)</span> mamy dwie różne litery) — wówczas dla dowolnego <span class="math inline">\(i\)</span> mamy przeplatanie liter <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span>, czyli <span class="math inline">\(z&#39; \notin L_1\)</span> 2. pompujemy jednocześnie <span class="math inline">\(b\)</span> i <span class="math inline">\(c\)</span> (w <span class="math inline">\(v\)</span> lub w <span class="math inline">\(x\)</span> mamy dwie różne litery) — tak samo jak wyżej, <span class="math inline">\(z&#39; \notin L_1\)</span> 3. pompujemy tylko litery <span class="math inline">\(a\)</span> — dla dowolnego <span class="math inline">\(i &gt; 1\)</span> będziemy mieli przynajmniej <span class="math inline">\((n+1)\)</span> liter w słowie <span class="math inline">\(z&#39;\)</span>, a przecież liter <span class="math inline">\(b\)</span> jest też <span class="math inline">\((n+1)\)</span>, czyli <span class="math inline">\(z&#39; \notin L_1\)</span> 4. pompujemy tylko litery <span class="math inline">\(b\)</span> — tak samo jak wyżej, tylko tym razem zrówna się liczba liter <span class="math inline">\(b\)</span> z liczbą liter <span class="math inline">\(c\)</span> 5. pompujemy tylko litery <span class="math inline">\(c\)</span> — dla <span class="math inline">\(i = 0\)</span> liczba liter <span class="math inline">\(c\)</span> zmniejszy się o co najmniej jeden — wówczas znowu będzie tyle samo liter <span class="math inline">\(c\)</span> co <span class="math inline">\(b\)</span> <span class="math inline">\(\implies z&#39; \notin L_1\)</span> 6. pompujemy tak, żeby w <span class="math inline">\(v\)</span> były litery <span class="math inline">\(a\)</span>, a w <span class="math inline">\(x\)</span> litery <span class="math inline">\(b\)</span> (zakładamy, że <span class="math inline">\(v\)</span> i <span class="math inline">\(x\)</span> nie są puste; oth. obowiązuje punkt 1. lub 2.) — mamy zapewnione, że w <span class="math inline">\(x\)</span> mamy co najmniej jedną literę <span class="math inline">\(b\)</span>, wówczas dla dowolnego <span class="math inline">\(i &gt; 1\)</span> mamy więcej <span class="math inline">\(b\)</span> niż <span class="math inline">\(c\)</span> 7. <span class="math inline">\(v\)</span> zawiera <span class="math inline">\(b\)</span>; <span class="math inline">\(x\)</span> zawiera <span class="math inline">\(c\)</span> — analogicznie</p>
+<hr />
+<h3 id="zadanie-5.2.">Zadanie 5.2.</h3>
+<blockquote>
+<p><span class="math inline">\(L_2 = \{a^i b^j : i = j^2\}\)</span></p>
+</blockquote>
+<p>Patrzymy na słowo <span class="math inline">\(z = a^{n^2} b^n\)</span> z perspektywy długości. Długość tego słowa wynosi <span class="math inline">\(n^2 + n = n(n+1)\)</span>. Rozważając standardowy zestaw podziałów z lematu <span class="math inline">\(z = uvwxy\)</span>, gdzie <span class="math inline">\(|vx| \ge 1\)</span> oraz <span class="math inline">\(|vwx| \le n\)</span> po spompowaniu dla <span class="math inline">\(i = 2\)</span> mamy <span class="math inline">\(z&#39; = uvwxy\)</span>, czyli też inną długość: <span class="math display">\[
+n(n+1) = n^2 + n &lt; |z&#39;| = |z| + |vx| \le\\
+\le n^2 + n + n = n(n+2) &lt; (n+1)(n+2)
+\]</span> w środku mamy <span class="math inline">\(\le\)</span> bo <span class="math inline">\(|vx|\)</span> to conajwyżej <span class="math inline">\(n\)</span>. Wówczas nowa długość słowa jest zamknięta między dwiema sąsiadującymi będących możliwymi długościami słowa z tego języka — między nimi nie ma takiej liczby. Zatem <span class="math inline">\(z&#39; \notin L_2\)</span>.</p>
+<hr />
+<h3 id="zadanie-5.3.">Zadanie 5.3.</h3>
+<blockquote>
+<p><span class="math inline">\(L_3 = \{a^i: i \in \mathrm{Prime}\}\)</span></p>
+</blockquote>
+<p>Niech <span class="math inline">\(n\)</span> będzie stałą pompowania. Weźmy słowo <span class="math inline">\(z = a^p\)</span>, gdzie <span class="math inline">\(p \ge n\)</span> jest pierwsza. Rozważamy wszystkie możliwe podziały <span class="math inline">\(z = uvwxy\)</span> takie, że <span class="math inline">\(|vx| \ge 1\)</span>, <span class="math inline">\(|vwx| \le n\)</span>.</p>
+<p>Dla każdego z tych podziałów bierzemy <span class="math inline">\(i = p+1\)</span>: <span class="math inline">\(z&#39; = uv^{p+1} wx^{p+1} y\)</span>.<br />
+Wówczas <span class="math display">\[
+|z&#39;| = |z| + p|vx| = p + p|vx| = p(1 + |vx|)
+\]</span> co daje nam liczbę złożoną. Czyli <span class="math inline">\(z&#39; \notin L_3\)</span>.</p>
+<hr />
+</body>
+</html>

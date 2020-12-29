@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="binary-heap">Binary Heap</h1>
+<p>Kopiec binarny (binary heap) to pełne drzewo binarne. Poziom <span class="math inline">\(i\)</span>ty ma <span class="math inline">\(2^i\)</span> elementów (liczymy od <span class="math inline">\(i=0\)</span>).</p>
+<div class="figure">
+<img src="full-binary-tree.png" alt="full binary tree" />
+<p class="caption">full binary tree</p>
+</div>
+<p>Liczba węzłów wówczas wynosi <span class="math display">\[
+\#\text{węzłów} = \sum_{i=0}^{k-1}2^i = 2^k - 1
+\]</span></p>
+<p>Kopiec budujemy na tablicy <span class="math inline">\(A=[a_1,\dots,a_n]\)</span>. Liczba elementów tablicy <span class="math inline">\(n\)</span> nie musi być równa <span class="math inline">\(2^k-1\)</span>. Wówczas kopiec wygląda następująco:</p>
+<div class="figure">
+<img src="not-full-binary-heap.png" alt="not full binary heap" />
+<p class="caption">not full binary heap</p>
+</div>
+<p>Jak można zauważyć <span class="math inline">\(n\)</span> można ograniczyć: <span class="math display">\[
+2^{k-1} \le n &lt; 2^k
+\]</span> Wówczas wysokość kopca o <span class="math inline">\(n\)</span> elementach jest asymptotycznie równa <span class="math inline">\(\Theta(\log n)\)</span>.</p>
+<h2 id="własność-kopca-minimalnego">Własność kopca minimalnego</h2>
+<p><span class="math display">\[
+A[i] \ge A[~\mathrm{parent}(i)~]
+\]</span></p>
+<h2 id="przykład">Przykład</h2>
+<p>Weźmy <span class="math display">\[
+A = [~\underbrace{2}_{1},\underbrace{4}_{2},\underbrace{3}_{3},\underbrace{8,19,13,11,15,22}_{\dots},\underbrace{20}_{10}~]
+\]</span></p>
+<p>Wtedy mamy następujący kopiec:</p>
+<div class="figure">
+<img src="example-binary-heap.png" alt="example binary heap" />
+<p class="caption">example binary heap</p>
+</div>
+<p>Chcemy się poruszać po takim drzewie binarnym.</p>
+<h2 id="poruszanie-się-po-binary-heap">Poruszanie się po binary heap</h2>
+<p>Będąc w jakimś węźle, potrzebne są wskaźniki umożliwiające nam przejście do parent-a tego węzła oraz lewego i prawego potomka. Warto zauważyć, że mamy do czynienia z pełnym drzewem binarnym, przez co mamy pewność, że na kolejnym poziomie mamy zawsze <em>dwa razy więcej elementów</em> niż na poprzednim (poza ostatnim poziomem).<br />
+Wówczas, możemy używać następujących prostych makr:</p>
+<p><span class="math display">\[
+\mathrm{parent}(i) = \left\lfloor \frac{i}{2} \right\rfloor
+\\
+\mathrm{left}(i) = 2\cdot i
+\\
+\mathrm{right}(i) = 2\cdot i + 1
+\]</span></p>
+<p>Powyższe makra są bardzo szybkie, bo możemy użyć prostych operacji na bitach.</p>
+<p>Nie potrzebujemy już budować struktur węzłów, tak jak miało to w przypadku BST i pochodnych — wystarczą nam tablica wraz z powyższymi makrami.</p>
+<h2 id="text-def-wysokość-węzła"><span class="math inline">\(\text {Def}\)</span> wysokość węzła</h2>
+<p>Wysokością węzła nazywamy liczbę krawędzi na najdłuższej prostej ścieżce prowadzącej od tego węzła do liścia.</p>
+<h2 id="heapifyai"><code>Heapify</code><span class="math inline">\((A,i)\)</span></h2>
+<p>Procedura przywracająca własność kopca dla węzła o indeksie <span class="math inline">\(i\)</span> w tablicy <span class="math inline">\(A\)</span>. Zakładamy, że kopce ukorzenione w lewym i prawym potomku węzła <span class="math inline">\(i\)</span> zachowuję własność kopca.</p>
+<p><code>Heapify</code><span class="math inline">\((A,i)\)</span>: 1. Sprawdź czy <span class="math inline">\(\mathrm{left}(i)\)</span> lub <span class="math inline">\(\mathrm{right}(i)\)</span> nie są większe niż rozmiar kopca 2. <span class="math inline">\(x=\)</span> wybierz ze zbioru <span class="math inline">\(\{i, \mathrm{left}(i), \mathrm{right}(i)\}\)</span> indeks węzła, dla którego będzie zachowana własność kopca pomiędzy elementami <span class="math inline">\(\{A[i], A[\mathrm{left}(i)], A[\mathrm{right}(i)]\}\)</span> 3. <code>if</code> <span class="math inline">\(x\neq i\)</span>: 1. <code>swap</code><span class="math inline">\((A[i], A[x])\)</span> 2. <code>Heapify</code><span class="math inline">\((A,x)\)</span></p>
+<div class="figure">
+<img src="example-heapify.png" alt="heapify example" />
+<p class="caption">heapify example</p>
+</div>
+<h2 id="buildheapa"><code>BuildHeap</code><span class="math inline">\((A)\)</span></h2>
+<p><span class="math inline">\(n =\)</span> <code>length</code><span class="math inline">\((A)\)</span></p>
+<ol style="list-style-type: decimal">
+<li><code>for</code> <span class="math inline">\(i\gets\left\lfloor\frac{n}{2}\right\rfloor\)</span> <code>to</code> <span class="math inline">\(1\)</span></li>
+<li><code>Heapify</code><span class="math inline">\((A,i)\)</span></li>
+<li><span class="math inline">\(i\gets i-1\)</span></li>
+</ol>
+<div class="figure">
+<img src="example-build-heap.png" alt="BuildHeap example" />
+<p class="caption">BuildHeap example</p>
+</div>
+<h3 id="złożoność-obliczeniowa-buildheap">Złożoność obliczeniowa <code>BuildHeap</code></h3>
+<p>Grube oszacowanie: <span class="math inline">\(\frac{n}{2}\)</span> razy wykonujemy operację <code>Heapify</code> o złożoności <span class="math inline">\(O(\log n)\)</span> czyli mamy <span class="math inline">\(O(n \log n)\)</span>.</p>
+<h4 id="text-fakt-1"><span class="math inline">\(\text {Fakt}\)</span> #1</h4>
+<p>W <span class="math inline">\(n\)</span>-elementowym kopcu binarnym występuje co najwyżej <span class="math inline">\(\left\lceil\frac{n}{2^{h+1}}\right\rceil\)</span> węzłów o wysokości <span class="math inline">\(h\)</span>.</p>
+<h5 id="d-d-text-faktu-1">D-d <span class="math inline">\(\text {Fakt}\)</span>u #1</h5>
+<p>Indukcja po <span class="math inline">\(h\)</span></p>
+<ol style="list-style-type: decimal">
+<li>Dla <span class="math inline">\(h = 0\)</span>: <span class="math inline">\(\left\lceil\frac{n}{2}\right\rceil\)</span> liści — O.K.</li>
+<li>Zał. indukcyjne <span class="math inline">\(\forall_{k&lt;h}\)</span> występuje co najwyżej <span class="math inline">\(\left\lceil\frac{n}{2^{k+1}}\right\rceil\)</span> węzłów o wysokości <span class="math inline">\(k\)</span></li>
+</ol>
+<p>Krok indukcyjny:</p>
+<p>z zał. ind. na wysokości <span class="math inline">\(h-1\)</span> mamy <span class="math inline">\(\le \left\lceil\frac{n}{2^{k-1+1}}\right\rceil = \left\lceil\frac{n}{2^k}\right\rceil\)</span> węzłów</p>
+<div class="figure">
+<img src="d-d-fakt-1-1.png" alt="d-d fakt 1 1" />
+<p class="caption">d-d fakt 1 1</p>
+</div>
+<p>Zatem węzłów o wysokości <span class="math inline">\(h\)</span> jest co najwyżej <span class="math inline">\(\frac{1}{2}\cdot \left\lceil\frac{n}{2^k}\right\rceil \le \left\lceil\frac{n}{2^{h+1}}\right\rceil\)</span>.</p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<h3 id="złożoność-obliczeniowa-buildheap-c.d.">Złożoność obliczeniowa <code>BuildHeap</code> c.d.</h3>
+<p><span class="math display">\[
+\sum_{h=0}^{\lg n}\left\lceil\frac{n}{2^{h+1}}\right\rceil \cdot O(h) = O\left(n\cdot \underbrace{\sum_{h=0}^{\lg n}\frac{h}{2^h}}_{\text{ograniczone przez stałą}}\right) = O(n)
+\]</span></p>
+<p>Dla <span class="math inline">\(|x| &lt; 1\)</span>: <span class="math display">\[
+\sum_{k\ge 0}x^k = \frac{1}{1-x} ~~/~ ()&#39; ~~/~\cdot x
+\\
+\sum_{k\le 0}k\cdot x^k = \frac{x}{(1-x)^2}
+\]</span></p>
+<p>Zatem dla <span class="math inline">\(x=\frac{1}{2}\)</span>: <span class="math display">\[
+\sum_{k\le 0}\frac{k}{2^k} = \frac{\frac{1}{2}}{(1-\frac{1}{2})^2} = 2.
+\]</span></p>
+<h2 id="kopiec-d-arny">Kopiec <span class="math inline">\(d\)</span>-arny</h2>
+<p>Kopiec binarny w łatwy sposób uogólnia się na kopiec <span class="math inline">\(d\)</span>-arny, czyli taki, w którym węzły nie będące liśćmi mają po <span class="math inline">\(d\)</span> potomków.</p>
+<h2 id="więcej-o-kopcach">Więcej o kopcach</h2>
+<p><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Chapter 19 &amp; 20</a></p>
+<h2 id="heapsorta"><code>HeapSort</code><span class="math inline">\((A)\)</span></h2>
+<p>Jednym z zastosowań kopców jest sortowanie przez kopcowanie <code>HeapSort</code><span class="math inline">\((A)\)</span>. Wykorzystuje się do tego kopiec maksymalny (w kopcu maksymalnym własność kopca to: <span class="math inline">\(A[\mathrm{parent}(i)] \ge A[i]\)</span>). Najpierw budujemy kopiec, a potem ściągamy z niego korzeń, po czym przywracamy własność kopca dla pozostałych elementów.</p>
+<p><code>HeapSort</code><span class="math inline">\((A)\)</span>: 1. <code>BuildHeap</code><span class="math inline">\((A)\)</span> 2. <code>for</code> <span class="math inline">\(i=\)</span> <code>length</code><span class="math inline">\((A)\)</span> <code>to</code> <span class="math inline">\(2\)</span> 1. <code>swap</code><span class="math inline">\((A[1], A[i])\)</span> 2. <code>heap_size</code><span class="math inline">\((A)\)</span><code>--</code> 3. <code>Heapify</code><span class="math inline">\((A,1)\)</span> 4. <span class="math inline">\(i\)</span><code>--</code></p>
+<h3 id="złożoność-obliczeniowa-heapsorta">Złożoność obliczeniowa <code>HeapSort</code><span class="math inline">\((A)\)</span></h3>
+<p>Dla tablicy <span class="math inline">\(A\)</span> wielkości <span class="math inline">\(n\)</span> wywołanie <code>BuildHeap</code> ma złożoność <span class="math inline">\(O(n)\)</span>. Każde z <span class="math inline">\(n-1\)</span> wywołań <code>Heapify</code> ma pesymistyczną złożoność <span class="math inline">\(O(\log n)\)</span>. Zatem w sumie złożoność wynosi: <span class="math display">\[
+O(n) + (n-1)\cdot O(\log n) = O(n\log n)
+\]</span></p>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">Chapters 7, 20, 21</a></li>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Chapter 4.5.2</a></li>
+<li><a href="https://drive.google.com/drive/folders/0B83LMR1NBoUXLXdYZ2hsNFBqTTA">aisd02.pdf, aisd09.pdf</a></li>
+</ul>
+</body>
+</html>

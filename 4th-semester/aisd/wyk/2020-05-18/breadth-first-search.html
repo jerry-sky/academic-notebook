@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="przeszukiwanie-wszerz">Przeszukiwanie wszerz</h1>
+<h2 id="bfsg-s"><code>BFS</code><span class="math inline">\((G, s)\)</span></h2>
+<p>Mamy graf <span class="math inline">\(G = (V,E,l)\)</span> gdzie <span class="math inline">\(l: E \to \mathbb{R}\)</span> jest funkcją mierzącą długość krawędzi.</p>
+<p>Odległością między wierzchołkami <span class="math inline">\(v,u \in V\)</span> nazywamy długość najkrótszej ścieżki pomiędzy <span class="math inline">\(v\)</span> i <span class="math inline">\(u\)</span>. <em>Na początek założymy, że wszystkie krawędzie będą miały długość <span class="math inline">\(1\)</span> czyli <span class="math inline">\(\forall_{e \in E}~l(e) = 1\)</span> i będziemy pomijać funkcję <span class="math inline">\(l\)</span> dla uproszczenia.</em></p>
+<p>BFS jest procedurą pozwalającą dla grafu <span class="math inline">\(G = (V,E)\)</span> wyznaczyć drzewo najkrótszych ścieżek od wierzchołka startowego <span class="math inline">\(s\in V\)</span>. Intuicja stojąca za BFS jest taka, że będziemy przeszukiwać graf warstwa po warstwie, gdzie warstwa będzie rozumiana jako podzbiór wierzchołków w tej samej odległości od wierzchołka startowego <span class="math inline">\(s\)</span>.</p>
+<p><code>BFS</code><span class="math inline">\((G,s)\)</span>: 1. <code>for all</code> <span class="math inline">\(v \in V\)</span>: 1. <code>dist</code><span class="math inline">\((v) \gets \infty\)</span> 2. <span class="math inline">\(v.\mathrm{prev} \gets\)</span> <code>null</code> 2. <code>dist</code><span class="math inline">\((s) \gets 0\)</span> 3. <span class="math inline">\(s.\mathrm{prev} \gets s\)</span> 4. <span class="math inline">\(Q \gets [s]\)</span> 5. <code>while</code> <span class="math inline">\(|Q| &gt; 0\)</span>: 1. <span class="math inline">\(u \gets Q\)</span>.<code>eject</code><span class="math inline">\(()\)</span> 2. <code>for all</code> <span class="math inline">\((u,v) \in E\)</span>: 1. <code>if dist</code><span class="math inline">\((v) = \infty\)</span>: 1. <span class="math inline">\(Q\)</span><code>.inject</code><span class="math inline">\((v)\)</span> 2. <code>dist</code><span class="math inline">\((v) \gets\)</span> <code>dist</code><span class="math inline">\((u) + 1\)</span> 3. <span class="math inline">\(v.\mathrm{prev} \gets u\)</span></p>
+<p>Powyższa procedura na początku inicjuje odległości wszystkich wierzchołków na <span class="math inline">\(\infty\)</span> poza odległością do wierzchołka startowego <span class="math inline">\(s\)</span>, która ustalana jest na <span class="math inline">\(0\)</span>. Dodatkowo, ustala rodziców węzłów w wynikowym drzewie BFS na <code>null</code> poza węzłem startowym, którego rodzica możemy ustalić na niego samego. Następnie inicjujemy kolejkę FIFO (first in frist out) <span class="math inline">\(Q\)</span>, która na początku zawiera tylko wierzchołek startowy <span class="math inline">\(s\)</span>. Następnie ściągamy pierwszy wierzchołek z kolejki i sprawdzamy czy odwiedziliśmy już wcześniej jego sąsiadów. Jeśli tak to nic nie robimy, bo oznacza to, że znaleźliśmy do nich krótszą ścieżkę, w przeciwnym przypadku wrzucamy nowo odkryte wierzchołki na koniec kolejki <span class="math inline">\(Q\)</span> i ustawiamy odległość do nich na odległość do wierzchołka, z którego do nich doszliśmy <span class="math inline">\(+1\)</span> oraz ustalamy z jakiego wierzchołka doszliśmy najkrótszą ścieżką do nich. Ustalenie <span class="math inline">\(v.\mathrm{prev}\)</span> pozwala odtworzyć najkrótszą ścieżkę od zadanego wierzchołka do wierzchołka startowego <span class="math inline">\(s\)</span> (czyli w praktyce zbudować wynikowe drzewo BFS).</p>
+<p>Zauważmy, że procedura ta spełnia następujące warunki:<br />
+<span class="math inline">\(\forall~d = 0,1,2,\dots\)</span> istnieje moment w którym: - wszystkie węzły grafu <span class="math inline">\(G\)</span> będące w odległości <span class="math inline">\(\le d\)</span> od wierzchołka startowego <span class="math inline">\(s\)</span> mają poprawnie wyznaczoną odległość od <span class="math inline">\(s\)</span> - wszystkie pozostałe węzły grafu <span class="math inline">\(G\)</span> (będące w odległości <span class="math inline">\(&gt; d\)</span> od wierzchołka startowego <span class="math inline">\(s\)</span>) mają odległość od <span class="math inline">\(s\)</span> ustawioną na <span class="math inline">\(\infty\)</span> - kolejka <span class="math inline">\(Q\)</span> zawiera jedynie wierzchołki będące w odległości <span class="math inline">\(d\)</span> od wierzchołka startowego <span class="math inline">\(s\)</span></p>
+<p>Używając powyższych własności jako założenia indukcyjnego dla ustalonego <span class="math inline">\(d\)</span> możemy łatwo zauważyć, że po ewaluacji wierzchołków będących w kolejce <span class="math inline">\(Q\)</span> (w ostatnim punkcie) przez algorytm, wszystkie te trzy własności zostaną spełnione dla odległości <span class="math inline">\(d+1\)</span>. Daje nam to dowód indukcyjny poprawności wyznaczania drzewa najkrótszych ścieżek przez procedurę BFS dla grafu wejściowego <span class="math inline">\(G\)</span> i wierzchołka startowego <span class="math inline">\(s\)</span>.</p>
+<p>Zauważmy, że jeśli jakiś podzbiór wierzchołków grafu <span class="math inline">\(G\)</span> nie jest dostępny z wierzchołka startowego <span class="math inline">\(s\)</span> to po zakończeniu BFSa wierzchołki te nie zostaną odwiedzone, a odległość do nich pozostanie równa <span class="math inline">\(\infty\)</span>.</p>
+<h3 id="złożoność-obliczeniowa">Złożoność obliczeniowa</h3>
+<ul>
+<li>pierwsza pętla przechodzi po wszystkich wierzchołkach, co generuje złożoność <span class="math inline">\(O(|V|)\)</span></li>
+<li>następnie każdy wierzchołek jest jeden raz wkładany do kolejki <span class="math inline">\(Q\)</span> i jeden raz z niej zdejmowany (większość tych operacji dzieje się w pętli <code>while</code>) co daje <span class="math inline">\(2|V|\)</span> operacji na kolejce <span class="math inline">\(Q\)</span><br />
+ponieważ <span class="math inline">\(Q\)</span> jest kolejką FIFO operacja wkładania i zdejmowania elementu na/ z kolejki ma złożoność <span class="math inline">\(O(1)\)</span></li>
+<li>reszta pracy wykonywana jest w pętli <code>for</code> (będącej w pętli <code>while</code>), w której sprawdzana jest każda krawędź (dla grafu skierowanego raz, dla grafu nieskierowanego dwa razy) co generuje złożoność <span class="math inline">\(O(|E|)\)</span></li>
+<li>sumując złożoność procedury BFS wynosi <span class="math inline">\(O(|V| + |E|)\)</span>, czyli jest liniowa od wielkości grafu wejściowego <span class="math inline">\(G\)</span>.</li>
+</ul>
+<h3 id="przykład">Przykład</h3>
+<div class="figure">
+<img src="bfs-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Algorithms DPV~ Chapters 4.1 and 4.2</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">CLRS~ Chapter 22.2</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="triangulacje">Triangulacje</h1>
+<p><em>(2020-10-26)</em></p>
+<ul>
+<li><a href="#1-przykładowe-triangulacje-n2kąta">1. Przykładowe triangulacje <span class="math inline">\((n+2)\)</span>–kąta</a></li>
+<li><a href="#2-klasa-kombinatoryczna">2. Klasa kombinatoryczna</a>
+<ul>
+<li><a href="#21-definicja-kinda-rekurencyjna">2.1. Definicja <em>kinda</em> rekurencyjna</a></li>
+</ul></li>
+<li><a href="#3-ogf">3. OGF</a></li>
+</ul>
+<hr />
+<h2 id="przykładowe-triangulacje-n2kąta">1. Przykładowe triangulacje <span class="math inline">\((n+2)\)</span>–kąta</h2>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(2\)</span>-kąt możemy podzielić na <span class="math inline">\(0\)</span> sposobów:<br />
+<span class="math inline">\(|\)</span></li>
+<li><span class="math inline">\(3\)</span>-kąt możemy podzielić na <span class="math inline">\(1\)</span> sposób:<br />
+<span class="math inline">\(\triangle\)</span></li>
+<li><span class="math inline">\(4\)</span>-kąt możemy podzielić na <span class="math inline">\(2\)</span> sposoby:<br />
+<span class="math inline">\(\cancel\square\)</span> + odbicie</li>
+<li><span class="math inline">\(5\)</span>–kąt możemy podzielić na <span class="math inline">\(5\)</span> sposobów:<br />
+<img src="triangulacja-5-kąta.png" /></li>
+</ol>
+<p><em>(Liczby Catalana)</em></p>
+<hr />
+<h2 id="klasa-kombinatoryczna">2. Klasa kombinatoryczna</h2>
+<p><span class="math inline">\(\mathcal{T} \cong \mathcal{E} + \mathcal{T} \times \mathcal{Z} \times \mathcal{T}\)</span></p>
+<p>(<span class="math inline">\(\mathcal{E}\)</span> odpowiada <span class="math inline">\(2\)</span>-kątowi, kiedy <span class="math inline">\(\mathcal{Z}\)</span> odpowiada trójkątowi)</p>
+<p>Rozumujemy to jako jeden trójkąt, który może mieć po dwóch stronach pewne wielokąty do triangulacji. Ten trójkąt dzieli dwa wielokąty do podziału.</p>
+<h3 id="definicja-kinda-rekurencyjna">2.1. Definicja <em>kinda</em> rekurencyjna</h3>
+<p>Mamy podstawowy <span class="math inline">\(2\)</span>-kąt: <span class="math inline">\(\boldsymbol{|}\)</span> który ma <span class="math inline">\(0\)</span> triangulacji oraz podstawowy trójkąt <span class="math inline">\(\triangle,\)</span> który ma tylko <span class="math inline">\(1\)</span> triangulację.</p>
+<p>Przykładowo dla <span class="math inline">\(4\)</span>-kąta:<br />
+<img src="rekurencja-4-kąt.png" /></p>
+<h2 id="ogf">3. OGF</h2>
+<ul>
+<li><span class="math inline">\(T(z) = 1 + z\cdot(T(z))^2\)</span></li>
+<li><span class="math inline">\(T(z) = \sum_{n=0}^{\infty} \frac{1}{n+1} \binom{2n}{n} \cdot z^n\)</span></li>
+</ul>
+<hr />
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kompilatory-wprowadzenie">Kompilatory — Wprowadzenie</h1>
+<p><em>(2020-10-08)</em></p>
+<ul>
+<li><a href="#1-def-kompilator">1. DEF: Kompilator</a></li>
+<li><a href="#2-kompilacja-typu-analiza-synteza">2. Kompilacja typu analiza-synteza</a>
+<ul>
+<li><a href="#21-narzędzia-dokonujące-analizy">2.1. Narzędzia dokonujące analizy</a></li>
+<li><a href="#22-programy-przypominające-kompilatory">2.2. Programy przypominające kompilatory</a></li>
+</ul></li>
+<li><a href="#3-kontekst-kompilatora">3. Kontekst kompilatora</a></li>
+<li><a href="#4-fazy-kompilatora">4. Fazy kompilatora</a>
+<ul>
+<li><a href="#41-analiza-leksykalna">4.1. Analiza leksykalna</a></li>
+<li><a href="#42-analiza-składniowa">4.2. Analiza Składniowa</a></li>
+<li><a href="#43-analiza-semantyczna">4.3. Analiza semantyczna</a></li>
+<li><a href="#44-zarządzanie-tablicą-symboli">4.4. Zarządzanie tablicą symboli</a></li>
+<li><a href="#45-wykrywanie-i-zgłaszanie-błędów">4.5. Wykrywanie i zgłaszanie błędów</a></li>
+<li><a href="#46-generowanie-kodu-pośredniego">4.6. Generowanie kodu pośredniego</a></li>
+<li><a href="#47-optymalizacja-kodu">4.7. Optymalizacja kodu</a></li>
+<li><a href="#48-generowanie-kodu-wynikowego">4.8. Generowanie kodu wynikowego</a></li>
+</ul></li>
+<li><a href="#5-grupowanie-faz">5. Grupowanie faz</a>
+<ul>
+<li><a href="#51-przód-kompilatora">5.1. Przód kompilatora</a></li>
+<li><a href="#52-tył-kompilatora">5.2. Tył kompilatora</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="def-kompilator">1. DEF: Kompilator</h2>
+<p><em>Program czytający kod napisany w języku źródłowym i tłumaczący go na równoważny kod w języku wynikowym.</em></p>
+<p><span class="math display">\[
+\text{Program źródłowy} \rightarrow \underset{\underset{\text{Komunikaty o błędach}}{\downarrow}}{\text{Kompilator}} \rightarrow \text{Program wynikowy}
+\]</span></p>
+<hr />
+<h2 id="kompilacja-typu-analiza-synteza">2. Kompilacja typu analiza-synteza</h2>
+<ol style="list-style-type: decimal">
+<li>Analiza — rozłożenie programu na części składowe i stworzenie jego pośredniej reprezentacji.</li>
+<li>Synteza — przekształcenie reprezentacji pośredniej na program wynikowy.</li>
+</ol>
+<hr />
+<h3 id="narzędzia-dokonujące-analizy">2.1. Narzędzia dokonujące analizy</h3>
+<ul>
+<li>edytory strukturalne</li>
+<li>formatory kody programu</li>
+<li>kontrolery statyczne</li>
+<li>interpretery</li>
+</ul>
+<h3 id="programy-przypominające-kompilatory">2.2. Programy przypominające kompilatory</h3>
+<ul>
+<li>formatory tekstu</li>
+<li>kompilatory do układów scalonych</li>
+</ul>
+<hr />
+<h2 id="kontekst-kompilatora">3. Kontekst kompilatora</h2>
+<ol style="list-style-type: decimal">
+<li>Szkieletowy program źródłowy</li>
+<li><em>Preprocesor</em></li>
+<li>Program źródłowy</li>
+<li><em>Kompilator</em></li>
+<li>Program w asemblerze</li>
+<li><em>Assembler</em></li>
+<li>Przemieszczalny kod maszynowy</li>
+<li><em>Konsolidator <span class="math inline">\(\leftarrow\)</span> Biblioteki</em></li>
+<li>Bezwzględny kod maszynowy</li>
+</ol>
+<hr />
+<h2 id="fazy-kompilatora">4. Fazy kompilatora</h2>
+<ol style="list-style-type: decimal">
+<li><em>Program źródłowy</em></li>
+<li><a href="#41-analiza-leksykalna">Analizator leksykalny</a></li>
+<li><a href="#42-analiza-składniowa">Analizator składniowy</a></li>
+<li><a href="#43-analiza-semantyczna">Analizator semantyczny</a></li>
+<li><a href="#46-generowanie-kodu-pośredniego">Generator kodu pośredniego</a></li>
+<li><a href="#47-optymalizacja-kodu">Optymalizacja kodu</a></li>
+<li><a href="#48-generowanie-kodu-wynikowego">Generator kodu</a></li>
+<li><em>Program wynikowy</em></li>
+</ol>
+<p><em>~w tle: <a href="#45-wykrywanie-i-zgłaszanie-błędów">Obsługa błędów</a> oraz <a href="#44-zarządzanie-tablicą-symboli">Zarządzanie tablicą symboli</a>~</em></p>
+<h3 id="analiza-leksykalna">4.1. Analiza leksykalna</h3>
+<p>Ciąg znaków składający się na program źródłowy jest przekształcany w ciąg tokenów (symboli leksykalnych).</p>
+<h3 id="analiza-składniowa">4.2. Analiza Składniowa</h3>
+<p>Grupowanie symboli leksykalnych programu źródłowego w wyrażenia gramatyczne (tworzenia drzewa wyprowadzenia).</p>
+<h3 id="analiza-semantyczna">4.3. Analiza semantyczna</h3>
+<p>Kontrola programu pod względem poprawności semantycznej (np. kontrola typów) i zbierani informacji do generowania kodu.</p>
+<h3 id="zarządzanie-tablicą-symboli">4.4. Zarządzanie tablicą symboli</h3>
+<p>Zapamiętywanie identyfikatorów używanych w programie źródłowym i zbieranie informacji o różnych atrybutach tych identyfikatorów.</p>
+<h3 id="wykrywanie-i-zgłaszanie-błędów">4.5. Wykrywanie i zgłaszanie błędów</h3>
+<p>Obsługa błędów taki sposób, aby nie przerywać kompilacji po pierwszym błędzie. Błędy wykrywane są w fazie analizy.</p>
+<h3 id="generowanie-kodu-pośredniego">4.6. Generowanie kodu pośredniego</h3>
+<p>Reprezentacja programu dla pewnej abstrakcyjnej maszyny (łatwa do utworzenia i tłumaczenia na program wynikowy).</p>
+<h3 id="optymalizacja-kodu">4.7. Optymalizacja kodu</h3>
+<p>Poprawienie kodu pośredniego w taki sposób, aby kod maszynowy działał szybciej.</p>
+<h3 id="generowanie-kodu-wynikowego">4.8. Generowanie kodu wynikowego</h3>
+<p>~ najczęściej w Assemblerze.</p>
+<hr />
+<h2 id="grupowanie-faz">5. Grupowanie faz</h2>
+<h3 id="przód-kompilatora">5.1. Przód kompilatora</h3>
+<p>Fazy zależne przede wszystkim od języka źródłowego i praktycznie niezależne od języka wynikowego. Zwykle składa się z analizatora leksykalnego, składniowego i semantycznego oraz tablicy symboli, generatora kodu pośredniego i obsługi błędów.</p>
+<h3 id="tył-kompilatora">5.2. Tył kompilatora</h3>
+<p>Fazy zależne od maszyny docelowej a niezależne od języka źródłowego. Zwykle składa się z optymalizacji i generowania kodu z tablicą symboli i obsługą błędów.</p>
+<hr />
+</body>
+</html>

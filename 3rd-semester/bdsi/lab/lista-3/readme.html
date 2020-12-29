@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-3">Lista-3</h1>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Uruchom bazę danych Hobby z listy 2. Utwórz indeksy dla tabel:</li>
+</ol>
+<ul>
+<li>dla tabeli <code>osoba</code> indeks na kolumnie <code>imię</code>,</li>
+<li>dla tabeli <code>osoba</code> indeks na kolumnie <code>dataUrodzenia</code>,</li>
+<li>dla tabeli <code>sport</code> indeks na grupie kolumn (<code>id</code>, <code>nazwa</code>),</li>
+<li>dla tabeli <code>inne</code> indeks na grupie kolumn (<code>nazwa</code>, <code>id</code>),</li>
+<li>dla tabeli <code>hobby</code> indeks na grupie kolumn (<code>osoba</code>, <code>id</code>, <code>typ</code>).</li>
+</ul>
+<p>Wskaż które indeksy istniały wcześniej. Wskaż te, do których istniał wcześniej podobny indeks. Uzasadnij wybór typu indeksu dla każdego z podpunktów.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Utwórz zapytania zgodne z poniższą specyfikacją. Sprawdź, w których przypadkach zostaną wykorzystane indeksy. Czy wybór typu indeksu miał wpływ na wykorzystanie indeksu?</li>
+</ol>
+<ul>
+<li>Znajdź płeć wszystkich osób o imieniu rozpoczynającym się od 'A'.</li>
+<li>Wypisz posortowaną listę nazw sportów drużynowych.</li>
+<li>Wypisz pary (id) sportów indywidualnych, które uprawiane są w tej samej lokacji.</li>
+<li>Znajdź wszystkie osoby urodzone przed 2000-01-01.</li>
+<li>Znajdź nazwę najpopularniejszego hobby.</li>
+<li>Wypisz imię najstarszego posiadacza psa.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Utwórz tablę <code>zawody</code> o kolumnach <code>id</code>, <code>nazwa</code>, <code>pensja min</code>, <code>pensja max</code> oraz tabelę <code>praca</code> zawierającą informację o id zawodu, id osoby oraz jej zarobkach.<br />
+Korzystając z pętli uzupełnij tabelę <code>zawody</code> przynajmniej 10 różnymi zawodami (zadbaj o poprawne widełki płacowe), a następnie, z wykorzystaniem kursora na tabeli <code>osoba</code>, przypisz każdej osobie zawód (wraz z odpowiednią pensją) i uzupełnij tabelę <code>praca</code>.</p></li>
+<li>Napisz procedurę, która przyjmując dwa parametry wejściowe: <code>agg</code> oraz <code>kol</code> wypisuje wynik o schemacie (<code>kol</code>, <code>agg</code>, <span class="math inline">\(X\)</span>), gdzie <span class="math inline">\(X\)</span> jest wynikiem zastosowania funkcji agregującej <code>agg</code> na kolumnie <code>kol</code> w tabeli <code>osoba</code> lub zwróci informację o błędzie. Możliwe wykorzystanie:</li>
+</ol>
+<ul>
+<li>funkcja <code>COUNT</code> na kolumnie imię lub płeć</li>
+<li>funkcja <code>GROUP_CONCAT</code> na dowolnej kolumnie nie będącej id</li>
+<li>funkcja <code>MIN</code>, <code>MAX</code> oraz <code>AVG</code> na kolumnie <code>dataUrodzenia</code>, przy czym wynik <code>AVG</code> (w związku z działaniem średniej na dacie) powinien zwracać średni wiek w dniu wywołania procedury</li>
+<li>funkcja <code>STD</code> oraz <code>VAR_POP</code> na kolumnie <code>dataUrodzenia</code>, działająca analogicznie do funkcji <code>AVG</code></li>
+</ul>
+<p>Załóż obecność użytkownika, próbującego dokonać zmian w strukturze jak i zawartości bazy danych, próbującego wywołać błąd funkcji lub poznać strukturę tabel. Zadbaj o poprawność i bezpieczeństwo działania.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Utwórz tabelę <code>hasła</code> zawierającą informacje o id osoby oraz jej haśle. W kolumnie odnoszącej się do hasła przechowuj tylko hash hasła (wykorzystaj funkcję <code>md5()</code> lub <code>sha1()</code>. Napisz procedurę przyjmujacą jako parametry imię osoby oraz jej hasło, a następnie hashuje je (wykorzystując odpowiednią funkcję) i w przypadku zgodności, zwraca datę urodzenia osoby, w przypadku braku zgodności wypisuje losową datę (losowa data powinna uwzględniać wymagania odnośnie pełnoletności oraz nie implikować osób ponad 100letnich).</p></li>
+<li>Pobierz WebGoat i uruchom na swoim komputerze (w celu uniknięcia podatności możesz rozłączyć się z internetem). Wykonaj tutorial odnośnie <em>Injection Flaws</em>:</li>
+</ol>
+<ul>
+<li>opcjonalnie – SQL Injection (introduction)</li>
+<li>SQL Injection (advanced)</li>
+<li>SQL Injection (mitigation)</li>
+</ul>
+<p>Wybierz jedną z sekcji (advanced lub mitigation) i opisz wykonane ćwiczenia oraz wyciągnięte wnioski. Raport wyślij prowadzącemu zajęcia co najmniej 24 godziny przed terminem oddania. 7. Wykorzystując CTE oraz rekursję napisz zapytanie obliczające liczbę <span class="math inline">\(\binom{n}{k}\)</span> dla nieujemnych liczb całkowitych <span class="math inline">\(n\ge k\)</span>. Pamiętaj o warunkach brzegowych <span class="math inline">\(\binom{n}{0} = \binom{n}{n} = 1\)</span>. Wywołaj zapytanie dla <span class="math inline">\(n \in \{5, 7, 8, 9\}\)</span> oraz <span class="math inline">\(k \in \{2, 3, . . . , 5\}\)</span>.</p>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Napisz procedurę, która jako parametr wejściowy przyjmuję nazwę zawodu, a następnie daje wszystkim wykonującym ten zawód 10% podwyżki przy zachowaniu ograniczeń wynikającymi z widełek płacowych w tabeli <code>zawody</code>. Operacja powinna wykonać się transakcyjnie, tzn. albo wszyscy pracownicy danego zawodu dostają podwyżkę albo (przy przekroczeniu widełek przez przynajmniej jedną osobę) nikt.</p></li>
+<li><p>Napisz procedurę, która przyjmuje jako parametr nazwę zawodu, a następnie zwraca, na podstawie tabeli <code>praca</code>, informacje na temat średniej pensji osób pracujących w danym zawodzie przy zachowaniu 0.03–prywatności różnicowej. Zadbaj o to, by zwracany wynik nie wykraczał poza widełki dla danego zawodu.</p></li>
+<li><p>Zrób Backup bazy danych tej listy. Usuń bazę danych, a następnie ją przywróć z backupu. Sporządź krótki raport z wykonanych czynności. Uwzględnij zarówno obsługę w swoim IDE jak i wykorzystanie wyłącznie linii komend. Wyjaśnij różnicę między backupem pełnym a różnicowym. Raport wyślij prowadzącemu zajęcia co najmniej 24 godziny przed terminem oddania.</p></li>
+</ol>
+</blockquote>
+<p>Pliki <code>ex-*.sql</code> zawierają zadane kwerendy.</p>
+<p>Raporty do zadań <a href="ex-6">6</a> oraz <a href="ex-10">10</a> znajdują się w osobnych dokumentach MD.</p>
+</body>
+</html>

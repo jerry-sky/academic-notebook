@@ -1,0 +1,458 @@
+\documentclass[10pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Obliczenia Naukowe,\\Laboratorium, Lista 1}
+\author{Jerzy Wroczyński}
+\date{2020-10-25}
+
+\begin{document}
+
+\maketitle
+
+\section{Zadanie 1.}
+
+\subsection{Pod-zadanie 1.1.}
+
+\subsubsection{Opis problemu}
+Epsilonem maszynowym (\textit{macheps}) nazywamy najmniejszą liczbę w arytmetyce \textit{fl} większą od $0$ będącą odległością między $1$ a następną liczbą. Naszym zadaniem jest jej wyznaczenie.
+
+\subsubsection{Rozwiązanie}
+Zadanie dzieli się na kilka mniejszych pod-zadań wyznaczania tej wartości osobno dla arytmetyk \texttt{Float16}, \texttt{Float32} oraz \texttt{Float64}.
+W języku \texttt{Julia} mamy dwa sposoby na uzyskanie takiej liczby:
+\begin{itemize}
+    \item metoda iteracyjna (kod źródłowy w pliku \texttt{ex-1.1.jl})
+    \item wykonanie wbudowanej funkcji \texttt{eps}
+\end{itemize}
+W przypadku języka \texttt{C} musimy spojrzeć na predefiniowane globalne zmienne w pliku nagłówkowym \texttt{float.h}.
+
+Zaobserwowane wartości:
+\begin{itemize}
+    \item \texttt{Float16}:
+    \begin{itemize}
+        \item metoda iteracyjna = $9.77 \cdot 10^{-4}$
+        \item \texttt{eps(Float16)} = $9.77 \cdot 10^{-4}$
+    \end{itemize}
+    \item \texttt{Float32}:
+    \begin{itemize}
+        \item metoda iteracyjna = $1.1920929 \cdot 10^{-7}$
+        \item \texttt{eps(Float32)} = $1.1920929 \cdot 10^{-7}$
+        \item \texttt{float.h: \_\_FLT32\_EPSILON\_\_} = $1.1920928955078125 \cdot 10^{-7}$
+    \end{itemize}
+    \item \texttt{Float64}:
+    \begin{itemize}
+        \item metoda iteracyjna = $2.220446049250313 \cdot 10^{-16}$
+        \item \texttt{eps(Float64)} = $2.220446049250313 \cdot 10^{-16}$
+        \item \texttt{float.h: \_\_FLT64\_EPSILON\_\_} = $2.22044604925031308084726333618164062 \cdot 10^{-16}$
+    \end{itemize}
+\end{itemize}
+
+Jak widać, we wszystkich przypadkach uzyskania żądanych stałych mamy te same wartości. Co oznacza, że nasza metoda iteracyjna jest poprawna.
+
+\subsection{Pod-zadanie 1.2.}
+
+\subsubsection{Opis problemu}
+Liczbę maszynową $\eta$ nazywamy najmniejszą liczbę w arytmetyce \textit{fl} niebędącą zerem. Naszym zadaniem jest jej wyznaczenie.
+
+\subsubsection{Rozwiązanie}
+Tak jak w poprzednim pod-zadaniu, patrzymy na trzy różne arytmetyki \texttt{Float16}, \texttt{Float32} oraz \texttt{Float64}. Żeby uzyskać nasz wynik, wystarczy nieco zmodyfikować program użyty w poprzednim pod-zadaniu.
+
+\begin{itemize}
+    \item \texttt{Float16}
+    \begin{itemize}
+        \item metoda iteracyjna = $6 \cdot 10^{-8}$
+        \item \texttt{nextfloat(fl(0.0))} = $6 \cdot 10^{-8}$
+    \end{itemize}
+    \item \texttt{Float32}
+    \begin{itemize}
+        \item metoda iteracyjna = $1 \cdot 10^{-45}$
+        \item \texttt{nextfloat(fl(0.0))} = $1 \cdot 10^{-45}$
+    \end{itemize}
+    \item \texttt{Float64}
+    \begin{itemize}
+        \item metoda iteracyjna = $5 \cdot 10^{-324}$
+        \item \texttt{nextfloat(fl(0.0))} = $5 \cdot 10^{-324}$
+    \end{itemize}
+\end{itemize}
+
+Jak widać, wartości wyznaczone metodą iteracyjną nie różnią się od tych, wbudowanych w język \texttt{Julia} co oznacza, że metoda ta jest prawidłowa.
+
+\subsection{Pod-zadanie 1.3.}
+\textit{Jaki związek ma liczba \textit{macheps} z precyzją arytmetyki (oznaczaną na wykładzie przez $\epsilon$)?}
+
+Obie te liczby mają taką samą wartość, jednakże nie opisują dokładnie tego samego. Liczba $\epsilon$ opisuje największy możliwy błąd względny w przypadku zaokrąglania liczby rzeczywistej. W zasadzie liczba \texttt{macheps} opisuje również taki największy możliwy błąd względny, jaki może się pojawić wokół liczby $1.0$.
+
+\subsection{Pod-zadanie 1.4.}
+\textit{Jak związek ma liczba $\eta$ z liczbą $\mathrm{MIN}_{sub}$ z wykładu?}
+
+Obie te liczby opisują tę samą własność — najmniejsza liczba w danej arytmetyce \textit{fl}, która jest większa od $0$ (bez normalizacji tej liczby).
+
+\subsection{Pod-zadanie 1.5.}
+\textit{Co zwracają funkcje \texttt{floatmin(Float32)} oraz \texttt{floatmin(Float64)} i jaki jest związek zwracanych wartości z liczbą $\mathrm{MIN}_{nor}$ z wykładu?}
+
+Wynik programu \texttt{ex-1.5.jl}:
+\begin{itemize}
+    \item \texttt{floatmin(Float32)} = $1.1754944 \cdot 10^{-38}$
+    \item \texttt{floatmin(Float64)} = $2.2250738585072014 \cdot 10^{-308}$
+\end{itemize}
+
+Odpowiadające sobie wartości mają taki sam rząd wielkości i są prawie równe sobie. Opisują tę samą rzecz — najmniejsza liczba rzeczywista większa od zera, przy czym żądana wartość jest znormalizowana.
+
+\subsection{Pod-zadanie 1.6.}
+
+\subsubsection{Opis problemu}
+Należy uzyskać wartość liczby granicznej $\mathrm{MAX}$ dla wszystkich typów zmiennopozycyjnych\\ \texttt{Float16}, \texttt{Float32} oraz \texttt{Float64}.
+
+\subsubsection{Rozwiązanie}
+Zadanie dzieli się na kilka mniejszych pod-zadań wyznaczania tej wartości osobno dla arytmetyk \texttt{Float16}, \texttt{Float32} oraz \texttt{Float64}.
+W języku \texttt{Julia} mamy dwa sposoby na uzyskanie takiej liczby:
+\begin{itemize}
+    \item metoda iteracyjna (kod źródłowy w pliku \texttt{ex-1.6.jl})
+    \item wykonanie wbudowanej funkcji \texttt{floatmax}
+\end{itemize}
+
+Zaobserwowane wartości:
+\begin{itemize}
+    \item \texttt{Float16}:
+    \begin{itemize}
+        \item metoda iteracyjna = $6.5 \cdot 10^{4}$
+        \item \texttt{floatmax(Float16)} = $6.55 \cdot 10^{4}$
+    \end{itemize}
+    \item \texttt{Float32}:
+    \begin{itemize}
+        \item metoda iteracyjna = $3.4028235 \cdot 10^{38}$
+        \item \texttt{eps(Float32)} = $3.4028235 \cdot 10^{38}$
+        \item wartość podana na wykładzie: $3.4 \cdot 10^{38}$
+    \end{itemize}
+    \item \texttt{Float64}:
+    \begin{itemize}
+        \item metoda iteracyjna = $1.7976931348623157 \cdot 10^{308}$
+        \item \texttt{eps(Float64)} = $1.7976931348623157 \cdot 10^{308}$
+        \item wartość podana na wykładzie: $1.8 \cdot 10^{308}$
+    \end{itemize}
+\end{itemize}
+
+Jak widać, wszystkie wartości się zgadzają, co oznacza, że zastosowana metoda iteracyjna jest poprawna.
+
+\subsubsection{Opis metody iteracyjnej}
+(kod źródłowy w pliku \texttt{ex-1.6.jl})
+\begin{enumerate}
+    \item Wypełniamy mantysę przy pomocy funkcji \texttt{sum\_}, która po kolei dodaje kolejne potęgi dwójki.
+    \item Następnie mnożymy otrzymaną liczbę przez $2$ w pętli aż nie otrzymamy nieskończoności w rozumieniu danej arytmetyki (wykorzystujemy funkcję \texttt{isinf} do sprawdzania liczb)
+    \item Bierzemy jako wynik liczbę poprzedzającą tę, która jest już nieskończonością w tym ciągu generowanym przez tę pętlę.
+\end{enumerate}
+
+\section{Zadanie 2.}
+
+Wykonując polecenie \texttt{./ex-2.jl} otrzymujemy wyniki wyrażenia w arytmetykach \texttt{Float16},\\ \texttt{Float32} oraz \texttt{Float64}.
+
+\begin{itemize}
+    \item \texttt{Float16}:
+    \begin{itemize}
+        \item metoda Kahana = $9.77 \cdot 10^{-4}$
+        \item \texttt{eps(Float16)} = $9.77 \cdot 10^{-4}$
+    \end{itemize}
+    \item \texttt{Float32}:
+    \begin{itemize}
+        \item metoda Kahana = $1.1920929 \cdot 10^{-7}$
+        \item \texttt{eps(Float32)} = $1.1920929 \cdot 10^{-7}$
+    \end{itemize}
+    \item \texttt{Float64}:
+    \begin{itemize}
+        \item metoda Kahana = $2.220446049250313 \cdot 10^{-16}$
+        \item \texttt{eps(Float64)} = $2.220446049250313 \cdot 10^{-16}$
+    \end{itemize}
+\end{itemize}
+
+Metoda Kahana działa — wartości zwracane przez funkcję \texttt{kahans\_eps} są równe wartościom $\epsilon$ odpowiednich arytmetyk.
+
+\section{Zadanie 3.}
+
+\subsection{Pod-zadanie 3.1.}\label{z3.1.}
+
+\subsubsection{Opis problemu}
+Należy sprawdzić eksperymentalnie (w języku \textit{Julia}), że w arytmetyce \texttt{Float64} każdą liczbę $x \in [1;2]$ możemy zapisać w postaci
+
+\begin{equation}\label{z3.1.wyr}
+    x = 1 + k\cdot \delta
+\end{equation}
+gdzie $\delta = 2^{-52},~ k \in \{0,1,2,\dots, 2^{52}\}$.
+
+\subsubsection{Rozwiązanie}
+(kod źródłowy w pliku \texttt{ex-3.1.jl})
+
+Program dołączony do tego zadania pokazuje przy pomocy ciągów jedynek i zer reprezentacje poszczególnych liczb w arytmetyce \texttt{Float64} w przedziale $[1;2]$. Zmienna \texttt{starting\_point} zmienia, od którego miejsca zacząć generować liczby z przedziału $[1;2]$.
+
+\begin{itemize}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0000}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0001}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0010}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0011}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0100}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0101}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0110}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{0111}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{1000}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{1001}}
+    \item \texttt{001111111111000000000000000000000000000000000000000000000000\textbf{1010}}
+\end{itemize}
+
+Widać po ciągach bitowych (należy skupić się nad końcem ciągów), że zachodzi odliczanie wszystkich liczb z tego przedziału po kolei. Można to zjawisko porównać do zwykłego liczenia liczb naturalnych w systemie binarnym.
+
+\noindent To samo zjawisko zachodzi dla innych części tego przedziału.
+
+Zaprezentowane dowody empiryczne skłaniają do wniosku, że wyrażenie \ref*{z3.1.wyr} jest prawdziwe.
+
+\subsection{Pod-zadanie 3.2.}
+(kod źródłowy w pliku \texttt{ex-3.2.jl})
+
+Tym razem rozważamy przedział $\left[ \frac{1}{2}; 1 \right]$. Wprowadzamy modyfikacje do programu z pod-zadania \ref*{z3.1.}:
+\begin{itemize}
+    \item zmieniamy początkową wartość \texttt{x} na \texttt{0.5}
+    \item zmieniamy wartość $\delta$ na $2^{-53}$
+\end{itemize}
+i zauważamy, że ponownie mamy to samo zjawisko — generowanie kolejnych liczb z zadanego przedziału.
+
+\begin{itemize}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001010}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001011}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001100}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001101}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001110}
+    \item \texttt{0011111111100000000000000000000001000000000000000000000000001111}
+\end{itemize}
+
+Na powyższych wynikach jest pokazana po prostu inna część tego przedziału — zachodzi takie samo zjawisko.
+
+Czyli liczba $x \in \left[ \frac{1}{2}; 1 \right]$ może zostać zapisana w następujący sposób
+$$
+x = 0.5 + k \cdot \delta
+$$
+gdzie $k \in \{ 0,1,2,\dots, 2^{53} \},~ \delta = 2^{-53}$.
+
+\subsubsection{Pod-zadanie 3.3.}
+(kod źródłowy w pliku \texttt{ex-3.3.jl})
+
+W przypadku przedziału $[2;4]$ mamy dokładnie taką samą sytuację, przy czym zaczynamy oczywiście od $2$, kiedy $\delta = 2^{-51}$.
+
+\section{Zadanie 4.}
+
+\subsection{Opis problemu}
+
+($fl = \texttt{Float64}$)
+
+\begin{enumerate}
+    \item Należy wyznaczyć liczbę $1 < x < 2$, taką, że $fl(x \cdot fl(1/x)) \neq 1$.
+    \item Należy znaleźć najmniejszą taką liczbę.
+\end{enumerate}
+
+\subsection{Rozwiązanie}
+
+Wynik programu \texttt{ex-4.jl} spełnia oba podpunkty zadania. Program zaczyna od liczby $1 + \delta$ ($\delta$ taka sama jak w zadaniu \ref*{z3.1.}) i przegląda wszystkie liczby po kolei aż nie zostanie spełniony warunek \texttt{fl( x * fl(1/x)) != 1}.
+
+Liczba znaleziona przez program wynosi $1.000001417355248$.
+
+\section{Zadanie 5.}
+
+\subsection{Opis problemu}
+Należy napisać program liczący iloczyn skalarny dwóch wektorów przy pomocy czterech metod w dwóch arytmetykach (\texttt{Float32} oraz \texttt{Float64}).
+
+$$
+\begin{aligned}
+    x &= [2.718281828, -3.141592654, 1.414213562, 0.5772156649, 0.3010299957]\\
+    y &= [1486.2497, 878366.9879, -22.37492, 4773714.647, 0.000185049]
+\end{aligned}
+$$
+
+\subsection{Rozwiązanie}
+
+(kod źródłowy w pliku \texttt{ex-5.jl})
+
+Aby uruchomić program, należy wykonać polecenie \texttt{./ex-5.jl} — wyświetlą się instrukcje mówiące, jakie argumenty są przyjmowane przez program.
+
+Wyniki:
+\begin{itemize}
+    \item \texttt{Float32}
+    \begin{itemize}
+        \item metoda \textit{„w przód”} $= -0.2499443$
+        \item metoda \textit{„w tył”} $= -0.2043457$
+        \item od \textbf{największego} do \textit{najmniejszego} $= -0.25$
+        \item od \textit{najmniejszego} do \textbf{największego} $= -0.25$
+    \end{itemize}
+    \item \texttt{Float64}
+    \begin{itemize}
+        \item metoda \textit{„w przód”} $= 1.0251881368296672e-10$
+        \item metoda \textit{„w tył”} $= -1.5643308870494366e-10$
+        \item od \textbf{największego} do \textit{najmniejszego} $= 0$
+        \item od \textit{najmniejszego} do \textbf{największego} $= 0$
+    \end{itemize}
+\end{itemize}
+
+Faktyczna wartość wynosi $-1.00657107000000 \cdot 10^{-11}$.
+
+\textit{Każda z metod, nieważne w jakiej arytmetyce, zwraca nieprawidłową wartość. Jedynie w arytmetyce \texttt{Float64} mamy nieco zbliżone do rzeczywistości wyniki — jednak nadal nie są one satysfakcjonujące.}
+
+\section{Zadanie 6.}
+
+\subsection{Opis problemu}
+Należy policzyć wartości funkcji
+$$
+\begin{aligned}
+    f(x) &= \sqrt{x^2 + 1} - 1\\
+    g(x) &= \frac{x^2}{\sqrt{x^2 + 1} + 1}
+\end{aligned}
+$$
+dla argumentów $x = 8^{-1}, 8^{-2}, 8^{-3}, \dots$ oraz porównać wyniki.
+
+\subsection{Rozwiązanie}
+
+Wyniki:
+\noindent
+\makebox[\linewidth]{%
+  \begin{minipage}[t]{\dimexpr0.5\linewidth-.2pt}
+    \vspace{-\baselineskip}
+    $$
+    \begin{aligned}
+        f(8^{-1}) &= 0.0077822185373186414\\
+        g(8^{-1}) &= 0.0077822185373187065\\
+        f(8^{-2}) &= 0.00012206286282867573\\
+        g(8^{-2}) &= 0.00012206286282875901\\
+        f(8^{-3}) &= 1.9073468138230965 \cdot 10^{-6}\\
+        g(8^{-3}) &= 1.907346813826566 \cdot 10^{-6}\\
+        f(8^{-4}) &= 2.9802321943606103 \cdot 10^{-8}\\
+        g(8^{-4}) &= 2.9802321943606116 \cdot 10^{-8}\\
+        f(8^{-5}) &= 4.656612873077393 \cdot 10^{-10}\\
+        g(8^{-5}) &= 4.6566128719931904 \cdot 10^{-10}\\
+        f(8^{-6}) &= 7.275957614183426 \cdot 10^{-12}\\
+        g(8^{-6}) &= 7.275957614156956 \cdot 10^{-12}\\
+    \end{aligned}
+    $$
+  \end{minipage}%
+%   \vrule
+  \begin{minipage}[t]{\dimexpr0.5\linewidth-.2pt}
+    \vspace{-\baselineskip}
+    $$
+    \begin{aligned}
+        f(8^{-7}) &= 1.1368683772161603 \cdot 10^{-13}\\
+        g(8^{-7}) &= 1.1368683772160957 \cdot 10^{-13}\\
+        f(8^{-8}) &= 1.7763568394002505 \cdot 10^{-15}\\
+        g(8^{-8}) &= 1.7763568394002489 \cdot 10^{-15}\\
+        f(8^{-9}) &= 0.0\\
+        g(8^{-9}) &= 2.7755575615628914e{-17}\\
+        f(8^{-10}) &= 0.0\\
+        g(8^{-10}) &= 4.336808689942018e{-19}\\
+        f(8^{-11}) &= 0.0\\
+        g(8^{-11}) &= 6.776263578034403e{-21}\\
+        f(8^{-12}) &= 0.0\\
+        g(8^{-12}) &= 1.0587911840678754e{-22}\\
+    \end{aligned}
+    $$
+  \end{minipage}
+}
+
+\noindent Uruchamiając program \texttt{ex-6.jl} widzimy, że faktycznie wartości się różnią.
+
+\noindent Różnica oczywiście wynika z tego, że funkcje prezentują dwa różne sposoby policzenia tego samego. I właśnie to, że funkcja $g$ wykonuje większą liczbę działań, jest tutaj kluczowe. Większa liczba działań oznacza większą liczbę popełnianych błędów w zaokrągleniach.
+
+Jednakże możemy zauważyć jeszcze jedną rzecz. Otóż przy wartości $8^{-9}$ argumentu funkcja $f$ zwraca już wartość $0$, kiedy funkcja $g$ nadal zwraca pewne wartości \textit{relatywnie podobne} do tych dla większych argumentów.
+
+Trudno jest powiedzieć, która funkcja jest bardziej \textit{wiarygodna}, jednakże moim zdaniem funkcja $f$ wygrywa prostszą strukturą działań, jest ich po prostu mniej, czyli mniej możliwości popełnionych błędów.
+
+\section{Zadanie 7.}
+
+\subsection{Opis problemu}
+
+Należy obliczyć wartość pochodnej funkcji $f(x) = \sin x + \cos 3x$ przy pomocy wzoru na przybliżoną pochodną
+$$
+f'(x_0) \approx \tilde{f'}(x_0) = \frac{f(x_0 + h) - f(x_0)}{h}
+$$
+oraz porównać z faktyczną wartością pochodnej.
+\begin{itemize}
+    \item $h = 2^{-n}$, dla $n = 0, 1, 2, \dots, 54$
+    \item błędy mierzymy przy pomocy: $|f'(x_0) - \tilde{f'(x_0)}|$
+\end{itemize}
+
+\subsection{Rozwiązanie}
+
+(kod źródłowy w pliku \texttt{ex-7.jl})
+
+Faktyczną wartość pochodnej możemy obliczyć przy pomocy funkcji $f'(x) = \cos x - 3\sin 3x$.
+
+\noindent Żeby zauważyć moment, w którym zmniejszanie wartości $h$ nie poprawia przybliżenia wartości pochodnej, patrzymy na wartość błędów (odchylenia przybliżenia od faktycznej wartości pochodnej).
+
+\noindent W programie zakres dla liczby $n$ został ograniczony do przedziału $[-25; -32]$ (potęga $2$ w liczbie $h$) w celu ułatwienia odczytania, w którym miejscu zachodzi to zjawisko.
+
+\begin{itemize}
+    \item \begin{verbatim}
+n = -26
+h                         = 1.4901161193847656e-8
+f(x + h) - f(x)           = 1.7425766385414931e-9
+\tilde{f'}(x)             = 0.11694233864545822
+f'(x)                     = 0.11694228168853815
+|f'(x) - \tilde{f'}(x)|   = 5.6956920069239914e-8
+    \end{verbatim}
+    \item \begin{verbatim}
+n = -27
+h                         = 7.450580596923828e-9
+f(x + h) - f(x)           = 8.712881527372929e-10
+\tilde{f’}(x)             = 0.11694231629371643
+f’(x)                     = 0.11694228168853815
+|f’(x) - \tilde{f’}(x)|   = 3.460517827846843e-8
+    \end{verbatim}
+    \item \begin{verbatim}
+n = -28
+h                         = 3.725290298461914e-9
+f(x + h) - f(x)           = 4.35643965346344e-10
+\tilde{f’}(x)             = 0.11694228649139404
+f’(x)                     = 0.11694228168853815
+|f’(x) - \tilde{f’}(x)|   = 4.802855890773117e-9
+    \end{verbatim}
+    \item \begin{verbatim}
+n = -29
+h                         = 1.862645149230957e-9
+f(x + h) - f(x)           = 2.1782187165086953e-10
+\tilde{f’}(x)             = 0.11694222688674927
+f’(x)                     = 0.11694228168853815
+|f’(x) - \tilde{f’}(x)|   = 5.480178888461751e-8
+    \end{verbatim}
+    \item \begin{verbatim}
+n = -30
+h                         = 9.313225746154785e-10
+f(x + h) - f(x)           = 1.0891088031428353e-10
+\tilde{f’}(x)             = 0.11694216728210449
+f’(x)                     = 0.11694228168853815
+|f’(x) - \tilde{f’}(x)|   = 1.1440643366000813e-7
+    \end{verbatim}
+\end{itemize}
+
+\noindent Najniższą wartość błędu otrzymujemy dla $n = -28$, dalsze wartości są tylko coraz większe.
+
+\noindent Moment, w którym opisywane zjawisko zachodzi rząd wielkości liczb w liczniku i w mianowniku ułamka (będącego we wzorze aproksymacji pochodnej) jest bardzo niski ($-10$). Możliwe, że dochodzimy do granic możliwości dokładnego określenia, jaki powinien być wynik tego ułamka przez to, że te liczby są tak małe.
+
+W przypadku kiedy przyjmujemy $x = 1 + h$ zamiast $x=1$ moment, w którym zachodzi to zjawisko jest przesunięty do momentu $n = -30$.
+
+\end{document}

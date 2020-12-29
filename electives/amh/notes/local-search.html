@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="localsearch"><code>LocalSearch</code></h1>
+<h2 id="outline">Outline</h2>
+<ol style="list-style-type: decimal">
+<li>Generujemy <em>w jakiś sposób (losowo nie zawsze jest dobrze)</em> rozwiązanie początkowe <span class="math inline">\(x_0\)</span>.</li>
+<li>Dopóki jakiś warunek jest <code>True</code> robimy:</li>
+<li>Generujemy sąsiedztwo aktualnego rozwiązania <span class="math inline">\(N(x)\)</span>.</li>
+<li>Jeśli <span class="math inline">\(\exists_{\hat{x}\in N(x)}~ f(\hat{x}) &lt; f(x)\)</span> wówczas <span class="math inline">\(x_0 := \hat{x}\)</span></li>
+<li><code>return</code> <span class="math inline">\(x_0\)</span>.</li>
+</ol>
+<h2 id="concerns"><em>Concerns</em></h2>
+<ol style="list-style-type: decimal">
+<li>Jak dobrać <span class="math inline">\(x_0\)</span>?</li>
+<li>Funkcja w której szukamy <span class="math inline">\(\min\)</span> - losowo</li>
+<li><a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">TSP</a> - lokalnie rozglądać się za minimalnym kosztem przejścia z miasta do miasta</li>
+<li>Co oznacza, że dwa rozwiązania są sąsiednimi?</li>
+<li>Są podobne do siebie, ale różnią się np. transpozycją jakiejś pary <span class="math inline">\((i,j)\)</span> jeśli mowa o sekwencjach elementów.</li>
+<li>Ile rozwiązań sąsiednich sprawdzać?</li>
+<li><em>All of 'em.</em></li>
+<li>W jakiej kolejności sprawdzać sąsiedztwo.</li>
+<li>W takiej w jakiej zwróciła funkcja sąsiedztwa.
+<ol style="list-style-type: decimal">
+<li>W jakiej kolejności generować sąsiedztwo?
+<ol style="list-style-type: decimal">
+<li>Nie ma znaczenia.</li>
+</ol></li>
+</ol></li>
+<li>Kiedy skończyć procedurę?</li>
+<li>Po przejściu wielu iteracji bez żadnego polepszenia osiągniętego wyniku od jakiegoś czasu.</li>
+<li>Po przekroczeniu czasu.</li>
+<li>Co w przypadku <span class="math inline">\(f(x) = f(\hat{x})\)</span>?</li>
+<li><em>W większości przypadków</em> zignorować <span class="math inline">\(\hat{x}\)</span>.</li>
+<li>Problemy dyskretne vs. ciągłe, wypukłe vs. niewypukłe</li>
+<li>Ekstrema lokalne</li>
+</ol>
+</body>
+</html>

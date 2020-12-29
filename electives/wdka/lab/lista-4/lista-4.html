@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista-4</h1>
+<p><em>(Termin oddania: 2020-12-20)</em></p>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+</ul>
+<hr />
+<p>Do rozwiązań dołączone są pliki o rozszerzeniu <code>.wls</code> — są to pliki zawierające skrypty napisane w <em>WolframScript</em> i realizują praktyczną część danego zadania.</p>
+<p>Uruchomienie na Linuxie (z zainstalowanym <em>Wolfram Mathematica</em> i <em>WolframScript</em>): <code>./ex-‹numer zadania›.wls</code>.</p>
+<hr />
+<h2 id="zadanie-1.">Zadanie 1.</h2>
+<blockquote>
+<p>Ile jest permutacji zbioru <span class="math inline">\(30\)</span>-elementowego, składających się z cykli długości co najwyżej <span class="math inline">\(5\)</span>?</p>
+</blockquote>
+<p>Podobne zadanie do <a href="../../cw/lista-4/lista-4.md#zadanie-2">zadania 2. z listy 4. z ćwiczeń</a> — tym razem jednak ograniczamy długość cykli: <span class="math display">\[
+\mathcal{P}&#39;&#39; = \operatorname{SET}(\operatorname{CYC}_{\le5}(\mathcal{Z}))
+\]</span> wówczas mamy EGF: <span class="math display">\[
+P&#39;&#39;(z) = \exp\left( \sum_{n=1}^5 \frac{z^n}{n} \right)
+\]</span></p>
+<p>Wynik: <span class="math inline">\(30! \cdot [z^{30}] P&#39;&#39;(z) = 19054894203999260640645120000 = 1.905489420399926064064512 \cdot 10^{28}\)</span>.</p>
+<p><a href="ex-1.wls">Kod programu</a> znajduje się w pliku <code>ex-1.wls</code>.</p>
+<hr />
+<h2 id="zadanie-2.">Zadanie 2.</h2>
+<blockquote>
+<p>Ile jest permutacji zbioru <span class="math inline">\(30\)</span>-elementowego, składających się z co najwyżej <span class="math inline">\(5\)</span> cykli?</p>
+</blockquote>
+<p><em>Implementacja <a href="../../cw/lista-4/lista-4.md#zadanie-2">zadania 2. z listy 4. z ćwiczeń</a></em>.</p>
+<p><span class="math display">\[
+P&#39;(z) = \sum_{n=0}^5 \frac{\left( \ln \frac{1}{1-z} \right)^n}{n!}
+\]</span></p>
+<p>Wynik: <span class="math inline">\(30! \cdot [z^{30}] P&#39;(z) = 222444420953341570876847086387200 = 2.224444209533415708768470863872 \cdot 10^{32}\)</span></p>
+<p><a href="ex-2.wls">Kod programu</a> znajduje się w pliku <code>ex-2.wls</code>.</p>
+<hr />
+<h2 id="zadanie-3.">Zadanie 3.</h2>
+<blockquote>
+<p>Opisując odpowiednie BGF znaleźć wariancję liczby liter <span class="math inline">\(a\)</span> w losowym słowie nad alfabetem <span class="math inline">\(\{a,b,c\}\)</span> długości <span class="math inline">\(n\)</span>.</p>
+</blockquote>
+<p>Mówimy tutaj o BGF, czyli o funkcjach generujących dwóch zmiennych: <span class="math display">\[
+A(z,u) = \sum_{n,k} a_{n,k} z^n u^k.
+\]</span></p>
+<p>Żeby móc określić taką funkcję, musimy oczywiście określić <span class="math inline">\(a_{n,k}\)</span>.<br />
+Idea: mówimy tutaj o ciągach (sekwencjach) liter <span class="math inline">\(\{a,b,c\}\)</span>. Chcemy w jakiś sposób <em>oznaczyć</em> litery <span class="math inline">\(a\)</span> jako specjalne, jako że chcemy policzyć w pewnym sensie, jaka jest szansa na natrafienie na tę literkę.<br />
+Takich słów jest <span class="math inline">\(\binom{n}{k} \cdot 1^k \cdot 2^{n-k}\)</span> bo za każdym razem wybieramy <span class="math inline">\(k\)</span> liter <span class="math inline">\(a\)</span> oraz <span class="math inline">\(n-k\)</span> liter <span class="math inline">\(b\)</span> lub <span class="math inline">\(c\)</span> — co za tym idzie <span class="math inline">\(a_{n,k} = \binom{n}{k} \cdot 2^{n-k}\)</span>.</p>
+<p>Wówczas <span class="math display">\[
+A(z,u) = \sum_{n,k} \binom{n}{k} \cdot z^n \cdot 2^{n-k} \cdot u^k,
+\]</span> a po przekształceniu: <span class="math display">\[
+A(z,u) = \sum_{n\ge0} z^n \sum_{k\ge0} \binom{n}{k}u^k 2^{n-k}
+\]</span> a ze znanej równości <span class="math inline">\(\sum_{k=0}^n \binom{n}{k} a^k b^{n-k} = (a+b)^n\)</span> mamy: <span class="math display">\[
+A(z,u) = \sum_{n\ge0}z^n (u + 2)^n.
+\]</span></p>
+<p>Oczywiście niniejsza funkcja generująca idzie w parze z klasą kombinatoryczną <span class="math inline">\(\mathcal{A} = (\{a,b,c\}, |\cdot|, \chi)\)</span> gdzie <span class="math inline">\(|\cdot|\)</span> to po prostu funkcja długości słowa, a <span class="math inline">\(\chi\)</span> to funkcja określająca liczbę literek <span class="math inline">\(a\)</span> w danym słowie — czyli oznaczamy literkę <span class="math inline">\(a\)</span> jako <em>specjalną</em>.</p>
+<p>Żeby obliczyć wariancję, musimy uzyskać wartość oczekiwaną oraz <em>drugi moment</em> zmiennej losowej <span class="math inline">\(\chi\)</span>.</p>
+<p>Mamy: <span class="math display">\[
+\begin{aligned}
+\operatorname{E}(\chi) &amp;= \frac{[z^n]\frac{d}{du} A(z,u) \big|_{u=1}}{[z^n]A(z,1)}\\
+\operatorname{E}(\chi^2) &amp;= \frac{[z^n]\frac{d^2}{du^2} A(z,u) \big|_{u=1}}{[z^n] A(z,1)} + \frac{[z^n]\frac{d}{du} A(z,u) \big|_{u=1}}{[z^n]A(z,1)}
+\end{aligned}
+\]</span> co daje nam: <span class="math display">\[
+\operatorname{Var}(\chi) = \operatorname{E}(\chi^2) - \big(\operatorname{E}(\chi)\big)^2
+\]</span></p>
+<p>Pozostaje policzyć <span class="math inline">\(A(z,1)\)</span>: <span class="math display">\[
+A(z,1) = \sum_{n\ge0} z^n (u + 2)^n = \sum_{n\ge0} z^n \underbrace{3^n}_{\text{super!}}.
+\]</span></p>
+<p>Wyniki: - <span class="math inline">\(\operatorname{E}(\chi) = \frac{n}{3}\)</span> - <span class="math inline">\(\operatorname{Var}(\chi) = \frac{n}{3} + \frac{(n - 1) \cdot n}{9} - \frac{n^2}{9} = \frac{2n}{9}\)</span></p>
+<p><a href="ex-3.wls">Kod programu</a> znajduje się w pliku <code>ex-3.wls</code>.</p>
+<hr />
+<h2 id="zadanie-4.">Zadanie 4.</h2>
+<blockquote>
+<p>Podać wariancję liczby cykli długości <span class="math inline">\(3\)</span> w permutacji o <span class="math inline">\(30\)</span> elementach.</p>
+</blockquote>
+<p>Tak jak w <a href="#zadanie-3">zadaniu poprzednim</a> oznaczamy wszystkie cykle długości <span class="math inline">\(3\)</span> jako <em>specjalne</em>.</p>
+<p>Wówczas mamy klasę <span class="math display">\[
+\mathcal{C} = \operatorname{SET}\left( \operatorname{CYC}_{\neq3}(\mathcal{Z}) + \underbrace{\operatorname{CYC}_{=3}(\mathcal{Z})}_{\text{oznaczone przy pomocy }\chi\,} \right)
+\]</span> z funkcją generującą <span class="math display">\[
+C(z,u) = \exp\left( \sum_{n\ge1}\left( \frac{z^n}{n} \right) - \frac{z^3}{3} + \frac{uz^3}{3} \right)
+\]</span> gdzie właśnie to <span class="math inline">\(u\)</span> odznacza nam te cykle długości <span class="math inline">\(3\)</span>, czyli nasza funkcja <span class="math inline">\(\chi\)</span> dla cykli długości <span class="math inline">\(3\)</span> zwraca <span class="math inline">\(1\)</span>, kiedy dla pozostałych <span class="math inline">\(0\)</span>.</p>
+<p>Tak jak w poprzednim zadaniu potrzebujemy jeszcze <span class="math inline">\(C(z,1)\)</span>: <span class="math display">\[
+C(z,1) = \exp\left( \sum_{n\ge1}\left( \frac{z^n}{n} \right) - \frac{z^3}{3} + \frac{1 \cdot z^3}{3} \right) = \exp\left( \sum_{n\ge1} \left( \frac{z^n}{n} \right) \right) = \exp\left( \ln\frac{1}{1-z} \right) =\\
+= \frac{1}{1-z} = \sum_{n\ge0} z^n
+\]</span></p>
+<p>Znowu, liczymy tak jak w poprzednim zadaniu wariancję: <span class="math display">\[
+\operatorname{Var}(\chi) = \operatorname{E}(\chi^2) - \big(\operatorname{E}(\chi)\big)^2.
+\]</span></p>
+<p>Wyniki: <span class="math display">\[
+\begin{aligned}
+    \operatorname{E}(\chi) &amp;=
+    \begin{cases}
+        0 &amp; n \le 2\\
+        \frac{1}{3} &amp; n &gt; 2
+    \end{cases}
+    \\[20pt]
+    \operatorname{Var}(\chi) &amp;=
+    \begin{cases}
+        0 &amp; n \le 2\\
+        \frac{2}{9} &amp; n \in [3; 5]\\
+        \frac{1}{3} &amp; n &gt; 5\\
+    \end{cases}
+\end{aligned}
+\]</span> czyli dla <span class="math inline">\(n = 30\)</span> wariancja przyjmuje wartość <span class="math inline">\(\frac{1}{3}\)</span>.</p>
+<p><a href="ex-4.wls">Kod programu</a> znajduje się w pliku <code>ex-4.wls</code>.</p>
+<hr />
+</body>
+</html>

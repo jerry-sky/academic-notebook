@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="numeryczna-reprezentacja-liczb">Numeryczna reprezentacja liczb</h1>
+<p><em>(2020-10-06)</em></p>
+<ul>
+<li><a href="#1-postać-znormalizowana">1. Postać znormalizowana</a>
+<ul>
+<li><a href="#11-przykłady">1.1. Przykłady</a></li>
+</ul></li>
+<li><a href="#2-arytmetyka-zmiennopozycyjna-fl">2. Arytmetyka zmiennopozycyjna (<em>fl</em>)</a></li>
+<li><a href="#3-zaokrąglenie-i-obcięcie">3. Zaokrąglenie i obcięcie</a>
+<ul>
+<li><a href="#31-przykład--zaokrąglenie-dla-baz-2-i-10">3.1. Przykład — zaokrąglenie dla baz <span class="math inline">\(2\)</span> i <span class="math inline">\(10\)</span></a></li>
+<li><a href="#32-błąd-względny-i-precyzja">3.2. Błąd względny i precyzja</a></li>
+</ul></li>
+<li><a href="#4-min-oraz-max">4. <em>MIN</em> oraz <em>MAX</em></a>
+<ul>
+<li><a href="#41-przykład">4.1. Przykład</a></li>
+</ul></li>
+<li><a href="#5-przykład-reprezentacji-liczby">5. Przykład reprezentacji liczby</a></li>
+</ul>
+<hr />
+<h2 id="postać-znormalizowana">1. Postać znormalizowana</h2>
+<p>Każdą liczbę rzeczywistą <span class="math inline">\(x \neq 0\)</span> można zapisać w postaci <em>znormalizowanej</em>: <span class="math display">\[
+x = \plusmn m \cdot \beta^c = \plusmn(0.a_1,a_2,\dots)_\beta \cdot \beta^c
+\]</span> gdzie: - <span class="math inline">\(\beta\)</span> jest bazą - <span class="math inline">\(m \in \left[\frac{1}{\beta};1\right)\)</span> jest mantysą - <span class="math inline">\(c \in \mathbb{Z}\)</span> jest cechą (rząd wielkości) - <span class="math inline">\(\forall i ~ a_i \in \{0,1,\dots, \beta-1\},~ a_1 \neq 0\)</span></p>
+<h3 id="przykłady">1.1. Przykłady</h3>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\beta = 10\)</span><br />
+<span class="math inline">\(732.5051 = 0.7325051 \cdot 10^3\)</span><br />
+<span class="math inline">\(-0.005612 = -0.5612 \cdot 10^{-2}\)</span></p></li>
+<li><p><span class="math inline">\(\beta = 2\)</span><br />
+<span class="math inline">\((1001.11101)_2 = (0.100111101)_2 \cdot 2^4\)</span><br />
+<span class="math inline">\((0.0010111)_2 = (0.10111)_2 \cdot 2^{-2}\)</span></p></li>
+</ol>
+<hr />
+<h2 id="arytmetyka-zmiennopozycyjna-fl">2. Arytmetyka zmiennopozycyjna (<em>fl</em>)</h2>
+<p>Bierzemy postać znormalizowaną i narzucamy pewne ograniczenia: <span class="math display">\[
+rd(x) = \plusmn m_t \cdot \beta^c = \plusmn (0,a_1,a_2,\dots,a_t)_\beta \cdot \beta^c
+\]</span> gdzie: - <span class="math inline">\(t\)</span> jest stałą liczbą cyfr mantysy - cecha <span class="math inline">\(c \in [c_{\min}; c_{\max}] \cap \mathbb{Z}\)</span></p>
+<p>Powyższą arytmetykę nazywany <strong>arytmetyką zmiennopozycyjną</strong> (<em>fl</em>).</p>
+<p>Reprezentacja liczby <span class="math inline">\(x\)</span> w <em>fl</em>: - <span class="math inline">\(rd(x)\)</span> - <span class="math inline">\(\widetilde{x}\)</span></p>
+<hr />
+<h2 id="zaokrąglenie-i-obcięcie">3. Zaokrąglenie i obcięcie</h2>
+<ol style="list-style-type: decimal">
+<li>Przedstaw <span class="math inline">\(x\)</span> w postaci <span class="math inline">\(x = \plusmn m \beta^c,~ m\in \left[\frac{1}{\beta}; 1\right)\)</span></li>
+<li>zaokrąglij mantysę <span class="math inline">\(m\)</span> do najbliższej liczby <span class="math inline">\(t\)</span>-cyfrowej (w przypadku obcięcia rozwinięcie mantysy obcinamy po <span class="math inline">\(t\)</span> cyfrach), otrzymując <span class="math inline">\(rd(m)\)</span></li>
+<li>Podstaw <span class="math inline">\(rd(x) := \plusmn rd(m)\beta^c = \plusmn m_t \beta^c\)</span>.</li>
+</ol>
+<p><em>Zakłada się, że zaokrąglenie jest domyślnym sposobem otrzymania przybliżenia <span class="math inline">\(rd(x)\)</span> liczby <span class="math inline">\(x\)</span>.</em></p>
+<h3 id="przykład-zaokrąglenie-dla-baz-2-i-10">3.1. Przykład — zaokrąglenie dla baz <span class="math inline">\(2\)</span> i <span class="math inline">\(10\)</span></h3>
+<p><span class="math display">\[
+rd(m) :=
+\begin{cases}
+    0,a_1,\dots,a_t &amp; \text{jeśli } a_{t+1} \le 4\\
+    0,a_1,\dots,a_t + 10^{-t} &amp; \text{jeśli } 5 \le a_{t+1} \le 9
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+rd(m) :=
+\begin{cases}
+    0,a_1,\dots,a_t &amp; \text{jeśli } a_{t+1} = 0\\
+    (0,a_1,\dots,a_t)_2 + 2^{-t} &amp; \text{jeśli } a_{t+1} = 1
+\end{cases}
+\]</span></p>
+<h3 id="błąd-względny-i-precyzja">3.2. Błąd względny i precyzja</h3>
+<p>Weźmy dwie sąsiadujące niezerowe liczby (liczby maszynowe) <span class="math inline">\(x^- = m_t^- \beta^c\)</span> oraz <span class="math inline">\(x^+ = m_t^+ \beta^c\)</span> przy czym <span class="math inline">\(x^+ = (m_t^- + \beta^{-t})\beta^c\)</span>.</p>
+<p>Wówczas <span class="math display">\[
+|x^+ - x^-| = \beta^{-t} \beta^c = \beta^{c-t}
+\]</span></p>
+<p>Oszacujmy więc, błąd względny dla zaokrąglenia: <span class="math display">\[
+|\delta| = \frac{|rd(x) - x|}{|x|} \le \frac{1}{2} \frac{|x^+ - x^-|}{|x|} = \frac{1}{2}\frac{\beta^{c-t}}{|m_x \beta^c|} \le \frac{1}{2} \frac{\beta^{-t}}{\beta^{-1}} = \frac{1}{2}\beta^{1-t}
+\]</span></p>
+<p>gdzie <span class="math inline">\(x^-\)</span>, <span class="math inline">\(x\)</span> oraz <span class="math inline">\(x^+\)</span> są sąsiadującymi liczbami.<br />
+<em>Dla obcięcia <span class="math inline">\(|\delta| \le \beta^{1-t}\)</span>.</em></p>
+<hr />
+<p><span class="math inline">\(|\delta| = \frac{|rd(x) - x|}{|x|}\)</span> lub inaczej <span class="math inline">\(rd(x) = x(1 + \delta)\)</span>, <span class="math inline">\(|\delta| \le \epsilon\)</span>, <span class="math inline">\(\epsilon = 0.5\cdot \beta^{1-t}\)</span>.</p>
+<p>Liczbę <span class="math inline">\(\epsilon\)</span> nazywamy <strong>precyzją arytmetyki</strong>.</p>
+<hr />
+<h2 id="min-oraz-max">4. <em>MIN</em> oraz <em>MAX</em></h2>
+<div class="figure">
+<img src="siatka-symetryczna.png" />
+
+</div>
+<p>Z założenia, że <span class="math inline">\(m_t \in \left[\frac{1}{\beta}; 1\right)\)</span> wynika, że w arytmetyce <em>fl</em> możemy reprezentować liczby <span class="math inline">\(x\)</span> spełniające zależność: <span class="math display">\[
+\mathrm{MIN} = \frac{1}{\beta} \beta^{c_{\min}} \le |X| \le (1 - \beta^{-t}) \beta^{c_{\max}} = \mathrm{MAX}
+\]</span></p>
+<p>Jeśli <span class="math inline">\(|x| &gt; \mathrm{MAX}\)</span>, to mówimy o <em>nadmiarze</em> (mogą być przerwane obliczenia).</p>
+<p>Jeśli <span class="math inline">\(|x| &lt; \mathrm{MIN}\)</span>, to <span class="math inline">\(rd(x) = 0\)</span> i mówimy o <em>niedomiarze</em>. Błąd tej reprezentacji jest równy <span class="math inline">\(100\%\)</span>.</p>
+<hr />
+<h3 id="przykład">4.1. Przykład</h3>
+<p>Rozważmy arytmetykę dwójkową (<span class="math inline">\(\beta = 2\)</span>), w której: - 1 bit przeznaczono na zapis znaku <span class="math inline">\(s\)</span> liczby <span class="math inline">\(x\)</span> - 6 bitów przeznaczono na zapis cechy <span class="math inline">\(c\)</span> (wraz z bitem znaku) (<span class="math inline">\(c \in [-31, 32]\)</span>) - 16 bitów przeznaczono na zapis mantysy (<span class="math inline">\(t = 16\)</span>)</p>
+<p>wówczas <span class="math display">\[
+\mathrm{MIN} = \frac{1}{2}2^{-31} \approx 4.66 \cdot 10^{-10}\\
+\mathrm{MAX} = (1 - 2^{-16})2^{32} \approx 4.29 \cdot 10^9
+\]</span></p>
+<hr />
+<h2 id="przykład-reprezentacji-liczby">5. Przykład reprezentacji liczby</h2>
+<ul>
+<li>liczba <span class="math inline">\(x = 9.13\)</span> w arytmetyce <em>fl</em></li>
+<li><span class="math inline">\(\beta = 2\)</span></li>
+<li><span class="math inline">\(t = 6\)</span></li>
+</ul>
+</body>
+</html>

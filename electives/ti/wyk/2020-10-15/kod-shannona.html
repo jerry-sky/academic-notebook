@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kod-shannona">Kod Shannona</h1>
+<p><em>(2020-10-15)</em></p>
+<ul>
+<li><a href="#1-kod-shannona">1. Kod Shannona</a>
+<ul>
+<li><a href="#11-uwaga">1.1. Uwaga</a></li>
+<li><a href="#12-przykład">1.2. Przykład</a></li>
+</ul></li>
+<li><a href="#2-procedura-dająca-zawsze-kod-prefiksowy">2. Procedura dająca zawsze kod prefiksowy</a>
+<ul>
+<li><a href="#21-d-d">2.1. D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="kod-shannona-1">1. Kod Shannona</h2>
+<p>Kodem Shannona nazywamy kod prefiksowy spełniający zależność <span class="math display">\[
+l_i = \left\lceil \log_2 \frac{1}{p_i} \right\rceil
+\]</span></p>
+<h3 id="uwaga">1.1. Uwaga</h3>
+<p>Jak dobry jest kod Shannona?</p>
+<p><span class="math display">\[
+\log_2\frac{1}{p_i} \le l_i &lt; \log_2\frac{1}{p_i} + 1
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^{N} p_i \log_2 \frac{1}{p_i} &amp;\le&amp; \sum_{p_i l_i} &amp;&lt; \sum_{i=1}{N} \left( p_i \log_2 \frac{1}{p_i} + p_i \right)\\
+H &amp;\le&amp; L &amp;&lt; H+1
+\end{aligned}
+\]</span></p>
+<hr />
+<h3 id="przykład">1.2. Przykład</h3>
+<p>Pokażemy, że takie kody istnieją!</p>
+<p>Zrobimy kod Shannona.</p>
+<p><span class="math inline">\(p_1 = \frac{1}{2} \qquad p_2 = \frac{1}{8} \qquad p_3 = p_4 = \dots = p_8 = \frac{1}{16}\)</span></p>
+<p><span class="math inline">\(l_1 = \log_2 (2) = 1 \qquad l_2 = \log_2 (8) = 3 \qquad l_3 = \dots = l_8 = 4\)</span></p>
+<ul>
+<li><span class="math inline">\(P_1 = 0 = 0.\bold{0}0000_2 \qquad c(x_1) = 0\)</span></li>
+<li><span class="math inline">\(P_2 = p_1 = \frac{1}{2} = 0.\bold{100}0_2 \qquad c(x_2) = 100\)</span></li>
+<li><span class="math inline">\(P_3 = p_1 + p_2 = \frac{1}{2} + \frac{1}{8} = 0.\bold{1010}0_2 \qquad c(x_3) = 1010\)</span></li>
+<li><span class="math inline">\(P_4 = p_1 + p_2 + p_3 = \frac{1}{2} + \frac{1}{8} + \frac{1}{16} = 0.\bold{1011}00_2 \qquad c(x_4) = 1011\)</span></li>
+<li><span class="math inline">\(P_5 = \frac{1}{2} + \frac{1}{4} = 0.\bold{1100}0_2 \qquad c(x_5) = 1100\)</span></li>
+<li><span class="math inline">\(P_6 = \frac{1}{2} + \frac{1}{4} + \frac{1}{6} = 0.\bold{1101}0_2 \qquad c(x_6) = 1101\)</span></li>
+<li><span class="math inline">\(P_7 = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = 0.\bold{1110}0_2 \qquad c(x_7) = 1110\)</span></li>
+<li><span class="math inline">\(P_8 = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} = 0.\bold{1111}00\dots_2 \qquad c(x_8) = 1111\)</span></li>
+</ul>
+<h2 id="procedura-dająca-zawsze-kod-prefiksowy">2. Procedura dająca zawsze kod prefiksowy</h2>
+<p>Opisana w <a href="#12-przykład">powyższym przykładzie</a> zawsze daje kod prefiksowy o własności <span class="math inline">\(l_i = \left\lceil \log \frac{1}{p_i} \right\rceil\)</span>.</p>
+<h3 id="d-d">2.1. D-d</h3>
+<ul>
+<li><p><span class="math inline">\(P_j = \sum_{i=1}^{j-1} p_i \qquad \text{zakładamy, że } p_1 \ge p_2 \ge \dots \ge p_N\)</span></p></li>
+<li><p><span class="math inline">\(P_j\)</span> zapisujemy w systemie binarnym <span class="math inline">\(\qquad P_j = \sum_{k=1}^{\infty} \frac{b_{jk}}{2^k} = (0.b_{j1} b_{j2} b_{j3}\dots)_2\)</span></p></li>
+<li><p><span class="math inline">\(c(x_j) = b_{j1}b_{j2}\dots b_{jl_j}\)</span></p></li>
+<li><p>Wówczas <span class="math inline">\(l_1 \le l_2 \le \dots l_N\)</span>.</p></li>
+<li><span class="math inline">\(l_j = \left\lceil \log \frac{1}{p_j} \right\rceil\)</span>
+<ul>
+<li><span class="math inline">\(\log\frac{1}{p_j} \le l_j \le \log\frac{1}{p_j} + 1\)</span></li>
+<li><span class="math inline">\(\frac{1}{p_j} \le 2^{l_j} &lt; \frac{2}{p_j}\)</span></li>
+<li><span class="math inline">\(\frac{p_j}{2} &lt; \frac{1}{2^{l_j}} \le p_j\)</span></li>
+<li><span class="math inline">\(P_{j+1} = P_j + p_j \ge P_j + \frac{1}{2^{l_j}}\)</span> <span class="math inline">\((*)\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\((*) \implies\)</span> Zatem <span class="math inline">\(c(x_j)\)</span> nie jest prefiksem <span class="math inline">\(c(x_{j+1})\)</span></p>
+<div class="figure">
+<img src="prefiksowe-lj+1.png" />
+
+</div>
+<p>w tych <span class="math inline">\(l_j\)</span> bitach mamy inne bity, dlatego mamy kod prefiksowy</p>
+<p>dla <span class="math inline">\(j&lt;k \qquad c(x_j) &lt; c(x_k) \upharpoonright l_j\)</span></p>
+<p><em>Dowód formalny przez indukcję względem <span class="math inline">\(k-j\)</span>; dla <span class="math inline">\(k-j = 1\)</span> zrobiliśmy.</em></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<hr />
+</body>
+</html>

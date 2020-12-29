@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="kolorowanie-i-twierdzenie-o-czterech-barwach">Kolorowanie i Twierdzenie o Czterech Barwach</h1>
+<h2 id="twierdzenie-brooks-1941">Twierdzenie Brooks 1941</h2>
+<p>Załóżmy, że <span class="math inline">\(k = \Delta(G) \ge 3\)</span> oraz, że <span class="math inline">\(G\)</span> nie zawiera pod-grafu izomorficznego z <span class="math inline">\(K_{k+1}\)</span>. Wtedy <span class="math inline">\(\mathcal{X}(G) \le \Delta(G)\)</span>.</p>
+<p><a href="https://arxiv.org/pdf/1805.11176.pdf">D-d by Mariusz Zając</a></p>
+<h2 id="twierdzenie-2">Twierdzenie #2</h2>
+<p>Jeśli graf <span class="math inline">\(G\)</span> jest grafem planarnym, to <span class="math inline">\(\mathcal{X}(G) \le 5\)</span>.</p>
+<p>Zajmujemy się dowodem tego twierdzenia, bo jest on przykładem nieco trudniejszego, ale za to dosyć typowego rozumowania z teorii grafów.</p>
+<h3 id="szkic-dowodu-twierdzenia-2">Szkic Dowodu Twierdzenia #2</h3>
+<p>Robimy indukcję po liczbie wierzchołków.</p>
+<p>Jeśli <span class="math inline">\(|V(G)| \le 5\)</span>, to twierdzenie jest oczywiście prawdziwe. Załóżmy teraz, że twierdzenie jest prawdziwe dla wszystkich grafów planarnych o mniej niż <span class="math inline">\(k\)</span> wierzchołkach.</p>
+<ol style="list-style-type: decimal">
+<li>Rozważamy graf <span class="math inline">\(G\)</span> o <span class="math inline">\(k&gt;5\)</span> wierzchołkach. Wybierany w nim wierzchołek <span class="math inline">\(v\)</span> taki, że <span class="math inline">\(\deg(v) \le 5\)</span>.<br />
+Oznaczmy <span class="math inline">\(G&#39; = G[V\setminus\{v\}]\)</span>. Z założenia indukcyjnego mamy właściwe kolorowanie <span class="math inline">\(c\)</span> grafu <span class="math inline">\(G&#39;\)</span> za pomocą kolorów ze zbioru <span class="math inline">\(\{1,2,3,4,5\}\)</span>.</li>
+<li>Jeśli <span class="math inline">\(\deg(v) &lt; 5\)</span> to bez trudu rozszerzamy <span class="math inline">\(c\)</span> do właściwego kolorowanie grafu <span class="math inline">\(G\)</span>.</li>
+<li><p>Możemy więc założyć, że <span class="math inline">\(\deg(v) = 5\)</span>.</p>
+<img src="twiedzenie-2-d-d.png" /></li>
+<li>Niech <span class="math inline">\(\mathcal{N}(v) = \{ v_1, v_2, v_3, v_4, v_5 \}\)</span>. Jeśli <span class="math inline">\(\{ c(v_1), c(v_2), c(v_3), c(v_4), c(v_5) \} \neq \{1,2,3,4,5\}\)</span> to znowu bez trudu rozszerzamy <span class="math inline">\(c\)</span> do właściwego kolorowania grafu <span class="math inline">\(G\)</span>.</li>
+<li>Możemy więc założyć, że <span class="math inline">\(\{ c(v_1), c(v_2), c(v_3), c(v_4), c(v_5) \} = \{1,2,3,4,5\}\)</span>. Permutując kolory możemy założyć, że <span class="math inline">\(c(v_i) = i\)</span> dla <span class="math inline">\(i = 1,\dots,5\)</span>.</li>
+<li>Dla <span class="math inline">\(1 \le i \le 5\)</span> definiujemy <span class="math display">\[
+C_{i,j} = \{ x\in V \setminus \{v\}: c(x) \in \{i,j\} \}.
+\]</span> Przyglądamy się pod-grafowi <span class="math inline">\(G[C_{i,j}]\)</span>. Mamy <span class="math inline">\(\{v_i,v_j\} \subseteq C_{i,j}\)</span>.<br />
+Jeśli <span class="math inline">\(v_i\)</span> oraz <span class="math inline">\(v_j\)</span> leżą w różnych składowych spójnych grafu <span class="math inline">\(G[C_{i,j}]\)</span>, to możemy w obrębie tego grafy tak pozmieniać kolorowanie (używając tylko kolorów <span class="math inline">\(i\)</span> oraz <span class="math inline">\(j\)</span>) aby wierzchołki <span class="math inline">\(v_i\)</span> oraz <span class="math inline">\(v_j\)</span> otrzymały ten sam kolor! A wtedy do kolorowania <span class="math inline">\(\{v_1,\dots,v_5\}\)</span> używamy tylko 4 kolory, więc możemy rozszerzyć kolorowanie grafu <span class="math inline">\(G[V\setminus\{v\}]\)</span> na cały graf <span class="math inline">\(G\)</span>.</li>
+<li><p>Możemy więc założyć, że wierzchołki <span class="math inline">\(v_i\)</span> oraz <span class="math inline">\(v_j\)</span> leżą w tych samych składowych spójnych grafu <span class="math inline">\(G[C_{i,j}]\)</span>. Dla każdej pary <span class="math inline">\(1 \le i \le j \le 5\)</span> ustalmy drogę <span class="math inline">\(P_{i,j}\)</span> w <span class="math inline">\(C_{i,j}\)</span>. Zauważamy, że do kolorowania <span class="math inline">\(P_{i,j}\)</span> używamy tylko kolorów <span class="math inline">\(i\)</span> oraz <span class="math inline">\(j\)</span>. Każda ścieżka <span class="math inline">\(P_{i,j}\)</span> odpowiada pewnej <a href="../2020-04-01/2020-04-01.md#krzywa-jordana">krzywej jordanowskiej</a> <span class="math inline">\(J_{i,j}\)</span> na płaszczyźnie. <strong>Ale graf <span class="math inline">\(K_5\)</span> nie jest planarny.</strong> Znajdujemy więc dwie pary <span class="math inline">\(\{i_1,j_1\}\)</span> oraz <span class="math inline">\(\{i_2, j_2\}\)</span> takie, że <span class="math inline">\(\{i_1,j_1\} \cap \{i_2,j_2\} = \emptyset\)</span> oraz, że <span class="math inline">\(J_{i_1,j_1} \neq \emptyset\)</span>. Krzywe <span class="math inline">\(J_{i_1,j_1}\)</span> oraz <span class="math inline">\(J_{i_2,j_2}\)</span> muszą się więc przeciąć w pewnym wierzchołku.<br />
+Ale ścieżki <span class="math inline">\(P_{i_1,j_1}\)</span> i <span class="math inline">\(P_{i_2,j_2}\)</span> są pokolorowane różnymi kolorami <span class="math inline">\(\implies\)</span> <strong>sprzeczność</strong> .</p></li>
+</ol>
+<h2 id="twierdzenie-appel-haken-1976">Twierdzenie Appel-Haken 1976</h2>
+<p>Jeśli graf <span class="math inline">\(G\)</span> jest grafem planarnym, to <span class="math inline">\(\mathcal{X}(G) \le 4\)</span>.</p>
+<p>Twierdzenie to jest potwierdzeniem hipotezy Francis'a Guthrie z roku 1852.<br />
+Do udowodnienia twierdzenia Appel i Haken wykorzystali komputer, którym posłużyli się do rozważenia około 1600 specyficznych konfiguracji (podobnych do pod-grafu <span class="math inline">\(K_{1,5}\)</span>, który wykorzystywaliśmy w dowodzie poprzedniego twierdzenia). Całkiem dobrą dyskusję na temat tej historii można znaleźć <a href="https://en.wikipedia.org/wiki/Four_color_theorem">tutaj</a>.</p>
+<p>Aby zastosować twierdzenie Appel-Haken do klasycznego (popularnego) sformułowania Twierdzenia o Czterech Barwach należy jest zastosować do grafu dualnego (<a href="https://en.wikipedia.org/wiki/Dual_graph">wiki</a>) do danego grafu planarnego:</p>
+<div class="figure">
+<img src="dual-graph.png" alt="dual graph" />
+<p class="caption">dual graph</p>
+</div>
+</body>
+</html>

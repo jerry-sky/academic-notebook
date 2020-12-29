@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="własności-języków-bezkontekstowych">Własności języków bezkontekstowych</h1>
+<p><em>(2020-11-12)</em></p>
+<ul>
+<li><a href="#1-lemat-o-pompowaniu-dla-języków-bezkontekstowych">1. Lemat o pompowaniu dla języków bezkontekstowych</a>
+<ul>
+<li><a href="#11-d-d">1.1. D-d</a></li>
+<li><a href="#12-przykład">1.2. Przykład</a></li>
+<li><a href="#13-przykład">1.3. Przykład</a></li>
+</ul></li>
+<li><a href="#2-lemat-ogdena--silniejsza-wersja-lematu-o-pompowaniu">2. Lemat Ogdena — silniejsza wersja lematu o pompowaniu</a>
+<ul>
+<li><a href="#21-d-d">2.1. D-d</a></li>
+<li><a href="#22-przykład">2.2. Przykład</a></li>
+</ul></li>
+<li><a href="#3-twierdzenie-o-zamkniętności-operacji-na-j-bezkontekstowych">3. Twierdzenie o zamkniętności operacji na j. bezkontekstowych</a>
+<ul>
+<li><a href="#31-d-d">3.1. D-d</a></li>
+</ul></li>
+<li><a href="#twierdzenie-o-nie-zamkniętności-operacji-przecięcia-na-j-bezkontekstowych">Twierdzenie o nie-zamkniętności operacji przecięcia na j. bezkontekstowych</a>
+<ul>
+<li><a href="#d-d">D-d</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="lemat-o-pompowaniu-dla-języków-bezkontekstowych">1. Lemat o pompowaniu dla języków bezkontekstowych</h2>
+<p>Niech <span class="math inline">\(L\)</span> będzie dowolnym językiem bezkontekstowym. Wówczas istnieje stała pompowania <span class="math inline">\(n\)</span>, zależna tylko od <span class="math inline">\(L\)</span>, taka, że jeśli słowo <span class="math inline">\(z\)</span> należy do języka <span class="math inline">\(L\)</span> oraz <span class="math inline">\(|z| \ge n\)</span>, to <span class="math inline">\(z = uvwxy\)</span>, oraz - <span class="math inline">\(|vx| \ge 1\)</span> - <span class="math inline">\(|vwx| \le n\)</span> - dla każdego <span class="math inline">\(i \ge 0\)</span> mamy <span class="math inline">\(uv^iwx^iy \in L\)</span></p>
+<p>(ten lemat rozszerza <a href="../2020-10-22/własności-języków-regularnych.md#1-lemat-o-pompowaniu">ten poprzedni lemat o pompowaniu</a> dodając jeszcze pole <span class="math inline">\(x\)</span>)</p>
+<h3 id="d-d">1.1. D-d</h3>
+<p>Mamy gramatykę <span class="math inline">\(G(L)\)</span> w <a href="../2020-10-29/gramatyki-bezkontekstowe.md#12-postać-normalna-chomskyego">postaci normalnej Chomsky’ego</a> (czyli mamy produkcje typu <span class="math inline">\(A \to BC\)</span> lub <span class="math inline">\(A \to a\)</span>; drzewo wyprowadzenia jest binarne patrząc na węzły wewnętrzne).</p>
+<p>Niech ta nasza gramatyka <span class="math inline">\(G = (N,T,P,S)\)</span> gdzie <span class="math inline">\(|N| = k\)</span>.</p>
+<p>Ustalmy <span class="math inline">\(n = 2^k\)</span> (stałą pompowania).<br />
+Bierzemy <span class="math inline">\(z \in L\)</span>, <span class="math inline">\(z = z_1,\dots,z_n\)</span> (składa się z <span class="math inline">\(n\)</span> symboli).</p>
+<p>Drzewo wyprowadzenia:<br />
+<img src="lemat-drzewo-wyprowadzenia-1.png" /></p>
+<p>Bierzemy najdłuższą ścieżkę, która jest długości co najmniej długości <span class="math inline">\(\lg n = k\)</span>. Ścieżka zawiera co najmniej <span class="math inline">\(k+1\)</span> węzłów wewnętrznych, ale mamy tylko <span class="math inline">\(k\)</span> nieterminali — czyli (<em>pigeonhole principle</em>) musimy mieć gdzieś powtórkę (oznaczmy przez <span class="math inline">\(A\)</span>). Patrząc od dołu zaznaczamy poddrzewa, których korzeniami są te dwie instancje <span class="math inline">\(A\)</span>:<br />
+<img src="lemat-drzewo-wyprowadzenia-2.png" /></p>
+<p>Stosujemy podział słowa <span class="math inline">\(z = uvwxy\)</span>:<br />
+<img src="lemat-drzewo-wyprowadzenia-3.png" /></p>
+<p>I możemy je teraz „pompować”: 1. <span class="math inline">\(uv^0wx^0y\)</span><br />
+<img src="lemat-drzewo-wyprowadzenia-4.png" /> 2. <span class="math inline">\(yv^2wx^2y\)</span><br />
+<img src="lemat-drzewo-wyprowadzenia-5.png" /></p>
+<p>Dlatego <a href="#1-lemat-o-pompowaniu-dla-języków-bezkontekstowych">lemat</a> jest spełniony.</p>
+<p>Chociaż jeszcze należy pokazać, że:<br />
+<img src="lemat-drzewo-wyprowadzenia-6.png" /></p>
+<p>Wynika to z tego, że szukaliśmy pierwszych powtarzających się symboli od dołu, stąd poddrzewo (czerwone, większe) nie może być wyższe niż <span class="math inline">\(k\)</span>. Co daje nam liczbę liści <span class="math inline">\(\le 2^k\)</span>.</p>
+<hr />
+<h3 id="przykład">1.2. Przykład</h3>
+<p>Mamy język <span class="math inline">\(L = \left\{ a^i b^i c^i: i \ge 1 \right\}\)</span>.</p>
+<p>Używamy <a href="#1-lemat-o-pompowaniu-dla-języków-bezkontekstowych">lematu</a> w celu udowodnienia, że język <span class="math inline">\(L\)</span> nie jest bezkontekstowy.</p>
+<p>Weźmy <span class="math inline">\(n\)</span> (stałą pompowania) i słowo <span class="math inline">\(z = a^n b^n c^n\)</span>. 1. Zgodnie z lematem możemy pompować w obrębie jednego bloku znaków (<span class="math inline">\(a\)</span> lub <span class="math inline">\(b\)</span> lub <span class="math inline">\(c\)</span>) ale wtedy zmienia się liczba tych znaków, a nie zmienia się liczba pozostałych, czyli wychodzimy z języka. 2. Możemy pompować też znaki z dwóch sąsiednich bloków (<span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> lub <span class="math inline">\(b\)</span> i <span class="math inline">\(c\)</span>) utrzymując ich równoliczność, ale wtedy zostaje problem z trzecim blokiem i także wypadamy z języka. 3. Innych możliwości nie ma więc <span class="math inline">\(L\)</span> nie jest bezkontekstowy.</p>
+<hr />
+<h3 id="przykład-1">1.3. Przykład</h3>
+<p>Mamy język <span class="math inline">\(L = \left\{ a^i b^j c^k: i \neq j \land j \neq k \right\}\)</span>.</p>
+<p>Bierzemy słowo <span class="math inline">\(a^n b^{n+1} c^{n+2}\)</span>. Ale pompując w sposób <span class="math inline">\(a^n b^{n-1} (b^2)^i (c^2)^i c^n\)</span> dostajemy słowa należące do języka.</p>
+<p><strong>Musimy wzmocnić ten lemat.</strong></p>
+<hr />
+<h2 id="lemat-ogdena-silniejsza-wersja-lematu-o-pompowaniu">2. Lemat Ogdena — silniejsza wersja lematu o pompowaniu</h2>
+<p>Niech <span class="math inline">\(L\)</span> będzie językiem bezkontekstowym. Wówczas istnieje stała pompowania <span class="math inline">\(n\)</span> taka, że jeśli w słowie <span class="math inline">\(z \in L\)</span> oznaczymy co najmniej <span class="math inline">\(n\)</span> liter to możemy słowo <span class="math inline">\(z\)</span> zapisać jako <span class="math inline">\(uvwxy\)</span> i - <span class="math inline">\(v\)</span> oraz <span class="math inline">\(x\)</span> mają łącznie co najmniej jedną oznaczoną literę - <span class="math inline">\(vwx\)</span> ma co najwyżej <span class="math inline">\(n\)</span> oznaczonych liter - dla każdego <span class="math inline">\(i \ge 0\)</span> mamy <span class="math inline">\(u v^i w x^i y \in L\)</span>.</p>
+<h3 id="d-d-1">2.1. D-d</h3>
+<p>Weźmy <span class="math inline">\(m &gt; n\)</span>, gdzie <span class="math inline">\(n = 2^{|N|}\)</span> i nasze słowo <span class="math inline">\(z = z_1 z_2 \dots z_n \dots z_m\)</span>. Oznaczamy co najmniej <span class="math inline">\(n\)</span> liter.</p>
+<p>Znowu, <a href="#11-d-d">tak jak wcześniej</a>, budujemy drzewo wyprowadzenia i najdłuższą ścieżkę czyli od korzenia do liścia, tylko tym razem w następujący sposób:<br />
+<em>jeśli jestem w danym wierzchołku to idę do poddrzewa, które ma „więcej” symboli oznaczonych w liściach.</em></p>
+<p>Wyznaczona ścieżka ma co najmniej długość <span class="math inline">\(\lg n = k\)</span>. Co więcej jeśli zignorujemy wierzchołki, w których tylko jedno poddrzewo miało wierzchołki oznaczone to dalej mamy długość <span class="math inline">\(k\)</span>.</p>
+<p>Znowu, tak samo jak w <a href="#11-d-d">poprzednim dowodzie</a> mamy powtórki gdzieś wierzchołka <span class="math inline">\(A\)</span>.</p>
+<div class="figure">
+<img src="lemat-mocny-drzewo-1.png" />
+
+</div>
+<p>Więc analogicznie bierzemy poddrzewa:<br />
+<img src="lemat-mocny-drzewo-2.png" /></p>
+<p>Analiza podobna jak w poprzednim dowodzie, ale liczymy tylko symbole oznaczone.</p>
+<div class="figure">
+<img src="lemat-mocny-drzewo-3.png" />
+
+</div>
+<p>W obu połówkach były symbole oznaczone, to <span class="math inline">\(v\)</span> i <span class="math inline">\(x\)</span> muszą mieć jakiś symbol oznaczony.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Analogicznie, skoro liczyliśmy od dołu to wysokość (różowego) poddrzewa jest nie większa niż <span class="math inline">\(k\)</span> wierzchołków dzielących symbole oznaczone, stąd <span class="math inline">\(vwx\)</span> nie ma więcej niż <span class="math inline">\(2^k = n\)</span> symboli.</li>
+</ol>
+<hr />
+<h3 id="przykład-2">2.2. Przykład</h3>
+<p><a href="#13-przykład"><em>Kontynuacja przykładu</em></a></p>
+<p>Mamy język <span class="math inline">\(L = \left\{ a^i b^j c^k: i \neq j \land j \neq k \right\}\)</span>.</p>
+<p>Mamy <span class="math inline">\(m &gt; n\)</span>, gdzie <span class="math inline">\(n\)</span> to stała pompowania.</p>
+<p>Bierzemy słowo <span class="math inline">\(z = a^{m + m!} b^m c^{m + m!}\)</span> — powinniśmy pompować najrzadziej występujący symbol.</p>
+<p><em>Oznaczamy wszystkie litery <span class="math inline">\(b\)</span>.</em></p>
+<p>Zgodnie z lematem możemy: 1. Pompować tylko litery <span class="math inline">\(b\)</span>; jeśli pompujemy <span class="math inline">\(k\)</span> liter to dla <span class="math inline">\(i = \frac{m!}{k} + 1\)</span> czyli mamy równość <span class="math inline">\(b\)</span> i <span class="math inline">\(a\)</span>. 2. Pompować tylko <span class="math inline">\(a\)</span> i <span class="math inline">\(b\)</span> (<span class="math inline">\(b\)</span> i <span class="math inline">\(c\)</span>) — znowu wypadamy z języka bo <span class="math inline">\(b\)</span> zrównają się z <span class="math inline">\(c\)</span> (<span class="math inline">\(b\)</span> z <span class="math inline">\(a\)</span>). 3. <em>Czy możemy równocześnie pompować <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> i <span class="math inline">\(c\)</span>?</em> — nie, bo to by nam już nie zapewniło wypadnięcia z języka.</p>
+<hr />
+<h2 id="twierdzenie-o-zamkniętności-operacji-na-j.-bezkontekstowych">3. Twierdzenie o zamkniętności operacji na j. bezkontekstowych</h2>
+<p>Języki bezkontekstowe są zamknięte na sumę, złożenie i domknięcie Kleene’ego.</p>
+<h3 id="d-d-2">3.1. D-d</h3>
+<p>Niech - <span class="math inline">\(G_1 = (N_1, T_1, S_1, P_1)\)</span> - <span class="math inline">\(G_2 = (N_2, T_2, S_2, P_2)\)</span></p>
+<p>przy czym <span class="math inline">\(N_1 \cap N_2 = \emptyset\)</span> i <span class="math inline">\(S \notin N_1 \cup N_2\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(G_3 = \left(\{S\} \cup N_1 \cup N_2, T_1 \cup T_2, S, P_1 \cup P_2 \cup \{S \to S_1|S_2\} \right)\)</span> i <span class="math inline">\(L(G_3) = L(G_1) \cup L(G_2)\)</span></li>
+<li><span class="math inline">\(G_4 = \left( \{S\} \cup N_1 \cup N_2, T_1 \cup T_2, S, P_1 \cup P_2 \cup \{S \to S_1S_2\} \right)\)</span> i <span class="math inline">\(L(G_4) = L(G_1)L(G_2)\)</span></li>
+<li><span class="math inline">\(G_5 = \left( \{S\} \cup N_1, T_1, S, P_1 \cup \{S \to S_1 S | \epsilon\} \right)\)</span> i <span class="math inline">\(L(G_5) = L(G_1)^*\)</span></li>
+</ol>
+<hr />
+<h2 id="twierdzenie-o-nie-zamkniętności-operacji-przecięcia-na-j.-bezkontekstowych">Twierdzenie o nie-zamkniętności operacji przecięcia na j. bezkontekstowych</h2>
+<p><em>Języki bezkontekstowe nie są zamknięte na przecięcie.</em></p>
+<h3 id="d-d-3">D-d</h3>
+<p>Niech - <span class="math inline">\(A = \left\{ a^i b^i c^i \right\}\)</span> - <span class="math inline">\(B = \left\{ a^i b^i c^j \right\}\)</span> jest j. bezkontekstowym bo <span class="math inline">\(S \to AB, \enspace A \to \epsilon|aAb \enspace B \to \epsilon|cB\)</span> - <span class="math inline">\(C = \left\{ a^j b^i c^i \right\}\)</span> (podobnie jak <span class="math inline">\(B\)</span>)</p>
+<p>Wówczas zauważmy, że<br />
+<span class="math inline">\(A = B \cap C\)</span> nie jest bezkontekstowy (<a href="#12-przykład">przykład</a>).</p>
+<hr />
+</body>
+</html>

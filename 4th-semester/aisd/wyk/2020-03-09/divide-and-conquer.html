@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="divide-and-conquer">Divide and conquer</h1>
+<p><em>(2020-03-09)</em></p>
+<h2 id="binary-searchx-a">Binary search<span class="math inline">\((x, A)\)</span></h2>
+<p><span class="math inline">\(A\)</span> - posortowana tablica</p>
+<ol style="list-style-type: decimal">
+<li>Dziel: porównujemy <span class="math inline">\(x\)</span> ze środkowym elementem z <span class="math inline">\(A\)</span></li>
+<li><span class="math inline">\(\lor\)</span> <span class="math inline">\(\downdownarrows\)</span></li>
+<li>Jeśli <span class="math inline">\(x == A\big(\frac{n}{2}\big)\)</span> <span class="math inline">\(\rightarrow\)</span> kończymy</li>
+<li>Jeśli <span class="math inline">\(x &lt; A\big(\frac{n}{2}\big)\)</span> <span class="math inline">\(\rightarrow\)</span> Binary Search<span class="math inline">\(\Big(~x, A\big[1..., \frac{n}{2} -1\big]~\Big)\)</span></li>
+<li>Oth <span class="math inline">\(x &gt; A\big(\frac{n}{2}\big)\)</span> <span class="math inline">\(\rightarrow\)</span> Binary Search<span class="math inline">\(\Big(~x, A\big[\frac{n}{2}, ..., n\big]~\Big)\)</span></li>
+</ol>
+<h3 id="worst-case-analysis">Worst case analysis</h3>
+<p><span class="math inline">\(T(n) = O(1) + T(\frac{n}{2})\)</span> <span class="math inline">\(\rightarrow~T(n) = O(\log n)\)</span> z <a href="master-theorem">Master theorem</a></p>
+<h2 id="podnoszenie-do-potęgi-xn">Podnoszenie do potęgi <span class="math inline">\(x^n\)</span></h2>
+<p><span class="math inline">\(\rightarrow\)</span> n razy: <span class="math inline">\(x \cdot x \cdot x \cdot ... \cdot x\)</span> <span class="math inline">\(\rightarrow\)</span> #mnożeń <span class="math inline">\(= O(n)\)</span></p>
+<h3 id="divide-and-conquer-case"><a href="#divide-and-conquer">Divide and conquer case</a></h3>
+<p><span class="math display">\[
+x^n =
+\begin{aligned}
+\begin{cases}
+  x^{\frac{n}{2}} \cdot x^{\frac{n}{2}} &amp;: n \% 2 = 0\\
+  x^{\frac{n-1}2} \cdot x^{\frac{n-1}{2}} \cdot x &amp;: oth
+\end{cases}
+\end{aligned}
+\]</span> <span class="math inline">\(T(n) = 1\cdot T(\frac{n}{2}) + O(1) = O(log n)\)</span></p>
+<h2 id="liczenie-n-tej-liczby-fibonacciego">Liczenie <span class="math inline">\(n\)</span>-tej liczby Fibonacciego</h2>
+<p><span class="math display">\[
+F_n =
+\begin{aligned}
+\begin{cases}
+  0 &amp;: n = 0\\
+  1 &amp;: n =1\\
+  F_{n-1} + F_{n-2} &amp;: oth
+\end{cases}
+\end{aligned}
+\]</span></p>
+<h3 id="brute-force">Brute force</h3>
+<p><span class="math inline">\(\Theta(\phi^n)\)</span>, gdzie <span class="math inline">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span></p>
+<h3 id="podejście-bottom-up">Podejście <em>bottom-up</em></h3>
+<p><span class="math inline">\(F_2, F_3, F_4,...F_n\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\Theta(n)\)</span></p>
+<p><span class="math inline">\(F_n = \frac{1}{\sqrt{5}} \phi^n \plusmn \frac{1}{\sqrt{5}}\Big(\frac{1- \sqrt{5}}{2}\Big)^n\)</span> <span class="math inline">\(\rightarrow~O\big(\log n\big)\)</span> mnożeń <span class="math inline">\(\rightarrow\)</span> przybliżenie z <span class="math inline">\(\sqrt{5}\)</span></p>
+</body>
+</html>

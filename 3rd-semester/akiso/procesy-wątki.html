@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="procesy-i-wątki">Procesy i wątki</h1>
+<h2 id="zasób">Zasób</h2>
+<p>Zasobem jest element sprzętowy lub programowy systemu komputerowego, którego brak może potencjalnie zablokować wykonywanie programu (przetwarzanie)</p>
+<p>Przykłady zasobów: - Procesor - Pamięć - Plik</p>
+<h2 id="proces">Proces</h2>
+<ul>
+<li>elementarna jednostka pracy (aktywności) zarządzaną przez system operacyjny, która ubiega się o zasoby systemu komputerowego w celu wykonania programu</li>
+<li>elementy składowe</li>
+<li><strong>program</strong> <em>definiuje zachowanie procesu</em></li>
+<li><strong>dane</strong> <em>zbiór wartości przetwarzanych oraz wyniki</em></li>
+<li><em>zbiór zasobów tworzących środowisko wykonawcze</em></li>
+<li><em>blok kontrolny procesu (PCB, <a href="#deskryptor">deskryptor</a>) - opis bieżącego stanu procesu</em></li>
+</ul>
+<h2 id="zarządcy">Zarządcy</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Zarządca procesów</strong> <em>(process manager)</em></li>
+</ol>
+<ul>
+<li>kontroluje stany procesów w celu efektywnego i bezpiecznego wykorzystania zasobów systemu</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Zarządca zasobów</strong> <em>(resource manager)</em></li>
+</ol>
+<ul>
+<li>realizuje przydział zasobów stosownie do żądań procesów, aktualnego stanu systemów oraz ogólnosystemowej polityki przydziału</li>
+</ul>
+<h2 id="deskryptor">Deskryptor</h2>
+<ul>
+<li>Identyfikator procesu</li>
+<li>Stan procesu <em>(nowy, gotowy, oczekujący, etc.)</em></li>
+<li>Identyfikator właściciela</li>
+<li>Identyfikator przodka</li>
+<li>Lista przydzielonych zasobów</li>
+<li>Zawartość rejestrów procesora</li>
+<li>Prawa dostępu (domena ochrony)</li>
+<li>Informacje na potrzeby zarządzania pamięcią</li>
+<li>Informacje na potrzeby planowania <em>(np. priorytet)</em></li>
+<li>Informacje do rozliczeń</li>
+<li>Wskaźniki do kolejek porządkujących</li>
+</ul>
+<h2 id="stan-procesu">Stan procesu</h2>
+<div class="figure">
+<img src="cykl-zmian-stanu-procesu.png" alt="cykl zmian stanu procesu" />
+<p class="caption">cykl zmian stanu procesu</p>
+</div>
+<h2 id="wątek-thread">Wątek <strong>(thread)</strong></h2>
+<p>Lekki proces, który jest obiektem w obrębie procesu ciężkiego posiadającym własne sterowanie i współdzielącym z innymi wątkami tego procesu przydzielone (procesowi) zasoby: - Segment kodu i segment danych w pamięci - Tablicę otwartych plików - Tablicę sygnałów</p>
+<p><strong>W jądrze systemu Linux nie odróżnia się pojęcia wątku od procesu.</strong></p>
+<p><strong>Jednakże, podczas kiedy dwa procesy w systemie Unix mogą komunikować się tylko przez system operacyjny (pliki, potoki, gniazda, dodatkowa pamięć współdzielona) to dwa wątki są wykonywane w tej samej przestrzeni adresowej i <em>mają dostęp do tej samej pamięci</em></strong></p>
+<h3 id="synchronizacja-wątków">Synchronizacja wątków</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Wyścigi</strong> <em>wynik działania procedur wykonywanych przez wątki zależy od kolejności ich wykonania</em></li>
+<li><strong>Synchronizacja</strong> <em>mechnizm, który zapewnia, ze kilka wykonujących się wątków</em>:</li>
+</ol>
+<ul>
+<li>nie będzie równocześnie działać na jednym obiekcie</li>
+<li>nie będzie wykonywać równocześnie tego samego kodu</li>
+</ul>
+<p>Kod, który może być wykonywany w danym momencie tylko przez jeden wątek, nazywa się <strong>sekcją krytyczną (mutual exclusion)</strong></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Lista 7}
+\author{Zadanie 1}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Zadanie}
+
+Jaki będzie czas działania procedury BFS, jeśli graf wejściowy jest reprezentowany przez macierz sąsiedztwa, a algorytm jest zmodyfikowany w taki sposób, żeby działał poprawnie dla tej reprezentacji?
+
+\section{Rozwiązanie}
+
+Mamy graf $G = (V,E)$ gdzie $V$ to zbiór wierzchołków, a $E$ to zbiór krawędzi. Załóżmy, że $|V| = n$. Reprezentujemy $G$ przy pomocy macierzy sąsiedztwa, gdzie indeksy kolumn i wierszy odpowiadają indeksom wierzchołków $V$. Czyli dla każdej krawędzi $(u,v) \in E$ mamy $G_M[\mathrm{index}(u)][\mathrm{index}(v)] = 1$, a pozostałe wartości tej macierzy to zera. Oczywiście musimy określić funkcję $\mathrm{index}: V \xrightarrow[1-1]{\text{„na”}} [0, n]$ określającą reprezentację wierzchołka jako unikalnej liczby naturalnej.
+
+Procedura BFS na początku przyporządkowuje odległości od wierzchołka startowego $s$ do wszystkich wierzchołków w grafie jako $\infty$ (oprócz $s$ któremu daje $0$). Niniejsze odległości algorytm może zapisywać np. do tablicy „$\mathrm{dist}$” długości $n$ z zachowaniem indeksów wierzchołków z macierzy $G_M$. W ten sam sposób mogą zostać przechowywane wskaźniki na „poprzednie” wierzchołki, taką tablicę nazwiemy „$\mathrm{prev}$” przy czym $\mathrm{prev}[\mathrm{index}(s)] = \mathrm{index}(s)$.
+
+W tej zmodyfikowanej procedurze BFS kolejka $Q$ oczywiście przechowywałaby indeksy aktualnie rozważanych wierzchołków. Wówczas inicjacja tej kolejki również podlega zmianie: $Q \gets [\mathrm{index}(s)]$.
+
+W środku pętli która działa dopóki $Q$ nie jest puste zawarta jest następna pętla \texttt{for} która przegląda wszystkie krawędzie z aktualnie rozważanego wierzchołka $u$ do wierzchołków incydentalnych z nim. Niniejsza pętla musi rozważyć cały wiersz $G_M[\mathrm{index}(u)]$. Algorytm przegląda cały wiersz w poszukiwaniu $1$, które oznaczają krawędź między $u$ a innym wierzchołkiem. Czyli przegląda listę długości $n$. Co daje nam złożoność obliczeniową równą $O(n)$. Zakładając, że graf $G$ jest spójny to główna pętla, która dzieli graf na „warstwy”, również wykona się $n$ razy. Co daje nam całkowitą złożoność algorytmu równą $O(n^2)$, jako że wcześniej wspomniana pętla \texttt{for} jest zagnieżdżona w pętli $\texttt{while}~ |Q| > 0$.
+
+\end{document}

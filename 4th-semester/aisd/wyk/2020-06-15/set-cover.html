@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="pokrycie-zbioru">Pokrycie zbioru</h1>
+<ul>
+<li><a href="#zobrazowanie">Zobrazowanie</a></li>
+<li><a href="#formalna-definicja">Formalna definicja</a></li>
+<li><a href="#algorytm">Algorytm</a></li>
+<li><a href="#przykład-do-algorytmu">Przykład do algorytmu</a></li>
+<li><a href="#twierdzenie-1">Twierdzenie #1</a></li>
+<li><a href="#d-d-twierdzenia-1">D-d Twierdzenia #1</a></li>
+<li><a href="#final-remarks">Final remarks</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+<h2 id="zobrazowanie">Zobrazowanie</h2>
+<p>Problem pokrycia zbioru <em>(set cover)</em> można zobrazować na przykładzie planowania budowy szkół. Powiedzmy, że mamy zbiór wiosek <span class="math inline">\(B\)</span>, w których chcemy zbudować szkoły dla okolicznej młodzieży. Musimy przestrzegać następujących założeń: 1. każda szkoła musi być w wiosce 2. odległość, którą muszą przebyć uczniowie do szkoły nie może być większa niż np. 10km.</p>
+<p>Celem jest rozmieszczenie szkół w wioskach, aby wszystkie osoby chodzące do szkoły miały ją w odległości nie większej niż ustalona oraz aby wybudować minimalną liczbę szkół. Jeśli dla każdej wioski <span class="math inline">\(x \in B\)</span> zdefiniujemy podzbiór wiosek <span class="math inline">\(S_x \subset B\)</span> będących w odległości mniejszej niż ustalona od <span class="math inline">\(x\)</span> to możemy powiedzieć, że wybudowanie szkoły w wiosce <span class="math inline">\(x\)</span> pokrywa osoby z wiosek należących do zbioru <span class="math inline">\(S_x\)</span>.</p>
+<h2 id="formalna-definicja">Formalna definicja</h2>
+<p><em>Input:</em> Zbiór <span class="math inline">\(B\)</span> oraz jego podzbiory <span class="math inline">\(S_1,\dots,S_m \subset B\)</span></p>
+<p><em>Output:</em> Wybór podzbiorów pokrywających zbiór <span class="math inline">\(B\)</span>, czyli <span class="math inline">\(\bigcup_{i\in I}S_i = B\)</span>, gdzie <span class="math inline">\(I\)</span> jest zbiorem indeksów</p>
+<p><em>Koszt:</em> <span class="math inline">\(|I|\)</span> – liczba wybranych podzbiorów</p>
+<p><em>Zależy nam na tym, aby koszt wyborów podzbiorów był jak najmniejszy.</em></p>
+<h2 id="algorytm">Algorytm</h2>
+<p>Zauważmy, że zachłanne rozwiązanie samo się tutaj nasuwa:</p>
+<p><code>GreedySetCover</code><span class="math inline">\((B, S_1,\dots,S_m)\)</span>: 1. <code>repeat until</code> <span class="math inline">\(B\)</span> nie jest całe pokryte: 1. wybierz zbiór <span class="math inline">\(S_i\)</span>, który zawiera najwięcej niepokrytych elementów</p>
+<h3 id="przykład-do-algorytmu">Przykład do algorytmu</h3>
+<p>Zobaczmy, jak to naturalne rozwiązanie sprawdza się w praktyce. Wróćmy do <a href="#zobrazowanie">naszego przykładu budowy szkół w wioskach</a>. Powiedzmy, że mamy dwunastoelementowy zbiór wiosek: <span class="math inline">\(A,B,C,D,E,F,G,H,I,J,K,L\)</span>. Łączymy ze sobą te wioski, które są oddalone od siebie o mniej niż ustalona wartość:</p>
+<div class="figure">
+<img src="set-cover-example.png" alt="example" />
+<p class="caption">example</p>
+</div>
+<p>Zatem: <span class="math display">\[
+S_A = \{A, B, C, D\}\\
+S_B = \{A, B, C, D, E\}\\
+S_C = \{A, B, C, D, E\}\\
+S_D = \{A, B, C, D, E\}\\
+S_E = \{B, C, D, E, F, I\}\\
+S_F = \{E, F, G, H\}\\
+S_G = \{F, G, H\}\\
+S_H = \{F, G, H\}\\
+S_I = \{E, I, J, K\}\\
+S_J = \{I, J, K, L\}\\
+S_K = \{I, J, K, L\}\\
+S_L = \{J, K, L\}
+\]</span></p>
+<p>górne rozwiązanie (uzyskane w sposób zachłanny) o koszcie <span class="math inline">\(4\)</span> to <span class="math inline">\(S_A,S_E,S_G,S_L\)</span>, a dolne rozwiązanie o koszcie <span class="math inline">\(3\)</span> (rozwiązanie optymalne) to <span class="math inline">\(S_C,S_H,S_K\)</span>.</p>
+<p>Widzimy zatem, że rozwiązanie zachłanne nie musi dawać nam optymalnego rozwiązania. Na szczęście okazuje się, że jesteśmy w stanie ograniczyć odległość rozwiązania zachłannego od optymalnego w zadowalający sposób.</p>
+<h2 id="twierdzenie-1">Twierdzenie #1</h2>
+<p>Załóżmy, że <span class="math inline">\(|B| = n\)</span>, a optymalne rozwiązanie pokrycia zbioru ma koszt <span class="math inline">\(k\)</span>. Wówczas zachłanny algorytm zwróci rozwiązanie o koszcie co najwyżej <span class="math inline">\(k\ln n\)</span>.</p>
+<h3 id="d-d-twierdzenia-1">D-d Twierdzenia #1</h3>
+<p>Niech <span class="math inline">\(n_t\)</span> będzie liczbą niepokrytych elementów zbioru <span class="math inline">\(B\)</span> po <span class="math inline">\(t\)</span> iteracjach pętli algorytmu zachłannego <span class="math inline">\((n_0 = n)\)</span>. Skoro niepokryte elementy da się pokryć optymalnymi <span class="math inline">\(k\)</span> zbiorami to musi istnieć zbiór mający co najmniej <span class="math inline">\(\frac{n_t}{k}\)</span> niepokrytych elementów. Zatem możemy ograniczyć wielkość <span class="math inline">\(n_{t+1}\)</span> przez <span class="math display">\[
+n_{t+1} \le n_t - \frac{n_t}{k} = n_t \left( 1 - \frac{1}{k} \right).
+\]</span></p>
+<p>Powtarzając ten argument uzyskujemy ograniczenie: <span class="math display">\[
+n_t \le n_0 \left( 1 - \frac{1}{k} \right)^t.
+\]</span></p>
+<p>Użyjmy znanego ograniczenia <span class="math inline">\(\forall x \in \mathbb{R} \setminus \{0\}: 1 - x &lt; e^{-x}\)</span>, które daje nam: <span class="math display">\[
+n_t &lt; ne^{-\frac{t}{k}}.
+\]</span></p>
+<p>Zauważmy, że dla <span class="math inline">\(T = k\ln n\)</span> dostajemy <span class="math inline">\(n_T &lt; ne^{-\ln n} = 1\)</span>, co oznacza, że po <span class="math inline">\(k\ln n\)</span> krokach algorytm zachłanny pokryje wszystkie elementy zbioru wejściowego.<br />
+## Final remarks</p>
+<p>Algorytm zachłanny rozwiązujący problem pokrycia zbioru należy do klasy algorytmów aproksymujących (czyli niekoniecznie zwracających optymalne rozwiązanie), a stosunek rozwiązania otrzymanego przy pomocy algorytmu aproksymacyjnego przez rozwiązanie algorytmu optymalnego nazywamy <em>approximation factor</em>. Powyższy algorytm zachłanny dla problemu pokrycia zbioru ma <em>approximation factor</em> równy <span class="math inline">\(ln n\)</span>. Innymi metodami można pokazać również, że nie istnieje algorytm wielomianowy mający mniejszy <em>approximation factor</em>.</p>
+<h2 id="more">More</h2>
+<ul>
+<li><a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">sekcje 5.3, 5.4 Algorithms</a></li>
+<li><a href="https://web.ist.utl.pt/~fabio.ferreira/material/asa/clrs.pdf">sekcja 24 Introduction to Algorithms</a></li>
+</ul>
+</body>
+</html>

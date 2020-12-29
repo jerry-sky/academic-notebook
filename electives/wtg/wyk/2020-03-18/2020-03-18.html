@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="drzewa">Drzewa*</h1>
+<p><em>*odwołany z powodu koronawirusa</em><br />
+<em>(2020-03-18)</em></p>
+<h2 id="definicja-graf-acykliczny"><span class="math inline">\(Definicja\)</span> Graf <em>acykliczny</em></h2>
+<p>Graf <strong>bez cykli</strong> nazywamy acyklicznym.<br />
+<strong>Drzewem</strong> nazywamy dowolny graf acykliczny.<br />
+<strong>Drzewem</strong> nazywamy spójny acykliczny graf.</p>
+<p><strong>Liściem</strong> w drzewie nazywamy wierzchołek o stopniu <span class="math inline">\(1\)</span>.</p>
+<p>Każdy las jest sumą rozłącznych drzew.</p>
+<ul>
+<li><span class="math inline">\((a)\)</span> - drzewo</li>
+<li><span class="math inline">\((b)\)</span> - las</li>
+<li><span class="math inline">\((c)\)</span> - <strong>nie</strong> drzewo</li>
+</ul>
+<div class="figure">
+<img src="drzewo-las-nie-drzewo.png" alt="przykłady" />
+<p class="caption">przykłady</p>
+</div>
+<h2 id="lemat-a">Lemat A</h2>
+<p>Każde skończone drzewo <span class="math inline">\(T(V,E)\)</span> dla <span class="math inline">\(|V|\ge 2\)</span> ma co najmniej dwa liście. Po usunięciu liścia z drzewa z <span class="math inline">\(n\)</span> wierzchołkami otrzymujemy o <span class="math inline">\(n-1\)</span> wierzchołkach.</p>
+<h3 id="d-d-lemat-a">D-d Lemat A</h3>
+<ol style="list-style-type: decimal">
+<li>Stosujemy fajny <em>(typowy dla teorii grafów)</em> trik: rozważmy drogę <span class="math inline">\(x_1x_2 \dots x_k\)</span> o największej długości <em>(jest taka droga, bo graf jest skończony)</em> i pokazujemy, że <span class="math inline">\(x_1\)</span> oraz <span class="math inline">\(x_k\)</span> mają stopień równy <span class="math inline">\(1\)</span>.</li>
+<li>Łatwe: jeśli</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\deg(x) = 1\)</span></li>
+<li><p><span class="math inline">\(a,b \in V \setminus \{x\}\)</span></p>
+<p>to droga od <span class="math inline">\(a\)</span> do <span class="math inline">\(b\)</span> nie może przechodzić przez <span class="math inline">\(x\)</span>.</p></li>
+</ul>
+<h2 id="definicja-krawędź-e-w-grafie-spójnym"><span class="math inline">\(Definicja\)</span> Krawędź <span class="math inline">\(e\)</span> w grafie spójnym</h2>
+<p>Krawędź <span class="math inline">\(e \in E\)</span> w grafie spójnym <span class="math inline">\(G=(V,E)\)</span> nazywamy mostem jeśli graf <span class="math inline">\(G-e = (V,E\setminus\{e\})\)</span> nie jest spójny. Na poniższym rysunku krawędź będąca mostem ma czerwony kolor.</p>
+<div class="figure">
+<img src="most.png" alt="most" />
+<p class="caption">most</p>
+</div>
+<p>Zauważ, że po usunięciu mostu z grafu z tego rysunku graf rozpada się na dwie składowe spójne. Tak jest zawsze - jest to jedno z zadań które pojawi się na <a href="https://cs.pwr.edu.pl/cichon/2019_20_b/Grafy/GraphsZadania.pdf">liście</a>.</p>
+<h2 id="lemat-b">Lemat B</h2>
+<p>Jeśli krawędź należy do cyklu to nie jest <a href="../../definicje/ścieżki/ścieżki.md#bridge">mostem</a>.</p>
+<h2 id="twierdzenie-1"><span class="math inline">\(Twierdzenie\)</span> #1</h2>
+<p>Niech <span class="math inline">\(G=(V,E)\)</span> będzie grafem prostym przy czym <span class="math inline">\(|V|=n\ge 1\)</span>.</p>
+<h3 id="circlearrowleft"><span class="math inline">\(\circlearrowleft\)</span>:</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(G\)</span> jest spójny i nie ma cykli <em>(czyli <span class="math inline">\(G\)</span> jest drzewem)</em></li>
+<li><span class="math inline">\(G\)</span> jest spójny i <span class="math inline">\(|E| = n-1\)</span></li>
+<li><span class="math inline">\(G\)</span> ma <span class="math inline">\(|E| = n-1\)</span> i nie ma cykli</li>
+</ol>
+<p>Na Twierdzenie to można spojrzeć tak: mając trzy własności <span class="math inline">\(\big\{\)</span>spójność, acykliczność, posiadanie <span class="math inline">\(n-1\)</span> wierzchołków <span class="math inline">\(\big\}\)</span> każda dwójka z nich implikuje trzecią.</p>
+<h2 id="d-d-twierdzenia-1">D-d <span class="math inline">\(Twierdzenia\)</span> #1</h2>
+<p><span class="math inline">\(1.\implies2.\)</span><br />
+(indukcja po <span class="math inline">\(n\)</span> <span class="math inline">\(|V(G)|\)</span>)<br />
+Dla <span class="math inline">\(n=1\)</span> jest OK.<br />
+Zakładamy, że dla grafów <span class="math inline">\(G\)</span> takich, że <span class="math inline">\(|V(G)| = n\)</span> implikacja ta jest prawdziwa. Bierzemy graf <span class="math inline">\(H\)</span> taki, że <span class="math inline">\(|H| = n+1\)</span>. Na mocy <a href="#lemat-a">Lematu A</a> ma on liście. Niech <span class="math inline">\(a\)</span> będzie takim liściem. Rozważamy graf <span class="math inline">\(H\)</span> - <span class="math inline">\(\{a\}\)</span>. […]</p>
+<p><span class="math inline">\(2.\implies3.\)</span><br />
+Załóżmy, że <span class="math inline">\(G\)</span> jest spójny, ma <span class="math inline">\(n-1\)</span> krawędzi ale ma cykl. Weźmy krawędź <span class="math inline">\(e\)</span> z tego cyklu. Na mocy <a href="#lemat-b">Lematu B</a> krawędź <span class="math inline">\(e\)</span> nie jest mostem. Zatem graf <span class="math inline">\(G - e\)</span> jest spójny, ale ma on <span class="math inline">\(n-2\)</span> krawędzi. A to jest sprzeczne z <a href="../2020-03-04/2020-03-04.md#twierdzenie-2">ostatnim twierdzeniem z drugiego wykładu</a>.</p>
+<p><span class="math inline">\(3.\implies1\)</span>.<br />
+Załóżmy, że <span class="math inline">\(G\)</span> rozkłada się na składowe spójne <span class="math inline">\(V_1,\dots,V_k\)</span>. Niech <span class="math inline">\(n_1 = |V_1|,\dots,n_k=|V_k|\)</span>. Każda ze składowych jest spójna i nie ma cykli. Wiemy, już że <span class="math inline">\(1.\implies2.\)</span>. Zatem <span class="math inline">\(V_i\)</span> ma <span class="math inline">\(n_i-1\)</span> krawędzi. Więc graf <span class="math inline">\(G\)</span> ma <span class="math inline">\((n_1-1) + \dots + (n_k-1)\)</span> krawędzi.<br />
+Ale <span class="math inline">\((n_1-1) + \dots + (n_k-1) = (n_1 + \dots + n_k) -k = n-k\)</span><br />
+więc <span class="math inline">\(k=1\)</span>.<br />
+<em>Komentarz: wiemy, że jeśli graf spójny ma <span class="math inline">\(n\)</span> wierzchołków, to musi mieć co najmniej <span class="math inline">\(n-1\)</span> wierzchołków; zatem drzewo to graf spójny o minimalnej liczbie krawędzi.</em></p>
+<h2 id="twierdzenie-2"><span class="math inline">\(Twierdzenie\)</span> #2</h2>
+<p>Niech <span class="math inline">\(G=(V,E)\)</span> będzie prostym grafem o <span class="math inline">\(n\ge1\)</span> wierzchołkach.</p>
+<p><span class="math inline">\(\circlearrowleft\)</span>: 1. <span class="math inline">\(G\)</span> jest drzewem 2. dla dowolnej pary wierzchołków <span class="math inline">\(a,b \in V\)</span> istnieje dokładnie jedna droga od <span class="math inline">\(a\)</span> do <span class="math inline">\(b\)</span></p>
+<h3 id="d-d-twierdzenie-2">D-d Twierdzenie #2</h3>
+<p><span class="math inline">\(1.\implies2.\)</span>:<br />
+Załóżmy, że mamy dwie różne drogi <span class="math inline">\(P\)</span> i <span class="math inline">\(Q\)</span> od <span class="math inline">\(a\)</span> do <span class="math inline">\(b\)</span>.<br />
+Niech krawędź <span class="math inline">\(e\)</span> będzie na drodze <span class="math inline">\(P\)</span> ale nie na <span class="math inline">\(Q\)</span>.<br />
+Niech <span class="math inline">\(e = \{x,y\}\)</span>.<br />
+Zbuduj drogę od <span class="math inline">\(x\)</span> do <span class="math inline">\(y\)</span>; po dodaniu <span class="math inline">\(e\)</span> do tej drogi otrzymamy cykl: <img src="d-d-twierdzenie-2.jpg" alt="d-d twierdzenie #2" /></p>
+<p><span class="math inline">\(2.\implies1.\)</span> - trywialne.</p>
+<h2 id="definicja-drzewo-rozpinające"><span class="math inline">\(Definicja\)</span> Drzewo rozpinające</h2>
+<p>Graf <span class="math inline">\(T = (V, E_T)\)</span> jest <strong>drzewem rozpinającym</strong> grafu <span class="math inline">\(G = (V,E)\)</span> jeśli <span class="math inline">\(T\)</span> jest drzewem i <span class="math inline">\(E_T \subseteq E\)</span>.</p>
+<p>Na poniższym rysunku jest graf i jedno z jego drzew rozpinających (czarne kreski):</p>
+<div class="figure">
+<img src="spanning-tree.png" alt="spanning tree" />
+<p class="caption">spanning tree</p>
+</div>
+<h2 id="twierdzenie-3"><span class="math inline">\(Twierdzenie\)</span> #3</h2>
+<p><strong>Każdy spójny graf ma drzew rozpinające</strong>.</p>
+<h3 id="d-d-abstrakcyjny-twierdzenia-3">D-d abstrakcyjny <span class="math inline">\(Twierdzenia\)</span> #3</h3>
+<p>Niech <span class="math inline">\((V,E)\)</span> będzie grafem spójnym. Niech <span class="math inline">\(\mathcal{E}\)</span> będzie rodziną wszystkich podzbiorów <span class="math inline">\(H \subseteq E\)</span> takich, że <span class="math inline">\((V,H)\)</span> jest spójny.<br />
+Niech <span class="math inline">\(T\)</span> będzie <span class="math inline">\(\subseteq\)</span>-minimalnym elementem <span class="math inline">\(\mathcal{H}\)</span>. Wtedy <span class="math inline">\((V,T)\)</span> jest drzewem.</p>
+<h3 id="d-d-bardziej-algorytmiczny-twierdzenia-3">D-d <em>bardziej algorytmiczny</em> <span class="math inline">\(Twierdzenia\)</span> #3</h3>
+<p>Usuwajmy kolejno z <span class="math inline">\(E\)</span> krawędzie z cykli tak długo jak jest jakiś cykl. Na mocy <a href="#lemat-b">Lematu B</a> nie psujemy spójności. A uzyskamy acykliczność. Otrzymamy więc w ten sposób drzewo.<br />
+Na <a href="../../cw/lista-3/lista-3.md#zadanie-39">liście zadań</a> będzie do przemyślenia jeszcze inny sposób budowania drzewa rozpinającego.</p>
+</body>
+</html>

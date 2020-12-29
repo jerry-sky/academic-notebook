@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="algorytmy-i-struktury-danych">Algorytmy i Struktury Danych</h1>
+<p><em>(AiSD)</em></p>
+<h2 id="wykład">Wykład</h2>
+<p><em>Prowadzony przez: <a href="https://cs.pwr.edu.pl/golebiewski">dr inż. Zbigniew Gołębiewski</a></em></p>
+<ul>
+<li><a href="wyk/2020-02-26/sortowanie">2020-02-26<br />
+<strong>Sortowanie</strong></a></li>
+<li>2020-02-03
+<ul>
+<li><a href="wyk/2020-03-03/insertion-sort"><strong>Insertion sort</strong></a></li>
+<li><a href="wyk/2020-03-03/merge-sort"><strong>Merge sort</strong></a></li>
+<li><a href="wyk/2020-03-03/notacja-asymptotyczna"><strong>Notacja asymptotyczna</strong></a></li>
+<li><a href="wyk/2020-03-03/rekurencja"><strong>Rekurencja</strong></a></li>
+</ul></li>
+<li>2020-03-09
+<ul>
+<li><a href="wyk/2020-03-09/drzewo-rekursji"><strong>Drzewo rekursji</strong></a></li>
+<li><a href="wyk/2020-03-09/zamiana-zmiennych"><strong>Zamiana zmiennych</strong></a></li>
+<li><a href="wyk/2020-03-09/metoda-iteracyjna"><strong>Metoda iteracyjna</strong></a></li>
+<li><a href="wyk/2020-03-09/master-theorem"><strong>Master Theorem</strong></a></li>
+<li><a href="wyk/2020-03-09/merge-sort"><strong>Merge sort examples</strong></a></li>
+<li><a href="wyk/2020-03-09/divide-and-conquer"><strong>Divide and conquer</strong></a></li>
+<li><a href="wyk/2020-03-09/lemat"><em>Lemat</em></a></li>
+</ul></li>
+<li>2020-03-11*
+<ul>
+<li><a href="wyk/2020-03-11/mnożenie-n-bitowych-liczb"><strong>Mnożenie <span class="math inline">\(n\)</span>-bitowych liczb naturalnych <span class="math inline">\(x \cdot y\)</span></strong></a></li>
+<li><a href="wyk/2020-03-11/mnożenie-macierzy-nxn"><strong>Mnożenie macierzy <span class="math inline">\(n\times n\)</span></strong></a></li>
+<li><a href="wyk/2020-03-11/quick-sort"><strong>QuickSort</strong></a></li>
+</ul></li>
+<li>2020-03-16*
+<ul>
+<li><a href="wyk/2020-03-16/dual-pivot-quick-sort"><strong>Dual Pivot QuickSort</strong></a></li>
+<li><a href="wyk/2020-03-16/comparison-model"><strong>Comparison model</strong></a></li>
+<li><a href="wyk/2020-03-16/liniowa-złożoność"><strong>Sortowanie w liniowej złożoności obliczeniowej</strong></a></li>
+</ul></li>
+<li>2020-03-23*
+<ul>
+<li><a href="wyk/2020-03-23/problem-znalezienia-ktej-statystyki-pozycyjnej"><strong>Problem znalezienia <span class="math inline">\(k\)</span>tej statystyki pozycyjnej w nieposortowanej tablicy</strong></a></li>
+<li><a href="wyk/2020-03-23/random-select"><strong><code>RandomSelect</code></strong></a></li>
+<li><a href="wyk/2020-03-23/select-algorithm"><strong><code>Select</code></strong></a></li>
+</ul></li>
+<li><a href="wyk/2020-03-25/binary-search-tree">2020-03-25*<br />
+<strong>BST</strong></a></li>
+<li><a href="wyk/2020-03-30/red-black-tree">2020-03-30*<br />
+<strong>RB-Tree</strong></a></li>
+<li>2020-04-06*
+<ul>
+<li><a href="wyk/2020-04-06/wzbogacanie-struktur-danych"><strong>Wzbogacanie struktur danych</strong></a></li>
+<li><a href="wyk/2020-04-06/rb-trees-ze-statystykami-pozycyjnymi"><strong>Rozszerzenie RB-Tree</strong></a></li>
+</ul></li>
+<li>2020-04-08*, 2020-04-20*
+<ul>
+<li><a href="wyk/2020-04-08/programowanie-dynamiczne"><strong>Programowanie dynamiczne</strong></a></li>
+<li><a href="wyk/2020-04-08/najkrótsza-ścieżka-dag"><strong>Najkrótsza ścieżka w DAG-u</strong></a></li>
+<li><a href="wyk/2020-04-08/najdłuższy-podciąg-rosnący"><strong>Najdłuższy podciąg rosnący ciągu</strong></a></li>
+<li><a href="wyk/2020-04-20/longest-common-subsequence"><strong>Longest Common Subsequence (LCS)</strong></a></li>
+</ul></li>
+<li><a href="wyk/2020-04-22/koszt-zamortyzowany">2020-04-22*<br />
+<strong>Koszt zamortyzowany</strong></a></li>
+<li><a href="wyk/2020-04-27/binary-heap">2020-04-27*<br />
+<strong>Kopiec binarny</strong></a></li>
+<li><a href="wyk/2020-05-04/kolejka-priorytetowa">2020-05-04*<br />
+<strong>Kolejka priorytetowa</strong></a></li>
+<li>2020-05-06*, 2020-05-11*
+<ul>
+<li><a href="wyk/2020-05-06/def-grafy"><strong>Grafy (przypomnienie)</strong></a></li>
+<li><a href="wyk/2020-05-06/depth-first-search"><strong>DFS (Depth First Search)</strong></a></li>
+<li><a href="wyk/2020-05-11/dfs-directed-graphs"><strong>DFS na grafach skierowanych</strong></a></li>
+<li><a href="wyk/2020-05-11/directed-acyclic-graphs"><strong>Skierowane grafy acykliczne (DAG)</strong></a></li>
+</ul></li>
+<li>2020-05-18*, 2020-05-20*, 2020-05-25*
+<ul>
+<li><a href="wyk/2020-05-18/breadth-first-search"><strong>BFS (Breadth First Search)</strong></a></li>
+<li><a href="wyk/2020-05-20/dijkstras-algorithm"><strong>Dijkstra Algorithm</strong></a></li>
+<li><a href="wyk/2020-05-25/bellman-ford"><strong>Bellman-Ford</strong></a></li>
+</ul></li>
+<li>2020-06-01*, 2020-06-03*, 2020-06-08*, 2020-06-15*<br />
+<a href="wyk/2020-06-01/greedy-algorithms"><strong>Algorytmy zachłanne:</strong></a>
+<ul>
+<li><a href="wyk/2020-06-01/minimal-spanning-trees"><strong>Minimalne drzewa rozpinające</strong></a></li>
+<li><a href="wyk/2020-06-08/huffman-coding"><strong>Kodowanie Huffmana</strong></a></li>
+<li><a href="wyk/2020-06-15/klauzule-horna"><strong>Klauzule Horna</strong></a></li>
+<li><a href="wyk/2020-06-15/set-cover"><strong>Pokrycie zbioru</strong></a></li>
+</ul></li>
+</ul>
+<p>*odwołane z powodu COVID-19</p>
+<h2 id="ćwiczenia">Ćwiczenia</h2>
+<p><em>Prowadzone przez: <a href="https://cs.pwr.edu.pl/golebiewski">dr inż. Zbigniew Gołębiewski</a></em></p>
+<ul>
+<li><a href="cw/lista-1">Lista-1</a></li>
+<li><a href="cw/lista-2">Lista-2</a></li>
+<li><a href="cw/mandatory-exercises/readme">Mandatory Exercises</a></li>
+</ul>
+<h2 id="laboratorium">Laboratorium</h2>
+<p><em>Prowadzone przez: <a href="https://cs.pwr.edu.pl/kik">dr Marcin Kik</a></em></p>
+<h3 id="verbindung">Verbindung</h3>
+<p>Execute <code>connect.sh</code> to connect to the remote Ubuntu machine for testing programs. <em>You need to have access to the private part of this repository.</em><br />
+Attached config files:</p>
+<ul>
+<li><a href="lab/.vimrc">.vimrc</a> <em>VIM standard config</em></li>
+<li><a href="lab/.bashrc">.bashrc</a> <em>custom bash prompt</em></li>
+</ul>
+<h3 id="listy">Listy</h3>
+<ul>
+<li><a href="lab/lista-1/readme">Lista-1</a></li>
+<li><a href="lab/lista-2/readme">Lista-2</a></li>
+<li><a href="lab/lista-3/readme">Lista-3</a></li>
+<li><a href="lab/lista-4/readme">Lista-4</a></li>
+<li><a href="lab/lista-5/readme">Lista-5</a></li>
+</ul>
+</body>
+</html>

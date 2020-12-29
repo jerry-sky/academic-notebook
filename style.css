@@ -1,0 +1,65 @@
+* {
+    font-family: 'Merriweather', serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+}
+
+header#title-block-header > .author {
+    font-size: .75em;
+    margin: 0;
+    font-style: italic;
+}
+
+/* make sure authors are separated with commas */
+header#title-block-header > .author > span.author::after {
+    content: ','
+}
+header#title-block-header > .author > span.author:last-child::after {
+    content: ''
+}
+
+/* support most screen sizes */
+/* very large screens (TVs and other) */
+body {
+    margin: 0 30%;
+}
+
+/* big screens (desktops) */
+@media (max-width: 1200px) {
+    body {
+        margin: 0 25%;
+    }
+}
+
+/* medium screens (laptops) */
+@media (max-width: 1024px) {
+    body {
+        margin: 0 15%;
+    }
+}
+
+/* smaller screens (tablets) */
+@media (max-width: 768px) {
+    body {
+        margin: 0 10%;
+    }
+}
+
+/* small screens (phones) */
+@media (max-width: 480px) {
+    body {
+        margin: 0 10px;
+    }
+}
+
+/* adjust the top and bottom margin a little */
+body {
+    margin-top: -5px;
+    margin-bottom: 20px;
+}

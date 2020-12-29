@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-0">Lista 0</h1>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1</a></li>
+<li><a href="#zadanie-2">Zadanie 2</a></li>
+<li><a href="#zadanie-4">Zadanie 4</a></li>
+<li><a href="#zadanie-5">Zadanie 5</a></li>
+<li><a href="#zadanie-8">Zadanie 8</a>
+<ul>
+<li><a href="#8a">8.a)</a></li>
+<li><a href="#8b">8.b)</a></li>
+<li><a href="#8c">8.c)</a></li>
+<li><a href="#8d">8.d)</a></li>
+<li><a href="#8e">8.e)</a></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Dla <span class="math inline">\(f, g \in \mathbb{R}^\mathbb{N}\)</span> niech: <span class="math display">\[
+(f \unlhd g) \Leftrightarrow (f = O(g)) \Leftrightarrow (\exists C &gt; 0)(\exists N)(\forall n \ge N)(|f(n)| \le C|g(n)|)
+\]</span> Pokaż, że <span class="math inline">\((\mathbb{R}^\mathbb{N}, \unlhd)\)</span> jest preporządkiem (<span class="math inline">\(\unlhd\)</span> jest relacją zwrotną na <span class="math inline">\(\mathbb{R}^\mathbb{N}\)</span> oraz przechodnią), ale nie jest częściowym porządkiem.</p>
+</blockquote>
+<p>Musimy pokazać, że <span class="math inline">\((\mathbb{R}^\mathbb{N}, \unlhd)\)</span> jest relacją zwrotną, przechodnią, ale nie jest słabo antysymetryczna.</p>
+<ol style="list-style-type: decimal">
+<li>„relacja <span class="math inline">\((\mathbb{R}^\mathbb{N}, \unlhd)\)</span> jest zwrotna”:<br />
+mamy <span class="math inline">\(f \in \mathbb{R}^\mathbb{N}\)</span><br />
+chcemy pokazać, że <span class="math inline">\(f \unlhd f\)</span><br />
+weźmy <span class="math inline">\(C = 1\)</span> oraz <span class="math inline">\(N = 0\)</span><br />
+mając <span class="math inline">\(|f(n)| = |f(n)|\)</span> mamy również <span class="math inline">\(|f(n)| \le |f(n)|\)</span> co spełnia nasz warunek na relację <span class="math inline">\((\mathbb{R}^\mathbb{N}, \unlhd)\)</span> dla naszej funkcji <span class="math inline">\(f\)</span>. <span class="math inline">\(\blacksquare\)</span> ---</li>
+<li>„relacja <span class="math inline">\((\mathbb{R}^\mathbb{N}, \unlhd)\)</span> jest przechodnia”:<br />
+mamy funkcje <span class="math inline">\(f, g, h \in \mathbb{R}^\mathbb{N}\)</span><br />
+chcemy pokazać, że <span class="math inline">\(f \unlhd g \land g \unlhd h \implies f \unlhd h\)</span><br />
+mamy: <span class="math display">\[
+(\exists C_1)(\exists N_1)(\forall n \ge N_1)(|f(n)| \le C_1|g(n)|)
+\\
+(\exists C_2)(\exists N_2)(\forall n \ge N_2)(|g(n)| \le C_2|h(n)|)
+\]</span> weźmy taki <span class="math inline">\(N_3\)</span>, że <span class="math inline">\(N_3 \ge N_2 \land N_3 \ge N_1\)</span><br />
+wówczas: <span class="math display">\[
+(\exists C_1)(\exists N_3)(\forall n \ge N_3)(|f(n)| \le C_1|g(n)|)
+\\
+(\exists C_2)(\exists N_3)(\forall n \ge N_3)(|g(n)| \le C_2|h(n)|)
+\]</span> skoro <span class="math display">\[
+|f(n)| \le C_1 |g(n)| \land |g(n)| \le C_2 |h(n)|
+\]</span> oraz obie zmienne <span class="math inline">\(C_1, C_2 &gt; 0\)</span> to mamy: <span class="math display">\[
+C_1 \cdot |g(n)| \le C_2 \cdot C_1 \cdot |h(n)|
+\]</span> wtedy: <span class="math display">\[
+|f(n)| \le C_3 |h(n)|
+\]</span> gdzie <span class="math inline">\(C_3 = C_2 \cdot C_1\)</span> co kończy dowód. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Przypomnij standardową metodę służącą do produkowania częściowego porządku z preporządku (zabijającą kontrprzykłady na brak słabej antysymetrii).</p>
+</blockquote>
+<p><span class="math inline">\(f,g \in \mathbb{R}^\mathbb{N}\)</span></p>
+<p><span class="math inline">\(f \equiv g \Leftrightarrow f \unlhd g \land g \unlhd f\)</span></p>
+<p><span class="math inline">\(X = \mathbb{R}^\mathbb{N}_{/\equiv}\)</span></p>
+<p>Nowa relacja <span class="math inline">\(\preccurlyeq\)</span> na <span class="math inline">\(X\)</span>:<br />
+<span class="math inline">\(f, g \in \mathbb{R}^\mathbb{N}\)</span><br />
+<span class="math inline">\([f]_\equiv \preccurlyeq [g]_\equiv \Leftrightarrow f \unlhd g\)</span>.<br />
+// To działa!</p>
+<hr />
+<h2 id="zadanie-4">Zadanie 4</h2>
+<blockquote>
+<p>Czy porządek <span class="math inline">\(\unlhd\)</span> jest liniowy? Czy porządek <span class="math inline">\(\unlhd\)</span> ograniczony do funkcji rosnących jest liniowy?</p>
+</blockquote>
+<p>Pytanie jest o to, czy <span class="math inline">\(\forall f,g \in \mathbb{R}^\mathbb{N}:~ f \unlhd g \lor g \unlhd f\)</span>?</p>
+<div class="figure">
+<img src="4.wykres-1.png" alt="wykres-1" />
+<p class="caption">wykres-1</p>
+</div>
+<p>czarna: <span class="math display">\[
+f(n) =
+\begin{cases}
+0, &amp; n\in 2\mathbb{N}\\
+n, &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<p>czerwona: <span class="math display">\[
+g(n) =
+\begin{cases}
+0, &amp; n \in (2\mathbb{N}+1)\\
+n, &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<p>(*) Czy można wskazać <span class="math inline">\(\aleph_0\)</span> funkcji parami nieporównywalnych?</p>
+<p>(**) Continuum?</p>
+<hr />
+<p><span class="math inline">\(f(0) = 1 ~~~~~ g(0) = 1\)</span></p>
+<p><span class="math display">\[
+f(n+1) =
+\begin{cases}
+    f(n) + 1 &amp; \text{dla } n \in 2\mathbb{N}\\
+    f(n) + \bold{n}\cdot  g(n) &amp; \text{oth.}
+\end{cases}
+\\
+g(n+1) =
+\begin{cases}
+    g(n) + 1 &amp; \text{dla } n \in 2\mathbb{N} + 1\\
+    g(n) + \bold{n} \cdot f(n) &amp; \text{oth.}
+\end{cases}
+\]</span></p>
+<hr />
+<h2 id="zadanie-5">Zadanie 5</h2>
+<blockquote>
+<p>Pokaż, że jeśli <span class="math inline">\(f \lhd g\)</span> to istnieje funkcja <span class="math inline">\(h\)</span> taka, że <span class="math inline">\(f \lhd h \lhd g\)</span>. (<span class="math inline">\(f \lhd g\)</span> oznacza, że <span class="math inline">\(f \unlhd g\)</span> oraz <span class="math inline">\(\neg g \unlhd f\)</span>.)</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\((\exists c \exists N)(\forall n &gt; N)(|c \cdot g(n)| \ge |f(n)|)\)</span></p></li>
+<li><p><span class="math inline">\((\forall c \forall N)(\exists n &gt; N)(|c \cdot f(n)| &lt; |g(n)|)\)</span></p></li>
+<li><p><span class="math inline">\(\sqrt{fg}(n)\)</span></p></li>
+<li><p><span class="math inline">\((\exists c \exists N)(\forall n &gt; N)(|c \cdot g(n)| \ge |\sqrt{fg}(n)|)\)</span> (mamy z 1.)</p></li>
+<li><p><span class="math inline">\(|c^2 \cdot g(n)| \ge |f(n)|\)</span></p></li>
+<li><p>mamy już <span class="math inline">\(g \unrhd \sqrt{fg}\)</span></p></li>
+<li><p>teraz pokazujemy <span class="math inline">\(g \cancel{\unlhd} \sqrt{fg}\)</span></p></li>
+<li><p><span class="math inline">\((\forall c \forall N)(\exists n \ge N)(|c \cdot \sqrt{fg}(n)| &lt; |g(n)|)\)</span></p></li>
+<li><p><span class="math inline">\(|c^2 \cdot f(n)| &lt; |g(n)|\)</span> (mamy z 2.)</p></li>
+</ol>
+<p>Podobnie pokazujemy <span class="math inline">\(\sqrt{fg} \unrhd f\)</span>, ale <span class="math inline">\(\sqrt{fg} \cancel{\unlhd} f\)</span><br />
+<span class="math inline">\(\blacksquare\)</span></p>
+<p>Nieprawda, że jeśli <span class="math inline">\(0 \le f, g \le 1\)</span>, to <span class="math inline">\(f \equiv g\)</span>, np.: <span class="math inline">\(\frac{1}{n} \rhd \frac{1}{n^2}\)</span></p>
+<p>To powiedziawszy, rozwiązanie <span class="math inline">\(\sqrt{f\cdot g}\)</span> jest OK niezależnie od tego, czy <span class="math inline">\(f,g \le 1\)</span>, czy nie. Istotna jest monotoniczność <span class="math inline">\(\sqrt{}\)</span>.</p>
+<h2 id="zadanie-8">Zadanie 8</h2>
+<blockquote>
+<p>Rzucamy <span class="math inline">\(n\)</span> razy kostką.</p>
+</blockquote>
+<h3 id="a">8.a)</h3>
+<blockquote>
+<p>Opisz przestrzeń probabilistyczną dla tego doświadczenia.</p>
+</blockquote>
+<p><span class="math inline">\(\Omega = \{(a_1, a_2, \dots, a_n): a_1, a_2, \dots, a_n \in \{1,2,...,6\}\}\)</span></p>
+<h3 id="b">8.b)</h3>
+<blockquote>
+<p>Zapisz precyzyjnie następujące zdarzenia<br />
+<span class="math inline">\(A =\)</span> suma oczek uzyskanych w pierwszym i drugim rzucie jest parzysta</p>
+</blockquote>
+<p><span class="math inline">\(A = \{\omega \in \Omega: a_1 + a_2 = 2k, k\in \mathbb{Z}\}\)</span></p>
+<blockquote>
+<span class="math inline">\(B =\)</span> suma oczek uzyskanych we wszystkich rzutach jest parzysta<br />
+
+</blockquote>
+<p><span class="math inline">\(B = \{\omega \in \Omega: \sum_{i=1}^{n} a_i = 2k, k\in \mathbb{Z}\}\)</span></p>
+<blockquote>
+<p><span class="math inline">\(C =\)</span> suma oczek uzyskanych w rzutach parzystych jest taka sama jak w rzutach nieparzystych.</p>
+</blockquote>
+<p><span class="math inline">\(C = \left\{\omega \in \Omega: \sum_{i=1}^{\lfloor \frac{n}{2}\rfloor}a_{2i} = \sum_{i=1}^{\lfloor \frac{n}{2}\rfloor}a_{2i+1} \right\}\)</span></p>
+<hr />
+<h3 id="c">8.c)</h3>
+<blockquote>
+<p>Znajdź prawdopodobieństwa zdarzeń.</p>
+</blockquote>
+<p><span class="math display">\[
+P(A) = \frac{3^2 + 3^2}{36} = \frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+P(B) = \begin{cases}
+\frac{\frac{1}{2} + 1}{n+1} &amp; \text{dla } n \text{ parzystych}\\
+\frac{\frac{n+1}{2}}{n+1} = \frac{1}{2} &amp; \text{dla } n \text{ nieparzystych}
+\end{cases}
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th>liczba nieparzystych cyfr</th>
+<th>liczba parzystych cyfr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(n\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(n-1\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\dots\)</span></td>
+<td><span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(n\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><span class="math inline">\(P(\sum_{i=1}^{n+1} x_i \in 2\mathbb{N}) = P\left(\left(\sum_{i=1}^{n} x_i \in 2\mathbb{N} \land x_{n+1} \in 2\mathbb{N}\right) \lor \left(\sum_{i=1}^{n} \in 2\mathbb{N} + 1 \land x_{n+1} \in 2\mathbb{N} + 1\right)\right)\)</span></p>
+<p>Założenie indukcyjne: <span class="math inline">\(P\left(\sum_{i=1}^{n}x_i \in 2\mathbb{N}\right) = \frac{1}{2}\)</span></p>
+<hr />
+<h3 id="d">8.d)</h3>
+<p><span class="math inline">\(\mathrm{E}X = \mathrm{E}X_1 + \mathrm{E}X_2 + \dotsb + \mathrm{E}X_n = n(1 + \frac{1}{6} + 2 \cdot \frac{1}{6} + \dotsb + 6 \cdot \frac{1}{6}) = n \cdot 3\frac{1}{2}\)</span></p>
+<p><span class="math inline">\(\mathrm{E}Y = \mathrm{E}Y_1 + \mathrm{E}Y_2 + \dotsb + \mathrm{E}Y_n = n\cdot (0 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 0 \cdot \frac{1}{6} + \dotsb + 6\cdot \frac{1}{6} = 2\cdot n\)</span></p>
+<hr />
+<h3 id="e">8.e)</h3>
+<p><span class="math inline">\(\mathrm{E}X^2_i = 1^2 \cdot \frac{1}{6} + 2^2 \cdot \frac{1}{6} + \dotsb + 6^2 \cdot \frac{1}{6} = \frac{91}{6}\)</span><br />
+<span class="math inline">\(\mathrm{Var}X_i = \frac{91}{6} - \left(\frac{21}{6}\right)^2 = \frac{35}{12}\)</span><br />
+<span class="math inline">\(\mathrm{Var}X = \mathrm{E}X^2 - (\mathrm{E}X)^2 = n\cdot \frac{35}{12}\)</span></p>
+<p><span class="math inline">\(\mathrm{E}Y^2_i = 0^2 \cdot \frac{1}{6} + 2^2 \cdot \frac{1}{6} + \dotsb + 6^2 \cdot \frac{1}{6} = \frac{56}{6}\)</span><br />
+<span class="math inline">\(\mathrm{Var}Y_i = \frac{56}{6} - 2^2 = \frac{32}{6} = \frac{16}{3}\)</span><br />
+<span class="math inline">\(\mathrm{Var}Y = \frac{16}{3}n\)</span></p>
+</body>
+</html>

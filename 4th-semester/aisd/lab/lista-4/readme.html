@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="lista-4">Lista-4</h1>
+<h2 id="zadanie-1">Zadanie 1</h2>
+<blockquote>
+<p>Napisz program, który symuluje działanie wybranych struktur danych przechowujących ciągi znaków (przyjmujemy porządek leksykograficzny). Program powinien przyjmować jako parametr wejściowy typ struktury: - <code>--type bst</code> drzewo BST - <code>--type rbt</code> drzewo czerwono-czarne - <code>--type hmap</code> tablice hashujące z metodą łańcuchową dla przechowywanych w jednej komórce danych długości mniejszej niż <span class="math inline">\(n_t\)</span> oraz z wykorzystaniem samoorganizujących się drzew binarnych (np. drzew czerwono-czarnych) dla przechowywanych w jednej komórce danych o długości większej niż <span class="math inline">\(n_t\)</span>. Przeprowadź testy mające na celu oszacowanie <span class="math inline">\(n_t\)</span>, dla którego zysk w czasie dostępu do elementu uzasadnia nadkład wykonywanych operacji balansujących. Dobierz liczbę komórek <span class="math inline">\(m\)</span> odpowiednio do wybranej funkcji hashującej.</p>
+<p>Każda ze struktur powinna udostępniać przynajmniej poniższe funkcjonalności podawane na standardowym wejściu - insert <span class="math inline">\(s\)</span> – wstaw do struktury ciąg <span class="math inline">\(s\)</span> (jeśli na początku lub końcu ciągu znajduje się znak spoza klasy [a-zA-Z] to znak ten jest usuwany) - load <span class="math inline">\(f\)</span> – dla każdego oddzielonym białym znakiem, wyrazu z pliku <span class="math inline">\(f\)</span> wykonaj operację insert, lub zwróć informację o nieistniejącym pliku - delete <span class="math inline">\(s\)</span> – jeśli struktura nie jest pusta i dana wartość <span class="math inline">\(s\)</span> istnieje, to usuń element <span class="math inline">\(s\)</span> - find <span class="math inline">\(s\)</span> – sprawdź czy w strukturze przechowywana jest wartość <span class="math inline">\(s\)</span> (jeśli tak to wypisz <span class="math inline">\(1\)</span>, w p. p. wypisz <span class="math inline">\(0\)</span>) - min – wypisz najmniejszy element znajdujący się w strukturze lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię - max – wypisz największy element znajdujący się w strukturze lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię - successor <span class="math inline">\(k\)</span> – wypisz następnik elementu <span class="math inline">\(k\)</span> lub, jeśli on nie istnieje (np. struktura nie zawiera <span class="math inline">\(k\)</span>, <span class="math inline">\(k\)</span> nie ma następników, struktura nie zachowuje porządku), pustą linię - inorder – wypisz elementy drzewa w posortowanej kolejności (od elementu najmniejszego do największego) lub, dla struktur pustych oraz nie zachowujących porządku (np. hmap), pustą linię</p>
+<p>Wynik powinien być wypisywany na standardowe wyjście, a na standardowym wyjściu błędów powinny być wypisywane w kolejności: czas działania całego programu, liczba operacji każdego typu, maksymalna liczba elementów (maksymalne zapełnienie struktury w czasie działania programu), końcowa liczba elementów w strukturze. Przeprowadź eksperymenty pozwalające oszacować średni czas działania każdej z operacji.</p>
+<p><strong>Wejście</strong><br />
+Wejście składa się z <span class="math inline">\(n+1\)</span> linii. W pierwszej, znajduje się liczba <span class="math inline">\(n\)</span> określająca liczbę wykonywanych operacji, w liniach 2-<span class="math inline">\((n+1)\)</span> znajdują się kolejne operacji zgodnie z ich specyfikacją. Program może wykorzystywać więcej niż jeden wątek, jednak operacje muszę być wykonane w zadanej kolejności.<br />
+Długość pojedynczego ciągu znaków nie przekracza 100, natomiast <span class="math inline">\(n+1\)</span> nie przekracza zakresu Integera.</p>
+<p><strong>Wyjście</strong><br />
+Wyjście składa się z <span class="math inline">\(k \le n\)</span> linii, będących wynikami kolejnych operacji podanych na wejściu.</p>
+<p><strong>Przykład</strong> Przykładowe wywołanie</p>
+<pre><code>./main --type rbt &lt;./input &gt;out.res</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>input</th>
+<th>out.res</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>17</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>max</td>
+<td>a aaa ab b</td>
+</tr>
+<tr class="odd">
+<td>insert aaa</td>
+<td>ab</td>
+</tr>
+<tr class="even">
+<td>insert a</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>insert b</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>insert ab</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>inorder</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>delete a</td>
+<td>aaa</td>
+</tr>
+<tr class="odd">
+<td>delete b</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>max</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>load sample.txt</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>find three</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>delete three</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>find three</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>find Three</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>delete Three</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>find Three</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>min</p>
+</blockquote>
+<p>Plik wykonywalny <code>./main.py</code> jest rozwiązaniem tego zadania. W plikach <code>bst.py</code>, <code>rbt.py</code> oraz <code>hash_tables.py</code> zawarte są implementacje poszczególnych struktur danych.</p>
+<h3 id="szacowanie-czasu-działania-każdej-z-operacji">Szacowanie czasu działania każdej z operacji</h3>
+<p>Plik <code>dict-partial.txt</code> zawiera część słownika <code>dict.txt</code>. Niniejszy plik wykorzystałem do zmierzenia średniego czasu wykonywania poszczególnych operacji.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>insert</code><br />
+Zmierzenie polegało na wykonaniu operacji <code>load dict-partial.txt</code> i podzieleniu wartości czasu działania programu oraz wartości liczby elementów w strukturze.</p>
+<p>Dla BST: <code>3,89406 e-4</code> sekundy<br />
+Dla RB-Tree: <code>2,6235 e-5</code> sekund<br />
+Dla HashMap: <code>1,2254 e-5</code> sekund</p></li>
+<li><p><code>delete</code><br />
+Zmierzenie polegało na wykonaniu operacji <code>load dict-partial.txt</code>, usunięciu kilku wartości ze struktury oraz podzieleniu wartości czasu działania dla operacji <code>delete</code> przez liczbę wykonania tej operacji.</p>
+<p>Dla BST: <code>2,543259 e-3</code> sekundy<br />
+Dla RB-Tree: <code>1,62268 e-4</code> sekundy<br />
+Dla HashMap: <code>9,1505 e-5</code> sekundy</p></li>
+<li><p><code>find</code><br />
+Zmierzenie polegało na wykonaniu operacji <code>load dict-partial.txt</code>, wykonania operacji <code>find</code> dla kilku wartości ze struktury oraz podzieleniu wartości czasu działania dla operacji <code>find</code> przez liczbę wykonania tej operacji.</p>
+<p>Dla BST: <code>2,442122 e-3</code> sekundy<br />
+Dla RB-Tree <code>1,45102 e-4</code> sekundy<br />
+Dla HashMap: <code>1,0548258 e-2</code> sekundy</p></li>
+<li><p><code>min</code> oraz <code>max</code><br />
+Zmierzenie polegało na wykonaniu operacji <code>load dict-partial.txt</code>, wykonania operacji <code>min</code> oraz <code>max</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">.</th>
+<th align="center">BST</th>
+<th align="center">RB-Tree</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><code>min</code></td>
+<td align="center"><code>4,839897155761719 e-5</code></td>
+<td align="center"><code>2,02178955078125 e-5</code></td>
+</tr>
+<tr class="even">
+<td align="right"><code>max</code></td>
+<td align="center"><code>2,059459686279297 e-3</code></td>
+<td align="center"><code>6,461143493652344 e-5</code></td>
+</tr>
+</tbody>
+</table>
+<p>Warto zaznaczyć, że dla operacji <code>min</code> mamy taki sam rząd wielkości czasu operacji. Wynika to z tego, że dodawaliśmy elementy ze słownika cały czas w tej samej kolejności. Tak duża różnica pomiędzy operacjami <code>min</code> oraz <code>max</code> jest wynikiem braku balansowania drzewa. W RB-Tree nie ma takiego problemu.</p></li>
+<li><p><code>successor</code><br />
+Zmierzenie polegało na wykonaniu operacji <code>load dict-partial.txt</code>, wykonania operacji <code>successor</code> dla kilku wartości ze struktury oraz podzieleniu wartości czasu działania dla operacji <code>successor</code> przez liczbę wykonania tej operacji.</p>
+<p>BST: <code>1,879787 e-3</code> sekundy<br />
+RB-Tree: <code>1,52254 e-4</code> sekundy</p></li>
+</ol>
+<h3 id="szacowanie-n_t">Szacowanie <span class="math inline">\(n_t\)</span></h3>
+<p>W zadaniu należało zaimplementować tablice hashujące z metodą łańcuchową dla danych długości mniejszej niż <span class="math inline">\(n_t\)</span> oraz z wykorzystaniem RB-Trees dla danych długości większej od <span class="math inline">\(n_t\)</span>.</p>
+<p>Pod-zadaniem tutaj jest oszacowanie wartości zmiennej <span class="math inline">\(n_t\)</span>. W pliku <code>ex-1-hash-table-chained-tests.py</code> znajdują się podstawowe testy weryfikujące dla jakiej liczby elementów w danej komórce RB-Tree ma lepszy czas wstawiania nowego elementu oraz kiedy RB-Tree ma lepszy czas podczas wyszukiwania elementu w strukturze.</p>
+<p>Przy uruchamianiu programu <code>./ex-1-hash-table-chained-test.py 80</code> można zauważyć, że podana wartość jest graniczna w przypadku czasu wstawiania nowego elementu do struktury. Dla wartości <span class="math inline">\(n_t\)</span> większych od <code>80</code> RB-Tree jest zawsze lepsze od listy jednokierunkowej, podczas gdy dla wartości mniejszych jest na odwrót.</p>
+<p>Jeśli chodzi o czas wyszukiwania elementu w strukturze dla liczby elementów większej od <code>2</code> RB-Tree jest zawsze lepsze.</p>
+<p>Biorąc pod uwagę te wyniki należy wybrać wartość <span class="math inline">\(n_t\)</span> dla jakiej <code>HashTable</code> będzie działać najszybciej. Jeśli mamy dużo operacji <code>insert</code> wartość <span class="math inline">\(n_t\)</span> bliższa <code>80</code> będzie lepszym wyborem, kiedy dla dużej liczby operacji <code>find</code> wartość <span class="math inline">\(n_t\)</span> bliższa <code>2</code> będzie lepszym wyborem.</p>
+<p>Dla uproszczenia w programie wybrałem <span class="math inline">\(n_t = 41\)</span>. Chociaż można zdecydować się na dynamicznie dobieranie <span class="math inline">\(n_t\)</span> i decydować się na zmianę struktury danej komórki w zależności od liczby wykonanych operacji <code>find</code> oraz <code>insert</code>.</p>
+<hr />
+<h2 id="zadanie-2">Zadanie 2</h2>
+<blockquote>
+<p>Wykonaj i zaprezentuj eksperymenty, które pozwolą postawić tezę na temat dolnego ograniczenia, średniej oraz górnego ograniczenia na liczbę porównań między elementami, wykonywaną przez procedurę find w każdej ze struktur. Testy wykonaj na liście unikatowych ciągów (np. słownik) oraz takiej, gdzie możliwe są powtórzenia.</p>
+</blockquote>
+<h3 id="testy-na-słowniku">Testy na słowniku</h3>
+<p>W celu zmniejszenia czasu oczekiwania ładowania wartości ze słownika do BST stworzyłem osobny plik <code>dict-partial.txt</code> zawierający część słów ze słownika <code>dict.txt</code>. Nie ma to większego wpływu na wykonywane eksperymenty.</p>
+<p>Plik testowy <code>tests/ex-2-dict-avg.txt</code> użyłem do oszacowania średniej liczby porównań, kiedy plik <code>tests/ex-2-base.txt</code> użyłem do szukania ograniczeń górnych i dolnych.</p>
+<ol style="list-style-type: decimal">
+<li><p>BST:</p>
+<p>W przypadku wyszukiwania wartości mniejszej niż wartość korzenia w drzewie wypełnionym po kolei (rosnąco) słowami ze słownika (będzie to pierwsze słowo ze słownika w drzewie bez samo-balansowania) liczba porównań wynosi oczywiście <code>1</code>, bo szukana wartość nie istnieje w drzewie a poszukiwania kończą się na odkryciu, że lewym potomkiem korzenia drzewa jest <code>NIL</code>.</p>
+<p>Wyszukując słowo bliższe końcowym słowom ze słownika można zauważyć, że liczba porównań znacznie rośnie. Przykładowo wyszukiwanie słowa <code>zloty</code> generuje aż <code>2139</code> porównań.</p>
+<p>Powyższe rezultaty wynikają z własności BST. Bez samo-balansowania wstawiane słowa ze słownika implikują bardzo długie gałęzie drzewa.</p>
+<p>Średnia liczba porównań wynosi <code>1365,57</code>.</p></li>
+<li><p>RB-Tree:</p>
+<p>Wyszukiwanie słów z początku słownika zajmuje <code>10</code> porównań. Kiedy wyszukiwanie słów z końca słownika zajmuje <code>20</code> porównań.<br />
+<em>(Obie powyższe wartości są mniejsze niż <code>2*\lg(n+1)</code> więc mamy pewność co do zachowania własności RB-Tree.)</em></p>
+<p>Średnia liczba porównań wynosi <code>13,14</code>.</p></li>
+<li><p>HashTable:</p>
+<p>Wyszukiwanie jakichkolwiek słów ze słownika zajmuje maksymalnie 2 porównania, a w większości przypadków zajmuje tylko jedno porównanie. Oznacza to, że mamy pewne kolizje słów podobnych do siebie, ale tych kolizji nie mamy tak dużo.</p>
+<p>Średnia liczba porównań wynosi <code>1,43</code>.</p></li>
+</ol>
+<h3 id="testy-na-lotr.txt">Testy na <code>lotr.txt</code></h3>
+<p>Testy wykonywałem dla pierwszych 5000 linijek oryginału pliku <code>lotr.txt</code> z powodu wolnego wstawiania elementów dla BST.</p>
+<p>Plik testowy <code>tests/ex-2-lotr-avg.txt</code> użyłem do oszacowania średniej liczby porównań, kiedy plik <code>tests/ex-2-base.txt</code> użyłem do szukania ograniczeń górnych i dolnych.</p>
+<ol style="list-style-type: decimal">
+<li><p>BST:</p>
+<p>Wyszukiwanie pierwszego słowa z pliku (słowo <code>SPECIAL</code>) zajmuje oczywiście tylko jedno porównanie jako, że w BST nie zachodzą rotacje. Wyszukiwanie słowa <code>your</code> zajmuje 25 porównań i jest to największa liczba porównań, jaką udało mi się uzyskać.</p>
+<p>Dla wyszukiwania kilkunastu wybranych słów średnia liczba porównań wynosi około <code>17,79</code>.</p></li>
+<li><p>RB-Tree:</p>
+<p>Największa liczba porównań jaką udało mi się znaleźć to <code>23</code>.</p>
+<p>Dla wyszukiwania kilkunastu wybranych słów średnia liczba porównań wynosi około <code>11,36</code>.</p></li>
+<li><p>HashTable:</p>
+<p>Nie udało mi się znaleźć większej liczby porównań niż 2.</p>
+<p>Dla wyszukiwania kilkunastu wybranych słów tylko raz liczba porównań wynosiła 2 – przez co średnia wynosi <code>1,07</code>.</p></li>
+</ol>
+</body>
+</html>

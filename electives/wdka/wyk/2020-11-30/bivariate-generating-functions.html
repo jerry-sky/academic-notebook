@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="bivariate-generating-functions-bgf">Bivariate generating functions (BGF)</h1>
+<p><em>(2020-11-30, 2020-12-07)</em></p>
+<ul>
+<li><a href="#1-klasa-kombinatoryczna-zmodyfikowana">1. Klasa kombinatoryczna (zmodyfikowana)</a></li>
+<li><a href="#2-przykład">2. Przykład</a></li>
+<li><a href="#3-przykład">3. Przykład</a></li>
+<li><a href="#4-liczba-elementów-wagi-a_n">4. Liczba elementów wagi <span class="math inline">\(a_n\)</span></a></li>
+<li><a href="#5-interpretacja-graficzna">5. Interpretacja graficzna</a>
+<ul>
+<li><a href="#51-przykład">5.1. Przykład</a></li>
+</ul></li>
+<li><a href="#6-przykład-ciągi-binarne">6. Przykład (ciągi binarne)</a></li>
+<li><a href="#7-pgf-probability-generating-functions">7. PGF (Probability generating functions)</a>
+<ul>
+<li><a href="#71-wartość-oczekiwana">7.1. Wartość oczekiwana</a>
+<ul>
+<li><a href="#711-przykład">7.1.1. Przykład</a></li>
+</ul></li>
+<li><a href="#72-przykład">7.2. Przykład</a></li>
+<li><a href="#73-wariancja">7.3. Wariancja</a></li>
+<li><a href="#74-przykłady">7.4. Przykłady</a></li>
+<li><a href="#75-przykład">7.5. Przykład</a>
+<ul>
+<li><a href="#751-liczby-stirlinga-partycyjne-ii-rodzaju">7.5.1. Liczby Stirlinga partycyjne (II rodzaju)</a></li>
+<li><a href="#752-liczby-stirlinga-permutacyjne-i-rodzaju">7.5.2. Liczby Stirlinga permutacyjne (I rodzaju)</a></li>
+<li><a href="#753-jeszcze-jedna-maszynka">7.5.3. Jeszcze jedna maszynka</a></li>
+<li><a href="#754-idea">7.5.4. Idea</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="klasa-kombinatoryczna-zmodyfikowana">1. Klasa kombinatoryczna (zmodyfikowana)</h2>
+<p>Tym razem oprócz funkcji rozmiaru <span class="math inline">\(|\cdot|\)</span> mamy drugą funkcję wagi <span class="math inline">\(\chi\)</span>. Czyli mamy trójkę<br />
+<span class="math inline">\(\mathcal{A} = (A, |\cdot|, \chi)\)</span><br />
+z BGF <span class="math inline">\(A(z,u) = \sum_{n,k} a_{n,k} z^n u^k\)</span>,<br />
+gdzie <span class="math inline">\(a_{n,k} = \left\lvert \left\{a \in A: |a| = n \land \chi(a) = k\right\} \right\rvert\)</span>.</p>
+<ul>
+<li><span class="math inline">\(A(z,u) = \sum_{a \in A} z^{|a|} u^{\chi(a)}\)</span></li>
+</ul>
+<hr />
+<h2 id="przykład">2. Przykład</h2>
+<p>Mamy elementy: - waga 1kg, cena 3zł, - waga 1kg, cena 2zł, - waga 2kg, cena 10zł.</p>
+<p>Wówczas BGF: <span class="math inline">\(F(z,u) = z u^3 + zu^2 + z^2 u^{10}\)</span>.</p>
+<hr />
+<h2 id="przykład-1">3. Przykład</h2>
+<p>Mamy alfabet <span class="math inline">\(\{0,1\}\)</span> z funkcjami wag: - <span class="math inline">\(|\cdot|\)</span> — długość ciągu, - <span class="math inline">\(\chi\)</span> — waga Hamminga.</p>
+<p><span class="math display">\[
+W(z,u) = \sum_{k,n}\binom{n}{k} z^n u^k = \sum_{n} z^n \left( \sum_{k} \binom{n}{k} u^k \right)=\\
+= \sum_n z^n (1 + u)^n = \frac{1}{1 - z(1+u)}
+\]</span></p>
+<p>Ustalmy sobie pewne <span class="math inline">\(k\)</span>: <span class="math display">\[
+W^{(k)}(z) = \sum_n \binom{n}{k} z^n = \frac{z^k}{(1-z)^{k+1}}\\
+W(z,u) = \sum_k u^k \cdot \frac{z^k}{(1-z)^{k+1}} = \frac{1}{1-z} \sum_k \frac{(zu)^k}{(1-z)^k} = \frac{1}{1-z} \cdot \frac{1}{1 - \frac{zu}{1-z}} =\\
+= \frac{1}{1-z(1+u)}
+\]</span></p>
+<hr />
+<h2 id="liczba-elementów-wagi-a_n">4. Liczba elementów wagi <span class="math inline">\(a_n\)</span></h2>
+<ul>
+<li><span class="math inline">\(A(z,u) = \sum_{n,k} a_{n,k} z^n u^k\)</span></li>
+<li><span class="math inline">\(a_n = \left\lvert \left\{ a \in A: |a| = n \right\} \right\rvert\)</span></li>
+<li><span class="math inline">\(a_n = [z^n] A(z,1) = [z^n] \sum_{n,k} a_{n,k} \cdot z^n = \sum_{k} a_{n,k}\)</span></li>
+</ul>
+<hr />
+<h2 id="interpretacja-graficzna">5. Interpretacja graficzna</h2>
+<p>Mając <span class="math inline">\(F(z,u) = \sum_{n,k} f_{n,k} z^n u^n\)</span> możemy podzielić na części: - <span class="math inline">\(f_n(u) = \sum_k f_{n,k} u^k\)</span> gdzie <span class="math inline">\(n\)</span> jest stałą - <span class="math inline">\(f^{&lt;k&gt;}(z) = \sum_{n} f_{n,k} z^n\)</span> gdzie <span class="math inline">\(k\)</span> jest stałą</p>
+<p>Czyli dzielimy tę klasę na warstwy, przy czym możemy patrzeć na to z dwóch perspektyw — <span class="math inline">\(n\)</span> i <span class="math inline">\(k\)</span> (jak dwie złączone ze sobą klasy kombinatoryczne):<br />
+<img src="interpretacja-graficzna.png" /></p>
+<p>Zatem <span class="math display">\[
+\sum_n f_n(u) z^n = \sum_k u^k f^{&lt;k&gt;}(z) = F(z,u).
+\]</span></p>
+<h3 id="przykład-2">5.1. Przykład</h3>
+<p><em>Kontynuacja <a href="#2-przykład">przykładu wcześniejszego</a></em></p>
+<p>Przez to, że <span class="math inline">\(F(u,z) = z u^2 + z u^3 + z^2 u^{10}\)</span> mamy: - <span class="math inline">\(M^{&lt;1&gt;}(z) = 0\)</span> - <span class="math inline">\(M^{&lt;2&gt;}(z) = z\)</span> - <span class="math inline">\(M_1(u) = u^2 + u^3\)</span></p>
+<hr />
+<h2 id="przykład-ciągi-binarne">6. Przykład (ciągi binarne)</h2>
+<p><em>Kontynuacja <a href="#3-przykład">przykładu wcześniejszego</a></em></p>
+<p>Mamy alfabet <span class="math inline">\(\{0,1\}\)</span> ze słowami oczywiście <span class="math inline">\(x \in \{0,1\}^*\)</span>. Definiujemy funkcje wag: - <span class="math inline">\(|\cdot|\)</span> — długość ciągu, - <span class="math inline">\(\chi(x)\)</span> — waga Hamminga (liczba jedynek).</p>
+<p>Czyli np. <span class="math inline">\(|010| = 3,\, \chi(010) = 1\)</span>.</p>
+<p>Mamy <span class="math inline">\(W(z,u) = \sum_{n,k} \binom{n}{k} u^k z^n\)</span>, jako że ciągów długości <span class="math inline">\(n\)</span> i wadze Hamminga <span class="math inline">\(k\)</span> jest <span class="math inline">\(\binom{n}{k}\)</span> (wybieramy <span class="math inline">\(k\)</span> jedynek).</p>
+<p>Warto zauważyć, że <span class="math display">\[
+W(z,u) = \sum_{n\ge0} (1+u)^n \cdot z^n
+\]</span> bo przecież mamy tam zagnieżdżoną znaną równość <span class="math display">\[
+\sum_{k=0}^n \binom{n}{k}u^k 1^{n-k} = (1 + u)^k
+\]</span> gdzie to <span class="math inline">\(k\)</span> jest zależne od naszego <span class="math inline">\(n\)</span>. Zakładamy, że <span class="math inline">\(\binom{n}{k}\)</span> dla <span class="math inline">\(k &gt; n\)</span> jest równe zero, więc możemy to włożyć właśnie do naszej funkcji.</p>
+<p>Dalej <span class="math display">\[
+\sum_{n\ge0} (1+u)^n \cdot z^n = \frac{1}{1-z(1+u)}.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(W^{&lt;k&gt;}(z) = \sum_n \binom{n}{k} z^n = \frac{z^k}{(1-z)^{k+1}}\)</span> gdzie <span class="math inline">\(k\)</span> jest stałe</li>
+<li><span class="math inline">\(W(z,u) = \sum_{k} u^k W^{&lt;k&gt;}(z) = \sum_k \frac{(uz)^k}{(1 - z)^{k+1}} = \frac{1}{1-z} \sum_k \left( \frac{uz}{1-z} \right) = \frac{1}{1-z} \cdot \frac{1}{1 - \frac{uz}{1-z}}\)</span> a to po odpowiednich przekształceniach da nam to co wcześniej osiągnęliśmy przy <span class="math inline">\(W(z,u)\)</span>.</li>
+</ul>
+<hr />
+<h2 id="pgf-probability-generating-functions">7. PGF (Probability generating functions)</h2>
+<p>Mamy pewne prawdopodobieństwa <span class="math inline">\(p_0,p_1,\dots\)</span>. Funkcja PGF ma postać <span class="math inline">\(\sum p_i u^i\)</span> gdzie <span class="math inline">\(p_i = \operatorname{Pr}[X = i]\)</span>.</p>
+<p>Inaczej <span class="math inline">\(\operatorname{Pr}_{(n),x} [\chi(x) = k] = \frac{a_{n,k}}{a_n}\)</span> gdzie <span class="math inline">\(n\)</span> to jest oczywiście pewna stała. Czyli <em>jakie jest prawdopodobieństwo, że wylosowane <span class="math inline">\(x\)</span> będzie akurat wagi <span class="math inline">\(k\)</span></em>.<br />
+Równoważny zapis: <span class="math display">\[
+\operatorname{Pr}_{(n),x} [\chi(x) = k] = \frac{[u^k]\left( [z^n](A(z,u)) \right)}{[z^n] A(z,1)},
+\]</span> a co za tym idzie <span class="math display">\[
+\sum_k \operatorname{Pr}[\chi(x) = k] u^k = \frac{[z^n] A(z,u)}{[z^n] A(z,1)}.
+\]</span></p>
+<hr />
+<h3 id="wartość-oczekiwana">7.1. Wartość oczekiwana</h3>
+<p>Wszystkie momenty: <span class="math display">\[
+\mathbb{E}\big(\chi (\chi -1) \dots \chi (\chi - 1) (\chi - r+1)\big) =
+\\[10pt]
+= \frac{[z^n] \partial^r_u A(z,u)|_{u=1}}{[z^n] A(z,1)}
+\]</span> gdzie <span class="math inline">\(\chi\)</span> jest zmienną losową oznaczającą wartość funkcji <span class="math inline">\(\chi(x)\)</span> dla <span class="math inline">\(x\)</span> losowy o rozmiarze <span class="math inline">\(|x| = n\)</span>.</p>
+<p>Patrzymy na wartość oczekiwaną <span class="math display">\[
+\operatorname{E}(\chi) = \frac{[z^n] \partial_u A(z,u) |_{u=1}}{[z^n] A(z,1)}
+\]</span></p>
+<p>Mając <span class="math inline">\(A(z,u) = \sum_{n,k} a_{n,k} z^n u^k\)</span> liczymy pochodną: <span class="math display">\[
+\partial_u A(z,u) = \sum_{n,k} k a_{n,k} z^n u^{k-1}\\
+\partial_u A(z,1) = \sum_{n,k} k a_{n,k} z^n
+\]</span> czyli <span class="math display">\[
+[z^n]\partial_u A(z,1) = \sum_k k a_{n,k}
+\]</span></p>
+<p>i jeszcze <span class="math display">\[
+[z^n] A(z,1) = \sum_k a_{n,k}.
+\]</span></p>
+<h4 id="przykład-3">7.1.1. Przykład</h4>
+<p><em>Kontynuacja <a href="#2-przykład">przykładu wcześniejszego</a></em></p>
+<p>Np. dla masy 1kg średnia cena (oczekiwana wartość) będzie wynosić <span class="math inline">\(\frac{1 \cdot 2 + 1 \cdot 3}{2} = 2.5\)</span>.</p>
+<hr />
+<h3 id="przykład-4">7.2. Przykład</h3>
+<p><em>Kontynuacja <a href="#3-przykład">przykładu wcześniejszego</a></em></p>
+<p>Mamy <span class="math inline">\(W(z,u) = \frac{1}{1 - z(1+u)}\)</span>.</p>
+<p>Wówczas <span class="math display">\[
+\operatorname{E}(\chi) = \frac{[z^n] \partial_u W(z,u) |_{u=1}}{[z^n] W(z,1)} = \frac{[z^n] \frac{z}{(1-2z)^2}}{[z^n] \frac{1}{1-2z}} = \frac{2^{n-1} \cdot n}{2^n} = \frac{n}{2}
+\]</span> co się zgadza, bo liczba jedynek w losowych ciągach długości <span class="math inline">\(n\)</span> powinna być <span class="math inline">\(\frac{n}{2}\)</span>, bo może być albo <span class="math inline">\(1\)</span> albo <span class="math inline">\(0\)</span> i oba te znaki mają takie samo p-o wystąpienia.</p>
+<hr />
+<h3 id="wariancja">7.3. Wariancja</h3>
+<p>Ze <a href="#71-wartość-oczekiwana">wzoru ogólnego</a> mamy <span class="math display">\[
+\operatorname{E}(\chi^2) = \frac{[z^n] \partial^2 A(z,u) |_{u=1}}{[z^n] A(z,1)} + \frac{[z^n] \partial_u A(z,u) |_{u=1}}{[z^n] A(z,1)}
+\\[10pt]
+\operatorname{Var}(\chi) = \operatorname{E}(\chi^2) - \big(\operatorname{E}(\chi)\big)^2
+\\[10pt]
+\sigma(\chi) = \sqrt{\operatorname{Var}(\chi)} \quad (\text{odchylenie standardowe})
+\]</span></p>
+<hr />
+<h3 id="przykłady">7.4. Przykłady</h3>
+<p><a href="../../lab/lista-4/lista-4">Zadania 3. oraz 4. z listy 4. z laboratorium</a></p>
+<hr />
+<h3 id="przykład-5">7.5. Przykład</h3>
+<p>Motywacja: czasami chcielibyśmy wiedzieć ile mamy cykli w danym algorytmie w celu jego analizy.</p>
+<p>Mamy losową permutację o długości <span class="math inline">\(n\)</span>.</p>
+<p><strong><em>Ile jest w niej cykli?</em></strong></p>
+<h4 id="liczby-stirlinga-partycyjne-ii-rodzaju">7.5.1. Liczby Stirlinga partycyjne (II rodzaju)</h4>
+<p>— określa nam liczbę sposobów na jakie możemy podzielić <span class="math inline">\(n\)</span>-elementowy zbiór na <span class="math inline">\(k\)</span> niepustych podzbiorów. <span class="math display">\[
+{n \brace k}
+\]</span></p>
+<h4 id="liczby-stirlinga-permutacyjne-i-rodzaju">7.5.2. Liczby Stirlinga permutacyjne (I rodzaju)</h4>
+<p>— określa nam liczbę permutacji <span class="math inline">\(n\)</span>-elementowych o <span class="math inline">\(k\)</span> cyklach. <span class="math display">\[
+{n \brack k}
+\]</span></p>
+<h4 id="jeszcze-jedna-maszynka">7.5.3. Jeszcze jedna maszynka</h4>
+<p><span class="math display">\[
+[z^n] \frac{1}{1-z} \cdot \ln\frac{1}{1-z} = [z^n] \left( \sum_{n\ge0} z^n \right)\left( \sum_{n\ge1} \frac{z^n}{n} \right) =
+\\[10pt]
+= [z^n] \left( \sum_{k=1}^n \frac{z^n}{k} \right) = 1 + \frac{1}{2} + \frac{1}{3} + \dotsb + \frac{1}{n} = H_n
+\]</span> A wiadomo, że <span class="math display">\[
+H_n \approx \ln n + \gamma + O\left(\frac{1}{n}\right)
+\]</span> gdzie <span class="math inline">\(\gamma \approx 0.52\)</span>.</p>
+<h4 id="idea">7.5.4. Idea</h4>
+<p><span class="math display">\[
+\operatorname{CYC}(\mathcal{Z}) \leftrightarrow \ln\frac{1}{1-z}
+\]</span></p>
+<p>Permutacje o <span class="math inline">\(k\)</span> cyklach: <span class="math display">\[
+\mathcal{A} = \operatorname{SEQ}_{=k}(\operatorname{CYC}(\mathcal{Z}))
+\\[10pt]
+A(z) = \underbrace{\frac{1}{k!}}_{\text{bo nie obchodzi nas kolejność}} \left( \ln \frac{1}{1-z} \right)^k
+\]</span></p>
+<p>Czyli <span class="math display">\[
+{n \brack k} = n! [z^n] \frac{1}{k!} \left( \ln\frac{1}{1-z} \right)^k
+\]</span></p>
+<p>Nasze rozwiązanie będzie wywodzić się z <span class="math display">\[
+\operatorname{Pr}[\#\text{cykli jest }k] = \frac{{n \brack k}}{n!}.
+\]</span></p>
+<p>Mamy <span class="math display">\[
+P^{&lt;k&gt;}(z) = \frac{1}{k!} \left( \ln\frac{1}{1-z} \right)^k
+\]</span> co określa nam permutacja o dokładnie <span class="math inline">\(k\)</span> cyklach.<br />
+Dalej, chcemy wziąć wszystkie permutacje i tylko <em>oznaczyć</em> te, które mają <span class="math inline">\(k\)</span> cykli. <span class="math display">\[
+\begin{aligned}
+    P(z,u) &amp;= \sum_{k\ge0} u^k \cdot P^{&lt;k&gt;}(z) =\\
+    &amp;= \sum_{k\ge0} \frac{u^k}{k!} \left( \ln\frac{1}{1-z} \right)^k =\\
+    &amp;= \exp(u \ln\frac{1}{1-z}) =\\
+    &amp;= \left( \frac{1}{1-z} \right)^u =\\
+    &amp;= \sum_{n,k} {n \brack k} \cdot z^n u^k
+\end{aligned}
+\]</span> Oczywiście <span class="math inline">\(\chi\)</span> określa liczbę cykli.</p>
+<p>Liczymy: <span class="math display">\[
+\begin{aligned}
+    \operatorname{E}(\chi) &amp;= \frac{[z^n] \partial_u P(z,u) |_{u=1}}{[z^n] P(z,1)} =\\[10pt]
+    &amp;= \frac{[z^n]\left( \frac{1}{1-z} \right)^u \cdot \ln \frac{1}{1-z}\big|_{u=1}}{1} =\\[10pt]
+    &amp;= [z^n] \frac{1}{1-z} \ln\frac{1}{1-z}
+\end{aligned}
+\]</span> korzystamy z <a href="#753-jeszcze-jedna-maszynka">wcześniej obliczonego wyrażenia</a> i mamy <span class="math display">\[
+\operatorname{E}(\chi) = H_n \approx \ln n.
+\]</span></p>
+<hr />
+</body>
+</html>

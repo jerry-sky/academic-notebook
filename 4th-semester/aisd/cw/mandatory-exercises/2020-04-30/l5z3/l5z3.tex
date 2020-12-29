@@ -1,0 +1,105 @@
+\documentclass[14pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{xcolor}
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=3cm]{geometry}
+
+\linespread{1.3}
+
+\title{Lista 5}
+\author{Zadanie 3}
+\date{------------}
+
+\begin{document}
+
+\maketitle
+
+\section{Rozwiązanie w czasie liniowym}
+
+Wystarczy wziąć strukturę RB-Tree, w której operacje \texttt{Search}, \texttt{Insert} oraz \texttt{Delete} mają złożoność równą $O(\log n)$.
+
+Wówczas operacja \texttt{Min-Luka} działa poprzez generowanie listy elementów w drzewie w kolejności \texttt{inorder} i liniowo przegląda każdą parę elementów, znajdując najmniejszą różnicę. Jeśli znaleziono różnicę równą $0$ zwraca $0$ jako, że to najmniejsza możliwa różnica pomiędzy elementami.
+\texttt{Min-Luka} ma wtedy złożoność obliczeniową równą $O(n)$.
+
+\section{Rozwiązanie w stałym czasie}
+
+Weźmy strukturę RB-Tree, i dodajmy do definicji węzła pola:
+\begin{enumerate}
+  \item \texttt{min} — określające $\min$ z elementów w danym pod-drzewie tworzonym przez dany węzeł
+  \item \texttt{max} — określające $\max$ z elementów w danym pod-drzewie tworzonym przez dany węzeł
+  \item \texttt{local-min-diff} — określające lokalny żądany wynik operacji \texttt{Min-Luka}
+\end{enumerate}
+
+Należy zauważyć, że nowe pola można zdefiniować w następujący sposób:
+
+$\forall_{x \in T}:\\$
+
+$
+x.\texttt{min} = \begin{cases}
+  x.\texttt{left}.\texttt{min} & \text{jeśli }x.\texttt{left} \neq \mathrm{NIL}\\
+  x.\texttt{value} & \text{otherwise}
+\end{cases}
+$
+
+$\\$
+
+$
+x.\texttt{max} = \begin{cases}
+  x.\texttt{right}.\texttt{max} & \text{jeśli }x.\texttt{right} \neq \mathrm{NIL}\\
+  x.\texttt{value} & \text{otherwise}
+\end{cases}
+$
+$\\$
+
+$\texttt{tmp} = \{\infty\}$
+
+\texttt{if} $x.\texttt{left} \neq \mathrm{NIL}$:
+
+\indent\indent $\texttt{tmp} = \{x.\texttt{left}.\texttt{local-min-diff}, ~x.\texttt{value} - x.\texttt{left}.\texttt{max}\}$
+
+\texttt{if} $x.\texttt{right} \neq \mathrm{NIL}$:
+
+\indent\indent $\texttt{tmp} = \texttt{tmp} \cup \{x.\texttt{right}.\texttt{local-min-diff}, ~x.\texttt{right}.\texttt{min} - x.\texttt{value}\}$
+
+$x.\texttt{local-min-diff} = \min(\texttt{tmp})$
+
+$\\$
+
+Dzięki czemu można łatwo zauważyć, że nowo dodane pola zależą jedynie od wartości węzła lub jego bezpośrednich potomków. Wówczas korzystając z twierdzenia 14.1 z książki „Wprowadzenie do algorytmów” mamy pewność, że złożoność czasowa operacji \texttt{Insert}, \texttt{Delete} oraz \texttt{Search} nie zmieni się.
+
+Oczywiście musimy zmodyfikować standardowe operacje na RB-Tree.
+
+\subsection{\texttt{Insert}}
+
+Jedyne co musimy dodać do standardowej operacji \texttt{Insert} to zapamiętywanie przez węzły wartości minimalnej i maksymalnej dla pod-drzew które tworzą.
+
+Każdy z węzłów startuje z polami \texttt{min} oraz \texttt{max} przyrównanymi do wartości tego węzła. Pole \texttt{local-min-diff} aktualizujemy na podstawie wzoru podanego wyżej.
+
+Kiedy dodajemy nowy węzeł $x$ to dla każdego węzła który napotka węzeł $x$ aktualizujemy wartości pól \texttt{min} oraz \texttt{max} dla tego napotkanego węzła (jeśli wartość $x$ jest większa niż pole \texttt{max} węzła napotkanego to zmieniamy wartość tego pola, \texttt{min} analogicznie).
+
+Przy ewentualnej rotacji aktualizujemy węzły których dotyczy dana rotacja w czasie $O(\log n)$ dlatego, że aktualizujemy wartości pól przodków węzłów rotowanych. Zważając na wysokość drzewa $\le 2\log(n+1)$ nasza złożoność pozostanie $O(\log n)$.
+
+\subsection{\texttt{Delete}}
+
+Przy usuwaniu musimy zaktualizować wartości pól \texttt{min} oraz \texttt{max} przodków węzła usuwanego. Robimy to w czasie $O(\log n)$ dlatego, że RB-Tree ma wysokość $\le 2\log(n+1)$.
+
+\subsection{\texttt{Search}}
+
+Używamy tutaj standardowej operacji \texttt{RB-Search} bez żadnych modyfikacji.
+
+\subsection{\texttt{Min-Luka}}
+
+Zwracamy wartość pola \texttt{local-min-diff} węzła \texttt{root} drzewa. Jest to pojedyncza operacja przetwarzająca jeden węzeł przez co złożoność obliczeniowa tej operacji wynosi $O(1)$.
+
+
+\end{document}
