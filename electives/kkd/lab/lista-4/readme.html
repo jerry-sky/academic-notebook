@@ -13,10 +13,11 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
 <header id="title-block-header">
@@ -31,7 +32,7 @@
 <blockquote>
 <p>Napisz program, który dla nieskompresowanych obrazów zapisanych w formacie TGA, policzy wyniki kodowania za pomocą różnicy między predyktorami JPEG-LS (7 starych standardów i nowy standard, jako kolor otoczenia obrazka przyjmujemy czarny - <code>RGB(0,0,0)</code>) i poda entropię dla kodu całego obrazka jak i poszczególnych składowych koloru.</p>
 <p>Dla porównania program powinien drukować także entropię wejściowego obrazu i entropię poszczególnych składowych koloru. Na końcu program powinien podać, która metoda jest optymalna (daje najmniejszą entropię) dla danego obrazu jako całości oraz optymalne metody dla poszczególnych składowych koloru.</p>
-<p>Entropię program powinien liczyć tylko dla mapy bitowej (pomijamy nagłówki i stopki) a różnice wyliczone dzięki predyktorom powinny być kodowane jako liczby 8 bitowe (operacje <span class="math inline">\((\mod 256)\)</span> ).</p>
+<p>Entropię program powinien liczyć tylko dla mapy bitowej (pomijamy nagłówki i stopki) a różnice wyliczone dzięki predyktorom powinny być kodowane jako liczby 8 bitowe (operacje <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mspace></mspace><mspace width="0.6666666666666666em"/><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mtext> </mtext><mtext> </mtext><mn>256</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\mod 256)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.6666666666666666em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span><span class="mclose">)</span></span></span></span> ).</p>
 </blockquote>
 <h2 id="uruchomienie-programu">Uruchomienie programu</h2>
 <p>W celu uruchomienia programu należy wykonać <code>./main.py &lt;input file</code>.</p>

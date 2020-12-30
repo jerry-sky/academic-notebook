@@ -15,10 +15,11 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
 <header id="title-block-header">
@@ -58,9 +59,9 @@
 <hr />
 <h2 id="def-kompilator">1. DEF: Kompilator</h2>
 <p><em>Program czytający kod napisany w języku źródłowym i tłumaczący go na równoważny kod w języku wynikowym.</em></p>
-<p><span class="math display">\[
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mtext>Program </mtext><mover accent="true"><mtext>z</mtext><mo>ˊ</mo></mover><mtext>r</mtext><mover accent="true"><mtext>o</mtext><mo>ˊ</mo></mover><mtext>dłowy</mtext></mrow><mo>→</mo><mi><munder><mo><mtext>Kompilator</mtext></mo><mo lspace="0em" rspace="0em"><munder><mo><mo>↓</mo></mo><mtext>Komunikaty o błędach</mtext></munder></mo></munder></mi><mo>→</mo><mtext>Program wynikowy</mtext></mrow><annotation encoding="application/x-tex">
 \text{Program źródłowy} \rightarrow \underset{\underset{\text{Komunikaty o błędach}}{\downarrow}}{\text{Kompilator}} \rightarrow \text{Program wynikowy}
-\]</span></p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">Program </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">z</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">r</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">o</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">d</span><span class="mord latin_fallback">ł</span><span class="mord">owy</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.437836em;vertical-align:-1.7433959999999997em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944400000000001em;"><span style="top:-2.153452em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight"><span class="mop op-limits mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-1.8435314285714288em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Komunikaty o b</span><span class="mord latin_fallback mtight">łę</span><span class="mord mtight">dach</span></span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop mtight">↓</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1383542857142857em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.0000000000000004em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mord text"><span class="mord">Kompilator</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.7433959999999997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">Program wynikowy</span></span></span></span></span></span></p>
 <hr />
 <h2 id="kompilacja-typu-analiza-synteza">2. Kompilacja typu analiza-synteza</h2>
 <ol style="list-style-type: decimal">
@@ -90,7 +91,7 @@
 <li>Program w asemblerze</li>
 <li><em>Assembler</em></li>
 <li>Przemieszczalny kod maszynowy</li>
-<li><em>Konsolidator <span class="math inline">\(\leftarrow\)</span> Biblioteki</em></li>
+<li><em>Konsolidator <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">←</span></span></span></span> Biblioteki</em></li>
 <li>Bezwzględny kod maszynowy</li>
 </ol>
 <hr />
