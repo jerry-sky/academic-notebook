@@ -8,7 +8,12 @@ keywords: 'pwr, wppt, academic, notebook, computer science, cs, polish, pwr, pyt
 
 ---
 
+View this repository on [the web](https://academic.jerry-sky.me) or on [GitHub](https://github.com/jerry-sky/academic-notebook).
+
+---
+
 Please note:
+
 - The main language of this repository is not English.
 - There can be some hybrid multilingual expressions throughout the notes.
 - As this notebook contains notes for studies in *Poland*, most of these notes are in *Polish*.
