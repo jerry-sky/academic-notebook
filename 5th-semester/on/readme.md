@@ -40,8 +40,9 @@ keywords: 'on, pwr, wykład, wppt, laboratorium, ćwiczenia, lista, listy, zada�
     - [Postać Newtona wzoru interpolacyjnego](wyk/2020-11-17/postać-newtona.md)
     - [Wielomiany Czebyszewa](wyk/2020-11-17/wielomiany-czebyszewa.md)
     - [Funkcje sklejane](wyk/2020-11-24/funkcje-sklejane.md)
-- 2020-11-24, 2020-12-01
+- 2020-11-24, 2020-12-01, 2020-12-08
     - [Rozwiązywanie układu równań liniowych](wyk/2020-11-24/rozwiązywanie-układu-równań-liniowych.md)
+    - [Macierze symetryczne, rozkład Choleskyego](wyk/2020-12-08/macierze-symetryczne-rozkład-choleskyego.md)
 
 ---
 
