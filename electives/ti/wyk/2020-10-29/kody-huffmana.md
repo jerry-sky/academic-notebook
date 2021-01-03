@@ -177,3 +177,36 @@ $$
 $$
 
 ---
+
+Weźmy teraz optymalne kodowanie dla układu $\{p_1,\dots,p_N\}$. Ma ono średnią długość $L_N^*$.
+
+Wiemy, że optymalne kodowanie można zrobić tak, aby kody odpowiadające $p_{N-1}$ i $p_N$ były bliźniakami (czyli stanowiły jedną wisienkę).
+
+![drzewa niebieskie i różowe: niebieskie to układ stary, różowe to układ z połączonymi wisienkami $p_{N-1}$ i $p_{N}$ w jeden](tw-kody-huffmana-d-d-1.png)
+
+Optymalne „drzewa kodów” („$*$”) $\{p_1,\dots,p_N\}$ przerabiamy robiąc pewne drzewo kodów dla $\{p_1,\dots, p_{N_2}, p_{N-1} + p_N\} = \{q_1, \dots, q_{N-1}\}$.
+
+$$
+L_N^* = \sum_{i=1}^N l_i^* p_i
+\\[10pt]
+L_{N-1}' = \sum_{i=1}^{N-1} l_i' q_i = \sum_{i=1}^{N-2} l_i* p_i + \underbrace{(l_{N-1}^* - 1)}_{l_N^*} (p_{N-1} + p_N) =\\[5pt]
+\sum_{i=1}^N l_i^* p_i - p_{N-1} - p_N
+$$
+
+Czyli
+$$
+L_{N-1}' + p_{N-1} + p_N = L_N^*.
+$$
+
+Wcześniej mieliśmy $L_{N-1}^* + p_{N-1} + p_N = L_N$
+
+Co jest dobre, ponieważ $L_{N}^* \le L_N$, bo $L_{N}^*$ jest tym kodem idealnym. To samo się dzieje dla $(N-1)$: $L_{N-1}^* \le L_{N-1}'$.
+
+Zatem (z powyższych nierówności i równości), mamy
+$$
+L_N = L_N^* \quad (\text{oraz } L_{N-1}' = L_{N-1}^*)
+$$
+
+$\square$
+
+---
