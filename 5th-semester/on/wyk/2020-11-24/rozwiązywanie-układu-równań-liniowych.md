@@ -58,7 +58,7 @@ A^{(2)}x = b^{(2)}
 \begin{matrix}
     a_{11}^{(1)} x_1 &+ & a_{12}^{(1)} x_2 &+ &\dots &+ &a_{1n}^{(1)} x_n &= &b_1^{(1)}\\
     && a_{22}^{(2)} x_2 &+ &\dots &+ &a_{2n}^{(2)} x_n &= &b_2^{(2)}\\
-    &&\vdots &&&& \vdots && \vdots\\
+    &&\vdots &&& \vdots && \vdots\\
     && a_{n2}^{(2)} x_2 &+ &\dots &+ &a_{nn}^{(2)} x_n &= &b_n^{(2)}\\
 \end{matrix}
 $$
@@ -76,7 +76,7 @@ A^{(k)} x = b^{(k)}
 \begin{matrix}
     a_{11}^{(1)} x_1 &+ & a_{12}^{(1)} x_2 &+ &\dots &+ &a_{1n}^{(1)} x_n &= &b_1^{(1)}\\
     && a_{22}^{(2)} x_2 &+ &\dots &+ &a_{2n}^{(2)} x_n &= &b_2^{(2)}\\
-    &&& \ddots &&&& \vdots && \vdots\\
+    &&& \ddots &&& \vdots && \vdots\\
     &&&&a_{kk}^{(k)} x_k &+ \dots + &a_{kn}^{(k)} x_n &= &b_k^{(k)}\\
     &&&&\vdots && \vdots && \vdots\\
     &&&& a_{nk}^{(k)} x_k &+ \dots + &a_{nn}^{(k)} x_n &= &b_n^{(k)}\\
@@ -85,7 +85,7 @@ $$
 
 Eliminujemy zmienną $x_k$ z równań od $(k+1)$–tego do $n$-tego. Mnożymy $k$-te równanie przez
 $$
-l_{ik} = \frac{a_{i2}^{(k)}}{a_{kk}^{(k)}}, \enspace i = (k+1),\dots,n
+l_{ik} = \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}, \enspace i = (k+1),\dots,n
 $$
 i odejmujemy od pozostałych.
 
@@ -383,7 +383,7 @@ P_{ij} =
 $$
 
 Czyli $P_{ij}$ różni się od $I$ elementami $p_{ii} = p_{jj} = 0$ oraz $p_{ij} = p_{ji} = 1$.\
-Ponadto $P^T_{ij} = P_{ij} = P^{-1}_{ij}, \quad P^2_{ij} = I$.\\
+Ponadto $P^T_{ij} = P_{ij} = P^{-1}_{ij}, \quad P^2_{ij} = I$.\
 $P_{ij} A$ jest równoważne zamianie w macierzy $A$ wiersza $i$-tego z $j$-tym.\
 $AP_{ij}$ jest równoważne zamianie w macierzy $A$ kolumny $i$-tej z $j$-tą.
 
