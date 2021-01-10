@@ -1,0 +1,10 @@
+
+*/*
+
+!/.gitignore
+
+# an external script by D.Phil. hab. Paweł Zieliński
+!/external.jl
+
+# keep the basic n=16 test
+!/n16/*
