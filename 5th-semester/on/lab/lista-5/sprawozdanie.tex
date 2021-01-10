@@ -1,0 +1,689 @@
+\documentclass[10pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tabto,lipsum}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+\usepackage{shadowtext}
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{adjustbox}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{mathdots}
+
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\linespread{1.3}
+
+\title{Obliczenia Naukowe,\\Laboratorium, Lista 5}
+\author{Jerzy Wroczyński}
+\date{2021-01-10}
+
+\begin{document}
+
+\maketitle
+
+\section{Opis problemu}
+
+Należy efektywnie obliczyć wynik równania
+$$
+Ax = b,
+$$
+które oczywiście reprezentuje układ równań, gdzie macierz $A$ przechowuje współczynniki stojące przy składowych $x$, sam wektor reprezentuje konkretne rozwiązanie układu równań, a wektor $b$ przechowuje prawe strony równań.
+
+\subsection{Struktura macierzy $A$}
+
+Przy czym macierz $A$ jest macierzą rzadką o specyficznej strukturze:
+$$
+\begin{bmatrix}
+    A_1 & C_1 & 0 & 0 & 0 & \dotsb & 0\\
+    B_2 & A_2 & C_2 & 0 & 0 & \dotsb & 0\\
+    0 & B_3 & A_3 & C_3 & 0 & \dotsb & 0\\
+    \vdots & \ddots & \ddots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \dotsb & 0 & B_{v-2} & A_{v-2} & C_{v-2} & 0\\
+    0 & \dotsb & 0 & 0 & B_{v-1} & A_{v-1} & C_{v-1}\\
+    0 & \dotsb & 0 & 0 & 0 & B_{v} & A_{v}
+\end{bmatrix}
+$$
+gdzie
+\begin{itemize}
+    \item $v = \frac{n}{l}$ (zakładamy, że $n$ jest podzielne przez $l$) jest iteratorem bloków (podmacierzy),
+    \item $l$ jest rozmiarem każdego z bloków (podmacierzy),
+    \item $n$ jest rozmiarem całej macierzy $A$.
+\end{itemize}
+
+\subsection{Struktura podmacierzy}
+\label{struktura-podmacierzy}
+
+Podmacierze ($k = 1 \dots v$) z których składa się macierz $A$ są następującej struktury:
+\begin{itemize}
+    \item $A_k$ są macierzami gęstymi (nie mają elementów zerowych),
+    \item
+    $
+    B_k =
+    \begin{bmatrix}
+        0 & \dotsb & 0 & b^k_1\\
+        0 & \dotsb & 0 & b^l_2\\
+        \vdots && \vdots & \vdots\\
+        0 & \dotsb & 0 & b^k_l\\
+    \end{bmatrix}
+    $,
+    \item
+    $
+    C_k =
+    \begin{bmatrix}
+        c^k_1 & 0 & 0 & \dotsb & 0\\
+        0 & c^k_2 & 0 & \dotsb & 0\\
+        \vdots & \ddots & \ddots & \ddots & \vdots\\
+        0 & \dotsb & 0 & c^k_{l-1} & 0\\
+        0 & \dotsb & 0 & 0 & c^k_l\\
+    \end{bmatrix}
+    $.
+\end{itemize}
+
+\section{Idea rozwiązania}
+
+Do proceduralnego rozwiązywania układów równań często wykorzystywany jest algorytm \textit{elminacji Gaussa}. Ideą tego algorytmu jest sprowadzenie macierz $A$ do macierzy trójkątnej, ponieważ wtedy można sukcesywnie rozwiązać układ równań, idąc od dołu do góry.
+
+\noindent Zobaczmy, jak to wygląda na początku. Mamy:
+\begin{itemize}
+    \item $A \in \mathbb{R}^{n\times n}$,
+    \item $x \in \mathbb{R}^n$,
+    \item $b \in \mathbb{R}^n$,
+    \item $\det(A) \neq 0$.
+\end{itemize}
+
+Znakiem $^{(k)}$ oznaczamy $k$-ty krok algorytmu. Wówczas oczywiście $A^{(1)} = A,\enspace b^{(1)} = b$.
+
+$$
+A^{(1)} x = b^{(1)}:
+\quad
+\begin{matrix}
+    a^{(1)}_{11} x_1 &+ &a^{(1)}_{12} x_2 &+ &\dotsb &+ &a^{(1)}_{1n} x_n &= &b^{(1)}_1\\
+    a^{(1)}_{21} x_1 &+ &a^{(1)}_{22} x_2 &+ &\dotsb &+ &a^{(1)}_{2n} x_n &= &b^{(1)}_2\\
+    \vdots && \vdots &&&& \vdots && \vdots\\
+    a^{(1)}_{n1} x_1 &+ &a^{(1)}_{n2} x_2 &+ &\dotsb &+ &a^{(1)}_{nn} x_n &= &b^{(1)}_n\\
+\end{matrix}
+$$
+
+Chcemy uzyskać macierz trójkątną, czyli wyeliminować wszystkie współczynniki umieszczone pod diagonalą macierzy. Wykonujemy $(n-1)$ kroków:
+$$
+A^{(k)} x = b^{(k)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &+ & a_{12}^{(1)} x_2 &+ &\dots &+ &a_{1n}^{(1)} x_n &= &b_1^{(1)}\\
+    && a_{22}^{(2)} x_2 &+ &\dots &+ &a_{2n}^{(2)} x_n &= &b_2^{(2)}\\
+    &&& \ddots &&& \vdots && \vdots\\
+    &&&&a_{kk}^{(k)} x_k &+ \dots + &a_{kn}^{(k)} x_n &= &b_k^{(k)}\\
+    &&&&\vdots && \vdots && \vdots\\
+    &&&& a_{nk}^{(k)} x_k &+ \dots + &a_{nn}^{(k)} x_n &= &b_n^{(k)}\\
+\end{matrix}
+$$
+
+i uzyskujemy macierz trójkątną:
+$$
+A^{(n)} x = b^{(n)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &+ & a_{12}^{(1)} x_2 &+ &\dots &+ &a_{1n}^{(1)} x_n &= &b_1^{(1)}\\
+    && a_{22}^{(2)} x_2 &+ &\dots &+ &a_{2n}^{(2)} x_n &= &b_2^{(2)}\\
+    &&&& \ddots && \vdots && \vdots\\
+    &&&&&&a_{nn}^{(n)} x_n &= &b_n^{(n)}\\
+\end{matrix}
+$$
+
+Tak jak mówiliśmy wcześniej — na dole mamy trywialne równanie $a_{nn}^{(n)} \cdot x_n = b_n^{(n)}$, z którego wyznaczamy $x_n$. Następnie z równania powyżej wyznaczamy $x_{n-1}$, bo znamy już $x_n$ itd. sukcesywnie wyznaczamy cały wektor $x$.
+
+\newpage
+
+Możemy zamknąć ideę tego algorytmu w formie listy kroków:
+\begin{itemize}
+    \item \texttt{for} $k := 1\dots (n-1)$:
+    \begin{itemize}
+        \item \texttt{for} $i := (k+1)\dots n$:
+        \begin{itemize}
+            \item $l_{ik} \gets \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}$
+            \item \texttt{for} $j := (k+1) \dots n$:
+            \begin{itemize}
+                \item $a_{ij}^{(k+1)} \gets a_{ij}^{(k)} - l_{ik} a_{kj}^{(k)}$
+            \end{itemize}
+            \item $b_i^{(k+1)} \gets b_i^{(k)} - l_{ik} b^{(k)}_k$
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Ograniczenie iteracji}
+
+Jednakże biorąc pod uwagę ten specyficzny układ elementów w macierzy wejściowej, standardowy algorytm \textit{eliminacji Gaussa} będzie bardzo nieoptymalny, ponieważ bardzo dużo obliczeń zostanie wykonanych niepotrzebnie na samych zerach.
+
+Przypadek takiej macierzy możemy porównać do macierzy diagonalnej, gdzie złożoność obliczeniowa jest liniowa, ponieważ w każdym równaniu mamy tylko jeden niezerowy współczynnik. Tutaj mamy \textit{w pewnym sensie} podobną sytuację, przy czym skalujemy rozmiar przekątnej przez liczbę $l$ oraz wprowadzamy pewnie nieregularności rozmieszczenia elementów w otoczeniu przekątnej macierzy (patrz: \hyperref[struktura-podmacierzy]{struktura podmacierzy}).
+
+\noindent Oczywiście chcemy również osiągnąć liniową złożoność obliczeniową.
+
+\noindent W celu ograniczenia liczby operacji chcemy ograniczyć, dokąd dochodzimy w pętlach w stosowanym algorytmie.
+
+\noindent Dla zobrazowania problemu popatrzmy jeszcze raz na standardowy algorytm eliminacji Gaussa:
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+
+      \For{$k := 1 \dots (n-1)$}
+        \For{$i := (k+1) \dots n$}\label{idea.for-i}
+            \State $l_{ik} := \frac{a^{(k)}_{ik}}{a^{(k)}_{kk}}$
+            \For{$j := (k+1) \dots n$}\label{idea.for-j}
+                \State $a_{ij}^{(k)} := a^{(k)}_{ij} - l_{ik} a_{kj}^{(k)}$
+            \EndFor
+            \State $b_i^{(k+1)} := b_i^{(k)} - l_{ik} b_k^{(k)}$
+        \EndFor
+      \EndFor
+    \end{algorithmic}
+\end{algorithm}
+(notacja $^{(k)}$ oznacza $k$-ty krok algorytmu)
+
+\noindent Widzimy, że mamy zagnieżdżone w sobie trzy pętle \texttt{for}. Prowadzi to oczywiście do złożoności obliczeń $O(n^3)$. Chcemy tego uniknąć czyli ograniczyć liczebność iteracji przechodzenia przez elementy macierzy, która jest przecież macierzą bardzo rzadką. Jeżeli założymy, że liczba $l$ określająca wielkość bloków (podmacierzy), z których składa się macierz $A$, jest stała, to jesteśmy w stanie osiągnąć złożoność obliczeniową $O(n)$ przy rozwiązywaniu układu $Ax = b$. Dzieje się tak, ponieważ w takim układzie te dwie pętle wewnętrzne (linijki \ref*{idea.for-i} oraz \ref*{idea.for-j}) wykonają znacznie mniej iteracji — nie wychodzą dalej niż bloki (podmacierze), ich złożoność obliczeniowa będzie zależeć od stałej $l$.
+
+\section{Potrzebne algorytmy}
+
+W celu realizacji zadanego problemu należy zaimplementować następujące algorytmy:
+\begin{itemize}
+    \item Częściowy wybór elementu głównego (wyliczenie wektora permutacji wierszy macierzy $A$),
+    \item Rozkład $LU$ macierzy $A$ (optymalizacja algorytmu eliminacji Gaussa),
+    \item Obliczenie rozwiązania układu $Ax = b$
+    \item Obliczenia rozwiązania układu $LUx = b$ (kiedy rozkład $LU$ jest już obliczony)
+\end{itemize}
+
+Oczywiście, tak jak mówiliśmy o tym wcześniej — dążymy do liniowej złożoności obliczeniowej. Dlatego też we wszystkich algorytmach stosujemy pewien \textit{design pattern}. Otóż najwyższą pętlę (iterującą po wszystkich wierszach) dzielimy na dwie pętle: jedną idącą po blokach $k = 1 \dots \frac{n}{l}$ i drugą, wewnętrzną  idącą po poszczególnych elementach danego bloku (podmacierzy) plus opcjonalnie po elementach sąsiedniego bloku (podmacierzy) w razie potrzeby (iterator: $p = (k-1) \cdot l +1 \dots k\cdot l [+l]$). Ostatecznie otrzymujemy liniową złożoność obliczeniową, ponieważ przyjmujemy, że $l$ jest stałą.
+
+\subsection{Częściowy wybór elementu głównego}
+
+W wykorzystywanym algorytmie Gaussa wykorzystywana jest wielokrotnie operacja dzielenia przez elementy z przekątnej macierzy $A$. Może to być dość problematyczne, jako, że wartości na przekątnej mogą być bardzo małe, co oznacza możliwe bardzo duże odchylenia. Celem tego algorytmu jest zmaksymalizowanie wartości liczb na przekątnej.
+
+Żeby tego dokonać, stosujemy \textit{częściowy wybór elementu głównego}, czyli patrząc na daną wartość na przekątnej macierzy sprawdzamy czy jest to największa wartość w tej kolumnie. Jeśli tak nie jest — permutujemy wiersze w taki sposób, żeby na diagonali znalazła się ta wybrana największa liczba. Wówczas na przekątnej będziemy mieli względnie duże liczby, które nie powinny już sprawiać problemów.
+
+\begin{algorithm}[H]
+    \caption{partialPivot}
+    \begin{algorithmic}[1]
+        \State $\texttt{pivot} = [1 \dots n]$
+        \For{$k := 1 \dots \frac{n}{l}$}\label{pivot.alg.for-k}
+            \For{$p := (k-1) \cdot l+1 \dots k\cdot l$}\label{pivot.alg.for-p}
+                \State $\texttt{curr} = \left| A\left[\texttt{pivot}[p], p\right] \right|$
+                \State $\texttt{maxvalue} = \texttt{curr}$
+                \State $\texttt{maxindex} = \texttt{pivot}[p]$
+
+                \For{$i := (p+1) \dots k \cdot l + l$}\label{pivot.alg.for-max}
+
+                    \If{$\left| A\left[ \texttt{pivot}[i], p \right] \right| > \texttt{maxvalue}$}
+                        \State $\texttt{maxvalue} = \left| A\left[ \texttt{pivot}[i], p \right] \right|$
+                        \State $\texttt{maxindex} = \texttt{pivot}[i]$
+                    \EndIf
+
+                \EndFor
+
+                \If{$\texttt{maxvalue} < \texttt{macheps}$}
+                    \State \Return wybrana wartość jest bliska zeru \label{pivot.alg.error}
+                \EndIf
+
+                \If{$\texttt{maxvalue} > \texttt{curr}$}
+                    \State $\texttt{pivot}[p], \texttt{pivot}[\texttt{maxindex}] = \texttt{pivot}[\texttt{maxindex}], \texttt{pivot}[p]$
+                \EndIf
+
+            \EndFor
+        \EndFor
+        \State \Return $\texttt{pivot}$
+    \end{algorithmic}
+\end{algorithm}
+
+Powyższy pseudokod ukazuje ideę algorytmu. Dwie pierwsze pętle (linijki \ref*{pivot.alg.for-k} oraz \ref*{pivot.alg.for-p}) odpowiadają za przejście po wszystkich elementach na przekątnej macierzy (z podziałem na $\frac{n}{l}$ bloków). Dla każdego przejścia pobieramy wartość aktualnie będącą na przekątnej macierzy i patrzymy (\ref*{pivot.alg.for-max}) czy nie ma większej wartości w tej kolumnie. Oczywiście ograniczamy zasięg poszukiwania w stosunku do wielkości bloków (liczba $l$).
+
+W faktycznej implementacji tego algorytmu został wprowadzony argument \texttt{limited} będący flagą, który ma wpływ na zasięg poszukiwań określony domyślnie na $k \cdot l + l$ jak widać w linijce \ref*{pivot.alg.for-max} — jeśli algorytm zwróci błąd, o którym mowa w linijce \ref*{pivot.alg.error} zalecane jest albo zrezygnowanie z częściowego wyboru dla tego przypadku lub uruchomienie algorytmu z włączoną flagą \texttt{limited}. Wówczas, zakres poszukiwań zostanie ograniczony do jednego bloku, czyli pętla kończy się na $k \cdot l$.
+
+\subsection{Rozkład $LU$ macierzy $A$}
+
+Standardowy algorytm rozkładu $LU$, jak sama nazwa wskazuje, rozkłada zadaną macierz $A$ na dwie macierze trójkątne. Algorytm ten wywodzi się z algorytmu rozkładu Gaussa, gdzie dodatkowo, oprócz wyliczenia macierzy $U$, zapisujemy w macierzy $L$ współczynniki, przez które mnożyliśmy równania, żeby uzyskać macierz $U$.
+
+Żeby dostać poniższy układ równań, należy wykonać $k-1$ kroków algorytmu eliminacji Gaussa:
+$$
+A^{(k)} x = b^{(k)}
+\quad
+\begin{matrix}
+    a_{11}^{(1)} x_1 &+ & a_{12}^{(1)} x_2 &+ &\dots &+ &a_{1n}^{(1)} x_n &= &b_1^{(1)}\\
+    && a_{22}^{(2)} x_2 &+ &\dots &+ &a_{2n}^{(2)} x_n &= &b_2^{(2)}\\
+    &&& \ddots &&& \vdots && \vdots\\
+    &&&&a_{kk}^{(k)} x_k &+ \dots + &a_{kn}^{(k)} x_n &= &b_k^{(k)}\\
+    &&&&\vdots && \vdots && \vdots\\
+    &&&& a_{nk}^{(k)} x_k &+ \dots + &a_{nn}^{(k)} x_n &= &b_n^{(k)}\\
+\end{matrix}
+$$
+gdzie za każdym razem mnożymy $k$-te równanie przez
+$$
+l_{ik} = \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}, \enspace i = (k+1),\dots,n
+$$
+i odejmujemy od pozostałych eliminując zmienną $x_k$ z niższych równań.
+I to właśnie te liczby $l_{ik}$ tworzą nam macierz $L$, bo to właśnie macierz $L$ definiuje te wszystkie kroki ($k$), które należy wykonać, żeby uzyskać macierz $U$.
+
+Poniższy algorytm jest zoptymalizowaną wersją algorytmu standardowego rozkładu $LU$. Tutaj również ograniczamy iterację pętli wewnętrznych.
+
+\begin{algorithm}[H]
+    \caption{decomposeIntoLU}
+    \begin{algorithmic}[1]
+        \State $\texttt{LU} := A$
+        \State $b' := b$
+        \For{$k := 1 \dots \frac{n}{l}$}\label{lu.alg.for-k}
+            \For{$p := (k-1) \cdot l+1 \dots k\cdot l$}\label{lu.alg.for-p}
+
+                \For{$i := (p+1) \dots k \cdot l + l$}\label{lu.alg.for-rows-beneath}
+
+                    \State $l_{ip} = \frac{\texttt{LU}\left[\texttt{pivot}[i], p\right]}{\texttt{LU}\left[\texttt{pivot}[p], p\right]}$\label{lu.alg.lip}
+
+                    \For{$j := p \dots k \cdot l + l$}\label{lu.alg.for-rows-beneath-internal}
+                        \State $\texttt{LU}\left[\texttt{pivot}[i], j\right] = \texttt{LU}\left[\texttt{pivot}[i], j\right] - l_{ip} \cdot \texttt{LU}\left[\texttt{pivot}[p], j\right]$\label{lu.alg.rows-beneath-update}
+                    \EndFor
+
+                    \State $b'\left[\texttt{pivot}[i]\right] = b'\left[\texttt{pivot}[i]\right] - l_{ip} \cdot b'\left[\texttt{pivot}[p]\right]$\label{lu.alg.update-b}
+
+                    \State $\texttt{LU}\left[\texttt{pivot}[i], p\right] = l_{ip}$\label{lu.alg.save-L}
+
+                \EndFor
+
+            \EndFor
+        \EndFor
+        \State \Return $\texttt{LU}, b'$
+    \end{algorithmic}
+\end{algorithm}
+
+Znowu iterujemy po wszystkich współczynnikach zmiennych $x_p$ na diagonali macierzy (linijki \ref*{lu.alg.for-k} oraz \ref*{lu.alg.for-p}), ponieważ chcemy usunąć zmienne w niższych równaniach. Tak też robimy właśnie — w linijce \ref*{lu.alg.for-rows-beneath} zaczynamy iterować po wszystkich wierszach, które są niżej niż aktualny (dlatego zaczynamy iterować od $(p+1)$). Obliczamy współczynnik dla każdego wiersza (reprezentującego równanie), przez który trzeba przemnożyć $p$-ty wiersz (reprezentujący równanie), a następnie go odejmujemy (linijka \ref*{lu.alg.rows-beneath-update}). Od razu też aktualizujemy zmiany w wektorze $b$ (linijka \ref*{lu.alg.update-b}) oraz zapisujemy wykonany krok do macierzy $L$ (linijka \ref*{lu.alg.save-L}).
+
+Warto nadmienić, że sposób przechowywania macierzy $L$ i $U$ jest tutaj nieco inny niż w modelu matematycznym. Jako że obie macierze są macierzami trójkątnymi (jedna górno- druga dolno-trójkątna), a macierz $L$ ma przekątną złożoną z samych jedynek (w żadnym kroku algorytmu Gaussa nie usuwamy zmiennych z diagonali), można te macierze przechowywać razem.
+
+\subsection{Obliczenie rozwiązania układu $Ax = b$}
+
+Użyjemy tutaj wcześniej zdefiniowanej funkcji \textit{decomposeIntoLU}, która zwraca rozkład $LU$ macierzy $A$ wraz ze zmienionym wektorem $b'$.
+
+Mając rozkład $LU$ mamy oczywiście dostęp do górno-trójkątnej macierzy wyjściowej $U$. Wówczas wyznaczamy kolejne elementy wektora wyjściowego $x$ stopniowo: wyraz $x_n$ mamy \textit{za darmo}, jako że ostatnie równanie jest postaci $u_nn \cdot x_n = b'_n$. Dalej, równanie wyżej będzie zależne od kolejnej nieznanej zmiennej oraz teraz już znanej zmiennej $x_n$. W równaniach wyżej mamy podobną sytuację — sukcesywnie wyznaczamy kolejne zmienne $x_p$.
+
+\subsubsection{Funkcja pomocnicza do rozwiązywania układów z macierzą górno-trójkątną}
+\label{sec:solveUpperTriangularMatrix}
+
+Niniejszy algorytm wylicza wyjściowy wektor $x$ z podanych macierzy górno-trójkątnej oraz pionowego wektora $y$ z prawej strony układu $Ux = y$. Tutaj mówimy bardziej ogólnie o wektorze prawej strony jako o wektorze $y$, ponieważ jest to funkcja pomocnicza, którą wykorzystamy nie tylko do rozwiązania układu $Ax = b$, ale też do układu $LUx = b$.
+
+\noindent Dajemy na wejście:
+\begin{itemize}
+    \item macierz górno-trójkątną $U$
+    \item wektor $y$ (prawa strona układu $Ux = y$)
+\end{itemize}
+
+\noindent Dostajemy na wyjście: wektor $x$ będący rozwiązaniem układu $Ux = y$.
+
+\begin{algorithm}[H]
+    \caption{solveUpperTriangularMatrix(U, y, n, l, \texttt{pivot})}
+    \begin{algorithmic}[1]
+        \State $x := [\overbrace{0 \dots 0}^{n \text{ zer}}]$
+        \For{$k := \frac{n}{l} \dots 1$}\label{stm.alg.for-k}
+            \For{$p := k\cdot l \dots (k-1) \cdot l+1$}\label{stm.alg.for-p}
+
+                \State $t := y\left[\texttt{pivot}[p]\right]$\label{stm.alg.t}
+
+                \For{$i := (p+1) \dots k \cdot l + l$}\label{stm.alg.for-rows-beneath}
+                    \State $t := t - x\left[\texttt{pivot}[i] \cdot U[\texttt{pivot}[p], i]\right]$\label{stm.alg.subtract-already-done}
+                \EndFor
+
+                \State $x\left[\texttt{pivot}[p]\right] := \frac{t}{U\left[\texttt{pivot}[p], p\right]}$\label{stm.alg.save}
+
+            \EndFor
+        \EndFor
+        \State \Return $x$
+    \end{algorithmic}
+\end{algorithm}
+
+\noindent Dla każdej zmiennej $x_p$ (lin. \ref*{stm.alg.for-k}, \ref*{stm.alg.for-p}) zaczynamy od wartości w wektorze po prawej stronie (lin. \ref*{stm.alg.t}), a następnie odejmujemy już wyliczone zmienne $x_i$ (lin. \ref*{stm.alg.subtract-already-done}). Następnie dzielimy wynik przez współczynnik przy obliczanej zmiennej i zapisujemy do wyniku (lin. \ref*{stm.alg.save}).
+
+\subsubsection{Implementacja algorytmu do rozwiązywania układu $Ax = b$}
+
+Mając macierz górno-trójkątną $U$ oraz zmodyfikowany wektor $b'$ możemy użyć funkcji \textit{solveUpperTriangularMatrix} do obliczenia rozwiązania układu $Ax = b$.
+
+\begin{algorithm}[H]
+    \caption{gaussianElimination(A, b, n, l, \texttt{pivot})}
+    \begin{algorithmic}[1]
+        \State $U, b' = \texttt{decomposeIntoLU}(A, b, n, l, \texttt{pivot})$
+        \State $x = \texttt{solveUpperTriangularMatrix}(U, b', n, l, pivot)$
+        \State \Return $x$
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Obliczenie rozwiązania układu $LUx = b$}
+
+Kolejnym bliźniaczym algorytmem do wcześniej definiowanych jest algorytm rozwiązujący układ $Ax = b$, przy czym już znany jest rozkład $LU$ macierzy $A$.
+Czyli różnica jest taka, że nie mamy zmienionego wektora $b' = b^{(k)}$ w posiadaniu — mamy podany tylko rozkład $LU$ macierzy $A$.
+Wówczas zadanie sprowadza się do obliczenia układu równań:
+$$
+\begin{cases}
+    Ly = b\\
+    Ux = y
+\end{cases}
+$$
+
+Tutaj musimy rozwiązać dwa równania z macierzami trójkątnymi. Pierwsze równanie z macierzą dolno-trójkątną rozwiązujemy podobnie, jak rozwiązywaliśmy równanie z macierzą górno-trójkątną — sukcesywnie odkrywamy kolejne zmienne z wektora $y$.
+
+\begin{algorithm}[H]
+    \caption{solveFromLU(LU, b, n, l, \texttt{pivot})}
+    \begin{algorithmic}[1]
+        \State $y := [\overbrace{0 \dots 0}^{n}]$
+        \For{$k := 1 \dots \frac{n}{l}$}\label{slu.alg.for-k}
+            \For{$p := (k-1) \cdot l+1 \dots k\cdot l$}\label{slu.alg.for-p}
+
+                \State $t := b\left[\texttt{pivot}[p]\right]$\label{slu.alg.next-y}
+
+                \For{$i := (p-1) \dots (k-1) \cdot l - l$}
+
+                    \State $t := t - y[\texttt{pivot}[i]] \cdot \texttt{L}\left[\texttt{pivot}[p], i\right]$\label{slu.alg.subtract-already-done}
+
+                \EndFor
+
+                \State $y[\texttt{pivot}[p]] = t$
+
+            \EndFor
+        \EndFor
+
+        \State $x = \texttt{solveUpperTriangularMatrix}(\texttt{LU}, y, n, l, \texttt{pivot})$
+        \State \Return $x$
+    \end{algorithmic}
+\end{algorithm}
+
+\noindent Najpierw liczymy równanie $Ly = b$.\\
+Iterujemy znowu po wszystkich elementach diagonali macierzy (lin. \ref*{slu.alg.for-k}, \ref*{slu.alg.for-p}). Zaczynamy od wartości z wektora po prawej stronie (lin. \ref*{slu.alg.next-y}), a następnie odejmujemy od niej wszystkie znane już zmienne pomnożone przez odpowiednie współczynniki (lin. \ref*{slu.alg.subtract-already-done}).
+
+\noindent Następnie liczymy równanie $Ux = y$ przy pomocy funkcji \texttt{solveUpperTriangularMatrix}.
+
+
+\subsection{Złożoność obliczeniowa}
+
+Zakładając, że liczba $l$ jest stałą, możemy powiedzieć, że złożoność obliczeniowa wszystkich powyższych algorytmów jest liniowa i zależy od $n$, czyli mamy $O(n)$. Za każdym razem mamy do czynienia z pętlą iterującą po blokach (podmacierzach) dużej macierzy $k = 1\dots \frac{n}{l}$ i pętlą iterującą po elementach tych bloków (podmacierzy). Jako że bloki (podmacierze) te ułożone są na diagonali tej macierzy mamy właśnie do czynienia z liniową złożonością obliczeniową.
+
+Warto nadmienić, że przyjmujemy stałą $O(1)$ złożoność obliczeniową dla operacji pobierania i zapisywania elementów w strukturze wykorzystywanej do przechowywania naszej rzadkiej macierzy.
+
+\subsection{Złożoność pamięciowa}
+
+W implementacji algorytmów została zastosowana struktura \texttt{SparseMatrixCSC}, która w efektywny sposób przechowuje macierze rzadkie, traktując wartości $0$ jako brak informacji. Znacznie mniejsze zużycie pamięci będzie bardzo widoczne w testach.
+
+\subsubsection{Alternatywa do \texttt{SparseMatrixCSC}}
+
+W pliku \texttt{types.jl} znajduje się struktura \texttt{SquareSparseMatrix} symulująca macierze rzadkie, oparta na strukturze \texttt{Dict} będącą implementacji mapy hashującej w języku \textit{Julia}. Jednakże w testach okazało się, że niniejsza struktura zużywa więcej pamięci niż \texttt{SparseMatrixCSC}, a dla dostatecznie dużych rozmiarów macierzy (np. $n=5000$) może nawet przekroczyć zużycie pamięci standardowego algorytmu rozwiązywania układu $Ax = b$ czyli \texttt{x = A\textbackslash b} w \textit{Julii}.
+
+\section{Testy}
+
+Poniższe testy zostały wykonane na komputerze wyposażonym w czterordzeniowy procesor \texttt{Intel Core i5-2400} drugiej generacji \textit{(Sandy Bridge)} i pamięć operacyjną \texttt{12GB} z zainstalowanym pakietem \textit{Julia} w wersji \texttt{1.5.2} na systemie operacyjnym \textit{Linux Mint} opartym na \textit{Ubuntu}.
+
+\noindent Specyfikacja poniższych testów:
+\begin{itemize}
+    \item Do testów wykorzystano funkcję \texttt{@time} wbudowaną w język \textit{Julia} oraz moduł \texttt{testdata} (\texttt{code/generate-a-test.jl}) używający programu \texttt{blockmat} znajdującego się w pliku \texttt{code/test-data/external.jl}.
+    \item Program uruchamiający funkcje z modułu \texttt{blocksys} (\texttt{code/blocksys.jl}) znajduje się w pliku \texttt{code/run-a-test.jl} i może przyjmować argumenty:
+    \begin{itemize}
+        \item \texttt{classic} (użyj \texttt{x = A\textbackslash b})
+        \item \texttt{custom} (użyj niestandardowej struktury do przechowywania macierzy rzadkich, zamiast \texttt{SparseMatrixCSC})
+        \item \texttt{pivot} (użyj funkcji \texttt{partialPivot})
+        \item \texttt{lu} (najpierw zrób rozkład $LU$ przed rozwiązaniem układu $Ax = b$)
+    \end{itemize}
+    \item Dla wszystkich przeprowadzonych testów odchylenie wektora $x$ (błąd względny) był akceptowalny (błędy rzędu $10^{-15}$, $10^{-16}$).
+\end{itemize}
+
+\subsection{Czas działania programów}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        ymin = 0.2,
+        ymax = 0.63,
+        xmin = 90,
+        xmax = 10000,
+        axis lines=middle,
+        axis line style={->},
+        x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+        y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+        xlabel={rozmiar macierzy},
+        ylabel={czas (s)},
+        scaled x ticks=false,
+        xtick=data,
+        width=18cm,
+        height=8cm]
+        \addplot coordinates {
+            (100, 0.250796)
+            (1000, 0.241827)
+            (2500, 0.255644)
+            (5000, 0.295073)
+            (7000, 0.351397)
+            (9000, 0.415761)
+            (10000, 0.536773)
+        };
+        \addplot coordinates {
+            (100, 0.313719)
+            (1000, 0.327598)
+            (2500, 0.350787)
+            (5000, 0.373506)
+            (7000, 0.498939)
+            (9000, 0.564709)
+            (10000, 0.616883)
+        };
+        \end{axis}
+    \end{tikzpicture}
+\caption{Czas działania zoptymalizowanego algorytmu eliminacji Gaussa, funkcja \texttt{gaussElimination}, bez (niebieski) i z wyborem elementu głównego (czerwony)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ymin = 0.28,
+            ymax = 0.72,
+            xmin = 90,
+            xmax = 10000,
+            axis lines=middle,
+            axis line style={->},
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xlabel={rozmiar macierzy},
+            ylabel={czas (s)},
+            scaled x ticks=false,
+            xtick=data,
+            width=18cm,
+            height=8cm]
+            \addplot coordinates {
+                (100, 0.306152)
+                (1000, 0.317594)
+                (2500, 0.323560)
+                (5000, 0.370839)
+                (7000, 0.482047)
+                (9000, 0.553068)
+                (10000, 0.598017)
+            };
+            \addplot coordinates {
+                (100, 0.386745)
+                (1000, 0.380999)
+                (2500, 0.400434)
+                (5000, 0.444891)
+                (7000, 0.555666)
+                (9000, 0.634105)
+                (10000, 0.698371)
+            };
+            \end{axis}
+        \end{tikzpicture}
+    \caption{Czas działania algorytmu obliczania rozwiązania $LUx = b$, funkcje \texttt{decomposeIntoLU} oraz \texttt{solveFromLU}, bez (niebieski) i z wyborem elementu głównego (czerwony)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ymin = 2.4,
+            ymax = 2.5,
+            xmin = 90,
+            xmax = 10000,
+            axis lines=middle,
+            axis line style={->},
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xlabel={rozmiar macierzy},
+            ylabel={czas (s)},
+            scaled x ticks=false,
+            xtick=data,
+            width=18cm,
+            height=8cm]
+            \addplot coordinates {};
+            \addplot coordinates {
+                (100, 2.449031)
+                (1000, 2.458516)
+                (2500, 2.413198)
+                (5000, 2.430000)
+                (7000, 2.491598)
+                (9000, 2.467374)
+                (10000, 2.476326)
+            };
+            \end{axis}
+        \end{tikzpicture}
+    \caption{Czas działania \texttt{x = A\textbackslash b}}
+\end{figure}
+
+\subsection{Zużycie pamięci przez programy}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        ymin = 14,
+        ymax = 22,
+        xmin = 90,
+        xmax = 10000,
+        axis lines=middle,
+        axis line style={->},
+        x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+        y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+        xlabel={rozmiar macierzy},
+        ylabel={pamięć (MiB)},
+        scaled x ticks=false,
+        xtick=data,
+        width=18cm,
+        height=8cm]
+        \addplot coordinates {
+            (100, 14.287)
+            (1000, 14.477)
+            (2500, 14.809)
+            (5000, 15.362)
+            (7000, 15.804)
+            (9000, 16.247)
+            (10000, 16.468)
+        };
+        \addplot coordinates {
+            (100, 18.848)
+            (1000, 19.066)
+            (2500, 19.443)
+            (5000, 20.073)
+            (7000, 20.576)
+            (9000, 21.080)
+            (10000, 21.332)
+        };
+        \end{axis}
+    \end{tikzpicture}
+\caption{Pamięć zajmowana przez zoptymalizowany algorytm eliminacji Gaussa, funkcja \texttt{gaussElimination}, bez (niebieski) i z wyborem elementu głównego (czerwony)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ymin = 16,
+            ymax = 24,
+            xmin = 90,
+            xmax = 10000,
+            axis lines=middle,
+            axis line style={->},
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xlabel={rozmiar macierzy},
+            ylabel={pamięć (MiB)},
+            scaled x ticks=false,
+            xtick=data,
+            width=18cm,
+            height=8cm]
+            \addplot coordinates {
+                (100, 16.924)
+                (1000, 17.121)
+                (2500, 17.464)
+                (5000, 18.036)
+                (7000, 18.494)
+                (9000, 18.952)
+                (10000, 19.180)
+            };
+            \addplot coordinates {
+                (100, 20.552)
+                (1000, 20.777)
+                (2500, 21.165)
+                (5000, 21.814)
+                (7000, 22.333)
+                (9000, 22.851)
+                (10000, 23.111)
+            };
+            \end{axis}
+        \end{tikzpicture}
+    \caption{Zużycie pamięci przez algorytm do obliczania rozwiązania $LUx = b$, funkcje \texttt{decomposeIntoLU} oraz \texttt{solveFromLU}, bez (niebieski) i z wyborem elementu głównego (czerwony)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ymin = 225,
+            ymax = 241,
+            xmin = 90,
+            xmax = 10000,
+            axis lines=middle,
+            axis line style={->},
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xlabel={rozmiar macierzy},
+            ylabel={czas (s)},
+            scaled x ticks=false,
+            xtick={100, 1000, 5000, 10000},
+            width=18cm,
+            height=8cm]
+            \addplot coordinates {};
+            \addplot coordinates {
+                (100, 226.760)
+                (1000, 228.029)
+                (2500, 230.144)
+                (5000, 233.669)
+                (7000, 236.488)
+                (9000, 239.308)
+                (10000, 240.718)
+            };
+            \end{axis}
+        \end{tikzpicture}
+    \caption{Czas działania \texttt{x = A\textbackslash b}}
+\end{figure}
+
+
+\subsection{Interpretacja wyników testów}
+
+Patrząc ogólnie wyniki są zadowalające — za każdym razem otrzymujemy wynik znacznie szybciej (i zużywając znacznie mniej pamięci) używając zoptymalizowanego algorytmu niż w przypadku standardowego podejścia \texttt{x = A\textbackslash b}. Jednakże warto zwrócić uwagę na to, że czas wykonania programu nie jest do końca liniowy.
+Złożoność obliczeniowa samego algorytmu jest na pewno liniowa (zakładając, że $l$ jest stałą), więc jedynym wyjaśnieniem są pewne technikalia związane z samym językiem, w którym zostały zaimplementowane programy. Wiemy na przykład, że dostęp do poszczególnych wartości w macierzy typu \texttt{SparseMatrixCSC} nie wykonuje się w czasie stałym — być może właśnie dlatego w obserwacjach widać odchylenie od liniowości.
+
+\section{Wnioski}
+
+Porównując wyniki testów dla zoptymalizowanego algorytmu oraz dla standardowego podejścia \texttt{x = A\textbackslash b} możemy zauważyć oczywiste zalety naszego zoptymalizowanego algorytmu. Zastosowany algorytm jest znacznie szybszy niż podejście klasyczne oraz zużywa znacznie mniej pamięci. Ta sytuacja pokazuje, jak ważne jest dostosowanie algorytmu do danego przypadku i ile można zaoszczędzić zasobów przy znajdowaniu rozwiązania problemu.
+
+\end{document}
