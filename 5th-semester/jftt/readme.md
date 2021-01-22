@@ -62,6 +62,7 @@ keywords: 'jftt, pwr, wppt, wykład, laboratorium, ćwiczenia, lista, listy, zad
 - [Lista 2](cw/lista-2/lista-2.md)
 - [Lista 3](cw/lista-3/lista-3.md)
 - [Lista 4](cw/lista-4/lista-4.md)
+- [Lista 6](cw/lista-6/lista-6.md)
 
 ## Laboratorium
 
