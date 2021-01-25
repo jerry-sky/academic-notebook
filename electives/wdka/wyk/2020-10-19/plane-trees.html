@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -38,7 +38,7 @@
 </ul></li>
 </ul>
 <hr />
-<h2 id="drzewa-uporządkowane">1. Drzewa uporządkowane</h2>
+<h2 id="1-drzewa-uporządkowane">1. Drzewa uporządkowane</h2>
 <p>Drzewa takie, w których zachowujemy orientację całego drzewa<br />
 <img src="plane-trees-orientacja.png" /><br />
 i dokładną pozycję każdego z węzłów.</p>
@@ -46,7 +46,7 @@ i dokładną pozycję każdego z węzłów.</p>
 <p>Lista możliwych drzew dla liczby węzłów <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">;</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0;4]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">4</span><span class="mclose">]</span></span></span></span>:<br />
 <img src="plane-trees-lista.png" /></p>
 <hr />
-<h2 id="klasa-kombinatoryczna">2. Klasa kombinatoryczna</h2>
+<h2 id="2-klasa-kombinatoryczna">2. Klasa kombinatoryczna</h2>
 <p>Spójrzmy na drzewa uporządkowane nieco „z góry”:<br />
 <img src="plane-trees-z-góry.png" /></p>
 <p>Można zauważyć, że każde drzewo jest zbudowane z korzenia oraz z pewnej liczby poddrzew.</p>
@@ -64,7 +64,7 @@ i dokładną pozycję każdego z węzłów.</p>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo><mi>lim</mi><mo>⁡</mo></mo><mrow><mi>i</mi><mo>→</mo><mi mathvariant="normal">∞</mi></mrow></msub><msup><mi>T</mi><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><mi>T</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{i\to \infty} T^{(i)}(z) = T(z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lim</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">→</span><span class="mord mtight">∞</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span></li>
 </ul>
 <hr />
-<h3 id="ogf">2.1. OGF</h3>
+<h3 id="21-ogf">2.1. OGF</h3>
 <p>Jednakże do liczenia OGF użyjemy tej pierwszej metody: <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">T</mi><mo>≅</mo><mi mathvariant="script">Z</mi><mo>×</mo><mi mathvariant="normal">SEQ</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi mathvariant="script">T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
 \mathcal{T} \cong \mathcal{Z} \times \operatorname{SEQ}(\mathcal{T})
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.25417em;">T</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.07944em;">Z</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">S</span><span class="mord mathrm">E</span><span class="mord mathrm">Q</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathcal" style="margin-right:0.25417em;">T</span></span><span class="mclose">)</span></span></span></span></span></p>

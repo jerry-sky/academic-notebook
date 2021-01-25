@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -51,18 +51,24 @@
 <p>W celu kompilacji programu należy użyć <code>make</code>. <em>(Możliwe jest uprzednie posprzątanie <code>make clean</code>)</em><br />
 Żeby uruchomić program należy użyć <code>./main.out &lt;params&gt;</code>, gdzie <code>&lt;params&gt;</code>:</p>
 <ul>
-<li><code>--type</code> - uruchom program z algorytmem:</li>
+<li><code>--type</code> - uruchom program z algorytmem:
+<ul>
 <li><code>quick</code> dla <code>QuickSort</code> <em>(domyślny)</em></li>
 <li><code>insert</code> dla <code>InsertSort</code></li>
 <li><code>merge</code> dla <code>MergeSort</code></li>
 <li><code>dual-pivot-quick</code> dla <code>DualPivotQuickSort</code></li>
 <li><code>radix</code> dla <code>RadixSort</code></li>
-<li><code>--comp</code> - kolejność elementów:</li>
+</ul></li>
+<li><code>--comp</code> - kolejność elementów:
+<ul>
 <li><code>'&gt;='</code> malejąca</li>
 <li><code>'&lt;='</code> rosnąca <em>(domyślna)</em></li>
-<li><code>--stat nazwa_pliku k</code></li>
+</ul></li>
+<li><code>--stat nazwa_pliku k</code>
+<ul>
 <li><code>nazwa_pliku</code> plik do którego program ma zapisać statystyki</li>
 <li><code>k</code> ile razy ma wykonać pętlę opisaną w <a href="https://cs.pwr.edu.pl/golebiewski/teaching/1920/aisd/lab2.pdf">zadaniu 2 listy 2</a></li>
+</ul></li>
 </ul>
 <h3 id="czas-i-liczba-przestawień">Czas i liczba przestawień</h3>
 <p>Poniższe wykresy pokazują, że w przypadku sortowania liczb <code>RadixSort</code> radzi sobie najlepiej w porównaniu z poprzednio zaimplementowanymi algorytmami.</p>
@@ -79,7 +85,7 @@ Zmodyfikowałem program z listy 2 w ten sposób, żeby po jego uruchomieniu z pa
 <p>Program uruchamiałem z parametrem <code>k = 10</code> poszczególne algorytmy i śledziłem zużycie pamięci procesów.</p>
 <p>Algorytm <code>RadixSort</code> na końcu działania zużywał aż <code>111 772 kB</code> wirtualnej pamięci (parametr VSZ).<br />
 Za to <code>QuickSort</code> zużywał jedynie <code>33 716 kB</code> wirtualnej pamięci. Podobnie zachowywał się <code>DualPivotQuickSort</code> oraz <code>InsertionSort</code>.</p>
-<p>Co ciekawe, zużycie pamięci w przypadku <code>MergeSort</code> rosło bardzo szybko przekraczając zużycie pamięci <code>RadixSort</code>a. Domyślam się jednak, że to wynika ze słabego działania <em>garbage collector</em>'a a nie z samego algorytmu.</p>
+<p>Co ciekawe, zużycie pamięci w przypadku <code>MergeSort</code> rosło bardzo szybko przekraczając zużycie pamięci <code>RadixSort</code>a. Domyślam się jednak, że to wynika ze słabego działania <em>garbage collector</em>’a a nie z samego algorytmu.</p>
 <p>Oczywiście w przypadku pamięci wchodzi też tutaj <em>overhead</em> w postaci innych komponentów programu, bo program nie składa się tylko z samego czystego algorytmu.<br />
 Jednakże różnica jest jak najbardziej zauważalna - po wyjściu z <em>comparison model</em> uzyskujemy sortowanie w czasie liniowym, jednak tracimy na wielkości potrzebnej pamięci.</p>
 <h3 id="wpływ-zakresu">Wpływ zakresu</h3>
@@ -101,7 +107,7 @@ Jednakże różnica jest jak najbardziej zauważalna - po wyjściu z <em>compari
 Następnie należy podać liczby <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> oraz <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> oddzielone spacją lub nową linijką.</p>
 <h3 id="zadanie-2---statystyki">Zadanie 2 - statystyki</h3>
 <p>Do skompilowania poniższych statystyk uruchamiałem program na danych <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>128</mn></mrow><annotation encoding="application/x-tex">n = 128</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">k = 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span> przy uruchamianiu programu z parametrem <code>-p</code>.</p>
-<p><strong>Liczba porównań:</strong> | . | SELECT | RANDOMIZED SELECT | | ---------------------: | :----: | :---------------: | | Maximum | 840 | 606 | | Minimum | 636 | 189 | | Średnia | 751.8 | 380 | | Odchylenie standardowe | 70.153 | 147.742 |</p>
+<p><strong>Liczba porównań:</strong> | . | SELECT | RANDOMIZED SELECT | | ———————: | :—-: | :—————: | | Maximum | 840 | 606 | | Minimum | 636 | 189 | | Średnia | 751.8 | 380 | | Odchylenie standardowe | 70.153 | 147.742 |</p>
 <hr />
 <h2 id="zadanie-3">Zadanie 3</h2>
 <blockquote>

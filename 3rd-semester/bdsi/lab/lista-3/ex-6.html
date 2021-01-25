@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -36,9 +36,9 @@
 <h2 id="raport-dotyczący-zadań-z-sekcji-sql-injection-advanced---webgoat">Raport dotyczący zadań z sekcji SQL Injection (Advanced) - WebGoat</h2>
 <p>Zadania polegały na wykorzystaniu błędu braku sanityzacji inputu użytkownika. Aplikacja bezpośrednio konkatenowała wejście użytkownika z kwerendą i ją wykonywała, przez co bardzo łatwo można było manipulować bazą danych.</p>
 <p>Celem w zadaniu 3 było wyciągnięcie dodatkowych informacji (tablicy zawierającej hasła użytkowników) z bazy danych. Jednym z rozwiązań było wykorzystanie komendy UNION, która łączy wyniki kwerend wybierających (SELECT) pod warunkiem, że liczba kolumn i ich typy zgadzają się pomiędzy tymi kwerendami wybierającymi.</p>
-<p>Zadanie 5 było nieco trudniejsze. Należało uzyskać hasło innego użytkownika i zalogować się na jego konto. Tutaj kluczowym elementem było wykrycie błędu formularza rejestracji, a dokładniej pola nazwy użytkownika. Program po stronie serwera najpierw sprawdza czy już nie istnieje użytkownik o podanej nazwie. Jednakże, input użytkownika nie jest w żaden sposób sanityzowany, więc można dodać dodatkowy warunek trywialny (np. 1 = 1 w celu uzyskania wartości TRUE, lub 1 = 2 w przeciwnym przypadku), lub też warunek sprawdzający na przykład część hasła (funkcja SUBSTRING). Przy wykorzystaniu cierpliwości lub odpowiednio automatyzując czynności uzyskuje się znak po znaku hasło do konta użytkownika &quot;Tom&quot;. Co kończy zadanie.</p>
+<p>Zadanie 5 było nieco trudniejsze. Należało uzyskać hasło innego użytkownika i zalogować się na jego konto. Tutaj kluczowym elementem było wykrycie błędu formularza rejestracji, a dokładniej pola nazwy użytkownika. Program po stronie serwera najpierw sprawdza czy już nie istnieje użytkownik o podanej nazwie. Jednakże, input użytkownika nie jest w żaden sposób sanityzowany, więc można dodać dodatkowy warunek trywialny (np. 1 = 1 w celu uzyskania wartości TRUE, lub 1 = 2 w przeciwnym przypadku), lub też warunek sprawdzający na przykład część hasła (funkcja SUBSTRING). Przy wykorzystaniu cierpliwości lub odpowiednio automatyzując czynności uzyskuje się znak po znaku hasło do konta użytkownika “Tom”. Co kończy zadanie.</p>
 <p>Ostatnie zadanie 6 to quiz sprawdzający wiedzę z Prepared Statements, które zapobiegają SQL Injection.</p>
-<h2 id="wnioski-nigdy-nie-można-ufać-użytkownikowi.">Wnioski: <strong>nigdy nie można ufać użytkownikowi.</strong></h2>
+<h2 id="wnioski-nigdy-nie-można-ufać-użytkownikowi">Wnioski: <strong>nigdy nie można ufać użytkownikowi.</strong></h2>
 <p>Należy zawsze filtrować input użytkownika i nigdy nie konkatenować kwerendy bezpośrednio z wejściem użytkownika. Najlepiej używać Prepared Statements.</p>
 </body>
 </html>

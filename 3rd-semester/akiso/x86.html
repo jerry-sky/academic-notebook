@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -35,7 +35,7 @@
 </ul>
 <hr />
 <h2 id="rejestry">Rejestry</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>~ danych</li>
 </ol>
 <ul>
@@ -44,7 +44,7 @@
 <li><code>ECX</code> <em>~ licznika</em></li>
 <li><code>EDX</code> <em>~ danych</em></li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>~ adresowe</li>
 </ol>
 <ul>
@@ -53,7 +53,7 @@
 <li><code>EBP</code> <em>wskaźnik podstawy stosu</em></li>
 <li><code>ESP</code> <em>wskaźnik szczytu stosu</em></li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
+<ol start="3" type="1">
 <li>~ segmentowe</li>
 </ol>
 <ul>
@@ -62,14 +62,14 @@
 <li><code>SS</code> <em>~ segmentu stosu</em></li>
 <li><code>ES</code>, <code>FS</code>, <code>GS</code> <em>~ pomocnicze segmentu danych</em></li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
+<ol start="4" type="1">
 <li>~ specjalnego przeznaczenia</li>
 </ol>
 <ul>
 <li><code>EIP</code> <em>licznik programu</em></li>
 <li><code>EFLAGS</code> <em>~ stanu procesora</em></li>
 </ul>
-<ol start="5" style="list-style-type: decimal">
+<ol start="5" type="1">
 <li><p>~ mniejszych rozmiarów</p>
 <p>Z ~ danych, adresowych, <code>EIP</code>, oraz <code>EFLAGS</code> można korzystać jak z rejestrów 16-bitowych <em>(rejestry takie oznacza się przez pominięcie <code>E</code>: <code>EAX</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>↦</mo></mrow><annotation encoding="application/x-tex">\mapsto</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">↦</span></span></span></span> <code>AX</code></em></p>
 <p>Dodatkowo, do rejestrów danych i adresowych można się odwoływać do starszego i młodszego bajtu 16-bitowego adresu, oznaczanych odpowiednio literami <code>H</code> oraz <code>L</code>.</p>
@@ -204,7 +204,7 @@
 </table>
 <h2 id="wybrane-rozkazy-procesora">Wybrane rozkazy procesora</h2>
 <p><code>reg</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span> rejestr <code>addr</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span> adres</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Przesyłanie danych</li>
 </ol>
 <ul>
@@ -213,7 +213,7 @@
 <li><code>POP dest</code> <em>zdejmuje wartość ze stosu i wstawia do <code>dest</code></em></li>
 <li><code>LEA reg, addr</code> <em>do <code>reg</code> ładuje adres <code>addr</code></em></li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>Arytmetyczne i logiczne</li>
 </ol>
 <ul>

@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -28,7 +28,7 @@
 </p>
 </header>
 <blockquote>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Utwórz bazę danych Hobby. Utwórz użytkownika <code>'U '@'localhost'</code> (lub <code>'U '@'%'</code>), gdzie <code>U</code> jest twoim imieniem, skonkatenowanym z dwoma ostatnimi cyframi indeksu. Ustaw dla tego użytkownika hasło będące twoim numerem indeksu czytanym od tyłu. Nadaj utworzonemu użytkownikowi uprawnienia do Selectowania, wstawiania i zmieniania danych w tabeli, jednak nie do tworzenia usuwania i modyfikowania tabel.</li>
 <li>Wewnątrz utworzonej bazy, utwórz tabele</li>
 </ol>
@@ -40,12 +40,12 @@
 <li>hobby(<strong>osoba</strong>: int, <strong>id</strong>: int, <strong>typ</strong>: enum(sport, nauka, inne)).</li>
 </ul>
 <p>Uwagi: - <strong>Podkreślone</strong> atrybuty lub zbiory atrybutów ustaw jako klucz główny. - Klucze będące samym ID powinny być automatycznie inkrementowane. - Wszystkie osoby w bazie są pełnoletnie. (Zaimplementuj ograniczenia, sprawdź czy działają). - Żadna z kolumn poza lokacją (we wszystkich tabelach, w których występuje) nie może przyjmować wartości NULL. - W przypadku typu sportu wartością domyślną jest drużynowy. W przypadku kolumny towarzysze, w tabeli inne, wartością domyślną jest prawda.</p>
-<ol start="3" style="list-style-type: decimal">
+<ol start="3" type="1">
 <li>Utwórz tabelę <code>zwierzak</code>, a następnie eksportuj do niej dane z tabeli <code>pet</code> w bazie <code>menagerie</code>. (Uwaga: schematy baz muszą sobie odpowiadać). Pobierz dane odnośnie właścicieli, uzupełnij brakujące atrybuty wartościami losowymi, a następnie eksportuj je do tabeli osoba.</li>
 <li>Zmodyfikuj tabelę osoba, dodając kolumnę nazwisko (varchar(50)), która może przyjmować wartość <code>NULL</code>. Zmodyfikuj tabelę <code>zwierzak</code> poprzez usunięcie kolumny zawierającej imię właściciela, a dodając kolumnę zawierającą jego ID.</li>
 <li>Zmodyfikuj tabelę <code>zwierzak</code> oraz <code>hobby</code>, tak by odniesienia do osoby lub hobby (odpowiednie ID) były kluczami obcymi.</li>
 <li>Zmodyfikuj kolumnę ID w tabeli inne, by numeracja zaczynała się od 7000.</li>
-<li>Napisz procedurę, przyjmującą dwa argumenty wejściowe: nazwę tabeli <span class="citation">@name</span> oraz liczbę rekordów <span class="citation">@num</span>, która po wywołaniu dodaje do tabeli <span class="citation">@name</span>, <span class="citation">@num</span> losowych rekordów. Zadbaj o spełnienie odpowiednich ograniczeń. Uruchom procedurę dla (osoba, 1000), (sport, 300), (nauka, 300), (inne, 550), (hobby, 1300).</li>
+<li>Napisz procedurę, przyjmującą dwa argumenty wejściowe: nazwę tabeli <span class="citation" data-cites="name">@name</span> oraz liczbę rekordów <span class="citation" data-cites="num">@num</span>, która po wywołaniu dodaje do tabeli <span class="citation" data-cites="name">@name</span>, <span class="citation" data-cites="num">@num</span> losowych rekordów. Zadbaj o spełnienie odpowiednich ograniczeń. Uruchom procedurę dla (osoba, 1000), (sport, 300), (nauka, 300), (inne, 550), (hobby, 1300).</li>
 <li>Za pomocą konstrukcji <code>PREPARE statement</code> przygotuj zapytanie, które zwraca listę nazw wszystkich hobby. ID osoby oraz kategoria hobby powinny być podawane dopiero podczas wywołania <code>EXECUTE</code>.</li>
 <li>Napisz funkcję lub procedurę, która po podaniu ID osoby wypisze jej wszystkie hobby. Problem z wyborem przeglądanej tabeli możesz rozwiązać przez <code>PREPARE statement</code>.</li>
 <li>Zmodyfikuj procedurę (lub funkcję) zwracającą informacje o hobby użytkownika tak, by posiadane zwierzęta również liczyły się jako hobby. Jako nazwę hobby wpisz gatunek posiadanego zwierzęcia (informacja ta nie powinna się powtarzać).</li>

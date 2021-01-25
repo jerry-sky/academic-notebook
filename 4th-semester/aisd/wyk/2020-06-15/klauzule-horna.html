@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -59,16 +59,16 @@
 <h2 id="def-literał">Def Literał</h2>
 <p>Literałem nazywamy zmienną np. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> lub jej negację <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.63056em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.63056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-3.55056em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>.</p>
 <h2 id="rodzaje-formuł">Rodzaje formuł</h2>
-<h3 id="formuły-implikacyjne">1. Formuły implikacyjne</h3>
+<h3 id="1-formuły-implikacyjne">1. Formuły implikacyjne</h3>
 <p><em>deklaracja procedury</em></p>
 <p>Lewa strona implikacji jest koniunkcją pozytywnych literałów (niezanegowanych zmiennych), prawa strona implikacji składa się z jednego pozytywnego literału. Formuła taka odpowiada stwierdzeniom: jeśli warunki po lewej stronie zachodzą to stwierdzenie po prawej stronie również musi być prawdziwe.</p>
 <h4 id="przykłady-formuły-implikacyjnej">Przykłady formuły implikacyjnej</h4>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><em>rozszerzenie <a href="#przykład-klauzul">wcześniejszego przykładu</a></em><br />
 Formuła <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>z</mi><mo>∧</mo><mi>w</mi><mo stretchy="false">)</mo><mo>⇒</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">(z \land w) \Rightarrow u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">u</span></span></span></span> może oznaczać: jeśli pułkownik spał o 8 wieczorem i morderstwo odbyło się o 8 wieczorem to pułkownik jest niewinny.</li>
 <li>Możemy zapisać również implikację z pustą lewą stroną, np. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\Rightarrow x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> oznaczającą po prostu, że <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span> jest prawdą.</li>
 </ol>
-<h3 id="formuły-negacyjne">2. Formuły negacyjne</h3>
+<h3 id="2-formuły-negacyjne">2. Formuły negacyjne</h3>
 <p><em>formuła celu</em></p>
 <p>Formuła negacyjna jest alternatywną negatywnych literałów (zanegowanych zmiennych).</p>
 <h4 id="przykład-formuły-negacyjnej">Przykład formuły negacyjnej</h4>

@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -40,17 +40,23 @@
 <p>W celu kompilacji programu należy użyć <code>make main.out</code>. <em>(Możliwe jest uprzednie posprzątanie <code>make clean</code>)</em><br />
 Żeby uruchomić program należy użyć <code>./main.out &lt;params&gt;</code>, gdzie <code>&lt;params&gt;</code>:</p>
 <ul>
-<li><code>--type</code> - uruchom program z algorytmem:</li>
+<li><code>--type</code> - uruchom program z algorytmem:
+<ul>
 <li><code>quick</code> dla <code>QuickSort</code> <em>(domyślny)</em></li>
 <li><code>insert</code> dla <code>InsertSort</code></li>
 <li><code>merge</code> dla <code>MergeSort</code></li>
 <li><code>dual-pivot-quick</code> dla <code>DualPivotQuickSort</code></li>
-<li><code>--comp</code> - kolejność elementów:</li>
+</ul></li>
+<li><code>--comp</code> - kolejność elementów:
+<ul>
 <li><code>'&gt;='</code> malejąca</li>
 <li><code>'&lt;='</code> rosnąca <em>(domyślna)</em></li>
-<li><code>--stat nazwa_pliku k</code></li>
+</ul></li>
+<li><code>--stat nazwa_pliku k</code>
+<ul>
 <li><code>nazwa_pliku</code> plik do którego program ma zapisać statystyki</li>
 <li><code>k</code> ile razy ma wykonać pętlę opisaną w <a href="https://cs.pwr.edu.pl/golebiewski/teaching/1920/aisd/lab2.pdf">zadaniu</a></li>
+</ul></li>
 </ul>
 <h2 id="zadanie-1">Zadanie 1</h2>
 <blockquote>
@@ -74,18 +80,17 @@ Przykładowe wywołanie:</p>
 <p>Wykresy wykonałem w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> (<code>numpy</code>) na podstawie <a href="ex-2-stats/logs/dual-k-10.log">logów wygenerowanych przy pomocy mojego programu</a>.</p>
 <p>Zrzuty ekranu wykresów są dostępne bezpośrednio w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> albo poniżej:</p>
 <ul>
-<li><img src="ex-2-stats/comparisons-avg.png" alt="comparisons" /></li>
-<li><img src="ex-2-stats/swaps-avg.png" alt="swaps" /></li>
-<li><img src="ex-2-stats/time-avg.png" alt="time" /></li>
-<li><img src="ex-2-stats/c-over-n.png" alt="c over n" /></li>
+<li><img src="ex-2-stats/comparisons-avg.png" title="fig:" alt="comparisons" /></li>
+<li><img src="ex-2-stats/swaps-avg.png" title="fig:" alt="swaps" /></li>
+<li><img src="ex-2-stats/time-avg.png" title="fig:" alt="time" /></li>
+<li><img src="ex-2-stats/c-over-n.png" title="fig:" alt="c over n" /></li>
 <li><img src="ex-2-stats/s-over-n.png" title="fig:" alt="s over n" /></li>
 </ul>
 <p>gdzie: - kolor czerwony -&gt; <code>QuickSort</code> - kolor zielony -&gt; <code>DualPivotQuickSort</code> - kolor niebieski -&gt; <code>MergeSort</code> - kolor czarny -&gt; <code>InsertionSort</code> <em>(nie wyświetlony, bo ma za duże wartości w porównaniu do innych)</em></p>
 <p>Istnieje możliwość zobaczenia jak zadziałał <code>InsertionSort</code> po uruchomieniu go w <a href="ex-2-stats/charts.ipynb">Jupyter Notebook</a> <em>(odkomentowanie odpowiednich linijek)</em> jednakże wszystkie wykresy wskazują na to, że <code>InsertionSort</code> jest najgorszym algorytmem z wszystkich:</p>
-<div class="figure">
-<img src="ex-2-stats/insertion-sort.png" alt="insertion sort" />
-<p class="caption">insertion sort</p>
-</div>
+<figure>
+<img src="ex-2-stats/insertion-sort.png" alt="insertion sort" /><figcaption aria-hidden="true">insertion sort</figcaption>
+</figure>
 <p>jako, że pozostałych wykresów praktycznie nie widać bo są tak małe w porównaniu z <code>InsertionSort</code>em.</p>
 <h2 id="zadanie-3">Zadanie 3</h2>
 <blockquote>

@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -34,10 +34,9 @@
 </ul>
 <hr />
 <h2 id="raport-dotyczący-backup-ów-baz-danych">Raport dotyczący backup-ów baz danych</h2>
-<p>Żeby dokonać backup-u bazy danych w 1. IDE należy: - Export: - wejść w menu kontekstowe danej bazy danych i wybrać opcję &quot;Dump with 'mysqldump'&quot; - dodać opcję -R żeby funkcje i procedury również zostały wyeksportowane - wybrać plik docelowy - Import: - wejść w menu kontekstowe danej bazy danych i wybrać opcję &quot;Restore with 'mysql'&quot; - wybrać plik docelowy</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Terminalu należy:</li>
-</ol>
+<p>Żeby dokonać backup-u bazy danych w 1. IDE należy: - Export: - wejść w menu kontekstowe danej bazy danych i wybrać opcję “Dump with ‘mysqldump’” - dodać opcję -R żeby funkcje i procedury również zostały wyeksportowane - wybrać plik docelowy - Import: - wejść w menu kontekstowe danej bazy danych i wybrać opcję “Restore with ‘mysql’” - wybrać plik docelowy</p>
+<ol start="2" type="1">
+<li>Terminalu należy:
 <ul>
 <li>Export:
 <ul>
@@ -49,7 +48,8 @@
 <li>użyć programu <code>mysql --database=baza_danych -u root -p &lt; plik_zrodlowy.sql</code></li>
 <li>wpisać hasło do konta super-użytkownika</li>
 </ul></li>
-</ul>
+</ul></li>
+</ol>
 <h2 id="różnica-pomiędzy-backup-em-pełnym-a-różnicowym">Różnica pomiędzy backup-em pełnym a różnicowym</h2>
 <p>Różnica polega na sposobie przechowywania danych. Pełny backup przechowuje wszystkie dane, bezpośrednio w jednym pliku. Dlatego jest łatwy w użyciu w przypadku recovery. Każdy pełny backup to jeden duży plik wszystkich kwerend potrzebnych do odbudowania bazy danych.</p>
 <p>Za to różnicowy backup polega na zachowywaniu informacji na temat zmian w bazie danych. Przy pierwszym backup-ie należy zachować całą bazę danych, jednakże następne backup-y zawierają tylko zmiany jakie zaszły pomiędzy tymi backup-ami. Zmniejsza to znacznie wymaganą przez backup-y przestrzeń na dysku, bo tylko ten pierwszy backup ma w sobie obraz całej bazy danych, a kolejne tylko zmiany jakie zaszły od tamtego czasu.</p>

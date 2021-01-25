@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 </head>
 <body>
@@ -37,7 +37,7 @@
 <li><a href="#setting-up">Setting up</a></li>
 <li><a href="#testing">Testing</a></li>
 <li><a href="#other-caveats">Other caveats</a></li>
-<li><a href="#devices-configs">Devices' configs</a>
+<li><a href="#devices-configs">Devices’ configs</a>
 <ul>
 <li><a href="#r5-last-router-before-cloud"><code>R5</code> (last router before <code>Cloud</code>)</a></li>
 <li><a href="#r6"><code>R6</code></a></li>
@@ -53,40 +53,46 @@
 <p><a href="#translated-task">»English«</a> &gt; 1. W symulatorze GNS3 skonfiguruj wirtualną sieć o podanej topologii, tak aby: &gt; <img src="original-task-image.svg" alt="simulation" /> &gt; 1. Wirtualna sieć była połączona z zewnętrzną („fizyczną”) siecią <code>Cloud</code>. &gt; 2. Ruter <code>R5</code> uzyskiwał dynamiczny adres IP z sieci <code>Cloud</code>. &gt; 3. Pozostałe urządzenia posiadały statyczne adresy w swoich sieciach. &gt; 4. Możliwe było wysyłanie komunikatów <code>ping</code> pomiędzy dowolna parą urządzeń sieci wirtualnej. &gt; 5. Możliwe było wysyłanie komunikatów <code>ping</code> z dowolnego urządzenia w sieci wirtualnej na zewnętrzny adres, np. <code>google.com</code>. &gt; 2. Ustaw przechwytywanie komunikatów w sieciach: <code>192.168.0.0</code>, <code>192.168.2.0</code>, <code>192.168.3.0</code>. &gt; 3. Przeanalizuj przechwycone komunikaty dla zapytania wysłanego z komputera PC2: <code>ping google.com</code>.</p>
 <h3 id="translated-task">Translated task</h3>
 <blockquote>
-<ol style="list-style-type: decimal">
-<li>In GNS3 simulation program create a virtual network with a given topology such that: <img src="original-task-image.svg" alt="simulation" /></li>
+<ol type="1">
+<li>In GNS3 simulation program create a virtual network with a given topology such that: <img src="original-task-image.svg" alt="simulation" />
+<ol type="1">
 <li>the virtual network is connected with the outside „physical” network represented by device named <code>Cloud</code>.</li>
 <li><code>R5</code> has a dynamic IP address given by <code>Cloud</code></li>
 <li>other devices have their static IP address inside their local networks</li>
 <li>all devices are able to communicate with each other via <code>ping</code></li>
-<li>all devices are able to communicate with the outside world e.g. <code>google.com</code></li>
+<li>all devices are able to communicate with the outside world e.g. <code>google.com</code></li>
+</ol></li>
 <li>Setup packet capture on networks <code>192.168.0.0.</code>, <code>192.168.2.0</code>, <code>192.168.3.0</code>.</li>
 <li>Analyse captured packets sent and received due to executing <code>ping google.com</code> in the terminal of PC2.</li>
 </ol>
 </blockquote>
 <h2 id="useful-commands">Useful commands</h2>
-<ol style="list-style-type: decimal">
-<li>After executing <code>conf t</code>:</li>
-<li>After executing <code>int X</code>, where <code>X</code> is a network interface e.g. <code>f0/0</code>:
-<ol style="list-style-type: decimal">
+<ol type="1">
+<li>After executing <code>conf t</code>:
+<ol type="1">
+<li>After executing <code>int X</code>, where <code>X</code> is a network interface e.g. <code>f0/0</code>:
+<ol type="1">
 <li><code>no ip address</code> deletes current settings for chosen network interface</li>
 </ol></li>
+</ol></li>
 <li><code>do</code> execute a command like outside <code>conf t</code></li>
-<li><code>sh</code> show (<code>show</code>):</li>
+<li><code>sh</code> show (<code>show</code>):
+<ol type="1">
 <li><code>ip route</code> currently active internet interfaces</li>
 <li><code>access-list</code> views the list of IPs with their access mode</li>
+</ol></li>
 </ol>
 <h2 id="setting-up">Setting up</h2>
 <p><strong>Important:</strong> in order for this simulation to run an image of the CISCO <code>c3725</code> router has to bo installed into GNS3. Download it from <a href="https://yaser-rahmati.gitbook.io/gns3/cisco-ios-images-for-dynamips">here</a> or just run attached <a href="download-router-image.sh">bash script with <code>wget</code> in it</a>.</p>
 <p>Obviously, on every computer the configuration of the <code>Cloud</code> will be different thus the gateway and the subnet will be different (hence they need to be reconfigured a little in order to work on your machine).<br />
-However, the inside of this network of smaller networks should work out of the box. If it's not <a href="#devices-configs">below are setup commands</a> that have to be run consecutively in each device's terminal to be setup properly.</p>
+However, the inside of this network of smaller networks should work out of the box. If it’s not <a href="#devices-configs">below are setup commands</a> that have to be run consecutively in each device’s terminal to be setup properly.</p>
 <h2 id="testing">Testing</h2>
-<p>After the setup you can test the simulated network. Open selected device's terminal and use <code>ping</code> to test the connection to another device in the network. DNS is set to either <code>8.8.8.8</code> (Google) or <code>1.1.1.1</code> so <code>ping</code>ing outside web should also not be a problem.</p>
+<p>After the setup you can test the simulated network. Open selected device’s terminal and use <code>ping</code> to test the connection to another device in the network. DNS is set to either <code>8.8.8.8</code> (Google) or <code>1.1.1.1</code> so <code>ping</code>ing outside web should also not be a problem.</p>
 <h2 id="other-caveats">Other caveats</h2>
-<p>Devices marked as <code>PC-X</code> where <code>X</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><mo stretchy="false">{</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\in \{1,2,3\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mclose">}</span></span></span></span> are not actual GNS3's <code>VPCS</code>s. They are the CISCO <code>c3725</code> routers with <code>ip routing</code> turned off so they <em>act</em> like a <code>VPCS</code>.<br />
+<p>Devices marked as <code>PC-X</code> where <code>X</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><mo stretchy="false">{</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\in \{1,2,3\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mclose">}</span></span></span></span> are not actual GNS3’s <code>VPCS</code>s. They are the CISCO <code>c3725</code> routers with <code>ip routing</code> turned off so they <em>act</em> like a <code>VPCS</code>.<br />
 <em>This is sufficient for testing purposes of this simulation.</em><br />
-<em>(normal GNS3's <code>VPCS</code>s are genuinely broken)</em></p>
-<h2 id="devices-configs">Devices' configs</h2>
+<em>(normal GNS3’s <code>VPCS</code>s are genuinely broken)</em></p>
+<h2 id="devices-configs">Devices’ configs</h2>
 <h3 id="r5-last-router-before-cloud"><code>R5</code> (last router before <code>Cloud</code>)</h3>
 <pre><code>conf t
 int f0/0
