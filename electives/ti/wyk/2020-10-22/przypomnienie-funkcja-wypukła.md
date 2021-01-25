@@ -42,7 +42,7 @@ $$
 1. Jeśli $f''(x) \ge 0$,\
 to $f$ jest wypukła.
 
-2. jeśli $f''(x) < 0$\
+2. jeśli $f''(x) > 0$\
 to $f$ jest ściśle wypukła.
 
 ### 3.1. D-d

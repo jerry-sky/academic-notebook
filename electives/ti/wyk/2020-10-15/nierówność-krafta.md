@@ -35,7 +35,7 @@ $l$ - maksymalna głębokość, czyli długość najdłuższego kodu
 
 - kod $i$-tej wiśni jest długości $l_i$
 
-- liczba liście to $2^{l-l_i}$
+- liczba liści to $2^{l-l_i}$
 
 Zatem
 $$

@@ -86,7 +86,7 @@ Czyli teraz możemy policzyć kody poszczególnych symboli:
 ## 3. Fakt o słowach kodowych Huffmana
 
 1. $l_1 \le l_2 \le l_3 \le \dots \le l_N$ ($l_i = |c(x_i)|$)
-2. $l_{N-1} = L_N$
+2. $l_{N-1} = l_N$
 3. $c(x_N)$ oraz $c(x_{N-1})$ różnią się tylko ostatnim bitem.
 
 ### 3.1. D-d
@@ -134,7 +134,7 @@ Czyli teraz możemy policzyć kody poszczególnych symboli:
 
 ## 5. Fakt#3
 
-Istnieje kod optymalny $c$ (dla $p_1 \ge p_2 \ge p_3 \ge \dots \ge p_N$) spełniają warunki:
+Istnieje kod optymalny $c$ (dla $p_1 \ge p_2 \ge p_3 \ge \dots \ge p_N$) spełniający warunki:
 1. $l_1 \le l_2 \le \dots l_N$
 2. $l_{N-1} = l_N$
 3. $c(x_N)$ oraz $c(x_{N-1})$ różnią się tylko ostatnim bitem.

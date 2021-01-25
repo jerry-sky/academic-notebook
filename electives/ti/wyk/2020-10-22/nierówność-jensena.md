@@ -28,7 +28,7 @@ Załóżmy, że $x_0, x_1, \dots, x_n \in [a;b]$ oraz $p_0, p_1, \dots, p_n \ge 
 
 Wówczas
 $$
-f\left(\sum_{i=0}^n p_ix_i\right) \ge \sum_{i=0}^n p_i f(x_i).
+f\left(\sum_{i=0}^n p_ix_i\right) \le \sum_{i=0}^n p_i f(x_i).
 $$
 
 \[ Jeśli dodatkowo $f$ jest ściśle wypukła oraz $|\{ x_0, x_1, \dots, x_n \}| \ge 2$ i $\forall i \enspace p_i > 0$, \

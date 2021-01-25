@@ -43,7 +43,7 @@ $L = L(c) = \sum_{i=1}^{N} p_i \underbrace{|c(x_i)|}_{l_i} = \sum_{i=1}^{N} p_i 
 ### 1.2. Uwaga
 - są też kody sufiksowe
 - kody jednoznacznie dekodowalne:
-    - dla dowolnego ciągu $\{0,1\}^*$ istnieje co najwyżej jeden podział $\sigma = \sigma_1 \frown \sigma_2 \frown \dots \frown \sigma_k$, taki by $\forall i \sigma_i \mathrm{rng}(XXXXXXXXXXXXXXXXXXXXXXXXXX)$
+    - dla dowolnego ciągu $\{0,1\}^*$ istnieje co najwyżej jeden podział $\sigma = \sigma_1 \frown \sigma_2 \frown \dots \frown \sigma_k$, taki by $\forall i \sigma_i \operatorname{rng}(c)$
 
 ### 1.3. Uwaga
 
@@ -53,7 +53,7 @@ Kody prefiksowe (i też sufiksowe) są jednoznacznie dekodowalne
 Znajdź jednoznacznie dekodowalny kod, który nie jest ani sufiksowy ani prefiksowy.
 
 #### 1.3.2. Ćwiczenie
-Kiedy co najwyżej można zamienić na dokładnie?
+Kiedy *co najwyżej* można zamienić na *dokładnie*?
 ##### 1.3.2.1. Przykład
 $\{x_1, x_2\} \qquad c(x_1) = 0 \qquad c(x_2) = 11$
 
