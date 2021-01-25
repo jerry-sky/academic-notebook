@@ -51,6 +51,7 @@ keywords: 'on, pwr, wykład, wppt, laboratorium, ćwiczenia, lista, listy, zada�
 *Prowadzone przez: [dr hab. Paweł Zieliński](https://cs.pwr.edu.pl/zielinski/)*
 
 - [Lista-1](cw/lista-1/lista-1.md)
+- [Lista-4](cw/lista-4/lista-4.md)
 
 ---
 
