@@ -30,7 +30,7 @@ keywords: 'pwr, wppt, ti, wykład, laboratorium, teoria, informacji, Shannon, Ha
 - 2020-10-29, 2020-11-05
     - [Kod Shannon’a raz jeszcze](wyk/2020-10-29/kod-shannona-raz-jeszcze.md)
     - [Kody Huffmana](wyk/2020-10-29/kody-huffmana.md)
-- 2020-11-05
+- 2020-11-05, 2020-11-12
     - [Entropia — pojęcia i rachunki](wyk/2020-11-05/entropia-pojęcia-rachunki.md)
 
 ## Ćwiczenia
