@@ -111,10 +111,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">asciinema</span> play <span class="op">&lt;</span>recording<span class="op">&gt;</span>.cast</span></code></pre></div>
 <p>przy zainstalowanym programie <code>asciinema</code> w systemie.</p>
 <hr />
-<h2 id="zadanie-1">Zadanie 1.</h2>
+<h2 id="zadanie-1.">Zadanie 1.</h2>
 <blockquote>
 <p>Studenci zostali podzieleni na cztery grupy ze względu na dwie ostatnie cyfry numeru indeksu i uzyskali dostęp do odpowiednich repozytoriów.</p>
-<p>Każda grupa ma wspólnie pracować nad stworzeniem aplikacji <code>app_1</code> w swoim repozytorium. W ramach każdej grupy każdy student ma dorobić swój własny moduł dodający jakąś funkcjonalność, wykonując następujące czynności: - utworzyć swoją kopię roboczą projektu, - przejrzeć plik README i pozostałe pliki, aby zorientować się w zasadach organizacji projektu i nazywania plików i katalogów, - utworzyć własne rozgałęzienie w <code>app1/branches</code> , w którym zaimplementuje swój własny podprogram, - zsynchronizować swoją gałąź z <code>trunk</code>-iem (być może kilka razy) - zreintegrować swoją gałąź z <code>trunk</code>-iem - usunąć niepotrzebną gałąź po reintegracji - utworzyć <code>tag</code>-a z poprawną wersją projektu zawierającą własny podprogram. - w prezentacji pokazać, że program z utworzonego <code>tag</code>-a kompiluje się i wykonuje poprawnie.</p>
+<p>Każda grupa ma wspólnie pracować nad stworzeniem aplikacji <code>app_1</code> w swoim repozytorium. W ramach każdej grupy każdy student ma dorobić swój własny moduł dodający jakąś funkcjonalność, wykonując następujące czynności:</p>
+<ul>
+<li>utworzyć swoją kopię roboczą projektu,</li>
+<li>przejrzeć plik README i pozostałe pliki, aby zorientować się w zasadach organizacji projektu i nazywania plików i katalogów,</li>
+<li>utworzyć własne rozgałęzienie w <code>app1/branches</code> , w którym zaimplementuje swój własny podprogram,</li>
+<li>zsynchronizować swoją gałąź z <code>trunk</code>-iem (być może kilka razy)</li>
+<li>zreintegrować swoją gałąź z <code>trunk</code>-iem</li>
+<li>usunąć niepotrzebną gałąź po reintegracji</li>
+<li>utworzyć <code>tag</code>-a z poprawną wersją projektu zawierającą własny podprogram.</li>
+<li>w prezentacji pokazać, że program z utworzonego <code>tag</code>-a kompiluje się i wykonuje poprawnie.</li>
+</ul>
 <p>Wykonując polecenia należy je nagrywać z terminala wraz z wyświetlanymi komunikatami do sprawozdań <code>asciinema</code>.</p>
 <p>Można utworzyć więcej niż jedno nagranie, ale ich nazwy powinny zawierać numery wskazujące, w jakiej kolejności należy je wyświetlać. Ostatnie nagranie zakończyć wyświetleniem <code>svn log -v …</code> dla utworzonego przez siebie <code>tag</code>-a. Utworzone prezentacje można skleić w jedną, nagrywając wykonanie skryptu, który odtwarza je w kolejności. Przykład można obejrzeć, wykonując polecenie:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svn</span> cat https://repo.cs.pwr.edu.pl/info/asciinema/6_sklejanie_prezentacji.cast <span class="kw">|</span> <span class="ex">asciinema</span> play <span class="at">-i</span> 0.1 <span class="at">-</span></span></code></pre></div>
@@ -142,9 +152,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Nagranie <code>ex-1.cast</code> pokazuje, że wersja programu dostępna w katalogu <code>^/app_1/tags/v_250075</code> kompiluje się i działa jak należy.</li>
 </ol>
 <hr />
-<h2 id="skrypt-pomocniczy-do-zadań-2-i-3">Skrypt pomocniczy do zadań 2. i 3.</h2>
+<h2 id="skrypt-pomocniczy-do-zadań-2.-i-3.">Skrypt pomocniczy do zadań 2. i 3.</h2>
 <p>Do zadań 2. i 3. używamy tutaj skryptu pomocniczego <code>svn-ls-all.sh</code>, który jest niedalekim kuzynem skryptu z rozwiązania zadania 1. z listy 1. Wypisuje on wszystkie pliki w danym pod-katalogu danego repozytorium dla danej rewizji.</p>
-<h2 id="zadanie-2">Zadanie 2.</h2>
+<h2 id="zadanie-2.">Zadanie 2.</h2>
 <blockquote>
 <p>Napisz skrypt, który jako argument otrzymuje:</p>
 <p>Nr rewizji w repozytorium SVN URL do katalogu w repozytorium SVN (korzenia poddrzewa katalogów, zawierającego pliki tekstowe), który dla wszystkich słów występujących w plikach w danym poddrzewie katalogów w danej rewizji, drukuje statystyki, ile razy dane słowo wystąpiło we wszystkich tych plikach. (Odpowiednik <a href="../lista-1/readme#zadanie-2">zadania 2 z listy 1.</a>) Niech skrypt będzie w pliku: <code>./l3z2.bash</code>. W prezentacji umieść wykonania poleceń:</p>
@@ -153,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Plik wykonywalny <a href="l3z2.bash"><code>l3z2.bash</code></a> jest rozwiązaniem tego zadania. Jego działanie można zobaczyć na nagraniu <code>ex-2.cast</code>.</p>
 <hr />
-<h2 id="zadanie-3">Zadanie 3.</h2>
+<h2 id="zadanie-3.">Zadanie 3.</h2>
 <blockquote>
 <p>Skrypt, wywoływany jak w zadaniu 2, który dla każdego słowa pojawiającego się w plikach danego poddrzewa katalogów w danej rewizji, drukuje liczbę plików, w których to słowo występuje. (Odpowiednik zadania 3 z listy 1.) Niech skrypt będzie w pliku: <code>./l3z3.bash</code>. W prezentacji umieść wykonania poleceń:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./l3z3.bash</span> 15 https://repo.cs.pwr.edu.pl/info/SP-20-21/l3/a/</span>

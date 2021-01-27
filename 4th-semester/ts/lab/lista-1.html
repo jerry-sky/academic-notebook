@@ -69,27 +69,32 @@
 </ol>
 </blockquote>
 <h2 id="droga-do-japonii-amazon">Droga do Japonii <em>(Amazon)</em></h2>
-<h3 id="traceroute-amazonjp"><code>traceroute amazon.jp</code></h3>
+<h3 id="traceroute-amazon.jp"><code>traceroute amazon.jp</code></h3>
 <p>Po uruchomieniu <code>bash   traceroute --back amazon.jp</code> ze standardowymi ustawieniami <em>(60 bajtów)</em> przechodzimy przez wiele serwerów, również tych, które nawet po trzech próbach nie odpowiadają. Jednakże, dochodzimy do jakiegoś serwera Cloudfront’a który jest ostatnim na liście drogi do <code>amazon.jp</code>.</p>
 <p>#### Przypadek pierwszy Dzieli go od komputera podłączonego do routera we <strong>Wrocławiu 28 hopów oraz 25 hopów w drugą stronę</strong>.</p>
 <p>#### Przypadek drugi Przy zmniejszeniu <strong>liczby bajtów do tylko 28</strong> (28 bajtów mają nagłówki - minimum) liczba hopów zmniejsza się do <strong>tylko 19 hopów oraz 16 z powrotem</strong>, bo trafiamy na serwer Cloudfront’a o nieco innej subdomenie zarządzającej innym adresem IP.</p>
-<p>#### Różne liczby bajtów - <em>Nietypowe zachowanie</em>: po zmianie liczby bajtów na <strong>wartość różną od 60</strong> zazwyczaj natrafiało się na <a href="#przypadek-drugi"><strong>przypadek drugi</strong></a> (19 hopów i 16 z powrotem), chociaż z rzadka również pojawiał się <a href="#przypadek-pierwszy">przypadek pierwszy</a> (28 hopów i 25 z powrotem). - Po wysłaniu 1500 bajtów (max bajtów bez procesu defragmentacji) wracamy do <a href="#przypadek-pierwszy">przypadku pierwszego</a>. - Po przekroczeniu 1500 bajtów (chociażby 1501 bajtów) <code>traceroute</code> nie potrafi ukończyć drogi, wypisuje wiele linijek zawierających <code>* * *</code> co oznacza trzy nieudane próby połączenia się z serwerem na drodze do <code>amazon.jp</code>. Po dodaniu flagi <code>-F</code> <em>(don’t fragment)</em> nie jesteśmy w stanie przejść dalej niż jeden hop.</p>
-<h3 id="ping-amazonjp"><code>ping amazon.jp</code></h3>
+<p>#### Różne liczby bajtów</p>
+<ul>
+<li><em>Nietypowe zachowanie</em>: po zmianie liczby bajtów na <strong>wartość różną od 60</strong> zazwyczaj natrafiało się na <a href="#przypadek-drugi"><strong>przypadek drugi</strong></a> (19 hopów i 16 z powrotem), chociaż z rzadka również pojawiał się <a href="#przypadek-pierwszy">przypadek pierwszy</a> (28 hopów i 25 z powrotem).</li>
+<li>Po wysłaniu 1500 bajtów (max bajtów bez procesu defragmentacji) wracamy do <a href="#przypadek-pierwszy">przypadku pierwszego</a>.</li>
+<li>Po przekroczeniu 1500 bajtów (chociażby 1501 bajtów) <code>traceroute</code> nie potrafi ukończyć drogi, wypisuje wiele linijek zawierających <code>* * *</code> co oznacza trzy nieudane próby połączenia się z serwerem na drodze do <code>amazon.jp</code>. Po dodaniu flagi <code>-F</code> <em>(don’t fragment)</em> nie jesteśmy w stanie przejść dalej niż jeden hop.</li>
+</ul>
+<h3 id="ping-amazon.jp"><code>ping amazon.jp</code></h3>
 <p>Po uruchomieniu <code>bash   ping -t &lt;TTL&gt; amazon.jp</code> gdzie <code>TTL</code> jest większe bądź równe 28 dostajemy odpowiedź - taki sam wynik jak przy programie <a href="#ping-amazonjp"><code>ping</code></a>. Pakiet odpowiedzi ma <code>TTL</code> równe 232, czyli hopów od serwera do komputera we Wrocławiu było <code>255-226 = 29</code></p>
 <ul>
 <li>Po dodaniu flagi <code>-M do</code> nie możemy wyjść dalej niż jeden hop.</li>
 <li>Po dodaniu flagi <code>-M want</code> nie fragmentujemy lokalnie i jesteśmy w stanie wysłać maksymalną liczbę bajtów, na którą pozwala <code>ping</code> jaką jest 65507 bajtów.</li>
 </ul>
 <h2 id="droga-do-chin-amazon">Droga do Chin <em>(Amazon)</em></h2>
-<h3 id="traceroute-amazoncn"><code>traceroute amazon.cn</code></h3>
+<h3 id="traceroute-amazon.cn"><code>traceroute amazon.cn</code></h3>
 <p>Po uruchomieniu <code>bash   traceroute --back amazon.cn</code> dochodzimy do 14 hopa <em>(22 z powrotem)</em> a dalej nie ma odpowiedzi od serwerów po drodze do <code>amazon.cn</code>. Musimy użyć <a href="#ping-amazoncn"><code>ping</code>a</a>.</p>
-<h3 id="ping-amazoncn"><code>ping amazon.cn</code></h3>
+<h3 id="ping-amazon.cn"><code>ping amazon.cn</code></h3>
 <p>Przy użyciu <code>bash   ping -t &lt;TTL&gt; amazon.cn</code> dla wartości większych bądź równych 20 dostajemy odpowiedź - czyli <strong>dzieli nas 20 hopów</strong>. Pakiet odpowiedzi miał <code>TTL</code> równy 229 czyli hopów z powrotem było <code>255 - 229 = 26</code>.<br />
 Co ciekawe, zazwyczaj <em>pierwsze dwa pakiety są tracone</em>, dopiero trzeci i następne dostają odpowiedź.</p>
 <h2 id="droga-do-serwerowni-ppt">Droga do serwerowni PPT</h2>
-<h2 id="traceroute-cspwredupl"><code>traceroute cs.pwr.edu.pl</code></h2>
+<h2 id="traceroute-cs.pwr.edu.pl"><code>traceroute cs.pwr.edu.pl</code></h2>
 <p>Po uruchomieniu <code>bash   traceroute --back cs.pwr.edu.pl</code> dostajemy wynik 11 hopów oraz 12 z powrotem.</p>
-<h2 id="ping-cspwredupl"><code>ping cs.pwr.edu.pl</code></h2>
+<h2 id="ping-cs.pwr.edu.pl"><code>ping cs.pwr.edu.pl</code></h2>
 <p>Po uruchomieniu <code>bash   ping -M want -s 34700 cs.pwr.edu.pl</code> dostajemy odpowiedź i jest to najwyższa liczba bajtów jaka mogła zostać wysłana zakładając, że chcemy dostać odpowiedź.</p>
 <h2 id="opis-programów">Opis programów</h2>
 <h3 id="ping"><code>ping</code></h3>

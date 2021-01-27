@@ -39,7 +39,14 @@
 <li>inne(<strong>id</strong>:int, nazwa:varchar(20), lokacja: varchar(20), towarzysze:bool),</li>
 <li>hobby(<strong>osoba</strong>: int, <strong>id</strong>: int, <strong>typ</strong>: enum(sport, nauka, inne)).</li>
 </ul>
-<p>Uwagi: - <strong>Podkreślone</strong> atrybuty lub zbiory atrybutów ustaw jako klucz główny. - Klucze będące samym ID powinny być automatycznie inkrementowane. - Wszystkie osoby w bazie są pełnoletnie. (Zaimplementuj ograniczenia, sprawdź czy działają). - Żadna z kolumn poza lokacją (we wszystkich tabelach, w których występuje) nie może przyjmować wartości NULL. - W przypadku typu sportu wartością domyślną jest drużynowy. W przypadku kolumny towarzysze, w tabeli inne, wartością domyślną jest prawda.</p>
+<p>Uwagi:</p>
+<ul>
+<li><strong>Podkreślone</strong> atrybuty lub zbiory atrybutów ustaw jako klucz główny.</li>
+<li>Klucze będące samym ID powinny być automatycznie inkrementowane.</li>
+<li>Wszystkie osoby w bazie są pełnoletnie. (Zaimplementuj ograniczenia, sprawdź czy działają).</li>
+<li>Żadna z kolumn poza lokacją (we wszystkich tabelach, w których występuje) nie może przyjmować wartości NULL.</li>
+<li>W przypadku typu sportu wartością domyślną jest drużynowy. W przypadku kolumny towarzysze, w tabeli inne, wartością domyślną jest prawda.</li>
+</ul>
 <ol start="3" type="1">
 <li>Utwórz tabelę <code>zwierzak</code>, a następnie eksportuj do niej dane z tabeli <code>pet</code> w bazie <code>menagerie</code>. (Uwaga: schematy baz muszą sobie odpowiadać). Pobierz dane odnośnie właścicieli, uzupełnij brakujące atrybuty wartościami losowymi, a następnie eksportuj je do tabeli osoba.</li>
 <li>Zmodyfikuj tabelę osoba, dodając kolumnę nazwisko (varchar(50)), która może przyjmować wartość <code>NULL</code>. Zmodyfikuj tabelę <code>zwierzak</code> poprzez usunięcie kolumny zawierającej imię właściciela, a dodając kolumnę zawierającą jego ID.</li>

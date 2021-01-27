@@ -116,17 +116,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <hr />
-<h2 id="1-def">1. DEF</h2>
+<h2 id="def">1. DEF</h2>
 <p>Rozbicie ciągu znaków wejściowych na symbole leksykalne (wyrazy posiadające określone znaczenie). Ciąg symboli leksykalnych stanowi wejście dla analizatora składniowego.</p>
 <hr />
-<h2 id="2-podstawowe-pojęcia">2. Podstawowe pojęcia</h2>
+<h2 id="podstawowe-pojęcia">2. Podstawowe pojęcia</h2>
 <ol type="1">
 <li>symbol leksykalny (token)</li>
 <li>leksem (symbol leksykalny może mieć wiele leksemów)</li>
 <li>wzorzec (coś w rodzaju wyrażenia regularnego)</li>
 </ol>
 <hr />
-<h2 id="3-przykład-symboli-leksykalnych">3. Przykład symboli leksykalnych</h2>
+<h2 id="przykład-symboli-leksykalnych">3. Przykład symboli leksykalnych</h2>
 <p>Weźmy kawałek kodu w <code>C</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> sqr(<span class="dt">double</span> x)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>{</span>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <hr />
-<h2 id="4-zapis-wzorca">4. Zapis wzorca</h2>
+<h2 id="zapis-wzorca">4. Zapis wzorca</h2>
 <ul>
 <li>wzorce zapisujemy jako wyrażenia regularne</li>
 <li>składnia wyrażeń rozszerzona, aby umożliwić zwięzły zapis</li>
@@ -220,12 +220,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <hr />
-<h2 id="5-implementacja-analizatora-leksykalnego">5. Implementacja analizatora leksykalnego</h2>
+<h2 id="implementacja-analizatora-leksykalnego">5. Implementacja analizatora leksykalnego</h2>
 <ul>
 <li>wykorzystanie generatorów analizatorów leksykalnych (np. <em>LEX</em>, <em>FLEX</em>)</li>
 <li>napisanie analizatora bezpośrednio w jakimś języku programowania</li>
 </ul>
-<h3 id="51-złożoność-pamięciowa-i-czasowa-automatów-skończonych">5.1. Złożoność pamięciowa i czasowa automatów skończonych</h3>
+<h3 id="złożoność-pamięciowa-i-czasowa-automatów-skończonych">5.1. Złożoność pamięciowa i czasowa automatów skończonych</h3>
 <table>
 <thead>
 <tr class="header">
@@ -247,10 +247,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>gdzie: - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>r</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">∣</span></span></span></span> — długość wyrażenia regularnego - <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mord">∣</span></span></span></span> — długość łańcucha wejściowego</p>
+<p>gdzie:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>r</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|r|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">∣</span></span></span></span> — długość wyrażenia regularnego</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>x</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mord">∣</span></span></span></span> — długość łańcucha wejściowego</li>
+</ul>
 <p>Jednak implementacja DFA jest duża łatwiejsza, a wielkość zmniejsza się w trakcie minimalizacji.</p>
 <hr />
-<h2 id="6-koncepcja-flex-a">6. Koncepcja <em>FLEX</em>-a</h2>
+<h2 id="koncepcja-flex-a">6. Koncepcja <em>FLEX</em>-a</h2>
 <ul>
 <li>generowanie kodu analizatora na podstawie zadanej specyfikacji</li>
 <li>domyślnie analizator jest w języku <em>C</em></li>
@@ -259,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><code>scan.l</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <em>flex</em> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>scan.c</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>gcc</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>scan[.exe]</code></p>
 <hr />
-<h3 id="61-specyfikacja-pliku-źródłowego">6.1. Specyfikacja pliku źródłowego</h3>
+<h3 id="specyfikacja-pliku-źródłowego">6.1. Specyfikacja pliku źródłowego</h3>
 <ol type="1">
 <li>Sekcja definicji</li>
 <li>Sekcja reguł przetwarzania, gdzie regułą składa się z dwóch części
@@ -269,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol></li>
 <li>Sekcja podprogramów</li>
 </ol>
-<h3 id="62-podstawowe-reguły-działania">6.2. Podstawowe reguły działania</h3>
+<h3 id="podstawowe-reguły-działania">6.2. Podstawowe reguły działania</h3>
 <ul>
 <li>niedopasowane znaki są przepisywane na wyjście</li>
 <li>można definiować operacje puste (wzorzec bez reguły przetwarzania)</li>
@@ -277,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>wzorce zawierające spacej ujmujemy w <code>""</code></li>
 </ul>
 <hr />
-<h3 id="63-przykład-programu">6.3. Przykład programu</h3>
+<h3 id="przykład-programu">6.3. Przykład programu</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>%{<span class="co">// sekcja — biblioteki i inne ustawienia w normalnym C</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -299,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main() {</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> yylex();</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<h3 id="64-wyrażenia-regularne">6.4. Wyrażenia regularne</h3>
+<h3 id="wyrażenia-regularne">6.4. Wyrażenia regularne</h3>
 <table>
 <thead>
 <tr class="header">
@@ -367,15 +371,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <hr />
-<h3 id="65-zmienne-wbudowane">6.5. Zmienne wbudowane</h3>
+<h3 id="zmienne-wbudowane">6.5. Zmienne wbudowane</h3>
 <ul>
 <li><code>yytext</code> — wskaźnik na ostatnio rozpoznany (dopasowany)</li>
 <li><code>yyleng</code> — długość dopasowanego leksema</li>
 </ul>
 <hr />
-<h3 id="66-niejednoznaczność">6.6. Niejednoznaczność</h3>
+<h3 id="niejednoznaczność">6.6. Niejednoznaczność</h3>
 <p><em>Co zrobi LEX jeśli tekst może się dopasować do kilku wzorców?</em></p>
-<p>Stosujemy zasady: 1. Zasada najdłuższego dopasowania 2. Zasada wcześniejszego dopasowania</p>
+<p>Stosujemy zasady:</p>
+<ol type="1">
+<li>Zasada najdłuższego dopasowania</li>
+<li>Zasada wcześniejszego dopasowania</li>
+</ol>
 <hr />
 </body>
 </html>

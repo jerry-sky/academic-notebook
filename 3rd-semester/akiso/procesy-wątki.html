@@ -42,7 +42,12 @@
 <hr />
 <h2 id="zasób">Zasób</h2>
 <p>Zasobem jest element sprzętowy lub programowy systemu komputerowego, którego brak może potencjalnie zablokować wykonywanie programu (przetwarzanie)</p>
-<p>Przykłady zasobów: - Procesor - Pamięć - Plik</p>
+<p>Przykłady zasobów:</p>
+<ul>
+<li>Procesor</li>
+<li>Pamięć</li>
+<li>Plik</li>
+</ul>
 <h2 id="proces">Proces</h2>
 <ul>
 <li>elementarna jednostka pracy (aktywności) zarządzaną przez system operacyjny, która ubiega się o zasoby systemu komputerowego w celu wykonania programu</li>
@@ -80,11 +85,14 @@
 <li>Wskaźniki do kolejek porządkujących</li>
 </ul>
 <h2 id="stan-procesu">Stan procesu</h2>
-<figure>
-<img src="cykl-zmian-stanu-procesu.png" alt="cykl zmian stanu procesu" /><figcaption aria-hidden="true">cykl zmian stanu procesu</figcaption>
-</figure>
+<p><img src="cykl-zmian-stanu-procesu.png" alt="cykl zmian stanu procesu" /></p>
 <h2 id="wątek-thread">Wątek <strong>(thread)</strong></h2>
-<p>Lekki proces, który jest obiektem w obrębie procesu ciężkiego posiadającym własne sterowanie i współdzielącym z innymi wątkami tego procesu przydzielone (procesowi) zasoby: - Segment kodu i segment danych w pamięci - Tablicę otwartych plików - Tablicę sygnałów</p>
+<p>Lekki proces, który jest obiektem w obrębie procesu ciężkiego posiadającym własne sterowanie i współdzielącym z innymi wątkami tego procesu przydzielone (procesowi) zasoby:</p>
+<ul>
+<li>Segment kodu i segment danych w pamięci</li>
+<li>Tablicę otwartych plików</li>
+<li>Tablicę sygnałów</li>
+</ul>
 <p><strong>W jądrze systemu Linux nie odróżnia się pojęcia wątku od procesu.</strong></p>
 <p><strong>Jednakże, podczas kiedy dwa procesy w systemie Unix mogą komunikować się tylko przez system operacyjny (pliki, potoki, gniazda, dodatkowa pamięć współdzielona) to dwa wątki są wykonywane w tej samej przestrzeni adresowej i <em>mają dostęp do tej samej pamięci</em></strong></p>
 <h3 id="synchronizacja-wątków">Synchronizacja wątków</h3>
