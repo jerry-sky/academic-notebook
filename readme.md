@@ -22,14 +22,32 @@ Please note:
 
 **Table of contents:**
 
-- [5th Semester](#5th-semester)
+- [6th Semester](#6th-semester)
     - [Core courses](#core-courses)
     - [Elective courses](#elective-courses)
-- [4th Semester](#4th-semester)
+- [5th Semester](#5th-semester)
     - [Core courses](#core-courses-1)
     - [Elective courses](#elective-courses-1)
+- [4th Semester](#4th-semester)
+    - [Core courses](#core-courses-2)
+    - [Elective courses](#elective-courses-2)
     - [*Humanities*](#humanities)
 - [3rd Semester](#3rd-semester)
+
+---
+
+## 6th Semester
+
+### Core courses
+
+- [Systemy wbudowane \(Embedded Systems\)](6th-semester/sw/readme.md)
+
+### Elective courses
+
+- [Nowoczesne technologie WWW \(Modern web technologies\)](electives/w3/readme.md)
+- [Aplikacje mobilne \(Mobile apps\)](electives/apm/readme.md)
+- [Grafika komputerowa i wizualizacje \(Computer graphics nad *computer visualisations*\)](electives/gkw/readme.md)
+- [Programowanie współbieżne \(Parallel *programming*\)](electives/pw/readme.md)
 
 ---
 
