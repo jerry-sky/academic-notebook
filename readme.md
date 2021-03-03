@@ -10,6 +10,8 @@ keywords: 'pwr, wppt, academic, notebook, computer science, cs, polish, pwr, pyt
 
 View this repository on [the web](https://academic.jerry-sky.me) or on [GitHub](https://github.com/jerry-sky/academic-notebook).
 
+This repository is licenced under [the *un-licence* licence](licence.md).
+
 ---
 
 Please note:
