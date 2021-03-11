@@ -22,4 +22,8 @@ keywords: 'pwr, wust, wykład, aplikacje, mobilne, mobilki, Zawada, lista, listy
 
 *Prowadzone przez: mgr inż. Piotr Kawa*
 
+Każda z list zawiera projekt(y) tworzone przy pomocy Android Studio, dlatego najlepiej otwierać te projekty właśnie tym narzędziem.
+
+- [Lista 1.](lab/lista-1/readme.md)
+
 ---

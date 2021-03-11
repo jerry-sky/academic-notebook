@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ordnung</string>
+    <string name="game_premise">
+        Remember the order the buttons light up.\n\n
+        Then, try to repeat the pattern by pressing the buttons below.
+    </string>
+</resources>
