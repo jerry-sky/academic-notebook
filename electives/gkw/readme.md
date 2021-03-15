@@ -23,6 +23,8 @@ keywords: 'pwr, wust, grafika, komputerowa, wizualizacje, Kik, Rałowski, wykła
 
 *Prowadzone przez: [dr hab. inż. Robert Rałowski](https://cs.pwr.edu.pl/ralowski/)*
 
+- [Lista 1.](cw/lista-1/lista-1.md)
+
 ---
 
 ## Laboratorium
