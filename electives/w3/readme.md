@@ -22,4 +22,6 @@ keywords: 'pwr, wust, www, nowoczesne, technologie, Lauks-Dutka, Michalski, zada
 
 *Prowadzone przez: [dr Marcin Michalski](https://cs.pwr.edu.pl/michalski/)*
 
+- [Lista 1.](lab/lista-1/readme.md)
+
 ---
