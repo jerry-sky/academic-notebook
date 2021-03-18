@@ -1,0 +1,14 @@
+...
+
+android {
+
+    ...
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    ...
+}
+
+...

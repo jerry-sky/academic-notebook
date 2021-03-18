@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <meta name="dcterms.date" content="2021-03-05" />
+  <title>Lista 1</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 1</h1>
+<p class="subtitle">Systemy Wbudowane, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+<p class="date">2021-03-05</p>
+</header>
+<blockquote>
+<p>Na tych laboratoriach zrobimy pierwsze kroki w kierunku pisania programów w języku VHDL. Jest to język opisu sprzętu Hardware Description Language – HDL, który pozwala na stworzenie modelu działania komponentów cyfrowych i weryfikację jego poprawności.</p>
+</blockquote>
+<ul>
+<li><a href="#zadanie-1-oraz-zadanie-2">Zadanie 1. oraz Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1-oraz-zadanie-2">Zadanie 1. oraz Zadanie 2.</h2>
+<blockquote>
+<p>Wykonaj kroki opisane w sekcji Hello world program na <a href="https://ghdl.readthedocs.io/en/latest/quick_start/README.html">tej stronie</a>. Przeanalizuj ten kod, postaraj się znaleźć analogie do innych znanych Ci języków programowania.</p>
+</blockquote>
+<blockquote>
+<p>Spróbuj odszukać źródła biblioteki <code>textio</code> (używa jej program z poprzedniego zadania). Przeanalizuj źródła i spróbuj dopisać do poprzedniego programu możliwość odczytania linii z klawiatury i wypisaniu jej z powrotem.</p>
+</blockquote>
+<p><a href="hello.vhdl">Kod programu <code>hello.vhdl</code></a></p>
+<ol type="1">
+<li>Przed uruchomieniem należy skompilować program przy pomocy <code>make build</code>.</li>
+<li>Następnie należy wykonać polecenie <code>make r=hello_world</code>.</li>
+</ol>
+<hr />
+<h2 id="zadanie-3">Zadanie 3.</h2>
+<blockquote>
+<p>Wykonaj kolejne kroki ze <a href="https://ghdl.readthedocs.io/en/latest/quick_start/README.html">strony</a>, z sekcji <em>Full adder module and testbench</em>. Ponownie przeanalizuj kod pierwszego i drugiego programu.</p>
+</blockquote>
+<ul>
+<li><a href="adder.vhdl">Kod programu dodawania <code>adder.vhdl</code></a></li>
+<li><a href="adder_tb.vhdl">Kod programu testującego (testbench) <code>adder_tb.vhdl</code></a></li>
+</ul>
+<ol type="1">
+<li>Przed uruchomieniem należy skompilować program przy pomocy <code>make build</code>.</li>
+<li>Następnie należy wykonać polecenie <code>make wave r=adder_tb</code>.</li>
+</ol>
+<hr />
+<p>Słowa kluczowe:</p>
+<ol type="1">
+<li><code>ENTITY</code> — określa sposób komunikacji, wejście i wyjście naszego układu</li>
+<li><code>ARCHITECTURE</code> — określa zachowanie układu (behaviour)</li>
+<li><code>PROCESS</code> — zawarta w <code>ARCHITECTURE</code> lista kroków określająca konkretny program</li>
+<li><code>COMPONENT</code> — deklarowany w <code>ARCHITECTURE</code> odwołuje się do niższego w hierarchii komponentu, <code>ENTITY</code></li>
+<li><code>PORT</code> — wejście lub wyjście dla danego układu</li>
+</ol>
+<blockquote>
+<p>Co to jest adder i jak działa?</p>
+</blockquote>
+<p>Adder jest to komponent w układzie liczącym sumę dwóch liczb binarnych. Na wejściu dostajemy cyfry dwóch liczb binarnych oraz tzw. <em>carry</em>, który zawiera nadwyżkę z dodawania cyfr niżej (overflow). Dodajemy zadane cyfry wraz ze wspomnianą nadwyżką. Na wyjście podajemy cyfrę wyniku wraz z kolejną nadwyżką, jeżeli taka nastąpiła.</p>
+<blockquote>
+<p>W jaki sposób jest testowany sumator?</p>
+</blockquote>
+<p>Sumator jest „wpinany” w testbench poprzez stworzenie nowej instancji komponentu. Dzięki temu jesteśmy w stanie komunikować się z naszym adder-em. Następnie określamy wszystkie możliwe wejścia wraz z wszystkimi możliwymi wyjściami adder-a. Na wejściu mamy trzy różne bity, więc mamy <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2^3 = 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span> możliwych kombinacji. Po kolei sprawdzamy, czy nasze predykcje zgadzają się z faktycznym wynikiem danym przez adder. Za każdym razem czekamy jedną nanosekundę, czyli wszystkie porty adder-a będą widoczne przez jedną nanosekundę.</p>
+<blockquote>
+<p>Uruchom program <code>gtkwave</code> z wygenerowanym plikiem przebiegów (<code>adder.ghw</code>). Zbadaj przebiegi sygnałów <code>i0</code>, <code>i1</code>, <code>ci</code>, <code>s</code>, <code>co</code>.</p>
+</blockquote>
+<p><img src="gtkwave-output.png" alt="gtkwave output" /></p>
+<p>Jak powyżej zostało wspomniane — każda kombinacja utrzymuje się przez jedną nanosekundę. Wykres przedstawia binarny stan każdego z portów podczas wszystkich testów.</p>
+<hr />
+<h2 id="zadanie-4">Zadanie 4.</h2>
+<blockquote>
+<p>Bazując na zdobytej wiedzy, napisz kod jednostki i testujący dla następującego układu logicznego:</p>
+<p><img src="układ-logiczny.png" alt="układ logiczny" /></p>
+</blockquote>
+<p>Analiza ręczna układu:</p>
+<p><img src="analiza-układu-logicznego.png" alt="analiza ręczna układu logicznego" /></p>
+<hr />
+<ul>
+<li><a href="ex-4.vhdl">Kod programu symulującego układ <code>ex-4.vhdl</code></a></li>
+<li><a href="ex-4_tb.vhdl">Kod programu testującego (testbench) <code>ex-4_tb.vhdl</code></a></li>
+</ul>
+<ol type="1">
+<li>Przed uruchomieniem należy skompilować program przy pomocy <code>make build</code>.</li>
+<li>Następnie należy wykonać polecenie <code>make wave r=ex4_tb</code>.</li>
+</ol>
+<hr />
+<p>Wynik programu GTKWave:</p>
+<p><img src="układ-logiczny-wave.png" alt="układ logiczny — wynik programu GTKWave" /></p>
+<hr />
+</body>
+</html>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="7pt"
+        android:text="@string/game_premise"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0pt"
+            android:layout_weight="1"
+            android:padding="0pt">
+
+            <Button
+                android:id="@+id/buttonNorthWest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                android:shape="line"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonNorth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonNorthEast"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0pt"
+            android:layout_weight="1"
+            android:padding="0pt">
+
+            <Button
+                android:id="@+id/buttonWest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonEast"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0pt"
+            android:layout_weight="1"
+            android:padding="0pt">
+
+            <Button
+                android:id="@+id/buttonSouthWest"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonSouth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonSouthEast"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="button"
+                android:padding="0dp"
+                app:cornerRadius="0pt"
+                app:iconPadding="0dp" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
