@@ -22,4 +22,6 @@ keywords: 'pwr, wust, programowanie, współbieżne, Kik, Gębala, wykład, labo
 
 *Prowadzone przez: [dr Maciej Gębala](https://cs.pwr.edu.pl/gebala/)*
 
+- [Lista 1.](lab/lista-1/readme.md)
+
 ---
