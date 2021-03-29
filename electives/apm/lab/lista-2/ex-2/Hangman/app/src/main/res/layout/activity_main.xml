@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/hangmanImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/currentWordView"
+        app:srcCompat="@drawable/hangman0" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <TextView
+        android:id="@+id/currentWordView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nie"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonQ"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="q"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonW"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="w"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonE"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="e"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonR"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="r"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonT"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="t"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonY"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="y"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonU"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="u"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonI"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="i"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonO"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="o"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonP"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="p"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonA"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="a"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonS"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="s"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp"
+                android:onClick="click" />
+
+            <Button
+                android:id="@+id/buttonD"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="d"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonF"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="f"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonG"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="g"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonH"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="h"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonJ"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="J"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonK"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="k"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonL"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="l"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonZ"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="z"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonX"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="x"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonC"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="c"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonV"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="v"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonB"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="b"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonN"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="n"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+            <Button
+                android:id="@+id/buttonM"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:onClick="click"
+                android:text="m"
+                app:cornerRadius="0dp"
+                app:iconPadding="0dp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

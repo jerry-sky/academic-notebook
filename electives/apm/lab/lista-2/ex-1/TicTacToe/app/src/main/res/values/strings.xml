@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="dimensions_three">3×3</string>
+    <string name="dimensions_five">5×5</string>
+    <string name="turn_x">It’s X’s turn</string>
+    <string name="turn_o">It’s O’s turn</string>
+    <string name="winner_x">X wins</string>
+    <string name="winner_o">O wins</string>
+    <string name="button_x">X</string>
+    <string name="button_o">O</string>
+</resources>

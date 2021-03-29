@@ -25,5 +25,6 @@ keywords: 'pwr, wust, wykład, aplikacje, mobilne, mobilki, Zawada, lista, listy
 Każda z list zawiera projekt(y) tworzone przy pomocy Android Studio, dlatego najlepiej otwierać te projekty właśnie tym narzędziem.
 
 - [Lista 1.](lab/lista-1/readme.md)
+- [Lista 2.](lab/lista-2/readme.md)
 
 ---
