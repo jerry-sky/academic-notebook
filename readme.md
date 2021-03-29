@@ -35,6 +35,12 @@ Please note:
     - [Elective courses](#elective-courses-2)
     - [*Humanities*](#humanities)
 - [3rd Semester](#3rd-semester)
+    - [Core courses](#core-courses-3)
+    - [Elective courses](#elective-courses-3)
+- [2nd Semester](#2nd-semester)
+    - [Core courses](#core-courses-4)
+    - [Elective courses](#elective-courses-4)
+- [1st Semester](#1st-semester)
 
 ---
 
@@ -91,7 +97,41 @@ Please note:
 
 ## 3rd Semester
 
+### Core courses
+
 - [Architektura komputerów i systemów operacyjnych (Computer Architecture and Operation Systems)](3rd-semester/akiso/readme.md)
 - [Bazy Danych i Systemy Informacyjne (Data Bases and *Information Systems*)](3rd-semester/bdsi/readme.md)
+- Technologia programowania *\(Programming technologies\)*
+- Metody probabilistyczne i statystyka \(Probabilistic methods and statistics\)
+
+### Elective courses
+
+- Języki obce \(Foreign language\) — German B1
+
+---
+
+## 2nd Semester
+
+### Core courses
+
+- Problemy prawne informatyki \(Legal issues in IT\)
+- Fizyka \(Physics\)
+- Kurs programowania \(Programming course\)
+- Matematyka dyskretna \(Discrete mathematics\)
+- Analiza matematyczna 2 \(Calculus 2\)
+- Algebra abstrakcyjna i kodowanie \(Algebra 2, Abstract algebra, Coding\)
+
+### Elective courses
+
+- Języki obce \(Foreign language\) — English C1
+
+---
+
+## 1st Semester
+
+- Wstęp do informatyki i programowania \(Introduction to IT and programming\)
+- Analiza matematyczna 1 \(Calculus 1\)
+- Algebra z geometrią analityczną \(Algebra 1, Analytical geometry\)
+- Logika i struktury formalne \(Mathematical logic and formal structures\)
 
 ---
