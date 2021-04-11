@@ -3,7 +3,10 @@
 
 *.out
 
+# JS & TS
 node_modules
+.cache
+.parcel-cache
 
 __pycache__
 
