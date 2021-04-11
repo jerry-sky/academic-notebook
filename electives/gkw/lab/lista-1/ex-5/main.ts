@@ -1,41 +1,40 @@
 import { MyCanvas } from "./my-canvas";
 import { LogoInterpreter } from './interpreter';
-import { CanvasRenderer } from './canvas-renderer';
-import { SVGCanvas } from './svg-canvas';
 
 // get all the necessary elements
 const form = document.getElementById('execution-form')
 const input = document.getElementById('command-input') as HTMLInputElement
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
-const svgCanvas = document.getElementsByTagName('svg')[0] as unknown as SVGElement
 const clearButton = document.getElementById('clear-button') as HTMLButtonElement
-const switchCanvasButton = document.getElementById('switch-canvas') as HTMLButtonElement
 
 const exampleButtons = document.getElementsByClassName('example-button') as HTMLCollectionOf<HTMLButtonElement>
 
-if (form !== null && input !== null && canvas !== null && svgCanvas !== null && clearButton !== null) {
+if (form !== null && input !== null && canvas !== null && clearButton !== null) {
 
-    // by default hide the SVG canvas
-    svgCanvas.style.display = 'none'
-
-    let myCanvas: CanvasRenderer = new MyCanvas(canvas)
+    let myCanvas: MyCanvas = new MyCanvas(canvas)
 
     myCanvas.redraw()
 
-    switchCanvasButton.onclick = (event: Event) => {
-        if (myCanvas instanceof MyCanvas) {
-            canvas.style.display = 'none'
-            svgCanvas.style.display = 'initial'
-            switchCanvasButton.innerText = 'Switch canvas mode, current: SVG'
-            myCanvas = new SVGCanvas(svgCanvas)
-        } else {
-            svgCanvas.style.display = 'none'
-            canvas.style.display = 'initial'
-            switchCanvasButton.innerText = 'Switch canvas mode, current: CANVAS'
-            myCanvas = new MyCanvas(canvas)
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+
+        switch(event.key) {
+            case 'ArrowUp':
+                myCanvas.rotateX(5)
+                break
+            case 'ArrowDown':
+                myCanvas.rotateX(-5)
+                break
+            case 'ArrowLeft':
+                myCanvas.rotateY(-5)
+                break
+            case 'ArrowRight':
+                myCanvas.rotateY(5)
+                break
         }
+
         myCanvas.redraw()
-    }
+
+    })
 
     form.onsubmit = (event: Event) => {
 
@@ -66,13 +65,13 @@ if (form !== null && input !== null && canvas !== null && svgCanvas !== null && 
 
     const examples = [
         `
-F 100
+F 10
 R 90
-F 100
+F 10
 R 90
-F 100
+F 10
 R 90
-F 100
+F 10
         `,
         `
 RE 5 [F 100 R 72]

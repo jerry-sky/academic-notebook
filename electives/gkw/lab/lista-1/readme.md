@@ -2,9 +2,10 @@
 lang: 'pl'
 title: 'Lista 1.'
 subtitle: 'Grafika komputerowa i wizualizacje, Laboratorium'
-author: 'Jerry Sky'
+author: 'Jerzy Wroczyński'
 ---
 
+- [Informacje techniczne](#informacje-techniczne)
 - [Zadania 1. 2. 3.](#zadania-1-2-3)
     - [Rozwiązanie](#rozwiązanie)
     - [Gramatyka zmodyfikowanej wersji języka Logo](#gramatyka-zmodyfikowanej-wersji-języka-logo)
@@ -16,13 +17,38 @@ author: 'Jerry Sky'
 
 ---
 
+## Informacje techniczne
+
+Pliki źródłowe TypeScript znajdują się w:
+- `types.ts` — podstawowe typy,
+- `ex-1-2-3` — zadania 1. 2. i 3,
+- `ex-4` — zadanie 4,
+- `ex-5` — zadanie 5.
+
+W katalogu `dist` znajduje się skompilowana wersja, której podgląd można zobaczyć przy pomocy przeglądarki.
+Wystarczy otworzyć plik `index.html` w danym pod-katalogu `dist/` z zadaniem.
+Przykładowo rozwiązanie zadania 1. znajduje się w pliku `dist/ex-1-2-3/index.html`.
+
+Do rozwiązań dołączony jest plik `makefile` umożliwiający następujące polecenia:
+- `make` —  buduje rozwiązania do wszystkich zadań,
+- `make dev` — uruchamia całą listę jako program w trybie deweloperskim
+(program jest rekompilowany przy każdej zmianie któregokolwiek z plików).
+
+Przed wykorzystaniem powyższych poleceń należy zainstalować wszystkie potrzebne paczki przy pomocy polecenia `npm i`.
+Wymaga to `node` oraz `npm` zainstalowanych w systemie.
+
+---
+
 ## Zadania 1. 2. 3.
 
 ### Rozwiązanie
 
 Kolektywne rozwiązanie wszystkich poniższych zadań znajduje się na [jednej stronie](dist/ex-1-2-3/index.html).
 
-Poniżej znajdują się wyjaśnienia gdzie znajduje się poszczególne części rozwiązania względem każdego z zadań.
+Wyjaśnienia gdzie na stronie znajdują się rozwiązania poszczególnych zadań, mieszczą się w sekcjach:
+- [Zadanie 1.](#zadanie-1--grafika-żółwia),
+- [Zadanie 2.](#zadanie-2--fraktale),
+- oraz [Zadanie 3.](#zadanie-3--fraktale-w-svg).
 
 ### Gramatyka zmodyfikowanej wersji języka Logo
 
@@ -56,12 +82,12 @@ Przykłady zastosowań można zobaczyć przy pomocy przycisków z przykładami z
 > Zaimplementuj jeden program wykonujący kilka rysunków demonstracyjnych (np. wielokąty foremne w różnych kolorach) z wykorzystaniem swoich procedur oraz drugi program na innej stronie HTML, zawierającej okienko tekstowe, w którym użytkownik może wpisywać interaktywnie polecenia dla żółwia na ekranie.
 > (Dla ułatwienia stosować skrócone nazwy poleceń, np. `lt` zamiast `left`.)
 
-1. Na [stronie](dist/ex-1-2-3/index.html) znajduje się pole na polecenia. Żeby wykonać zadaną sekwencję poleceń należy wcisnąć przycisk `Execute`.
+Na [stronie](dist/ex-1-2-3/index.html) znajduje się pole na polecenia. Żeby wykonać zadaną sekwencję poleceń, należy wcisnąć przycisk `Execute`.
 
-2. [Strona](dist/ex-1-2-3/index.html) zawiera przyciski `Load Example X.`.
-Każdy z nich załadowuje do pola na polecenia jedną z przykładowych procedur.
+[Strona](dist/ex-1-2-3/index.html) zawiera przyciski `Load Example X.`.
+Każdy z nich ładuje do pola na polecenia jedną z przykładowych procedur.
 
-3. Niniejsze pole na polecenie może być modyfikowane przez użytkownika.
+Niniejsze pole na polecenie może być modyfikowane przez użytkownika.
 
 ---
 
@@ -76,7 +102,7 @@ Po załadowaniu tych procedur można zmienić ich stopień w polu na polecenia.
 Po zmianie należy wcisnąć przycisk `Clear`, a następnie `Execute` celem narysowania wersji o innym stopniu.
 
 *Uwaga: obrazki o wysokich stopniach mogą być długo przetwarzane.*
-*Zalecane jest trzymanie stopnia w zakresie `1-8`.*
+*Zalecane jest utrzymanie stopnia w zakresie `1-8`.*
 
 *Uwaga: obrazki o wysokich stopniach wymagają dłuższych odcinków.*
 *Język JavaScript ma ograniczoną liczbę miejsc po przecinku dla liczb rzeczywistych.*
@@ -115,5 +141,9 @@ Gra polega na przejściu postacią oznaczoną różowym kółkiem do prostopadł
 > Okno ma postać prostopadłościanu, w którym widać fragmenty śladów pozostawionych przez żółwia,
 > które mieszczą się w oknie.
 > Użytkownik widzi całe okno wraz ze śladami żółwia i może je obracać tak, aby widzieć je z różnych pozycji.
+
+*Uwaga: zadanie niedokończone.*
+
+W celu obrócenia widoku należy użyć strzałek na klawiaturze.
 
 ---
