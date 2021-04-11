@@ -8,7 +8,7 @@ import (
 // Takes care of all the work being done by a single vertice in the graph.
 //
 // It is supposed to be run as a go-routine.
-func runVertice(node *Node) {
+func runVertice(node *Node, maxSleep float64) {
 
 	// keep listening for messages
 	for {
@@ -16,7 +16,7 @@ func runVertice(node *Node) {
 		// get the latest message
 		case msg := <-node.stash:
 			// take a break
-			SleepForSomeTime()
+			SleepForSomeTime(maxSleep)
 
 			// log message’s arrival
 			LogMessageInTransit(msg, node)
@@ -30,7 +30,7 @@ func runVertice(node *Node) {
 
 		// or sleep for some time
 		default:
-			SleepForSomeTime()
+			SleepForSomeTime(maxSleep)
 		}
 	}
 
@@ -48,11 +48,14 @@ func main() {
 	n, err1 := strconv.Atoi(argv[1])
 	d, err2 := strconv.Atoi(argv[2])
 	k, err3 := strconv.Atoi(argv[3])
+	_maxSleep, err4 := strconv.Atoi(argv[4])
 
-	if err1 != nil || err2 != nil || err3 != nil {
+	if err1 != nil || err2 != nil || err3 != nil || err4 != nil {
 		println("all arguments need to be integer numbers")
 		return
 	}
+
+	maxSleep := float64(1.0) / float64(_maxSleep)
 
 	vertices := make([]*Node, n)
 
@@ -111,14 +114,14 @@ func main() {
 	// start up all nodes
 	for i, node := range vertices {
 		if i != n-1 {
-			go runVertice(node)
+			go runVertice(node, maxSleep)
 		}
 	}
 
 	input := vertices[0]
 
 	// start sending the messages
-	go sender(input, k)
+	go sender(input, k, maxSleep)
 
 	output := vertices[n-1]
 

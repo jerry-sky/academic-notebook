@@ -1,7 +1,7 @@
 ---
 lang: 'pl'
 title: 'Lista 1. — Programowanie współbieżne, Laboratorium'
-author: 'Jerry Sky'
+author: 'Jerzy Wroczyński'
 date: '2021-04-11'
 ---
 
@@ -49,5 +49,22 @@ date: '2021-04-11'
 > Wskazówki:
 > - Każdy koniec kanału w Go może być używany przez różne współbieżne wątki.
 > - Obejrzyj podgląd pliku common_channel.go (w tym samym katalogu Dysku Google) zawierający przykład wspólnego używania kanału przez różne wątki oraz wykorzystania generatora liczb losowych.
+
+### Go
+
+Pliki Źródłowe znajdują się w katalogu `go`.
+
+Żeby uruchomić program, należy wykonać polecenie
+
+```bash
+go run . ‹n› ‹d› ‹k› ‹maxSleep›
+```
+
+z uzupełnionymi parametrami.
+
+Parametr `maxSleep` określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda).
+Przykładowo, jeśli `maxSleep = 100` oznacza to, że maksymalny czas oczekiwania wynosi `1/100` sekundy, czyli `10` milisekund.
+
+Nagranie `asciinema` znajduje się w pliku [`go.cast`](go.cast).
 
 ---

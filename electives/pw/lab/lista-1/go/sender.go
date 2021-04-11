@@ -5,7 +5,7 @@ import "strconv"
 // Sends a given number of messages.
 //
 // This function is supposed to be run as a go-routine.
-func sender(input *Node, quantity int) {
+func sender(input *Node, quantity int, maxSleep float64) {
 
 	sentMessages := 0
 
@@ -33,7 +33,7 @@ func sender(input *Node, quantity int) {
 
 		} else {
 			// otherwise wait
-			SleepForSomeTime()
+			SleepForSomeTime(maxSleep)
 		}
 	}
 

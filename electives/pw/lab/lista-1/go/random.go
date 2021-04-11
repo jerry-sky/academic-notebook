@@ -41,6 +41,6 @@ func RandomFloat() float64 {
 }
 
 // Takes a moment of contemplation.
-func SleepForSomeTime() {
-	time.Sleep(time.Duration(1000*RandomFloat()) * time.Millisecond)
+func SleepForSomeTime(sleepMax float64) {
+	time.Sleep(time.Duration(1000*RandomFloat()*sleepMax) * time.Millisecond)
 }
