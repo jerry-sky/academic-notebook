@@ -1,7 +1,7 @@
 ---
 lang: 'pl'
 title: 'Lista 1. — Programowanie współbieżne, Laboratorium'
-author: 'Jerzy Wroczyński'
+author: 'Jerry Sky'
 date: '2021-04-11'
 ---
 
@@ -66,5 +66,30 @@ Parametr `maxSleep` określa liczbę, przez jaką należy podzielić domyślny c
 Przykładowo, jeśli `maxSleep = 100` oznacza to, że maksymalny czas oczekiwania wynosi `1/100` sekundy, czyli `10` milisekund.
 
 Nagranie `asciinema` znajduje się w pliku [`go.cast`](go.cast).
+
+---
+
+### Ada
+
+Pliki źródłowe znajdują się w katalogu `ada`.
+
+Przed uruchomieniem programu należy go skompilować poleceniem
+
+```bash
+make
+```
+
+Teraz można uruchomić program poleceniem
+
+```bash
+./main.bin ‹n› ‹d› ‹k› ‹maxSleep›
+```
+
+z uzupełnionymi parametrami.
+
+Parametr `maxSleep` określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda).
+Przykładowo, jeśli `maxSleep = 100` oznacza to, że maksymalny czas oczekiwania wynosi `1/100` sekundy, czyli `10` milisekund.
+
+Nagranie `asciinema` znajduje się w pliku [`ada.cast`](ada.cast).
 
 ---
