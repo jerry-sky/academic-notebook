@@ -1,0 +1,14 @@
+{
+  "name": "ex-1",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-nightly.638",
+    "parcel": "^2.0.0-nightly.636",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.3"
+  }
+}

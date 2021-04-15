@@ -1,0 +1,36 @@
+
+* {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+$primary-colour: black;
+$secondary-colour: #cccccc;
+$tertiary-colour: gray;
+
+button {
+    color: $secondary-colour;
+    background: $primary-colour;
+    border: none;
+    padding: 5px;
+
+    &:hover {
+        background: $tertiary-colour;
+    }
+
+    &:active {
+        color: $primary-colour;
+        background: $secondary-colour;
+    }
+
+    &[type=submit] {
+        border: solid 3px red;
+    }
+}
+
+input, textarea {
+    border: solid 3px $secondary-colour;
+    padding: 5px;
+    width: 400px;
+    height: 150px;
+}

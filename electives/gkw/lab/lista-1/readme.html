@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerzy Wroczyński" />
+  <title>Lista 1.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 1.</h1>
+<p class="subtitle">Grafika komputerowa i wizualizacje, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerzy Wroczyński</span>
+</p>
+</header>
+<ul>
+<li><a href="#informacje-techniczne">Informacje techniczne</a></li>
+<li><a href="#zadania-1-2-3">Zadania 1. 2. 3.</a>
+<ul>
+<li><a href="#rozwiązanie">Rozwiązanie</a></li>
+<li><a href="#gramatyka-zmodyfikowanej-wersji-języka-logo">Gramatyka zmodyfikowanej wersji języka Logo</a></li>
+<li><a href="#zadanie-1--grafika-żółwia">Zadanie 1. — Grafika żółwia</a></li>
+<li><a href="#zadanie-2--fraktale">Zadanie 2. — Fraktale</a></li>
+<li><a href="#zadanie-3--fraktale-w-svg">Zadanie 3. — Fraktale w SVG</a></li>
+</ul></li>
+<li><a href="#zadanie-4--gra-3d-z-grafiką-wire-frame">Zadanie 4. — Gra 3d z grafiką wire-frame</a></li>
+<li><a href="#zadanie-5--trójwymiarowa-grafika-żółwia-3d-z-grafiką-wire-frame">Zadanie 5. — Trójwymiarowa grafika żółwia 3d z grafiką wire-frame</a></li>
+</ul>
+<hr />
+<h2 id="informacje-techniczne">Informacje techniczne</h2>
+<p>Pliki źródłowe TypeScript znajdują się w:</p>
+<ul>
+<li><code>types.ts</code> — podstawowe typy,</li>
+<li><code>ex-1-2-3</code> — zadania 1. 2. i 3,</li>
+<li><code>ex-4</code> — zadanie 4,</li>
+<li><code>ex-5</code> — zadanie 5.</li>
+</ul>
+<p>W katalogu <code>dist</code> znajduje się skompilowana wersja, której podgląd można zobaczyć przy pomocy przeglądarki. Wystarczy otworzyć plik <code>index.html</code> w danym pod-katalogu <code>dist/</code> z zadaniem. Przykładowo rozwiązanie zadania 1. znajduje się w pliku <code>dist/ex-1-2-3/index.html</code>.</p>
+<p>Do rozwiązań dołączony jest plik <code>makefile</code> umożliwiający następujące polecenia:</p>
+<ul>
+<li><code>make</code> — buduje rozwiązania do wszystkich zadań,</li>
+<li><code>make dev</code> — uruchamia całą listę jako program w trybie deweloperskim (program jest rekompilowany przy każdej zmianie któregokolwiek z plików).</li>
+</ul>
+<p>Przed wykorzystaniem powyższych poleceń należy zainstalować wszystkie potrzebne paczki przy pomocy polecenia <code>npm i</code>. Wymaga to <code>node</code> oraz <code>npm</code> zainstalowanych w systemie.</p>
+<hr />
+<h2 id="zadania-1-2-3">Zadania 1. 2. 3.</h2>
+<h3 id="rozwiązanie">Rozwiązanie</h3>
+<p>Kolektywne rozwiązanie wszystkich poniższych zadań znajduje się na <a href="dist/ex-1-2-3/index.html">jednej stronie</a>.</p>
+<p>Wyjaśnienia gdzie na stronie znajdują się rozwiązania poszczególnych zadań, mieszczą się w sekcjach:</p>
+<ul>
+<li><a href="#zadanie-1--grafika-żółwia">Zadanie 1.</a>,</li>
+<li><a href="#zadanie-2--fraktale">Zadanie 2.</a>,</li>
+<li>oraz <a href="#zadanie-3--fraktale-w-svg">Zadanie 3.</a>.</li>
+</ul>
+<h3 id="gramatyka-zmodyfikowanej-wersji-języka-logo">Gramatyka zmodyfikowanej wersji języka Logo</h3>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Polecenie</th>
+<th>Opis polecenia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>F</code></td>
+<td>Pójdź naprzód.</td>
+</tr>
+<tr class="even">
+<td><code>B</code></td>
+<td>Pójdź wstecz.</td>
+</tr>
+<tr class="odd">
+<td><code>R</code></td>
+<td>Obróć się w prawo.</td>
+</tr>
+<tr class="even">
+<td><code>L</code></td>
+<td>Obróć się w lewo.</td>
+</tr>
+<tr class="odd">
+<td><code>RE x</code></td>
+<td>Powtórz <code>x</code> razy następny blok zamknięty w <code>[]</code>.</td>
+</tr>
+<tr class="even">
+<td><code>BE name x arg1 arg2 … argx</code></td>
+<td>Zdefiniuj procedurę o nazwie <code>name</code>, która przyjmuje <code>x</code> argumentów.</td>
+</tr>
+<tr class="odd">
+<td><code>EN</code></td>
+<td>Zakończ definicję procedury.</td>
+</tr>
+<tr class="even">
+<td><code>TE</code></td>
+<td>Zakończ działanie programu/procedury.</td>
+</tr>
+<tr class="odd">
+<td><code>IF</code></td>
+<td>Sprawdź, czy warunek został spełniony. Jeśli tak, wykonaj sekwencję poleceń zamkniętych w <code>[]</code>.</td>
+</tr>
+<tr class="even">
+<td><code>CA</code></td>
+<td>Oblicz proste binarne wyrażenie matematyczne.</td>
+</tr>
+</tbody>
+</table>
+<p>Przykłady zastosowań można zobaczyć przy pomocy przycisków z przykładami znajdującymi się na <a href="dist/ex-1-2-3/index.html">stronie</a>.</p>
+<hr />
+<h3 id="zadanie-1--grafika-żółwia">Zadanie 1. — Grafika żółwia</h3>
+<blockquote>
+<p>Zaimplementować <a href="https://pl.wikipedia.org/wiki/Logo_(j%C4%99zyk_programowania)">procedury grafiki żółwia</a> na elemencie <code>&lt;canvas&gt;</code>.</p>
+<p>Parametry żółwia, takie jak położenie i orientacja na płaszczyźnie mają być pamiętane jako liczby rzeczywiste. Przyjmij, że okno graficzne reprezentuje prostokąt <code>[minX, maxX] × [minY, maxY]</code> i widoczne są jedynie fragmenty śladów pozostawione w tym prostokącie.</p>
+<p>Parametry <code>minX</code>, <code>maxX</code>, <code>minY</code>, <code>maxY</code> są zapisywane jako pewne parametry niezależne od rozmiaru okna w pikselach. Przeliczaj współrzędne rzeczywiste na współrzędne pikseli tak, aby współrzędna X rosła w prawo a współrzędna Y rosła w górę.</p>
+<p>Zaimplementuj jeden program wykonujący kilka rysunków demonstracyjnych (np. wielokąty foremne w różnych kolorach) z wykorzystaniem swoich procedur oraz drugi program na innej stronie HTML, zawierającej okienko tekstowe, w którym użytkownik może wpisywać interaktywnie polecenia dla żółwia na ekranie. (Dla ułatwienia stosować skrócone nazwy poleceń, np. <code>lt</code> zamiast <code>left</code>.)</p>
+</blockquote>
+<p>Na <a href="dist/ex-1-2-3/index.html">stronie</a> znajduje się pole na polecenia. Żeby wykonać zadaną sekwencję poleceń, należy wcisnąć przycisk <code>Execute</code>.</p>
+<p><a href="dist/ex-1-2-3/index.html">Strona</a> zawiera przyciski <code>Load Example X.</code>. Każdy z nich ładuje do pola na polecenia jedną z przykładowych procedur.</p>
+<p>Niniejsze pole na polecenie może być modyfikowane przez użytkownika.</p>
+<hr />
+<h3 id="zadanie-2--fraktale">Zadanie 2. — Fraktale</h3>
+<blockquote>
+<p>Wykorzystując grafikę żółwia z rozwiązania poprzedniego zadania napisz program rysujący na ekranie trójkąt Sierpińskiego i płatek Kocha dowolnego stopnia. Zrób to tak, aby użytkownik mógł zmieniać stopień rysowanej krzywej.</p>
+</blockquote>
+<p>Na <a href="dist/ex-1-2-3/index.html">stronie</a> znajdują się przyciski <code>Load Koch</code> oraz <code>Load Sierpiński</code>.</p>
+<p>Po załadowaniu tych procedur można zmienić ich stopień w polu na polecenia. Po zmianie należy wcisnąć przycisk <code>Clear</code>, a następnie <code>Execute</code> celem narysowania wersji o innym stopniu.</p>
+<p><em>Uwaga: obrazki o wysokich stopniach mogą być długo przetwarzane.</em> <em>Zalecane jest utrzymanie stopnia w zakresie <code>1-8</code>.</em></p>
+<p><em>Uwaga: obrazki o wysokich stopniach wymagają dłuższych odcinków.</em> <em>Język JavaScript ma ograniczoną liczbę miejsc po przecinku dla liczb rzeczywistych.</em></p>
+<hr />
+<h3 id="zadanie-3--fraktale-w-svg">Zadanie 3. — Fraktale w SVG</h3>
+<blockquote>
+<p>Wykorzystaj SVG do rysowania krzywych z <a href="#zadanie-2--fraktale">poprzedniego zadania</a> różnego stopnia.</p>
+</blockquote>
+<p>Na <a href="dist/ex-1-2-3/index.html">stronie</a> znajduje się przycisk <code>Switch canvas mode</code>. Pozwala on na zmianę sposobu rysowania.</p>
+<p>Do wyboru są dwa tryby rysowania:</p>
+<ul>
+<li><code>CANVAS</code> — obrazki są rysowane na elemencie <code>&lt;canvas&gt;</code>,</li>
+<li><code>SVG</code> — obrazki są rysowane na elemencie <code>&lt;svg&gt;</code>.</li>
+</ul>
+<hr />
+<h2 id="zadanie-4--gra-3d-z-grafiką-wire-frame">Zadanie 4. — Gra 3d z grafiką wire-frame</h2>
+<blockquote>
+<p>Zaimplementować prostą grę, w której należy przeprowadzić gracza z jednego punktu w przestrzeni do innego, omijając losowo rozmieszczone prostopadłościany. Aby uniknąć problemów z widocznością i zasłanianiem, zastosuj grafikę wire-frame i przyjmij, że wszystkie linie są tego samego koloru.</p>
+</blockquote>
+<p>Rozwiązanie znajduje się na <a href="dist/ex-4/index.html">stronie</a>.</p>
+<p>Gra polega na przejściu postacią oznaczoną różowym kółkiem do prostopadłościanu o takim samym kolorze.</p>
+<hr />
+<h2 id="zadanie-5--trójwymiarowa-grafika-żółwia-3d-z-grafiką-wire-frame">Zadanie 5. — Trójwymiarowa grafika żółwia 3d z grafiką wire-frame</h2>
+<blockquote>
+<p>Zaimplementować grafikę żółwia w trzech wymiarach.</p>
+<p>Oprócz skręcania w lewo i w prawo żółw może skręcać w górę i w dół. Okno ma postać prostopadłościanu, w którym widać fragmenty śladów pozostawionych przez żółwia, które mieszczą się w oknie. Użytkownik widzi całe okno wraz ze śladami żółwia i może je obracać tak, aby widzieć je z różnych pozycji.</p>
+</blockquote>
+<p><em>Uwaga: zadanie niedokończone.</em></p>
+<p>W celu obrócenia widoku należy użyć strzałek na klawiaturze.</p>
+<hr />
+</body>
+</html>

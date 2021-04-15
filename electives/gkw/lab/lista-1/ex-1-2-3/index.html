@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style.scss" />
+
+    <title>Zadania 1. 2. 3.</title>
+
+</head>
+
+<body>
+
+    <canvas width="600" height="600" id="canvas"></canvas>
+
+    <!-- for some reason `parcel` removes the `id` tag -->
+    <svg width="600" height="600"></svg>
+
+    <form id="execution-form">
+
+        <textarea name="command" id="command-input" autofocus></textarea>
+
+        <button type="button" id="switch-canvas">Switch canvas mode, current: CANVAS</button>
+
+        <button type="button" id="clear-button">Clear</button>
+
+        <button type="submit">Execute</button>
+
+        <hr />
+
+        <button type="button" class="example-button">Load example 1.</button>
+        <button type="button" class="example-button">Load example 2.</button>
+        <button type="button" class="example-button">Load example 3.</button>
+
+        <hr />
+
+        <button type="button" class="example-button">Load Koch</button>
+        <button type="button" class="example-button">Load Sierpiński</button>
+
+    </form>
+
+    <script src="main.ts"></script>
+
+</body>
+
+</html>
