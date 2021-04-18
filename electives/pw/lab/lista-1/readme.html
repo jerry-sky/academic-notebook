@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Jerzy Wroczyński" />
+  <meta name="author" content="Jerry Sky" />
   <meta name="dcterms.date" content="2021-04-11" />
   <title>Lista 1. — Programowanie współbieżne, Laboratorium</title>
   <style type="text/css">
@@ -90,7 +90,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Lista 1. — Programowanie współbieżne, Laboratorium</h1>
 <p class="author">
     <span>by </span>
-    <span class="author">Jerzy Wroczyński</span>
+    <span class="author">Jerry Sky</span>
 </p>
 <p class="date">2021-04-11</p>
 </header>
@@ -140,6 +140,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>z uzupełnionymi parametrami.</p>
 <p>Parametr <code>maxSleep</code> określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda). Przykładowo, jeśli <code>maxSleep = 100</code> oznacza to, że maksymalny czas oczekiwania wynosi <code>1/100</code> sekundy, czyli <code>10</code> milisekund.</p>
 <p>Nagranie <code>asciinema</code> znajduje się w pliku <a href="go.cast"><code>go.cast</code></a>.</p>
+<hr />
+<h3 id="ada">Ada</h3>
+<p>Pliki źródłowe znajdują się w katalogu <code>ada</code>.</p>
+<p>Przed uruchomieniem programu należy go skompilować poleceniem</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+<p>Teraz można uruchomić program poleceniem</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./main.bin</span> ‹n› ‹d› ‹k› ‹maxSleep›</span></code></pre></div>
+<p>z uzupełnionymi parametrami.</p>
+<p>Parametr <code>maxSleep</code> określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda). Przykładowo, jeśli <code>maxSleep = 100</code> oznacza to, że maksymalny czas oczekiwania wynosi <code>1/100</code> sekundy, czyli <code>10</code> milisekund.</p>
+<p>Nagranie <code>asciinema</code> znajduje się w pliku <a href="ada.cast"><code>ada.cast</code></a>.</p>
 <hr />
 </body>
 </html>
