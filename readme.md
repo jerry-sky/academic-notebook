@@ -48,13 +48,13 @@ Please note:
 
 ### Core courses
 
-- [Systemy wbudowane \(Embedded Systems\)](6th-semester/sw/readme.md)
+- [Systemy wbudowane \(Embedded systems\)](6th-semester/sw/readme.md)
 
 ### Elective courses
 
 - [Nowoczesne technologie WWW \(Modern web technologies\)](electives/w3/readme.md)
-- [Aplikacje mobilne \(Mobile apps\)](electives/apm/readme.md)
-- [Grafika komputerowa i wizualizacje \(Computer graphics nad *computer visualisations*\)](electives/gkw/readme.md)
+- [Aplikacje mobilne \(Mobile apps development\)](electives/apm/readme.md)
+- [Grafika komputerowa i wizualizacje \(Computer graphics and *computer visualisations*\)](electives/gkw/readme.md)
 - [Programowanie współbieżne \(Parallel *programming*\)](electives/pw/readme.md)
 
 ---
@@ -63,14 +63,14 @@ Please note:
 
 ### Core courses
 
-- [Języki Formalne i Techniki Translacji (Automata Theory and Compilers \[lit. *Formal Languages and Translation Techniques*\])](5th-semester/jftt/readme.md)
-- [Obliczenia Naukowe (Scientific Calculations — Numeric Analysis and Computing)](5th-semester/on/readme.md)
+- [Języki formalne i techniki translacji (Automata theory and compilers \[lit. *Formal languages and translation techniques*\])](5th-semester/jftt/readme.md)
+- [Obliczenia naukowe (Scientific calculations — Numeric analysis and computing)](5th-semester/on/readme.md)
 
 ### Elective courses
 
-- [Teoria Informacji (Information Theory)](electives/ti/readme.md)
-- [Wprowadzenie do Kombinatoryki Analitycznej (Introduction to *Analytic Combinatorics*)](electives/wdka/readme.md)
-- [Środowisko Programisty (Programmer’s Environment)](electives/sp/readme.md)
+- [Teoria informacji (Information theory)](electives/ti/readme.md)
+- [Wprowadzenie do kombinatoryki analitycznej (Introduction to *analytic combinatorics*)](electives/wdka/readme.md)
+- [Środowisko programisty (Programmer’s environment)](electives/sp/readme.md)
 
 ---
 
@@ -78,19 +78,19 @@ Please note:
 
 ### Core courses
 
-- [Algorytmy i struktury danych (Algorithms and Data Structures)](4th-semester/aisd/readme.md)
-- [Technologie Sieciowe (Web technologies)](4th-semester/ts/readme.md)
+- [Algorytmy i struktury danych (Algorithms and data structures)](4th-semester/aisd/readme.md)
+- [Technologie sieciowe (Web technologies)](4th-semester/ts/readme.md)
 
 ### Elective courses
 
-- [Wstęp do Teorii Grafów (Introduction to Graph Theory)](electives/wtg/readme.md)
-- [Algorytmy Metaheurystyczne (Metaheuristic Algorithms)](electives/amh/readme.md)
-- [Kodowanie i kompresja danych (Coding and Data Compression)](electives/kkd/readme.md)
+- [Wstęp do teorii grafów (Introduction to graph theory)](electives/wtg/readme.md)
+- [Algorytmy metaheurystyczne (Metaheuristic algorithms)](electives/amh/readme.md)
+- [Kodowanie i kompresja danych (Coding and data compression)](electives/kkd/readme.md)
 - [Kurs wybranego języka programowania – Python (Programming course – Python)](electives/py/readme.md)
 
 ### *Humanities*
 
-- [Komunikacja Społeczna (Social Communication)](humanities/ks/readme.md)
+- [Komunikacja społeczna (Social communication)](humanities/ks/readme.md)
 - [Przedsiębiorczość (Entrepreneurship)](humanities/pb/readme.md)
 
 ---
@@ -99,8 +99,8 @@ Please note:
 
 ### Core courses
 
-- [Architektura komputerów i systemów operacyjnych (Computer Architecture and Operation Systems)](3rd-semester/akiso/readme.md)
-- [Bazy Danych i Systemy Informacyjne (Data Bases and *Information Systems*)](3rd-semester/bdsi/readme.md)
+- [Architektura komputerów i systemów operacyjnych (Computer architecture and operating systems)](3rd-semester/akiso/readme.md)
+- [Bazy danych i systemy informacyjne (Data bases and *information systems*)](3rd-semester/bdsi/readme.md)
 - Technologia programowania *\(Programming technologies\)*
 - Metody probabilistyczne i statystyka \(Probabilistic methods and statistics\)
 
