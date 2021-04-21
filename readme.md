@@ -2,7 +2,7 @@
 lang: 'en-GB'
 title: 'Academic Notebook'
 author: 'Jerry Sky'
-description: 'This notebook contains notes, programs and snippets of code related to studies of Computer Science B.Eng. at Wrocław University of Science and Technology.'
+description: 'This notebook contains notes, programs and snippets of code related to studies of Computer Science (B.Eng.) at Wrocław University of Science and Technology.'
 keywords: 'pwr, wppt, academic, notebook, computer science, cs, polish, pwr, python, latex, markdown'
 ---
 
@@ -14,7 +14,9 @@ This repository is licenced under [the *un-licence* licence](licence.md).
 
 ---
 
-Please note:
+**Language**
+
+Concerning the language of this repository:
 
 - The main language of this repository is not English.
 - There can be some hybrid multilingual expressions throughout the notes.
@@ -22,7 +24,22 @@ Please note:
 
 ---
 
-**Table of contents:**
+**Commit history**
+
+You may notice some timeline discrepancies in the commit history.
+This is due to the difference between the commit time and the publishing time.
+
+Before publication of every commit, containing a piece of work to hand-in,
+the commit is sent to the private *canary* branch.\
+Only after its due-date the work is published in the *master* branch,
+which is done by rebasing the *canary* branch onto the *master* branch.
+
+Because of the different due-dates of different assignments,
+the commit dates may not be chronological.
+
+---
+
+**Table of contents**
 
 - [6th Semester](#6th-semester)
     - [Core courses](#core-courses)
