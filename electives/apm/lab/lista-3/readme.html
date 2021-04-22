@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 3.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 3.</h1>
+<p class="subtitle">Aplikacje mobilne</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a>
+<ul>
+<li><a href="#zarys">Zarys</a></li>
+</ul></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+<li><a href="#zadanie-4">Zadanie 4.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1">Zadanie 1.</h2>
+<blockquote>
+<p>Napisz prostą aplikację „To-Do”, czyli listę zadań do zrobienia. Aplikacja zawiera <code>RecyclerView</code> z potencjalną listą zadań. Na początku lista jest pusta, ale na dole aktywności znajduje się <code>Button</code> (Dodaj), gdzie użytkownik może uruchomić drugą aktywność, aby wprowadzić opis nowego zadania.</p>
+<p>Dalej mamy możliwość wyboru ikonki zadania (obrazek) oraz czas i data wykonania zadania. Zaprojektuj odpowiedni layout pojedynczej pozycji <code>RecyclerView</code>, który zawiera co najmniej obrazek, treść zadania oraz czas i datę wykonania.</p>
+<p>Aplikacja powinna też mieć możliwość usuwania zadań z listy, przez dołączenie słuchacza do listy, który usuwa wybraną pozycję. Najlepiej wykorzystać do tego <em>long click</em> (metoda <code>setOnItemLongClickListener</code>) lub <em>swipe</em>.</p>
+<p>Uwaga: W tym zadaniu aplikacja powinna być w pełni funkcjonalna. Uwzględniana będzie też wygoda i użyteczność aplikacji.</p>
+<p>Powinna również udostępniać podstawowe funkcje tj.:</p>
+<ul>
+<li>sortowanie zadań po czasie,</li>
+<li>ustalenie priorytetów zadań,</li>
+<li>sortowanie po ikonce (typ zadania),</li>
+<li>… (za co można dostać dodatkowe punkty).</li>
+</ul>
+</blockquote>
+<p>Pliki projektu znajdują się w katalogu <code>ex-1-2-4/Devoir</code>.</p>
+<hr />
+<h2 id="zadanie-2">Zadanie 2.</h2>
+<blockquote>
+<p>Zrób też tak, aby aplikacja pamiętała listę zadań po rotacji ekranu, czyli po zmianie z <em>portrait</em> na <em>landscape</em> i odwrotnie. Tutaj należy wykorzystać tylko <a href="https://developer.android.com/guide/components/activities/activity-lifecycle"><code>onSaveInstanceState</code></a> i <a href="https://developer.android.com/guide/components/activities/activity-lifecycle"><code>onRestoreInstanceState</code></a>.</p>
+</blockquote>
+<p>Pliki projektu znajdują się w katalogu <code>ex-1-2-4/Devoir</code>.</p>
+<hr />
+<h2 id="zadanie-3">Zadanie 3.</h2>
+<blockquote>
+<p>Wykorzystaj lokalną bazę danych do przechowywania danych aplikacji „To-Do” przez użycie <a href="https://developer.android.com/training/data-storage/room">Room-a</a>, czyli warstwę abstrakcji na <em>SQLite</em>.</p>
+</blockquote>
+<hr />
+<h2 id="zadanie-4">Zadanie 4.</h2>
+<blockquote>
+<p>Zrób w aplikacji „To-Do” <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications">powiadomienie</a> użytkownika, że zbliża się termin wykonania zadania.</p>
+</blockquote>
+<p>Pliki projektu znajdują się w katalogu <code>ex-1-2-4/Devoir</code>.</p>
+<hr />
+</body>
+</html>

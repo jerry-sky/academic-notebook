@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Devoir</string>
+    <string name="create_new_task">Create a new task</string>
+    <string name="task_details_title">Task headline</string>
+    <string name="task_details_description">Task details</string>
+    <string name="task_details_priority">Priority (number, default 0)</string>
+    <string name="task_details_submit">Submit</string>
+    <string name="task_type_work">Work</string>
+    <string name="task_type_personal">Personal</string>
+    <string name="task_type_other">Other</string>
+    <string name="task_details_switch_time">Set due date and time</string>
+    <string name="create_new_task_error">Please provide at least the headline of the task</string>
+    <string name="edit_task_header">Edit task</string>
+    <string name="sort_by">Sort by</string>
+    <string-array name="sort_by">
+        <item>Due date</item>
+        <item>Type</item>
+        <item>Priority</item>
+    </string-array>
+    <string name="channel_name">Devoir To-Do</string>
+    <string name="channel_description">This channel is used by the Devoir To-Do application program. It delivers notifications about user’s tasks.</string>
+</resources>
