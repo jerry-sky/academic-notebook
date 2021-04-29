@@ -32,14 +32,25 @@ func LogMessageInTransit(msg *Message, receiver *Node) {
 
 }
 
-// LogMessageDeath logs the event of a message running out of health.
-func LogMessageDeath(msg *Message, receiver *Node) {
+// LogMessageExhaustion logs the event of a message running out of health.
+func LogMessageExhaustion(msg *Message, receiver *Node) {
 
 	loggerStash <- "\033[1mmessage ‘" +
 		msg.contents +
-		"’ was pronounced \033[3mdead\033[0;1m at node ‘" +
+		"’ has died of exhaustion! (at node ‘" +
 		strconv.Itoa(receiver.id) +
-		"’\033[0m"
+		"’)\033[0m"
+
+}
+
+// LogMessageTrapDeath logs the event of a message falling into a trap set up by the plunderer.
+func LogMessageTrapDeath(msg *Message, receiver *Node) {
+
+	loggerStash <- "\033[1mmessage ‘" +
+		msg.contents +
+		"’ has fallen into plunderer’s trap! (at node ‘" +
+		strconv.Itoa(receiver.id) +
+		"’)\033[0m"
 
 }
 

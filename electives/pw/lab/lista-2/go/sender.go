@@ -1,37 +1,22 @@
 package main
 
-import "strconv"
-
-// Sends a given number of messages.
+// Sender sends given list of messages one by one.
 //
 // This function is supposed to be run as a go-routine.
-func sender(input *Node, quantity int, maxSleep float64, maxHealth int) {
-
-	sentMessages := 0
+func Sender(input *Node, messages []*Message, maxSleep float64) {
 
 	stash := input.stash
 
+	quantity := len(messages)
+
+	i := 0
 	for {
-		// end the loop when all messages have been sent
-		if sentMessages == quantity {
+		if i == quantity {
 			break
-		}
-
-		if len(stash) == 0 {
+		} else if len(stash) == 0 {
 			// the channel is empty — we can input a new message
-
-			// compose the message
-			msg := &Message{
-				contents: strconv.Itoa(sentMessages + 1),
-				visited:  make([]*Node, 0),
-				health:   maxHealth,
-			}
-
-			// send the message
-			stash <- msg
-
-			sentMessages++
-
+			stash <- messages[i]
+			i++
 		} else {
 			// otherwise wait
 			SleepForSomeTime(maxSleep)

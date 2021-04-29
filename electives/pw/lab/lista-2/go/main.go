@@ -9,22 +9,38 @@ func main() {
 
 	argv := os.Args
 
-	if len(argv) < 4 {
+	if len(argv) < 7 {
 		println("necessary arguments: ‹n› ‹d› ‹b› ‹k› ‹h› ‹maxSleep›")
 		return
 	}
 
-	n, err1 := strconv.Atoi(argv[1])
-	d, err2 := strconv.Atoi(argv[2])
-	b, err3 := strconv.Atoi(argv[3])
-	k, err4 := strconv.Atoi(argv[4])
-	h, err5 := strconv.Atoi(argv[5])
-	_maxSleep, err6 := strconv.Atoi(argv[4])
+	errors := make([]error, len(argv))
+	errors[0] = nil
 
-	if err1 != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil || err6 != nil {
-		println("all arguments need to be integer numbers")
-		return
+	var n, d, b, k, h, _maxSleep, plundererInterval int
+
+	n, errors[1] = strconv.Atoi(argv[1])
+	d, errors[2] = strconv.Atoi(argv[2])
+	b, errors[3] = strconv.Atoi(argv[3])
+	k, errors[4] = strconv.Atoi(argv[4])
+	h, errors[5] = strconv.Atoi(argv[5])
+	_maxSleep, errors[6] = strconv.Atoi(argv[6])
+	if len(argv) > 7 {
+		plundererInterval, errors[7] = strconv.Atoi(argv[7])
+	} else {
+		plundererInterval = 0
 	}
+
+	for _, err := range errors {
+		if err != nil {
+			println("all arguments need to be integer numbers")
+			return
+		}
+	}
+
+	// increase the max health by one as the first ‘step’ of placing
+	// a message on the first node does not count as a ‘step’
+	h++
 
 	maxSleep := float64(1.0) / float64(_maxSleep)
 
@@ -135,28 +151,60 @@ func main() {
 	// register all messages’ deaths
 	deathLog := make(chan bool)
 
+	// a list of all entries for the plunderer
+	// the plunderer can set up a trap using one of these channels
+	// to inform given node of the trap that needs setting up
+	plundererPointsOfEntry := make([]chan bool, n)
+
 	// start up all nodes
 	for i, node := range vertices {
+		// allow the plunderer for setting up traps
+		plundererPointsOfEntry[i] = make(chan bool, 1)
 		if i != n-1 {
-			go runVertice(node, maxSleep, deathLog)
+			go NodeRoutine(node, maxSleep, deathLog, plundererPointsOfEntry[i])
 		}
 	}
 
+	// the first node
 	input := vertices[0]
 
-	// start sending the messages
-	go sender(input, k, maxSleep, h)
+	// generate all messages
+	messages := make([]*Message, k)
+	for i := 0; i < k; i++ {
+		// compose the message
+		msg := &Message{
+			contents: strconv.Itoa(i + 1),
+			visited:  make([]*Node, 0),
+			health:   h,
+		}
+		// add the message
+		messages[i] = msg
+	}
 
+	// start sending the messages
+	go Sender(input, messages, maxSleep)
+
+	// set up the plunderer
+	stopPlundering := make(chan bool, 1)
+	if plundererInterval != 0 {
+		println("\033[3mplunderer active\033[0m\n")
+		go PlundererRoutine(plundererPointsOfEntry, stopPlundering, maxSleep*float64(plundererInterval))
+	}
+
+	// the last node
 	output := vertices[n-1]
 
 	// start receiving the messages
-	messages := receiver(output, k, maxSleep, deathLog)
+	Receiver(output, k, maxSleep, deathLog)
+
+	// stop the plunderer
+	stopPlundering <- true
 
 	// wait for the logger to finish printing all the messages
 	<-LoggerDone
 
 	// print the stats
-	println("\n\033[1mStats:\033[0m\n")
+	println("\n\033[1mStats\033[0m (chronological order):")
 	for _, node := range vertices {
 		println("node", node.id, "seen:")
 		for _, msg := range node.seen {
