@@ -25,13 +25,22 @@ package body Node is
                     SleepForSomeTime(maxSleep);
                     stash := message;
                     if isLast then
-                        -- allow receiving the message only if the node is the ending node
-                        accept ReceiveMessage(message: out pMessage) do
-                            -- hand over the message
-                            message := stash;
-                            stash := null;
-                        end ReceiveMessage;
+                        -- allow receiving the message only if the node is the last node
+                        logger.Log("→→→ message" & Natural'Image(stash.all.content) & " received");
+                        receiver.all.ReceiveMessage;
+                        stash := null;
                     end if;
+
+                    if stash /= null then
+                        stash.all.health := Natural'Pred(stash.all.health);
+                        if stash.all.health = 0 then
+                            -- message has exhausted its health
+                            logger.Log("→→→ message" & Natural'Image(stash.all.content) & " died of exhaustion");
+                            receiver.all.ReceiveMessage;
+                            stash := null;
+                        end if;
+                    end if;
+
                 end SendMessage;
                 or
                 accept Stop do

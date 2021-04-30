@@ -2,12 +2,14 @@ with Ada.Numerics.Float_Random;
 with RandInt;
 with Logger;
 with External; use External;
+with Receiver;
 
 package Node is
 
     package RAF renames Ada.Numerics.Float_Random;
     package LOG renames Logger;
     package RAD renames RandInt;
+    package REC renames Receiver;
 
     type NodeObj;
 
@@ -18,15 +20,21 @@ package Node is
 
     type Message is record
         content: Natural;
+        health: Natural;
     end record;
 
     type pMessage is access Message;
 
     procedure SleepForSomeTime(maxSleep: Natural);
 
-    task type NodeTask(self: pNodeObj; maxSleep: Natural; logger: LOG.pLoggerReceiver; isLast: Boolean) is
+    task type NodeTask(
+        self: pNodeObj;
+        maxSleep: Natural;
+        logger: LOG.pLoggerReceiver;
+        isLast: Boolean;
+        receiver: REC.pReceiverTask
+    ) is
         entry SendMessage(message: in pMessage);
-        entry ReceiveMessage(message: out pMessage);
         entry Stop;
     end NodeTask;
 

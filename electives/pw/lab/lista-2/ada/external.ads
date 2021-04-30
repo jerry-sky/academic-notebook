@@ -10,12 +10,12 @@ package External is
     package IOB renames Ada.Text_IO;
     package CMD renames Ada.Command_Line;
 
-    function ToMString(Source: in String) return STR.Unbounded_String renames STR.To_Unbounded_String;
+    function ToBString(Source: in String) return STR.Unbounded_String renames STR.To_Unbounded_String;
 
-    procedure PrintUnbounded(S: in Str.Unbounded_String) renames IO.Put_Line;
+    procedure PrintUnbounded(S: in STR.Unbounded_String) renames IO.Put_Line;
 
     procedure PrintBounded(S: in String) renames IOB.Put_Line;
 
-    subtype MString is STR.Unbounded_String;
+    subtype BString is STR.Unbounded_String;
 
 end External;

@@ -34,6 +34,7 @@ package body Logger is
                 accept Stop do
                     PrintBounded("");
                     PrintBounded("Stats:");
+                    PrintBounded("");
                     for I in RangeK'Range loop
                         PrintBounded("message" & Natural'Image(I) & " visited:");
                         for J in RangeN'Range loop
@@ -42,7 +43,7 @@ package body Logger is
                             end if;
                         end loop;
                     end loop;
-                    PrintBounded("---");
+                    PrintBounded("");
                     for I in RangeN'Range loop
                         PrintBounded("node" & Natural'Image(I-1) & " seen:");
                         for J in RangeK'Range loop
