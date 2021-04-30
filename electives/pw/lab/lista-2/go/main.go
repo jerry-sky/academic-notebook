@@ -156,13 +156,20 @@ func main() {
 	// to inform given node of the trap that needs setting up
 	plundererPointsOfEntry := make([]chan bool, n)
 
+	// the output of the final node in the graph
+	output := make(chan *Message)
+
 	// start up all nodes
 	for i, node := range vertices {
 		// allow the plunderer for setting up traps
 		plundererPointsOfEntry[i] = make(chan bool, 1)
-		if i != n-1 {
-			go NodeRoutine(node, maxSleep, deathLog, plundererPointsOfEntry[i])
+		// if it is the last node, then attach the output channel that receives all messages
+		var o chan *Message
+		o = nil
+		if i == n-1 {
+			o = output
 		}
+		go NodeRoutine(node, maxSleep, deathLog, plundererPointsOfEntry[i], o)
 	}
 
 	// the first node
@@ -190,9 +197,6 @@ func main() {
 		println("\033[3mplunderer active\033[0m\n")
 		go PlundererRoutine(plundererPointsOfEntry, stopPlundering, maxSleep*float64(plundererInterval))
 	}
-
-	// the last node
-	output := vertices[n-1]
 
 	// start receiving the messages
 	Receiver(output, k, maxSleep, deathLog)

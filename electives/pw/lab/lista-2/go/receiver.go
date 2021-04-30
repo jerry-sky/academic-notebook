@@ -4,7 +4,7 @@ package main
 //
 // Arguments:
 //
-// `output *Node`: the output node that receives all the messages
+// `output chan *Message`: the channel that is the output of the final node
 //
 // `quantity int`: expected number of messages (actual number of messages may differ, see below)
 //
@@ -15,7 +15,7 @@ package main
 // Returns all received messages that have made it to the `output *Node`.
 //
 // This function is supposed to be run as a go-routine.
-func Receiver(output *Node, quantity int, maxSleep float64, deathLog chan bool) []*Message {
+func Receiver(output chan *Message, quantity int, maxSleep float64, deathLog chan bool) []*Message {
 
 	receivedSoFar := 0
 
@@ -26,13 +26,9 @@ func Receiver(output *Node, quantity int, maxSleep float64, deathLog chan bool) 
 		case <-deathLog:
 			// count every death as ‘received’ for simplicity’s sake
 			receivedSoFar++
-		case msg := <-output.stash:
+		case msg := <-output:
 			// receive the message
-			LogMessageInTransit(msg, output)
-			LogReceivingMessage(msg, output)
-
 			messages = append(messages, msg)
-
 			// count the messages
 			receivedSoFar++
 		default:
@@ -42,8 +38,6 @@ func Receiver(output *Node, quantity int, maxSleep float64, deathLog chan bool) 
 				LoggerClose()
 				return messages
 			}
-			// by default just sleep
-			SleepForSomeTime(maxSleep)
 		}
 	}
 

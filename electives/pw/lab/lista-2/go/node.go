@@ -13,8 +13,10 @@ package main
 //
 // `plundererPointOfEntry chan bool`: plunderer can setup a trap sending a notification using this channel
 //
+// `output chan *Message`: last node only — the output channel to notify the receiver about message’s arrival
+//
 // It is supposed to be run as a go-routine.
-func NodeRoutine(node *Node, maxSleep float64, deathLog chan bool, plundererPointOfEntry chan bool) {
+func NodeRoutine(node *Node, maxSleep float64, deathLog chan bool, plundererPointOfEntry chan bool, output chan *Message) {
 
 	trapActive := false
 
@@ -33,27 +35,37 @@ func NodeRoutine(node *Node, maxSleep float64, deathLog chan bool, plundererPoin
 				deathLog <- true
 				// deactivate the trap back
 				trapActive = false
+				// destroy the message
 				continue
 			}
 
 			// take a break
 			SleepForSomeTime(maxSleep)
 
+			if output != nil {
+				// special case — this node is the last node
+				// receive the message
+				LogReceivingMessage(msg, node)
+				output <- msg
+				// message has been passed to the receiver
+				continue
+			}
+
 			// decrease message’s health
 			msg.health--
 
-			// stop message propagation if the message health is equal to zero
 			if msg.health == 0 {
+				// stop message propagation if the message health is equal to zero
 				LogMessageExhaustion(msg, node)
 				// inform the receiver as well
 				deathLog <- true
+				// message has exhausted its health
 				continue
 			}
 
 			// pick a random neighbouring vertice to send the message to
 			neighbours := node.neighbours
 			target := neighbours[RandomInteger(len(neighbours))].stash
-
 			// send the message when it is possible
 			target <- msg
 
