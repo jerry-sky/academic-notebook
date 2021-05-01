@@ -25,7 +25,7 @@ package Node is
 
     type pMessage is access Message;
 
-    procedure SleepForSomeTime(maxSleep: Natural);
+    procedure SleepForSomeTime(maxSleep: Natural; intervals: Natural := 1);
 
     task type NodeTask(
         self: pNodeObj;
@@ -35,6 +35,7 @@ package Node is
         receiver: REC.pReceiverTask
     ) is
         entry SendMessage(message: in pMessage);
+        entry SetupTrap;
         entry Stop;
     end NodeTask;
 
@@ -45,5 +46,12 @@ package Node is
         neighbours: pArray_pNodeObj;
         nodeTask: pNodeTask;
     end record;
+
+    -- grim reaper kills given node
+    task type NodeTaskGrimReaper(node: pNodeObj);
+
+    type pNodeTaskGrimReaper is access NodeTaskGrimReaper;
+    type Array_pNodeTaskGrimReaper is array (Positive range <>) of pNodeTaskGrimReaper;
+    type pArray_pNodeTaskGrimReaper is access Array_pNodeTaskGrimReaper;
 
 end Node;

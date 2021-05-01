@@ -5,6 +5,7 @@ with RandInt;
 with Sender; use Sender;
 with Receiver; use Receiver;
 with EdgeRegistry; use EdgeRegistry;
+with Plunderer; use Plunderer;
 
 procedure Main is
 
@@ -16,9 +17,10 @@ procedure Main is
     k: Natural;
     h: Natural;
     maxSleep: Natural;
+    plundererIntervals: Natural := 0;
 
 begin
-    if CMD.Argument_Count /= 6 then
+    if CMD.Argument_Count < 6 then
         PrintBounded("six arguments necessary");
         return;
     end if;
@@ -29,6 +31,10 @@ begin
     k := Natural'Value(CMD.Argument(4));
     h := Natural'Value(CMD.Argument(5));
     maxSleep := Natural'Value(CMD.Argument(6));
+
+    if CMD.Argument_Count > 6 then
+        plundererIntervals := Natural'Value(CMD.Argument(7));
+    end if;
 
     -- first step of getting to the first node is free
     h := Natural'Succ(h);
@@ -72,6 +78,9 @@ begin
 
         sender: pSenderTask;
         receiver: pReceiverTask;
+        plunderer: pPlundererTask;
+
+        reapers: pArray_pNodeTaskGrimReaper;
 
     begin
 
@@ -221,22 +230,24 @@ begin
             end if;
         end loop;
 
+        if plundererIntervals /= 0 then
+            -- setup the plunderer
+            logger.Log("plunderer active");
+            logger.Log("");
+            plunderer := new PlundererTask(nodes, maxSleep, plundererIntervals);
+        end if;
+
         -- send the messages
         tmpNodeObj2 := nodes(RangeN'First);
         sender := new SenderTask(tmpNodeObj2, k, h);
 
         -- wait for the receiver
         receiver.all.Ended;
-        -- for I in RangeK'Range loop
-        --     tmpMessage := new Message;
-        --     if tmpMessage /= null then
-        --         tmpNodeObj.all.nodeTask.all.ReceiveMessage(tmpMessage);
-        --         loggerReceiver.Log("→→→ message" & Natural'Image(tmpMessage.all.content) & " received");
-        --     end if;
-        -- end loop;
 
+        -- employ a squadron of grim reapers that kill all node tasks
+        reapers := new Array_pNodeTaskGrimReaper(RangeN);
         for I in RangeN'Range loop
-            nodes(I).all.nodeTask.Stop;
+            reapers(I) := new NodeTaskGrimReaper(nodes(I));
         end loop;
         logger.Stop;
 

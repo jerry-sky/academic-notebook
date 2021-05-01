@@ -1,13 +1,13 @@
 
 package body Node is
 
-    procedure SleepForSomeTime (maxSleep: Natural) is
+    procedure SleepForSomeTime (maxSleep: Natural; intervals: Natural := 1) is
        gen: RAF.Generator;
        fraction: Float;
     begin
        RAF.Reset(gen);
        fraction := 1.0 / Float(maxSleep);
-       delay Duration(fraction * RAF.Random(gen));
+       delay Duration(fraction * RAF.Random(gen) * Float(intervals));
     end SleepForSomeTime;
 
     task body NodeTask is
@@ -17,14 +17,25 @@ package body Node is
 
         exitTask: Boolean := False;
 
+        trapActive: Boolean := False;
+
     begin
         loop
             select
                 accept SendMessage(message: in pMessage) do
                     logger.LogMessageInTransit(message.all.content, self.all.id);
-                    SleepForSomeTime(maxSleep);
                     stash := message;
-                    if isLast then
+
+                    if trapActive then
+                        logger.Log("→→→ message" & Natural'Image(stash.all.content) & " fell into plunderer’s trap");
+                        receiver.all.ReceiveMessage;
+                        stash := null;
+                        trapActive := False;
+                    end if;
+
+                    SleepForSomeTime(maxSleep);
+
+                    if stash /= null and isLast then
                         -- allow receiving the message only if the node is the last node
                         logger.Log("→→→ message" & Natural'Image(stash.all.content) & " received");
                         receiver.all.ReceiveMessage;
@@ -40,11 +51,13 @@ package body Node is
                             stash := null;
                         end if;
                     end if;
-
                 end SendMessage;
                 or
+                accept SetupTrap do
+                    trapActive := True;
+                end SetupTrap;
+                or
                 accept Stop do
-                    SleepForSomeTime(maxSleep);
                     exitTask := True;
                 end Stop;
             else
@@ -61,5 +74,10 @@ package body Node is
             end if;
         end loop;
     end NodeTask;
+
+    task body NodeTaskGrimReaper is
+    begin
+        node.all.nodeTask.Stop;
+    end NodeTaskGrimReaper;
 
 end Node;
