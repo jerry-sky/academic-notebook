@@ -28,6 +28,7 @@
                 android:id="@+id/image_description_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:text="@string/app_name"
                 android:textSize="18sp" />
 
@@ -36,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="16dp"
                 android:numStars="5"
                 android:stepSize="1" />
         </LinearLayout>

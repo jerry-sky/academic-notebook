@@ -10,9 +10,10 @@ class ImageFile(metadata: ImageMetadata, rating: Int = 0) : Serializable {
 
     private val rawUri = metadata.uri.toString()
 
-    val uri: Uri get() {
-        return Uri.parse(this.rawUri)
-    }
+    val uri: Uri
+        get() {
+            return Uri.parse(this.rawUri)
+        }
 
     val name = metadata.name ?: "untitled file"
 
@@ -21,3 +22,5 @@ class ImageFile(metadata: ImageMetadata, rating: Int = 0) : Serializable {
     var rating: Int = rating
 
 }
+
+val FileImageTypes = arrayOf("image/jpeg", "image/bmp", "image/gif", "image/jpg", "image/png")

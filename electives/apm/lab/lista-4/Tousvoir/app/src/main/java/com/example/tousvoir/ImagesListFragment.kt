@@ -10,6 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,10 +28,46 @@ class ImagesListFragment : Fragment() {
 
     private val pickerInitialUri = Uri.EMPTY
 
+    private  lateinit var titleView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ImagesListAdapter
 
     private var images: Array<ImageFile> = emptyArray()
+
+    private var chooseDirectoryLauncher = this.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        result: ActivityResult ->
+        val resultCode = result.resultCode
+        val data = result.data
+
+        if (resultCode == Activity.RESULT_OK && data != null) {
+
+            val treeUri = data.data ?: return@registerForActivityResult
+
+            this.titleView.text = treeUri.path
+
+            val tree = DocumentFile.fromTreeUri(this.requireContext(), treeUri) ?: return@registerForActivityResult
+
+            var metadata: Array<ImageMetadata> = tree.listFiles()
+
+            // filter out non-image files
+            metadata = metadata.filter { FileImageTypes.contains(it.type) }.toTypedArray()
+
+            val files = Array(metadata.size) {
+                ImageFile(metadata[it])
+            }
+
+            this.images = files
+
+            val bundle = Bundle().apply {
+                putSerializable(DIRECTORY_CHOSEN_LISTENER, files)
+            }
+            this.setFragmentResult(DIRECTORY_CHOSEN_LISTENER, bundle)
+
+            this.refreshRecyclerAdapter()
+
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +106,8 @@ class ImagesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        this.titleView = this.requireView().findViewById(R.id.fragment_images_list_title_view)
+
         this.setupRecycler()
 
         val directoryButton =
@@ -83,12 +124,12 @@ class ImagesListFragment : Fragment() {
             LinearLayoutManager.VERTICAL,
             false
         )
-        this.adapter = ImagesListAdapter(this.images) {
+        this.adapter = ImagesListAdapter(this.images,  {
             val bundle = Bundle().apply {
                 putSerializable(IMAGE_CHOSEN_LISTENER, it)
             }
             this.setFragmentResult(IMAGE_CHOSEN_LISTENER, bundle)
-        }
+        }, this.requireActivity().contentResolver)
         this.recyclerView.adapter = this.adapter
     }
 
@@ -104,36 +145,7 @@ class ImagesListFragment : Fragment() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
             putExtra(DocumentsContract.EXTRA_INITIAL_URI, this@ImagesListFragment.pickerInitialUri)
         }
-
-        startActivityForResult(intent, GET_DIRECTORY_INTENT_CODE)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == GET_DIRECTORY_INTENT_CODE && resultCode == Activity.RESULT_OK && data != null) {
-
-            val treeUri = data.data ?: return
-
-            val tree = DocumentFile.fromTreeUri(this.requireContext(), treeUri) ?: return
-
-            val metadata: Array<ImageMetadata> = tree.listFiles()
-
-            val files = Array(metadata.size) {
-                ImageFile(metadata[it])
-            }
-
-            this.images = files
-
-            val bundle = Bundle().apply {
-                putSerializable(DIRECTORY_CHOSEN_LISTENER, files)
-            }
-            this.setFragmentResult(DIRECTORY_CHOSEN_LISTENER, bundle)
-
-            this.refreshRecyclerAdapter()
-
-        }
-
+        this.chooseDirectoryLauncher.launch(intent)
     }
 
     fun updateImage(newImage: ImageFile) {
@@ -150,7 +162,7 @@ class ImagesListFragment : Fragment() {
         }
     }
 
-    fun resortImages() {
+    private fun resortImages() {
         this.images.sortByDescending { it.rating }
     }
 
