@@ -181,6 +181,7 @@ begin
             else
                 tmpNodeObj.all.nodeTask := new NodeTask(tmpNodeObj, maxSleep, logger, True, receiver);
             end if;
+            tmpNodeObj.all.nodeStash := new NodeStash(tmpNodeObj);
         end loop;
 
         -- and add pointers to neighbours (shortcuts)

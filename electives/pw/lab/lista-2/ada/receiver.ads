@@ -1,3 +1,4 @@
+with External; use External;
 
 package Receiver is
 

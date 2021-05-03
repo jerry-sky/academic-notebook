@@ -41,10 +41,21 @@ package Node is
 
     type pNodeTask is access NodeTask;
 
+    -- NodeStash sort of simulates what a `chan` in Golang would do
+    task type NodeStash(
+        self: pNodeObj
+    ) is
+        entry SendMessage(message: in pMessage);
+        entry Stop;
+    end NodeStash;
+
+    type pNodeStash is access NodeStash;
+
     type NodeObj is record
         id: Natural;
         neighbours: pArray_pNodeObj;
         nodeTask: pNodeTask;
+        nodeStash: pNodeStash;
     end record;
 
     -- grim reaper kills given node

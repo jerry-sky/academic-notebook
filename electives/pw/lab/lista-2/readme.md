@@ -13,6 +13,7 @@ date: '2021-05-02'
 - [Rozwiązanie](#rozwiązanie)
     - [Go](#go)
     - [Ada](#ada)
+    - [Parametry](#parametry)
 
 ---
 
@@ -53,13 +54,10 @@ Pliki Źródłowe znajdują się w katalogu `go`.
 Żeby uruchomić program, należy wykonać polecenie
 
 ```bash
-go run . ‹n› ‹d› ‹b› ‹k› ‹h› ‹maxSleep›
+go run . ‹n› ‹d› ‹b› ‹k› ‹h› ‹maxSleep› [‹plundererIntervals›]
 ```
 
 z uzupełnionymi parametrami.
-
-Parametr `maxSleep` określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda).
-Przykładowo, jeśli `maxSleep = 100` oznacza to, że maksymalny czas oczekiwania wynosi `1/100` sekundy, czyli `10` milisekund.
 
 Nagranie `asciinema` znajduje się w pliku [`go.cast`](go.cast).
 
@@ -78,14 +76,27 @@ make
 Teraz można uruchomić program poleceniem
 
 ```bash
-./main.bin ‹n› ‹d› ‹b› ‹k› ‹h› ‹maxSleep›
+./main.bin ‹n› ‹d› ‹b› ‹k› ‹h› ‹maxSleep› [‹plundererIntervals›]
 ```
 
 z uzupełnionymi parametrami.
 
+Nagranie `asciinema` znajduje się w pliku [`ada.cast`](ada.cast).
+
+---
+
+### Parametry
+
 Parametr `maxSleep` określa liczbę, przez jaką należy podzielić domyślny czas oczekiwania wątków (jedna sekunda).
 Przykładowo, jeśli `maxSleep = 100` oznacza to, że maksymalny czas oczekiwania wynosi `1/100` sekundy, czyli `10` milisekund.
 
-Nagranie `asciinema` znajduje się w pliku [`ada.cast`](ada.cast).
+Parametr *opcjonalny* `plundererIntervals` określa mnożnik okresu oczekiwania określonego przez parametr `maxSleep`.
+Jeśli parametr ten nie zostanie podany,
+kłusownik nie zostanie aktywowany.\
+W celu jego aktywacji należy podać liczbę dodatnią,
+np. `1`.
+Wówczas kłusownik ma taki sam czas oczekiwania jak każdy wątek węzła w grafie.
+Czas oczekiwania można zwiększyć,
+podając większą liczbę.
 
 ---
