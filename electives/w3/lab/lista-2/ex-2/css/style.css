@@ -1,0 +1,43 @@
+
+body {
+    margin: 10px;
+    width: calc(100% - 20px);
+    overflow: auto;
+}
+
+* {
+    font-family: serif;
+    text-align: center;
+}
+
+h1 {
+    font-style: italic;
+}
+
+input[type=number] {
+    padding: 10px;
+    border: 0;
+    margin: 0 auto;
+    display: block;
+}
+input[type=number]:focus {
+    outline: 1px solid dodgerblue;
+    outline-offset: -1px;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+img {
+    width: 200px;
+}
+
+canvas {
+    display: block;
+    margin: 50px auto;
+}
