@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 2.</title>
+
+    <style>
+        form {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas width="600" height="600"></canvas>
+
+    <form>
+        <select>
+            <option>Koch</option>
+            <option>Sierpiński</option>
+        </select>
+
+        <input id="colour-input" type="text" placeholder="Colour, format: R, G, B" value="1,0,1"/>
+
+        <button type="submit">Draw</button>
+    </form>
+
+    <p>Move the last added fractal using Up and Down arrow keys.</p>
+
+    <script src="main.ts"></script>
+
+</body>
+
+</html>

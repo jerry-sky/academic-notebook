@@ -7,6 +7,7 @@ author: 'Jerzy Wroczyński'
 
 - [Informacje techniczne](#informacje-techniczne)
 - [Zadanie 1. Testowanie WebGL](#zadanie-1-testowanie-webgl)
+- [Zadanie 2.](#zadanie-2)
 
 ---
 
@@ -55,5 +56,20 @@ Wymaga to `node` oraz `npm` zainstalowanych w systemie.
 >     <https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindAttribLocation>
 
 [»Strona«](dist/ex-1/index.html)
+
+---
+
+## Zadanie 2.
+
+> Wygeneruj zbiory odcinków / trójkątów składających się na trójkąty Sierpińskiego / płatki Kocha różnego stopnia,
+>
+> Umieść odpowiednie dane w buforach i zaimplementuj shadery rysujące te dane w kontekście webgl.
+> Napisz interakcyjny program,
+> który rysuje krzywe różnego stopnia w różnych kolorach na różnych głębokościach (współrzędna z),
+> tak aby krzywe o większych głębokościach stanowiły tło krzywej o najmniejszej głębokości,
+> i umożliwia przy pomocy klawiszy lub przycisków operacje takie jak przesuwanie krzywych,
+> zmiany głębokości.
+
+[»Strona«](dist/ex-2/index.html)
 
 ---
