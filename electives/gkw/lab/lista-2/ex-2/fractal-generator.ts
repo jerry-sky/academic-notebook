@@ -37,7 +37,7 @@ function kochEdge(level: number, z: number): ListOfPoint3D {
 }
 
 
-export function GenerateKoch(level: number, size: number, z: number) {
+export function GenerateKoch(level: number, z: number) {
 
     const one = kochEdge(level, z)
     one.translate(new Point3D(0, 1, 0))
@@ -51,13 +51,12 @@ export function GenerateKoch(level: number, size: number, z: number) {
     three.translate(new Point3D(0, Math.sqrt(3) * -5 / 12, 0))
 
     const koch = ListOfPoint3D.concatenate(one, two, three)
-    koch.scale(size)
 
     return koch
 
 }
 
-export function GenerateSierpiński(level: number, size: number, z: number) {
+export function GenerateSierpiński(level: number, z: number) {
 
     if (level === 1) {
         return new ListOfPoint3D([
@@ -66,10 +65,10 @@ export function GenerateSierpiński(level: number, size: number, z: number) {
             new Point3D(1, -1, z),
         ])
     } else {
-        const one = GenerateSierpiński(level - 1, 0, z)
+        const one = GenerateSierpiński(level - 1, z)
         one.translate(new Point3D(-1, -1, 0))
         one.scale(0.5)
-        const two = GenerateSierpiński(level - 1, 0, z)
+        const two = GenerateSierpiński(level - 1, z)
         two.translate(new Point3D(1, 1, 0))
         two.scale(0.5)
         two.translate(new Point3D(
@@ -77,7 +76,7 @@ export function GenerateSierpiński(level: number, size: number, z: number) {
             -1 + 0.5 * Math.sqrt(3),
             0
         ))
-        const three = GenerateSierpiński(level - 1, 0, z)
+        const three = GenerateSierpiński(level - 1, z)
         three.translate(new Point3D(1, 1, 0))
         three.scale(0.5)
         three.translate(new Point3D(
@@ -87,7 +86,6 @@ export function GenerateSierpiński(level: number, size: number, z: number) {
         ))
 
         const vertices = ListOfPoint3D.concatenate(one, two, three)
-        // vertices.scale(size)
 
         return vertices
     }
