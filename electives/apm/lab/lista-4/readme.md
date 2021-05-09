@@ -34,7 +34,7 @@ author: 'Jerry Sky'
 > - wykorzystywać fragmenty przy zmianie orientacji ekranu,
 > - zapamiętywać swój stan po zmianie orientacji ekranu.
 
-Pliki projektu znajdują się w katalogu `Tousvoir`.
+Pliki projektu znajdują się w katalogu `ex-1/Tousvoir`.
 
 ---
 
@@ -42,6 +42,8 @@ Pliki projektu znajdują się w katalogu `Tousvoir`.
 
 > Zmień powyższą aplikację na [*„tab layout”*](https://developer.android.com/guide/navigation/navigation-swipe-view-2)
 > (`ViewPager2`) zamiast dwóch aktywności.
+
+Pliku projektu znajdują się w katalogu `ex-2/Tousvoir`.
 
 ---
 
