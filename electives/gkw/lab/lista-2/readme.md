@@ -8,6 +8,7 @@ author: 'Jerzy Wroczyński'
 - [Informacje techniczne](#informacje-techniczne)
 - [Zadanie 1. Testowanie WebGL](#zadanie-1-testowanie-webgl)
 - [Zadanie 2.](#zadanie-2)
+- [Zadanie 3. Gra komputerowa 2D](#zadanie-3-gra-komputerowa-2d)
 
 ---
 
@@ -71,5 +72,30 @@ Wymaga to `node` oraz `npm` zainstalowanych w systemie.
 > zmiany głębokości.
 
 [»Strona«](dist/ex-2/index.html)
+
+---
+
+## Zadanie 3. Gra komputerowa 2D
+
+> Zaimplementować w WebGL prostą dwuwymiarową grę zręcznościową typu:
+> Pong, Arkanoid, Space Invaders,
+> lub inną podobną, ale w taki sposób,
+> aby tło zawierało jakiś rysunek utworzony z elementów geometrycznych (np. boisko).
+>
+> Wykorzystaj bufor głębokości tak,
+> aby elementy pierwszoplanowe były rysowane z mniejszą współrzędną Z niż elementy tła.
+> Zaimplementuj animację w zalecany sposób jak w przykładowym programie:
+> <http://156.17.7.16/public/dydaktyka/kik/grafika/animation/animation.html>
+> Zwróć uwagę, że callback animacji jest wywoływany w określonych punktach czasowych
+> zależnych od częstotliwości wyświetlania obrazy na ekranie,
+> natomiast zdarzenia istotne dla stanu gry,
+> takie jak np. zderzenie obiektów, mogą wystąpić między tymi punktami czasowymi.
+> Zadbaj o poprawną implementację takich sytuacji.
+>
+> Skoncentruj się na graficznej prezentacji gry.
+> Pomiń takie rzeczy jak obliczanie punktacji
+> i gromadzenie statystyk dotyczących wyników.
+
+[»Strona«](dist/ex-3/index.html)
 
 ---

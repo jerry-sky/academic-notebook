@@ -7,10 +7,30 @@ export class Point3D {
         public z: number
     ) { }
 
+    public static from(p: Point3D): Point3D {
+        return new Point3D(p.x, p.y, p.z)
+    }
+
+    public reset(p?: Point3D) {
+        this.x = p?.x || 0
+        this.y = p?.y || 0
+        this.z = p?.z || 0
+    }
+
+    public negate() {
+        this.x = -this.x
+        this.y = -this.y
+        this.z = -this.z
+    }
+
     public translate(vector: Point3D) {
         this.x += vector.x
         this.y += vector.y
         this.z += vector.z
+    }
+
+    public translateY(value: number) {
+        this.y += value
     }
 
     public scale(factor: number) {
@@ -63,9 +83,24 @@ export class ListOfPoint3D extends Array<Point3D> {
 
     }
 
+    public reset(p?: Point3D) {
+        const origin = Point3D.from(this[0])
+        origin.negate()
+        origin.translate(p)
+        this.forEach((vertex) => {
+            vertex.translate(origin)
+        })
+    }
+
     public translate(vector: Point3D) {
         this.forEach((vertex) => {
             vertex.translate(vector)
+        })
+    }
+
+    public translateY(value: number) {
+        this.forEach((vertex) => {
+            vertex.translateY(value)
         })
     }
 
