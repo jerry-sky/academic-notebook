@@ -1,0 +1,15 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 50px);
+    min-height: 500px;
+    padding: 25px 0;
+}
+
+.container > header {
+    width: 100%;
+    text-align: center;
+}

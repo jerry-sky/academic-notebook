@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tousvoir</string>
+    <string name="choose_dir_prompt">Choose a directory</string>
+    <string name="image_location">Image location:</string>
+    <string name="stars">stars</string>
+    <string name="image_last_modified">Last modified</string>
+</resources>

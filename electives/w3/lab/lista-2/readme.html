@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerzy Wroczyński" />
+  <meta name="dcterms.date" content="2021-05-06" />
+  <title>Lista 2.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 2.</h1>
+<p class="subtitle">Nowoczesne Technologie WWW, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerzy Wroczyński</span>
+</p>
+<p class="date">2021-05-06</p>
+</header>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1">Zadanie 1.</h2>
+<p>Do swojego portfolio:</p>
+<ul>
+<li>dołącz w osobnym pliku <code>js</code> i wykorzystaj skrypt generujący responsywne, dynamicznie zmieniające się pod wpływem zdarzeń menu (dla najmniejszych ekranów mobilnych stwórz tzw. „menu hamburgerowe”),</li>
+<li>przepuść skrypt przez JS LINT (<a href="http://www.jslint.com/" class="uri">http://www.jslint.com/</a>) i postaraj się wyeliminować wszystkie błędy i ostrzeżenia,</li>
+<li>uwzględnij w projekcie alternatywną wersję menu dla przeglądarek nieobsługujących lub mających wyłączoną obsługę JavaScript.</li>
+</ul>
+<p><a href="ex-1/index.html">»Strona«</a></p>
+<hr />
+<h2 id="zadanie-2">Zadanie 2.</h2>
+<p>Wykorzystując wyłącznie HTML, CSS oraz JavaScript napisz od podstaw układankę obrazkową, spełniającą następujące wymagania:</p>
+<ul>
+<li>przyjmuje jeden z dostępnych obrazków oraz <code>liczbaKolumn = liczbaWierszy = 4</code> jako parametry domyślne gry,</li>
+<li>dla zadanych parametrów (obrazek, liczba kolumn i wierszy) na elemencie <code>&lt;canvas&gt;</code> uruchamiana jest gra o następujących zasadach:
+<ul>
+<li>obrazek zostaje pocięty w pionie i poziomie na klocki zgodnie z przy- jętymi parametrami,</li>
+<li>klocki są pierwotnie wymieszane (w sposób odwracalny zgodnie z zasadami gry),</li>
+<li>klocek w górnym lewym rogu jest zamalowany na czerwono,</li>
+<li>użytkownik, naciskając na klocek przylegający jedynym bokiem do czerwonego, może zamienić je miejscami,</li>
+<li>najechanie na klocek przylegający do czerwonego powoduje jego podświetlenie,</li>
+<li>kliknięcie klocka nieprzylegającego do czerwonego nie wyzwala żadnych akcji,</li>
+<li>celem gry jest ułożenie obrazka z dokładnością do czerwonego klocka,</li>
+<li>po spełnieniu celu gra zaczyna się od nowa,</li>
+</ul></li>
+<li>w dowolnym momencie użytkownik może przerwać grę i uruchomić ją od nowa,</li>
+<li>w dowolnym momencie użytkownik może zmienić parametry gry (obrazek liczba kolumn, liczba wierszy układanki) i zacząć nową rozgrywkę. W celu wybrania obrazka wyświetl prostą galerię 12 obrazków, spośród których użytkownik może wybrać jeden do układania (najpierw załaduj zdjęcia skompresowane, a potem wykorzystaj obietnice do ładowania równoległego zdjęć dobrej jakości).</li>
+</ul>
+<p><a href="ex-2/index.html">»Strona«</a></p>
+<hr />
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 4.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 4.</h1>
+<p class="subtitle">Aplikacje mobilne, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1">Zadanie 1.</h2>
+<blockquote>
+<p>Napisz aplikację (galeria) przechowującą zdjęcia np. ludzi, krajobrazów, zwierząt, … i każde zdjęcie dodatkowo zawiera krótki opis. Po uruchomieniu aplikacji, na początku pokazuje ona dostępne zdjęcia. Użytkownik może wybrać dowolną pozycję, aby zobaczyć większe zdjęcie i opis. Na ekranie dodatkowo, mamy możliwość ocenienia zdjęcia przez np. “gwiazdki” (zobacz <a href="http://developer.android.com/reference/kotlin/android/widget/RatingBar.html"><code>RatingBar</code></a>).</p>
+<p>Proszę pamiętać, że na tym etapie poznania Androida nie ma to być w pełni funkcjonalna aplikacja np. nie potrzeba tworzyć kont dla użytkowników lub nie potrzeba przechowywać nowych zdjęć.</p>
+<p>Aplikacja powinna natomiast obsługiwać:</p>
+<ul>
+<li>co najmniej dwie aktywności,</li>
+<li>przekazywać informacje z jednej aktywności do drugiej wykorzystując intencje (tutaj proszę przemyśleć jak to zrobić, dane wysyłane w intencji mają ograniczony rozmiar),</li>
+<li>druga aktywność powinna wracać informacje do pierwszej o liczbie gwiazdek, po czym w pierwszej aktywności obrazki zostają odpowiednio posortowane po liczbie gwiazdek,</li>
+<li>poprawnie obsługiwać cykl życia aktywności tzn. <code>onCreate</code>, <code>onStart</code>, <code>onResume</code>, <code>onPause</code>, <code>onStop</code>, <code>onDestroy</code>, … (te, które są potrzebne),</li>
+<li>wykorzystywać fragmenty przy zmianie orientacji ekranu,</li>
+<li>zapamiętywać swój stan po zmianie orientacji ekranu.</li>
+</ul>
+</blockquote>
+<p>Pliki projektu znajdują się w katalogu <code>Tousvoir</code>.</p>
+<hr />
+<h2 id="zadanie-2">Zadanie 2.</h2>
+<blockquote>
+<p>Zmień powyższą aplikację na <a href="https://developer.android.com/guide/navigation/navigation-swipe-view-2"><em>„tab layout”</em></a> (<code>ViewPager2</code>) zamiast dwóch aktywności.</p>
+</blockquote>
+<hr />
+<h2 id="zadanie-3">Zadanie 3.</h2>
+<blockquote>
+<p>Uzupełnij poprzednie zadanie o możliwość robienia zdjęć (obsługa <a href="https://developer.android.com/training/camerax">CameraX</a>) i dodawania do kolekcji.</p>
+</blockquote>
+<hr />
+</body>
+</html>
