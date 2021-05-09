@@ -1,5 +1,5 @@
-import { ListOfPoint3D } from '../types';
-import { vertexShaderRaw, fragmentShaderRaw } from './shaders'
+import { ListOfPoint3D, Point3D } from '../types';
+import { vertexShaderRaw, fragmentShaderRaw, vertexTextureShaderRaw, fragmentTextureShaderRaw } from './shaders'
 
 export type Colour = number[];
 
@@ -7,6 +7,12 @@ export interface Shape {
     points: ListOfPoint3D
     drawType: number
     colour: Colour
+}
+
+export interface TextureSquare {
+    origin: Point3D
+    size: number
+    texture: HTMLImageElement
 }
 
 export class MyCanvas {
@@ -17,6 +23,7 @@ export class MyCanvas {
     private gl: WebGLRenderingContext
 
     private program: WebGLProgram
+    private programTex: WebGLProgram
 
     /**
      * List of all shapes the user wants to draw.
@@ -30,6 +37,14 @@ export class MyCanvas {
     }
     public resetShapes() {
         this._shapes = []
+    }
+
+    private _textureSquares: TextureSquare[] = []
+    public addTextureSquare(newSquare: TextureSquare) {
+        return this._textureSquares.push(newSquare)
+    }
+    public get textureSquares() {
+        return this._textureSquares
     }
 
     public readonly DrawTypes: {
@@ -71,14 +86,21 @@ export class MyCanvas {
 
         // enable depth
         this.gl.enable(this.gl.DEPTH_TEST)
+        // this.gl.enable(this.gl.CULL_FACE)
+        // this.gl.frontFace(this.gl.CCW)
+        this.gl.cullFace(this.gl.BACK)
     }
 
     private prepare() {
         const gl = this.gl;
+
         const vertexShader = this.prepareShader(vertexShaderRaw.source, gl.VERTEX_SHADER)
         const fragmentShader = this.prepareShader(fragmentShaderRaw.source, gl.FRAGMENT_SHADER)
-
         this.program = this.prepareProgram([vertexShader, fragmentShader])
+
+        const vertexTextureShader = this.prepareShader(vertexTextureShaderRaw.source, gl.VERTEX_SHADER)
+        const fragmentTextureShader = this.prepareShader(fragmentTextureShaderRaw.source, gl.FRAGMENT_SHADER)
+        this.programTex = this.prepareProgram([vertexTextureShader, fragmentTextureShader])
     }
 
     /**
@@ -129,6 +151,10 @@ export class MyCanvas {
 
         this.clearScreen()
 
+        this._textureSquares.forEach((square) => {
+            this.drawTexturedSquare(square.origin, square.size, square.texture)
+        })
+
         this._shapes.forEach((shape) => {
             this.draw3DUniformColor(shape.points, shape.drawType, shape.colour)
         })
@@ -160,6 +186,68 @@ export class MyCanvas {
         gl.uniform3fv(colourUniformLocation, new Float32Array(colour))
 
         gl.drawArrays(drawType, 0, vertices.length)
+    }
+
+    private drawTexturedSquare(origin: Point3D, size: number, textureSource: HTMLImageElement) {
+        const gl = this.gl
+
+        const ox = origin.x
+        const oy = origin.y
+        const oz = origin.z
+        // generate a square anchored in the `origin` point
+        const vertices = [
+            // X, Y, Z, U, V
+            ox, oy, oz, 0, 1,
+            ox, oy + size, oz, 0, 0,
+            ox + size, oy + size, oz, 1, 0,
+            ox + size, oy, oz, 1, 1
+        ]
+
+        const vertexBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
+
+        const positionAttribLocation =
+            gl.getAttribLocation(this.programTex, vertexTextureShaderRaw.attributes.vertPosition)
+        const textureCoordinateAttribLocation
+            = gl.getAttribLocation(this.programTex, vertexTextureShaderRaw.attributes.vertTextureCoordinate)
+
+        gl.vertexAttribPointer(
+            positionAttribLocation, // the vertex position attrib
+            3, // 3D
+            gl.FLOAT,
+            false,
+            5 * Float32Array.BYTES_PER_ELEMENT,
+            0
+        )
+        gl.vertexAttribPointer(
+            textureCoordinateAttribLocation,
+            2,
+            gl.FLOAT,
+            false,
+            5 * Float32Array.BYTES_PER_ELEMENT,
+            3 * Float32Array.BYTES_PER_ELEMENT // to get the UV coordinates we skip the XYZ coordinates
+        )
+        gl.enableVertexAttribArray(positionAttribLocation)
+        gl.enableVertexAttribArray(textureCoordinateAttribLocation)
+
+        const texture = gl.createTexture()
+        gl.bindTexture(gl.TEXTURE_2D, texture)
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texImage2D(
+            gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,
+            gl.UNSIGNED_BYTE,
+            textureSource
+        )
+
+        gl.useProgram(this.programTex)
+
+        gl.activeTexture(gl.TEXTURE0)
+
+        gl.drawArrays(gl.TRIANGLE_FAN, 0, vertices.length/5)
     }
 
 }
