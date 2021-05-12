@@ -28,5 +28,6 @@ Każda z list zawiera projekt(y) tworzone przy pomocy Android Studio, dlatego na
 - [Lista 2.](lab/lista-2/readme.md)
 - [Lista 3.](lab/lista-3/readme.md)
 - [Lista 4.](lab/lista-4/readme.md)
+- [Lista 5.](lab/lista-5/readme.md)
 
 ---

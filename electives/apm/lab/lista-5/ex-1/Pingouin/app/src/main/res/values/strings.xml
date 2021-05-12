@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pingouin</string>
+    <string name="resume_game_prompt_message">Do you want to resume your last game?</string>
+    <string name="resume_game_prompt_yes_button">Yes</string>
+    <string name="resume_game_prompt_no_button">No</string>
+    <string name="resuming_message">Starting in </string>
+</resources>
