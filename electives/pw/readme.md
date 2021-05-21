@@ -24,5 +24,6 @@ keywords: 'pwr, wust, programowanie, współbieżne, Kik, Gębala, wykład, labo
 
 - [Lista 1.](lab/lista-1/readme.md)
 - [Lista 2.](lab/lista-2/readme.md)
+- [Lista 3.](lab/lista-3/readme.md)
 
 ---
