@@ -6,8 +6,9 @@ author: 'Jerry Sky'
 ---
 
 - [Zadanie](#zadanie)
-    - [Argumenty](#argumenty)
-    - [Go](#go)
+- [Argumenty](#argumenty)
+- [Go](#go)
+- [Ada](#ada)
 
 ---
 
@@ -58,7 +59,7 @@ author: 'Jerry Sky'
 > gdy rozsyła pakiet z ofertami do sąsiadów oraz tak zmieniał $R_i[j].\mathrm{changed}$
 > na `false` aby nie „zagłuszyć” żadnej nowej zmiany.
 
-### Argumenty
+## Argumenty
 
 - `n` — liczba wierzchołków
 - `d` — liczba dodatkowych krawędzi (skrótów)
@@ -66,7 +67,9 @@ author: 'Jerry Sky'
 
 Wszystkie powyższe argumenty powinny być liczbami naturalnymi różnymi od zera.
 
-### Go
+---
+
+## Go
 
 W celu uruchomienia programu należy wykonać polecenie
 
@@ -75,5 +78,23 @@ go run . ‹n› ‹d› ‹maxSleep›
 ```
 
 z [uzupełnionymi parameterami](#argumenty) będąc w katalogu `go`.
+
+---
+
+## Ada
+
+W celu uruchomienia programu należy go najpierw skompilować poleceniem
+
+```bash
+make
+```
+
+a następnie wykonać polecenie
+
+```bash
+./main.bin ‹n› ‹d› ‹maxSleep›
+```
+
+z [uzupełnionymi parameterami](#argumenty) będąc w katalogu `ada`.
 
 ---
