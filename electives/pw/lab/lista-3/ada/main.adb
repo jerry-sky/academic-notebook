@@ -87,7 +87,7 @@ begin
                 shortcuts(iter, 1) := tmp;
                 shortcuts(iter, 2) := tmp2;
 
-                logger.Log(Natural'Image(tmp) & " →" & Natural'Image(tmp2));
+                logger.Log(Natural'Image(tmp) & " ↔" & Natural'Image(tmp2));
                 -- save the edge in the registry to avoid duplicates
                 EDG.Register(shortcutsEdgeRegistry, tmp, tmp2);
                 iter := Natural'Succ(iter); -- succulent

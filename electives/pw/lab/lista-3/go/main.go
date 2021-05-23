@@ -61,9 +61,10 @@ func main() {
 	// remember already made shortcuts
 	shortcuts := make(map[string]bool, d)
 	edgeTag := func(one int, two int) string {
-		return strconv.Itoa(one) + " → " + strconv.Itoa(two)
+		return strconv.Itoa(one) + " ↔ " + strconv.Itoa(two)
 	}
 
+	println("shortcuts:")
 	for i := 0; i < d; i++ {
 
 		// pick some two vertices
@@ -81,11 +82,15 @@ func main() {
 
 		// remember that shortcut
 		shortcuts[edgeTag(oneIndex, twoIndex)] = true
+		shortcuts[edgeTag(twoIndex, oneIndex)] = true
 
 		one.neighbours = append(one.neighbours, two)
 		two.neighbours = append(two.neighbours, one)
 
+		println(edgeTag(oneIndex, twoIndex))
+
 	}
+	println()
 
 	// generate routing information based only on the main Hamilton path
 	// consisting of edges {v, v+1}
@@ -128,13 +133,6 @@ func main() {
 			current.routing.nexthop[neighbourID] = neighbour
 		}
 	}
-
-	// print the graph
-	println("shortcuts:")
-	for edge := range shortcuts {
-		println(edge)
-	}
-	println()
 
 	// start listening for log messages
 	go LoggerPrintMessages()
