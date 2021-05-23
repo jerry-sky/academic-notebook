@@ -79,6 +79,8 @@ go run . ‹n› ‹d› ‹maxSleep›
 
 z [uzupełnionymi parameterami](#argumenty) będąc w katalogu `go`.
 
+Nagranie `asciinema` pokazujące przykładowe uruchomienia programu znajduje się w pliku `go.cast`.
+
 ---
 
 ## Ada
@@ -96,5 +98,10 @@ a następnie wykonać polecenie
 ```
 
 z [uzupełnionymi parameterami](#argumenty) będąc w katalogu `ada`.
+
+Nagranie `asciinema` pokazujące przykładowe uruchomienia programu znajduje się w pliku `ada.cast`.
+
+*Uwaga: w implementacji w Adzie numeracja węzłów wyrażana jest zakresem `1..n`,*
+*w przeciwieństwie do Go (`0..(n-1)`).*
 
 ---
