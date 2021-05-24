@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 2.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 2.</h1>
+<p class="subtitle">Grafika komputerowa i wizualizacje, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<ul>
+<li><a href="#informacje-techniczne">Informacje techniczne</a></li>
+<li><a href="#zadanie-1--testowanie-webgl">Zadanie 1. — Testowanie WebGL</a></li>
+<li><a href="#zadanie-2--fraktale">Zadanie 2. — Fraktale</a></li>
+<li><a href="#zadanie-3--gra-komputerowa-2d">Zadanie 3. — Gra komputerowa 2D</a></li>
+</ul>
+<hr />
+<h2 id="informacje-techniczne">Informacje techniczne</h2>
+<p>Pliki źródłowe <em>TypeScript</em> znajdują się w:</p>
+<ul>
+<li><code>types.ts</code> — podstawowe typy,</li>
+<li><code>ex-*</code> — rozwiązania zadań z listy.</li>
+</ul>
+<p>W katalogu <code>dist</code> znajduje się skompilowana wersja, której podgląd można zobaczyć przy pomocy przeglądarki. Wystarczy otworzyć plik <code>index.html</code> w danym pod-katalogu <code>dist/</code> z zadaniem. Przykładowo skompilowane rozwiązanie zadania 1. znajduje się w pliku <code>dist/ex-1/index.html</code>.</p>
+<p>Najprostszym sposobem uruchomienia strony jest przejście do katalogu <code>dist/</code> oraz uruchomienie prostego serwera HTTP, np. w Pythonie:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server <span class="at">--bind</span> localhost 4200</span></code></pre></div>
+<p>a następnie wejść na adres <a href="http://localhost:4200" class="uri">http://localhost:4200</a> w przeglądarce.</p>
+<hr />
+<p>Do rozwiązań dołączony jest plik <code>makefile</code> umożliwiający następujące polecenia:</p>
+<ul>
+<li><code>make</code> — buduje rozwiązania do wszystkich zadań,</li>
+<li><code>make dev</code> — uruchamia całą listę jako program w trybie deweloperskim (program jest rekompilowany przy każdej zmianie któregokolwiek z plików),</li>
+<li><code>make clean</code> — usuwa wszystkie tymczasowe pliki pomocnicze (łącznie ze skompilowaną wersją).</li>
+</ul>
+<p>Przed wykorzystaniem powyższych poleceń należy zainstalować wszystkie potrzebne paczki przy pomocy polecenia <code>npm i</code>. Wymaga to <code>node</code> oraz <code>npm</code> zainstalowanych w systemie.</p>
+<hr />
+<h2 id="zadanie-1--testowanie-webgl">Zadanie 1. — Testowanie WebGL</h2>
+<blockquote>
+<p>Napisz prosty program, który demonstruje rysowanie w WebGL obiektów geometrycznych:</p>
+<ul>
+<li><code>POINTS</code>,</li>
+<li><code>LINE_STRIP</code>,</li>
+<li><code>LINE_LOOP</code>,</li>
+<li><code>LINES</code>,</li>
+<li><code>TRIANGLE_STRIP</code>,</li>
+<li><code>TRIANGLE_FAN</code>,</li>
+<li><code>TRIANGLES</code>.</li>
+</ul>
+<p>Zastosować zmienne uniform do ustalania pewnych parametrów rysowania (np. kolorów, przekształceń geometrycznych itp.)</p>
+<p>Należy także:</p>
+<ul>
+<li>wypisać w konsoli lub na stronie listę aktywnych atrybutów, zgodnie z przykładem na stronie <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getActiveAttrib" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getActiveAttrib</a>,</li>
+<li>analogicznie wykorzystać <code>getActiveUniform</code>, aby wypisać listę zmiennych uniform. <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getActiveUniform" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getActiveUniform</a></li>
+<li>zademonstrować działanie <code>bindAttribLocation</code>, aby przypisać zmienne <em>attribute variable</em> do ustalonych przez użytkownika indeksów <em>generic vertex index</em>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindAttribLocation" class="uri">https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindAttribLocation</a></li>
+</ul>
+</blockquote>
+<p>W polu tekstowym na stronie należy wpisać listę współrzędnych wierzchołków, ustawić na żądany tryb rysowania, a następnie wcisnąć przycisk <em>Apply</em>.</p>
+<p>Współrzędne wierzchołków piszemy jako płaską listę na przemian współrzędne <code>x</code> oraz <code>y</code> podzielone przecinkami. Program ignoruje znaki białe.</p>
+<p><a href="dist/ex-1/index.html">»Strona«</a></p>
+<hr />
+<h2 id="zadanie-2--fraktale">Zadanie 2. — Fraktale</h2>
+<blockquote>
+<p>Wygeneruj zbiory odcinków / trójkątów składających się na trójkąty Sierpińskiego / płatki Kocha różnego stopnia.</p>
+<p>Umieść odpowiednie dane w buforach i zaimplementuj shader-y rysujące te dane w kontekście WebGL. Napisz interakcyjny program, który rysuje krzywe różnego stopnia w różnych kolorach na różnych głębokościach (współrzędna z), tak aby krzywe o większych głębokościach stanowiły tło krzywej o najmniejszej głębokości, i umożliwia przy pomocy klawiszy lub przycisków operacje takie jak przesuwanie krzywych, zmiany głębokości.</p>
+</blockquote>
+<p>Po dodaniu danego fraktalu mamy możliwość poruszania się nim w przestrzeni (instrukcje na stronie).</p>
+<p><a href="dist/ex-2/index.html">»Strona«</a></p>
+<hr />
+<h2 id="zadania-3-oraz-4">Zadania 3. oraz 4.</h2>
+<h3 id="zadanie-3--gra-komputerowa-2d">Zadanie 3. — Gra komputerowa 2D</h3>
+<blockquote>
+<p>Zaimplementować w WebGL prostą dwuwymiarową grę zręcznościową typu: Pong, Arkanoid, Space Invaders, lub inną podobną, ale w taki sposób, aby tło zawierało jakiś rysunek utworzony z elementów geometrycznych (np. boisko).</p>
+<p>Wykorzystaj bufor głębokości tak, aby elementy pierwszoplanowe były rysowane z mniejszą współrzędną Z niż elementy tła. Zaimplementuj animację w zalecany sposób jak w przykładowym programie: <a href="http://156.17.7.16/public/dydaktyka/kik/grafika/animation/animation.html" class="uri">http://156.17.7.16/public/dydaktyka/kik/grafika/animation/animation.html</a> Zwróć uwagę, że callback animacji jest wywoływany w określonych punktach czasowych zależnych od częstotliwości wyświetlania obrazy na ekranie, natomiast zdarzenia istotne dla stanu gry, takie jak np. zderzenie obiektów, mogą wystąpić między tymi punktami czasowymi. Zadbaj o poprawną implementację takich sytuacji.</p>
+<p>Skoncentruj się na graficznej prezentacji gry. Pomiń takie rzeczy jak obliczanie punktacji i gromadzenie statystyk dotyczących wyników.</p>
+</blockquote>
+<h3 id="zadanie-4--tekstury">Zadanie 4. — Tekstury</h3>
+<blockquote>
+<p>Zaprojektuj i ponakładaj tekstury na ruchome obiekty i elementy tła zaimplementowanej przez siebie gry z poprzedniego zadania.</p>
+<p><em>UWAGA</em>: Przy otwieraniu pliku HTML przez protokół <code>file://...</code> mogą być problemy z wykorzystaniem obrazów jako tekstur. Można wtedy uruchomić lokalny serwer i otworzyć plik przez protokół <code>http://localhost...</code>.<br />
+Przykładowy taki serwer w Go można sobie pobrać pod adresem: https://gist.github.com/mki1967/a6d94def023799ffc7f7f10bf6c933b3</p>
+</blockquote>
+<hr />
+<h3 id="rozwiązanie">Rozwiązanie</h3>
+<p>Akcje na klawiaturze:</p>
+<ul>
+<li>strzałki w prawo i lewo — poruszanie się postacią (różowy kwadrat),</li>
+<li>spacja — wystrzelenie pocisku.</li>
+</ul>
+<p>Celem gry jest zniszczenie wszystkich przeciwników (oznaczonych na zielono). Mamy do dyspozycji pocisk, którym możemy wystrzelić w stronę przeciwników.</p>
+<p><a href="dist/ex-3-4/index.html">»Strona«</a></p>
+<hr />
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "489690727056",
+    "project_id": "discorde-uni-assignment",
+    "storage_bucket": "discorde-uni-assignment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489690727056:android:9de3c3758163c31cca0e15",
+        "android_client_info": {
+          "package_name": "com.example.discorde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489690727056-q6innadti4soedur9238spmbs9ct70a3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHGjRSQmta1jLNaKmeYsA2OgNOVEed4Uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489690727056-q6innadti4soedur9238spmbs9ct70a3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

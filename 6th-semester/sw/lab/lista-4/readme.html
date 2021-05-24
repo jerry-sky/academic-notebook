@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 4.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 4.</h1>
+<p class="subtitle">Systemy wbudowane, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<ul>
+<li><a href="#wstęp">Wstęp</a></li>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+<li><a href="#zadanie-3">Zadanie 3.</a></li>
+</ul>
+<hr />
+<h2 id="wstęp">Wstęp</h2>
+<blockquote>
+<p>Na tych laboratoriach pojawi się nowy element języka VHDL: funkcja. Będzie też pamięć (ROM) oraz generator sumy kontrolnej (CRC-8) a także problem synchronizacji dwóch komponentów.</p>
+<p>Funkcja w języku VHDL jest podprogramem posiadającym jako wejście sygnały oraz zwracającym wyłącznie jedną wartość określonego typu. Jest traktowana jako wyrażenie i jako takie może być stosowana wyłącznie w ramach procesu.</p>
+<p>W VHDL istnieje też pojęcie procedury — może ona mieć wiele wejść i wyjść i jest instrukcją — tak jak np. przypisanie (<code>&lt;=</code>) i jest wykonywana równolegle bądź sekwencyjnie, w zależności od miejsca jej wywołania. Podprogram (a więc funkcja) może korzystać wyłącznie z instrukcji sekwencyjnych. Nie może definiować sygnałów wewnętrznych — może używać jedynie zmiennych. I w odróżnieniu od zmiennych w procesie — te w funkcji nie zachowują wartości pomiędzy kolejnymi wywołaniami! Czyli taka normalna funkcja.</p>
+<p>Przykład funkcji, która oblicza XOR ze wszystkich bitów w danym wektorze:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode vhdl"><code class="sourceCode vhdl"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>function mxor (signal A <span class="ot">:</span> std_logic_vector) return std_logic is</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    variable tmp <span class="ot">:</span> std_logic;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>begin</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">:=</span> ’0’;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    for i in A’range loop</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        p <span class="ot">:=</span> p xor A(i);</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    end loop;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">:=</span> p xor ’0’;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    return p;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>end mxor;</span></code></pre></div>
+<p>Instrukcja <code>wait</code> w VHDL służy do kontrolowania działania kodu w czasie i umożliwia określenie operacji „czekaj [dopóki|na zdarzenie|przez]”. Wielokrotnie używaliśmy już <code>wait for {czas}</code>. Warto zaznajomić się z pozostałymi możliwościami: <code>wait on {sygnał}</code> oraz <code>wait until {warunek}</code>. Instrukcji <code>wait</code> nie można używać w procesach posiadających listę czułości oraz w procedurach wywoływanych w takich procesach, oraz w funkcjach. Wykonywanie <code>wait</code> wewnątrz procedury, która jest czuła na jakiś sygnał, mogłoby prowadzić do tego, że procedura czeka, a jednocześnie jest uruchamiana od nowa. A ponieważ VHDL opisuje sprzęt — to układ jednocześnie czekający i wykonujący obliczenia — nie jest możliwy. Dodatkowo kod posiadający polecenia <code>wait</code> nie jest syntetyzowalny, tj. nie można z niego wygenerować „wsadu” do prawdziwego procesora FPGA.</p>
+</blockquote>
+<hr />
+<h2 id="zadanie-1">Zadanie 1.</h2>
+<blockquote>
+<p>Przeanalizuj kod dla <code>rom.vhd</code>, <code>pack.vhd</code>, <code>crc8.vhd</code>. Odpowiedz na pytania:</p>
+<ol type="1">
+<li>Jak wygląda schemat blokowy generatora CRC-8? (narysuj!)</li>
+<li>Jak jest realizowana tutaj pamięć ROM?</li>
+<li>Co jest przechowywane w tej pamięci?</li>
+</ol>
+</blockquote>
+<p>Ad:</p>
+<ol type="1">
+<li><p>Schemat blokowy:</p>
+<p><img src="schmat-blokowy.png" alt="schemat blokowy" /></p></li>
+<li><p>Pamięć ROM to po prostu pewne <code>entity</code>, które przyjmuje na wejście adres, z którego chcemy pobrać informację, a następnie wydaje na wyjście wartość w podanym adresie.</p></li>
+<li><p>W pamięci ROM (<a href="rom.vhd"><code>rom.vhd</code></a>) przechowywane są kolejne CRC dla stałych wartości <code>0×A0</code> oraz <code>0×66</code> (ulokowane w osobnych <code>architecture</code>-ach).</p></li>
+</ol>
+<hr />
+<h2 id="zadanie-2">Zadanie 2.</h2>
+<blockquote>
+<p>Przeanalizuj <code>crc8_tb.vhd</code>. Odpowiedz na pytania:</p>
+<ol type="1">
+<li>Co realizują linie 68-72?</li>
+<li>Co jest przyczyną generowanych przez testbench ostrzeżeń? Usuń przyczynę.</li>
+</ol>
+</blockquote>
+<p>Ad:</p>
+<ol type="1">
+<li><p>Linie opóźniają wystartowanie procesu, który „napędza” testowany <code>entity crc8</code>.</p></li>
+<li><p>Przyczyną jest deklaracja sygnału <code>address</code>, bez podania początkowej jej wartości.</p>
+<pre class="log"><code>non logical value detected, returning 0</code></pre>
+<p>Program ostrzega nas przed tym zajściem, a następnie ustawia <code>address</code> na wartość domyślną, czyli zero.</p>
+<p>W celu naprawienia programu należy zmienić linijkę deklaracji sygnału <code>address</code> na:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode vhdl"><code class="sourceCode vhdl"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>signal address <span class="ot">:</span> std_logic_vector(2 downto 0) <span class="ot">:=</span> (others <span class="ot">=&gt;</span> <span class="bn">&#39;0&#39;</span>);</span></code></pre></div></li>
+</ol>
+<hr />
+<h2 id="zadanie-3">Zadanie 3.</h2>
+<blockquote>
+<p>Zbuduj test poprawności działania modułu CRC-8. Pomocne może być narzędzie online: <a href="http://smbus.org/faq/crc8Applet.htm" class="uri">http://smbus.org/faq/crc8Applet.htm</a>, a do testów modułu CRC-8 z pliku <a href="crc8_tb.vhd"><code>crc8.vhd</code></a> napisz kompletny, automatyczny test korzystający z danych zapisanych w pamięci ROM.</p>
+</blockquote>
+<p>Kod programu testującego znajduje się w pliku <a href="crc8_tb.vhd"><code>crc8_tb.vhd</code></a>.</p>
+<p>Żeby wykonać testy, należy skompilować program</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build</span></code></pre></div>
+<p>a następnie go uruchomić poleceniem</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> r=crc8_tb</span></code></pre></div>
+<p>Wynik testów wskazuje na to, że program działa poprawnie — wynik jest taki sam jak wartości w pliku <a href="rom.vhd"><code>rom.vhd</code></a>.</p>
+<p>Takie same wartości daje polecone narzędzie online:</p>
+<p><img src="wynik-applet-a0.png" alt="Wynik applet-u dla wartości a0" /></p>
+<p><img src="wynik-applet-66.png" alt="Wynik applet-u dla wartości 66" /></p>
+<hr />
+</body>
+</html>
