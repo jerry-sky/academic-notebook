@@ -1,0 +1,10 @@
+@import 'settings';
+
+footer {
+    background: $secondary-background-colour;
+    padding: 20px;
+
+    .visitors {
+        margin: 0;
+    }
+}

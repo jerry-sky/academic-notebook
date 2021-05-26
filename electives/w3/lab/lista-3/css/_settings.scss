@@ -1,0 +1,20 @@
+
+$background-colour: #444;
+$secondary-background-colour: darken($background-colour, 5);
+$font-colour: #eaeaee;
+$secondary-font-colour: darken($font-colour, 35);
+$warning-font-colour: #ca1313;
+
+$breakpoints: (
+    big: 1024px,
+    medium: 768px,
+    small: 600px,
+);
+
+@mixin mq($size) {
+    @if map-has-key($map: $breakpoints, $key: $size) {
+        @media (max-width: map-get($map: $breakpoints, $key: $size)) {
+            @content;
+        }
+    }
+}

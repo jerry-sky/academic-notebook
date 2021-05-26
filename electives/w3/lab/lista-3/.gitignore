@@ -1,0 +1,10 @@
+
+# ignore the downloaded Sass binary
+/sass
+
+# ignore generated CSS files
+**/*.css
+**/*.css.map
+
+# ignore database files
+*.dba
