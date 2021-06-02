@@ -1,14 +1,3 @@
-<link rel="stylesheet" href="css/comments.css" />
-
-<div class="comments">
-
-<p class="header">Comments</p>
-
-<p class="cookies-notice">Please be advised: if you want to comment on this site, you have to login.
-    This action involves storing cookies on your device. By signing up, logging in, or commenting
-    you’re agreeing to storing and using cookies on your device.</p>
-
-<div class="list">
 <?php
 
 include_once "random-string.php";
@@ -150,6 +139,20 @@ if ($loggedIn) {
 
     }
 }
+?>
+
+<link rel="stylesheet" href="css/comments.css" />
+
+<div class="comments">
+
+<p class="header">Comments</p>
+
+<p class="cookies-notice">Please be advised: if you want to comment on this site, you have to login.
+    This action involves storing cookies on your device. By signing up, logging in, or commenting
+    you’re agreeing to storing and using cookies on your device.</p>
+
+<div class="list">
+<?php
 
 // now print out all the comments that are in the database
 $key = dba_firstkey($dba);
