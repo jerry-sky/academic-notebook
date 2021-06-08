@@ -5,6 +5,7 @@ subtitle: 'Systemy wbudowane, Laboratorium'
 author: 'Jerry Sky'
 ---
 
+- [Kompilacja i uruchomienie programów](#kompilacja-i-uruchomienie-programów)
 - [Zadanie 1.](#zadanie-1)
     - [Programy](#programy)
     - [Błędy względne](#błędy-względne)
@@ -54,6 +55,38 @@ author: 'Jerry Sky'
 
 ---
 
+## Kompilacja i uruchomienie programów
+
+Kompilacja wszystkich programów:
+
+```bash
+make build
+```
+
+Uruchomienie danego programu:
+
+```bash
+make r=program
+```
+
+gdzie `program` to jeden z:
+- `clock_divider`,
+- lub `clock_divider_tb`.
+
+Uruchomienie programu oraz wygenerowanie pliku do odczytu przy pomocy programu GTKWave:
+
+```bash
+make wave-quiet r=program
+```
+
+Uruchomienie programu, wygenerowanie pliku do odczytu, oraz uruchomienie programu GTKWave:
+
+```bash
+make wave r=program
+```
+
+---
+
 ## Zadanie 1.
 
 > Napisz kod dzielnika częstotliwości.
@@ -73,11 +106,11 @@ W [pliku `clock_divider_tb.vhd`](clock_divider_tb.vhd) znajduje się program tes
 
 ### Błędy względne
 
-| Oczekiwana cz. | zaobserwowany okres | faktyczna cz.           | błąd względny               |
-| -------------- | ------------------- | ----------------------- | --------------------------- |
-| 100Hz          | 10ms                | 100Hz                   | $0$                         |
-| 1100Hz         | 909096ns            | 1099.99…                | $\approx 5.6 \cdot 10^{-6}$ |
-| 50MHz          | 24ns                | $4.1(6) \cdot 10^{7}$ns | $0.1(6)$
+| Oczekiwana cz. | zaobserwowany okres | faktyczna cz.            | błąd względny               |
+| -------------- | ------------------- | ------------------------ | --------------------------- |
+| 100Hz          | 10ms                | 100Hz                    | $0$                         |
+| 1100Hz         | 909096ns            | 1099.99… Hz              | $\approx 5.6 \cdot 10^{-6}$ |
+| 50MHz          | 24ns                | $4.1(6) \cdot 10^{7}$ Hz | $0.1(6)$
 
 ---
 
