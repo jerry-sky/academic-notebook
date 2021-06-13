@@ -18,7 +18,7 @@ func getRandomNumberGenerator() *rand.Rand {
 
 }
 
-// Returns a random integer.
+// RandomInteger returns a random integer.
 func RandomInteger(end int) int {
 
 	random := getRandomNumberGenerator()
@@ -31,7 +31,7 @@ func RandomInteger(end int) int {
 
 }
 
-// Returns a random floating point number between [0, 1).
+// RandomFloat returns a random floating point number between [0, 1).
 func RandomFloat() float64 {
 
 	random := getRandomNumberGenerator()
@@ -40,7 +40,12 @@ func RandomFloat() float64 {
 
 }
 
-// Takes a moment of contemplation.
+// SleepForSomeTime takes a moment of contemplation.
 func SleepForSomeTime(sleepMax float64) {
 	time.Sleep(time.Duration(1000*RandomFloat()*sleepMax) * time.Millisecond)
+}
+
+// SleepForExactTime takes a moment of contemplation of exact given duration.
+func SleepForExactTime(sleepDuration float64) {
+	time.Sleep(time.Duration(1000*sleepDuration) * time.Millisecond)
 }

@@ -16,10 +16,6 @@ func LogOfferAccepted(offer *RoutingOffer, sender *Router, receiver *Router) {
 // LogStandardMessageArrival logs arrival of a new standard message.
 func LogStandardMessageArrival(message *StandardMessage) {
 
-	if isClosed {
-		return
-	}
-
 	l := "message " + Str(message.id) + " arrival: (" + Str(message.sender.router.id) + "," + Str(message.sender.id) + ")"
 	l += " → (" + Str(message.receiver.router.id) + "," + Str(message.receiver.id) + ")"
 
@@ -51,7 +47,9 @@ func LoggerPrintMessages() {
 
 	for {
 		if isClosed {
-			for msg := range loggerStash {
+			pendingMessagesCount := len(loggerStash)
+			for i := 0; i < pendingMessagesCount; i++ {
+				msg := <-loggerStash
 				println(msg)
 			}
 			break
@@ -70,6 +68,5 @@ func LoggerPrintMessages() {
 func LoggerClose() {
 
 	isClosed = true
-	close(loggerStash)
 
 }

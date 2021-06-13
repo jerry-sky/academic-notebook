@@ -138,13 +138,13 @@ func main() {
 	}
 
 	// generate some number of hosts that are going to be using these routers
-	standardMessagesCount := 0
+	totalHostCount := 0
 	for i := 0; i < n; i++ {
 		current := nodes[i]
 
-		hostsCount := RandomInteger(h + 1)
-		standardMessagesCount += hostsCount
-		for j := 0; j < hostsCount; j++ {
+		hostCount := RandomInteger(h + 1)
+		totalHostCount += hostCount
+		for j := 0; j < hostCount; j++ {
 			host := &Host{
 				router:        current,
 				id:            j,
@@ -155,8 +155,8 @@ func main() {
 	}
 
 	// prepare all possible IDs for all hosts’ messages
-	standardMessageIDs := make(chan int, standardMessagesCount)
-	for i := 0; i < standardMessagesCount; i++ {
+	standardMessageIDs := make(chan int, totalHostCount)
+	for i := 0; i < totalHostCount; i++ {
 		standardMessageIDs <- i
 	}
 
@@ -195,7 +195,7 @@ func main() {
 	// wait for all nodes to get to know the network fully
 	<-done
 	// give some time for the hosts to send some more messages
-	SleepForSomeTime(maxSleep * 2)
+	SleepForExactTime(maxSleep * 2)
 	// notify the logger that the time has come
 	LoggerClose()
 	// wait for the logger
