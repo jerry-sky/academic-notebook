@@ -89,6 +89,8 @@ Niniejsza implementacja dodatkowo oznacza każdą z wiadomości kolejną liczb�
 Pozwala to na przyjemniejsze przeglądanie logów programu.
 Łatwiej jest śledzić postępy w zmniejszaniu drogi jednej wiadomości.
 
+Przykład obserwacji ulepszania drogi wiadomości jest widoczny na nagraniu `asciinema` w [pliku `go.cast`](go.cast).
+
 ---
 
 ## Go
