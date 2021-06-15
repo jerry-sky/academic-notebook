@@ -6,7 +6,7 @@ package main
 func Forwarder(self *Router) {
 
 	for {
-		message := <-self.standardStash
+		message := <-self.standardStash.output
 		message.visited = append(message.visited, self)
 		target := message.receiver
 
@@ -16,7 +16,7 @@ func Forwarder(self *Router) {
 			self.clients[target.id].standardStash <- message
 		} else {
 			// the message needs to be transmitted to another router
-			self.routing.nexthop[target.router.id].standardStash <- message
+			self.routing.nexthop[target.router.id].standardStash.input <- message
 		}
 	}
 }

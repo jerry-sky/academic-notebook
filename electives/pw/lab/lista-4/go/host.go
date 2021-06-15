@@ -27,7 +27,7 @@ func HostTask(self *Host, nodes []*Router, maxSleep float64, possibleIDs chan in
 	}
 
 	// send the message out
-	self.router.standardStash <- message
+	self.router.standardStash.input <- message
 
 	for {
 		// now listen for any incoming messages and pong back
@@ -49,7 +49,7 @@ func HostTask(self *Host, nodes []*Router, maxSleep float64, possibleIDs chan in
 		SleepForSomeTime(maxSleep)
 
 		// send it out
-		self.router.standardStash <- outgoing
+		self.router.standardStash.input <- outgoing
 	}
 
 }

@@ -41,9 +41,11 @@ func main() {
 			changed: make([]bool, n),
 		}
 
+		stash := MakeUnboundedChannelSM()
+
 		current := &Router{
 			routingStash:  make(chan *RoutingMessage, 1),
-			standardStash: make(chan *StandardMessage, n),
+			standardStash: stash,
 			neighbours:    make([]*Router, 0),
 			id:            i,
 			routing:       routing,

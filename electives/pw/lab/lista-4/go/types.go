@@ -42,7 +42,7 @@ type Host struct {
 type Router struct {
 	// The channel where the go-routines send to and receive from the messages.
 	routingStash  chan *RoutingMessage
-	standardStash chan *StandardMessage
+	standardStash *UnboundedChannelSM
 	neighbours    []*Router
 	id            int
 	routing       *RoutingTable
@@ -68,6 +68,57 @@ func Sum(arr ...bool) int {
 	return output
 }
 
+// Str converts an integer to a string.
 func Str(i int) string {
 	return strconv.Itoa(i)
+}
+
+// UnboundedChannelSM is a `chan` with unlimited buffer.
+type UnboundedChannelSM struct {
+	input  chan *StandardMessage
+	output chan *StandardMessage
+}
+
+// UnboundedChannelSMTask is a utility function for the UnboundedChannelSM struct
+// — see UnboundedChannelSM struct.
+//
+// This function is supposed to be run as a go-routine.
+func unboundedChannelSMTask(self *UnboundedChannelSM) {
+
+	stash := make([]*StandardMessage, 0)
+	var awaiting *StandardMessage
+	awaiting = nil
+
+	for {
+		ls := len(stash)
+		if awaiting == nil && ls > 0 {
+			awaiting, stash = stash[ls-1], stash[:ls-1]
+		}
+		select {
+		case incoming := <-self.input:
+			stash = append(stash, incoming)
+		default:
+			if awaiting != nil {
+				select {
+				case self.output <- awaiting:
+					awaiting = nil
+				default:
+				}
+			}
+		}
+	}
+}
+
+// MakeUnboundedChannelSM creates a new unbounded channel that can receive (theoretically) unlimited quantity
+// of `*StandardMessage`–s.
+func MakeUnboundedChannelSM() *UnboundedChannelSM {
+
+	self := &UnboundedChannelSM{
+		input:  make(chan *StandardMessage, 1),
+		output: make(chan *StandardMessage, 1),
+	}
+
+	go unboundedChannelSMTask(self)
+
+	return self
 }
