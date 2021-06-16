@@ -1,0 +1,211 @@
+@import 'settings';
+
+body {
+    min-height: 100vh;
+    background: $background-colour;
+    color: $font-colour;
+    font-family: serif;
+}
+
+.no-select {
+    user-select: none;
+}
+
+@mixin body-nav-size($body-size, $body-margin, $nav-width) {
+    body {
+        margin: 0 $body-margin;
+        @if $body-margin == auto {
+            width: $body-size;
+        } @else {
+            width: calc(#{$body-size} - 2 * #{$body-margin});
+        }
+
+        &.offset {
+            padding-right: $nav-width;
+        }
+    }
+    nav {
+        width: $nav-width;
+    }
+}
+
+/* big screens (desktops) */
+@include body-nav-size($body-size: 50%, $body-margin: auto, $nav-width: 25%);
+
+/* medium screens (laptops) */
+@include mq(big) {
+    @include body-nav-size($body-size: 70%, $body-margin: 10px, $nav-width: 30%);
+}
+
+/* smaller screens (tablets) */
+@include mq(medium) {
+    @include body-nav-size($body-size: 65%, $body-margin: 10px, $nav-width: 35%);
+}
+
+/* small screens (phones) */
+@include mq(small) {
+    @include body-nav-size($body-size: 100%, $body-margin: 10px, $nav-width: initial);
+}
+
+
+.logo {
+    max-width: 50%;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+ul, p {
+    margin-bottom: 0;
+}
+
+ul {
+    margin-top: 0.5em;
+}
+
+a {
+    color: #10caca;
+    text-decoration: none;
+
+    &:visited {
+        color: #e95ee9;
+    }
+}
+
+h1 {
+    margin: 0;
+    padding: 15px 0;
+}
+
+h2 {
+    padding-top: 20px;
+    border-top: solid 2px gainsboro;
+
+    &:first-of-type {
+        border-top: none;
+    }
+}
+
+pre {
+    color: #aaa;
+    page-break-inside: avoid;
+    font-family: monospace;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow-y: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    margin: 25px auto;
+    box-shadow: #222 0 0 15px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+
+    ul.main {
+        height: 100vh;
+        overflow-y: auto;
+        margin-right: 25px;
+
+        & > li {
+            margin-top: 20px;
+        }
+    }
+
+    @include mq(small) {
+        height: initial;
+
+        ul.main {
+            display: none;
+            width: calc(100vw - 65px);
+
+            &.open {
+                display: block;
+            }
+        }
+    }
+
+    .standard {
+        display: none;
+
+        .dropdown-button {
+            display: none;
+            border: none;
+            width: 100%;
+            background: transparent;
+            color: #eaeaee;
+            padding: 15px;
+        }
+    }
+
+    /* JS-less navbar */
+    .no-js {
+        .margin {
+            height: 30px;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+
+            & + label {
+                display: none;
+            }
+        }
+
+        @include mq(small) {
+            input[type="checkbox"] {
+
+                & + label {
+                    display: block;
+                    padding: 0 10px;
+                    min-width: 30px;
+                    height: 30px;
+                    background: rgba(0, 0, 0, 0.3);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    text-align: center;
+                    line-height: 30px;
+                    font-family: monospace;
+
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.2);
+                    }
+
+                    & > .close {
+                        display: none;
+                    }
+
+                    & + ul {
+                        display: none;
+                    }
+                }
+
+                &:checked + label {
+                    background: rgba(180, 40, 230, 0.8);
+
+                    & > .close {
+                        display: initial;
+                    }
+                    & > .open {
+                        display: none;
+                    }
+                    & + ul {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

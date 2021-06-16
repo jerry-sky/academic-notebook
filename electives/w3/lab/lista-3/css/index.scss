@@ -1,0 +1,16 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    $padding: 25px;
+    height: calc(100vh - #{$padding} * 2);
+    min-height: 500px;
+    padding: $padding 0;
+
+    & > header {
+        width: 100%;
+        text-align: center;
+    }
+}

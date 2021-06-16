@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jerry Sky" />
+  <title>Lista 3.</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lista 3.</h1>
+<p class="subtitle">Nowoczesne technologie WWW, Laboratorium</p>
+<p class="author">
+    <span>by </span>
+    <span class="author">Jerry Sky</span>
+</p>
+</header>
+<ul>
+<li><a href="#zadanie-1">Zadanie 1.</a></li>
+<li><a href="#zadanie-2">Zadanie 2.</a></li>
+</ul>
+<hr />
+<h2 id="zadanie-1">Zadanie 1.</h2>
+<blockquote>
+<p>Wygeneruj arkusz styli dla swojego portfolio przy użyciu preprocesora CSS Sass.</p>
+<ul>
+<li><p>Postaraj się optymalnie wykorzystać jego możliwości (zmienne, funkcje, domieszki, rozszerzenia etc.).</p></li>
+<li><p>Stwórz plik wyjściowy skompresowany (ten wykorzystaj w projekcie) oraz jeden w wersji deweloperskiej, który łatwo będzie można przeglądać. Porównaj wielkość plików.</p></li>
+</ul>
+</blockquote>
+<p>W pliku <a href="makefile"><code>makefile</code></a> znajdują się odwołania do skryptów do pobierania programu kompilującego oraz do kompilowania plików Sass.</p>
+<ul>
+<li><p>Pobieranie programu kompilującego: <code>bash     make sass</code></p></li>
+<li><p>Kompilacja (bez minifikacji plików): <code>bash     make</code></p></li>
+<li><p>Kompilacja (z minifikacją plików): <code>bash     make css-compressed</code></p></li>
+<li><p>Kompilacja (na bieżąco): <code>bash     make css-dev</code></p></li>
+<li><p>Kompilacja (z minifikacją plików do katalogu <code>minified/css</code> — do porównania wielkości plików skompresowanych oraz zwykłych): <code>bash     make css-compressed-prefix</code></p></li>
+</ul>
+<hr />
+<h2 id="zadanie-2">Zadanie 2.</h2>
+<blockquote>
+<p>Wykorzystaj język skryptowy PHP do:</p>
+<ul>
+<li><p>Generowania swojego portfolio zgodnie z zasadą DRY (Don’t Repeat Yourself) — elementy powtarzające się na wszystkich podstronach (menu nawigacyjne, nagłówek, stopkę, etc.) przerzucamy do osobnych plików.</p></li>
+<li><p>Wzbogacenia swojego portfolio o:</p>
+<ol type="1">
+<li>Licznik odwiedzin, który będzie wzrastał przy odwiedzeniu (czy odświeżeniu) strony z danego urządzenia. Postaraj się to zrobić tak, żeby licznik nie wzrastał częściej niż raz na dobę dla jednego numeru IP.</li>
+<li>Możliwość komentowania twoich projektów. Zadbaj o dodawanie, usuwanie kont użytkownikom i odpowiednią obsługę sesji (logowanie, wylogowywanie, a wyłącznie dla zalogowanych użytkowników możliwość dodawania komentarzy do prezentowanych treści). Zadbaj również o automatyczne wylogowywanie użytkownika po 5 minutach bezczynności.</li>
+</ol></li>
+</ul>
+<p><strong>Uwagi</strong>: - Jeżeli wykorzystujesz ciasteczka, zorientuj się w obowiązujących przepisach prawnych, czy jest to konieczne, a jeżeli tak, to w jaki sposób możesz pozyskać zgodę użytkowników na ich stosowanie.</p>
+</blockquote>
+<hr />
+</body>
+</html>
